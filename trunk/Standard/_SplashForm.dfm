@@ -1,0 +1,31 @@
+object _frmSplash: T_frmSplash
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = '_frmSplash'
+  ClientHeight = 338
+  ClientWidth = 651
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 0
+    Top = 0
+    Width = 651
+    Height = 338
+    Align = alClient
+    Stretch = True
+    ExplicitLeft = 32
+    ExplicitTop = 24
+    ExplicitWidth = 105
+    ExplicitHeight = 105
+  end
+end
