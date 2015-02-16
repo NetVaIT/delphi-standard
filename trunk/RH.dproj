@@ -74,8 +74,8 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.3;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
-        <VerInfo_Build>3</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.4;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>4</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -153,6 +153,22 @@
         </DCCReference>
         <DCCReference Include="Catalogos\EstadoForm.pas">
             <Form>frmEstado</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\MunicipiosForm.pas">
+            <Form>frmMunicipios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\MunicipioForm.pas">
+            <Form>frmMunicipio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PoblacionesForm.pas">
+            <Form>frmPoblaciones</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PoblacionForm.pas">
+            <Form>frmPoblacion</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

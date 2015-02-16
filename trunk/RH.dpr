@@ -21,7 +21,11 @@ uses
   _EditForm in 'Standard\_EditForm.pas' {_frmEdit},
   PaisForm in 'Catalogos\PaisForm.pas' {frmPais},
   EstadosForm in 'Catalogos\EstadosForm.pas' {frmEstados},
-  EstadoForm in 'Catalogos\EstadoForm.pas' {frmEstado};
+  EstadoForm in 'Catalogos\EstadoForm.pas' {frmEstado},
+  MunicipiosForm in 'Catalogos\MunicipiosForm.pas' {frmMunicipios},
+  MunicipioForm in 'Catalogos\MunicipioForm.pas' {frmMunicipio},
+  PoblacionesForm in 'Catalogos\PoblacionesForm.pas' {frmPoblaciones},
+  PoblacionForm in 'Catalogos\PoblacionForm.pas' {frmPoblacion};
 
 {$R *.res}
 

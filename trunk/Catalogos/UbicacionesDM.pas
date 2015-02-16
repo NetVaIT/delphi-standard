@@ -3,8 +3,8 @@ unit UbicacionesDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
-  PaisesForm, EstadosForm;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+
 
 type
   TdmUbicaciones = class(T_dmStandar)
@@ -17,6 +17,18 @@ type
     adodsEstadosIdPais: TIntegerField;
     adodsEstadosIdentificador: TStringField;
     adodsEstadosDescripcion: TStringField;
+    dsEstados: TDataSource;
+    adodsMunicipios: TADODataSet;
+    dsMunicipios: TDataSource;
+    adodsPoblaciones: TADODataSet;
+    adodsMunicipiosIdMunicipio: TIntegerField;
+    adodsMunicipiosIdEstado: TIntegerField;
+    adodsMunicipiosIdentificador: TIntegerField;
+    adodsMunicipiosDescripcion: TStringField;
+    adodsPoblacionesIdPoblacion: TIntegerField;
+    adodsPoblacionesIdMunicipio: TIntegerField;
+    adodsPoblacionesIdentificador: TIntegerField;
+    adodsPoblacionesDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -28,24 +40,24 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses PaisesForm, EstadosForm, MunicipiosForm, PoblacionesForm;
+
 {$R *.dfm}
 
 procedure TdmUbicaciones.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   if adodsEstados.CommandText <> EmptyStr then adodsEstados.Open;
+  if adodsMunicipios.CommandText <> EmptyStr then adodsMunicipios.Open;
+  if adodsPoblaciones.CommandText <> EmptyStr then adodsPoblaciones.Open;
   gGridForm:= TfrmPaises.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   gFormDeatil1:= TfrmEstados.Create(Self);
   gFormDeatil1.DataSet:= adodsEstados;
-
-
-//  frmPaises:= TfrmPaises.Create(Self);
-//  frmPaises.DataSet:= adodsMaster;
-//  ShowModule2(frmPaises, frmPaises.pnlMaster);
-//  frmEstados:= TfrmEstados.Create(Self);
-//  frmEstados.DataSet:= adodsEstados;
-
+  gFormDeatil2:= TfrmMunicipios.Create(Self);
+  gFormDeatil2.DataSet:= adodsMunicipios;
+  gFormDeatil3:= TfrmPoblaciones.Create(Self);
+  gFormDeatil3.DataSet:= adodsPoblaciones;
 end;
 
 end.

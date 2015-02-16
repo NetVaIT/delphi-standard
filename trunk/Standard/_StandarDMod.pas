@@ -50,7 +50,7 @@ begin
   begin
     gGridForm.Parent:= pConteiner;
     gGridForm.Align:= alClient;
-    gGridForm.Caption:= pCation;
+//    gGridForm.Caption:= pCation;
     gGridForm.Show;
   end;
   if Assigned(gFormDeatil1) then

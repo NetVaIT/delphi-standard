@@ -1,6 +1,7 @@
 object _frmGrid: T_frmGrid
   Left = 0
   Top = 0
+  BorderIcons = []
   BorderStyle = bsNone
   Caption = '_frmGrid'
   ClientHeight = 457
@@ -50,25 +51,21 @@ object _frmGrid: T_frmGrid
   end
   object pnlMaster: TPanel
     Left = 0
-    Top = 25
+    Top = 31
     Width = 651
-    Height = 300
+    Height = 294
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 269
     object cxGrid: TcxGrid
       Left = 0
       Top = 0
       Width = 651
-      Height = 300
+      Height = 294
       Align = alClient
       PopupMenu = PopupMenu
       TabOrder = 0
       LookAndFeel.Kind = lfStandard
-      ExplicitLeft = 88
-      ExplicitTop = -120
-      ExplicitHeight = 269
       object tvMaster: TcxGridDBTableView
         OnDblClick = tvMasterDblClick
         Navigator.Buttons.CustomButtons = <>
@@ -99,8 +96,6 @@ object _frmGrid: T_frmGrid
     BevelOuter = bvNone
     TabOrder = 3
     Visible = False
-    ExplicitLeft = 8
-    ExplicitTop = 437
   end
   object pnlDetail2: TPanel
     Left = 0
@@ -111,7 +106,6 @@ object _frmGrid: T_frmGrid
     BevelOuter = bvNone
     TabOrder = 2
     Visible = False
-    ExplicitTop = 312
   end
   object pnlDetail1: TPanel
     Left = 0
@@ -122,7 +116,6 @@ object _frmGrid: T_frmGrid
     BevelOuter = bvNone
     TabOrder = 1
     Visible = False
-    ExplicitTop = 290
   end
   object ActionList: TActionList
     Images = cxImageList
@@ -238,13 +231,16 @@ object _frmGrid: T_frmGrid
     DockControlHeights = (
       0
       0
-      25
+      31
       0)
     object dxbNavigator: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
       Caption = 'Navegaci'#243'n'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 97
+      DockedLeft = 82
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 669
@@ -279,6 +275,9 @@ object _frmGrid: T_frmGrid
       WholeRow = False
     end
     object dxbEdit: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
       Caption = 'Edici'#243'n'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
@@ -309,10 +308,13 @@ object _frmGrid: T_frmGrid
       WholeRow = False
     end
     object dxbTools: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
       Caption = 'Herramientas'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 240
+      DockedLeft = 210
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 669

@@ -32,8 +32,6 @@ inherited frmMain: TfrmMain
   inherited pnlMain: TPanel
     Top = 159
     Height = 298
-    ExplicitTop = 159
-    ExplicitHeight = 298
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
