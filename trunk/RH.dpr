@@ -47,7 +47,6 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
-  Application.CreateForm(TfrmPais, frmPais);
   Application.Run;
   end;
 end.
