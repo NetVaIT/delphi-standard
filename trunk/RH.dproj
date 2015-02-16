@@ -40,6 +40,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
@@ -73,8 +74,8 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.2;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
-        <VerInfo_Build>2</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.3;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>3</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -125,13 +126,33 @@
         <DCCReference Include="Standard\_SplashForm.pas">
             <Form>_frmSplash</Form>
         </DCCReference>
-        <DCCReference Include="CFDIDM.pas">
-            <Form>dmCFDI</Form>
+        <DCCReference Include="Standard\_GridForm.pas">
+            <Form>_frmGrid</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UbicacionesDM.pas">
+            <Form>dmUbicaciones</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="CFDIForm.pas">
-            <Form>frmCFDI</Form>
+        <DCCReference Include="Catalogos\PaisesForm.pas">
+            <Form>frmPaises</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Standard\_EditForm.pas">
+            <Form>_frmEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PaisForm.pas">
+            <Form>frmPais</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EstadosForm.pas">
+            <Form>frmEstados</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EstadoForm.pas">
+            <Form>frmEstado</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -202,6 +223,28 @@
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp180.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\11.0\BPL\QImport3DT_C18.bpl">EMS Advanced Import Component Suite (C++)</Excluded_Packages>
                 </Excluded_Packages>
+                <Language>
+                    <Language Name="ProjectLang">$0000080A</Language>
+                </Language>
+                <Resource_DLL_Projects>
+                    <Resource_DLL_Projects Name="Item0">Español (México)*$0000080A*ESM*ESM</Resource_DLL_Projects>
+                </Resource_DLL_Projects>
+                <RDP_Source_Files>
+                    <RDP_Source_Files Name="Item0">Standard\_MainRibbonForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item1">Standard\_AboutForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item2">Standard\_ConectionDmod.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item3">Standard\_LoginForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item4">Standard\_MainForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item5">Standard\_ProgressForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item6">Standard\_StandarDMod.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item7">Standard\_StandarForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item8">Standard\_StandarGridForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item9">MainForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item10">Standard\_SplashForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item11">CFDIDM.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item12">CFDIForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item13">Win32\Debug\RH.drc</RDP_Source_Files>
+                </RDP_Source_Files>
             </Delphi.Personality>
             <Deployment/>
             <Platforms>

@@ -9,7 +9,7 @@ unit _MainRibbonForm;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs, 
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
   dxBar, dxRibbon, dxRibbonForm, dxRibbonSkins, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxClasses, dxRibbonBackstageView, dxSkinsCore,
   dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
@@ -26,7 +26,8 @@ uses
   dxSkinsdxRibbonPainter, dxSkinsdxBarPainter, cxContainer, cxEdit, dxSkinsForm,
   dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery, dxGalleryControl,
   dxRibbonBackstageViewGalleryControl, Vcl.ImgList, Vcl.StdActns,
-  System.Actions, Vcl.ActnList, Vcl.ExtCtrls, _Utils, dxScreenTip;
+  System.Actions, Vcl.ActnList, Vcl.ExtCtrls, _Utils, dxScreenTip,
+  dxBarStrs;
 
 type
   T_frmMainRibbon = class(TdxRibbonForm)
@@ -52,7 +53,7 @@ type
     pnlMain: TPanel;
     bbConnect: TdxBarButton;
     bbDesconnect: TdxBarButton;
-    dxBarManagerBar1: TdxBar;
+    dxbArchivo: TdxBar;
     bbExit: TdxBarLargeButton;
     bbAbout: TdxBarLargeButton;
     dxBarScreenTipRepository: TdxBarScreenTipRepository;
@@ -66,6 +67,7 @@ type
     { Private declarations }
     FConected: Boolean;
     procedure SetConected(const Value: Boolean);
+    procedure cxTranslate;
   protected
     procedure CreateModule(pModulo: Integer; pCaption: String); virtual; abstract;
     procedure ConfigControls; virtual;
@@ -117,6 +119,14 @@ begin
   dxRibbonStatusBar1.Panels[1].Text:= strUser + _dmConection.Operador;
 end;
 
+procedure T_frmMainRibbon.cxTranslate;
+begin
+  cxSetResourceString(@dxSBAR_SHOWBELOWRIBBON, '&Mostrar bajo la cinta');
+  cxSetResourceString(@dxSBAR_SHOWABOVERIBBON, '&Mostrar sobre la cinta');
+  cxSetResourceString(@dxSBAR_MINIMIZERIBBON, 'Mi&nimizar la cinta');
+  cxSetResourceString(@dxSBAR_MORECOMMANDS, 'Más comandos');
+end;
+
 procedure T_frmMainRibbon.FormCreate(Sender: TObject);
 begin
   DisableAero := True;
@@ -124,6 +134,7 @@ end;
 
 procedure T_frmMainRibbon.FormShow(Sender: TObject);
 begin
+  cxTranslate;
   _dmConection.ExePath:= ExtractFilePath(Application.ExeName);
   if _dmConection.TryToConnect then
   begin

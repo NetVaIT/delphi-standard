@@ -28,9 +28,9 @@ type
   TfrmMain = class(T_frmMainRibbon)
     actCatalogo: TAction;
     dxRibbon1Tab2: TdxRibbonTab;
-    dxBarManagerBar2: TdxBar;
+    dxbEjemplo: TdxBar;
     dxBarLargeButton1: TdxBarLargeButton;
-    actCFDI: TAction;
+    actUbicaciones: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -50,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses CFDIDM, _ConectionDmod;
+uses UbicacionesDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -64,7 +64,7 @@ begin
   DestroyModule;
   case pModulo of
     //Catalogos
-    1: gModulo := TdmCFDI.Create(Self);
+    1: gModulo := TdmUbicaciones.Create(Self);
   end;
   gModulo.ShowModule(pnlMain, pCaption);
   Caption := pCaption + strSeparador + strProductName + strSeparador + strFileDescription;
@@ -74,7 +74,7 @@ procedure TfrmMain.ConfigControls;
 begin
   inherited;
 //  actCFDI.Enabled:= Conected and _dmConection.EnabledAction(actCFDI.Tag);
-  actCFDI.Enabled:= Conected;
+  actUbicaciones.Enabled:= Conected;
 end;
 
 procedure TfrmMain.DestroyModule;
