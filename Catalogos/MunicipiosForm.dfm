@@ -1,7 +1,7 @@
-inherited frmEstados: TfrmEstados
+inherited frmMunicipios: TfrmMunicipios
   BorderIcons = []
   BorderStyle = bsToolWindow
-  Caption = 'Estados'
+  Caption = 'Municipios'
   ClientHeight = 428
   ClientWidth = 645
   OnCreate = FormCreate
@@ -28,12 +28,12 @@ inherited frmEstados: TfrmEstados
       Width = 645
       Height = 265
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdEstado: TcxGridDBColumn
-          DataBinding.FieldName = 'IdEstado'
+        object tvMasterIdMunicipio: TcxGridDBColumn
+          DataBinding.FieldName = 'IdMunicipio'
           Visible = False
         end
-        object tvMasterIdPais: TcxGridDBColumn
-          DataBinding.FieldName = 'IdPais'
+        object tvMasterIdEstado: TcxGridDBColumn
+          DataBinding.FieldName = 'IdEstado'
           Visible = False
         end
         object tvMasterIdentificador: TcxGridDBColumn
@@ -41,7 +41,6 @@ inherited frmEstados: TfrmEstados
         end
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
-          Width = 300
         end
       end
     end
