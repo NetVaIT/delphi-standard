@@ -34,7 +34,7 @@ object _frmMainRibbon: T_frmMainRibbon
       Caption = 'Inicio'
       Groups = <
         item
-          ToolbarName = 'dxBarManagerBar1'
+          ToolbarName = 'dxbArchivo'
         end>
       Index = 0
     end
@@ -153,10 +153,13 @@ object _frmMainRibbon: T_frmMainRibbon
     Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
-      'Default')
+      'Default'
+      'Navegacion')
     Categories.ItemsVisibles = (
+      2
       2)
     Categories.Visibles = (
+      True
       True)
     ImageOptions.Images = cxSmallImages
     ImageOptions.LargeImages = cxLargeImages
@@ -185,7 +188,7 @@ object _frmMainRibbon: T_frmMainRibbon
       Visible = True
       WholeRow = False
     end
-    object dxBarManagerBar1: TdxBar
+    object dxbArchivo: TdxBar
       Caption = 'Archivo'
       CaptionButtons = <>
       DockedLeft = 0
@@ -236,8 +239,9 @@ object _frmMainRibbon: T_frmMainRibbon
     end
   end
   object dxSkinController: TdxSkinController
+    Kind = lfOffice11
     NativeStyle = False
-    SkinName = 'Office2013White'
+    SkinName = 'Valentine'
     Left = 488
     Top = 8
   end

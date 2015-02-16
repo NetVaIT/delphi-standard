@@ -3,10 +3,9 @@ object _dmConection: T_dmConection
   Height = 180
   Width = 227
   object ADOConnection: TADOConnection
-    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=as47Pw3K;Persist Security Info=True' +
-      ';User ID=sa;Initial Catalog=interva;Data Source=NAS1\COMPAC'
+      ';User ID=sa;Initial Catalog=IntervaRH;Data Source=NAS1\COMPAC'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     OnDisconnect = ADOConnectionDisconnect

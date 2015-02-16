@@ -1,8 +1,13 @@
 inherited frmMain: TfrmMain
   Caption = 'frmMain'
+  ExplicitWidth = 656
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
+    Height = 159
+    ColorSchemeName = 'Valentine'
+    ExplicitHeight = 159
     inherited dxRibbon1Tab1: TdxRibbonTab
       Active = False
       Index = 0
@@ -12,7 +17,7 @@ inherited frmMain: TfrmMain
       Caption = 'Catalgos'
       Groups = <
         item
-          ToolbarName = 'dxBarManagerBar2'
+          ToolbarName = 'dxbEjemplo'
         end>
       Index = 1
     end
@@ -24,6 +29,12 @@ inherited frmMain: TfrmMain
       end
     end
   end
+  inherited pnlMain: TPanel
+    Top = 159
+    Height = 298
+    ExplicitTop = 159
+    ExplicitHeight = 298
+  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -34,19 +45,19 @@ inherited frmMain: TfrmMain
       FloatClientWidth = 51
       FloatClientHeight = 22
     end
-    inherited dxBarManagerBar1: TdxBar
+    inherited dxbArchivo: TdxBar
       DockedDockControl = nil
       DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end
-    object dxBarManagerBar2: TdxBar [2]
+    object dxbEjemplo: TdxBar [2]
       CaptionButtons = <>
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 674
       FloatTop = 8
-      FloatClientWidth = 51
+      FloatClientWidth = 80
       FloatClientHeight = 54
       ItemLinks = <
         item
@@ -60,7 +71,7 @@ inherited frmMain: TfrmMain
       WholeRow = False
     end
     object dxBarLargeButton1: TdxBarLargeButton
-      Action = actCFDI
+      Action = actUbicaciones
       Category = 0
     end
   end
@@ -76,11 +87,11 @@ inherited frmMain: TfrmMain
       Caption = 'actCatalogo'
       OnExecute = actCatalogoExecute
     end
-    object actCFDI: TAction
+    object actUbicaciones: TAction
       Tag = 1
       Category = 'Catalogos'
-      Caption = 'CFDI'
-      ImageIndex = 15
+      Caption = 'Ubicaciones'
+      ImageIndex = 16
       OnExecute = actCatalogoExecute
     end
   end

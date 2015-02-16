@@ -116,6 +116,8 @@ implementation
 
 {$R *.dfm}
 
+uses _MainRibbonForm;
+
 procedure T_frmStandarGrid.DataSetDeleteExecute(Sender: TObject);
 begin
   if MessageDlg(strAllowDelete, mtConfirmation, mbYesNo, 0) = mrYes

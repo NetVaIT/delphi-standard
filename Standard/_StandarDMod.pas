@@ -9,7 +9,7 @@ unit _StandarDMod;
 interface
 
 uses
-  SysUtils, Classes, Forms, DB, ADODB, Controls, Dialogs, _StandarGridForm;
+  SysUtils, Classes, Forms, DB, ADODB, Controls, Dialogs, _GridForm;
 
 type
   T_dmStandar = class(TDataModule)
@@ -19,8 +19,10 @@ type
   private
     { Private declarations }
   protected
-    gForm: T_frmStandarGrid;
-    gFormDeatil: T_frmStandarGrid;
+    gGridForm: T_frmGrid;
+    gFormDeatil1: T_frmGrid;
+    gFormDeatil2: T_frmGrid;
+    gFormDeatil3: T_frmGrid;
   public
     { Public declarations }
     procedure ShowModule(pConteiner: TWinControl; pCation: TCaption);
@@ -44,23 +46,37 @@ end;
 
 procedure T_dmStandar.ShowModule(pConteiner: TWinControl; pCation: TCaption);
 begin
-  if Assigned(gFormDeatil) then
+  if Assigned(gGridForm) then
   begin
-    gForm.pnlDetail.Visible := True;
-    gForm.Splitter.Visible  := True;
-    gFormDeatil.Parent      := gForm.pnlDetail;
-    gFormDeatil.Align       := alClient;
-    gFormDeatil.Show;
+    gGridForm.Parent:= pConteiner;
+    gGridForm.Align:= alClient;
+    gGridForm.Caption:= pCation;
+    gGridForm.Show;
   end;
-  if Assigned(gForm) then
+  if Assigned(gFormDeatil1) then
   begin
-    gForm.Parent  := pConteiner;
-    gForm.Align   := alClient;
-    gForm.Caption := pCation;
-    gForm.Show;
-  end
-  else
-    ShowMessage('No esta asigando la variable gForm');
+    gGridForm.pnlDetail1.Visible:= True;
+    gGridForm.splDetail1.Visible:= True;
+    gFormDeatil1.Parent:= gGridForm.pnlDetail1;
+    gFormDeatil1.Align:= alClient;
+    gFormDeatil1.Show;
+  end;
+  if Assigned(gFormDeatil2) then
+  begin
+    gGridForm.pnlDetail2.Visible:= True;
+    gGridForm.splDetail2.Visible:= True;
+    gFormDeatil2.Parent:= gGridForm.pnlDetail2;
+    gFormDeatil2.Align:= alClient;
+    gFormDeatil2.Show;
+  end;
+  if Assigned(gFormDeatil3) then
+  begin
+    gGridForm.pnlDetail3.Visible:= True;
+    gGridForm.splDetail3.Visible:= True;
+    gFormDeatil3.Parent:= gGridForm.pnlDetail3;
+    gFormDeatil3.Align:= alClient;
+    gFormDeatil3.Show;
+  end;
 end;
 
 end.

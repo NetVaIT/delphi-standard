@@ -15,8 +15,13 @@ uses
   _Utils in 'Standard\_Utils.pas',
   MainForm in 'MainForm.pas' {frmMain},
   _SplashForm in 'Standard\_SplashForm.pas' {_frmSplash},
-  CFDIDM in 'CFDIDM.pas' {dmCFDI: TDataModule},
-  CFDIForm in 'CFDIForm.pas' {frmCFDI};
+  _GridForm in 'Standard\_GridForm.pas' {_frmGrid},
+  UbicacionesDM in 'Catalogos\UbicacionesDM.pas' {dmUbicaciones: TDataModule},
+  PaisesForm in 'Catalogos\PaisesForm.pas' {frmPaises},
+  _EditForm in 'Standard\_EditForm.pas' {_frmEdit},
+  PaisForm in 'Catalogos\PaisForm.pas' {frmPais},
+  EstadosForm in 'Catalogos\EstadosForm.pas' {frmEstados},
+  EstadoForm in 'Catalogos\EstadoForm.pas' {frmEstado};
 
 {$R *.res}
 
@@ -41,6 +46,8 @@ begin
     Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
+  Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
+  Application.CreateForm(TfrmPais, frmPais);
   Application.Run;
   end;
 end.
