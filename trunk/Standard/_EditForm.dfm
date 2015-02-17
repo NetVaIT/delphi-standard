@@ -26,10 +26,10 @@ object _frmEdit: T_frmEdit
     TabOrder = 0
     Properties.ActivePage = tsGeneral
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 319
-    ClientRectLeft = 3
-    ClientRectRight = 432
-    ClientRectTop = 26
+    ClientRectBottom = 323
+    ClientRectLeft = 2
+    ClientRectRight = 436
+    ClientRectTop = 28
     object tsGeneral: TcxTabSheet
       Caption = 'General'
       ImageIndex = 0
@@ -51,12 +51,9 @@ object _frmEdit: T_frmEdit
       Top = 6
       Width = 75
       Height = 25
-      Hint = 'Aceptar'
+      Action = actPost
       Anchors = [akTop, akRight]
-      Caption = '&Aceptar'
       Default = True
-      ImageIndex = 0
-      ModalResult = 1
       TabOrder = 0
     end
     object btnCancel: TButton
@@ -64,12 +61,9 @@ object _frmEdit: T_frmEdit
       Top = 6
       Width = 75
       Height = 25
-      Hint = 'Cancelar'
+      Action = actCancel
       Anchors = [akTop, akRight]
       Cancel = True
-      Caption = '&Cancelar'
-      ImageIndex = 1
-      ModalResult = 2
       TabOrder = 1
     end
   end
@@ -79,6 +73,18 @@ object _frmEdit: T_frmEdit
   object ActionList: TActionList
     Images = cxImageList
     Left = 216
+    object actPost: TAction
+      Caption = '&Aceptar'
+      Hint = 'Aceptar'
+      ImageIndex = 0
+      OnExecute = actPostExecute
+    end
+    object actCancel: TAction
+      Caption = '&Cancelar'
+      Hint = 'Cancelar'
+      ImageIndex = 1
+      OnExecute = actCancelExecute
+    end
   end
   object cxImageList: TcxImageList
     FormatVersion = 1

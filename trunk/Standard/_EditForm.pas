@@ -30,7 +30,11 @@ type
     DataSource: TDataSource;
     ActionList: TActionList;
     cxImageList: TcxImageList;
+    actPost: TAction;
+    actCancel: TAction;
     procedure FormShow(Sender: TObject);
+    procedure actPostExecute(Sender: TObject);
+    procedure actCancelExecute(Sender: TObject);
   private
     FDataSet: TDataSet;
     procedure SetDataSet(const Value: TDataSet);
@@ -43,6 +47,20 @@ type
 implementation
 
 {$R *.dfm}
+
+procedure T_frmEdit.actCancelExecute(Sender: TObject);
+begin
+  if DataSource.DataSet.State in [dsInsert, dsEdit] then
+    DataSource.DataSet.Cancel;
+  ModalResult:= mrCancel;
+end;
+
+procedure T_frmEdit.actPostExecute(Sender: TObject);
+begin
+  if DataSource.DataSet.State in [dsInsert, dsEdit] then
+    DataSource.DataSet.Post;
+  ModalResult:= mrOk;
+end;
 
 procedure T_frmEdit.FormShow(Sender: TObject);
 begin

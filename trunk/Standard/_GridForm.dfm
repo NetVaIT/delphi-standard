@@ -163,6 +163,7 @@ object _frmGrid: T_frmGrid
       Hint = 'Eliminar'
       ImageIndex = 12
       ShortCut = 16430
+      OnExecute = DatasetDeleteExecute
       DataSource = DataSource
     end
     object DatasetEdit: TDataSetEdit
@@ -397,6 +398,7 @@ object _frmGrid: T_frmGrid
     end
   end
   object cxGridPopupMenu: TcxGridPopupMenu
+    Grid = cxGrid
     PopupMenus = <>
     Left = 488
     Top = 56

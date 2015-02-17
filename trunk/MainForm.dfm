@@ -5,9 +5,6 @@ inherited frmMain: TfrmMain
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
-    Height = 159
-    ColorSchemeName = 'Valentine'
-    ExplicitHeight = 159
     inherited dxRibbon1Tab1: TdxRibbonTab
       Active = False
       Index = 0
@@ -30,8 +27,8 @@ inherited frmMain: TfrmMain
     end
   end
   inherited pnlMain: TPanel
-    Top = 159
-    Height = 298
+    ExplicitTop = 159
+    ExplicitHeight = 298
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

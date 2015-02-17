@@ -43,6 +43,7 @@ resourcestring
 //_StandarForm
   strExistChanges   = 'Existen modificacion(es), ¿Desea aplicar los cambios?';
   strAllowDelete    = '¿Desea eliminar este registro?';
+  strDeleteReferenceError = 'No es posible borrar el registro ya que tiene información asociada';
   strUser           = 'Usuario: ';
 ////ProduccionDmod
 //  strAllowImportDO   = '¿Desea importar la información de Desicion ONE?';

@@ -83,6 +83,7 @@ type
     procedure FileSaveAs1Accept(Sender: TObject);
     procedure DatasetInsertExecute(Sender: TObject);
     procedure DatasetEditExecute(Sender: TObject);
+    procedure DatasetDeleteExecute(Sender: TObject);
     procedure tvMasterDblClick(Sender: TObject);
   private
     { Private declarations }
@@ -103,28 +104,33 @@ implementation
 
 {$R *.dfm}
 
+uses _Utils;
+
+procedure T_frmGrid.DatasetDeleteExecute(Sender: TObject);
+begin
+  if MessageDlg(strAllowDelete, mtConfirmation, mbYesNo, 0) = mrYes then
+  begin
+    try
+      DataSource.DataSet.Delete;
+    except on E: EDatabaseError do
+      if Pos('REFERENCE',E.Message)>0 then
+        MessageDlg(strDeleteReferenceError, mtError, [mbOk], 0)
+    end;
+  end;
+end;
+
 procedure T_frmGrid.DatasetEditExecute(Sender: TObject);
 begin
   DataSource.DataSet.Edit;
   if Assigned(gEditForm) then
-  begin
-    if gEditForm.ShowModal = mrOk then
-      DataSource.DataSet.Post
-    else
-      DataSource.DataSet.Cancel;
-  end;
+    gEditForm.ShowModal;
 end;
 
 procedure T_frmGrid.DatasetInsertExecute(Sender: TObject);
 begin
   DataSource.DataSet.Insert;
   if Assigned(gEditForm) then
-  begin
-    if gEditForm.ShowModal = mrOk then
-      DataSource.DataSet.Post
-    else
-      DataSource.DataSet.Cancel;
-  end;
+    gEditForm.ShowModal;
 end;
 
 procedure T_frmGrid.FileSaveAs1Accept(Sender: TObject);
