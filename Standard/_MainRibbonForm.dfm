@@ -241,7 +241,7 @@ object _frmMainRibbon: T_frmMainRibbon
   object dxSkinController: TdxSkinController
     Kind = lfOffice11
     NativeStyle = False
-    SkinName = 'Valentine'
+    SkinName = 'Office2013White'
     Left = 488
     Top = 8
   end

@@ -51,11 +51,13 @@ inherited dmUbicaciones: TdmUbicaciones
     end
     object adodsEstadosIdentificador: TStringField
       FieldName = 'Identificador'
+      Required = True
       Size = 5
     end
     object adodsEstadosDescripcion: TStringField
       DisplayLabel = 'Descripci'#243'n'
       FieldName = 'Descripcion'
+      Required = True
     end
   end
   object dsEstados: TDataSource
