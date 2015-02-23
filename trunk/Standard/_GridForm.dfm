@@ -73,12 +73,11 @@ object _frmGrid: T_frmGrid
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
-        OptionsCustomize.ColumnFiltering = False
+        OptionsBehavior.IncSearch = True
         OptionsCustomize.ColumnsQuickCustomization = True
         OptionsData.Deleting = False
         OptionsData.Editing = False
         OptionsData.Inserting = False
-        OptionsSelection.CellSelect = False
         OptionsView.NoDataToDisplayInfoText = ' '
         OptionsView.GroupByBox = False
       end
