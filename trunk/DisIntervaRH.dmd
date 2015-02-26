@@ -1,9 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="DisIntervaRH" id="3D6565C2-4BFD-28D5-62E0-C99F234D7A97" version="3.5">
-<createdBy>hucj1e3</createdBy>
-<createdTime>2015-02-25 19:27:08 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>DisIntervaRH</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>3D6565C2-4BFD-28D5-62E0-C99F234D7A97</designId>
-</OSDM_Design>
