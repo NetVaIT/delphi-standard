@@ -1,5 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<oracle.dbtools.crest.model.design.relational.RelationalDesign>
-   <object objectType="main_view" objectID="0DFA006E-E6D7-3F83-1B2C-24B42EE101FC" name="IRH" visible="true"/>
-   <object objectType="sub_view" objectID="71C10597-9E18-9A6A-9C3D-E6EA881E7B90" name="dbo" visible="false"/>
-</oracle.dbtools.crest.model.design.relational.RelationalDesign>
