@@ -25,7 +25,28 @@ uses
   MunicipiosForm in 'Catalogos\MunicipiosForm.pas' {frmMunicipios},
   MunicipioForm in 'Catalogos\MunicipioForm.pas' {frmMunicipio},
   PoblacionesForm in 'Catalogos\PoblacionesForm.pas' {frmPoblaciones},
-  PoblacionForm in 'Catalogos\PoblacionForm.pas' {frmPoblacion};
+  PoblacionForm in 'Catalogos\PoblacionForm.pas' {frmPoblacion},
+  BancoForm in 'Catalogos\BancoForm.pas' {frmBanco},
+  BancosDM in 'Catalogos\BancosDM.pas' {dmBancos: TDataModule},
+  BancosForm in 'Catalogos\BancosForm.pas' {frmBancos},
+  MonedasDM in 'Catalogos\MonedasDM.pas' {dmMonedas: TDataModule},
+  MonedaForm in 'Catalogos\MonedaForm.pas' {frmMoneda},
+  MonedasForm in 'Catalogos\MonedasForm.pas' {frmMonedas},
+  RegimenFiscalDM in 'Catalogos\RegimenFiscalDM.pas' {dmRegimenFiscal: TDataModule},
+  RegimenFiscalForm in 'Catalogos\RegimenFiscalForm.pas' {frmRegimenFiscal},
+  RegimenFiscalesForm in 'Catalogos\RegimenFiscalesForm.pas' {frmRegimenFiscales},
+  TiposDocumentosDM in 'Catalogos\TiposDocumentosDM.pas' {dmTiposDocumentos: TDataModule},
+  TipoDocumentoForm in 'Catalogos\TipoDocumentoForm.pas' {frmTipoDocumento},
+  TipoDocumentosForm in 'Catalogos\TipoDocumentosForm.pas' {frmTipoDocumentos},
+  EmailTiposDM in 'Catalogos\EmailTiposDM.pas' {dmEmailTipos: TDataModule},
+  EmailTipoForm in 'Catalogos\EmailTipoForm.pas' {frmEmailTipo},
+  EmailTiposForm in 'Catalogos\EmailTiposForm.pas' {frmEmailTipos},
+  TelefonosTiposDM in 'Catalogos\TelefonosTiposDM.pas' {dmTelefonosTipos: TDataModule},
+  TelefonosTipoForm in 'Catalogos\TelefonosTipoForm.pas' {frmTelefonosTipo},
+  TelefonosTiposForm in 'Catalogos\TelefonosTiposForm.pas' {frmTelefonosTipos},
+  UnidadesdeNegocioDM in 'Catalogos\UnidadesdeNegocioDM.pas' {dmUnidadesdeNegocio: TDataModule},
+  UnidaddeNegocioForm in 'Catalogos\UnidaddeNegocioForm.pas' {frmUnidaddeNegocio},
+  UnidadesdeNegocioForm in 'Catalogos\UnidadesdeNegocioForm.pas' {frmUnidadesdeNegocio};
 
 {$R *.res}
 
@@ -46,8 +67,8 @@ begin
   end;
   if vCheckOK then
   begin
-    Application.MainFormOnTaskbar := True;
-    Application.CreateForm(TfrmMain, frmMain);
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);

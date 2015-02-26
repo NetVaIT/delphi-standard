@@ -22,7 +22,7 @@ uses
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
   cxClasses, dxRibbon, dxScreenTip, _Utils,
-  _StandarDMod;
+  _StandarDMod, Data.DB;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -31,6 +31,24 @@ type
     dxbEjemplo: TdxBar;
     dxBarLargeButton1: TdxBarLargeButton;
     actUbicaciones: TAction;
+    dxBarButton1: TdxBarButton;
+    dxBarLargeButton2: TdxBarLargeButton;
+    actBancos: TAction;
+    dxBarLargeButton3: TdxBarLargeButton;
+    actMonedas: TAction;
+    actRegimenFiscal: TAction;
+    dxBarLargeButton4: TdxBarLargeButton;
+    actTipoDocumento: TAction;
+    dxBarLargeButton5: TdxBarLargeButton;
+    dxBarLargeButton6: TdxBarLargeButton;
+    dxBarLargeButton7: TdxBarLargeButton;
+    dxBarLargeButton8: TdxBarLargeButton;
+    actEmailTipo: TAction;
+    dxBarLargeButton9: TdxBarLargeButton;
+    dxBarLargeButton10: TdxBarLargeButton;
+    actTelefonoTipo: TAction;
+    actUnidadNegocio: TAction;
+    dxBarLargeButton11: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -50,7 +68,8 @@ implementation
 
 {$R *.dfm}
 
-uses UbicacionesDM;
+uses UbicacionesDM, BancosDM, MonedasDM, RegimenFiscalDM, TiposDocumentosDM,
+  EmailTiposDM, TelefonosTiposDM, UnidadesdeNegocioDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -65,6 +84,13 @@ begin
   case pModulo of
     //Catalogos
     1: gModulo := TdmUbicaciones.Create(Self);
+    2: gModulo := TdmBancos.Create(Self);
+    3: gModulo := TdmMonedas.Create(Self);
+    4: gModulo := TdmRegimenFiscal.Create(Self);
+    5: gModulo := TdmTiposDocumentos.Create(Self);
+    6: gModulo := TdmEmailTipos.Create(Self);
+    7: gModulo := TdmTelefonosTipos.Create(Self);
+    8: gModulo := TdmUnidadesdeNegocio.Create(Self);
   end;
   gModulo.ShowModule(pnlMain, pCaption);
   Caption := pCaption + strSeparador + strProductName + strSeparador + strFileDescription;
@@ -74,7 +100,14 @@ procedure TfrmMain.ConfigControls;
 begin
   inherited;
 //  actCFDI.Enabled:= Conected and _dmConection.EnabledAction(actCFDI.Tag);
-  actUbicaciones.Enabled:= Conected;
+  actUbicaciones.Enabled   := Conected;
+  actBancos.Enabled        := Conected;
+  actMonedas.Enabled       := Conected;
+  actRegimenFiscal.Enabled := Conected;
+  actTipoDocumento.Enabled := Conected;
+  actEmailTipo.Enabled     := Conected;
+  actTelefonoTipo.Enabled  := Conected;
+  actUnidadNegocio.Enabled := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;
