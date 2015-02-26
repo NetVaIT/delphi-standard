@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="IntervaRH_dbo" directorySegmentName="seg_0" id="A6120FEA-43C4-FC97-382A-C4BC6897142C">
-<createdBy>hucj1e3</createdBy>
-<createdTime>2015-02-25 19:28:35 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>DisIntervaRH</ownerDesignName>
-</SchemaObject>

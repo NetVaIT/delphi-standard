@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="D11A4DBF-7DDD-F5C7-CCFB-5306CE0D30DD" mainViewID="A3EFC691-52A4-C718-C054-EB79C523A6ED">
-<createdBy>hucj1e3</createdBy>
-<createdTime>2015-02-25 19:27:08 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>DisIntervaRH</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-</LogicalDesign>
