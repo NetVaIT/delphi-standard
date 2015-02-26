@@ -1,0 +1,204 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="77735C65-CA00-8266-84B9-DAC694336C1D" name="PersonaRoles">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PersonaRoles</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<commentInRDBMS>Catalogo del Rol de las Personas, Cliente, Empleado, Proveedor, Socio, etc.</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersonaRoles" id="561CE6DA-C5B2-7273-4DCD-A5853C2ABFB0">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaRoles</sourceObjSchema>
+<sourceObjName>IdPersonaRoles</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPersona" id="AC7D23B2-6948-7C5A-C092-17BDAF413EFC">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaRoles</sourceObjSchema>
+<sourceObjName>IdPersona</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>A3983652-DDF5-8CCD-9040-B74B40EDADA5</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="30D7D6CE-6987-4D6A-2E92-396D282BE6B3" referredColumn="A3983652-DDF5-8CCD-9040-B74B40EDADA5"/>
+</associations>
+</Column>
+<Column name="IdPersonaRelacionada" id="3A441841-1D2A-B8FD-19C0-B6BB774F6497">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaRoles</sourceObjSchema>
+<sourceObjName>IdPersonaRelacionada</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>A3983652-DDF5-8CCD-9040-B74B40EDADA5</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9CA25646-A27F-E237-81EA-EB99095D7932" referredColumn="A3983652-DDF5-8CCD-9040-B74B40EDADA5"/>
+</associations>
+</Column>
+<Column name="IdRol" id="6C9FB88C-48F4-3DF6-F517-337C00A555BF">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaRoles</sourceObjSchema>
+<sourceObjName>IdRol</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>FA69954E-0DD1-FD2C-C164-EE7FAC629AEE</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0C07A537-FBB2-E777-7DBD-ACB0295DF16D" referredColumn="FA69954E-0DD1-FD2C-C164-EE7FAC629AEE"/>
+</associations>
+</Column>
+<Column name="IdRolEstatus" id="8CA0A4DC-DE78-9166-7917-2E6B2BF6CCA1">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaRoles</sourceObjSchema>
+<sourceObjName>IdRolEstatus</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>5826C5C6-1CE2-999C-47B3-DF444626AC76</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8073D62C-50D6-714A-890A-DBBC9A927A8E" referredColumn="5826C5C6-1CE2-999C-47B3-DF444626AC76"/>
+</associations>
+</Column>
+<Column name="IdRolClase" id="4C019A30-D4BF-E389-55CD-B64340B0F865">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaRoles</sourceObjSchema>
+<sourceObjName>IdRolClase</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>4F5E93AC-68CE-DD20-193F-81C5FBB37186</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CFB5EADA-9B36-5E04-1161-79F199AFE26C" referredColumn="4F5E93AC-68CE-DD20-193F-81C5FBB37186"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="30C2A4D2-BA51-7E64-F49F-0BBAFEA127B8" name="PK_PersonaRoles">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_PersonaRoles</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="561CE6DA-C5B2-7273-4DCD-A5853C2ABFB0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="265250A7-CE6C-6C38-2C58-921EC320096D" name="FK_PersonaRoles_Personas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC7D23B2-6948-7C5A-C092-17BDAF413EFC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0FEA956B-5851-2C6F-EF42-3920FBEBB29D" name="FK_PersonaRoles_Personas1">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3A441841-1D2A-B8FD-19C0-B6BB774F6497"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E9B59AA6-F848-AD9D-A4A5-9DB373D1F1C0" name="FK_PersonaRoles_RolesClases">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4C019A30-D4BF-E389-55CD-B64340B0F865"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="69F09C3D-A0AF-7EEA-6C98-F09686CDF4E0" name="FK_PersonaRoles_Roles">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C9FB88C-48F4-3DF6-F517-337C00A555BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD5CD170-7558-044E-58D0-47C4F8C2CC43" name="FK_PersonaRoles_RolesEstatus">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8CA0A4DC-DE78-9166-7917-2E6B2BF6CCA1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

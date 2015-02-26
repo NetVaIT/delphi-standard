@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7BF24D51-EE88-0544-A23A-4AC2FB199087" name="FK_BateriaCapacitacion_Puestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>FK_BateriaCapacitacion_Puestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<containerWithKeyObject>5EE61BA3-7E9C-EDD7-B008-CC2347000501</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>FD3BC23F-C0F1-1180-D82D-B20A3BECC1DB</localFKIndex>
+<keyObject>F09E75EB-0E4B-D908-9F75-1944A4CD5549</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

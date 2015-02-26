@@ -1,0 +1,159 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="96C49B96-4B67-2DCD-F0B7-526EEFF294A8" name="PerfilesPuestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PerfilesPuestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPerfilPuesto" id="A5CFB644-A81A-5B3A-142D-172ACA9C0995">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PerfilesPuestos</sourceObjSchema>
+<sourceObjName>IdPerfilPuesto</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPuesto" id="ADF0E9AC-FE21-9320-8430-B048326B2EF1">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PerfilesPuestos</sourceObjSchema>
+<sourceObjName>IdPuesto</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>6CD4CE2B-5EEF-DE72-3C9C-2429D92D4B66</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8BD5ED98-B3C8-894E-50E7-64F4DF88BCE2" referredColumn="6CD4CE2B-5EEF-DE72-3C9C-2429D92D4B66"/>
+</associations>
+</Column>
+<Column name="IdTipoPerfilPuesto" id="F62CEC7F-1D9D-A0C9-3870-49CAB6BBF4D0">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PerfilesPuestos</sourceObjSchema>
+<sourceObjName>IdTipoPerfilPuesto</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>B4C14FE2-7B10-034B-2FE1-56EC440A090E</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FDEAFF07-C08E-A070-86BC-BED0A6E1138E" referredColumn="B4C14FE2-7B10-034B-2FE1-56EC440A090E"/>
+</associations>
+</Column>
+<Column name="Identificador" id="7599F661-B300-E237-163E-FBB5053A15BE">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PerfilesPuestos</sourceObjSchema>
+<sourceObjName>Identificador</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>10</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Descripcion" id="98D063AB-2B32-06AA-904F-8CF5B0DAE00F">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PerfilesPuestos</sourceObjSchema>
+<sourceObjName>Descripcion</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>50</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Valor" id="5F60A024-29A0-F5D1-2CAF-F9AE2AF87FF0">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PerfilesPuestos</sourceObjSchema>
+<sourceObjName>Valor</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="75ED6B98-9B86-0363-7CE0-8E9C35FCC81B" name="PK_PerfilesPuestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_PerfilesPuestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A5CFB644-A81A-5B3A-142D-172ACA9C0995"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5FD474A0-F27E-0833-7BED-15CB9853EC51" name="FK_PerfilesPuestos_Puestos">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ADF0E9AC-FE21-9320-8430-B048326B2EF1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5C7E929-0E8F-782F-008B-679E9B1CC8FA" name="FK_PerfilesPuestos_TiposPerfilesPuestos">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F62CEC7F-1D9D-A0C9-3870-49CAB6BBF4D0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<DataBaseSqlServerv2k5 class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.DataBaseSqlServerv2k5" name="IntervaRH" directorySegmentName="seg_0" id="D65A6732-1F55-5E38-6619-CEC0889DF99B">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjName>IntervaRH</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<fileGroups>
+<FileGroup class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.FileGroupSqlServerv2k5" name="PRIMARY" id="7DAA336A-625C-F86E-A733-29B3C6994CFC">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<dataFiles>
+<DataFile class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.DataFileSqlServerv2k5" name="DB1_Data.MDF" id="873578A5-1F82-C8BB-921D-EF05A5E5791F">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<fileName>c:\program files\microsoft sql server\mssql\data\DB1_Data.MDF</fileName>
+</DataFile>
+<DataFile class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.DataFileSqlServerv2k5" name="IntervaRH" id="8E706D3C-C58F-478E-C21C-8350E70BB8D4">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<fileName>c:\Archivos de programa\Microsoft SQL Server\MSSQL10.COMPAC\MSSQL\DATA\IntervaRH.mdf</fileName>
+<growthValue>128</growthValue>
+<initialSize>3968</initialSize>
+</DataFile>
+</dataFiles>
+</FileGroup>
+</fileGroups>
+</DataBaseSqlServerv2k5>

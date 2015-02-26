@@ -1,0 +1,142 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5C9D544A-95C2-91EA-5C55-67EFAF3CAC28" name="PersonalidadesJuridicas">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PersonalidadesJuridicas</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<commentInRDBMS>Catalogo con los Representantes Legales de una Sociedad Pagadora</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersonalidadJuridica" id="B55D2E24-61B6-15A3-65B6-E350C8BEB2A5">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonalidadesJuridicas</sourceObjSchema>
+<sourceObjName>IdPersonalidadJuridica</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPersona" id="3E157781-1792-12FD-3F54-B6D9E2444ECA">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonalidadesJuridicas</sourceObjSchema>
+<sourceObjName>IdPersona</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>4D3CF643-84DD-A8D9-9559-1BFE9882580C</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5B78A56E-69ED-A312-F864-699BBB46B520" referredColumn="4D3CF643-84DD-A8D9-9559-1BFE9882580C"/>
+</associations>
+</Column>
+<Column name="IdTipoPersonalidadJuridica" id="35B77F2D-ABCF-065B-EFB4-71847DC18C4C">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonalidadesJuridicas</sourceObjSchema>
+<sourceObjName>IdTipoPersonalidadJuridica</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>2EA8E4D7-3064-BC17-2CD9-7F51CC567572</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="124A1F4D-8382-716F-D5F3-C745EE744B74" referredColumn="2EA8E4D7-3064-BC17-2CD9-7F51CC567572"/>
+</associations>
+</Column>
+<Column name="IdPersonaRelacionada" id="9B44F865-FEBB-731A-50B4-B2BEB80ED9BA">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonalidadesJuridicas</sourceObjSchema>
+<sourceObjName>IdPersonaRelacionada</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>A3983652-DDF5-8CCD-9040-B74B40EDADA5</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="839B558D-1467-113F-C880-4DFF7D8E21FD" referredColumn="A3983652-DDF5-8CCD-9040-B74B40EDADA5"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="00774F98-DECF-79E0-F41D-C31549C14C51" name="PK_RepresentanteLegal">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_RepresentanteLegal</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B55D2E24-61B6-15A3-65B6-E350C8BEB2A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1F37201C-1292-3024-8EC1-1B4F2ACBDE05" name="FK_PersonalidadesJuridicas_TiposPersonalidadesJuridicas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35B77F2D-ABCF-065B-EFB4-71847DC18C4C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AECCFDB7-51EC-0571-D809-6CB73F59F410" name="FK_PersonalidadesJuridicas_PersonaMoral">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3E157781-1792-12FD-3F54-B6D9E2444ECA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A926D91C-1979-867F-AA68-0158FEC68977" name="FK_PersonalidadesJuridicas_Personas1">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9B44F865-FEBB-731A-50B4-B2BEB80ED9BA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="82263D84-B937-1550-4078-D9069A634276" name="FK_Plazas_Puestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>FK_Plazas_Puestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<containerWithKeyObject>21220208-4C2D-0B6D-1194-F9C95DA4278C</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>B23EAFFF-A807-099E-8ACE-F1DC5FBEBF4D</localFKIndex>
+<keyObject>F09E75EB-0E4B-D908-9F75-1944A4CD5549</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

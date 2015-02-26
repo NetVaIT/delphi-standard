@@ -1,0 +1,252 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="21220208-4C2D-0B6D-1194-F9C95DA4278C" name="Plazas">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>Plazas</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPlaza" id="ED07C8EC-4549-7C80-130A-57327DFF5A6F">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>IdPlaza</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPuesto" id="75E006A3-27FC-3067-590A-80C12B6F7C11">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>IdPuesto</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>6CD4CE2B-5EEF-DE72-3C9C-2429D92D4B66</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="82263D84-B937-1550-4078-D9069A634276" referredColumn="6CD4CE2B-5EEF-DE72-3C9C-2429D92D4B66"/>
+</associations>
+</Column>
+<Column name="Identificador" id="2372D149-4248-A4CE-57CB-394D6C485744">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>Identificador</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>10</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Descripcion" id="2DB0FF08-E3EA-BDFC-8DF3-523B5DDFF330">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>Descripcion</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>100</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPersonaEmpleado" id="63689C14-9CB9-E159-708A-A239FB84D408">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>IdPersonaEmpleado</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SalarioBase" id="40A8506E-428A-E267-0473-9345176BC4C6">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>SalarioBase</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>9</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FechaCreacionPlaza" id="46CD21F4-EF9B-3AAC-F987-9FB7A5A210FE">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>FechaCreacionPlaza</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>3</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdTurnoPlaza" id="55ED24CB-5CE3-B08F-E027-1288DB427D0C">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>IdTurnoPlaza</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>D766531A-60E4-68CD-43F4-E26C77D04BC8</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9C713D79-D1D8-571C-1E14-D637740FF71F" referredColumn="D766531A-60E4-68CD-43F4-E26C77D04BC8"/>
+</associations>
+</Column>
+<Column name="IdUbicacion" id="0CCE4AAF-169A-C698-48C4-4A182EAF7E47">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>IdUbicacion</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>CEFB9934-F467-2E4B-2E59-9198C3A8DF40</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3A343793-E315-B4A1-CFF7-301A0F5AF446" referredColumn="CEFB9934-F467-2E4B-2E59-9198C3A8DF40"/>
+</associations>
+</Column>
+<Column name="IdTipoTemporalidadPlaza" id="DE21C234-82ED-2D54-B565-FAEE2113D2D5">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Plazas</sourceObjSchema>
+<sourceObjName>IdTipoTemporalidadPlaza</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>15EE2699-811C-4DFE-E405-1A894A5542C8</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1E430514-4C53-E23A-635A-5B4CDAC139FA" referredColumn="15EE2699-811C-4DFE-E405-1A894A5542C8"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5BE4F5C6-FB15-DB96-99DE-2C78024373F2" name="PK_Plazas">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_Plazas</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED07C8EC-4549-7C80-130A-57327DFF5A6F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B23EAFFF-A807-099E-8ACE-F1DC5FBEBF4D" name="FK_Plazas_Puestos">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="75E006A3-27FC-3067-590A-80C12B6F7C11"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="332033CD-58FB-6C48-0C98-ECA109D2ECAF" name="FK_Plazas_TurnosPlazas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="55ED24CB-5CE3-B08F-E027-1288DB427D0C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="06A80FCA-8F8E-201E-86DA-07C3AD5F97FA" name="FK_Plazas_TiposTemporalidadPlazas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DE21C234-82ED-2D54-B565-FAEE2113D2D5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23921D43-CABB-EE3D-28AB-ABE6192D659C" name="FK_Plazas_Ubicaciones">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0CCE4AAF-169A-C698-48C4-4A182EAF7E47"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

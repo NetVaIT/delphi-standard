@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="92E9E110-558C-867C-C9EE-7078393152B0" name="PersonaEmails">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PersonaEmails</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersonaEmails" id="7A24B9C6-B5EB-FF43-93F4-EAFEB4EC645A">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaEmails</sourceObjSchema>
+<sourceObjName>IdPersonaEmails</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPersona" id="48EBD2B2-3B31-0824-4573-F3B9036F023F">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaEmails</sourceObjSchema>
+<sourceObjName>IdPersona</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>A3983652-DDF5-8CCD-9040-B74B40EDADA5</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A84B42CC-A49F-89B1-594E-297B70E3636D" referredColumn="A3983652-DDF5-8CCD-9040-B74B40EDADA5"/>
+</associations>
+</Column>
+<Column name="IdEmail" id="87D029A4-AACA-1B37-F2C0-9ECB751405E3">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaEmails</sourceObjSchema>
+<sourceObjName>IdEmail</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>EE9B74B5-52BB-FC8C-A05D-59B72C6D3A32</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7D7D4CC4-D2BD-5A9C-9182-498495E511F2" referredColumn="EE9B74B5-52BB-FC8C-A05D-59B72C6D3A32"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E2F1428E-B0A8-2AE0-C324-5D8D489AA503" name="PK_ContactoEmails">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_ContactoEmails</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7A24B9C6-B5EB-FF43-93F4-EAFEB4EC645A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0ACE3EDE-65B7-3B27-1748-C408EE5B7B33" name="FK_PersonaEmails_Emails">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="87D029A4-AACA-1B37-F2C0-9ECB751405E3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="96427552-25F3-59E1-5A71-6ACF5AB9433B" name="FK_PersonaEmails_Personas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="48EBD2B2-3B31-0824-4573-F3B9036F023F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

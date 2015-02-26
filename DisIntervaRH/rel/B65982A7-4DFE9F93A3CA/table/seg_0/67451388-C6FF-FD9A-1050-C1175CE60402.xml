@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="67451388-C6FF-FD9A-1050-C1175CE60402" name="PersonaMoral">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PersonaMoral</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<commentInRDBMS>Catalogo de Personas Morales</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersona" id="4D3CF643-84DD-A8D9-9559-1BFE9882580C">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaMoral</sourceObjSchema>
+<sourceObjName>IdPersona</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdTipoRazonSocial" id="5AE015C3-0972-AA67-2F27-D7565909E762">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaMoral</sourceObjSchema>
+<sourceObjName>IdTipoRazonSocial</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>11C4F757-601B-6E2E-3DAC-66ED2D23789A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A5FAA0EF-26E4-5FAB-7AD1-31A62AD3AE6B" referredColumn="11C4F757-601B-6E2E-3DAC-66ED2D23789A"/>
+</associations>
+</Column>
+<Column name="RazonSocial" id="F6976795-C208-8BD1-F855-071D66502303">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaMoral</sourceObjSchema>
+<sourceObjName>RazonSocial</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>200</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>200</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPaisNacionalidad" id="B55366C2-8DEF-C09D-1FA5-B4CBBF693078">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaMoral</sourceObjSchema>
+<sourceObjName>IdPaisNacionalidad</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>DAF750F9-B31D-F9C2-19A1-E89AFB7F47A3</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="88479DC2-43E3-AA37-EB0B-B3D2C62F7CF0" referredColumn="DAF750F9-B31D-F9C2-19A1-E89AFB7F47A3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B0F96CBA-FDAE-5889-58D5-BB1F3FA391ED" name="PK_PersonasMorales">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_PersonasMorales</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4D3CF643-84DD-A8D9-9559-1BFE9882580C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F8E49928-4B5A-F497-E7C6-BF25DB517CE8" name="FK_PersonasMorales_TiposRazonesSociales">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5AE015C3-0972-AA67-2F27-D7565909E762"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="111BBEF1-86D8-27BC-CE80-729986EC3AF1" name="FK_PersonasMorales_Paises">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B55366C2-8DEF-C09D-1FA5-B4CBBF693078"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
