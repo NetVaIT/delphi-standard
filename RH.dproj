@@ -74,8 +74,8 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.4;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
-        <VerInfo_Build>4</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.5;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>5</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -169,6 +169,97 @@
         </DCCReference>
         <DCCReference Include="Catalogos\PoblacionForm.pas">
             <Form>frmPoblacion</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BancoForm.pas">
+            <Form>frmBanco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BancosDM.pas">
+            <Form>dmBancos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BancosForm.pas">
+            <Form>frmBancos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\MonedasDM.pas">
+            <Form>dmMonedas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\MonedaForm.pas">
+            <Form>frmMoneda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\MonedasForm.pas">
+            <Form>frmMonedas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RegimenFiscalDM.pas">
+            <Form>dmRegimenFiscal</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RegimenFiscalForm.pas">
+            <Form>frmRegimenFiscal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RegimenFiscalesForm.pas">
+            <Form>frmRegimenFiscales</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TiposDocumentosDM.pas">
+            <Form>dmTiposDocumentos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TipoDocumentoForm.pas">
+            <Form>frmTipoDocumento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TipoDocumentosForm.pas">
+            <Form>frmTipoDocumentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EmailTiposDM.pas">
+            <Form>dmEmailTipos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EmailTipoForm.pas">
+            <Form>frmEmailTipo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EmailTiposForm.pas">
+            <Form>frmEmailTipos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TelefonosTiposDM.pas">
+            <Form>dmTelefonosTipos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TelefonosTipoForm.pas">
+            <Form>frmTelefonosTipo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TelefonosTiposForm.pas">
+            <Form>frmTelefonosTipos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UnidadesdeNegocioDM.pas">
+            <Form>dmUnidadesdeNegocio</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UnidaddeNegocioForm.pas">
+            <Form>frmUnidaddeNegocio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UnidadesdeNegocioForm.pas">
+            <Form>frmUnidadesdeNegocio</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -267,6 +358,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
