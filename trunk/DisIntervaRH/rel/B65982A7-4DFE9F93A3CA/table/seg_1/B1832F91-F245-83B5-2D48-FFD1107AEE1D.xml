@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_1" id="B1832F91-F245-83B5-2D48-FFD1107AEE1D" name="TiposPerfilesPuestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>TiposPerfilesPuestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdTipoPerfilPuesto" id="B4C14FE2-7B10-034B-2FE1-56EC440A090E">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>TiposPerfilesPuestos</sourceObjSchema>
+<sourceObjName>IdTipoPerfilPuesto</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Identificador" id="62930B42-4FC4-9BAB-BF32-835D956F15BF">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>TiposPerfilesPuestos</sourceObjSchema>
+<sourceObjName>Identificador</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>10</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Descripcion" id="D8E85B9B-0CC7-0491-5BE0-700400995EC1">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>TiposPerfilesPuestos</sourceObjSchema>
+<sourceObjName>Descripcion</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>50</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7FCF387F-CAC0-4357-1A67-79685728C05E" name="PK_TiposPerfilesPuestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_TiposPerfilesPuestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B4C14FE2-7B10-034B-2FE1-56EC440A090E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

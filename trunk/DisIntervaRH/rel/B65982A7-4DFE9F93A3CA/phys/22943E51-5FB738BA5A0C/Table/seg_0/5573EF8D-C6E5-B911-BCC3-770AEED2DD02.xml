@@ -1,0 +1,52 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxySqlServerv2k5 class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.TableProxySqlServerv2k5" name="Roles" directorySegmentName="seg_0" id="5573EF8D-C6E5-B911-BCC3-770AEED2DD02">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<database>D65A6732-1F55-5E38-6619-CEC0889DF99B</database>
+<filegroup>7DAA336A-625C-F86E-A733-29B3C6994CFC</filegroup>
+<schema>1</schema>
+<columnProxies>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="Identificador" id="1031EBED-0C8A-CE7D-634C-EAC60ABC29E2">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<collation>Modern_Spanish_CI_AS</collation>
+</ColumnProxy>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="Descripcion" id="5CD8E870-6819-687C-3980-D40FA8E04699">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<collation>Modern_Spanish_CI_AS</collation>
+</ColumnProxy>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="IdRol" id="FA69954E-0DD1-FD2C-C164-EE7FAC629AEE">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.FKProxySqlServerv2k5" name="FK_Roles_RolRegimenesFiscales" id="5B9C2F48-A5F4-5A4E-DC2D-1FCD92FF0C4E">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.PKProxySqlServerv2k5" name="PK_RolTipos" id="0BAF008B-82FA-9ABB-80F5-1E3B7D71DAFA">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<clustered>true</clustered>
+<fileGroup>7DAA336A-625C-F86E-A733-29B3C6994CFC</fileGroup>
+<recomputeStatistics>NO</recomputeStatistics>
+</PrimaryKey>
+</primaryKeys>
+</TableProxySqlServerv2k5>

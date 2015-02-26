@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="79614C76-C974-83BA-AF7C-028C69A642CE" name="Emails">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>Emails</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdEmail" id="EE9B74B5-52BB-FC8C-A05D-59B72C6D3A32">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Emails</sourceObjSchema>
+<sourceObjName>IdEmail</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdEmailTipo" id="DA27028C-58F5-5906-AF81-6420BCDE1E3D">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Emails</sourceObjSchema>
+<sourceObjName>IdEmailTipo</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>23422E69-8BBA-7185-6003-99BD72DB468E</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="11E0FC48-FC68-AD60-C159-AECBF35D496D" referredColumn="23422E69-8BBA-7185-6003-99BD72DB468E"/>
+</associations>
+</Column>
+<Column name="Email" id="4F9416ED-E49E-21AB-040D-61C8BF67324F">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Emails</sourceObjSchema>
+<sourceObjName>Email</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>200</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>200</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D9E92629-E636-B9EB-9266-FF90B535F396" name="PK_Emails">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_Emails</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EE9B74B5-52BB-FC8C-A05D-59B72C6D3A32"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A4A873AE-2CD3-AF40-4F00-B6BBF443B7DA" name="FK_Emails_EmailTipo">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA27028C-58F5-5906-AF81-6420BCDE1E3D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

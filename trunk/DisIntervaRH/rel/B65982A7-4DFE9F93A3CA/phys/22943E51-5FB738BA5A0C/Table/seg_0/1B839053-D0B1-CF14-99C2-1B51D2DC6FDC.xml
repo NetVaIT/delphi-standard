@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxySqlServerv2k5 class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.TableProxySqlServerv2k5" name="Gerencias" directorySegmentName="seg_0" id="1B839053-D0B1-CF14-99C2-1B51D2DC6FDC">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<database>D65A6732-1F55-5E38-6619-CEC0889DF99B</database>
+<filegroup>7DAA336A-625C-F86E-A733-29B3C6994CFC</filegroup>
+<schema>1</schema>
+<columnProxies>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="IdGerencia" id="2C73CE1A-CF2B-83EA-75C1-BDF8BE41948C">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="Descripcion" id="42DDE2CF-BA87-FDC6-322D-A6EB8D850688">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<collation>Modern_Spanish_CI_AS</collation>
+</ColumnProxy>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="IdUnidadNegocio" id="5B6FC02D-9B61-1B00-248A-268E4D5837D9">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="Identificador" id="D86BE519-7CCA-764C-58DF-7741A9000167">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<collation>Modern_Spanish_CI_AS</collation>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.FKProxySqlServerv2k5" name="FK_Gerencias_UnidadesDeNegocio" id="6BB6DE90-FFDE-0B77-DA5A-6BE322A2940B">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.PKProxySqlServerv2k5" name="PK_Gerencias" id="B723F0CA-C8AA-12AD-8DCC-90511010F18C">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<clustered>true</clustered>
+<fileGroup>7DAA336A-625C-F86E-A733-29B3C6994CFC</fileGroup>
+<recomputeStatistics>NO</recomputeStatistics>
+</PrimaryKey>
+</primaryKeys>
+</TableProxySqlServerv2k5>

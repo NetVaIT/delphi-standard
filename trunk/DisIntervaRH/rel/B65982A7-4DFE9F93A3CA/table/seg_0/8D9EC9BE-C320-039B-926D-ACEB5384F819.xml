@@ -1,0 +1,158 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8D9EC9BE-C320-039B-926D-ACEB5384F819" name="Empleados">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>Empleados</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<commentInRDBMS>Catalogo de Empleados</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersona" id="876E7919-F83E-2319-4189-01225AA6EE03">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Empleados</sourceObjSchema>
+<sourceObjName>IdPersona</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>3DF8FD69-784E-39A8-996A-C7328243E051</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="60F7C174-8BD1-DDD8-E649-4028B292FBA6" referredColumn="3DF8FD69-784E-39A8-996A-C7328243E051"/>
+</associations>
+</Column>
+<Column name="IdEmpleadoEstatus" id="A044E898-D644-1C6D-3604-51C9D0179A62">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Empleados</sourceObjSchema>
+<sourceObjName>IdEmpleadoEstatus</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>9C6D0458-308B-D1E5-5294-C0596369D151</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0D391BDD-7588-ABC2-587C-73DD8B872155" referredColumn="9C6D0458-308B-D1E5-5294-C0596369D151"/>
+</associations>
+</Column>
+<Column name="IdAvisoAccidente" id="D528DEC8-9CFF-165A-4324-1A7C1B2ED8BF">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Empleados</sourceObjSchema>
+<sourceObjName>IdAvisoAccidente</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdCuentaBancaria" id="AA8E2013-B27E-366A-60ED-ADD80B87451A">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Empleados</sourceObjSchema>
+<sourceObjName>IdCuentaBancaria</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>18BDB947-35AB-6E85-3ECD-5087A6C38CC9</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="45F8FD66-22A3-6633-120A-578ADC12FE3B" referredColumn="18BDB947-35AB-6E85-3ECD-5087A6C38CC9"/>
+</associations>
+</Column>
+<Column name="IdPerfilPago" id="FEDCB219-F844-9591-E628-89B232C95ED4">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Empleados</sourceObjSchema>
+<sourceObjName>IdPerfilPago</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0BAB79D9-DF07-08AC-E08A-D3F50A77BC68" name="PK_Personal">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_Personal</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="876E7919-F83E-2319-4189-01225AA6EE03"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1C5C7E07-65AB-A98E-BEDC-449FB908EC00" name="FK_Empleados_PersonaFisica">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="876E7919-F83E-2319-4189-01225AA6EE03"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CA5D7CB3-8A05-2122-4B6C-ECBD82EE3EA6" name="FK_Empleados_EmpleadosEstatus">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A044E898-D644-1C6D-3604-51C9D0179A62"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E318DB12-F067-8CDC-8E67-E67168FC251B" name="FK_Empleados_CuentasBancarias">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AA8E2013-B27E-366A-60ED-ADD80B87451A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="76C99135-C3EB-535F-EEFC-AE224C518026" name="Paises">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>Paises</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<commentInRDBMS>Catalogo de Paises</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPais" id="DAF750F9-B31D-F9C2-19A1-E89AFB7F47A3">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Paises</sourceObjSchema>
+<sourceObjName>IdPais</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Identificador" id="7324364B-C4BB-D06E-583F-7641C028C3BA">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Paises</sourceObjSchema>
+<sourceObjName>Identificador</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>3</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Descripcion" id="E6C2CF65-173E-1012-7793-CD5010B2A59E">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>Paises</sourceObjSchema>
+<sourceObjName>Descripcion</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>100</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="78763427-A0E0-EE39-75ED-F98E3801F207" name="PK_Paises">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_Paises</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DAF750F9-B31D-F9C2-19A1-E89AFB7F47A3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

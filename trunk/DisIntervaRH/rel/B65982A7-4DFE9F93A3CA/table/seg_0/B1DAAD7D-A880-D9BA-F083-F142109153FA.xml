@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B1DAAD7D-A880-D9BA-F083-F142109153FA" name="RolRegimenesFiscales">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>RolRegimenesFiscales</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdRolRegimenFiscal" id="68E0D794-FDF8-687B-BC1F-80CE224178F0">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>RolRegimenesFiscales</sourceObjSchema>
+<sourceObjName>IdRolRegimenFiscal</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdRol" id="D7C60D65-926E-C4A2-DC00-0D681CEFED25">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>RolRegimenesFiscales</sourceObjSchema>
+<sourceObjName>IdRol</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdRegimenFiscal" id="E759577F-A915-AF3B-8B84-6DED3A80CD75">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>RolRegimenesFiscales</sourceObjSchema>
+<sourceObjName>IdRegimenFiscal</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>E0364363-98C9-30AF-64BD-FC49CB4E72FA</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="36449883-28C3-2186-6856-5E13F98B19A8" referredColumn="E0364363-98C9-30AF-64BD-FC49CB4E72FA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F75005A3-E126-6097-AA50-0865D798B50F" name="PK_RolRegimenesFiscales">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_RolRegimenesFiscales</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="68E0D794-FDF8-687B-BC1F-80CE224178F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24ED830A-1BD4-CFBE-A0BF-80A2ABF95CEE" name="FK_RolRegimenesFiscales_RegimenesFiscales">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E759577F-A915-AF3B-8B84-6DED3A80CD75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableViewProxySqlServerv2k5 class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.TableViewProxySqlServerv2k5" name="vCuentasbancarias" directorySegmentName="seg_0" id="2CF8D9A3-173B-2E4B-5B46-E6E9C1846E31">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<commentInRDBMS>Vista que permite el enlace con los diferentes atributos</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<dataBase>D65A6732-1F55-5E38-6619-CEC0889DF99B</dataBase>
+<schema>1</schema>
+<user>DB_NULLELEMENT_dbo</user>
+</TableViewProxySqlServerv2k5>

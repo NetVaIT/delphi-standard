@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="11E0FC48-FC68-AD60-C159-AECBF35D496D" name="FK_Emails_EmailTipo">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>FK_Emails_EmailTipo</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<containerWithKeyObject>79614C76-C974-83BA-AF7C-028C69A642CE</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>A4A873AE-2CD3-AF40-4F00-B6BBF443B7DA</localFKIndex>
+<keyObject>15324DEF-E74B-11B4-4279-135AD9C9D50C</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

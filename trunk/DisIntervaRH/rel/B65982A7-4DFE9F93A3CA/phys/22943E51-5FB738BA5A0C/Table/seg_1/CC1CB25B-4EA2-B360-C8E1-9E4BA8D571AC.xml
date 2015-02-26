@@ -1,0 +1,44 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxySqlServerv2k5 class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.TableProxySqlServerv2k5" name="Funciones" directorySegmentName="seg_1" id="CC1CB25B-4EA2-B360-C8E1-9E4BA8D571AC">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<database>D65A6732-1F55-5E38-6619-CEC0889DF99B</database>
+<filegroup>7DAA336A-625C-F86E-A733-29B3C6994CFC</filegroup>
+<schema>1</schema>
+<columnProxies>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="IdFuncion" id="34DE0E68-B386-96F0-447D-2C64A69A3359">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="Descripcion" id="9138C82A-5C85-00A6-CBE2-2C23ABB549A2">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<collation>Modern_Spanish_CI_AS</collation>
+</ColumnProxy>
+<ColumnProxy class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.ColumnProxySqlServerv2k5" name="Identificador" id="EEE30360-EB84-A252-04E0-C26305E142EB">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<collation>Modern_Spanish_CI_AS</collation>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k5.PKProxySqlServerv2k5" name="PK_Funciones" id="EE01496E-EB00-D863-8C41-33E727308CC2">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<clustered>true</clustered>
+<fileGroup>7DAA336A-625C-F86E-A733-29B3C6994CFC</fileGroup>
+<recomputeStatistics>NO</recomputeStatistics>
+</PrimaryKey>
+</primaryKeys>
+</TableProxySqlServerv2k5>

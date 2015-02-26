@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0D391BDD-7588-ABC2-587C-73DD8B872155" name="FK_Empleados_EmpleadosEstatus">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>FK_Empleados_EmpleadosEstatus</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<containerWithKeyObject>8D9EC9BE-C320-039B-926D-ACEB5384F819</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>CA5D7CB3-8A05-2122-4B6C-ECBD82EE3EA6</localFKIndex>
+<keyObject>6F210783-31D9-4C2E-57E3-41E119124E57</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

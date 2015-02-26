@@ -1,0 +1,190 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="142064E3-A130-7E65-F44D-8E9CF1D3E504" name="IncidenciaDetalle">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>IncidenciaDetalle</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdIncidenciaDetalle" id="AAFB6ADD-7E6F-443F-D167-13C766F364F8">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>IncidenciaDetalle</sourceObjSchema>
+<sourceObjName>IdIncidenciaDetalle</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdIncidencia" id="B3BC58DE-8B47-BD7D-A2FE-65B96EE85BD1">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>IncidenciaDetalle</sourceObjSchema>
+<sourceObjName>IdIncidencia</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>9F283D64-A8E8-4AC0-D2A6-E962DC92518C</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3F2B3210-1096-22B2-3C8D-773FDAD13E3E" referredColumn="9F283D64-A8E8-4AC0-D2A6-E962DC92518C"/>
+</associations>
+</Column>
+<Column name="IdIncidenciaTipo" id="F5A047CC-A181-E72F-E7C5-D2080EB3C3CE">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>IncidenciaDetalle</sourceObjSchema>
+<sourceObjName>IdIncidenciaTipo</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>83C3B9BE-7046-5C2C-ECC3-35D2F737698B</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5965A3D5-F0E6-F594-1C6E-CA1303095F9E" referredColumn="83C3B9BE-7046-5C2C-ECC3-35D2F737698B"/>
+</associations>
+</Column>
+<Column name="Cantidad" id="F9CC4E60-F876-B26D-EFE6-3090A7F98A9C">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>IncidenciaDetalle</sourceObjSchema>
+<sourceObjName>Cantidad</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<dataTypeScale>6</dataTypeScale>
+<dataTypeSize>9</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="UnidadMedida" id="069BE465-2251-E6C5-E265-B09E2B662DD1">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>IncidenciaDetalle</sourceObjSchema>
+<sourceObjName>UnidadMedida</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>20</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Importe" id="8D539E54-4413-A49B-069C-3078B8BE5E6A">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>IncidenciaDetalle</sourceObjSchema>
+<sourceObjName>Importe</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<dataTypeScale>6</dataTypeScale>
+<dataTypeSize>9</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdMoneda" id="02F0D089-187B-73B4-EDCD-275B134DB88D">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>IncidenciaDetalle</sourceObjSchema>
+<sourceObjName>IdMoneda</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>A8A3DEE1-BEB4-C160-65AC-7E4036D8B418</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9738FFB5-C30B-D722-2DDA-4C754E74D9FB" referredColumn="A8A3DEE1-BEB4-C160-65AC-7E4036D8B418"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E1CA94ED-FBCF-9A5D-28A6-C2044044250D" name="PK_idIncidenciaDetalle">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_idIncidenciaDetalle</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AAFB6ADD-7E6F-443F-D167-13C766F364F8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C77BE6B-4657-F6BD-3128-F2ACF67EB84D" name="FK_idIncidenciaDetalle_Incidencias">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B3BC58DE-8B47-BD7D-A2FE-65B96EE85BD1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FE8D5496-AA79-2324-3B85-645CBA9D61CC" name="FK_IncidenciaDetalle_Monedas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="02F0D089-187B-73B4-EDCD-275B134DB88D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DF10C69D-3DAF-D651-E7E3-2C91FC95A09C" name="FK_idIncidenciaDetalle_IncidenciasTipo">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F5A047CC-A181-E72F-E7C5-D2080EB3C3CE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

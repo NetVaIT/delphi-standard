@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StorageDesignSqlServerv2k8 class="oracle.dbtools.crest.model.design.storage.sqlserver.v2k8.StorageDesignSqlServerv2k8" name="SQL Server 2008" id="9D92A4EA-E20E-BCEE-96B7-AE645DA25957" siteID="22943E51-0387-1F2A-CED9-5FB738BA5A0C" siteName="SQL Server 2008" siteType="12">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+</StorageDesignSqlServerv2k8>

@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AD6272F1-D168-7D59-215A-6AEB8E14F7DD" name="CategoriasPuestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>CategoriasPuestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<commentInRDBMS>Catalogo con los Perfiles de Puestos</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdCategoriaPuesto" id="B3496CBD-956C-6D28-4118-A9E65E433BFB">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CategoriasPuestos</sourceObjSchema>
+<sourceObjName>IdCategoriaPuesto</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>6CD4CE2B-5EEF-DE72-3C9C-2429D92D4B66</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B627DC3D-CF1D-4F8F-9092-0745C11D7992" referredColumn="6CD4CE2B-5EEF-DE72-3C9C-2429D92D4B66"/>
+</associations>
+</Column>
+<Column name="Identificador" id="D2494953-CECD-3D01-F3ED-571DB10F8495">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CategoriasPuestos</sourceObjSchema>
+<sourceObjName>Identificador</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>10</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Descripcion" id="444EDFC3-EE08-50B1-D56C-3EA592B545A8">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CategoriasPuestos</sourceObjSchema>
+<sourceObjName>Descripcion</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>1000</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>1000</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="504755AF-E798-F3CE-D0B2-5FB60A788658" name="PK_CategoriasPuestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_CategoriasPuestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B3496CBD-956C-6D28-4118-A9E65E433BFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D6856C63-83CF-C396-98F8-927E53E3796B" name="FK_CategoriasPuestos_Puestos1">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B3496CBD-956C-6D28-4118-A9E65E433BFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

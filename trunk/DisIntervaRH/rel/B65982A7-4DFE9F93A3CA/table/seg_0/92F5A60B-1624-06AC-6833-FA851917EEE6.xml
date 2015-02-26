@@ -1,0 +1,190 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="92F5A60B-1624-06AC-6833-FA851917EEE6" name="CuentasBancarias">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>CuentasBancarias</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<commentInRDBMS>Catalogo de Cuentas Bancarias de las Personas</commentInRDBMS>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdCuentaBancaria" id="18BDB947-35AB-6E85-3ECD-5087A6C38CC9">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CuentasBancarias</sourceObjSchema>
+<sourceObjName>IdCuentaBancaria</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdCuentaBancariaTipo" id="8560B0C3-698B-3116-E0DD-81DA0E1DC6AE">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CuentasBancarias</sourceObjSchema>
+<sourceObjName>IdCuentaBancariaTipo</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>E4AF36FB-F933-CF9C-9184-69CBC4CEFA53</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CC746A0B-B344-EDE6-0B78-D21D5A8CCDA3" referredColumn="E4AF36FB-F933-CF9C-9184-69CBC4CEFA53"/>
+</associations>
+</Column>
+<Column name="IdBanco" id="F4702421-B5ED-76C5-58D4-1EF783CBB305">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CuentasBancarias</sourceObjSchema>
+<sourceObjName>IdBanco</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>536CE4BF-70A9-000A-21B0-32105F13BECE</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D2FEC501-1559-ABEA-B68E-D65DD0A0DF87" referredColumn="536CE4BF-70A9-000A-21B0-32105F13BECE"/>
+</associations>
+</Column>
+<Column name="CuentaBancaria" id="77948E4C-B3F0-C905-5741-DE8F5933766E">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CuentasBancarias</sourceObjSchema>
+<sourceObjName>CuentaBancaria</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>50</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ClabeInterbancaria" id="CD86E734-F753-5A58-956C-D9C3301B3DEE">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CuentasBancarias</sourceObjSchema>
+<sourceObjName>ClabeInterbancaria</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>18</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdMoneda" id="36613F70-8065-9371-7C59-2E05E3D28D38">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CuentasBancarias</sourceObjSchema>
+<sourceObjName>IdMoneda</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>A8A3DEE1-BEB4-C160-65AC-7E4036D8B418</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E7A48558-E309-A274-82E0-FB6BDF2564DE" referredColumn="A8A3DEE1-BEB4-C160-65AC-7E4036D8B418"/>
+</associations>
+</Column>
+<Column name="IdCuentaBancariaUsuario" id="BDFEF3DE-F702-C51D-DE9F-445812F79A67">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>CuentasBancarias</sourceObjSchema>
+<sourceObjName>IdCuentaBancariaUsuario</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0E006567-2923-4F51-A636-37F5E323532F" name="PK_CuentaBancarias">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_CuentaBancarias</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="18BDB947-35AB-6E85-3ECD-5087A6C38CC9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="883D5BDD-6CD3-A1CD-0F11-62AF5F815B87" name="FK_CuentasBancarias_Bancos">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4702421-B5ED-76C5-58D4-1EF783CBB305"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B5E5BF3-CB25-0B6D-B7C3-43E90BFBF6D3" name="FK_CuentasBancarias_TipoCuentasBancarias">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8560B0C3-698B-3116-E0DD-81DA0E1DC6AE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="846E7A67-1C70-E0D4-74D5-F69962C46801" name="FK_CuentasBancarias_Monedas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="36613F70-8065-9371-7C59-2E05E3D28D38"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

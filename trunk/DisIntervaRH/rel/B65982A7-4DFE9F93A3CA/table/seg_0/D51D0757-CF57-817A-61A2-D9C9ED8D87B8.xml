@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D51D0757-CF57-817A-61A2-D9C9ED8D87B8" name="EsquemaPagoTiposMovimientos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>EsquemaPagoTiposMovimientos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdEsquemaPagoMovimientoTipo" id="41C251F8-EF79-5A3E-B6E7-E999AE9C9D20">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>EsquemaPagoTiposMovimientos</sourceObjSchema>
+<sourceObjName>IdEsquemaPagoMovimientoTipo</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdEsquemaPago" id="BE3EF18A-68BB-DF24-76F7-45699537B9A1">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>EsquemaPagoTiposMovimientos</sourceObjSchema>
+<sourceObjName>IdEsquemaPago</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>514D106A-01C4-9C7A-243A-133BFEA33291</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D9312D9C-8848-6889-E8D0-2BDD36C3DBE4" referredColumn="514D106A-01C4-9C7A-243A-133BFEA33291"/>
+</associations>
+</Column>
+<Column name="IdMovimientoTipo" id="6C5E05F0-90E7-508A-F7A6-EF5D50FD4AB9">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>EsquemaPagoTiposMovimientos</sourceObjSchema>
+<sourceObjName>IdMovimientoTipo</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>95793A5A-6877-FABA-E16A-9E47A299ED44</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ABDDEEC7-CD97-7EA0-1229-ABA4165267E1" referredColumn="95793A5A-6877-FABA-E16A-9E47A299ED44"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="313C496B-CD6D-4196-8F69-34D702E5D46A" name="PK_EsquemaPagoTiposTransacciones">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_EsquemaPagoTiposTransacciones</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41C251F8-EF79-5A3E-B6E7-E999AE9C9D20"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3E723D6C-E6E4-BE22-8511-8733870B6D6A" name="FK_EsquemaPagoTiposMovimientos_EsquemasPagos">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BE3EF18A-68BB-DF24-76F7-45699537B9A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6C884AB1-FB34-FA96-BE2F-4FB7AA38217B" name="FK_EsquemaPagoTiposMovimientos_MovimientosTipos">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C5E05F0-90E7-508A-F7A6-EF5D50FD4AB9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

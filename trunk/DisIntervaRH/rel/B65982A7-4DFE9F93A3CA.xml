@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="IRH" id="B65982A7-1B71-57A5-A932-4DFE9F93A3CA" mainViewID="0DFA006E-E6D7-3F83-1B2C-24B42EE101FC">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<shouldBeOpen>true</shouldBeOpen>
+<selectedRDBMSSite>22943E51-0387-1F2A-CED9-5FB738BA5A0C</selectedRDBMSSite>
+<importConnectionStamps>
+<importConnectionStamp class="oracle.dbtools.crest.imports.DBConnectionStamp">
+<connName>IRH</connName>
+<connUrl>jdbc:jtds:sqlserver://NAS1;instance=COMPAC:1433/IntervaRH</connUrl>
+<connUser>sa</connUser>
+<connType>2</connType>
+<syncSelected>1</syncSelected>
+</importConnectionStamp>
+</importConnectionStamps>
+</relationalModel>

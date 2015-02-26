@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="62B5C7F5-602F-E35F-2EAE-A8A7B1B525C3" name="PersonaTelefonos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PersonaTelefonos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<schemaObject>A6120FEA-43C4-FC97-382A-C4BC6897142C</schemaObject>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersonaTelefonos" id="A39C66D3-DFC7-46BE-F708-C898FB7DB207">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaTelefonos</sourceObjSchema>
+<sourceObjName>IdPersonaTelefonos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdPersona" id="E80B288A-27F2-CD39-C689-E5676528D9A9">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaTelefonos</sourceObjSchema>
+<sourceObjName>IdPersona</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdTelefono" id="766004D9-3D6B-6CB0-8E8B-ED364C320320">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>PersonaTelefonos</sourceObjSchema>
+<sourceObjName>IdTelefono</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>4</dataTypeSize>
+<delegate>1E045AD1-522A-C416-BE05-C28AC405D1A6</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6772BBFE-693F-FB72-CEFD-157DE7130EE4" referredColumn="1E045AD1-522A-C416-BE05-C28AC405D1A6"/>
+<colAssociation fkAssociation="7AC87805-E0D3-DCF7-CADB-67B1EDDC7CCA" referredColumn="A3983652-DDF5-8CCD-9040-B74B40EDADA5"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="70EDC70B-3979-5721-7F16-B58711B3AD42" name="PK_ContactoTelefonos_1">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>PK_ContactoTelefonos_1</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A39C66D3-DFC7-46BE-F708-C898FB7DB207"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24220C8E-5EBC-3BED-1794-86504F8C663E" name="FK_PersonaTelefonos_Telefonos">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="766004D9-3D6B-6CB0-8E8B-ED364C320320"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C311E334-B9A0-2E58-6BF8-79840B561F49" name="FK_PersonaTelefonos_Personas">
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="766004D9-3D6B-6CB0-8E8B-ED364C320320"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

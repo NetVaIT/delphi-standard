@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FDEAFF07-C08E-A070-86BC-BED0A6E1138E" name="FK_PerfilesPuestos_TiposPerfilesPuestos">
+<sourceConnName>IRH</sourceConnName>
+<sourceObjSchema>dbo</sourceObjSchema>
+<sourceObjName>FK_PerfilesPuestos_TiposPerfilesPuestos</sourceObjName>
+<createdBy>hucj1e3</createdBy>
+<createdTime>2015-02-25 19:28:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DisIntervaRH</ownerDesignName>
+<containerWithKeyObject>96C49B96-4B67-2DCD-F0B7-526EEFF294A8</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>B5C7E929-0E8F-782F-008B-679E9B1CC8FA</localFKIndex>
+<keyObject>7FCF387F-CAC0-4357-1A67-79685728C05E</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
