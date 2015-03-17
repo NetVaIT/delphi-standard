@@ -1,4 +1,4 @@
-unit UnidadesdeNegocioForm;
+unit BateriaCapacitacionesForm;
 
 interface
 
@@ -24,10 +24,13 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmUnidadesdeNegocio = class(T_frmGrid)
-    tvMasterIdUnidadNegocio: TcxGridDBColumn;
+  TfrmBateriasCapacitacion = class(T_frmGrid)
+    tvMasterIdBateriaCapacitacion: TcxGridDBColumn;
+    tvMasterIdPuesto: TcxGridDBColumn;
+    tvMasterPuesto: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterPonderacion: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -39,12 +42,12 @@ implementation
 
 {$R *.dfm}
 
-uses UnidaddeNegocioForm, PuestosDM;
+uses CapacitacionDM, BateriaCapacitacionForm;
 
-procedure TfrmUnidadesdeNegocio.FormCreate(Sender: TObject);
+procedure TfrmBateriasCapacitacion.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmUnidaddeNegocio.Create(Self);
+  gEditForm:= TfrmBateriaCapacitacion.Create(Self);
 end;
 
 end.

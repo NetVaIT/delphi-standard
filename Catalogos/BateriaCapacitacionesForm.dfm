@@ -1,15 +1,15 @@
-inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
+inherited frmBateriasCapacitacion: TfrmBateriasCapacitacion
   BorderStyle = bsToolWindow
-  Caption = 'Unidades de Negocio'
-  ClientHeight = 380
+  Caption = 'Bateria de Capacitaciones'
+  ClientHeight = 433
   ClientWidth = 645
   OnCreate = FormCreate
   ExplicitWidth = 651
-  ExplicitHeight = 404
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Top = 437
+    Top = 387
     Width = 645
     Align = alTop
     ExplicitTop = 431
@@ -24,7 +24,7 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
     ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
-    Top = 284
+    Top = 384
     Width = 645
     Align = alTop
     ExplicitTop = 278
@@ -42,9 +42,16 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
       ExplicitWidth = 645
       ExplicitHeight = 100
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdUnidadNegocio: TcxGridDBColumn
-          DataBinding.FieldName = 'IdUnidadNegocio'
+        object tvMasterIdBateriaCapacitacion: TcxGridDBColumn
+          DataBinding.FieldName = 'IdBateriaCapacitacion'
           Visible = False
+        end
+        object tvMasterIdPuesto: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPuesto'
+          Visible = False
+        end
+        object tvMasterPuesto: TcxGridDBColumn
+          DataBinding.FieldName = 'Puesto'
         end
         object tvMasterIdentificador: TcxGridDBColumn
           DataBinding.FieldName = 'Identificador'
@@ -52,35 +59,38 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
         end
+        object tvMasterPonderacion: TcxGridDBColumn
+          DataBinding.FieldName = 'Ponderacion'
+        end
       end
     end
   end
   inherited pnlDetail3: TPanel
-    Top = 440
+    Top = 390
     Width = 645
-    Height = 31
+    Height = 43
     Align = alClient
     ExplicitTop = 440
     ExplicitWidth = 645
-    ExplicitHeight = 31
+    ExplicitHeight = 24
   end
   inherited pnlDetail2: TPanel
-    Top = 287
+    Top = 390
     Width = 645
-    Height = 150
-    Align = alTop
-    ExplicitTop = 287
+    Height = 43
+    Align = alClient
+    ExplicitTop = 387
     ExplicitWidth = 645
-    ExplicitHeight = 150
+    ExplicitHeight = 250
   end
   inherited pnlDetail1: TPanel
     Top = 134
     Width = 645
-    Height = 150
+    Height = 250
     Align = alTop
     ExplicitTop = 134
     ExplicitWidth = 645
-    ExplicitHeight = 150
+    ExplicitHeight = 250
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

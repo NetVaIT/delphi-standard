@@ -1,4 +1,4 @@
-unit UnidadesdeNegocioForm;
+unit EsquemaPagosForm;
 
 interface
 
@@ -24,10 +24,12 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmUnidadesdeNegocio = class(T_frmGrid)
-    tvMasterIdUnidadNegocio: TcxGridDBColumn;
+  TfrmEsquemaPagos = class(T_frmGrid)
+    tvMasterIdEsquemaPago: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterIdEsquemaPagoEstatus: TcxGridDBColumn;
+    tvMasterEsquemaPagoEstatus: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -39,12 +41,12 @@ implementation
 
 {$R *.dfm}
 
-uses UnidaddeNegocioForm, PuestosDM;
+uses EsquemaPagosDM, EsquemaPagoForm;
 
-procedure TfrmUnidadesdeNegocio.FormCreate(Sender: TObject);
+procedure TfrmEsquemaPagos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmUnidaddeNegocio.Create(Self);
+  gEditForm:= TfrmEsquemaPago.Create(Self);
 end;
 
 end.

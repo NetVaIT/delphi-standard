@@ -1,49 +1,48 @@
-inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
+inherited frmBateriaCapacitacionCursosTemas: TfrmBateriaCapacitacionCursosTemas
   BorderStyle = bsToolWindow
-  Caption = 'Unidades de Negocio'
-  ClientHeight = 380
+  Caption = 'Bateria de Capacitacion - Cursos - Temas'
+  ClientHeight = 433
   ClientWidth = 645
   OnCreate = FormCreate
   ExplicitWidth = 651
-  ExplicitHeight = 404
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Top = 437
+    Top = 389
     Width = 645
-    Align = alTop
-    ExplicitTop = 431
+    ExplicitTop = 389
     ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
-    Top = 131
+    Top = 301
     Width = 645
-    Align = alTop
-    ExplicitLeft = -8
-    ExplicitTop = 122
+    ExplicitTop = 301
     ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
-    Top = 284
+    Top = 345
     Width = 645
-    Align = alTop
-    ExplicitTop = 278
+    ExplicitTop = 345
     ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
     Width = 645
-    Height = 100
-    Align = alTop
+    Height = 270
     ExplicitWidth = 645
-    ExplicitHeight = 100
+    ExplicitHeight = 270
     inherited cxGrid: TcxGrid
       Width = 645
-      Height = 100
+      Height = 270
       ExplicitWidth = 645
-      ExplicitHeight = 100
+      ExplicitHeight = 270
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdUnidadNegocio: TcxGridDBColumn
-          DataBinding.FieldName = 'IdUnidadNegocio'
+        object tvMasterIdBateriaCapacitacionCursoTema: TcxGridDBColumn
+          DataBinding.FieldName = 'IdBateriaCapacitacionCursoTema'
+          Visible = False
+        end
+        object tvMasterIdBateriaCapacitacionCurso: TcxGridDBColumn
+          DataBinding.FieldName = 'IdBateriaCapacitacionCurso'
           Visible = False
         end
         object tvMasterIdentificador: TcxGridDBColumn
@@ -52,35 +51,29 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
         end
+        object tvMasterPonderacion: TcxGridDBColumn
+          DataBinding.FieldName = 'Ponderacion'
+        end
       end
     end
   end
   inherited pnlDetail3: TPanel
-    Top = 440
+    Top = 392
     Width = 645
-    Height = 31
-    Align = alClient
-    ExplicitTop = 440
+    ExplicitTop = 392
     ExplicitWidth = 645
-    ExplicitHeight = 31
   end
   inherited pnlDetail2: TPanel
-    Top = 287
+    Top = 348
     Width = 645
-    Height = 150
-    Align = alTop
-    ExplicitTop = 287
+    ExplicitTop = 348
     ExplicitWidth = 645
-    ExplicitHeight = 150
   end
   inherited pnlDetail1: TPanel
-    Top = 134
+    Top = 304
     Width = 645
-    Height = 150
-    Align = alTop
-    ExplicitTop = 134
+    ExplicitTop = 304
     ExplicitWidth = 645
-    ExplicitHeight = 150
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

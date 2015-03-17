@@ -1,4 +1,4 @@
-unit UnidadesdeNegocioForm;
+unit DepartamentosForm;
 
 interface
 
@@ -24,8 +24,9 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmUnidadesdeNegocio = class(T_frmGrid)
-    tvMasterIdUnidadNegocio: TcxGridDBColumn;
+  TfrmDepartamentos = class(T_frmGrid)
+    tvMasterIdDepartamento: TcxGridDBColumn;
+    tvMasterIdGerencia: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
@@ -39,12 +40,12 @@ implementation
 
 {$R *.dfm}
 
-uses UnidaddeNegocioForm, PuestosDM;
+uses PuestosDM, DepartamentoForm;
 
-procedure TfrmUnidadesdeNegocio.FormCreate(Sender: TObject);
+procedure TfrmDepartamentos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmUnidaddeNegocio.Create(Self);
+  gEditForm:= TfrmDepartamento.Create(Self);
 end;
 
 end.

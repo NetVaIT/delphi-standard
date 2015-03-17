@@ -1,4 +1,4 @@
-unit UnidadesdeNegocioForm;
+unit ReglasNegocioForm;
 
 interface
 
@@ -24,10 +24,13 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmUnidadesdeNegocio = class(T_frmGrid)
-    tvMasterIdUnidadNegocio: TcxGridDBColumn;
+  TfrmReglasNegocio = class(T_frmGrid)
+    tvMasterIdReglaNegocio: TcxGridDBColumn;
+    tvMasterIdOutSourcingPersonal: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterIdReglaNegocioTipo: TcxGridDBColumn;
+    tvMasterReglaNegocioTipo: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -39,12 +42,12 @@ implementation
 
 {$R *.dfm}
 
-uses UnidaddeNegocioForm, PuestosDM;
+uses ReglasNegocioDM, ReglaNegocioForm;
 
-procedure TfrmUnidadesdeNegocio.FormCreate(Sender: TObject);
+procedure TfrmReglasNegocio.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmUnidaddeNegocio.Create(Self);
+  gEditForm:= TfrmReglaNegocio.Create(Self);
 end;
 
 end.

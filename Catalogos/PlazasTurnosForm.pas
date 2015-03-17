@@ -1,4 +1,4 @@
-unit UnidadesdeNegocioForm;
+unit PlazasTurnosForm;
 
 interface
 
@@ -24,10 +24,14 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmUnidadesdeNegocio = class(T_frmGrid)
-    tvMasterIdUnidadNegocio: TcxGridDBColumn;
+  TfrmPlazasTurnos = class(T_frmGrid)
+    tvMasterIdPlazaTurno: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterHoraEntrada: TcxGridDBColumn;
+    tvMasterHoraSalida: TcxGridDBColumn;
+    tvMasterHoraAlimentosInicio: TcxGridDBColumn;
+    tvMasterHoraAlimentosFin: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -39,12 +43,12 @@ implementation
 
 {$R *.dfm}
 
-uses UnidaddeNegocioForm, PuestosDM;
+uses PlazasTurnosDM, PlazaTurnoForm;
 
-procedure TfrmUnidadesdeNegocio.FormCreate(Sender: TObject);
+procedure TfrmPlazasTurnos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmUnidaddeNegocio.Create(Self);
+  gEditForm:= TfrmPlazaTurno.Create(Self);
 end;
 
 end.
