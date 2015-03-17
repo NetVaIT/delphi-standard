@@ -1,23 +1,17 @@
-inherited frmUnidaddeNegocio: TfrmUnidaddeNegocio
-  Caption = 'Unidad de Negocio'
-  ClientHeight = 215
-  ClientWidth = 416
-  ExplicitWidth = 422
-  ExplicitHeight = 243
+inherited frmReglaNegocio: TfrmReglaNegocio
+  Caption = 'Regla de Negocio'
+  ClientHeight = 230
+  ClientWidth = 436
+  ExplicitWidth = 442
+  ExplicitHeight = 258
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 416
-    Height = 174
-    ExplicitWidth = 416
-    ExplicitHeight = 174
-    ClientRectBottom = 172
-    ClientRectRight = 414
+    Width = 436
+    Height = 189
+    ClientRectBottom = 187
+    ClientRectRight = 434
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
-      ExplicitWidth = 412
-      ExplicitHeight = 144
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -34,13 +28,20 @@ inherited frmUnidaddeNegocio: TfrmUnidaddeNegocio
         Caption = 'Descripcion'
         FocusControl = cxDBTextEdit2
       end
+      object Label3: TLabel
+        Left = 16
+        Top = 96
+        Width = 121
+        Height = 13
+        Caption = 'Tipo de Regla de Negocio'
+      end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16
         Top = 32
         DataBinding.DataField = 'Identificador'
         DataBinding.DataSource = DataSource
         TabOrder = 0
-        Width = 81
+        Width = 85
       end
       object cxDBTextEdit2: TcxDBTextEdit
         Left = 16
@@ -48,22 +49,27 @@ inherited frmUnidaddeNegocio: TfrmUnidaddeNegocio
         DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = DataSource
         TabOrder = 1
-        Width = 377
+        Width = 401
+      end
+      object cxDBLookupComboBox1: TcxDBLookupComboBox
+        Left = 16
+        Top = 111
+        DataBinding.DataField = 'ReglaNegocioTipo'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 2
+        Width = 233
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 174
-    Width = 416
-    ExplicitTop = 174
-    ExplicitWidth = 416
+    Top = 189
+    Width = 436
     inherited btnOk: TButton
-      Left = 253
-      ExplicitLeft = 253
+      Left = 273
     end
     inherited btnCancel: TButton
-      Left = 334
-      ExplicitLeft = 334
+      Left = 354
     end
   end
   inherited cxImageList: TcxImageList

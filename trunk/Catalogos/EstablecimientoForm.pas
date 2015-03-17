@@ -1,4 +1,4 @@
-unit UnidaddeNegocioForm;
+unit EstablecimientoForm;
 
 interface
 
@@ -18,14 +18,40 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, cxTextEdit, cxDBEdit;
+  cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxMaskEdit, cxSpinEdit, Vcl.DBCtrls;
 
 type
-  TfrmUnidaddeNegocio = class(T_frmEdit)
+  TfrmEstablecimiento = class(T_frmEdit)
     Label1: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
+    gbDomicilio: TGroupBox;
+    dsDomicilio: TDataSource;
+    Label3: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label4: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
+    Label5: TLabel;
+    DBLookupComboBox3: TDBLookupComboBox;
+    Label6: TLabel;
+    DBLookupComboBox4: TDBLookupComboBox;
+    Label7: TLabel;
+    DBLookupComboBox5: TDBLookupComboBox;
+    Label8: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    Label9: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
+    Label10: TLabel;
+    cxDBTextEdit5: TcxDBTextEdit;
+    Label11: TLabel;
+    cxDBTextEdit6: TcxDBTextEdit;
+    Label12: TLabel;
+    cxDBTextEdit7: TcxDBTextEdit;
+    Label13: TLabel;
+    cxDBTextEdit8: TcxDBTextEdit;
+    Label14: TLabel;
+    cxDBSpinEdit1: TcxDBSpinEdit;
   private
     { Private declarations }
   public
@@ -36,6 +62,6 @@ implementation
 
 {$R *.dfm}
 
-uses PuestosDM;
+uses EstablecimientosDM, DomiciliosDM;
 
 end.

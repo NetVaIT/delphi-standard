@@ -3,6 +3,7 @@ inherited dmUbicaciones: TdmUbicaciones
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 'select IdPais, Identificador, Descripcion from Paises'
+    Left = 40
     object adodsMasterIdPais: TAutoIncField
       FieldName = 'IdPais'
       ReadOnly = True
@@ -21,7 +22,7 @@ inherited dmUbicaciones: TdmUbicaciones
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
-    Left = 104
+    Left = 120
     Top = 16
   end
   object adodsEstados: TADODataSet
@@ -40,7 +41,7 @@ inherited dmUbicaciones: TdmUbicaciones
         Precision = 10
         Value = 1
       end>
-    Left = 24
+    Left = 40
     Top = 80
     object adodsEstadosIdEstado: TAutoIncField
       FieldName = 'IdEstado'
@@ -62,7 +63,7 @@ inherited dmUbicaciones: TdmUbicaciones
   end
   object dsEstados: TDataSource
     DataSet = adodsEstados
-    Left = 104
+    Left = 120
     Top = 80
   end
   object adodsMunicipios: TADODataSet
@@ -81,7 +82,7 @@ inherited dmUbicaciones: TdmUbicaciones
         Precision = 10
         Value = 1
       end>
-    Left = 24
+    Left = 40
     Top = 144
     object adodsMunicipiosIdMunicipio: TIntegerField
       FieldName = 'IdMunicipio'
@@ -102,7 +103,7 @@ inherited dmUbicaciones: TdmUbicaciones
   end
   object dsMunicipios: TDataSource
     DataSet = adodsMunicipios
-    Left = 104
+    Left = 120
     Top = 144
   end
   object adodsPoblaciones: TADODataSet
@@ -122,7 +123,7 @@ inherited dmUbicaciones: TdmUbicaciones
         Size = 4
         Value = Null
       end>
-    Left = 24
+    Left = 40
     Top = 208
     object adodsPoblacionesIdPoblacion: TIntegerField
       FieldName = 'IdPoblacion'

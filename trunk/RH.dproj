@@ -197,69 +197,166 @@
             <Form>frmMonedas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\RegimenFiscalDM.pas">
-            <Form>dmRegimenFiscal</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\RegimenFiscalForm.pas">
-            <Form>frmRegimenFiscal</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\RegimenFiscalesForm.pas">
-            <Form>frmRegimenFiscales</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\TiposDocumentosDM.pas">
-            <Form>dmTiposDocumentos</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\TipoDocumentoForm.pas">
-            <Form>frmTipoDocumento</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\TipoDocumentosForm.pas">
-            <Form>frmTipoDocumentos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\EmailTiposDM.pas">
-            <Form>dmEmailTipos</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\EmailTipoForm.pas">
-            <Form>frmEmailTipo</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\EmailTiposForm.pas">
-            <Form>frmEmailTipos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\TelefonosTiposDM.pas">
-            <Form>dmTelefonosTipos</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\TelefonosTipoForm.pas">
-            <Form>frmTelefonosTipo</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\TelefonosTiposForm.pas">
-            <Form>frmTelefonosTipos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\UnidadesdeNegocioDM.pas">
-            <Form>dmUnidadesdeNegocio</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Catalogos\UnidaddeNegocioForm.pas">
             <Form>frmUnidaddeNegocio</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Catalogos\UnidadesdeNegocioForm.pas">
             <Form>frmUnidadesdeNegocio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PuestosDM.pas">
+            <Form>dmPuestos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\GerenciaForm.pas">
+            <Form>frmGerencia</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\GerenciasForm.pas">
+            <Form>frmGerencias</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\DepartamentoForm.pas">
+            <Form>frmDepartamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\DepartamentosForm.pas">
+            <Form>frmDepartamentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PuestoForm.pas">
+            <Form>frmPuesto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PuestosForm.pas">
+            <Form>frmPuestos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PuestosPerfilesDM.pas">
+            <Form>dmPuestosPerfiles</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PuestoPerfilForm.pas">
+            <Form>frmPuestoPerfil</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PuestosPerfilesForm.pas">
+            <Form>frmPuestosPerfiles</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CapacitacionDM.pas">
+            <Form>dmCapacitacion</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BateriaCapacitacionForm.pas">
+            <Form>frmBateriaCapacitacion</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BateriaCapacitacionesForm.pas">
+            <Form>frmBateriasCapacitacion</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BateriaCapacitacionCursoForm.pas">
+            <Form>frmBateriaCapacitacionCurso</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BateriaCapacitacionCursosForm.pas">
+            <Form>frmBateriaCapacitacionCursos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BateriaCapacitacionCursoTemaForm.pas">
+            <Form>frmBateriaCapacitacionCursosTema</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\BateriaCapacitacionCursosTemasForm.pas">
+            <Form>frmBateriaCapacitacionCursosTemas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PlazasTurnosDM.pas">
+            <Form>dmPlazasTurnos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PlazaTurnoForm.pas">
+            <Form>frmPlazaTurno</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PlazasTurnosForm.pas">
+            <Form>frmPlazasTurnos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EsquemaPagosDM.pas">
+            <Form>dmEsquemaPagos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EsquemaPagoForm.pas">
+            <Form>frmEsquemaPago</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EsquemaPagosForm.pas">
+            <Form>frmEsquemaPagos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\FormulasDM.pas">
+            <Form>dmFormulas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\FormulaForm.pas">
+            <Form>frmFormula</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\FormulasForm.pas">
+            <Form>frmFormulas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ReglasNegocioDM.pas">
+            <Form>dmReglasNegocio</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ReglaNegocioForm.pas">
+            <Form>frmReglaNegocio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ReglasNegocioForm.pas">
+            <Form>frmReglasNegocio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PlazasDM.pas">
+            <Form>dmPlazas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PlazaForm.pas">
+            <Form>frmPlaza</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PlazasForm.pas">
+            <Form>frmPlazas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\DomiciliosDM.pas">
+            <Form>dmDomicilios</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EstablecimientosDM.pas">
+            <Form>dmEstablecimientos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EstablecimientoForm.pas">
+            <Form>frmEstablecimiento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EstablecimientosForm.pas">
+            <Form>frmEstablecimientos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

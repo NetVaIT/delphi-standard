@@ -1,23 +1,21 @@
-inherited frmUnidaddeNegocio: TfrmUnidaddeNegocio
-  Caption = 'Unidad de Negocio'
-  ClientHeight = 215
-  ClientWidth = 416
-  ExplicitWidth = 422
-  ExplicitHeight = 243
+inherited frmFormula: TfrmFormula
+  Caption = 'Formula'
+  ClientHeight = 233
+  ClientWidth = 574
+  ExplicitWidth = 580
+  ExplicitHeight = 261
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 416
-    Height = 174
-    ExplicitWidth = 416
-    ExplicitHeight = 174
-    ClientRectBottom = 172
-    ClientRectRight = 414
+    Width = 574
+    Height = 192
+    ClientRectBottom = 190
+    ClientRectRight = 572
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 412
-      ExplicitHeight = 144
+      ExplicitWidth = 434
+      ExplicitHeight = 295
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -34,6 +32,14 @@ inherited frmUnidaddeNegocio: TfrmUnidaddeNegocio
         Caption = 'Descripcion'
         FocusControl = cxDBTextEdit2
       end
+      object Label3: TLabel
+        Left = 16
+        Top = 96
+        Width = 38
+        Height = 13
+        Caption = 'Formula'
+        FocusControl = cxDBTextEdit3
+      end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16
         Top = 32
@@ -48,22 +54,26 @@ inherited frmUnidaddeNegocio: TfrmUnidaddeNegocio
         DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = DataSource
         TabOrder = 1
-        Width = 377
+        Width = 537
+      end
+      object cxDBTextEdit3: TcxDBTextEdit
+        Left = 16
+        Top = 112
+        DataBinding.DataField = 'Formula'
+        DataBinding.DataSource = DataSource
+        TabOrder = 2
+        Width = 537
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 174
-    Width = 416
-    ExplicitTop = 174
-    ExplicitWidth = 416
+    Top = 192
+    Width = 574
     inherited btnOk: TButton
-      Left = 253
-      ExplicitLeft = 253
+      Left = 411
     end
     inherited btnCancel: TButton
-      Left = 334
-      ExplicitLeft = 334
+      Left = 492
     end
   end
   inherited cxImageList: TcxImageList

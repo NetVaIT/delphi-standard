@@ -1,4 +1,4 @@
-unit UnidadesdeNegocioForm;
+unit PuestosPerfilesForm;
 
 interface
 
@@ -24,10 +24,15 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmUnidadesdeNegocio = class(T_frmGrid)
-    tvMasterIdUnidadNegocio: TcxGridDBColumn;
+  TfrmPuestosPerfiles = class(T_frmGrid)
+    tvMasterIdPuestoPerfil: TcxGridDBColumn;
+    tvMasterIdPuesto: TcxGridDBColumn;
+    tvMasterPuesto: TcxGridDBColumn;
+    tvMasterIdPuestoPerfilCategoria: TcxGridDBColumn;
+    tvMasterPerfilCategoria: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterValor: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -39,12 +44,12 @@ implementation
 
 {$R *.dfm}
 
-uses UnidaddeNegocioForm, PuestosDM;
+uses PuestosPerfilesDM, PuestoPerfilForm;
 
-procedure TfrmUnidadesdeNegocio.FormCreate(Sender: TObject);
+procedure TfrmPuestosPerfiles.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmUnidaddeNegocio.Create(Self);
+  gEditForm:= TfrmPuestoPerfil.Create(Self);
 end;
 
 end.

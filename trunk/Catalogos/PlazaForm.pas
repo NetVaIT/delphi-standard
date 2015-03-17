@@ -1,11 +1,10 @@
-unit UnidadesdeNegocioForm;
+unit PlazaForm;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _GridForm, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _EditForm, dxSkinsCore, dxSkinBlack,
   dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
   dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -16,19 +15,29 @@ uses
   dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
-  dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
-  cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
-  Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
+  System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
+  cxContainer, cxEdit, Vcl.DBCtrls, cxDBEdit, cxTextEdit, cxCurrencyEdit,
+  cxDropDownEdit, cxCalendar, cxMaskEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
-  TfrmUnidadesdeNegocio = class(T_frmGrid)
-    tvMasterIdUnidadNegocio: TcxGridDBColumn;
-    tvMasterIdentificador: TcxGridDBColumn;
-    tvMasterDescripcion: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+  TfrmPlaza = class(T_frmEdit)
+    Label1: TLabel;
+    cxDBCurrencyEdit1: TcxDBCurrencyEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    Label7: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBLookupComboBox2: TcxDBLookupComboBox;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
+    cxDBDateEdit1: TcxDBDateEdit;
   private
     { Private declarations }
   public
@@ -39,12 +48,6 @@ implementation
 
 {$R *.dfm}
 
-uses UnidaddeNegocioForm, PuestosDM;
-
-procedure TfrmUnidadesdeNegocio.FormCreate(Sender: TObject);
-begin
-  inherited;
-  gEditForm:= TfrmUnidaddeNegocio.Create(Self);
-end;
+uses PlazasDM;
 
 end.

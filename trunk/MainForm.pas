@@ -36,19 +36,25 @@ type
     actBancos: TAction;
     dxBarLargeButton3: TdxBarLargeButton;
     actMonedas: TAction;
-    actRegimenFiscal: TAction;
-    dxBarLargeButton4: TdxBarLargeButton;
-    actTipoDocumento: TAction;
-    dxBarLargeButton5: TdxBarLargeButton;
     dxBarLargeButton6: TdxBarLargeButton;
     dxBarLargeButton7: TdxBarLargeButton;
     dxBarLargeButton8: TdxBarLargeButton;
-    actEmailTipo: TAction;
-    dxBarLargeButton9: TdxBarLargeButton;
-    dxBarLargeButton10: TdxBarLargeButton;
-    actTelefonoTipo: TAction;
-    actUnidadNegocio: TAction;
+    actPuestos: TAction;
     dxBarLargeButton11: TdxBarLargeButton;
+    dxBarLargeButton12: TdxBarLargeButton;
+    dxBarLargeButton13: TdxBarLargeButton;
+    dxBarLargeButton4: TdxBarLargeButton;
+    actPlazasTurnos: TAction;
+    actEsquemaPagos: TAction;
+    dxBarLargeButton5: TdxBarLargeButton;
+    actFormulas: TAction;
+    dxBarLargeButton9: TdxBarLargeButton;
+    actReglasNegocio: TAction;
+    dxBarLargeButton10: TdxBarLargeButton;
+    actEstablecimientos: TAction;
+    dxBarLargeButton14: TdxBarLargeButton;
+    dxBarManagerBar1: TdxBar;
+    dxBarLargeButton15: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -68,8 +74,8 @@ implementation
 
 {$R *.dfm}
 
-uses UbicacionesDM, BancosDM, MonedasDM, RegimenFiscalDM, TiposDocumentosDM,
-  EmailTiposDM, TelefonosTiposDM, UnidadesdeNegocioDM;
+uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
+      EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -86,11 +92,12 @@ begin
     1: gModulo := TdmUbicaciones.Create(Self);
     2: gModulo := TdmBancos.Create(Self);
     3: gModulo := TdmMonedas.Create(Self);
-    4: gModulo := TdmRegimenFiscal.Create(Self);
-    5: gModulo := TdmTiposDocumentos.Create(Self);
-    6: gModulo := TdmEmailTipos.Create(Self);
-    7: gModulo := TdmTelefonosTipos.Create(Self);
-    8: gModulo := TdmUnidadesdeNegocio.Create(Self);
+    4: gModulo := TdmPlazasTurnos.Create(Self);
+    5: gModulo := TdmEsquemaPagos.Create(Self);
+    6: gModulo := TdmFormulas.Create(Self);
+    7: gModulo := TdmReglasNegocio.Create(Self);
+    8: gModulo := TdmPuestos.Create(Self);
+    9: gModulo := TdmEstablecimientos.Create(Self);
   end;
   gModulo.ShowModule(pnlMain, pCaption);
   Caption := pCaption + strSeparador + strProductName + strSeparador + strFileDescription;
@@ -100,14 +107,15 @@ procedure TfrmMain.ConfigControls;
 begin
   inherited;
 //  actCFDI.Enabled:= Conected and _dmConection.EnabledAction(actCFDI.Tag);
-  actUbicaciones.Enabled   := Conected;
-  actBancos.Enabled        := Conected;
-  actMonedas.Enabled       := Conected;
-  actRegimenFiscal.Enabled := Conected;
-  actTipoDocumento.Enabled := Conected;
-  actEmailTipo.Enabled     := Conected;
-  actTelefonoTipo.Enabled  := Conected;
-  actUnidadNegocio.Enabled := Conected;
+  actUbicaciones.Enabled      := Conected;
+  actBancos.Enabled           := Conected;
+  actMonedas.Enabled          := Conected;
+  actPuestos.Enabled          := Conected;
+  actPlazasTurnos.Enabled     := Conected;
+  actEsquemaPagos.Enabled     := Conected;
+  actFormulas.Enabled         := Conected;
+  actReglasNegocio.Enabled    := Conected;
+  actEstablecimientos.Enabled := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;
