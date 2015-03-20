@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 725
   ExplicitWidth = 741
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon

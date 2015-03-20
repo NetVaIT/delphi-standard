@@ -26,6 +26,7 @@ object _frmEdit: T_frmEdit
     TabOrder = 0
     Properties.ActivePage = tsGeneral
     Properties.CustomButtons.Buttons = <>
+    OnChange = pcMainChange
     ClientRectBottom = 323
     ClientRectLeft = 2
     ClientRectRight = 436
@@ -33,6 +34,10 @@ object _frmEdit: T_frmEdit
     object tsGeneral: TcxTabSheet
       Caption = 'General'
       ImageIndex = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object pmlMain: TPanel

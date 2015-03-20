@@ -56,11 +56,7 @@ uses PuestosDM;
 procedure TfrmPuesto.FormCreate(Sender: TObject);
 begin
   inherited;
-  dmPuestosPerfiles := TdmPuestosPerfiles.Create(Self);
-  dmPuestosPerfiles.DataSource := DataSource;
-//  dmPuestosPerfiles.adodsMasterPuesto :=
-
-
+  dmPuestosPerfiles := TdmPuestosPerfiles.Create(nil);
 end;
 
 procedure TfrmPuesto.FormDestroy(Sender: TObject);
@@ -72,6 +68,8 @@ end;
 procedure TfrmPuesto.FormShow(Sender: TObject);
 begin
   inherited;
+  dmPuestosPerfiles.MasterSource := DataSource;
+  dmPuestosPerfiles.MasterFields:= 'IdPuesto';
   dmPuestosPerfiles.ShowModule(tsPerfil,'');
 end;
 

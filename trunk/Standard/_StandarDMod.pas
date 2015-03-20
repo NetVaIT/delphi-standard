@@ -18,6 +18,10 @@ type
     procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
+    FMasterFields: string;
+    FMasterSource: TDataSource;
+    procedure SetMasterFields(const Value: string);
+    procedure SetMasterSource(const Value: TDataSource);
   protected
     gGridForm: T_frmGrid;
     gFormDeatil1: T_frmGrid;
@@ -26,6 +30,8 @@ type
   public
     { Public declarations }
     procedure ShowModule(pConteiner: TWinControl; pCation: TCaption);
+    property MasterSource: TDataSource read FMasterSource write SetMasterSource;
+    property MasterFields: string read FMasterFields write SetMasterFields;
   end;
 
 implementation
@@ -42,6 +48,18 @@ end;
 procedure T_dmStandar.DataModuleDestroy(Sender: TObject);
 begin
   if adodsMaster.CommandText <> EmptyStr then adodsMaster.Close;
+end;
+
+procedure T_dmStandar.SetMasterFields(const Value: string);
+begin
+  FMasterFields := Value;
+  adodsMaster.MasterFields:= Value;
+end;
+
+procedure T_dmStandar.SetMasterSource(const Value: TDataSource);
+begin
+  FMasterSource := Value;
+  adodsMaster.DataSource:= Value;
 end;
 
 procedure T_dmStandar.ShowModule(pConteiner: TWinControl; pCation: TCaption);

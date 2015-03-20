@@ -24,18 +24,19 @@ type
     adodsDepartamentosIdGerencia: TIntegerField;
     adodsDepartamentosIdentificador: TStringField;
     adodsDepartamentosDescripcion: TStringField;
-    adodsPuestosIdPuesto: TAutoIncField;
-    adodsPuestosIdDepartamento: TIntegerField;
-    adodsPuestosIdentificacion: TStringField;
-    adodsPuestosDescripcion: TStringField;
-    adodsPuestosFechaCreacionPuesto: TWideStringField;
-    adodsPuestosIdPuestoSuperior: TIntegerField;
-    adodsPuestosIdPuestoCategoria: TIntegerField;
     adodsPuestosCategorias: TADODataSet;
     adodsPuestoSuperior: TADODataSet;
-    adodsPuestosPuestoCategoria: TStringField;
+    adodsPuestosIdPuesto: TAutoIncField;
+    adodsPuestosIdDepartamento: TIntegerField;
+    adodsPuestosIdPuestoSuperior: TIntegerField;
+    adodsPuestosIdPuestoCategoria: TIntegerField;
+    adodsPuestosIdentificador: TStringField;
+    adodsPuestosDescripcion: TStringField;
+    adodsPuestosFechaCreacionPuesto: TWideStringField;
     adodsPuestosPuestoSuperior: TStringField;
+    adodsPuestosPuestoCategoria: TStringField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,9 +54,9 @@ uses UnidadesdeNegocioForm, GerenciasForm, DepartamentosForm, PuestosForm;
 procedure TdmPuestos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  if adodsGerencias.CommandText <> EmptyStr     then adodsGerencias.Open;
-  if adodsDepartamentos.CommandText <> EmptyStr then adodsDepartamentos.Open;
-  if adodsPuestos.CommandText <> EmptyStr       then adodsPuestos.Open;
+  adodsGerencias.Open;
+  adodsDepartamentos.Open;
+  adodsPuestos.Open;
   gGridForm:= TfrmUnidadesdeNegocio.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   gFormDeatil1:= TfrmGerencias.Create(Self);
@@ -64,6 +65,14 @@ begin
   gFormDeatil2.DataSet:= adodsDepartamentos;
   gFormDeatil3:= TfrmPuestos.Create(Self);
   gFormDeatil3.DataSet:= adodsPuestos;
+end;
+
+procedure TdmPuestos.DataModuleDestroy(Sender: TObject);
+begin
+  inherited;
+  adodsPuestos.Close;
+  adodsDepartamentos.Close;
+  adodsGerencias.Close;
 end;
 
 end.

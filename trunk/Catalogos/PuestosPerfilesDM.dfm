@@ -15,57 +15,45 @@ inherited dmPuestosPerfiles: TdmPuestosPerfiles
         Size = 4
         Value = Null
       end>
-    object adodsMasterIdPuestoPerfil: TIntegerField
+    object adodsMasterIdPuestoPerfil: TAutoIncField
       FieldName = 'IdPuestoPerfil'
+      ReadOnly = True
       Visible = False
     end
     object adodsMasterIdPuesto: TIntegerField
       FieldName = 'IdPuesto'
       Visible = False
     end
-    object adodsMasterPuesto: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Puesto'
-      LookupDataSet = adodsPuestos
-      LookupKeyFields = 'IdPuesto'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPuesto'
-      Size = 50
-      Lookup = True
-    end
     object adodsMasterIdPuestoPerfilCategoria: TIntegerField
       FieldName = 'IdPuestoPerfilCategoria'
       Visible = False
     end
+    object adodsMasterIdentificador: TStringField
+      FieldName = 'Identificador'
+      Required = True
+      Size = 10
+    end
+    object adodsMasterDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
+      FieldName = 'Descripcion'
+      Required = True
+      Size = 50
+    end
     object adodsMasterPerfilCategoria: TStringField
+      DisplayLabel = 'Categoria'
       FieldKind = fkLookup
       FieldName = 'PerfilCategoria'
       LookupDataSet = adodsPuestosPerfilCategorias
       LookupKeyFields = 'IdPuestoPerfilCategoria'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdPuestoPerfilCategoria'
+      Required = True
       Size = 50
       Lookup = True
-    end
-    object adodsMasterIdentificador: TStringField
-      FieldName = 'Identificador'
-      Size = 10
-    end
-    object adodsMasterDescripcion: TStringField
-      FieldName = 'Descripcion'
-      Size = 50
     end
     object adodsMasterValor: TIntegerField
       FieldName = 'Valor'
     end
-  end
-  object adodsPuestos: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'SELECT IdPuesto, Descripcion FROM Puestos'
-    Parameters = <>
-    Left = 112
-    Top = 16
   end
   object adodsPuestosPerfilCategorias: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -74,7 +62,7 @@ inherited dmPuestosPerfiles: TdmPuestosPerfiles
       'SELECT IdPuestoPerfilCategoria, Descripcion FROM PuestosPerfiles' +
       'Categorias'
     Parameters = <>
-    Left = 112
-    Top = 88
+    Left = 216
+    Top = 16
   end
 end

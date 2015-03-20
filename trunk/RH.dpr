@@ -9,7 +9,7 @@ uses
   _LoginForm in 'Standard\_LoginForm.pas' {_frmLogin},
   _MainForm in 'Standard\_MainForm.pas' {_frmMain},
   _ProgressForm in 'Standard\_ProgressForm.pas' {_frmProgress},
-  _StandarDMod in 'Standard\_StandarDMod.pas' {_dmStandar: TDataModule},
+  _ProviderDMod in 'Standard\_ProviderDMod.pas' {_dmProvider: TDataModule},
   _StandarForm in 'Standard\_StandarForm.pas' {_StandarFrm},
   _StandarGridForm in 'Standard\_StandarGridForm.pas' {_frmStandarGrid},
   _Utils in 'Standard\_Utils.pas',
@@ -69,7 +69,10 @@ uses
   DomiciliosDM in 'Catalogos\DomiciliosDM.pas' {dmDomicilios: TDataModule},
   EstablecimientosDM in 'Catalogos\EstablecimientosDM.pas' {dmEstablecimientos: TDataModule},
   EstablecimientoForm in 'Catalogos\EstablecimientoForm.pas' {frmEstablecimiento},
-  EstablecimientosForm in 'Catalogos\EstablecimientosForm.pas' {frmEstablecimientos};
+  EstablecimientosForm in 'Catalogos\EstablecimientosForm.pas' {frmEstablecimientos},
+  _StandarDMod in 'Standard\_StandarDMod.pas' {_dmStandar: TDataModule},
+  Monedas2DM in 'Catalogos\Monedas2DM.pas' {dmMonedas2: TDataModule},
+  Puestos2DM in 'Catalogos\Puestos2DM.pas' {dmPuestos2: TDataModule};
 
 {$R *.res}
 
