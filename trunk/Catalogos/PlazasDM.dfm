@@ -3,9 +3,18 @@ inherited dmPlazas: TdmPlazas
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdPlaza, IdPuesto, IdPersonaEmpleado, SalarioBase, FechaC' +
-      'reacionPlaza, IdPlazaTurno, IdUbicacion, IdPlazaTemporalidadTipo' +
-      ', Identificador, Descripcion FROM Plazas'
+      'select IdPlaza, IdPuesto, IdPersonaEmpleado, IdPlazaTurno, IdUbi' +
+      'cacion, IdPlazaTemporalidadTipo, Identificador, Descripcion, Sal' +
+      'arioBase, FechaCreacion from Plazas'#13#10'where IdPuesto = :IdPuesto'
+    Parameters = <
+      item
+        Name = 'IdPuesto'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     object adodsMasterIdPlaza: TIntegerField
       FieldName = 'IdPlaza'
       Visible = False
@@ -18,32 +27,57 @@ inherited dmPlazas: TdmPlazas
       FieldName = 'IdPersonaEmpleado'
       Visible = False
     end
-    object adodsMasterSalarioBase: TBCDField
-      FieldName = 'SalarioBase'
-      Precision = 18
-      Size = 0
-    end
-    object adodsMasterFechaCreacionPlaza: TWideStringField
-      FieldName = 'FechaCreacionPlaza'
-      Size = 10
-    end
     object adodsMasterIdPlazaTurno: TIntegerField
       FieldName = 'IdPlazaTurno'
       Visible = False
     end
-    object adodsMasterPlazaTurno: TStringField
+    object adodsMasterIdUbicacion: TIntegerField
+      FieldName = 'IdUbicacion'
+      Visible = False
+    end
+    object adodsMasterIdPlazaTemporalidadTipo: TIntegerField
+      FieldName = 'IdPlazaTemporalidadTipo'
+      Visible = False
+    end
+    object adodsMasterIdentificador: TStringField
+      FieldName = 'Identificador'
+      Required = True
+      Size = 10
+    end
+    object adodsMasterDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
+      FieldName = 'Descripcion'
+      Required = True
+      Size = 100
+    end
+    object adodsMasterSalarioBase: TBCDField
+      DisplayLabel = 'Salario base'
+      FieldName = 'SalarioBase'
+      Required = True
+      Precision = 18
+      Size = 0
+    end
+    object adodsMasterEmpleado: TStringField
       FieldKind = fkLookup
-      FieldName = 'PlazaTurno'
+      FieldName = 'Empleado'
+      LookupDataSet = adodsEmpleado
+      LookupKeyFields = 'IdPersona'
+      LookupResultField = 'Nombre'
+      KeyFields = 'IdPersonaEmpleado'
+      Required = True
+      Size = 300
+      Lookup = True
+    end
+    object adodsMasterTurnos: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Turnos'
       LookupDataSet = adodsPlazaTurnos
       LookupKeyFields = 'IdPlazaTurno'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdPlazaTurno'
+      Required = True
       Size = 50
       Lookup = True
-    end
-    object adodsMasterIdUbicacion: TIntegerField
-      FieldName = 'IdUbicacion'
-      Visible = False
     end
     object adodsMasterUbicacion: TStringField
       FieldKind = fkLookup
@@ -52,65 +86,58 @@ inherited dmPlazas: TdmPlazas
       LookupKeyFields = 'IdUbicacion'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdUbicacion'
+      Required = True
       Size = 50
       Lookup = True
     end
-    object adodsMasterIdPlazaTemporalidadTipo: TIntegerField
-      FieldName = 'IdPlazaTemporalidadTipo'
-      Visible = False
-    end
-    object adodsMasterPlazaTemporalidadTipo: TStringField
+    object adodsMasterTemporalidad: TStringField
       FieldKind = fkLookup
-      FieldName = 'PlazaTemporalidadTipo'
+      FieldName = 'Temporalidad'
       LookupDataSet = adodsPlazaTemporalidadTipos
       LookupKeyFields = 'IdPlazaTemporalidadTipo'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdPlazaTemporalidadTipo'
+      Required = True
       Size = 50
       Lookup = True
     end
-    object adodsMasterIdentificador: TStringField
-      FieldName = 'Identificador'
-      Size = 10
+    object adodsMasterFechaCreacion: TDateTimeField
+      DisplayLabel = 'Fecha creaci'#243'n'
+      FieldName = 'FechaCreacion'
     end
-    object adodsMasterDescripcion: TStringField
-      FieldName = 'Descripcion'
-      Size = 100
-    end
-  end
-  object ADODataSet1: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    Parameters = <>
-    Left = 200
-    Top = 24
   end
   object adodsPlazaTemporalidadTipos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPlazaTemporalidadTipo, Descripcion FROM PlazasTemporali' +
       'dadTipos'
     Parameters = <>
-    Left = 152
-    Top = 280
+    Left = 128
+    Top = 192
   end
   object adodsUbicacion: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdUbicacion, Descripcion FROM Ubicaciones'
     Parameters = <>
-    Left = 152
-    Top = 216
+    Left = 128
+    Top = 128
   end
   object adodsPlazaTurnos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPlazaTurno, Descripcion FROM PlazasTurnos'
     Parameters = <>
-    Left = 152
-    Top = 160
+    Left = 128
+    Top = 72
+  end
+  object adodsEmpleado: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdPersona, RazonSocial as Nombre from Personas'
+    Parameters = <>
+    Left = 128
+    Top = 16
   end
 end

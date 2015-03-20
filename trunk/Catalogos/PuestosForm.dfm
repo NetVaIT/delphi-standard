@@ -59,14 +59,14 @@ inherited frmPuestos: TfrmPuestos
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
         end
-        object tvMasterFechaCreacion: TcxGridDBColumn
-          DataBinding.FieldName = 'FechaCreacion'
+        object tvMasterPuestoCategoria: TcxGridDBColumn
+          DataBinding.FieldName = 'PuestoCategoria'
         end
         object tvMasterPuestoSuperior: TcxGridDBColumn
           DataBinding.FieldName = 'PuestoSuperior'
         end
-        object tvMasterPuestoCategoria: TcxGridDBColumn
-          DataBinding.FieldName = 'PuestoCategoria'
+        object tvMasterFechaCreacion: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaCreacion'
         end
       end
     end

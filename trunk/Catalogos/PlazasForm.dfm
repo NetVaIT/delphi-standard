@@ -20,41 +20,53 @@ inherited frmPlazas: TfrmPlazas
           DataBinding.FieldName = 'IdPersonaEmpleado'
           Visible = False
         end
-        object tvMasterIdentificador: TcxGridDBColumn
-          DataBinding.FieldName = 'Identificador'
-        end
-        object tvMasterDescripcion: TcxGridDBColumn
-          DataBinding.FieldName = 'Descripcion'
-        end
-        object tvMasterSalarioBase: TcxGridDBColumn
-          DataBinding.FieldName = 'SalarioBase'
-        end
-        object tvMasterFechaCreacionPlaza: TcxGridDBColumn
-          DataBinding.FieldName = 'FechaCreacionPlaza'
-        end
         object tvMasterIdPlazaTurno: TcxGridDBColumn
           DataBinding.FieldName = 'IdPlazaTurno'
           Visible = False
-        end
-        object tvMasterPlazaTurno: TcxGridDBColumn
-          DataBinding.FieldName = 'PlazaTurno'
         end
         object tvMasterIdUbicacion: TcxGridDBColumn
           DataBinding.FieldName = 'IdUbicacion'
           Visible = False
         end
-        object tvMasterUbicacion: TcxGridDBColumn
-          DataBinding.FieldName = 'Ubicacion'
-        end
         object tvMasterIdPlazaTemporalidadTipo: TcxGridDBColumn
           DataBinding.FieldName = 'IdPlazaTemporalidadTipo'
           Visible = False
         end
-        object tvMasterPlazaTemporalidadTipo: TcxGridDBColumn
-          DataBinding.FieldName = 'PlazaTemporalidadTipo'
+        object tvMasterIdentificador: TcxGridDBColumn
+          DataBinding.FieldName = 'Identificador'
+        end
+        object tvMasterDescripcion: TcxGridDBColumn
+          DataBinding.FieldName = 'Descripcion'
+          Width = 200
+        end
+        object tvMasterSalarioBase: TcxGridDBColumn
+          DataBinding.FieldName = 'SalarioBase'
+          PropertiesClassName = 'TcxCurrencyEditProperties'
+        end
+        object tvMasterEmpleado: TcxGridDBColumn
+          DataBinding.FieldName = 'Empleado'
+          Width = 150
+        end
+        object tvMasterTurnos: TcxGridDBColumn
+          DataBinding.FieldName = 'Turnos'
+          Width = 150
+        end
+        object tvMasterUbicacion: TcxGridDBColumn
+          DataBinding.FieldName = 'Ubicacion'
+          Width = 150
+        end
+        object tvMasterTemporalidad: TcxGridDBColumn
+          DataBinding.FieldName = 'Temporalidad'
+          Width = 150
+        end
+        object tvMasterFechaCreacion: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaCreacion'
         end
       end
     end
+  end
+  inherited DataSource: TDataSource
+    DataSet = dmPlazas.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

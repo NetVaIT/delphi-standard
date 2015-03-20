@@ -21,23 +21,24 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, cxCurrencyEdit;
 
 type
   TfrmPlazas = class(T_frmGrid)
     tvMasterIdPlaza: TcxGridDBColumn;
     tvMasterIdPuesto: TcxGridDBColumn;
     tvMasterIdPersonaEmpleado: TcxGridDBColumn;
-    tvMasterSalarioBase: TcxGridDBColumn;
-    tvMasterFechaCreacionPlaza: TcxGridDBColumn;
     tvMasterIdPlazaTurno: TcxGridDBColumn;
-    tvMasterPlazaTurno: TcxGridDBColumn;
     tvMasterIdUbicacion: TcxGridDBColumn;
-    tvMasterUbicacion: TcxGridDBColumn;
     tvMasterIdPlazaTemporalidadTipo: TcxGridDBColumn;
-    tvMasterPlazaTemporalidadTipo: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterSalarioBase: TcxGridDBColumn;
+    tvMasterTurnos: TcxGridDBColumn;
+    tvMasterUbicacion: TcxGridDBColumn;
+    tvMasterTemporalidad: TcxGridDBColumn;
+    tvMasterFechaCreacion: TcxGridDBColumn;
+    tvMasterEmpleado: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -49,12 +50,12 @@ implementation
 
 {$R *.dfm}
 
-uses PlazasDM, PlazaForm;
+uses PlazasDM, PlazasEdit;
 
 procedure TfrmPlazas.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmPlaza.Create(Self);
+  gEditForm:= TfrmPlazasEdit.Create(Self);
 end;
 
 end.

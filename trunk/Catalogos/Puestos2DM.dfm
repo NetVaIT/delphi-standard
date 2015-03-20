@@ -38,7 +38,6 @@ inherited dmPuestos2: TdmPuestos2
     Options = [poAutoRefresh, poUseQuoteChar]
   end
   inherited cdsMaster: TClientDataSet
-    Active = True
     OnNewRecord = cdsMasterNewRecord
     object cdsMasterIdPuesto: TAutoIncField
       FieldName = 'IdPuesto'
@@ -162,7 +161,6 @@ inherited dmPuestos2: TdmPuestos2
     Top = 144
   end
   object cdsPerfiles: TClientDataSet
-    Active = True
     Aggregates = <>
     DataSetField = cdsMasteradodsPerfiles
     Params = <>
