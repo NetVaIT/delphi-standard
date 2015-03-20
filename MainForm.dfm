@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 725
   ExplicitWidth = 741
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -219,9 +219,11 @@ inherited frmMain: TfrmMain
   end
   inherited cxSmallImages: TcxImageList
     FormatVersion = 1
+    DesignInfo = 1573500
   end
   inherited cxLargeImages: TcxImageList
     FormatVersion = 1
+    DesignInfo = 5243524
   end
   inherited ActionList: TActionList
     object actCatalogo: TAction

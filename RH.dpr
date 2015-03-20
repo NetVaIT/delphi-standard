@@ -74,7 +74,12 @@ uses
   Monedas2DM in 'Catalogos\Monedas2DM.pas' {dmMonedas2: TDataModule},
   Puestos2DM in 'Catalogos\Puestos2DM.pas' {dmPuestos2: TDataModule},
   DomiciliosEdit in 'Catalogos\DomiciliosEdit.pas' {frmDomiciliosEdit},
-  DomiciliosForm in 'Catalogos\DomiciliosForm.pas' {frmDomicilios};
+  DomiciliosForm in 'Catalogos\DomiciliosForm.pas' {frmDomicilios},
+  MovimientosTiposDM in 'Catalogos\MovimientosTiposDM.pas' {dmMovimientosTipo: TDataModule},
+  MovimientosTiposEdit in 'Catalogos\MovimientosTiposEdit.pas' {frmMovimientosTipoEdit},
+  MovimientosTiposForm in 'Catalogos\MovimientosTiposForm.pas' {frmMovimientosTipos},
+  ClientesDM in 'Catalogos\ClientesDM.pas' {dmClientes: TDataModule},
+  PersonasDM in 'Catalogos\PersonasDM.pas' {dmPersona: TDataModule};
 
 {$R *.res}
 
@@ -100,6 +105,7 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
+  Application.CreateForm(TdmMovimientosTipo, dmMovimientosTipo);
   Application.Run;
   end;
 end.
