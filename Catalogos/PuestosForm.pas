@@ -45,10 +45,12 @@ implementation
 
 {$R *.dfm}
 
-uses PuestosDM, PuestoForm;
+uses PuestosDM, PuestosEdit;
 
 procedure TfrmPuestos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmPuesto.Create(Self);end;
+  gEditForm:= TfrmPuestosEdit.Create(Self);
+end;
+
 end.

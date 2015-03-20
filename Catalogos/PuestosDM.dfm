@@ -145,11 +145,17 @@ inherited dmPuestos: TdmPuestos
       Required = True
       Size = 50
     end
-    object adodsPuestosFechaCreacionPuesto: TWideStringField
-      DisplayLabel = 'Fecha'
-      FieldName = 'FechaCreacion'
+    object adodsPuestosPuestoCategoria: TStringField
+      DisplayLabel = 'Categoria'
+      FieldKind = fkLookup
+      FieldName = 'PuestoCategoria'
+      LookupDataSet = adodsPuestosCategorias
+      LookupKeyFields = 'IdPuestoCategoria'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdPuestoCategoria'
       Required = True
-      Size = 10
+      Size = 50
+      Lookup = True
     end
     object adodsPuestosPuestoSuperior: TStringField
       DisplayLabel = 'Puesto superior'
@@ -162,17 +168,9 @@ inherited dmPuestos: TdmPuestos
       Size = 50
       Lookup = True
     end
-    object adodsPuestosPuestoCategoria: TStringField
-      DisplayLabel = 'Categoria'
-      FieldKind = fkLookup
-      FieldName = 'PuestoCategoria'
-      LookupDataSet = adodsPuestosCategorias
-      LookupKeyFields = 'IdPuestoCategoria'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPuestoCategoria'
-      Required = True
-      Size = 50
-      Lookup = True
+    object adodsPuestosFechaCreacion: TDateTimeField
+      DisplayLabel = 'Fecha creaci'#243'n'
+      FieldName = 'FechaCreacion'
     end
   end
   object dsGerencias: TDataSource
@@ -186,7 +184,6 @@ inherited dmPuestos: TdmPuestos
     Top = 144
   end
   object adodsPuestosCategorias: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPuestoCategoria, Descripcion FROM PuestosCategorias'
@@ -195,7 +192,6 @@ inherited dmPuestos: TdmPuestos
     Top = 264
   end
   object adodsPuestoSuperior: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPuesto, Descripcion FROM Puestos'

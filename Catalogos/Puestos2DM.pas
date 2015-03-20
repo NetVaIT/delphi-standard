@@ -65,7 +65,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses PuestosForm, PuestoForm;
+uses PuestosForm;
 
 {$R *.dfm}
 

@@ -1,4 +1,4 @@
-unit PuestoForm;
+unit PlazasEdit;
 
 interface
 
@@ -18,31 +18,30 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, Vcl.DBCtrls, cxTextEdit, cxDBEdit, cxMaskEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxCalendar,
-  PuestosPerfilesDM;
+  cxContainer, cxEdit, Vcl.DBCtrls, cxDBEdit, cxTextEdit, cxCurrencyEdit,
+  cxDropDownEdit, cxCalendar, cxMaskEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
-  TfrmPuesto = class(T_frmEdit)
+  TfrmPlazasEdit = class(T_frmEdit)
     Label1: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     Label3: TLabel;
+    cxDBCurrencyEdit1: TcxDBCurrencyEdit;
+    Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
+    cxDBLookupComboBox4: TcxDBLookupComboBox;
+    Label7: TLabel;
     cxDBDateEdit1: TcxDBDateEdit;
-    tsPerfil: TcxTabSheet;
-    tsBateriaCapacitacion: TcxTabSheet;
-    tsPlazas: TcxTabSheet;
-    procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    Label8: TLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
   private
     { Private declarations }
-    dmPuestosPerfiles: TdmPuestosPerfiles;
   public
     { Public declarations }
   end;
@@ -51,26 +50,6 @@ implementation
 
 {$R *.dfm}
 
-uses PuestosDM;
-
-procedure TfrmPuesto.FormCreate(Sender: TObject);
-begin
-  inherited;
-  dmPuestosPerfiles := TdmPuestosPerfiles.Create(nil);
-end;
-
-procedure TfrmPuesto.FormDestroy(Sender: TObject);
-begin
-  inherited;
-  FreeAndNil(dmPuestosPerfiles);
-end;
-
-procedure TfrmPuesto.FormShow(Sender: TObject);
-begin
-  inherited;
-  dmPuestosPerfiles.MasterSource := DataSource;
-  dmPuestosPerfiles.MasterFields:= 'IdPuesto';
-  dmPuestosPerfiles.ShowModule(tsPerfil,'');
-end;
+uses PlazasDM;
 
 end.

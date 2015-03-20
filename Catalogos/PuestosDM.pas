@@ -32,9 +32,9 @@ type
     adodsPuestosIdPuestoCategoria: TIntegerField;
     adodsPuestosIdentificador: TStringField;
     adodsPuestosDescripcion: TStringField;
-    adodsPuestosFechaCreacionPuesto: TWideStringField;
     adodsPuestosPuestoSuperior: TStringField;
     adodsPuestosPuestoCategoria: TStringField;
+    adodsPuestosFechaCreacion: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

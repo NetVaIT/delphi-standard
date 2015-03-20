@@ -7,23 +7,24 @@ uses
 
 type
   TdmPlazas = class(T_dmStandar)
-    ADODataSet1: TADODataSet;
     adodsPlazaTemporalidadTipos: TADODataSet;
     adodsUbicacion: TADODataSet;
     adodsPlazaTurnos: TADODataSet;
     adodsMasterIdPlaza: TIntegerField;
     adodsMasterIdPuesto: TIntegerField;
     adodsMasterIdPersonaEmpleado: TIntegerField;
-    adodsMasterSalarioBase: TBCDField;
-    adodsMasterFechaCreacionPlaza: TWideStringField;
     adodsMasterIdPlazaTurno: TIntegerField;
+    adodsMasterIdUbicacion: TIntegerField;
     adodsMasterIdPlazaTemporalidadTipo: TIntegerField;
     adodsMasterIdentificador: TStringField;
     adodsMasterDescripcion: TStringField;
-    adodsMasterPlazaTurno: TStringField;
-    adodsMasterPlazaTemporalidadTipo: TStringField;
-    adodsMasterIdUbicacion: TIntegerField;
+    adodsMasterSalarioBase: TBCDField;
+    adodsMasterTurnos: TStringField;
     adodsMasterUbicacion: TStringField;
+    adodsMasterTemporalidad: TStringField;
+    adodsMasterFechaCreacion: TDateTimeField;
+    adodsEmpleado: TADODataSet;
+    adodsMasterEmpleado: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
