@@ -1,31 +1,31 @@
 inherited frmPuesto: TfrmPuesto
   Caption = 'Puesto'
-  ClientHeight = 432
+  ClientHeight = 301
   ClientWidth = 705
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 711
-  ExplicitHeight = 460
+  ExplicitHeight = 330
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 705
-    Height = 391
-    ExplicitWidth = 474
-    ExplicitHeight = 263
-    ClientRectBottom = 389
+    Height = 260
+    ExplicitWidth = 705
+    ExplicitHeight = 391
+    ClientRectBottom = 258
     ClientRectRight = 703
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 470
-      ExplicitHeight = 233
+      ExplicitWidth = 701
+      ExplicitHeight = 361
       object Label1: TLabel
         Left = 16
         Top = 16
-        Width = 64
+        Width = 61
         Height = 13
-        Caption = 'Identificacion'
+        Caption = 'Identificador'
         FocusControl = cxDBTextEdit1
       end
       object Label2: TLabel
@@ -33,15 +33,15 @@ inherited frmPuesto: TfrmPuesto
         Top = 56
         Width = 54
         Height = 13
-        Caption = 'Descripcion'
+        Caption = 'Descripci'#243'n'
         FocusControl = cxDBTextEdit2
       end
       object Label3: TLabel
         Left = 16
         Top = 96
-        Width = 142
+        Width = 29
         Height = 13
-        Caption = 'Fecha de Creacion del Puesto'
+        Caption = 'Fecha'
       end
       object Label5: TLabel
         Left = 16
@@ -53,14 +53,14 @@ inherited frmPuesto: TfrmPuesto
       object Label6: TLabel
         Left = 16
         Top = 174
-        Width = 100
+        Width = 47
         Height = 13
-        Caption = 'Categoria del Puesto'
+        Caption = 'Categoria'
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16
         Top = 32
-        DataBinding.DataField = 'Identificacion'
+        DataBinding.DataField = 'Identificador'
         DataBinding.DataSource = DataSource
         TabOrder = 0
         Width = 121
@@ -94,7 +94,7 @@ inherited frmPuesto: TfrmPuesto
       object cxDBDateEdit1: TcxDBDateEdit
         Left = 16
         Top = 109
-        DataBinding.DataField = 'FechaCreacionPuesto'
+        DataBinding.DataField = 'FechaCreacion'
         DataBinding.DataSource = DataSource
         TabOrder = 2
         Width = 142
@@ -103,38 +103,32 @@ inherited frmPuesto: TfrmPuesto
     object tsPerfil: TcxTabSheet
       Caption = 'Perfil del Puesto'
       ImageIndex = 1
-      ExplicitWidth = 470
-      ExplicitHeight = 233
+      ExplicitHeight = 361
     end
     object tsBateriaCapacitacion: TcxTabSheet
       Caption = 'Bateria de Capacitacion'
       ImageIndex = 2
-      ExplicitWidth = 470
-      ExplicitHeight = 233
+      ExplicitHeight = 361
     end
     object tsPlazas: TcxTabSheet
       Caption = 'Plazas'
       ImageIndex = 3
-      ExplicitWidth = 470
-      ExplicitHeight = 233
+      ExplicitHeight = 361
     end
   end
   inherited pmlMain: TPanel
-    Top = 391
+    Top = 260
     Width = 705
-    ExplicitTop = 263
-    ExplicitWidth = 474
+    ExplicitTop = 391
+    ExplicitWidth = 705
     inherited btnOk: TButton
       Left = 542
-      ExplicitLeft = 311
+      ExplicitLeft = 542
     end
     inherited btnCancel: TButton
       Left = 623
-      ExplicitLeft = 392
+      ExplicitLeft = 623
     end
-  end
-  inherited DataSource: TDataSource
-    Left = 304
   end
   inherited ActionList: TActionList
     Left = 336

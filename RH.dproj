@@ -74,8 +74,8 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.5;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
-        <VerInfo_Build>5</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=NetVaIT;FileDescription=;FileVersion=1.0.0.6;InternalName=RH;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=Interva RH;ProductVersion=1.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>6</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -109,8 +109,8 @@
         <DCCReference Include="Standard\_ProgressForm.pas">
             <Form>_frmProgress</Form>
         </DCCReference>
-        <DCCReference Include="Standard\_StandarDMod.pas">
-            <Form>_dmStandar</Form>
+        <DCCReference Include="Standard\_ProviderDMod.pas">
+            <Form>_dmProvider</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Standard\_StandarForm.pas">
@@ -358,6 +358,21 @@
         <DCCReference Include="Catalogos\EstablecimientosForm.pas">
             <Form>frmEstablecimientos</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Standard\_StandarDMod.pas">
+            <Form>_dmStandar</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\Monedas2DM.pas">
+            <Form>dmMonedas2</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\Puestos2DM.pas">
+            <Form>dmPuestos2</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

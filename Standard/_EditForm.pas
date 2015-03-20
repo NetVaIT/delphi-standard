@@ -35,6 +35,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
+    procedure pcMainChange(Sender: TObject);
   private
     FDataSet: TDataSet;
     procedure SetDataSet(const Value: TDataSet);
@@ -65,6 +66,17 @@ end;
 procedure T_frmEdit.FormShow(Sender: TObject);
 begin
   pcMain.ActivePage := tsGeneral;
+end;
+
+procedure T_frmEdit.pcMainChange(Sender: TObject);
+begin
+  if (pcMain.ActivePage <> tsGeneral) and (DataSource.DataSet.State in [dsInsert]) then
+    try
+      DataSource.DataSet.Post;
+    except
+      pcMain.ActivePage := tsGeneral;
+      raise;
+    end;
 end;
 
 procedure T_frmEdit.SetDataSet(const Value: TDataSet);

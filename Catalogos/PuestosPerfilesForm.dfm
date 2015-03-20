@@ -16,21 +16,20 @@ inherited frmPuestosPerfiles: TfrmPuestosPerfiles
           DataBinding.FieldName = 'IdPuesto'
           Visible = False
         end
-        object tvMasterPuesto: TcxGridDBColumn
-          DataBinding.FieldName = 'Puesto'
-        end
         object tvMasterIdPuestoPerfilCategoria: TcxGridDBColumn
           DataBinding.FieldName = 'IdPuestoPerfilCategoria'
           Visible = False
-        end
-        object tvMasterPerfilCategoria: TcxGridDBColumn
-          DataBinding.FieldName = 'PerfilCategoria'
         end
         object tvMasterIdentificador: TcxGridDBColumn
           DataBinding.FieldName = 'Identificador'
         end
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
+          Width = 250
+        end
+        object tvMasterPerfilCategoria: TcxGridDBColumn
+          DataBinding.FieldName = 'PerfilCategoria'
+          Width = 250
         end
         object tvMasterValor: TcxGridDBColumn
           DataBinding.FieldName = 'Valor'

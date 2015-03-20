@@ -5,7 +5,7 @@ inherited frmPuestos: TfrmPuestos
   ClientWidth = 645
   OnCreate = FormCreate
   ExplicitWidth = 651
-  ExplicitHeight = 457
+  ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -45,25 +45,25 @@ inherited frmPuestos: TfrmPuestos
           DataBinding.FieldName = 'IdDepartamento'
           Visible = False
         end
-        object tvMasterIdentificacion: TcxGridDBColumn
-          DataBinding.FieldName = 'Identificacion'
-        end
-        object tvMasterDescripcion: TcxGridDBColumn
-          DataBinding.FieldName = 'Descripcion'
-        end
-        object tvMasterFechaCreacionPuesto: TcxGridDBColumn
-          DataBinding.FieldName = 'FechaCreacionPuesto'
-        end
         object tvMasterIdPuestoSuperior: TcxGridDBColumn
           DataBinding.FieldName = 'IdPuestoSuperior'
           Visible = False
         end
-        object tvMasterPuestoSuperior: TcxGridDBColumn
-          DataBinding.FieldName = 'PuestoSuperior'
-        end
         object tvMasterIdPuestoCategoria: TcxGridDBColumn
           DataBinding.FieldName = 'IdPuestoCategoria'
           Visible = False
+        end
+        object tvMasterIdentificador: TcxGridDBColumn
+          DataBinding.FieldName = 'Identificador'
+        end
+        object tvMasterDescripcion: TcxGridDBColumn
+          DataBinding.FieldName = 'Descripcion'
+        end
+        object tvMasterFechaCreacion: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaCreacion'
+        end
+        object tvMasterPuestoSuperior: TcxGridDBColumn
+          DataBinding.FieldName = 'PuestoSuperior'
         end
         object tvMasterPuestoCategoria: TcxGridDBColumn
           DataBinding.FieldName = 'PuestoCategoria'

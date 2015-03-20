@@ -21,17 +21,16 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.DBClientActns;
 
 type
   TfrmPuestosPerfiles = class(T_frmGrid)
     tvMasterIdPuestoPerfil: TcxGridDBColumn;
     tvMasterIdPuesto: TcxGridDBColumn;
-    tvMasterPuesto: TcxGridDBColumn;
     tvMasterIdPuestoPerfilCategoria: TcxGridDBColumn;
-    tvMasterPerfilCategoria: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterPerfilCategoria: TcxGridDBColumn;
     tvMasterValor: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private

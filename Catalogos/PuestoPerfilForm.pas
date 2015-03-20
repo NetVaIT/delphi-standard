@@ -24,15 +24,13 @@ uses
 type
   TfrmPuestoPerfil = class(T_frmEdit)
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
-    Label4: TLabel;
+    Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
-    Label5: TLabel;
+    Label3: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label4: TLabel;
     cxDBSpinEdit1: TcxDBSpinEdit;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
-    cxDBLookupComboBox2: TcxDBLookupComboBox;
   private
     { Private declarations }
   public

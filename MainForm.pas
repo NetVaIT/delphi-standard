@@ -21,8 +21,7 @@ uses
   Vcl.StdActns, System.Actions, Vcl.ActnList, Vcl.ImgList, dxSkinsForm, dxBar,
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
-  cxClasses, dxRibbon, dxScreenTip, _Utils,
-  _StandarDMod, Data.DB;
+  cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -75,7 +74,7 @@ implementation
 {$R *.dfm}
 
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
-      EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM;
+  EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -99,8 +98,11 @@ begin
     8: gModulo := TdmPuestos.Create(Self);
     9: gModulo := TdmEstablecimientos.Create(Self);
   end;
-  gModulo.ShowModule(pnlMain, pCaption);
-  Caption := pCaption + strSeparador + strProductName + strSeparador + strFileDescription;
+  if Assigned(gModulo) then
+  begin
+    gModulo.ShowModule(pnlMain, pCaption);
+    Caption := pCaption + strSeparador + strProductName + strSeparador + strFileDescription;
+  end;
 end;
 
 procedure TfrmMain.ConfigControls;
