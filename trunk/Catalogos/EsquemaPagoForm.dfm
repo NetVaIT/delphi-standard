@@ -9,6 +9,8 @@ inherited frmEsquemaPago: TfrmEsquemaPago
   inherited pcMain: TcxPageControl
     Width = 380
     Height = 185
+    ExplicitWidth = 380
+    ExplicitHeight = 185
     ClientRectBottom = 183
     ClientRectRight = 378
     inherited tsGeneral: TcxTabSheet
@@ -65,11 +67,15 @@ inherited frmEsquemaPago: TfrmEsquemaPago
   inherited pmlMain: TPanel
     Top = 185
     Width = 380
+    ExplicitTop = 185
+    ExplicitWidth = 380
     inherited btnOk: TButton
       Left = 217
+      ExplicitLeft = 217
     end
     inherited btnCancel: TButton
       Left = 298
+      ExplicitLeft = 298
     end
   end
   inherited cxImageList: TcxImageList

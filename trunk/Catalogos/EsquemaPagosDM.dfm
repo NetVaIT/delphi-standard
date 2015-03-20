@@ -1,4 +1,5 @@
 inherited dmEsquemaPagos: TdmEsquemaPagos
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
