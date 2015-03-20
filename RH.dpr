@@ -72,7 +72,9 @@ uses
   EstablecimientoForm in 'Catalogos\EstablecimientoForm.pas' {frmEstablecimiento},
   EstablecimientosForm in 'Catalogos\EstablecimientosForm.pas' {frmEstablecimientos},
   Monedas2DM in 'Catalogos\Monedas2DM.pas' {dmMonedas2: TDataModule},
-  Puestos2DM in 'Catalogos\Puestos2DM.pas' {dmPuestos2: TDataModule};
+  Puestos2DM in 'Catalogos\Puestos2DM.pas' {dmPuestos2: TDataModule},
+  DomiciliosEdit in 'Catalogos\DomiciliosEdit.pas' {frmDomiciliosEdit},
+  DomiciliosForm in 'Catalogos\DomiciliosForm.pas' {frmDomicilios};
 
 {$R *.res}
 

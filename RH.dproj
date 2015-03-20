@@ -338,6 +338,14 @@
             <Form>dmPuestos2</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Catalogos\DomiciliosEdit.pas">
+            <Form>frmDomiciliosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\DomiciliosForm.pas">
+            <Form>frmDomicilios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
