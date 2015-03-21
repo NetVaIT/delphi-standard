@@ -20,7 +20,7 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, Vcl.DBCtrls, cxTextEdit, cxDBEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxCalendar,
-  PuestosPerfilesDM, PlazasDM;
+  PuestosPerfilesDM, PlazasDM, PuestosCapacitacionDM;
 
 type
   TfrmPuestosEdit = class(T_frmEdit)
@@ -44,6 +44,7 @@ type
     { Private declarations }
     dmPuestosPerfiles: TdmPuestosPerfiles;
     dmPlazas: TdmPlazas;
+    dmPuestosCapacitacion: TdmPuestosCapacitacion;
   public
     { Public declarations }
   end;
@@ -59,6 +60,7 @@ begin
   inherited;
   dmPuestosPerfiles := TdmPuestosPerfiles.Create(nil);
   dmPlazas:= TdmPlazas.Create(nil);
+  dmPuestosCapacitacion:= TdmPuestosCapacitacion.Create(nil);
 end;
 
 procedure TfrmPuestosEdit.FormDestroy(Sender: TObject);
@@ -66,6 +68,7 @@ begin
   inherited;
   FreeAndNil(dmPuestosPerfiles);
   FreeAndNil(dmPlazas);
+  FreeAndNil(dmPuestosCapacitacion);
 end;
 
 procedure TfrmPuestosEdit.FormShow(Sender: TObject);
@@ -79,6 +82,10 @@ begin
   dmPlazas.MasterSource := DataSource;
   dmPlazas.MasterFields:= 'IdPuesto';
   dmPlazas.ShowModule(tsPlazas,'');
+  // Capacitacion
+  dmPuestosCapacitacion.MasterSource := DataSource;
+  dmPuestosCapacitacion.MasterFields:= 'IdPuesto';
+  dmPuestosCapacitacion.ShowModule(tsBateriaCapacitacion,'');
 end;
 
 end.
