@@ -4,16 +4,12 @@ inherited dmCapacitacion: TdmCapacitacion
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdBateriaCapacitacion, IdPuesto, Identificador, Descripci' +
-      'on, Ponderacion FROM BateriaCapacitacion'
+      'SELECT IdBateriaCapacitacion, Identificador, Descripcion, Ponder' +
+      'acion FROM BateriaCapacitacion'
     Left = 88
-    Top = 64
+    Top = 32
     object adodsMasterIdBateriaCapacitacion: TIntegerField
       FieldName = 'IdBateriaCapacitacion'
-      Visible = False
-    end
-    object adodsMasterIdPuesto: TIntegerField
-      FieldName = 'IdPuesto'
       Visible = False
     end
     object adodsMasterIdentificador: TStringField
@@ -29,8 +25,8 @@ inherited dmCapacitacion: TdmCapacitacion
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
-    Left = 184
-    Top = 64
+    Left = 264
+    Top = 32
   end
   object adodsBateriaCapacitacionCursos: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -51,7 +47,7 @@ inherited dmCapacitacion: TdmCapacitacion
         Value = Null
       end>
     Left = 88
-    Top = 152
+    Top = 104
     object adodsBateriaCapacitacionCursosIdBateriaCapacitacionCurso: TIntegerField
       FieldName = 'IdBateriaCapacitacionCurso'
       Visible = False
@@ -91,8 +87,8 @@ inherited dmCapacitacion: TdmCapacitacion
         Size = 4
         Value = Null
       end>
-    Left = 88
-    Top = 248
+    Left = 96
+    Top = 192
     object adodsBateriaCapacitacionCursosTemasIdBateriaCapacitacionCursoTema: TIntegerField
       FieldName = 'IdBateriaCapacitacionCursoTema'
       Visible = False
@@ -115,7 +111,7 @@ inherited dmCapacitacion: TdmCapacitacion
   end
   object dsBateriaCapacitacionCursos: TDataSource
     DataSet = adodsBateriaCapacitacionCursos
-    Left = 256
-    Top = 152
+    Left = 264
+    Top = 104
   end
 end

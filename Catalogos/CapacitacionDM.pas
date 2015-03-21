@@ -22,7 +22,6 @@ type
     adodsBateriaCapacitacionCursosTemasDescripcion: TStringField;
     adodsBateriaCapacitacionCursosTemasPonderacion: TIntegerField;
     adodsMasterIdBateriaCapacitacion: TIntegerField;
-    adodsMasterIdPuesto: TIntegerField;
     adodsMasterIdentificador: TStringField;
     adodsMasterDescripcion: TStringField;
     adodsMasterPonderacion: TIntegerField;
