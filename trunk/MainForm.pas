@@ -53,6 +53,14 @@ type
     dxBarLargeButton14: TdxBarLargeButton;
     dxBarManagerBar1: TdxBar;
     actCapacitaciones: TAction;
+    dxBarButton2: TdxBarButton;
+    dxBarManagerBar2: TdxBar;
+    dxBarLargeButton12: TdxBarLargeButton;
+    actEmpleados: TAction;
+    actClientes: TAction;
+    actProveedores: TAction;
+    dxBarLargeButton15: TdxBarLargeButton;
+    dxBarLargeButton16: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -74,7 +82,7 @@ implementation
 
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
-  CapacitacionDM;
+  CapacitacionDM, PersonasDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -98,6 +106,10 @@ begin
     8: gModulo := TdmPuestos.Create(Self);
     9: gModulo := TdmEstablecimientos.Create(Self);
    10: gModulo := TdmCapacitacion.Create(Self);
+   11: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol:= rEmpleado;
+       end;
   end;
   if Assigned(gModulo) then
   begin
@@ -119,6 +131,7 @@ begin
   actFormulas.Enabled         := Conected;
   actReglasNegocio.Enabled    := Conected;
   actEstablecimientos.Enabled := Conected;
+  actEmpleados.Enabled        := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;
