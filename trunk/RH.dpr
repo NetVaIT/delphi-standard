@@ -75,9 +75,6 @@ uses
   EstablecimientosForm in 'Catalogos\EstablecimientosForm.pas' {frmEstablecimientos},
   Monedas2DM in 'Catalogos\Monedas2DM.pas' {dmMonedas2: TDataModule},
   Puestos2DM in 'Catalogos\Puestos2DM.pas' {dmPuestos2: TDataModule},
-  PuestosCapacitacionDM in 'Catalogos\PuestosCapacitacionDM.pas' {dmPuestosCapacitacion: TDataModule},
-  PuestosCapacitacionForm in 'Catalogos\PuestosCapacitacionForm.pas' {frmPuestosCapacitacion},
-  PuestosCapacitacionEditForm in 'Catalogos\PuestosCapacitacionEditForm.pas' {frmPuestosCapacitacionEdit},
   DomiciliosEdit in 'Catalogos\DomiciliosEdit.pas' {frmDomiciliosEdit},
   DomiciliosForm in 'Catalogos\DomiciliosForm.pas' {frmDomicilios},
   MovimientosTiposDM in 'Catalogos\MovimientosTiposDM.pas' {dmMovimientosTipo: TDataModule},
@@ -87,7 +84,9 @@ uses
   PersonasEdit in 'Catalogos\PersonasEdit.pas' {frmPersonasEdit},
   PersonasForm in 'Catalogos\PersonasForm.pas' {frmPersonas},
   PuestosCapacitacionesDM in 'Catalogos\PuestosCapacitacionesDM.pas' {dmPuestosCapacitaciones: TDataModule},
-  PuestosCapacitacionesForm in 'Catalogos\PuestosCapacitacionesForm.pas' {frmPuestosCapacitaciones};
+  PuestosCapacitacionesForm in 'Catalogos\PuestosCapacitacionesForm.pas' {frmPuestosCapacitaciones},
+  EsquemaPagosMovimientosTiposDM in 'Catalogos\EsquemaPagosMovimientosTiposDM.pas' {dmEsquemaPagosMovimientosTipos: TDataModule},
+  EsquemaPagosMovimientosTiposForm in 'Catalogos\EsquemaPagosMovimientosTiposForm.pas' {frmEsquemaPagosMovimientosTipos};
 
 {$R *.res}
 
@@ -113,7 +112,6 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
-  Application.CreateForm(TdmMovimientosTipo, dmMovimientosTipo);
   Application.Run;
   end;
 end.

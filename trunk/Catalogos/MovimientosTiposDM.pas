@@ -19,19 +19,26 @@ type
     adodsMovimientoTipoEfecto: TADODataSet;
     adodsMasterMovimientoTipoCategoria: TStringField;
     adodsMasterMovimientoTipoEfecto: TStringField;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
 
-var
-  dmMovimientosTipo: TdmMovimientosTipo;
-
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses MovimientosTiposForm;
+
 {$R *.dfm}
+
+procedure TdmMovimientosTipo.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  gGridForm:= TfrmMovimientosTipos.Create(nil);
+  gGridForm.DataSet:= adodsMaster;
+end;
 
 end.

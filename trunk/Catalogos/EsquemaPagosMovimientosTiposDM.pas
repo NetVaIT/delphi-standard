@@ -1,4 +1,4 @@
-unit PuestosCapacitacionesDM;
+unit EsquemaPagosMovimientosTiposDM;
 
 interface
 
@@ -7,10 +7,10 @@ uses
   Data.Win.ADODB, Data.DB;
 
 type
-  TdmPuestosCapacitaciones = class(T_dmDualList)
-    adoqAvailableIdBateriaCapacitacion: TAutoIncField;
+  TdmEsquemaPagosMovimientosTipos = class(T_dmDualList)
+    adoqAvailableIdEsquemaPago: TIntegerField;
     adoqAvailableDescripcion: TStringField;
-    adoqAssignedIdBateriaCapacitacion: TAutoIncField;
+    adoqAssignedIdEsquemaPago: TIntegerField;
     adoqAssignedDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -23,15 +23,15 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses PuestosCapacitacionesForm;
+uses EsquemaPagosMovimientosTiposForm;
 
 {$R *.dfm}
 
-procedure TdmPuestosCapacitaciones.DataModuleCreate(Sender: TObject);
+procedure TdmEsquemaPagosMovimientosTipos.DataModuleCreate(Sender: TObject);
 begin
-  IdFieldName1:= 'IdPuesto';
-  IdFieldName2:= 'IdBateriaCapacitacion';
-  gGridForm:= TfrmPuestosCapacitaciones.Create(nil);
+  IdFieldName1:= 'IdMovimientoTipo';
+  IdFieldName2:= 'IdEsquemaPago';
+  gGridForm:= TfrmEsquemaPagosMovimientosTipos.Create(nil);
   inherited;
 end;
 

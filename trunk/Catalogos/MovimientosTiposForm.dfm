@@ -26,20 +26,24 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
         end
+        object tvMasterMovimientoTipoCategoria: TcxGridDBColumn
+          DataBinding.FieldName = 'MovimientoTipoCategoria'
+          Width = 304
+        end
+        object tvMasterMovimientoTipoEfecto: TcxGridDBColumn
+          DataBinding.FieldName = 'MovimientoTipoEfecto'
+          Width = 304
+        end
         object tvMasterValorDefault: TcxGridDBColumn
           DataBinding.FieldName = 'ValorDefault'
         end
         object tvMasterProduceCXC: TcxGridDBColumn
           DataBinding.FieldName = 'ProduceCXC'
+          Width = 67
         end
         object tvMasterProduceCXP: TcxGridDBColumn
           DataBinding.FieldName = 'ProduceCXP'
-        end
-        object tvMasterMovimientoTipoCategoria: TcxGridDBColumn
-          DataBinding.FieldName = 'MovimientoTipoCategoria'
-        end
-        object tvMasterMovimientoTipoEfecto: TcxGridDBColumn
-          DataBinding.FieldName = 'MovimientoTipoEfecto'
+          Width = 66
         end
       end
     end
