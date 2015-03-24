@@ -61,7 +61,7 @@ uses
   PlazaTurnoForm in 'Catalogos\PlazaTurnoForm.pas' {frmPlazaTurno},
   PlazasTurnosForm in 'Catalogos\PlazasTurnosForm.pas' {frmPlazasTurnos},
   EsquemaPagosDM in 'Catalogos\EsquemaPagosDM.pas' {dmEsquemaPagos: TDataModule},
-  EsquemaPagoForm in 'Catalogos\EsquemaPagoForm.pas' {frmEsquemaPago},
+  EsquemaPagosEdit in 'Catalogos\EsquemaPagosEdit.pas' {frmEsquemaPagosEdit},
   EsquemaPagosForm in 'Catalogos\EsquemaPagosForm.pas' {frmEsquemaPagos},
   FormulasDM in 'Catalogos\FormulasDM.pas' {dmFormulas: TDataModule},
   FormulaForm in 'Catalogos\FormulaForm.pas' {frmFormula},

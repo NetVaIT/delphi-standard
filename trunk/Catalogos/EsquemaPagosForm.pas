@@ -41,12 +41,12 @@ implementation
 
 {$R *.dfm}
 
-uses EsquemaPagosDM, EsquemaPagoForm;
+uses EsquemaPagosDM, EsquemaPagosEdit;
 
 procedure TfrmEsquemaPagos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmEsquemaPago.Create(Self);
+  gEditForm:= TfrmEsquemaPagosEdit.Create(Self);
 end;
 
 end.

@@ -9,25 +9,30 @@ inherited dmEsquemaPagos: TdmEsquemaPagos
       FieldName = 'IdEsquemaPago'
       Visible = False
     end
-    object adodsMasterIdentificador: TStringField
-      FieldName = 'Identificador'
-      Size = 10
-    end
-    object adodsMasterDescripcion: TStringField
-      FieldName = 'Descripcion'
-      Size = 50
-    end
     object adodsMasterIdEsquemaPagoEstatus: TIntegerField
       FieldName = 'IdEsquemaPagoEstatus'
       Visible = False
     end
+    object adodsMasterIdentificador: TStringField
+      FieldName = 'Identificador'
+      Required = True
+      Size = 10
+    end
+    object adodsMasterDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
+      FieldName = 'Descripcion'
+      Required = True
+      Size = 50
+    end
     object adodsMasterEsquemaPagoEstatus: TStringField
+      DisplayLabel = 'Estatus'
       FieldKind = fkLookup
       FieldName = 'EsquemaPagoEstatus'
       LookupDataSet = adodsEsquemaPagoEstatus
       LookupKeyFields = 'IdEsquemaPagoEstatus'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdEsquemaPagoEstatus'
+      Required = True
       Size = 50
       Lookup = True
     end
