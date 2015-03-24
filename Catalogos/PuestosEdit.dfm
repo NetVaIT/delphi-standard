@@ -11,14 +11,14 @@ inherited frmPuestosEdit: TfrmPuestosEdit
   inherited pcMain: TcxPageControl
     Width = 794
     Height = 280
-    ExplicitWidth = 705
+    ExplicitWidth = 794
     ExplicitHeight = 280
     ClientRectBottom = 278
     ClientRectRight = 792
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 701
+      ExplicitWidth = 790
       ExplicitHeight = 250
       object Label1: TLabel
         Left = 16
@@ -104,31 +104,40 @@ inherited frmPuestosEdit: TfrmPuestosEdit
     object tsPerfil: TcxTabSheet
       Caption = 'Perfil del Puesto'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 701
+      ExplicitHeight = 0
     end
     object tsPlazas: TcxTabSheet
       Caption = 'Plazas'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 701
+      ExplicitHeight = 0
     end
     object tsBateriaCapacitacion: TcxTabSheet
       Caption = 'Bateria de Capacitacion'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 701
+      ExplicitHeight = 0
     end
   end
   inherited pmlMain: TPanel
     Top = 280
     Width = 794
     ExplicitTop = 280
-    ExplicitWidth = 705
+    ExplicitWidth = 794
     inherited btnOk: TButton
       Left = 631
-      ExplicitLeft = 542
+      ExplicitLeft = 631
     end
     inherited btnCancel: TButton
       Left = 712
-      ExplicitLeft = 623
+      ExplicitLeft = 712
     end
   end
   inherited ActionList: TActionList

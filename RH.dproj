@@ -40,7 +40,7 @@
         <DCC_F>false</DCC_F>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -294,16 +294,6 @@
             <Form>dmPuestos2</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\PuestosCapacitacionDM.pas">
-            <Form>dmPuestosCapacitacion</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\PuestosCapacitacionForm.pas">
-            <Form>frmPuestosCapacitacion</Form>
-        </DCCReference>
-        <DCCReference Include="Catalogos\PuestosCapacitacionEditForm.pas">
-            <Form>frmPuestosCapacitacionEdit</Form>
-        </DCCReference>
         <DCCReference Include="Catalogos\DomiciliosEdit.pas">
             <Form>frmDomiciliosEdit</Form>
         </DCCReference>
@@ -336,6 +326,15 @@
         </DCCReference>
         <DCCReference Include="Catalogos\PuestosCapacitacionesForm.pas">
             <Form>frmPuestosCapacitaciones</Form>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EsquemaPagosMovimientosTiposDM.pas">
+            <Form>dmEsquemaPagosMovimientosTipos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EsquemaPagosMovimientosTiposForm.pas">
+            <Form>frmEsquemaPagosMovimientosTipos</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

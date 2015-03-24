@@ -1,10 +1,10 @@
-unit MovimientosTiposForm;
+unit EsquemaPagosMovimientosTiposForm;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _GridForm, cxGraphics, cxControls,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _DualListForm, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack,
   dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
   dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
@@ -18,24 +18,16 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
-  dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
-  cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
+  dxSkinsdxBarPainter, dxBar, cxClasses, Vcl.ImgList, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmMovimientosTipos = class(T_frmGrid)
-    tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoTipoCategoria: TcxGridDBColumn;
-    tvMasterIdMovimientoTipoEfecto: TcxGridDBColumn;
-    tvMasterIdentificador: TcxGridDBColumn;
-    tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterMovimientoTipoCategoria: TcxGridDBColumn;
-    tvMasterMovimientoTipoEfecto: TcxGridDBColumn;
-    tvMasterValorDefault: TcxGridDBColumn;
-    tvMasterProduceCXC: TcxGridDBColumn;
-    tvMasterProduceCXP: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+  TfrmEsquemaPagosMovimientosTipos = class(T_frmDualList)
+    tvAviableIdEsquemaPago: TcxGridDBColumn;
+    tvAviableDescripcion: TcxGridDBColumn;
+    tvAssignedIdEsquemaPago: TcxGridDBColumn;
+    tvAssignedDescripcion: TcxGridDBColumn;
   private
     { Private declarations }
   public
@@ -46,12 +38,6 @@ implementation
 
 {$R *.dfm}
 
-uses MovimientosTiposDM, MovimientosTiposEdit;
-
-procedure TfrmMovimientosTipos.FormCreate(Sender: TObject);
-begin
-  inherited;
-  gEditForm:= TfrmMovimientosTipoEdit.Create(Self);
-end;
+uses EsquemaPagosMovimientosTiposDM;
 
 end.

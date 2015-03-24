@@ -19,7 +19,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, Vcl.DBCtrls, cxCheckBox, cxDBEdit, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  EsquemaPagosMovimientosTiposDM;
 
 type
   TfrmMovimientosTipoEdit = class(T_frmEdit)
@@ -28,15 +29,20 @@ type
     Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
     cxDBCheckBox1: TcxDBCheckBox;
     cxDBCheckBox2: TcxDBCheckBox;
-    Label4: TLabel;
-    Label5: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
+    tsEsquemaPagos: TcxTabSheet;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos;
   public
     { Public declarations }
   end;
@@ -46,5 +52,24 @@ implementation
 {$R *.dfm}
 
 uses MovimientosTiposDM;
+
+procedure TfrmMovimientosTipoEdit.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dmEsquemaPagosMovimientosTipos:= TdmEsquemaPagosMovimientosTipos.Create(nil);
+end;
+
+procedure TfrmMovimientosTipoEdit.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmEsquemaPagosMovimientosTipos);
+end;
+
+procedure TfrmMovimientosTipoEdit.FormShow(Sender: TObject);
+begin
+  inherited;
+  dmEsquemaPagosMovimientosTipos.MasterSource:= DataSource;
+  dmEsquemaPagosMovimientosTipos.ShowModule(tsEsquemaPagos);
+end;
 
 end.

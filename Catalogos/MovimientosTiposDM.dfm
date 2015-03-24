@@ -1,4 +1,7 @@
 inherited dmMovimientosTipo: TdmMovimientosTipo
+  OldCreateOrder = True
+  Height = 229
+  Width = 272
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -21,41 +24,51 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
     object adodsMasterIdentificador: TStringField
       FieldName = 'Identificador'
+      Required = True
     end
     object adodsMasterDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
       FieldName = 'Descripcion'
+      Required = True
       Size = 50
     end
-    object adodsMasterValorDefault: TFMTBCDField
-      FieldName = 'ValorDefault'
-      Precision = 18
-      Size = 6
-    end
-    object adodsMasterProduceCXC: TBooleanField
-      FieldName = 'ProduceCXC'
-    end
-    object adodsMasterProduceCXP: TBooleanField
-      FieldName = 'ProduceCXP'
-    end
     object adodsMasterMovimientoTipoCategoria: TStringField
+      DisplayLabel = 'Categoria'
       FieldKind = fkLookup
       FieldName = 'MovimientoTipoCategoria'
       LookupDataSet = adodsMovimientoTipoCategoria
       LookupKeyFields = 'IdMovimientoTipoCategoria'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdMovimientoTipoCategoria'
-      Size = 50
+      Required = True
+      Size = 100
       Lookup = True
     end
     object adodsMasterMovimientoTipoEfecto: TStringField
+      DisplayLabel = 'Efecto'
       FieldKind = fkLookup
       FieldName = 'MovimientoTipoEfecto'
       LookupDataSet = adodsMovimientoTipoEfecto
       LookupKeyFields = 'IdMovimientoTipoEfecto'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdMovimientoTipoEfecto'
-      Size = 50
+      Required = True
+      Size = 100
       Lookup = True
+    end
+    object adodsMasterValorDefault: TFMTBCDField
+      DisplayLabel = 'Valor omision'
+      FieldName = 'ValorDefault'
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterProduceCXC: TBooleanField
+      DisplayLabel = 'Produce CXC'
+      FieldName = 'ProduceCXC'
+    end
+    object adodsMasterProduceCXP: TBooleanField
+      DisplayLabel = 'Produce CXP'
+      FieldName = 'ProduceCXP'
     end
   end
   object adodsMovimientoTipoCategoria: TADODataSet
@@ -65,8 +78,8 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       'SELECT IdMovimientoTipoCategoria, Descripcion FROM MovimientosTi' +
       'posCategorias'
     Parameters = <>
-    Left = 192
-    Top = 24
+    Left = 120
+    Top = 72
   end
   object adodsMovimientoTipoEfecto: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -75,7 +88,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       'SELECT IdMovimientoTipoEfecto, Descripcion FROM MovimientosTipos' +
       'Efectos'
     Parameters = <>
-    Left = 192
+    Left = 120
     Top = 128
   end
 end

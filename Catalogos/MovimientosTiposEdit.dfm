@@ -1,23 +1,27 @@
 inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
-  Caption = 'Tipos de Movimientos'
+  Caption = 'Tipo de Movimiento'
   ClientHeight = 347
-  ClientWidth = 484
-  ExplicitWidth = 490
-  ExplicitHeight = 375
+  ClientWidth = 594
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  ExplicitWidth = 600
+  ExplicitHeight = 376
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 484
+    Width = 594
     Height = 306
+    ExplicitWidth = 484
+    ExplicitHeight = 306
     ClientRectBottom = 304
-    ClientRectRight = 482
+    ClientRectRight = 592
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 434
-      ExplicitHeight = 295
+      ExplicitWidth = 480
+      ExplicitHeight = 276
       object Label1: TLabel
-        Left = 16
+        Left = 24
         Top = 16
         Width = 61
         Height = 13
@@ -25,37 +29,39 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         FocusControl = cxDBTextEdit1
       end
       object Label2: TLabel
-        Left = 16
+        Left = 24
         Top = 56
         Width = 54
         Height = 13
-        Caption = 'Descripcion'
+        Caption = 'Descripci'#243'n'
         FocusControl = cxDBTextEdit2
       end
       object Label3: TLabel
-        Left = 16
+        Left = 24
         Top = 96
-        Width = 62
+        Width = 47
         Height = 13
-        Caption = 'Valor Default'
-        FocusControl = cxDBTextEdit3
+        Caption = 'Categoria'
+        FocusControl = cxDBLookupComboBox1
       end
       object Label4: TLabel
-        Left = 16
-        Top = 226
-        Width = 165
+        Left = 24
+        Top = 136
+        Width = 31
         Height = 13
-        Caption = 'Efecto de este Tipo de Movimiento'
+        Caption = 'Efecto'
+        FocusControl = cxDBLookupComboBox2
       end
       object Label5: TLabel
-        Left = 16
-        Top = 186
-        Width = 181
+        Left = 24
+        Top = 176
+        Width = 62
         Height = 13
-        Caption = 'Categoria de este Tipo de Movimiento'
+        Caption = 'Valor omision'
+        FocusControl = cxDBTextEdit3
       end
       object cxDBTextEdit1: TcxDBTextEdit
-        Left = 16
+        Left = 24
         Top = 32
         DataBinding.DataField = 'Identificador'
         DataBinding.DataSource = DataSource
@@ -63,71 +69,77 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Width = 121
       end
       object cxDBTextEdit2: TcxDBTextEdit
-        Left = 16
+        Left = 24
         Top = 72
         DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = DataSource
         TabOrder = 1
-        Width = 353
+        Width = 121
+      end
+      object cxDBLookupComboBox1: TcxDBLookupComboBox
+        Left = 24
+        Top = 112
+        DataBinding.DataField = 'MovimientoTipoCategoria'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 2
+        Width = 304
+      end
+      object cxDBLookupComboBox2: TcxDBLookupComboBox
+        Left = 24
+        Top = 152
+        DataBinding.DataField = 'MovimientoTipoEfecto'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 3
+        Width = 304
       end
       object cxDBTextEdit3: TcxDBTextEdit
-        Left = 16
-        Top = 112
+        Left = 24
+        Top = 192
         DataBinding.DataField = 'ValorDefault'
-        DataBinding.DataSource = DataSource
-        TabOrder = 2
-        Width = 121
-      end
-      object cxDBCheckBox1: TcxDBCheckBox
-        Left = 16
-        Top = 136
-        Caption = 'Produce CXC'
-        DataBinding.DataField = 'ProduceCXC'
-        DataBinding.DataSource = DataSource
-        TabOrder = 3
-        Width = 121
-      end
-      object cxDBCheckBox2: TcxDBCheckBox
-        Left = 16
-        Top = 160
-        Caption = 'Produce CXP'
-        DataBinding.DataField = 'ProduceCXP'
         DataBinding.DataSource = DataSource
         TabOrder = 4
         Width = 121
       end
-      object cxDBLookupComboBox1: TcxDBLookupComboBox
-        Left = 16
-        Top = 201
-        DataBinding.DataField = 'MovimientoTipoCategoria'
+      object cxDBCheckBox1: TcxDBCheckBox
+        Left = 24
+        Top = 216
+        Caption = 'Produce CXC'
+        DataBinding.DataField = 'ProduceCXC'
         DataBinding.DataSource = DataSource
-        Properties.ListColumns = <>
         TabOrder = 5
-        Width = 257
+        Width = 121
       end
-      object cxDBLookupComboBox2: TcxDBLookupComboBox
-        Left = 16
-        Top = 241
-        DataBinding.DataField = 'MovimientoTipoEfecto'
+      object cxDBCheckBox2: TcxDBCheckBox
+        Left = 24
+        Top = 240
+        Caption = 'Produce CXP'
+        DataBinding.DataField = 'ProduceCXP'
         DataBinding.DataSource = DataSource
-        Properties.ListColumns = <>
         TabOrder = 6
-        Width = 257
+        Width = 121
       end
+    end
+    object tsEsquemaPagos: TcxTabSheet
+      Caption = 'Esquema de Pagos'
+      ImageIndex = 1
+      ExplicitWidth = 480
     end
   end
   inherited pmlMain: TPanel
     Top = 306
-    Width = 484
+    Width = 594
+    ExplicitTop = 306
+    ExplicitWidth = 484
     inherited btnOk: TButton
-      Left = 321
+      Left = 431
+      ExplicitLeft = 321
     end
     inherited btnCancel: TButton
-      Left = 402
+      Left = 512
+      ExplicitLeft = 402
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmMovimientosTipo.adodsMaster
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
