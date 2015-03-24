@@ -17,6 +17,8 @@ uses
   _StandarGridForm in 'Standard\_StandarGridForm.pas' {_frmStandarGrid},
   _SplashForm in 'Standard\_SplashForm.pas' {_frmSplash},
   _Utils in 'Standard\_Utils.pas',
+  _DualListDM in 'Standard\_DualListDM.pas' {_dmDualList: TDataModule},
+  _DualListForm in 'Standard\_DualListForm.pas' {_frmDualList},
   MainForm in 'MainForm.pas' {frmMain},
   UbicacionesDM in 'Catalogos\UbicacionesDM.pas' {dmUbicaciones: TDataModule},
   PaisesForm in 'Catalogos\PaisesForm.pas' {frmPaises},
@@ -82,7 +84,9 @@ uses
   MovimientosTiposEdit in 'Catalogos\MovimientosTiposEdit.pas' {frmMovimientosTipoEdit},
   MovimientosTiposForm in 'Catalogos\MovimientosTiposForm.pas' {frmMovimientosTipos},
   ClientesDM in 'Catalogos\ClientesDM.pas' {dmClientes: TDataModule},
-  PersonasDM in 'Catalogos\PersonasDM.pas' {dmPersona: TDataModule};
+  PersonasDM in 'Catalogos\PersonasDM.pas' {dmPersona: TDataModule},
+  PuestosCapacitacionesDM in 'Catalogos\PuestosCapacitacionesDM.pas' {dmPuestosCapacitaciones: TDataModule},
+  PuestosCapacitacionesForm in 'Catalogos\PuestosCapacitacionesForm.pas' {frmPuestosCapacitaciones};
 
 {$R *.res}
 

@@ -84,7 +84,9 @@ type
     procedure DatasetInsertExecute(Sender: TObject);
     procedure DatasetEditExecute(Sender: TObject);
     procedure DatasetDeleteExecute(Sender: TObject);
-    procedure tvMasterDblClick(Sender: TObject);
+    procedure tvMasterCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
@@ -164,7 +166,9 @@ begin
   DataSetDelete.Visible:= not Value;
 end;
 
-procedure T_frmGrid.tvMasterDblClick(Sender: TObject);
+procedure T_frmGrid.tvMasterCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
 begin
   DatasetEdit.Execute;
 end;
