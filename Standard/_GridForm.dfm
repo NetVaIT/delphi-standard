@@ -67,8 +67,8 @@ object _frmGrid: T_frmGrid
       TabOrder = 0
       LookAndFeel.Kind = lfStandard
       object tvMaster: TcxGridDBTableView
-        OnDblClick = tvMasterDblClick
         Navigator.Buttons.CustomButtons = <>
+        OnCellDblClick = tvMasterCellDblClick
         DataController.DataSource = DataSource
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>

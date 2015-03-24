@@ -1,20 +1,20 @@
 inherited frmPuestosEdit: TfrmPuestosEdit
   Caption = 'Puesto'
   ClientHeight = 321
-  ClientWidth = 705
+  ClientWidth = 794
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ExplicitWidth = 711
-  ExplicitHeight = 349
+  ExplicitWidth = 800
+  ExplicitHeight = 350
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 705
+    Width = 794
     Height = 280
     ExplicitWidth = 705
     ExplicitHeight = 280
     ClientRectBottom = 278
-    ClientRectRight = 703
+    ClientRectRight = 792
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
@@ -104,39 +104,30 @@ inherited frmPuestosEdit: TfrmPuestosEdit
     object tsPerfil: TcxTabSheet
       Caption = 'Perfil del Puesto'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 230
+      ExplicitWidth = 701
     end
     object tsPlazas: TcxTabSheet
       Caption = 'Plazas'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 230
+      ExplicitWidth = 701
     end
     object tsBateriaCapacitacion: TcxTabSheet
       Caption = 'Bateria de Capacitacion'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 230
+      ExplicitWidth = 701
     end
   end
   inherited pmlMain: TPanel
     Top = 280
-    Width = 705
+    Width = 794
     ExplicitTop = 280
     ExplicitWidth = 705
     inherited btnOk: TButton
-      Left = 542
+      Left = 631
       ExplicitLeft = 542
     end
     inherited btnCancel: TButton
-      Left = 623
+      Left = 712
       ExplicitLeft = 623
     end
   end
