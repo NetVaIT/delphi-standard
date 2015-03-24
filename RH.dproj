@@ -246,8 +246,8 @@
             <Form>dmEsquemaPagos</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\EsquemaPagoForm.pas">
-            <Form>frmEsquemaPago</Form>
+        <DCCReference Include="Catalogos\EsquemaPagosEdit.pas">
+            <Form>frmEsquemaPagosEdit</Form>
         </DCCReference>
         <DCCReference Include="Catalogos\EsquemaPagosForm.pas">
             <Form>frmEsquemaPagos</Form>

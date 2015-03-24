@@ -1,9 +1,9 @@
-inherited frmEsquemaPago: TfrmEsquemaPago
+inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   Caption = 'Esquema de Pago'
   ClientHeight = 226
   ClientWidth = 380
   ExplicitWidth = 386
-  ExplicitHeight = 254
+  ExplicitHeight = 255
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
@@ -14,6 +14,10 @@ inherited frmEsquemaPago: TfrmEsquemaPago
     ClientRectBottom = 183
     ClientRectRight = 378
     inherited tsGeneral: TcxTabSheet
+      ExplicitLeft = 2
+      ExplicitTop = 28
+      ExplicitWidth = 376
+      ExplicitHeight = 155
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -33,9 +37,9 @@ inherited frmEsquemaPago: TfrmEsquemaPago
       object Label3: TLabel
         Left = 16
         Top = 98
-        Width = 124
+        Width = 36
         Height = 13
-        Caption = 'Estatus Esquema de Pago'
+        Caption = 'Estatus'
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16

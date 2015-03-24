@@ -1,4 +1,4 @@
-unit EsquemaPagoForm;
+unit EsquemaPagosEdit;
 
 interface
 
@@ -22,7 +22,7 @@ uses
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
-  TfrmEsquemaPago = class(T_frmEdit)
+  TfrmEsquemaPagosEdit = class(T_frmEdit)
     Label1: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
