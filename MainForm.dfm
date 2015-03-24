@@ -1,13 +1,13 @@
 inherited frmMain: TfrmMain
   Caption = 'frmMain'
-  ClientWidth = 762
-  ExplicitWidth = 778
-  ExplicitHeight = 519
+  ClientWidth = 1004
+  ExplicitWidth = 1020
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
-    Width = 762
-    ExplicitWidth = 762
+    Width = 1004
+    ExplicitWidth = 1004
     inherited dxRibbon1Tab1: TdxRibbonTab
       Active = False
       Index = 0
@@ -20,11 +20,15 @@ inherited frmMain: TfrmMain
           ToolbarName = 'dxbEjemplo'
         end
         item
-        end
-        item
-        end
-        item
           ToolbarName = 'dxBarManagerBar1'
+        end
+        item
+        end
+        item
+        end
+        item
+          Caption = 'Personas'
+          ToolbarName = 'dxBarManagerBar2'
         end>
       Index = 1
     end
@@ -37,12 +41,12 @@ inherited frmMain: TfrmMain
     end
   end
   inherited dxRibbonStatusBar1: TdxRibbonStatusBar
-    Width = 762
-    ExplicitWidth = 762
+    Width = 1004
+    ExplicitWidth = 1004
   end
   inherited pnlMain: TPanel
-    Width = 762
-    ExplicitWidth = 762
+    Width = 1004
+    ExplicitWidth = 1004
   end
   inherited dxBarManager: TdxBarManager
     Left = 576
@@ -132,6 +136,34 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
+    object dxBarManagerBar2: TdxBar [4]
+      Caption = 'Custom 1'
+      CaptionButtons = <>
+      DockedLeft = 721
+      DockedTop = 0
+      FloatLeft = 764
+      FloatTop = 8
+      FloatClientWidth = 81
+      FloatClientHeight = 162
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton12'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton15'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton16'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
     object dxBarLargeButton1: TdxBarLargeButton
       Action = actUbicaciones
       Category = 0
@@ -200,6 +232,28 @@ inherited frmMain: TfrmMain
       Action = actEstablecimientos
       Category = 0
     end
+    object dxBarButton2: TdxBarButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+    end
+    object dxBarLargeButton12: TdxBarLargeButton
+      Action = actEmpleados
+      Category = 0
+    end
+    object dxBarLargeButton15: TdxBarLargeButton
+      Action = actClientes
+      Category = 0
+    end
+    object dxBarLargeButton16: TdxBarLargeButton
+      Action = actProveedores
+      Category = 0
+    end
+  end
+  inherited dxSkinController: TdxSkinController
+    Left = 504
+    Top = 0
   end
   inherited cxSmallImages: TcxImageList
     FormatVersion = 1
@@ -285,5 +339,29 @@ inherited frmMain: TfrmMain
       ImageIndex = 23
       OnExecute = actCatalogoExecute
     end
+    object actEmpleados: TAction
+      Tag = 11
+      Category = 'Catalogos'
+      Caption = 'Empleados'
+      ImageIndex = 20
+      OnExecute = actCatalogoExecute
+    end
+    object actClientes: TAction
+      Tag = 12
+      Category = 'Catalogos'
+      Caption = 'Clientes'
+      ImageIndex = 15
+      OnExecute = actCatalogoExecute
+    end
+    object actProveedores: TAction
+      Tag = 13
+      Category = 'Catalogos'
+      Caption = 'Proveedores'
+      ImageIndex = 21
+      OnExecute = actCatalogoExecute
+    end
+  end
+  inherited dxBarScreenTipRepository: TdxBarScreenTipRepository
+    Left = 400
   end
 end

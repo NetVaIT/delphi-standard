@@ -83,8 +83,9 @@ uses
   MovimientosTiposDM in 'Catalogos\MovimientosTiposDM.pas' {dmMovimientosTipo: TDataModule},
   MovimientosTiposEdit in 'Catalogos\MovimientosTiposEdit.pas' {frmMovimientosTipoEdit},
   MovimientosTiposForm in 'Catalogos\MovimientosTiposForm.pas' {frmMovimientosTipos},
-  ClientesDM in 'Catalogos\ClientesDM.pas' {dmClientes: TDataModule},
   PersonasDM in 'Catalogos\PersonasDM.pas' {dmPersona: TDataModule},
+  PersonasEdit in 'Catalogos\PersonasEdit.pas' {frmPersonasEdit},
+  PersonasForm in 'Catalogos\PersonasForm.pas' {frmPersonas},
   PuestosCapacitacionesDM in 'Catalogos\PuestosCapacitacionesDM.pas' {dmPuestosCapacitaciones: TDataModule},
   PuestosCapacitacionesForm in 'Catalogos\PuestosCapacitacionesForm.pas' {frmPuestosCapacitaciones};
 
