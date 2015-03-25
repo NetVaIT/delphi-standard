@@ -19,7 +19,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, Vcl.DBCtrls, cxTextEdit, cxDBEdit, cxMaskEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  RolesEsquemasPagosDM;
 
 type
   TfrmEsquemaPagosEdit = class(T_frmEdit)
@@ -29,8 +30,13 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label3: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
+    tsRoles: TcxTabSheet;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    dmRolesEsquemasPagos: TdmRolesEsquemasPagos;
   public
     { Public declarations }
   end;
@@ -40,5 +46,24 @@ implementation
 {$R *.dfm}
 
 uses EsquemaPagosDM;
+
+procedure TfrmEsquemaPagosEdit.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dmRolesEsquemasPagos:= TdmRolesEsquemasPagos.Create(nil);
+end;
+
+procedure TfrmEsquemaPagosEdit.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmRolesEsquemasPagos);
+end;
+
+procedure TfrmEsquemaPagosEdit.FormShow(Sender: TObject);
+begin
+  inherited;
+  dmRolesEsquemasPagos.MasterSource:= DataSource;
+  dmRolesEsquemasPagos.ShowModule(tsRoles);
+end;
 
 end.

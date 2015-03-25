@@ -115,6 +115,7 @@ begin
   if Assigned(gGridForm) then
   begin
     gGridForm.Parent:= pConteiner;
+    gGridForm.ParentWith:= pConteiner.Width;
     gGridForm.Align:= alClient;
     gGridForm.Show;
   end;

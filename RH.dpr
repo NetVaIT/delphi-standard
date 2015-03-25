@@ -86,7 +86,9 @@ uses
   PuestosCapacitacionesDM in 'Catalogos\PuestosCapacitacionesDM.pas' {dmPuestosCapacitaciones: TDataModule},
   PuestosCapacitacionesForm in 'Catalogos\PuestosCapacitacionesForm.pas' {frmPuestosCapacitaciones},
   EsquemaPagosMovimientosTiposDM in 'Catalogos\EsquemaPagosMovimientosTiposDM.pas' {dmEsquemaPagosMovimientosTipos: TDataModule},
-  EsquemaPagosMovimientosTiposForm in 'Catalogos\EsquemaPagosMovimientosTiposForm.pas' {frmEsquemaPagosMovimientosTipos};
+  EsquemaPagosMovimientosTiposForm in 'Catalogos\EsquemaPagosMovimientosTiposForm.pas' {frmEsquemaPagosMovimientosTipos},
+  RolesEsquemasPagosDM in 'Catalogos\RolesEsquemasPagosDM.pas' {dmRolesEsquemasPagos: TDataModule},
+  RolesEsquemasPagosForm in 'Catalogos\RolesEsquemasPagosForm.pas' {frmRolesEsquemasPagos};
 
 {$R *.res}
 
@@ -109,9 +111,9 @@ begin
   begin
     Application.MainFormOnTaskbar := True;
     Application.CreateForm(TfrmMain, frmMain);
-    Application.CreateForm(T_dmConection, _dmConection);
-    Application.CreateForm(T_frmProgress, _frmProgress);
-    Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
+  Application.CreateForm(T_dmConection, _dmConection);
+  Application.CreateForm(T_frmProgress, _frmProgress);
+  Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
   Application.Run;
   end;
 end.

@@ -37,7 +37,7 @@ uses MovimientosTiposForm;
 procedure TdmMovimientosTipo.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm:= TfrmMovimientosTipos.Create(nil);
+  gGridForm:= TfrmMovimientosTipos.Create(Self);
   gGridForm.DataSet:= adodsMaster;
 end;
 

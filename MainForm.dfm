@@ -50,112 +50,11 @@ inherited frmMain: TfrmMain
     Width = 1004
     ExplicitWidth = 1004
   end
-  inherited ActionList: TActionList [4]
-    object actCatalogo: TAction
-      Category = 'Catalogos'
-      Caption = 'actCatalogo'
-      OnExecute = actCatalogoExecute
-    end
-    object actUbicaciones: TAction
-      Tag = 1
-      Category = 'Catalogos'
-      Caption = 'Ubicaciones'
-      ImageIndex = 16
-      OnExecute = actCatalogoExecute
-    end
-    object actBancos: TAction
-      Tag = 2
-      Category = 'Catalogos'
-      Caption = 'Bancos'
-      ImageIndex = 37
-      OnExecute = actCatalogoExecute
-    end
-    object actMonedas: TAction
-      Tag = 3
-      Category = 'Catalogos'
-      Caption = 'Monedas'
-      ImageIndex = 44
-      OnExecute = actCatalogoExecute
-    end
-    object actFormulas: TAction
-      Tag = 6
-      Category = 'Catalogos'
-      Caption = 'Formulas'
-      ImageIndex = 36
-      OnExecute = actCatalogoExecute
-    end
-    object actReglasNegocio: TAction
-      Tag = 7
-      Category = 'Catalogos'
-      Caption = 'Reglas de Negocio'
-      ImageIndex = 27
-      OnExecute = actCatalogoExecute
-    end
-    object actPuestos: TAction
-      Tag = 8
-      Category = 'Catalogos'
-      Caption = 'Puestos'
-      ImageIndex = 38
-      OnExecute = actCatalogoExecute
-    end
-    object actCapacitaciones: TAction
-      Tag = 10
-      Category = 'Catalogos'
-      Caption = 'Capacitaciones'
-      ImageIndex = 45
-      OnExecute = actCatalogoExecute
-    end
-    object actPlazasTurnos: TAction
-      Tag = 4
-      Category = 'Catalogos'
-      Caption = 'Plaza Turno'
-      ImageIndex = 40
-      OnExecute = actCatalogoExecute
-    end
-    object actEstablecimientos: TAction
-      Tag = 9
-      Category = 'Catalogos'
-      Caption = 'Establecimientos'
-      ImageIndex = 23
-      OnExecute = actCatalogoExecute
-    end
-    object actEsquemasPago: TAction
-      Tag = 5
-      Category = 'Catalogos'
-      Caption = 'Esquemas de Pago'
-      ImageIndex = 30
-      OnExecute = actCatalogoExecute
-    end
-    object actMovimientosTipo: TAction
-      Tag = 11
-      Category = 'Catalogos'
-      Caption = 'Tipo de movimientos'
-      ImageIndex = 7
-      OnExecute = actCatalogoExecute
-    end
-    object actEmpleados: TAction
-      Tag = 20
-      Category = 'Catalogos'
-      Caption = 'Empleados'
-      ImageIndex = 20
-      OnExecute = actCatalogoExecute
-    end
-    object actClientes: TAction
-      Tag = 21
-      Category = 'Catalogos'
-      Caption = 'Clientes'
-      ImageIndex = 15
-      OnExecute = actCatalogoExecute
-    end
-    object actProveedores: TAction
-      Tag = 22
-      Category = 'Catalogos'
-      Caption = 'Proveedores'
-      ImageIndex = 21
-      OnExecute = actCatalogoExecute
-    end
+  inherited cxLargeImages: TcxImageList [4]
+    FormatVersion = 1
   end
-  inherited dxBarScreenTipRepository: TdxBarScreenTipRepository [5]
+  inherited cxSmallImages: TcxImageList [5]
+    FormatVersion = 1
   end
   inherited dxBarManager: TdxBarManager [6]
     Left = 576
@@ -277,15 +176,15 @@ inherited frmMain: TfrmMain
       FloatLeft = 1038
       FloatTop = 8
       FloatClientWidth = 129
-      FloatClientHeight = 54
+      FloatClientHeight = 108
       ItemLinks = <
         item
           Visible = True
-          ItemName = 'dxBarLargeButton5'
+          ItemName = 'dxBarLargeButton17'
         end
         item
           Visible = True
-          ItemName = 'dxBarLargeButton17'
+          ItemName = 'dxBarLargeButton5'
         end>
       OneOnRow = False
       Row = 0
@@ -380,10 +279,109 @@ inherited frmMain: TfrmMain
   end
   inherited dxSkinController: TdxSkinController [7]
   end
-  inherited cxLargeImages: TcxImageList [8]
-    FormatVersion = 1
-  end
-  inherited cxSmallImages: TcxImageList [9]
-    FormatVersion = 1
+  inherited ActionList: TActionList
+    object actCatalogo: TAction
+      Category = 'Catalogos'
+      Caption = 'actCatalogo'
+      OnExecute = actCatalogoExecute
+    end
+    object actUbicaciones: TAction
+      Tag = 1
+      Category = 'Catalogos'
+      Caption = 'Ubicaciones'
+      ImageIndex = 16
+      OnExecute = actCatalogoExecute
+    end
+    object actBancos: TAction
+      Tag = 2
+      Category = 'Catalogos'
+      Caption = 'Bancos'
+      ImageIndex = 37
+      OnExecute = actCatalogoExecute
+    end
+    object actMonedas: TAction
+      Tag = 3
+      Category = 'Catalogos'
+      Caption = 'Monedas'
+      ImageIndex = 44
+      OnExecute = actCatalogoExecute
+    end
+    object actFormulas: TAction
+      Tag = 6
+      Category = 'Catalogos'
+      Caption = 'Formulas'
+      ImageIndex = 36
+      OnExecute = actCatalogoExecute
+    end
+    object actReglasNegocio: TAction
+      Tag = 7
+      Category = 'Catalogos'
+      Caption = 'Reglas de Negocio'
+      ImageIndex = 27
+      OnExecute = actCatalogoExecute
+    end
+    object actPuestos: TAction
+      Tag = 8
+      Category = 'Catalogos'
+      Caption = 'Puestos'
+      ImageIndex = 38
+      OnExecute = actCatalogoExecute
+    end
+    object actCapacitaciones: TAction
+      Tag = 10
+      Category = 'Catalogos'
+      Caption = 'Capacitaciones'
+      ImageIndex = 45
+      OnExecute = actCatalogoExecute
+    end
+    object actPlazasTurnos: TAction
+      Tag = 4
+      Category = 'Catalogos'
+      Caption = 'Plaza Turno'
+      ImageIndex = 40
+      OnExecute = actCatalogoExecute
+    end
+    object actEstablecimientos: TAction
+      Tag = 9
+      Category = 'Catalogos'
+      Caption = 'Establecimientos'
+      ImageIndex = 23
+      OnExecute = actCatalogoExecute
+    end
+    object actEsquemasPago: TAction
+      Tag = 5
+      Category = 'Catalogos'
+      Caption = 'Esquemas de Pago'
+      ImageIndex = 30
+      OnExecute = actCatalogoExecute
+    end
+    object actMovimientosTipo: TAction
+      Tag = 11
+      Category = 'Catalogos'
+      Caption = 'Tipo de movimientos'
+      ImageIndex = 7
+      OnExecute = actCatalogoExecute
+    end
+    object actEmpleados: TAction
+      Tag = 20
+      Category = 'Catalogos'
+      Caption = 'Empleados'
+      ImageIndex = 20
+      OnExecute = actCatalogoExecute
+    end
+    object actClientes: TAction
+      Tag = 21
+      Category = 'Catalogos'
+      Caption = 'Clientes'
+      ImageIndex = 15
+      OnExecute = actCatalogoExecute
+    end
+    object actProveedores: TAction
+      Tag = 22
+      Category = 'Catalogos'
+      Caption = 'Proveedores'
+      ImageIndex = 21
+      OnExecute = actCatalogoExecute
+    end
   end
 end
