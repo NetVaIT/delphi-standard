@@ -70,16 +70,19 @@ type
     FDataSetAviable: TDataSet;
     FDeleteItem: TBasicAction;
     FAddItem: TBasicAction;
+    FParentWith: Integer;
     procedure SetDataSetAssigned(const Value: TDataSet);
     procedure SetDataSetAviable(const Value: TDataSet);
     procedure SetAddItem(const Value: TBasicAction);
     procedure SetDeleteItem(const Value: TBasicAction);
+    procedure SetParentWith(const Value: Integer);
   public
     { Public declarations }
     property DataSetAviable: TDataSet read FDataSetAviable write SetDataSetAviable;
     property DataSetAssigned: TDataSet read FDataSetAssigned write SetDataSetAssigned;
     property AddItem: TBasicAction read FAddItem write SetAddItem;
     property DeleteItem: TBasicAction read FDeleteItem write SetDeleteItem;
+    property ParentWith: Integer read FParentWith write SetParentWith default 0;
   end;
 
 implementation
@@ -110,6 +113,16 @@ procedure T_frmDualList.SetDeleteItem(const Value: TBasicAction);
 begin
   FDeleteItem := Value;
   btnDelete.Action:= Value;
+end;
+
+procedure T_frmDualList.SetParentWith(const Value: Integer);
+begin
+  FParentWith := Value;
+  if Value > 0 then
+  begin
+    Width:= Value;
+    pnlAviable.Width:= Trunc(Value/2);
+  end;
 end;
 
 procedure T_frmDualList.tvAssignedCellDblClick(Sender: TcxCustomGridTableView;

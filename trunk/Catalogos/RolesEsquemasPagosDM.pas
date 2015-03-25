@@ -1,4 +1,4 @@
-unit EsquemaPagosMovimientosTiposDM;
+unit RolesEsquemasPagosDM;
 
 interface
 
@@ -7,10 +7,10 @@ uses
   Data.Win.ADODB, Data.DB;
 
 type
-  TdmEsquemaPagosMovimientosTipos = class(T_dmDualList)
-    adoqAvailableIdEsquemaPago: TIntegerField;
+  TdmRolesEsquemasPagos = class(T_dmDualList)
+    adoqAvailableIdRol: TIntegerField;
     adoqAvailableDescripcion: TStringField;
-    adoqAssignedIdEsquemaPago: TIntegerField;
+    adoqAssignedIdRol: TIntegerField;
     adoqAssignedDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -23,15 +23,15 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses EsquemaPagosMovimientosTiposForm;
+uses RolesEsquemasPagosForm;
 
 {$R *.dfm}
 
-procedure TdmEsquemaPagosMovimientosTipos.DataModuleCreate(Sender: TObject);
+procedure TdmRolesEsquemasPagos.DataModuleCreate(Sender: TObject);
 begin
-  IdFieldName1:= 'IdMovimientoTipo';
-  IdFieldName2:= 'IdEsquemaPago';
-  gGridForm:= TfrmEsquemaPagosMovimientosTipos.Create(Self);
+  IdFieldName1:= 'IdEsquemaPago';
+  IdFieldName2:= 'IdRol';
+  gGridForm:= TfrmRolesEsquemasPagos.Create(Self);
   inherited;
 end;
 

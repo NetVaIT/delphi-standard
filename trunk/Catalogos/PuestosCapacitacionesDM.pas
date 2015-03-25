@@ -31,7 +31,7 @@ procedure TdmPuestosCapacitaciones.DataModuleCreate(Sender: TObject);
 begin
   IdFieldName1:= 'IdPuesto';
   IdFieldName2:= 'IdBateriaCapacitacion';
-  gGridForm:= TfrmPuestosCapacitaciones.Create(nil);
+  gGridForm:= TfrmPuestosCapacitaciones.Create(Self);
   inherited;
 end;
 
