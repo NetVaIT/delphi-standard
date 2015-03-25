@@ -129,6 +129,7 @@ begin
   actBancos.Enabled           := Conected;
   actMonedas.Enabled          := Conected;
   actPuestos.Enabled          := Conected;
+  actCapacitaciones.Enabled   := Conected;
   actPlazasTurnos.Enabled     := Conected;
   actEsquemasPago.Enabled     := Conected;
   actFormulas.Enabled         := Conected;
@@ -136,6 +137,8 @@ begin
   actEstablecimientos.Enabled := Conected;
   actEmpleados.Enabled        := Conected;
   actMovimientosTipo.Enabled  := Conected;
+  actClientes.Enabled         := Conected;
+  actProveedores.Enabled      := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

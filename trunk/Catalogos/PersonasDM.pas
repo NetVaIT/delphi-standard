@@ -8,6 +8,26 @@ uses
 type
   TPRol = (rNone, rDuenoProceso, rOutSourcing, rCliente, rProveedor, rEmpleado);
   TdmPersona = class(T_dmStandar)
+    adodsPersonaTipo: TADODataSet;
+    adodsSexo: TADODataSet;
+    adodsEstadoCivil: TADODataSet;
+    adodsPais: TADODataSet;
+    adodsClientes: TADODataSet;
+    adodsPersonasRoles: TADODataSet;
+    dsPais: TDataSource;
+    adodsEstado: TADODataSet;
+    dsEstado: TDataSource;
+    dsMunicipio: TDataSource;
+    adodsMunicipio: TADODataSet;
+    adodsPoblacion: TADODataSet;
+    ADODataSet1: TADODataSet;
+    adodsRolesClases: TADODataSet;
+    adodsRolesEstatus: TADODataSet;
+    adodsProveedores: TADODataSet;
+    adodsEmpleados: TADODataSet;
+    adodsPersonaRelacionada: TADODataSet;
+    dsMaster: TDataSource;
+    dsPersonasRoles: TDataSource;
     adodsMasterIdPersona: TAutoIncField;
     adodsMasterRFC: TStringField;
     adodsMasterIdPersonaTipo: TIntegerField;
@@ -21,52 +41,24 @@ type
     adodsMasterApellidoPaterno: TStringField;
     adodsMasterApellidoMaterno: TStringField;
     adodsMasterFechaNacimiento: TDateTimeField;
-    adodsPersonaTipo: TADODataSet;
-    adodsSexo: TADODataSet;
-    adodsEstadoCivil: TADODataSet;
-    adodsPais: TADODataSet;
-    adodsClientes: TADODataSet;
-    adodsPersonasRoles: TADODataSet;
-    adodsMasterPersonaTipo: TStringField;
-    adodsMasterSexo: TStringField;
-    adodsMasterEstadoCivil: TStringField;
-    adodsMasterPais: TStringField;
-    dsPais: TDataSource;
-    adodsEstado: TADODataSet;
-    dsEstado: TDataSource;
-    dsMunicipio: TDataSource;
-    adodsMunicipio: TADODataSet;
-    adodsPoblacion: TADODataSet;
-    adodsClientesIdCliente: TAutoIncField;
-    adodsClientesIdPersonaRol: TIntegerField;
-    adodsClientesIdCtaContable: TIntegerField;
-    adodsClientesIdCtaContableNCA: TIntegerField;
-    adodsClientesIdCtaContableNCR: TIntegerField;
-    adodsClientesIdCtaContableAnticipo: TIntegerField;
-    adodsClientesTotalFacturado: TFMTBCDField;
-    adodsClientesSaldoPendiente: TFMTBCDField;
-    adodsClientesCalificacion: TIntegerField;
-    ADODataSet1: TADODataSet;
-    adodsRoles: TADODataSet;
-    adodsRolesClases: TADODataSet;
-    adodsRolesEstatus: TADODataSet;
-    adodsProveedores: TADODataSet;
-    adodsEmpleados: TADODataSet;
-    adodsPersonasRolesIdPersonaRol: TIntegerField;
+    adodsPersonasRolesIdPersonaRol: TAutoIncField;
     adodsPersonasRolesIdPersona: TIntegerField;
     adodsPersonasRolesIdPersonaRelacionada: TIntegerField;
     adodsPersonasRolesIdRol: TIntegerField;
+    adodsPersonasRolesIdRolEsquemaPago: TIntegerField;
     adodsPersonasRolesIdRolEstatus: TIntegerField;
     adodsPersonasRolesIdRolClase: TIntegerField;
-    adodsPersonaRelacionada: TADODataSet;
-    adodsPersonasDomicilios: TADODataSet;
+    adodsMasterPersonaTipo: TStringField;
+    adodsRazonSocialTipo: TADODataSet;
+    adodsMasterRazonSocialTipo: TStringField;
+    adodsMasterSexo: TStringField;
+    adodsMasterEstadoCivil: TStringField;
+    adodsMasterPais: TStringField;
     adodsPersonasRolesPersonaRelacionada: TStringField;
-    adodsPersonasRolesRol: TStringField;
     adodsPersonasRolesRolEstatus: TStringField;
     adodsPersonasRolesRolClase: TStringField;
-    dsPersonasRoles: TDataSource;
-    dsMaster: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     FRol: TPRol;
     procedure SetRol(const Value: TPRol);
@@ -87,17 +79,27 @@ uses PersonasForm;
 procedure TdmPersona.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm:= TfrmPersonas.Create(Self);
+  gGridForm := TfrmPersonas.Create(Self);
   gGridForm.DataSet := adodsMaster;
-  adodsPersonasRoles.Parameters.ParamByName('IdRol').Value:= Rol;
   adodsPersonasRoles.Open;
-//  TfrmPersonas(gGridForm).Rol:= rEmpleado;
+  if Rol = rEmpleado then adodsEmpleados.Open;
+  if Rol = rCliente then adodsClientes.Open;
+  if Rol = rProveedor then adodsProveedores.Open;
+  adodsPersonasRoles.Parameters.ParamByName('IdRol').Value := rEmpleado;
+end;
 
+procedure TdmPersona.DataModuleDestroy(Sender: TObject);
+begin
+  inherited;
+  adodsEmpleados.Close;
+  adodsClientes.Close;
+  adodsProveedores.Close;
 end;
 
 procedure TdmPersona.SetRol(const Value: TPRol);
 begin
   FRol := Value;
+  TfrmPersonas(gGridForm).Rol := Value;
 end;
 
 end.
