@@ -19,10 +19,10 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
-  Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  PersonasDM;
 
 type
-  TPRol = (rNone, rDuenoProceso, rOutSourcing, rCliente, rProveedor, rEmpleado);
   TfrmPersonasEdit = class(T_frmEdit)
     pnlPersona: TPanel;
     Label1: TLabel;
@@ -59,10 +59,16 @@ type
     Label13: TLabel;
     tsKardex: TcxTabSheet;
     cxTabSheet2: TcxTabSheet;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet3: TcxTabSheet;
+    dsPersonaRol: TDataSource;
     procedure FormShow(Sender: TObject);
+    procedure actPostExecute(Sender: TObject);
+    procedure pcMainChange(Sender: TObject);
   private
     FRol: TPRol;
     procedure SetRol(const Value: TPRol);
+    procedure CrearRegistroPersonaRol();
     { Private declarations }
   public
     { Public declarations }
@@ -73,18 +79,51 @@ implementation
 
 {$R *.dfm}
 
-uses PersonasDM;
+procedure TfrmPersonasEdit.actPostExecute(Sender: TObject);
+begin
+  if Rol = rEmpleado {and DataSource.DataSet.state in [dsInsert, dsEdit]} then
+    DataSource.DataSet.FieldByName('RazonSocial').Value := cxDBTextEdit3.Text + ' ' + cxDBTextEdit4.Text + ' ' + cxDBTextEdit5.Text;
+  inherited;
+  CrearRegistroPersonaRol;
+end;
+
+procedure TfrmPersonasEdit.CrearRegistroPersonaRol;
+begin
+  dsPersonaRol.DataSet.FieldByName('IdPersona').Value := DataSource.DataSet.FieldByName('IdPersona').Value;
+  dsPersonaRol.DataSet.FieldByName('IdRol').Value := Rol;
+  dsPersonaRol.DataSet.FieldByName('IdRolEsquemaPago').Value := 0;
+  dsPersonaRol.DataSet.Post;
+end;
 
 procedure TfrmPersonasEdit.FormShow(Sender: TObject);
 begin
   inherited;
-  if Self.Tag = 1 then
+  if DataSource.DataSet.state in [dsInsert] then
+    dsPersonaRol.DataSet.Insert;
+  if DataSource.DataSet.state in [dsEdit] then
+    dsPersonaRol.DataSet.Edit;
+  if Rol = rEmpleado then
   begin
     Self.Caption := 'Empleado';
     pnlPersonaMoral.Visible := False;
     cxDBLookupComboBox1.Enabled := False;
-    cxDBLookupComboBox1.SelectedItem := 1;
+    if dsPersonaRol.DataSet.State in [dsInsert] then
+      cxDBLookupComboBox1.EditValue := 1;
   end;
+{  if Rol = rCliente then
+  begin
+
+  end;
+  if Rol = rProveedor then
+  begin
+
+  end;}
+end;
+
+procedure TfrmPersonasEdit.pcMainChange(Sender: TObject);
+begin
+  inherited;
+  CrearRegistroPersonaRol();
 end;
 
 procedure TfrmPersonasEdit.SetRol(const Value: TPRol);

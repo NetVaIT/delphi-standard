@@ -1,27 +1,25 @@
 inherited frmPersonasEdit: TfrmPersonasEdit
   Caption = 'Personas'
   ClientHeight = 505
-  ClientWidth = 588
-  ExplicitWidth = 594
+  ClientWidth = 650
+  ExplicitWidth = 656
   ExplicitHeight = 533
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 588
+    Width = 650
     Height = 464
-    ExplicitWidth = 588
+    ExplicitWidth = 650
     ExplicitHeight = 464
     ClientRectBottom = 462
-    ClientRectRight = 586
+    ClientRectRight = 648
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
-      ExplicitWidth = 584
+      ExplicitWidth = 646
       ExplicitHeight = 434
       object pnlPersona: TPanel
         Left = 0
         Top = 0
-        Width = 584
+        Width = 646
         Height = 67
         Align = alTop
         BevelOuter = bvNone
@@ -55,6 +53,7 @@ inherited frmPersonasEdit: TfrmPersonasEdit
           DataBinding.DataField = 'PersonaTipo'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
+          Properties.ListOptions.ShowHeader = False
           TabOrder = 1
           Width = 233
         end
@@ -62,7 +61,7 @@ inherited frmPersonasEdit: TfrmPersonasEdit
       object pnlPersonaMoral: TPanel
         Left = 0
         Top = 67
-        Width = 584
+        Width = 646
         Height = 86
         Align = alTop
         BevelOuter = bvNone
@@ -93,11 +92,12 @@ inherited frmPersonasEdit: TfrmPersonasEdit
           Width = 538
         end
         object cxDBLookupComboBox4: TcxDBLookupComboBox
-          Left = 23
+          Left = 24
           Top = 59
           DataBinding.DataField = 'Pais'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
+          Properties.ListOptions.ShowHeader = False
           TabOrder = 1
           Width = 234
         end
@@ -105,7 +105,7 @@ inherited frmPersonasEdit: TfrmPersonasEdit
       object pnlPersonaFisica: TPanel
         Left = 0
         Top = 153
-        Width = 584
+        Width = 646
         Height = 172
         Align = alTop
         BevelOuter = bvNone
@@ -159,8 +159,8 @@ inherited frmPersonasEdit: TfrmPersonasEdit
           Caption = 'Estado Civil'
         end
         object cxDBTextEdit3: TcxDBTextEdit
-          Left = 23
-          Top = 18
+          Left = 24
+          Top = 19
           DataBinding.DataField = 'Nombre'
           DataBinding.DataSource = DataSource
           TabOrder = 0
@@ -187,7 +187,7 @@ inherited frmPersonasEdit: TfrmPersonasEdit
           Top = 146
           DataBinding.DataField = 'FechaNacimiento'
           DataBinding.DataSource = DataSource
-          TabOrder = 3
+          TabOrder = 5
           Width = 146
         end
         object cxDBLookupComboBox2: TcxDBLookupComboBox
@@ -196,7 +196,8 @@ inherited frmPersonasEdit: TfrmPersonasEdit
           DataBinding.DataField = 'Sexo'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
-          TabOrder = 4
+          Properties.ListOptions.ShowHeader = False
+          TabOrder = 3
           Width = 145
         end
         object cxDBLookupComboBox3: TcxDBLookupComboBox
@@ -205,14 +206,15 @@ inherited frmPersonasEdit: TfrmPersonasEdit
           DataBinding.DataField = 'EstadoCivil'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
-          TabOrder = 5
+          Properties.ListOptions.ShowHeader = False
+          TabOrder = 4
           Width = 145
         end
       end
       object pnlRoles: TPanel
         Left = 0
         Top = 325
-        Width = 584
+        Width = 646
         Height = 109
         Align = alClient
         BevelOuter = bvNone
@@ -244,22 +246,29 @@ inherited frmPersonasEdit: TfrmPersonasEdit
           Left = 24
           Top = 21
           DataBinding.DataField = 'PersonaRelacionada'
-          DataBinding.DataSource = dmPersona.dsPersonasRoles
+          DataBinding.DataSource = dsPersonaRol
           Properties.ListColumns = <>
+          Properties.ListOptions.ShowHeader = False
           TabOrder = 0
           Width = 386
         end
         object cxDBLookupComboBox6: TcxDBLookupComboBox
           Left = 24
           Top = 64
+          DataBinding.DataField = 'RolEstatus'
+          DataBinding.DataSource = dsPersonaRol
           Properties.ListColumns = <>
+          Properties.ListOptions.ShowHeader = False
           TabOrder = 1
           Width = 201
         end
         object cxDBLookupComboBox7: TcxDBLookupComboBox
           Left = 265
           Top = 64
+          DataBinding.DataField = 'RolClase'
+          DataBinding.DataSource = dsPersonaRol
           Properties.ListColumns = <>
+          Properties.ListOptions.ShowHeader = False
           TabOrder = 2
           Width = 145
         end
@@ -282,35 +291,47 @@ inherited frmPersonasEdit: TfrmPersonasEdit
       ImageIndex = 4
     end
     object cxTabSheet2: TcxTabSheet
-      Caption = 'cxTabSheet2'
+      Caption = 'Contactos Emergencia'
       ImageIndex = 5
+    end
+    object cxTabSheet1: TcxTabSheet
+      Caption = 'Cuentas'
+      ImageIndex = 6
+    end
+    object cxTabSheet3: TcxTabSheet
+      Caption = 'Pagos'
+      ImageIndex = 7
     end
   end
   inherited pmlMain: TPanel
     Top = 464
-    Width = 588
+    Width = 650
     ExplicitTop = 464
-    ExplicitWidth = 588
+    ExplicitWidth = 650
     inherited btnOk: TButton
-      Left = 425
-      ExplicitLeft = 425
+      Left = 487
+      ExplicitLeft = 487
     end
     inherited btnCancel: TButton
-      Left = 506
-      ExplicitLeft = 506
+      Left = 568
+      ExplicitLeft = 568
     end
   end
   inherited DataSource: TDataSource
-    DataSet = dmPersona.adodsMaster
-    Left = 496
-    Top = 56
+    Left = 528
+    Top = 32
   end
   inherited ActionList: TActionList
-    Left = 528
-    Top = 56
+    Left = 560
+    Top = 32
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
-    DesignInfo = 3736112
+    DesignInfo = 2163280
+  end
+  object dsPersonaRol: TDataSource
+    DataSet = dmPersona.adodsPersonasRoles
+    Left = 530
+    Top = 389
   end
 end

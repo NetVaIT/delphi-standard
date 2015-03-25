@@ -1,5 +1,6 @@
 inherited frmPersonas: TfrmPersonas
   Caption = 'Personas'
+  Position = poDesigned
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
@@ -11,6 +12,9 @@ inherited frmPersonas: TfrmPersonas
         object tvMasterIdPersona: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersona'
           Visible = False
+        end
+        object tvMasterRFC: TcxGridDBColumn
+          DataBinding.FieldName = 'RFC'
         end
         object tvMasterIdPersonaTipo: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersonaTipo'
@@ -36,16 +40,9 @@ inherited frmPersonas: TfrmPersonas
           DataBinding.FieldName = 'IdPoblacion'
           Visible = False
         end
-        object tvMasterRFC: TcxGridDBColumn
-          DataBinding.FieldName = 'RFC'
-        end
         object tvMasterRazonSocial: TcxGridDBColumn
           Caption = 'Nombre'
           DataBinding.FieldName = 'RazonSocial'
-        end
-        object tvMasterPersonaTipo: TcxGridDBColumn
-          Caption = 'Persona'
-          DataBinding.FieldName = 'PersonaTipo'
         end
         object tvMasterNombre: TcxGridDBColumn
           DataBinding.FieldName = 'Nombre'
@@ -59,12 +56,20 @@ inherited frmPersonas: TfrmPersonas
           DataBinding.FieldName = 'ApellidoMaterno'
           Visible = False
         end
-        object tvMasterSexo: TcxGridDBColumn
-          DataBinding.FieldName = 'Sexo'
-          Visible = False
-        end
         object tvMasterFechaNacimiento: TcxGridDBColumn
           DataBinding.FieldName = 'FechaNacimiento'
+          Visible = False
+        end
+        object tvMasterPersonaTipo: TcxGridDBColumn
+          Caption = 'Tipo'
+          DataBinding.FieldName = 'PersonaTipo'
+        end
+        object tvMasterRazonSocialTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'RazonSocialTipo'
+          Visible = False
+        end
+        object tvMasterSexo: TcxGridDBColumn
+          DataBinding.FieldName = 'Sexo'
           Visible = False
         end
         object tvMasterEstadoCivil: TcxGridDBColumn

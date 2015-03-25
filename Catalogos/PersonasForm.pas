@@ -21,45 +21,55 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, PersonasDM;
 
 type
   TfrmPersonas = class(T_frmGrid)
     tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterRFC: TcxGridDBColumn;
     tvMasterIdPersonaTipo: TcxGridDBColumn;
     tvMasterIdRazonSocialTipo: TcxGridDBColumn;
     tvMasterIdSexo: TcxGridDBColumn;
     tvMasterIdEstadoCivil: TcxGridDBColumn;
     tvMasterIdPais: TcxGridDBColumn;
     tvMasterIdPoblacion: TcxGridDBColumn;
-    tvMasterRFC: TcxGridDBColumn;
-    tvMasterPersonaTipo: TcxGridDBColumn;
     tvMasterRazonSocial: TcxGridDBColumn;
     tvMasterNombre: TcxGridDBColumn;
     tvMasterApellidoPaterno: TcxGridDBColumn;
     tvMasterApellidoMaterno: TcxGridDBColumn;
-    tvMasterSexo: TcxGridDBColumn;
     tvMasterFechaNacimiento: TcxGridDBColumn;
+    tvMasterPersonaTipo: TcxGridDBColumn;
+    tvMasterRazonSocialTipo: TcxGridDBColumn;
+    tvMasterSexo: TcxGridDBColumn;
     tvMasterEstadoCivil: TcxGridDBColumn;
     tvMasterPais: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
+    FRol: TPRol;
+    procedure SetRol(const Value: TPRol);
     { Private declarations }
   public
     { Public declarations }
+    property Rol: TPRol read FRol write SetRol;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasDM, PersonasEdit;
+uses PersonasEdit;
 
 procedure TfrmPersonas.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmPersonasEdit.Create(Self);
-//  gEditForm.Tag := Self.Tag;
+  gEditForm.Tag := Self.Tag;
+end;
+
+procedure TfrmPersonas.SetRol(const Value: TPRol);
+begin
+  FRol := Value;
+  TfrmPersonasEdit(gEditForm).Rol:= Value;
 end;
 
 end.
