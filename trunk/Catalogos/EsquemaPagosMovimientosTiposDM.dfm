@@ -4,24 +4,25 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
     CursorType = ctStatic
     Parameters = <
       item
-        Name = 'IdMovimientoTipo'
+        Name = 'IdEsquemaPago'
         DataType = ftInteger
         Size = -1
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT IdEsquemaPago, Descripcion '
-      'FROM EsquemaPagos'
+      'SELECT IdMovimientoTipo, Descripcion '
+      'FROM MovimientosTipos'
       
-        'WHERE (IdEsquemaPago NOT IN (SELECT IdEsquemaPago FROM EsquemaPa' +
-        'gosMovimientosTipos WHERE IdMovimientoTipo = :IdMovimientoTipo))'
+        'WHERE (IdMovimientoTipo NOT IN (SELECT IdMovimientoTipo FROM Esq' +
+        'uemaPagosMovimientosTipos WHERE IdEsquemaPago = :IdEsquemaPago))'
       'ORDER BY Descripcion')
-    object adoqAvailableIdEsquemaPago: TIntegerField
-      FieldName = 'IdEsquemaPago'
+    object adoqAvailableIdMovimientoTipo: TAutoIncField
+      FieldName = 'IdMovimientoTipo'
+      ReadOnly = True
       Visible = False
     end
     object adoqAvailableDescripcion: TStringField
-      DisplayLabel = 'Esquema de pagos disponibles'
+      DisplayLabel = 'Tipos de movimiento disponibles'
       FieldName = 'Descripcion'
       Size = 50
     end
@@ -30,24 +31,25 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
     CursorType = ctStatic
     Parameters = <
       item
-        Name = 'IdMovimientoTipo'
+        Name = 'IdEsquemaPago'
         DataType = ftInteger
         Size = -1
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT IdEsquemaPago, Descripcion '
-      'FROM EsquemaPagos'
+      'SELECT IdMovimientoTipo, Descripcion '
+      'FROM MovimientosTipos'
       
-        'WHERE (IdEsquemaPago IN (SELECT IdEsquemaPago FROM EsquemaPagosM' +
-        'ovimientosTipos WHERE IdMovimientoTipo = :IdMovimientoTipo))'
+        'WHERE (IdMovimientoTipo IN (SELECT IdMovimientoTipo FROM Esquema' +
+        'PagosMovimientosTipos WHERE IdEsquemaPago = :IdEsquemaPago))'
       'ORDER BY Descripcion')
-    object adoqAssignedIdEsquemaPago: TIntegerField
-      FieldName = 'IdEsquemaPago'
+    object adoqAssignedIdMovimientoTipo: TAutoIncField
+      FieldName = 'IdMovimientoTipo'
+      ReadOnly = True
       Visible = False
     end
     object adoqAssignedDescripcion: TStringField
-      DisplayLabel = 'Esquema de pagos asignados'
+      DisplayLabel = 'Tipos de movimiento asignados'
       FieldName = 'Descripcion'
       Size = 50
     end

@@ -1,13 +1,13 @@
 inherited frmMain: TfrmMain
   Caption = 'frmMain'
-  ClientWidth = 1004
-  ExplicitWidth = 1020
-  ExplicitHeight = 518
+  ClientWidth = 1099
+  ExplicitWidth = 1115
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
-    Width = 1004
-    ExplicitWidth = 1004
+    Width = 1099
+    ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
       Active = False
       Index = 0
@@ -20,17 +20,13 @@ inherited frmMain: TfrmMain
           ToolbarName = 'dxbEjemplo'
         end
         item
-          ToolbarName = 'dxBarManagerBar1'
+          ToolbarName = 'dxbOrganizacion'
         end
         item
+          ToolbarName = 'dxbPagos'
         end
         item
-        end
-        item
-          ToolbarName = 'dxBarManagerBar2'
-        end
-        item
-          ToolbarName = 'dxBarManagerBar3'
+          ToolbarName = 'dxbPresonas'
         end>
       Index = 1
     end
@@ -43,20 +39,14 @@ inherited frmMain: TfrmMain
     end
   end
   inherited dxRibbonStatusBar1: TdxRibbonStatusBar
-    Width = 1004
-    ExplicitWidth = 1004
+    Width = 1099
+    ExplicitWidth = 1099
   end
   inherited pnlMain: TPanel
-    Width = 1004
-    ExplicitWidth = 1004
+    Width = 1099
+    ExplicitWidth = 1099
   end
-  inherited cxLargeImages: TcxImageList [4]
-    FormatVersion = 1
-  end
-  inherited cxSmallImages: TcxImageList [5]
-    FormatVersion = 1
-  end
-  inherited dxBarManager: TdxBarManager [6]
+  inherited dxBarManager: TdxBarManager
     Left = 576
     DockControlHeights = (
       0
@@ -108,15 +98,15 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
-    object dxBarManagerBar1: TdxBar [3]
+    object dxbOrganizacion: TdxBar [3]
       Caption = 'Organizacion'
       CaptionButtons = <>
       DockedLeft = 338
       DockedTop = 0
       FloatLeft = 759
       FloatTop = 8
-      FloatClientWidth = 105
-      FloatClientHeight = 216
+      FloatClientWidth = 103
+      FloatClientHeight = 76
       ItemLinks = <
         item
           Visible = True
@@ -124,15 +114,15 @@ inherited frmMain: TfrmMain
         end
         item
           Visible = True
-          ItemName = 'dxBarLargeButton13'
+          ItemName = 'dxBarButton1'
         end
         item
           Visible = True
-          ItemName = 'dxBarLargeButton4'
+          ItemName = 'dxBarButton2'
         end
         item
           Visible = True
-          ItemName = 'dxBarLargeButton14'
+          ItemName = 'dxBarButton3'
         end>
       OneOnRow = False
       Row = 0
@@ -140,10 +130,10 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
-    object dxBarManagerBar2: TdxBar [4]
+    object dxbPresonas: TdxBar [4]
       Caption = 'Personas'
       CaptionButtons = <>
-      DockedLeft = 652
+      DockedLeft = 711
       DockedTop = 0
       FloatLeft = 764
       FloatTop = 8
@@ -168,23 +158,27 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
-    object dxBarManagerBar3: TdxBar [5]
+    object dxbPagos: TdxBar [5]
       Caption = 'Pagos'
       CaptionButtons = <>
-      DockedLeft = 752
+      DockedLeft = 519
       DockedTop = 0
       FloatLeft = 1038
       FloatTop = 8
-      FloatClientWidth = 129
-      FloatClientHeight = 108
+      FloatClientWidth = 90
+      FloatClientHeight = 54
       ItemLinks = <
         item
           Visible = True
-          ItemName = 'dxBarLargeButton17'
+          ItemName = 'dxBarLargeButton4'
         end
         item
           Visible = True
-          ItemName = 'dxBarLargeButton5'
+          ItemName = 'dxBarButton4'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton5'
         end>
       OneOnRow = False
       Row = 0
@@ -195,13 +189,6 @@ inherited frmMain: TfrmMain
     object dxBarLargeButton1: TdxBarLargeButton
       Action = actUbicaciones
       Category = 0
-    end
-    object dxBarButton1: TdxBarButton
-      Caption = 'Bancos'
-      Category = 0
-      Hint = 'Bancos'
-      Visible = ivAlways
-      LargeImageIndex = 37
     end
     object dxBarLargeButton2: TdxBarLargeButton
       Action = actBancos
@@ -218,34 +205,8 @@ inherited frmMain: TfrmMain
       LargeImageIndex = 19
       OnClick = actCatalogoExecute
     end
-    object dxBarLargeButton7: TdxBarLargeButton
-      Caption = 'Tipo Obligacion'
-      Category = 0
-      Visible = ivAlways
-      LargeImageIndex = 15
-      OnClick = actCatalogoExecute
-    end
-    object dxBarLargeButton8: TdxBarLargeButton
-      Caption = 'Tipo Percepcion'
-      Category = 0
-      Visible = ivAlways
-      LargeImageIndex = 33
-      OnClick = actCatalogoExecute
-    end
     object dxBarLargeButton11: TdxBarLargeButton
       Action = actPuestos
-      Category = 0
-    end
-    object dxBarLargeButton13: TdxBarLargeButton
-      Action = actCapacitaciones
-      Category = 0
-    end
-    object dxBarLargeButton4: TdxBarLargeButton
-      Action = actPlazasTurnos
-      Category = 0
-    end
-    object dxBarLargeButton5: TdxBarLargeButton
-      Action = actEsquemasPago
       Category = 0
     end
     object dxBarLargeButton9: TdxBarLargeButton
@@ -254,10 +215,6 @@ inherited frmMain: TfrmMain
     end
     object dxBarLargeButton10: TdxBarLargeButton
       Action = actReglasNegocio
-      Category = 0
-    end
-    object dxBarLargeButton14: TdxBarLargeButton
-      Action = actEstablecimientos
       Category = 0
     end
     object dxBarLargeButton12: TdxBarLargeButton
@@ -272,12 +229,38 @@ inherited frmMain: TfrmMain
       Action = actProveedores
       Category = 0
     end
-    object dxBarLargeButton17: TdxBarLargeButton
+    object dxBarButton1: TdxBarButton
+      Action = actCapacitaciones
+      Category = 0
+    end
+    object dxBarButton2: TdxBarButton
+      Action = actPlazasTurnos
+      Category = 0
+    end
+    object dxBarButton3: TdxBarButton
+      Action = actEstablecimientos
+      Category = 0
+    end
+    object dxBarLargeButton4: TdxBarLargeButton
+      Action = actRoles
+      Category = 0
+    end
+    object dxBarButton4: TdxBarButton
+      Action = actEsquemasPago
+      Category = 0
+    end
+    object dxBarButton5: TdxBarButton
       Action = actMovimientosTipo
       Category = 0
     end
   end
-  inherited dxSkinController: TdxSkinController [7]
+  inherited cxSmallImages: TcxImageList
+    FormatVersion = 1
+    DesignInfo = 11534924
+  end
+  inherited cxLargeImages: TcxImageList
+    FormatVersion = 1
+    DesignInfo = 12059116
   end
   inherited ActionList: TActionList
     object actCatalogo: TAction
@@ -337,7 +320,7 @@ inherited frmMain: TfrmMain
     object actPlazasTurnos: TAction
       Tag = 4
       Category = 'Catalogos'
-      Caption = 'Plaza Turno'
+      Caption = 'Turnos'
       ImageIndex = 40
       OnExecute = actCatalogoExecute
     end
@@ -348,15 +331,22 @@ inherited frmMain: TfrmMain
       ImageIndex = 23
       OnExecute = actCatalogoExecute
     end
+    object actRoles: TAction
+      Tag = 11
+      Category = 'Catalogos'
+      Caption = 'Roles'
+      ImageIndex = 37
+      OnExecute = actCatalogoExecute
+    end
     object actEsquemasPago: TAction
-      Tag = 5
+      Tag = 12
       Category = 'Catalogos'
       Caption = 'Esquemas de Pago'
       ImageIndex = 30
       OnExecute = actCatalogoExecute
     end
     object actMovimientosTipo: TAction
-      Tag = 11
+      Tag = 13
       Category = 'Catalogos'
       Caption = 'Tipo de movimientos'
       ImageIndex = 7

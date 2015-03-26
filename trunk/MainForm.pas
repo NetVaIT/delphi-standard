@@ -30,30 +30,23 @@ type
     dxbEjemplo: TdxBar;
     dxBarLargeButton1: TdxBarLargeButton;
     actUbicaciones: TAction;
-    dxBarButton1: TdxBarButton;
     dxBarLargeButton2: TdxBarLargeButton;
     actBancos: TAction;
     dxBarLargeButton3: TdxBarLargeButton;
     actMonedas: TAction;
     dxBarLargeButton6: TdxBarLargeButton;
-    dxBarLargeButton7: TdxBarLargeButton;
-    dxBarLargeButton8: TdxBarLargeButton;
     actPuestos: TAction;
     dxBarLargeButton11: TdxBarLargeButton;
-    dxBarLargeButton13: TdxBarLargeButton;
-    dxBarLargeButton4: TdxBarLargeButton;
     actPlazasTurnos: TAction;
     actEsquemasPago: TAction;
-    dxBarLargeButton5: TdxBarLargeButton;
     actFormulas: TAction;
     dxBarLargeButton9: TdxBarLargeButton;
     actReglasNegocio: TAction;
     dxBarLargeButton10: TdxBarLargeButton;
     actEstablecimientos: TAction;
-    dxBarLargeButton14: TdxBarLargeButton;
-    dxBarManagerBar1: TdxBar;
+    dxbOrganizacion: TdxBar;
     actCapacitaciones: TAction;
-    dxBarManagerBar2: TdxBar;
+    dxbPresonas: TdxBar;
     dxBarLargeButton12: TdxBarLargeButton;
     actEmpleados: TAction;
     actClientes: TAction;
@@ -61,8 +54,14 @@ type
     dxBarLargeButton15: TdxBarLargeButton;
     dxBarLargeButton16: TdxBarLargeButton;
     actMovimientosTipo: TAction;
-    dxBarManagerBar3: TdxBar;
-    dxBarLargeButton17: TdxBarLargeButton;
+    dxbPagos: TdxBar;
+    actRoles: TAction;
+    dxBarButton1: TdxBarButton;
+    dxBarButton2: TdxBarButton;
+    dxBarButton3: TdxBarButton;
+    dxBarLargeButton4: TdxBarLargeButton;
+    dxBarButton4: TdxBarButton;
+    dxBarButton5: TdxBarButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -84,7 +83,7 @@ implementation
 
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
-  CapacitacionDM, PersonasDM, MovimientosTiposDM;
+  CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -102,13 +101,14 @@ begin
     2: gModulo := TdmBancos.Create(Self);
     3: gModulo := TdmMonedas.Create(Self);
     4: gModulo := TdmPlazasTurnos.Create(Self);
-    5: gModulo := TdmEsquemaPagos.Create(Self);
     6: gModulo := TdmFormulas.Create(Self);
     7: gModulo := TdmReglasNegocio.Create(Self);
     8: gModulo := TdmPuestos.Create(Self);
     9: gModulo := TdmEstablecimientos.Create(Self);
    10: gModulo := TdmCapacitacion.Create(Self);
-   11: gModulo := TdmMovimientosTipo.Create(Self);
+   11: gModulo := TdmRoles.Create(Self);
+   12: gModulo := TdmEsquemaPagos.Create(Self);
+   13: gModulo := TdmMovimientosTipo.Create(Self);
    20: begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol:= rEmpleado;
@@ -131,12 +131,13 @@ begin
   actPuestos.Enabled          := Conected;
   actCapacitaciones.Enabled   := Conected;
   actPlazasTurnos.Enabled     := Conected;
-  actEsquemasPago.Enabled     := Conected;
   actFormulas.Enabled         := Conected;
   actReglasNegocio.Enabled    := Conected;
   actEstablecimientos.Enabled := Conected;
-  actEmpleados.Enabled        := Conected;
+  actRoles.Enabled            := Conected;
+  actEsquemasPago.Enabled     := Conected;
   actMovimientosTipo.Enabled  := Conected;
+  actEmpleados.Enabled        := Conected;
   actClientes.Enabled         := Conected;
   actProveedores.Enabled      := Conected;
 end;

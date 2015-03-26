@@ -1,5 +1,5 @@
-inherited frmEsquemaPagos: TfrmEsquemaPagos
-  Caption = 'frmEsquemaPagos'
+inherited frmRoles: TfrmRoles
+  Caption = 'frmRoles'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 651
@@ -13,9 +13,10 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
   inherited pnlMaster: TPanel
     Align = alTop
     inherited cxGrid: TcxGrid
+      ExplicitTop = -3
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdEsquemaPago: TcxGridDBColumn
-          DataBinding.FieldName = 'IdEsquemaPago'
+        object tvMasterIdRol: TcxGridDBColumn
+          DataBinding.FieldName = 'IdRol'
           Visible = False
         end
         object tvMasterIdentificador: TcxGridDBColumn
@@ -23,13 +24,6 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
         end
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
-        end
-        object tvMasterIdEsquemaPagoEstatus: TcxGridDBColumn
-          DataBinding.FieldName = 'IdEsquemaPagoEstatus'
-          Visible = False
-        end
-        object tvMasterEsquemaPagoEstatus: TcxGridDBColumn
-          DataBinding.FieldName = 'EsquemaPagoEstatus'
         end
       end
     end

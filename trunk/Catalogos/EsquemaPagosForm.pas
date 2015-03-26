@@ -21,7 +21,8 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls,
+  EsquemaPagosMovimientosTiposDM;
 
 type
   TfrmEsquemaPagos = class(T_frmGrid)
@@ -31,8 +32,11 @@ type
     tvMasterIdEsquemaPagoEstatus: TcxGridDBColumn;
     tvMasterEsquemaPagoEstatus: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos;
   public
     { Public declarations }
   end;
@@ -47,6 +51,20 @@ procedure TfrmEsquemaPagos.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmEsquemaPagosEdit.Create(Self);
+  dmEsquemaPagosMovimientosTipos:= TdmEsquemaPagosMovimientosTipos.Create(nil);
+end;
+
+procedure TfrmEsquemaPagos.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmEsquemaPagosMovimientosTipos);
+end;
+
+procedure TfrmEsquemaPagos.FormShow(Sender: TObject);
+begin
+  inherited;
+  dmEsquemaPagosMovimientosTipos.MasterSource:= DataSource;
+  dmEsquemaPagosMovimientosTipos.ShowModule(pnlDetail1);
 end;
 
 end.

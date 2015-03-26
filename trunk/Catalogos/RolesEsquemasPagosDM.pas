@@ -8,9 +8,9 @@ uses
 
 type
   TdmRolesEsquemasPagos = class(T_dmDualList)
-    adoqAvailableIdRol: TIntegerField;
+    adoqAvailableIdEsquemaPago: TIntegerField;
     adoqAvailableDescripcion: TStringField;
-    adoqAssignedIdRol: TIntegerField;
+    adoqAssignedIdEsquemaPago: TIntegerField;
     adoqAssignedDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -29,8 +29,8 @@ uses RolesEsquemasPagosForm;
 
 procedure TdmRolesEsquemasPagos.DataModuleCreate(Sender: TObject);
 begin
-  IdFieldName1:= 'IdEsquemaPago';
-  IdFieldName2:= 'IdRol';
+  IdFieldName1:= 'IdRol';
+  IdFieldName2:= 'IdEsquemaPago';
   gGridForm:= TfrmRolesEsquemasPagos.Create(Self);
   inherited;
 end;
