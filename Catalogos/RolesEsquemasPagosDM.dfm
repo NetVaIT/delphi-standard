@@ -1,27 +1,27 @@
 inherited dmRolesEsquemasPagos: TdmRolesEsquemasPagos
+  OldCreateOrder = True
   inherited adoqAvailable: TADOQuery
     CursorType = ctStatic
     Parameters = <
       item
-        Name = 'IdEsquemaPago'
+        Name = 'IdRol'
         DataType = ftInteger
         Size = -1
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT IdRol, Descripcion'
-      'FROM Roles'
+      'SELECT IdEsquemaPago, Descripcion'
+      'FROM EsquemaPagos'
       
-        'WHERE (IdRol NOT IN (SELECT IdRol FROM RolesEsquemasPagos WHERE ' +
-        'IdEsquemaPago = :IdEsquemaPago))'
-      'ORDER BY Descripcion'
-      '')
-    object adoqAvailableIdRol: TIntegerField
-      FieldName = 'IdRol'
+        'WHERE (IdEsquemaPago NOT IN (SELECT IdEsquemaPago FROM RolesEsqu' +
+        'emasPagos WHERE IdRol = :IdRol))'
+      'ORDER BY Descripcion')
+    object adoqAvailableIdEsquemaPago: TIntegerField
+      FieldName = 'IdEsquemaPago'
       Visible = False
     end
     object adoqAvailableDescripcion: TStringField
-      DisplayLabel = 'Roles disponibles'
+      DisplayLabel = 'Esquemas de pago disponibles'
       FieldName = 'Descripcion'
       Size = 50
     end
@@ -30,25 +30,25 @@ inherited dmRolesEsquemasPagos: TdmRolesEsquemasPagos
     CursorType = ctStatic
     Parameters = <
       item
-        Name = 'IdEsquemaPago'
+        Name = 'IdRol'
         DataType = ftInteger
         Size = -1
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT IdRol, Descripcion'
-      'FROM Roles'
+      'SELECT IdEsquemaPago, Descripcion'
+      'FROM EsquemaPagos'
       
-        'WHERE (IdRol IN (SELECT IdRol FROM RolesEsquemasPagos WHERE IdEs' +
-        'quemaPago = :IdEsquemaPago))'
+        'WHERE (IdEsquemaPago IN (SELECT IdEsquemaPago FROM RolesEsquemas' +
+        'Pagos WHERE IdRol = :IdRol))'
       'ORDER BY Descripcion'
       '')
-    object adoqAssignedIdRol: TIntegerField
-      FieldName = 'IdRol'
+    object adoqAssignedIdEsquemaPago: TIntegerField
+      FieldName = 'IdEsquemaPago'
       Visible = False
     end
     object adoqAssignedDescripcion: TStringField
-      DisplayLabel = 'Roles asignados'
+      DisplayLabel = 'Esquemas de pago asignados'
       FieldName = 'Descripcion'
       Size = 50
     end

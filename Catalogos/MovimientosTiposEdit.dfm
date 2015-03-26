@@ -2,8 +2,6 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
   ClientHeight = 347
   ClientWidth = 594
-  OnCreate = FormCreate
-  OnDestroy = FormDestroy
   ExplicitWidth = 600
   ExplicitHeight = 376
   PixelsPerInch = 96
@@ -11,14 +9,14 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   inherited pcMain: TcxPageControl
     Width = 594
     Height = 306
-    ExplicitWidth = 484
+    ExplicitWidth = 594
     ExplicitHeight = 306
     ClientRectBottom = 304
     ClientRectRight = 592
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 480
+      ExplicitWidth = 590
       ExplicitHeight = 276
       object Label1: TLabel
         Left = 24
@@ -121,24 +119,19 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Width = 121
       end
     end
-    object tsEsquemaPagos: TcxTabSheet
-      Caption = 'Esquema de Pagos'
-      ImageIndex = 1
-      ExplicitWidth = 480
-    end
   end
   inherited pmlMain: TPanel
     Top = 306
     Width = 594
     ExplicitTop = 306
-    ExplicitWidth = 484
+    ExplicitWidth = 594
     inherited btnOk: TButton
       Left = 431
-      ExplicitLeft = 321
+      ExplicitLeft = 431
     end
     inherited btnCancel: TButton
       Left = 512
-      ExplicitLeft = 402
+      ExplicitLeft = 512
     end
   end
   inherited cxImageList: TcxImageList

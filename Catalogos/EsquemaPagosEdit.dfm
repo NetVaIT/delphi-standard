@@ -2,8 +2,6 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   Caption = 'Esquema de Pago'
   ClientHeight = 226
   ClientWidth = 394
-  OnCreate = FormCreate
-  OnDestroy = FormDestroy
   ExplicitWidth = 400
   ExplicitHeight = 255
   PixelsPerInch = 96
@@ -11,14 +9,14 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   inherited pcMain: TcxPageControl
     Width = 394
     Height = 185
-    ExplicitWidth = 380
+    ExplicitWidth = 394
     ExplicitHeight = 185
     ClientRectBottom = 183
     ClientRectRight = 392
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 376
+      ExplicitWidth = 390
       ExplicitHeight = 155
       object Label1: TLabel
         Left = 16
@@ -69,24 +67,19 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
         Width = 193
       end
     end
-    object tsRoles: TcxTabSheet
-      Caption = 'Roles'
-      ImageIndex = 1
-      ExplicitWidth = 376
-    end
   end
   inherited pmlMain: TPanel
     Top = 185
     Width = 394
     ExplicitTop = 185
-    ExplicitWidth = 380
+    ExplicitWidth = 394
     inherited btnOk: TButton
       Left = 231
-      ExplicitLeft = 217
+      ExplicitLeft = 231
     end
     inherited btnCancel: TButton
       Left = 312
-      ExplicitLeft = 298
+      ExplicitLeft = 312
     end
   end
   inherited cxImageList: TcxImageList

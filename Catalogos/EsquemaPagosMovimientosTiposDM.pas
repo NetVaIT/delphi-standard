@@ -8,9 +8,9 @@ uses
 
 type
   TdmEsquemaPagosMovimientosTipos = class(T_dmDualList)
-    adoqAvailableIdEsquemaPago: TIntegerField;
+    adoqAvailableIdMovimientoTipo: TAutoIncField;
     adoqAvailableDescripcion: TStringField;
-    adoqAssignedIdEsquemaPago: TIntegerField;
+    adoqAssignedIdMovimientoTipo: TAutoIncField;
     adoqAssignedDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -29,8 +29,8 @@ uses EsquemaPagosMovimientosTiposForm;
 
 procedure TdmEsquemaPagosMovimientosTipos.DataModuleCreate(Sender: TObject);
 begin
-  IdFieldName1:= 'IdMovimientoTipo';
-  IdFieldName2:= 'IdEsquemaPago';
+  IdFieldName1:= 'IdEsquemaPago';
+  IdFieldName2:= 'IdMovimientoTipo';
   gGridForm:= TfrmEsquemaPagosMovimientosTipos.Create(Self);
   inherited;
 end;

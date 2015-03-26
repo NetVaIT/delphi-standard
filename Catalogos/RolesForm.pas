@@ -1,10 +1,10 @@
-unit RolesEsquemasPagosForm;
+unit RolesForm;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _DualListForm, cxGraphics, cxControls,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _GridForm, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack,
   dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
   dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
@@ -18,18 +18,23 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
-  dxSkinsdxBarPainter, dxBar, cxClasses, Vcl.ImgList, System.Actions,
+  dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
+  cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls,
+  RolesEsquemasPagosDM;
 
 type
-  TfrmRolesEsquemasPagos = class(T_frmDualList)
-    tvAviableIdEsquemaPago: TcxGridDBColumn;
-    tvAviableDescripcion: TcxGridDBColumn;
-    tvAssignedIdEsquemaPago: TcxGridDBColumn;
-    tvAssignedDescripcion: TcxGridDBColumn;
+  TfrmRoles = class(T_frmGrid)
+    tvMasterIdRol: TcxGridDBColumn;
+    tvMasterIdentificador: TcxGridDBColumn;
+    tvMasterDescripcion: TcxGridDBColumn;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    dmRolesEsquemasPagos: TdmRolesEsquemasPagos;
   public
     { Public declarations }
   end;
@@ -38,6 +43,26 @@ implementation
 
 {$R *.dfm}
 
-uses RolesEsquemasPagosDM;
+uses RolesDM, RolesEdit;
+
+procedure TfrmRoles.FormCreate(Sender: TObject);
+begin
+  inherited;
+  gEditForm:= TfrmRolesEdit.Create(Self);
+  dmRolesEsquemasPagos:= TdmRolesEsquemasPagos.Create(nil);
+end;
+
+procedure TfrmRoles.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmRolesEsquemasPagos);
+end;
+
+procedure TfrmRoles.FormShow(Sender: TObject);
+begin
+  inherited;
+  dmRolesEsquemasPagos.MasterSource:= DataSource;
+  dmRolesEsquemasPagos.ShowModule(pnlDetail1);
+end;
 
 end.

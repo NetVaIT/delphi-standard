@@ -1,24 +1,18 @@
 inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
   Caption = 'frmEsquemaPagosMovimientosTipos'
-  ClientWidth = 600
-  ExplicitWidth = 600
-  ExplicitHeight = 338
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
-    Width = 600
+    ExplicitWidth = 600
     inherited Splitter: TSplitter
-      Left = 311
+      ExplicitLeft = 311
     end
     inherited pnlAviable: TPanel
-      Width = 310
-      ExplicitWidth = 310
       inherited cxGridAviable: TcxGrid
-        Width = 277
-        ExplicitWidth = 300
+        ExplicitWidth = 277
         inherited tvAviable: TcxGridDBTableView
-          object tvAviableIdEsquemaPago: TcxGridDBColumn
-            DataBinding.FieldName = 'IdEsquemaPago'
+          object tvAviableIdMovimientoTipo: TcxGridDBColumn
+            DataBinding.FieldName = 'IdMovimientoTipo'
             Visible = False
           end
           object tvAviableDescripcion: TcxGridDBColumn
@@ -27,20 +21,17 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
         end
       end
       inherited bcdTool: TdxBarDockControl
-        Left = 278
+        ExplicitLeft = 278
       end
     end
     inherited pnlAssigned: TPanel
-      Left = 314
-      Width = 285
-      ExplicitLeft = 417
-      ExplicitWidth = 382
+      ExplicitLeft = 314
+      ExplicitWidth = 285
       inherited cxGridAssigned: TcxGrid
-        Width = 283
-        ExplicitWidth = 380
+        ExplicitWidth = 283
         inherited tvAssigned: TcxGridDBTableView
-          object tvAssignedIdEsquemaPago: TcxGridDBColumn
-            DataBinding.FieldName = 'IdEsquemaPago'
+          object tvAssignedIdMovimientoTipo: TcxGridDBColumn
+            DataBinding.FieldName = 'IdMovimientoTipo'
             Visible = False
           end
           object tvAssignedDescripcion: TcxGridDBColumn

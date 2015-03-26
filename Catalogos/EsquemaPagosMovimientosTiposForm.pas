@@ -24,9 +24,9 @@ uses
 
 type
   TfrmEsquemaPagosMovimientosTipos = class(T_frmDualList)
-    tvAviableIdEsquemaPago: TcxGridDBColumn;
+    tvAviableIdMovimientoTipo: TcxGridDBColumn;
     tvAviableDescripcion: TcxGridDBColumn;
-    tvAssignedIdEsquemaPago: TcxGridDBColumn;
+    tvAssignedIdMovimientoTipo: TcxGridDBColumn;
     tvAssignedDescripcion: TcxGridDBColumn;
   private
     { Private declarations }
