@@ -92,10 +92,6 @@ inherited frmPersonas: TfrmPersonas
           DataBinding.FieldName = 'Pais'
           Visible = False
         end
-        object tvMasterPoblacion: TcxGridDBColumn
-          DataBinding.FieldName = 'Poblacion'
-          Visible = False
-        end
       end
     end
   end

@@ -107,16 +107,6 @@ inherited dmPersona: TdmPersona
       Size = 100
       Lookup = True
     end
-    object adodsMasterPoblacion: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Poblacion'
-      LookupDataSet = adodsPoblacion
-      LookupKeyFields = 'IdPoblacion'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPoblacion'
-      Size = 150
-      Lookup = True
-    end
   end
   object ADODataSet1: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -186,15 +176,6 @@ inherited dmPersona: TdmPersona
     Parameters = <>
     Left = 56
     Top = 408
-  end
-  object adodsPoblacion: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'select IdPoblacion, IdMunicipio, Descripcion from Poblaciones'
-    DataSource = dsMunicipio
-    Parameters = <>
-    Left = 56
-    Top = 464
   end
   object dsPais: TDataSource
     DataSet = adodsPais

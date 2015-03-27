@@ -20,7 +20,7 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
   Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  PersonasDM, TelefonosDM, EmailsDM;
+  PersonasDM, TelefonosDM, EmailsDM, PersonasDomiciliosDM;
 
 type
   TfrmPersonaEdit = class(T_frmEdit)
@@ -48,13 +48,13 @@ type
     cxDBLookupComboBox3: TcxDBLookupComboBox;
     cxDBLookupComboBox4: TcxDBLookupComboBox;
     pnlOrigen: TPanel;
-    Label11: TLabel;
-    DBLookupComboBox5: TDBLookupComboBox;
     Label12: TLabel;
     DBLookupComboBox6: TDBLookupComboBox;
     tsDomicilio: TcxTabSheet;
     tsTelefono: TcxTabSheet;
     tsCorreo: TcxTabSheet;
+    Label11: TLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
     procedure FormShow(Sender: TObject);
     procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -65,6 +65,7 @@ type
     FRol: TPRol;
     dmTelefonos: TdmTelefonos;
     dmEmails: TdmEmails;
+    dmDomicilios: TdmPersonasDomicilios;
     procedure MostrarPanel();
     procedure SetRol(const Value: TPRol);
   public
@@ -75,6 +76,7 @@ type
 implementation
 
 {$R *.dfm}
+
 
 procedure TfrmPersonaEdit.cxDBLookupComboBox1PropertiesChange(Sender: TObject);
 begin
@@ -94,6 +96,7 @@ begin
   inherited;
   dmTelefonos := TdmTelefonos.Create(nil);
   dmEmails := TdmEmails.Create(nil);
+  dmDomicilios := TdmPersonasDomicilios.Create(nil);
 end;
 
 procedure TfrmPersonaEdit.FormDestroy(Sender: TObject);
@@ -101,6 +104,7 @@ begin
   inherited;
   FreeAndNil(dmTelefonos);
   FreeAndNil(dmEmails);
+  FreeAndNil(dmDomicilios);
 end;
 
 procedure TfrmPersonaEdit.FormShow(Sender: TObject);
@@ -110,6 +114,9 @@ begin
   pnlPersonaFisica.Visible := False;
   pnlOrigen.Visible := False;
   MostrarPanel;
+  dmDomicilios.MasterSource := DataSource;
+  dmDomicilios.MasterFields:= 'IdPersona';
+  dmDomicilios.ShowModule(tsDomicilio,'');
   dmTelefonos.MasterSource := DataSource;
   dmTelefonos.MasterFields:= 'IdPersona';
   dmTelefonos.ShowModule(tsTelefono,'');
