@@ -1,4 +1,4 @@
-unit PersonasForm;
+unit TelefonosForm;
 
 interface
 
@@ -21,55 +21,34 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, PersonasDM;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmPersonas = class(T_frmGrid)
+  TfrmTelefonos = class(T_frmGrid)
+    tvMasterIdTelefono: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
-    tvMasterRFC: TcxGridDBColumn;
-    tvMasterIdPersonaTipo: TcxGridDBColumn;
-    tvMasterIdRazonSocialTipo: TcxGridDBColumn;
-    tvMasterIdSexo: TcxGridDBColumn;
-    tvMasterIdEstadoCivil: TcxGridDBColumn;
-    tvMasterIdPais: TcxGridDBColumn;
-    tvMasterIdPoblacion: TcxGridDBColumn;
-    tvMasterPersonaTipo: TcxGridDBColumn;
-    tvMasterRazonSocial: TcxGridDBColumn;
-    tvMasterRazonSocialTipo: TcxGridDBColumn;
-    tvMasterNombre: TcxGridDBColumn;
-    tvMasterApellidoPaterno: TcxGridDBColumn;
-    tvMasterApellidoMaterno: TcxGridDBColumn;
-    tvMasterFechaNacimiento: TcxGridDBColumn;
-    tvMasterSexo: TcxGridDBColumn;
-    tvMasterEstadoCivil: TcxGridDBColumn;
-    tvMasterPais: TcxGridDBColumn;
-    tvMasterPoblacion: TcxGridDBColumn;
+    tvMasterIdTelefonoTipo: TcxGridDBColumn;
+    tvMasterTelefonoTipo: TcxGridDBColumn;
+    tvMasterLada: TcxGridDBColumn;
+    tvMasterTelefono: TcxGridDBColumn;
+    tvMasterPredeterminado: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    FRol: TPRol;
-    procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
-    property Rol: TPRol read FRol write SetRol;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasEdit;
+uses TelefonosDM, TelefonosEdit;
 
-procedure TfrmPersonas.FormCreate(Sender: TObject);
+procedure TfrmTelefonos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmPersonaEdit.Create(Self);
-end;
-
-procedure TfrmPersonas.SetRol(const Value: TPRol);
-begin
-  FRol := Value;
-  TfrmPersonaEdit(gEditForm).Rol:= Value;
+  gEditForm:= TfrmTelefonosEdit.Create(Self);
 end;
 
 end.

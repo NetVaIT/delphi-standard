@@ -1,337 +1,311 @@
-inherited frmPersonasEdit: TfrmPersonasEdit
-  Caption = 'Personas'
-  ClientHeight = 505
-  ClientWidth = 650
-  ExplicitWidth = 656
-  ExplicitHeight = 533
+inherited frmPersonaEdit: TfrmPersonaEdit
+  Caption = 'Persona'
+  ClientHeight = 491
+  ClientWidth = 624
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  ExplicitWidth = 630
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 650
-    Height = 464
-    ExplicitWidth = 650
-    ExplicitHeight = 464
-    ClientRectBottom = 462
-    ClientRectRight = 648
+    Width = 624
+    Height = 450
+    ExplicitWidth = 624
+    ExplicitHeight = 450
+    ClientRectBottom = 448
+    ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
-      ExplicitWidth = 646
-      ExplicitHeight = 434
+      ExplicitLeft = 2
+      ExplicitTop = 28
+      ExplicitWidth = 620
+      ExplicitHeight = 420
       object pnlPersona: TPanel
         Left = 0
         Top = 0
-        Width = 646
-        Height = 67
+        Width = 620
+        Height = 49
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
         object Label1: TLabel
-          Left = 24
-          Top = 24
+          Left = 16
+          Top = 9
           Width = 20
           Height = 13
           Caption = 'RFC'
-          FocusControl = cxDBTextEdit1
         end
         object Label2: TLabel
-          Left = 232
-          Top = 24
+          Left = 160
+          Top = 8
           Width = 20
           Height = 13
           Caption = 'Tipo'
         end
         object cxDBTextEdit1: TcxDBTextEdit
-          Left = 24
-          Top = 40
+          Left = 16
+          Top = 24
           DataBinding.DataField = 'RFC'
           DataBinding.DataSource = DataSource
           TabOrder = 0
-          Width = 161
+          Width = 121
         end
-        object cxDBLookupComboBox1: TcxDBLookupComboBox
-          Left = 232
-          Top = 39
+        object cmbTipoPersona: TcxDBLookupComboBox
+          Left = 160
+          Top = 24
           DataBinding.DataField = 'PersonaTipo'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
-          Properties.ListOptions.ShowHeader = False
+          Properties.OnChange = cxDBLookupComboBox1PropertiesChange
           TabOrder = 1
-          Width = 233
+          Width = 161
         end
       end
       object pnlPersonaMoral: TPanel
         Left = 0
-        Top = 67
-        Width = 646
-        Height = 86
+        Top = 49
+        Width = 620
+        Height = 88
         Align = alTop
         BevelOuter = bvNone
-        Ctl3D = False
-        ParentCtl3D = False
         TabOrder = 1
+        Visible = False
         object Label3: TLabel
-          Left = 23
-          Top = 3
+          Left = 16
+          Top = 8
           Width = 60
           Height = 13
           Caption = 'Razon Social'
-          FocusControl = cxDBTextEdit2
+          FocusControl = edtRazonSocial
         end
-        object Label10: TLabel
-          Left = 23
-          Top = 45
-          Width = 54
+        object Label4: TLabel
+          Left = 16
+          Top = 48
+          Width = 98
           Height = 13
-          Caption = 'Pais Origen'
+          Caption = 'Tipo de Razon Social'
         end
-        object cxDBTextEdit2: TcxDBTextEdit
-          Left = 23
-          Top = 18
+        object edtRazonSocial: TcxDBTextEdit
+          Left = 16
+          Top = 24
           DataBinding.DataField = 'RazonSocial'
           DataBinding.DataSource = DataSource
           TabOrder = 0
-          Width = 538
+          Width = 585
         end
-        object cxDBLookupComboBox4: TcxDBLookupComboBox
-          Left = 24
-          Top = 59
-          DataBinding.DataField = 'Pais'
+        object cxDBLookupComboBox2: TcxDBLookupComboBox
+          Left = 16
+          Top = 63
+          DataBinding.DataField = 'RazonSocialTipo'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
-          Properties.ListOptions.ShowHeader = False
           TabOrder = 1
-          Width = 234
+          Width = 305
         end
       end
       object pnlPersonaFisica: TPanel
         Left = 0
-        Top = 153
-        Width = 646
-        Height = 172
+        Top = 137
+        Width = 620
+        Height = 170
         Align = alTop
         BevelOuter = bvNone
-        Ctl3D = False
-        ParentCtl3D = False
         TabOrder = 2
-        object Label7: TLabel
-          Left = 24
-          Top = 87
-          Width = 24
-          Height = 13
-          Caption = 'Sexo'
-        end
-        object Label4: TLabel
-          Left = 23
-          Top = 3
-          Width = 50
-          Height = 13
-          Caption = 'Nombre(s)'
-          FocusControl = cxDBTextEdit3
-        end
+        Visible = False
         object Label5: TLabel
-          Left = 24
+          Left = 16
+          Top = 6
+          Width = 37
+          Height = 13
+          Caption = 'Nombre'
+          FocusControl = edtNombre
+        end
+        object Label6: TLabel
+          Left = 16
           Top = 46
           Width = 78
           Height = 13
           Caption = 'Apellido Paterno'
-          FocusControl = cxDBTextEdit4
+          FocusControl = edtAPaterno
         end
-        object Label6: TLabel
-          Left = 296
+        object Label7: TLabel
+          Left = 319
           Top = 46
           Width = 80
           Height = 13
           Caption = 'Apellido Materno'
-          FocusControl = cxDBTextEdit5
+          FocusControl = edtAMaterno
         end
         object Label8: TLabel
-          Left = 23
-          Top = 130
+          Left = 16
+          Top = 86
           Width = 99
           Height = 13
           Caption = 'Fecha de Nacimiento'
           FocusControl = cxDBDateEdit1
         end
         object Label9: TLabel
-          Left = 199
-          Top = 87
+          Left = 16
+          Top = 126
+          Width = 24
+          Height = 13
+          Caption = 'Sexo'
+        end
+        object Label10: TLabel
+          Left = 161
+          Top = 126
           Width = 55
           Height = 13
           Caption = 'Estado Civil'
         end
-        object cxDBTextEdit3: TcxDBTextEdit
-          Left = 24
-          Top = 19
+        object edtNombre: TcxDBTextEdit
+          Left = 16
+          Top = 22
           DataBinding.DataField = 'Nombre'
           DataBinding.DataSource = DataSource
           TabOrder = 0
-          Width = 234
+          OnEditing = edtNombreEditing
+          Width = 282
         end
-        object cxDBTextEdit4: TcxDBTextEdit
-          Left = 24
-          Top = 61
+        object edtAPaterno: TcxDBTextEdit
+          Left = 16
+          Top = 62
           DataBinding.DataField = 'ApellidoPaterno'
           DataBinding.DataSource = DataSource
           TabOrder = 1
-          Width = 233
+          OnEditing = edtNombreEditing
+          Width = 282
         end
-        object cxDBTextEdit5: TcxDBTextEdit
-          Left = 296
-          Top = 61
+        object edtAMaterno: TcxDBTextEdit
+          Left = 319
+          Top = 62
           DataBinding.DataField = 'ApellidoMaterno'
           DataBinding.DataSource = DataSource
           TabOrder = 2
-          Width = 233
+          OnEditing = edtNombreEditing
+          Width = 282
         end
         object cxDBDateEdit1: TcxDBDateEdit
-          Left = 23
-          Top = 146
+          Left = 16
+          Top = 102
           DataBinding.DataField = 'FechaNacimiento'
           DataBinding.DataSource = DataSource
-          TabOrder = 5
-          Width = 146
+          TabOrder = 3
+          Width = 121
         end
-        object cxDBLookupComboBox2: TcxDBLookupComboBox
-          Left = 24
-          Top = 102
+        object cxDBLookupComboBox3: TcxDBLookupComboBox
+          Left = 16
+          Top = 142
           DataBinding.DataField = 'Sexo'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
-          Properties.ListOptions.ShowHeader = False
-          TabOrder = 3
-          Width = 145
+          TabOrder = 4
+          Width = 121
         end
-        object cxDBLookupComboBox3: TcxDBLookupComboBox
-          Left = 199
-          Top = 102
+        object cxDBLookupComboBox4: TcxDBLookupComboBox
+          Left = 161
+          Top = 142
           DataBinding.DataField = 'EstadoCivil'
           DataBinding.DataSource = DataSource
           Properties.ListColumns = <>
-          Properties.ListOptions.ShowHeader = False
-          TabOrder = 4
-          Width = 145
+          TabOrder = 5
+          Width = 137
         end
       end
-      object pnlRoles: TPanel
+      object pnlOrigen: TPanel
         Left = 0
-        Top = 325
-        Width = 646
-        Height = 109
+        Top = 307
+        Width = 620
+        Height = 113
         Align = alClient
         BevelOuter = bvNone
-        Ctl3D = True
-        ParentCtl3D = False
         TabOrder = 3
+        Visible = False
         object Label11: TLabel
-          Left = 24
-          Top = 5
-          Width = 100
+          Left = 16
+          Top = 6
+          Width = 19
           Height = 13
-          Caption = 'Persona Relacionada'
+          Caption = 'Pais'
+          FocusControl = DBLookupComboBox5
         end
         object Label12: TLabel
-          Left = 24
-          Top = 48
-          Width = 36
+          Left = 16
+          Top = 52
+          Width = 45
           Height = 13
-          Caption = 'Estatus'
+          Caption = 'Poblacion'
+          FocusControl = DBLookupComboBox6
         end
-        object Label13: TLabel
-          Left = 265
-          Top = 48
-          Width = 26
-          Height = 13
-          Caption = 'Clase'
-        end
-        object cxDBLookupComboBox5: TcxDBLookupComboBox
-          Left = 24
-          Top = 21
-          DataBinding.DataField = 'PersonaRelacionada'
-          DataBinding.DataSource = dsPersonaRol
-          Properties.ListColumns = <>
-          Properties.ListOptions.ShowHeader = False
+        object DBLookupComboBox5: TDBLookupComboBox
+          Left = 16
+          Top = 25
+          Width = 300
+          Height = 21
+          DataField = 'Pais'
+          DataSource = DataSource
           TabOrder = 0
-          Width = 386
         end
-        object cxDBLookupComboBox6: TcxDBLookupComboBox
-          Left = 24
-          Top = 64
-          DataBinding.DataField = 'RolEstatus'
-          DataBinding.DataSource = dsPersonaRol
-          Properties.ListColumns = <>
-          Properties.ListOptions.ShowHeader = False
+        object DBLookupComboBox6: TDBLookupComboBox
+          Left = 16
+          Top = 70
+          Width = 300
+          Height = 21
+          DataField = 'Poblacion'
+          DataSource = DataSource
           TabOrder = 1
-          Width = 201
-        end
-        object cxDBLookupComboBox7: TcxDBLookupComboBox
-          Left = 265
-          Top = 64
-          DataBinding.DataField = 'RolClase'
-          DataBinding.DataSource = dsPersonaRol
-          Properties.ListColumns = <>
-          Properties.ListOptions.ShowHeader = False
-          TabOrder = 2
-          Width = 145
         end
       end
     end
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 564
     end
-    object tsTelefonos: TcxTabSheet
-      Caption = 'Telefonos'
+    object tsTelefono: TcxTabSheet
+      Caption = 'Telefono'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 564
     end
-    object tsEmail: TcxTabSheet
-      Caption = 'Email'
+    object tsCorreo: TcxTabSheet
+      Caption = 'Correo Electronico'
       ImageIndex = 3
-    end
-    object tsKardex: TcxTabSheet
-      Caption = 'Kardex'
-      ImageIndex = 4
-    end
-    object cxTabSheet2: TcxTabSheet
-      Caption = 'Contactos Emergencia'
-      ImageIndex = 5
-    end
-    object cxTabSheet1: TcxTabSheet
-      Caption = 'Cuentas'
-      ImageIndex = 6
-    end
-    object cxTabSheet3: TcxTabSheet
-      Caption = 'Pagos'
-      ImageIndex = 7
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 564
     end
   end
   inherited pmlMain: TPanel
-    Top = 464
-    Width = 650
-    ExplicitTop = 464
-    ExplicitWidth = 650
+    Top = 450
+    Width = 624
+    ExplicitTop = 450
+    ExplicitWidth = 624
     inherited btnOk: TButton
-      Left = 487
-      ExplicitLeft = 487
+      Left = 461
+      ExplicitLeft = 461
     end
     inherited btnCancel: TButton
-      Left = 568
-      ExplicitLeft = 568
+      Left = 542
+      ExplicitLeft = 542
     end
   end
   inherited DataSource: TDataSource
-    Left = 528
-    Top = 32
+    Left = 376
+    Top = 8
   end
   inherited ActionList: TActionList
-    Left = 560
-    Top = 32
+    Left = 432
+    Top = 16
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
-    DesignInfo = 2163280
-  end
-  object dsPersonaRol: TDataSource
-    DataSet = dmPersona.adodsPersonasRoles
-    Left = 530
-    Top = 389
+    DesignInfo = 1114592
   end
 end

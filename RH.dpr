@@ -94,7 +94,15 @@ uses
   RolesForm in 'Catalogos\RolesForm.pas' {frmRoles},
   RolesEdit in 'Catalogos\RolesEdit.pas' {frmRolesEdit},
   PersonasDomiciliosForm in 'Catalogos\PersonasDomiciliosForm.pas' {frmPersonasDomicilios},
-  PersonasDomiciliosEdit in 'Catalogos\PersonasDomiciliosEdit.pas' {frmPersonasDomiciliosEdit};
+  PersonasDomiciliosEdit in 'Catalogos\PersonasDomiciliosEdit.pas' {frmPersonasDomiciliosEdit},
+  TelefonosDM in 'Catalogos\TelefonosDM.pas' {dmTelefonos: TDataModule},
+  TelefonosEdit in 'Catalogos\TelefonosEdit.pas' {frmTelefonosEdit},
+  TelefonosForm in 'Catalogos\TelefonosForm.pas' {frmTelefonos},
+  EmailsDM in 'Catalogos\EmailsDM.pas' {dmEmails: TDataModule},
+  EmailsEdit in 'Catalogos\EmailsEdit.pas' {frmEmailsEdit},
+  EmailsForm in 'Catalogos\EmailsForm.pas' {frmEmails},
+  PersonaRolesEdit in 'Catalogos\PersonaRolesEdit.pas' {frmPersonaRolesEdit},
+  PersonaRolesForm in 'Catalogos\PersonaRolesForm.pas' {frmPersonasRoles};
 
 {$R *.res}
 

@@ -390,6 +390,40 @@
             <Form>frmPersonasDomiciliosEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Catalogos\TelefonosDM.pas">
+            <Form>dmTelefonos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TelefonosEdit.pas">
+            <Form>frmTelefonosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\TelefonosForm.pas">
+            <Form>frmTelefonos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EmailsDM.pas">
+            <Form>dmEmails</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EmailsEdit.pas">
+            <Form>frmEmailsEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\EmailsForm.pas">
+            <Form>frmEmails</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonaRolesEdit.pas">
+            <Form>frmPersonaRolesEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonaRolesForm.pas">
+            <Form>frmPersonasRoles</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

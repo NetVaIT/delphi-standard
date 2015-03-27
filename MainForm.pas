@@ -62,6 +62,12 @@ type
     dxBarLargeButton4: TdxBarLargeButton;
     dxBarButton4: TdxBarButton;
     dxBarButton5: TdxBarButton;
+    dxBarLargeButton5: TdxBarLargeButton;
+    actPersonas: TAction;
+    actDuenoProceso: TAction;
+    actOutsourcing: TAction;
+    dxBarLargeButton7: TdxBarLargeButton;
+    dxBarLargeButton8: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -111,7 +117,27 @@ begin
    13: gModulo := TdmMovimientosTipo.Create(Self);
    20: begin
         gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol:= rEmpleado;
+        TdmPersona(gModulo).Rol := rNone;
+       end;
+   21: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rEmpleado;
+       end;
+   22: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rCliente;
+       end;
+   23: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rProveedor;
+       end;
+   24: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rDuenoProceso;
+       end;
+   25: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rOutSourcing;
        end;
   end;
   if Assigned(gModulo) then
@@ -137,15 +163,17 @@ begin
   actRoles.Enabled            := Conected;
   actEsquemasPago.Enabled     := Conected;
   actMovimientosTipo.Enabled  := Conected;
+  actPersonas.Enabled         := Conected;
   actEmpleados.Enabled        := Conected;
   actClientes.Enabled         := Conected;
   actProveedores.Enabled      := Conected;
+  actDuenoProceso.Enabled     := Conected;
+  actOutsourcing.Enabled      := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;
 begin
   if Assigned(gModulo) then FreeAndNil(gModulo);
 end;
-
 
 end.

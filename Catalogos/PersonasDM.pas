@@ -3,31 +3,12 @@ unit PersonasDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB, Dialogs;
 
 type
   TPRol = (rNone, rDuenoProceso, rOutSourcing, rCliente, rProveedor, rEmpleado);
   TdmPersona = class(T_dmStandar)
-    adodsPersonaTipo: TADODataSet;
-    adodsSexo: TADODataSet;
-    adodsEstadoCivil: TADODataSet;
-    adodsPais: TADODataSet;
-    adodsClientes: TADODataSet;
-    adodsPersonasRoles: TADODataSet;
-    dsPais: TDataSource;
-    adodsEstado: TADODataSet;
-    dsEstado: TDataSource;
-    dsMunicipio: TDataSource;
-    adodsMunicipio: TADODataSet;
-    adodsPoblacion: TADODataSet;
     ADODataSet1: TADODataSet;
-    adodsRolesClases: TADODataSet;
-    adodsRolesEstatus: TADODataSet;
-    adodsProveedores: TADODataSet;
-    adodsEmpleados: TADODataSet;
-    adodsPersonaRelacionada: TADODataSet;
-    dsMaster: TDataSource;
-    dsPersonasRoles: TDataSource;
     adodsMasterIdPersona: TAutoIncField;
     adodsMasterRFC: TStringField;
     adodsMasterIdPersonaTipo: TIntegerField;
@@ -41,28 +22,47 @@ type
     adodsMasterApellidoPaterno: TStringField;
     adodsMasterApellidoMaterno: TStringField;
     adodsMasterFechaNacimiento: TDateTimeField;
-    adodsPersonasRolesIdPersonaRol: TAutoIncField;
-    adodsPersonasRolesIdPersona: TIntegerField;
-    adodsPersonasRolesIdPersonaRelacionada: TIntegerField;
-    adodsPersonasRolesIdRol: TIntegerField;
-    adodsPersonasRolesIdRolEsquemaPago: TIntegerField;
-    adodsPersonasRolesIdRolEstatus: TIntegerField;
-    adodsPersonasRolesIdRolClase: TIntegerField;
-    adodsMasterPersonaTipo: TStringField;
+    adodsPersonaTipo: TADODataSet;
     adodsRazonSocialTipo: TADODataSet;
+    adodsSexo: TADODataSet;
+    adodsEstadoCivil: TADODataSet;
+    adodsPais: TADODataSet;
+    adodsEstado: TADODataSet;
+    adodsMunicipio: TADODataSet;
+    adodsPoblacion: TADODataSet;
+    dsPais: TDataSource;
+    dsEstado: TDataSource;
+    dsMunicipio: TDataSource;
+    adodsMasterPersonaTipo: TStringField;
     adodsMasterRazonSocialTipo: TStringField;
     adodsMasterSexo: TStringField;
     adodsMasterEstadoCivil: TStringField;
     adodsMasterPais: TStringField;
-    adodsPersonasRolesPersonaRelacionada: TStringField;
-    adodsPersonasRolesRolEstatus: TStringField;
-    adodsPersonasRolesRolClase: TStringField;
+    adodsMasterPoblacion: TStringField;
+    adodsPersonaRoles: TADODataSet;
+    adodsPersonaRolesIdPersonaRol: TAutoIncField;
+    adodsPersonaRolesIdPersona: TIntegerField;
+    adodsPersonaRolesIdPersonaRelacionada: TIntegerField;
+    adodsPersonaRolesIdRol: TIntegerField;
+    adodsPersonaRolesIdRolEsquemaPago: TIntegerField;
+    adodsPersonaRolesIdRolEstatus: TIntegerField;
+    adodsPersonaRolesIdRolClase: TIntegerField;
+    adodsPersonaRelacionada: TADODataSet;
+    adodsRol: TADODataSet;
+    adodsRolEsquemaPago: TADODataSet;
+    adodsRolEstatus: TADODataSet;
+    adodsRolClase: TADODataSet;
+    adodsPersonaRolesPersonaRelacionada: TStringField;
+    adodsPersonaRolesRol: TStringField;
+    adodsPersonaRolesRolEstatus: TStringField;
+    adodsPersonaRolesRolClase: TStringField;
+    dsMaster: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
-    procedure DataModuleDestroy(Sender: TObject);
   private
+    { Private declarations }
     FRol: TPRol;
     procedure SetRol(const Value: TPRol);
-    { Private declarations }
+    procedure AsignarConsulta;
   public
     { Public declarations }
     property Rol: TPRol read FRol write SetRol;
@@ -72,34 +72,78 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses PersonasForm;
+uses PersonasForm, PersonaRolesForm;
 
 {$R *.dfm}
 
-procedure TdmPersona.DataModuleCreate(Sender: TObject);
+procedure TdmPersona.AsignarConsulta;
+var
+  ConsultaP, ConsultaPR : String;
 begin
-  inherited;
-  gGridForm := TfrmPersonas.Create(Self);
-  gGridForm.DataSet := adodsMaster;
-  adodsPersonasRoles.Open;
-  if Rol = rEmpleado then adodsEmpleados.Open;
-  if Rol = rCliente then adodsClientes.Open;
-  if Rol = rProveedor then adodsProveedores.Open;
-  adodsPersonasRoles.Parameters.ParamByName('IdRol').Value := rEmpleado;
+  ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.IdPersonaTipo, ' +  #10#13 +
+               'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' +  #10#13 +
+               'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' +  #10#13 +
+               'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' +  #10#13 +
+               'Personas.FechaNacimiento, PersonasRoles.IdRol, PersonasRoles.IdPersona ' +  #10#13 +
+               'FROM Personas ' +  #10#13 +
+               'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
+  ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
+                'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
+                'FROM Personas ' + #10#13 +
+                'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
+  case Rol of
+    rNone: begin
+            ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.IdPersonaTipo, ' + #10#13 +
+                         'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' + #10#13 +
+                         'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' + #10#13 +
+                         'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' + #10#13 +
+                         'Personas.FechaNacimiento FROM Personas';
+            ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
+                          'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
+                          'FROM Personas ' + #10#13 +
+                          'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
+           end;
+    rDuenoProceso: begin
+                    ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 1)';
+                    ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 0)';
+                   end;
+    rOutSourcing: begin
+                    ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                    ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 1)';
+                  end;
+    rCliente: begin
+                ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 3)';
+                ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';//(PersonasRoles.IdRol <> 5 AND PersonasRoles.IdRol <> 0)'
+              end;
+    rProveedor: begin
+                  ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 4)';
+                  ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                end;
+    rEmpleado: begin
+                ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 5)';
+                ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+               end;
+  end;
+  adodsMaster.CommandText := ConsultaP;
+  adodsPersonaRelacionada.CommandText := ConsultaPR;
 end;
 
-procedure TdmPersona.DataModuleDestroy(Sender: TObject);
+procedure TdmPersona.DataModuleCreate(Sender: TObject);
 begin
-  inherited;
-  adodsEmpleados.Close;
-  adodsClientes.Close;
-  adodsProveedores.Close;
+//  inherited;
+  gGridForm:= TfrmPersonas.Create(Self);
+  gGridForm.DataSet:= adodsMaster;
+  gFormDeatil1:= TfrmPersonasRoles.Create(Self);
+  gFormDeatil1.DataSet:= adodsPersonaRoles;
 end;
 
 procedure TdmPersona.SetRol(const Value: TPRol);
 begin
   FRol := Value;
   TfrmPersonas(gGridForm).Rol := Value;
+  AsignarConsulta;
+  adodsMaster.Open;
+  adodsPersonaRoles.Open;
 end;
 
 end.
