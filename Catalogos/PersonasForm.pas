@@ -43,7 +43,6 @@ type
     tvMasterSexo: TcxGridDBColumn;
     tvMasterEstadoCivil: TcxGridDBColumn;
     tvMasterPais: TcxGridDBColumn;
-    tvMasterPoblacion: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

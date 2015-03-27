@@ -29,7 +29,6 @@ type
     adodsPais: TADODataSet;
     adodsEstado: TADODataSet;
     adodsMunicipio: TADODataSet;
-    adodsPoblacion: TADODataSet;
     dsPais: TDataSource;
     dsEstado: TDataSource;
     dsMunicipio: TDataSource;
@@ -38,7 +37,6 @@ type
     adodsMasterSexo: TStringField;
     adodsMasterEstadoCivil: TStringField;
     adodsMasterPais: TStringField;
-    adodsMasterPoblacion: TStringField;
     adodsPersonaRoles: TADODataSet;
     adodsPersonaRolesIdPersonaRol: TAutoIncField;
     adodsPersonaRolesIdPersona: TIntegerField;
