@@ -12,6 +12,24 @@ inherited frmDomicilios: TfrmDomicilios
           DataBinding.FieldName = 'IdDomicilio'
           Visible = False
         end
+        object tvMasterCalle: TcxGridDBColumn
+          DataBinding.FieldName = 'Calle'
+          Width = 185
+        end
+        object tvMasterNoExterior: TcxGridDBColumn
+          DataBinding.FieldName = 'NoExterior'
+        end
+        object tvMasterNoInterior: TcxGridDBColumn
+          DataBinding.FieldName = 'NoInterior'
+        end
+        object tvMasterColonia: TcxGridDBColumn
+          DataBinding.FieldName = 'Colonia'
+          Width = 185
+        end
+        object tvMasterReferencia: TcxGridDBColumn
+          DataBinding.FieldName = 'Referencia'
+          Width = 185
+        end
         object tvMasterIdPais: TcxGridDBColumn
           DataBinding.FieldName = 'IdPais'
           Visible = False
@@ -30,30 +48,19 @@ inherited frmDomicilios: TfrmDomicilios
         end
         object tvMasterPais: TcxGridDBColumn
           DataBinding.FieldName = 'Pais'
+          Width = 185
         end
         object tvMasterEstado: TcxGridDBColumn
           DataBinding.FieldName = 'Estado'
+          Width = 185
         end
         object tvMasterMunicipio: TcxGridDBColumn
           DataBinding.FieldName = 'Municipio'
+          Width = 185
         end
         object tvMasterPoblacion: TcxGridDBColumn
           DataBinding.FieldName = 'Poblacion'
-        end
-        object tvMasterColonia: TcxGridDBColumn
-          DataBinding.FieldName = 'Colonia'
-        end
-        object tvMasterCalle: TcxGridDBColumn
-          DataBinding.FieldName = 'Calle'
-        end
-        object tvMasterNoExterior: TcxGridDBColumn
-          DataBinding.FieldName = 'NoExterior'
-        end
-        object tvMasterNoInterior: TcxGridDBColumn
-          DataBinding.FieldName = 'NoInterior'
-        end
-        object tvMasterReferencia: TcxGridDBColumn
-          DataBinding.FieldName = 'Referencia'
+          Width = 185
         end
         object tvMasterCodigoPostal: TcxGridDBColumn
           DataBinding.FieldName = 'CodigoPostal'

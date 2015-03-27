@@ -24,10 +24,16 @@ uses
 
 type
   TfrmEsquemaPagosMovimientosTipos = class(T_frmDualList)
-    tvAviableIdMovimientoTipo: TcxGridDBColumn;
-    tvAviableDescripcion: TcxGridDBColumn;
     tvAssignedIdMovimientoTipo: TcxGridDBColumn;
     tvAssignedDescripcion: TcxGridDBColumn;
+    tvAviableIdMovimientoTipo: TcxGridDBColumn;
+    tvAviableIdentificador: TcxGridDBColumn;
+    tvAviableDescripcion: TcxGridDBColumn;
+    tvAviableCategoria: TcxGridDBColumn;
+    tvAviableEfecto: TcxGridDBColumn;
+    tvAviableValorDefault: TcxGridDBColumn;
+    tvAviableProduceCXC: TcxGridDBColumn;
+    tvAviableProduceCXP: TcxGridDBColumn;
   private
     { Private declarations }
   public

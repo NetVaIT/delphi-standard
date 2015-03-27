@@ -36,6 +36,7 @@ type
     procedure actPostExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure pcMainChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FDataSet: TDataSet;
     procedure SetDataSet(const Value: TDataSet);
@@ -61,6 +62,12 @@ begin
   if DataSource.DataSet.State in [dsInsert, dsEdit] then
     DataSource.DataSet.Post;
   ModalResult:= mrOk;
+end;
+
+procedure T_frmEdit.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if DataSource.DataSet.State in [dsInsert, dsEdit] then
+    DataSource.DataSet.Cancel;
 end;
 
 procedure T_frmEdit.FormShow(Sender: TObject);

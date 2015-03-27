@@ -89,10 +89,12 @@ uses
   EsquemaPagosMovimientosTiposForm in 'Catalogos\EsquemaPagosMovimientosTiposForm.pas' {frmEsquemaPagosMovimientosTipos},
   RolesEsquemasPagosDM in 'Catalogos\RolesEsquemasPagosDM.pas' {dmRolesEsquemasPagos: TDataModule},
   RolesEsquemasPagosForm in 'Catalogos\RolesEsquemasPagosForm.pas' {frmRolesEsquemasPagos},
-  PerosnasDomiciliosDM in 'Catalogos\PerosnasDomiciliosDM.pas' {dmPerosnasDomicilios: TDataModule},
+  PersonasDomiciliosDM in 'Catalogos\PersonasDomiciliosDM.pas' {dmPersonasDomicilios: TDataModule},
   RolesDM in 'Catalogos\RolesDM.pas' {dmRoles: TDataModule},
   RolesForm in 'Catalogos\RolesForm.pas' {frmRoles},
-  RolesEdit in 'Catalogos\RolesEdit.pas' {frmRolesEdit};
+  RolesEdit in 'Catalogos\RolesEdit.pas' {frmRolesEdit},
+  PersonasDomiciliosForm in 'Catalogos\PersonasDomiciliosForm.pas' {frmPersonasDomicilios},
+  PersonasDomiciliosEdit in 'Catalogos\PersonasDomiciliosEdit.pas' {frmPersonasDomiciliosEdit};
 
 {$R *.res}
 

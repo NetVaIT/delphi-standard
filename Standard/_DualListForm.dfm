@@ -45,7 +45,6 @@ object _frmDualList: T_frmDualList
         Align = alClient
         TabOrder = 0
         LookAndFeel.Kind = lfStandard
-        ExplicitWidth = 335
         object tvAviable: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           OnCellDblClick = tvAviableCellDblClick
@@ -54,7 +53,7 @@ object _frmDualList: T_frmDualList
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
           OptionsCustomize.ColumnFiltering = False
-          OptionsCustomize.ColumnSorting = False
+          OptionsCustomize.ColumnsQuickCustomization = True
           OptionsData.Deleting = False
           OptionsData.Editing = False
           OptionsData.Inserting = False
@@ -73,7 +72,6 @@ object _frmDualList: T_frmDualList
         Height = 334
         Align = dalRight
         BarManager = dxBarManager
-        ExplicitLeft = 336
       end
     end
     object pnlAssigned: TPanel
@@ -84,8 +82,6 @@ object _frmDualList: T_frmDualList
       Align = alClient
       Caption = 'pnlAssigned'
       TabOrder = 1
-      ExplicitLeft = 372
-      ExplicitWidth = 427
       object cxGridAssigned: TcxGrid
         Left = 1
         Top = 1
@@ -94,7 +90,6 @@ object _frmDualList: T_frmDualList
         Align = alClient
         TabOrder = 0
         LookAndFeel.Kind = lfStandard
-        ExplicitWidth = 425
         object tvAssigned: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           OnCellDblClick = tvAssignedCellDblClick
@@ -103,7 +98,7 @@ object _frmDualList: T_frmDualList
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
           OptionsCustomize.ColumnFiltering = False
-          OptionsCustomize.ColumnSorting = False
+          OptionsCustomize.ColumnsQuickCustomization = True
           OptionsData.Deleting = False
           OptionsData.Editing = False
           OptionsData.Inserting = False
