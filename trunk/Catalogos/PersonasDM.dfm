@@ -1,15 +1,10 @@
 inherited dmPersona: TdmPersona
   OldCreateOrder = True
-  Height = 765
-  Width = 721
+  Height = 764
+  Width = 697
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
-    CommandText = 
-      'SELECT IdPersona, RFC, IdPersonaTipo, IdRazonSocialTipo, IdSexo,' +
-      ' IdEstadoCivil, IdPais, IdPoblacion, RazonSocial, Nombre, Apelli' +
-      'doPaterno, ApellidoMaterno, FechaNacimiento '#13#10'FROM Personas'
-    Left = 48
-    Top = 32
+    Left = 56
     object adodsMasterIdPersona: TAutoIncField
       FieldName = 'IdPersona'
       ReadOnly = True
@@ -43,9 +38,29 @@ inherited dmPersona: TdmPersona
       FieldName = 'IdPoblacion'
       Visible = False
     end
+    object adodsMasterPersonaTipo: TStringField
+      FieldKind = fkLookup
+      FieldName = 'PersonaTipo'
+      LookupDataSet = adodsPersonaTipo
+      LookupKeyFields = 'IdPersonaTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdPersonaTipo'
+      Size = 50
+      Lookup = True
+    end
     object adodsMasterRazonSocial: TStringField
       FieldName = 'RazonSocial'
       Size = 300
+    end
+    object adodsMasterRazonSocialTipo: TStringField
+      FieldKind = fkLookup
+      FieldName = 'RazonSocialTipo'
+      LookupDataSet = adodsRazonSocialTipo
+      LookupKeyFields = 'IdRazonSocialTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdRazonSocialTipo'
+      Size = 200
+      Lookup = True
     end
     object adodsMasterNombre: TStringField
       FieldName = 'Nombre'
@@ -61,26 +76,6 @@ inherited dmPersona: TdmPersona
     end
     object adodsMasterFechaNacimiento: TDateTimeField
       FieldName = 'FechaNacimiento'
-    end
-    object adodsMasterPersonaTipo: TStringField
-      FieldKind = fkLookup
-      FieldName = 'PersonaTipo'
-      LookupDataSet = adodsPersonaTipo
-      LookupKeyFields = 'IdPersonaTipo'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPersonaTipo'
-      Size = 50
-      Lookup = True
-    end
-    object adodsMasterRazonSocialTipo: TStringField
-      FieldKind = fkLookup
-      FieldName = 'RazonSocialTipo'
-      LookupDataSet = adodsRazonSocialTipo
-      LookupKeyFields = 'IdRazonSocialTipo'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdRazonSocialTipo'
-      Size = 200
-      Lookup = True
     end
     object adodsMasterSexo: TStringField
       FieldKind = fkLookup
@@ -112,6 +107,22 @@ inherited dmPersona: TdmPersona
       Size = 100
       Lookup = True
     end
+    object adodsMasterPoblacion: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Poblacion'
+      LookupDataSet = adodsPoblacion
+      LookupKeyFields = 'IdPoblacion'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdPoblacion'
+      Size = 150
+      Lookup = True
+    end
+  end
+  object ADODataSet1: TADODataSet
+    Connection = _dmConection.ADOConnection
+    Parameters = <>
+    Left = 536
+    Top = 24
   end
   object adodsPersonaTipo: TADODataSet
     Active = True
@@ -119,8 +130,17 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 'SELECT IdPersonaTipo, Descripcion FROM PersonasTipos'
     Parameters = <>
-    Left = 136
-    Top = 88
+    Left = 56
+    Top = 72
+  end
+  object adodsRazonSocialTipo: TADODataSet
+    Active = True
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdRazonSocialTipo, Descripcion FROM RazonesSocialesTipos'
+    Parameters = <>
+    Left = 56
+    Top = 128
   end
   object adodsSexo: TADODataSet
     Active = True
@@ -128,8 +148,8 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 'SELECT IdSexo, Descripcion FROM Sexos'
     Parameters = <>
-    Left = 136
-    Top = 200
+    Left = 56
+    Top = 184
   end
   object adodsEstadoCivil: TADODataSet
     Active = True
@@ -137,8 +157,8 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 'SELECT IdEstadoCivil, Descripcion FROM EstadosCiviles'
     Parameters = <>
-    Left = 136
-    Top = 256
+    Left = 56
+    Top = 240
   end
   object adodsPais: TADODataSet
     Active = True
@@ -146,78 +166,103 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 'SELECT IdPais, Descripcion FROM Paises'
     Parameters = <>
-    Left = 136
-    Top = 312
+    Left = 56
+    Top = 296
   end
-  object adodsClientes: TADODataSet
+  object adodsEstado: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 
-      'SELECT IdPersonaRol, IdCtaContable, IdCtaContableNCA, IdCtaConta' +
-      'bleNCR, IdCtaContableAnticipo, TotalFacturado, SaldoPendiente, C' +
-      'alificacion '#13#10'FROM Clientes'#13#10'WHERE IdPersonaRol = :IdPersonaRol'
-    DataSource = dsMaster
-    Parameters = <
-      item
-        Name = 'IdPersonaRol'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 328
-    Top = 32
+    CommandText = 'SELECT IdEstado, IdPais, Descripcion FROM Estados'
+    DataSource = dsPais
+    Parameters = <>
+    Left = 56
+    Top = 352
   end
-  object adodsPersonasRoles: TADODataSet
+  object adodsMunicipio: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdMunicipio, IdEstado, Descripcion FROM Municipios'
+    DataSource = dsEstado
+    Parameters = <>
+    Left = 56
+    Top = 408
+  end
+  object adodsPoblacion: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdPoblacion, IdMunicipio, Descripcion from Poblaciones'
+    DataSource = dsMunicipio
+    Parameters = <>
+    Left = 56
+    Top = 464
+  end
+  object dsPais: TDataSource
+    DataSet = adodsPais
+    Left = 136
+    Top = 296
+  end
+  object dsEstado: TDataSource
+    DataSet = adodsEstado
+    Left = 136
+    Top = 352
+  end
+  object dsMunicipio: TDataSource
+    DataSet = adodsMunicipio
+    Left = 136
+    Top = 408
+  end
+  object adodsPersonaRoles: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPersonaRol, IdPersona, IdPersonaRelacionada, IdRol, IdR' +
-      'olEsquemaPago, IdRolEstatus, IdRolClase '#13#10'FROM PersonasRoles'#13#10'WH' +
-      'ERE IdRol = :IdRol'
+      'olEsquemaPago, IdRolEstatus, IdRolClase '#13#10'FROM PersonasRoles'
+    DataSource = dsMaster
     IndexFieldNames = 'IdPersona'
-    Parameters = <
-      item
-        Name = 'IdRol'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 464
-    Top = 360
-    object adodsPersonasRolesIdPersonaRol: TAutoIncField
+    MasterFields = 'IdPersona'
+    Parameters = <>
+    Left = 328
+    Top = 240
+    object adodsPersonaRolesIdPersonaRol: TAutoIncField
       FieldName = 'IdPersonaRol'
       ReadOnly = True
       Visible = False
     end
-    object adodsPersonasRolesIdPersona: TIntegerField
+    object adodsPersonaRolesIdPersona: TIntegerField
       FieldName = 'IdPersona'
       Visible = False
     end
-    object adodsPersonasRolesIdPersonaRelacionada: TIntegerField
+    object adodsPersonaRolesIdPersonaRelacionada: TIntegerField
       FieldName = 'IdPersonaRelacionada'
       Visible = False
     end
-    object adodsPersonasRolesIdRol: TIntegerField
+    object adodsPersonaRolesIdRol: TIntegerField
       FieldName = 'IdRol'
       Visible = False
     end
-    object adodsPersonasRolesIdRolEsquemaPago: TIntegerField
+    object adodsPersonaRolesIdRolEsquemaPago: TIntegerField
       FieldName = 'IdRolEsquemaPago'
       Visible = False
     end
-    object adodsPersonasRolesIdRolEstatus: TIntegerField
+    object adodsPersonaRolesIdRolEstatus: TIntegerField
       FieldName = 'IdRolEstatus'
       Visible = False
     end
-    object adodsPersonasRolesIdRolClase: TIntegerField
+    object adodsPersonaRolesIdRolClase: TIntegerField
       FieldName = 'IdRolClase'
       Visible = False
     end
-    object adodsPersonasRolesPersonaRelacionada: TStringField
+    object adodsPersonaRolesRol: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Rol'
+      LookupDataSet = adodsRol
+      LookupKeyFields = 'IdRol'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdRol'
+      Size = 50
+      Lookup = True
+    end
+    object adodsPersonaRolesPersonaRelacionada: TStringField
       FieldKind = fkLookup
       FieldName = 'PersonaRelacionada'
       LookupDataSet = adodsPersonaRelacionada
@@ -227,20 +272,20 @@ inherited dmPersona: TdmPersona
       Size = 300
       Lookup = True
     end
-    object adodsPersonasRolesRolEstatus: TStringField
+    object adodsPersonaRolesRolEstatus: TStringField
       FieldKind = fkLookup
       FieldName = 'RolEstatus'
-      LookupDataSet = adodsRolesEstatus
+      LookupDataSet = adodsRolEstatus
       LookupKeyFields = 'IdRolEstatus'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdRolEstatus'
       Size = 50
       Lookup = True
     end
-    object adodsPersonasRolesRolClase: TStringField
+    object adodsPersonaRolesRolClase: TStringField
       FieldKind = fkLookup
       FieldName = 'RolClase'
-      LookupDataSet = adodsRolesClases
+      LookupDataSet = adodsRolClase
       LookupKeyFields = 'IdRolClase'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdRolClase'
@@ -248,163 +293,47 @@ inherited dmPersona: TdmPersona
       Lookup = True
     end
   end
-  object dsPais: TDataSource
-    DataSet = adodsPais
-    Left = 224
-    Top = 256
-  end
-  object adodsEstado: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CommandText = 
-      'SELECT IdEstado, IdPais, Descripcion FROM Estados IdPais = :IdPa' +
-      'is'
-    DataSource = dsPais
-    Parameters = <
-      item
-        Name = 'IdPais'
-        Size = -1
-        Value = Null
-      end>
-    Left = 136
-    Top = 368
-  end
-  object dsEstado: TDataSource
-    DataSet = adodsEstado
-    Left = 224
-    Top = 312
-  end
-  object dsMunicipio: TDataSource
-    DataSet = adodsMunicipio
-    Left = 224
-    Top = 368
-  end
-  object adodsMunicipio: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CommandText = 
-      'SELECT IdMunicipio, IdEstado, Descripcion FROM Municipios WHERE ' +
-      'IdEstado = :IdEstado'
-    DataSource = dsEstado
-    Parameters = <
-      item
-        Name = 'IdEstado'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 136
-    Top = 424
-  end
-  object adodsPoblacion: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 
-      'SELECT IdPoblacion, IdMunicipio, Descripcion FROM Poblaciones WH' +
-      'ERE IdMunicipio = :IdMunicipio'
-    DataSource = dsMunicipio
-    Parameters = <
-      item
-        Name = 'IdMunicipio'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 136
-    Top = 480
-  end
-  object ADODataSet1: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    Parameters = <>
-    Left = 576
-    Top = 32
-  end
-  object adodsRolesClases: TADODataSet
-    Active = True
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'SELECT IdRolClase, Descripcion FROM RolesClases'
-    Parameters = <>
-    Left = 576
-    Top = 528
-  end
-  object adodsRolesEstatus: TADODataSet
-    Active = True
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'SELECT IdRolEstatus, Descripcion FROM RolesEstatus'
-    Parameters = <>
-    Left = 576
-    Top = 472
-  end
-  object adodsProveedores: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 
-      'SELECT IdPersonaRol, IdCtaContable, IdCtaContableNCA, IdCtaConta' +
-      'bleNCR, IdCtaContableAnticipo, TotalFacturado, SaldoPendiente, C' +
-      'alificacion '#13#10'FROM Proveedores'#13#10'WHERE IdPersonaRol = :IdPersonaR' +
-      'ol'
-    DataSource = dsMaster
-    Parameters = <
-      item
-        Name = 'IdPersonaRol'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 424
-    Top = 32
-  end
-  object adodsEmpleados: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 
-      'SELECT IdPersonaRol, IdAvisoAccidente, IdCuentaBancaria, IdPerfi' +
-      'lPago '#13#10'FROM Empleados'#13#10'WHERE IdPersonaRol = :IdPersonaRol'
-    DataSource = dsMaster
-    Parameters = <
-      item
-        Name = 'IdPersonaRol'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 240
-    Top = 32
-  end
   object adodsPersonaRelacionada: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPersona, RazonSocial FROM Personas'
     Parameters = <>
-    Left = 576
-    Top = 416
+    Left = 328
+    Top = 296
+  end
+  object adodsRol: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdRol, Descripcion FROM Roles'
+    Parameters = <>
+    Left = 328
+    Top = 352
+  end
+  object adodsRolEsquemaPago: TADODataSet
+    Connection = _dmConection.ADOConnection
+    Parameters = <>
+    Left = 328
+    Top = 408
+  end
+  object adodsRolEstatus: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdRolEstatus, Descripcion FROM RolesEstatus'
+    Parameters = <>
+    Left = 328
+    Top = 464
+  end
+  object adodsRolClase: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdRolClase, Descripcion FROM RolesClases'
+    Parameters = <>
+    Left = 328
+    Top = 520
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
-    Left = 136
-    Top = 32
-  end
-  object dsPersonasRoles: TDataSource
-    DataSet = adodsPersonasRoles
-    Left = 576
-    Top = 360
-  end
-  object adodsRazonSocialTipo: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'SELECT IdRazonSocialTipo, Descripcion FROM RazonesSocialesTipos'
-    Parameters = <>
-    Left = 136
-    Top = 144
+    Left = 144
+    Top = 16
   end
 end

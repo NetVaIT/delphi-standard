@@ -1,0 +1,46 @@
+inherited frmEmails: TfrmEmails
+  Caption = 'frmEmails'
+  OnCreate = FormCreate
+  ExplicitWidth = 651
+  ExplicitHeight = 457
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlMaster: TPanel
+    inherited cxGrid: TcxGrid
+      inherited tvMaster: TcxGridDBTableView
+        object tvMasterIdEmail: TcxGridDBColumn
+          DataBinding.FieldName = 'IdEmail'
+          Visible = False
+        end
+        object tvMasterIdPersona: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersona'
+          Visible = False
+        end
+        object tvMasterIdEmailTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'IdEmailTipo'
+          Visible = False
+        end
+        object tvMasterEmail: TcxGridDBColumn
+          DataBinding.FieldName = 'Email'
+          Width = 300
+        end
+        object tvMasterEmailTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'EmailTipo'
+        end
+      end
+    end
+  end
+  inherited dxBarManager: TdxBarManager
+    DockControlHeights = (
+      0
+      0
+      31
+      0)
+  end
+  inherited cxStyleRepository: TcxStyleRepository
+    PixelsPerInch = 96
+  end
+  inherited cxImageList: TcxImageList
+    FormatVersion = 1
+  end
+end

@@ -20,56 +20,53 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
   Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  PersonasDM;
+  PersonasDM, TelefonosDM, EmailsDM;
 
 type
-  TfrmPersonasEdit = class(T_frmEdit)
+  TfrmPersonaEdit = class(T_frmEdit)
     pnlPersona: TPanel;
     Label1: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cmbTipoPersona: TcxDBLookupComboBox;
     pnlPersonaMoral: TPanel;
-    Label3: TLabel;
-    cxDBTextEdit2: TcxDBTextEdit;
-    Label10: TLabel;
-    cxDBLookupComboBox4: TcxDBLookupComboBox;
     pnlPersonaFisica: TPanel;
-    Label7: TLabel;
+    Label3: TLabel;
+    edtRazonSocial: TcxDBTextEdit;
     Label4: TLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBLookupComboBox2: TcxDBLookupComboBox;
     Label5: TLabel;
-    cxDBTextEdit4: TcxDBTextEdit;
+    edtNombre: TcxDBTextEdit;
     Label6: TLabel;
-    cxDBTextEdit5: TcxDBTextEdit;
+    edtAPaterno: TcxDBTextEdit;
+    Label7: TLabel;
+    edtAMaterno: TcxDBTextEdit;
     Label8: TLabel;
     cxDBDateEdit1: TcxDBDateEdit;
     Label9: TLabel;
-    cxDBLookupComboBox2: TcxDBLookupComboBox;
+    Label10: TLabel;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
-    tsDomicilio: TcxTabSheet;
-    tsTelefonos: TcxTabSheet;
-    tsEmail: TcxTabSheet;
-    pnlRoles: TPanel;
-    cxDBLookupComboBox5: TcxDBLookupComboBox;
-    cxDBLookupComboBox6: TcxDBLookupComboBox;
-    cxDBLookupComboBox7: TcxDBLookupComboBox;
+    cxDBLookupComboBox4: TcxDBLookupComboBox;
+    pnlOrigen: TPanel;
     Label11: TLabel;
+    DBLookupComboBox5: TDBLookupComboBox;
     Label12: TLabel;
-    Label13: TLabel;
-    tsKardex: TcxTabSheet;
-    cxTabSheet2: TcxTabSheet;
-    cxTabSheet1: TcxTabSheet;
-    cxTabSheet3: TcxTabSheet;
-    dsPersonaRol: TDataSource;
+    DBLookupComboBox6: TDBLookupComboBox;
+    tsDomicilio: TcxTabSheet;
+    tsTelefono: TcxTabSheet;
+    tsCorreo: TcxTabSheet;
     procedure FormShow(Sender: TObject);
-    procedure actPostExecute(Sender: TObject);
-    procedure pcMainChange(Sender: TObject);
+    procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure edtNombreEditing(Sender: TObject; var CanEdit: Boolean);
   private
-    FRol: TPRol;
-    procedure SetRol(const Value: TPRol);
-    procedure CrearRegistroPersonaRol();
     { Private declarations }
+    FRol: TPRol;
+    dmTelefonos: TdmTelefonos;
+    dmEmails: TdmEmails;
+    procedure MostrarPanel();
+    procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
     property Rol: TPRol read FRol write SetRol;
@@ -79,54 +76,90 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPersonasEdit.actPostExecute(Sender: TObject);
-begin
-  if Rol = rEmpleado {and DataSource.DataSet.state in [dsInsert, dsEdit]} then
-    DataSource.DataSet.FieldByName('RazonSocial').Value := cxDBTextEdit3.Text + ' ' + cxDBTextEdit4.Text + ' ' + cxDBTextEdit5.Text;
-  inherited;
-  CrearRegistroPersonaRol;
-end;
-
-procedure TfrmPersonasEdit.CrearRegistroPersonaRol;
-begin
-  dsPersonaRol.DataSet.FieldByName('IdPersona').Value := DataSource.DataSet.FieldByName('IdPersona').Value;
-  dsPersonaRol.DataSet.FieldByName('IdRol').Value := Rol;
-  dsPersonaRol.DataSet.FieldByName('IdRolEsquemaPago').Value := 0;
-  dsPersonaRol.DataSet.Post;
-end;
-
-procedure TfrmPersonasEdit.FormShow(Sender: TObject);
+procedure TfrmPersonaEdit.cxDBLookupComboBox1PropertiesChange(Sender: TObject);
 begin
   inherited;
-  if DataSource.DataSet.state in [dsInsert] then
-    dsPersonaRol.DataSet.Insert;
-  if DataSource.DataSet.state in [dsEdit] then
-    dsPersonaRol.DataSet.Edit;
-  if Rol = rEmpleado then
-  begin
-    Self.Caption := 'Empleado';
-    pnlPersonaMoral.Visible := False;
-    cxDBLookupComboBox1.Enabled := False;
-    if dsPersonaRol.DataSet.State in [dsInsert] then
-      cxDBLookupComboBox1.EditValue := 1;
+  MostrarPanel;
+end;
+
+procedure TfrmPersonaEdit.edtNombreEditing(Sender: TObject;
+  var CanEdit: Boolean);
+begin
+  inherited;
+  edtRazonSocial.Text := edtNombre.Text + ' ' + edtAPaterno.Text + ' ' + edtAMaterno.Text;
+end;
+
+procedure TfrmPersonaEdit.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dmTelefonos := TdmTelefonos.Create(nil);
+  dmEmails := TdmEmails.Create(nil);
+end;
+
+procedure TfrmPersonaEdit.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmTelefonos);
+  FreeAndNil(dmEmails);
+end;
+
+procedure TfrmPersonaEdit.FormShow(Sender: TObject);
+begin
+  inherited;
+  pnlPersonaMoral.Visible := False;
+  pnlPersonaFisica.Visible := False;
+  pnlOrigen.Visible := False;
+  MostrarPanel;
+  dmTelefonos.MasterSource := DataSource;
+  dmTelefonos.MasterFields:= 'IdPersona';
+  dmTelefonos.ShowModule(tsTelefono,'');
+  dmEmails.MasterSource := DataSource;
+  dmEmails.MasterFields:= 'IdPersona';
+  dmEmails.ShowModule(tsCorreo,'');
+  case Rol of
+    rNone: Self.Caption := 'Persona';
+    rDuenoProceso: Self.Caption := 'Dueño de Proceso';
+    rOutSourcing: Self.Caption := 'Outsourcing';
+    rCliente: Self.Caption := 'Cliente';
+    rProveedor: Self.Caption := 'Proveedor';
+    rEmpleado: Self.Caption := 'Empleado';
   end;
-{  if Rol = rCliente then
-  begin
-
-  end;
-  if Rol = rProveedor then
-  begin
-
-  end;}
 end;
 
-procedure TfrmPersonasEdit.pcMainChange(Sender: TObject);
+procedure TfrmPersonaEdit.MostrarPanel;
 begin
-  inherited;
-  CrearRegistroPersonaRol();
+  if DataSource.DataSet.State in [dsEdit] then
+  begin
+    if DataSource.DataSet.FieldByName('IdPersonaTipo').AsInteger = 1 then
+    begin
+      pnlPersonaMoral.Visible := False;
+      pnlPersonaFisica.Visible := True;
+    end
+    else
+    begin
+      pnlPersonaMoral.Visible := True;
+      pnlPersonaFisica.Visible := False;
+    end;
+    pnlOrigen.Visible := True;
+  end;
+  if DataSource.DataSet.State in [dsInsert] then
+  begin
+    if cmbTipoPersona.EditValue = 1 then
+    begin
+      pnlPersonaMoral.Visible := False;
+      pnlPersonaFisica.Visible := True;
+      pnlOrigen.Visible := True;
+    end;
+    if cmbTipoPersona.EditValue = 2 then
+    begin
+      pnlPersonaMoral.Visible := True;
+      pnlPersonaFisica.Visible := False;
+      pnlOrigen.Visible := True;
+    end;
+  end;
 end;
 
-procedure TfrmPersonasEdit.SetRol(const Value: TPRol);
+procedure TfrmPersonaEdit.SetRol(const Value: TPRol);
 begin
   FRol := Value;
 end;

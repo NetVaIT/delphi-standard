@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -137,8 +137,8 @@ inherited frmMain: TfrmMain
       DockedTop = 0
       FloatLeft = 764
       FloatTop = 8
-      FloatClientWidth = 81
-      FloatClientHeight = 162
+      FloatClientWidth = 112
+      FloatClientHeight = 324
       ItemLinks = <
         item
           Visible = True
@@ -151,6 +151,18 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton16'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton5'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton7'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton8'
         end>
       OneOnRow = False
       Row = 0
@@ -218,15 +230,15 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton12: TdxBarLargeButton
-      Action = actEmpleados
+      Action = actPersonas
       Category = 0
     end
     object dxBarLargeButton15: TdxBarLargeButton
-      Action = actClientes
+      Action = actEmpleados
       Category = 0
     end
     object dxBarLargeButton16: TdxBarLargeButton
-      Action = actProveedores
+      Action = actClientes
       Category = 0
     end
     object dxBarButton1: TdxBarButton
@@ -251,6 +263,18 @@ inherited frmMain: TfrmMain
     end
     object dxBarButton5: TdxBarButton
       Action = actMovimientosTipo
+      Category = 0
+    end
+    object dxBarLargeButton5: TdxBarLargeButton
+      Action = actProveedores
+      Category = 0
+    end
+    object dxBarLargeButton7: TdxBarLargeButton
+      Action = actOutsourcing
+      Category = 0
+    end
+    object dxBarLargeButton8: TdxBarLargeButton
+      Action = actDuenoProceso
       Category = 0
     end
   end
@@ -353,24 +377,45 @@ inherited frmMain: TfrmMain
       OnExecute = actCatalogoExecute
     end
     object actEmpleados: TAction
-      Tag = 20
+      Tag = 21
       Category = 'Catalogos'
       Caption = 'Empleados'
       ImageIndex = 20
       OnExecute = actCatalogoExecute
     end
     object actClientes: TAction
-      Tag = 21
+      Tag = 22
       Category = 'Catalogos'
       Caption = 'Clientes'
       ImageIndex = 15
       OnExecute = actCatalogoExecute
     end
     object actProveedores: TAction
-      Tag = 22
+      Tag = 23
       Category = 'Catalogos'
       Caption = 'Proveedores'
       ImageIndex = 21
+      OnExecute = actCatalogoExecute
+    end
+    object actPersonas: TAction
+      Tag = 20
+      Category = 'Catalogos'
+      Caption = 'Personas'
+      ImageIndex = 32
+      OnExecute = actCatalogoExecute
+    end
+    object actDuenoProceso: TAction
+      Tag = 24
+      Category = 'Catalogos'
+      Caption = 'Due'#241'o de Proceso'
+      ImageIndex = 12
+      OnExecute = actCatalogoExecute
+    end
+    object actOutsourcing: TAction
+      Tag = 25
+      Category = 'Catalogos'
+      Caption = 'Outsourcing'
+      ImageIndex = 14
       OnExecute = actCatalogoExecute
     end
   end
