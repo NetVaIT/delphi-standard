@@ -1,13 +1,117 @@
 inherited dmDomicilios: TdmDomicilios
   OldCreateOrder = True
-  Height = 455
+  Height = 372
+  Width = 380
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    AfterPost = adodsMasterAfterPost
+    OnNewRecord = adodsMasterNewRecord
     CommandText = 
-      'SELECT IdDomicilio, IdPersona, IdDomicilioTipo, IdPais, IdEstado' +
-      ', IdMunicipio, IdPoblacion, Colonia, Calle, NoExterior, NoInteri' +
-      'or, Referencia, CodigoPostal, Predeterminado FROM Domicilios WHE' +
-      'RE IdDomicilio = :IdDomicilio'
+      'SELECT Domicilios.IdDomicilio, Domicilios.IdPais, Domicilios.IdE' +
+      'stado, Domicilios.IdMunicipio, Domicilios.IdPoblacion, '#13#10'Domicil' +
+      'ios.Calle, Domicilios.NoExterior, Domicilios.NoInterior, Domicil' +
+      'ios.Colonia, Domicilios.Referencia, '#13#10'Paises.Descripcion AS Pais' +
+      ', Estados.Descripcion AS Estado, Municipios.Descripcion AS Munic' +
+      'ipio, '#13#10'Poblaciones.Descripcion AS Poblacion, Domicilios.CodigoP' +
+      'ostal'#13#10'FROM Domicilios '#13#10'INNER JOIN Paises ON Domicilios.IdPais ' +
+      '= Paises.IdPais'#13#10'INNER JOIN Estados ON Domicilios.IdEstado = Est' +
+      'ados.IdEstado'#13#10'INNER JOIN Municipios ON Domicilios.IdMunicipio =' +
+      ' Municipios.IdMunicipio'#13#10'INNER JOIN Poblaciones ON Domicilios.Id' +
+      'Poblacion = Poblaciones.IdPoblacion'
+    Left = 48
+    Top = 32
+    object adodsMasterIdDomicilio: TAutoIncField
+      FieldName = 'IdDomicilio'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsMasterCalle: TStringField
+      FieldName = 'Calle'
+      Required = True
+      Size = 30
+    end
+    object adodsMasterNoExterior: TStringField
+      FieldName = 'NoExterior'
+      Required = True
+      Size = 10
+    end
+    object adodsMasterNoInterior: TStringField
+      FieldName = 'NoInterior'
+      Required = True
+      Size = 10
+    end
+    object adodsMasterColonia: TStringField
+      FieldName = 'Colonia'
+      Required = True
+      Size = 50
+    end
+    object adodsMasterReferencia: TStringField
+      FieldName = 'Referencia'
+      Size = 200
+    end
+    object adodsMasterIdPais: TIntegerField
+      DisplayLabel = 'Pa'#237's'
+      FieldName = 'IdPais'
+      Required = True
+      Visible = False
+      OnChange = adodsMasterIdPaisChange
+    end
+    object adodsMasterIdEstado: TIntegerField
+      DisplayLabel = 'Estado'
+      FieldName = 'IdEstado'
+      Required = True
+      Visible = False
+      OnChange = adodsMasterIdEstadoChange
+    end
+    object adodsMasterIdMunicipio: TIntegerField
+      DisplayLabel = 'Municipio'
+      FieldName = 'IdMunicipio'
+      Required = True
+      Visible = False
+      OnChange = adodsMasterIdMunicipioChange
+    end
+    object adodsMasterIdPoblacion: TIntegerField
+      DisplayLabel = 'Poblaci'#243'n'
+      FieldName = 'IdPoblacion'
+      Required = True
+      Visible = False
+    end
+    object adodsMasterPais: TStringField
+      FieldName = 'Pais'
+      Size = 100
+    end
+    object adodsMasterEstado: TStringField
+      FieldName = 'Estado'
+      Size = 50
+    end
+    object adodsMasterMunicipio: TStringField
+      FieldName = 'Municipio'
+      Size = 50
+    end
+    object adodsMasterPoblacion: TStringField
+      FieldName = 'Poblacion'
+      Size = 150
+    end
+    object adodsMasterCodigoPostal: TStringField
+      FieldName = 'CodigoPostal'
+      Required = True
+      Size = 10
+    end
+  end
+  inherited adodsUpdate: TADODataSet
+    CommandText = 
+      'SELECT Domicilios.IdDomicilio, Domicilios.IdPais, Domicilios.IdE' +
+      'stado, Domicilios.IdMunicipio, Domicilios.IdPoblacion, '#13#10'Domicil' +
+      'ios.Calle, Domicilios.NoExterior, Domicilios.NoInterior, Domicil' +
+      'ios.Colonia, Domicilios.Referencia, '#13#10'Paises.Descripcion AS Pais' +
+      ', Estados.Descripcion AS Estado, Municipios.Descripcion AS Munic' +
+      'ipio, '#13#10'Poblaciones.Descripcion AS Poblacion, Domicilios.CodigoP' +
+      'ostal'#13#10'FROM Domicilios '#13#10'INNER JOIN Paises ON Domicilios.IdPais ' +
+      '= Paises.IdPais'#13#10'INNER JOIN Estados ON Domicilios.IdEstado = Est' +
+      'ados.IdEstado'#13#10'INNER JOIN Municipios ON Domicilios.IdMunicipio =' +
+      ' Municipios.IdMunicipio'#13#10'INNER JOIN Poblaciones ON Domicilios.Id' +
+      'Poblacion = Poblaciones.IdPoblacion'#13#10'WHERE Domicilios.IdDomicili' +
+      'o = :IdDomicilio'
     Parameters = <
       item
         Name = 'IdDomicilio'
@@ -17,170 +121,110 @@ inherited dmDomicilios: TdmDomicilios
         Size = 4
         Value = Null
       end>
-    Left = 48
     Top = 32
-    object adodsMasterIdDomicilio: TIntegerField
-      FieldName = 'IdDomicilio'
-      Visible = False
-    end
-    object adodsMasterIdPersona: TIntegerField
-      FieldName = 'IdPersona'
-      Visible = False
-    end
-    object adodsMasterIdDomicilioTipo: TIntegerField
-      FieldName = 'IdDomicilioTipo'
-      Visible = False
-    end
-    object adodsMasterDomicilioTipo: TStringField
-      FieldKind = fkLookup
-      FieldName = 'DomicilioTipo'
-      LookupDataSet = adodsDomicilioTipo
-      LookupKeyFields = 'IdDomicilioTipo'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdDomicilioTipo'
-      Size = 50
-      Lookup = True
-    end
-    object adodsMasterIdPais: TIntegerField
-      FieldName = 'IdPais'
-      Visible = False
-    end
-    object adodsMasterPais: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Pais'
-      LookupDataSet = adodsPais
-      LookupKeyFields = 'IdPais'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPais'
-      Size = 100
-      Lookup = True
-    end
-    object adodsMasterIdEstado: TIntegerField
-      FieldName = 'IdEstado'
-      Visible = False
-    end
-    object adodsMasterEstado: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Estado'
-      LookupDataSet = adodsEstado
-      LookupKeyFields = 'IdEstado'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdEstado'
-      Size = 40
-      Lookup = True
-    end
-    object adodsMasterIdMunicipio: TIntegerField
-      FieldName = 'IdMunicipio'
-      Visible = False
-    end
-    object adodsMasterMunicipio: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Municipio'
-      LookupDataSet = adodsMunicipio
-      LookupKeyFields = 'IdMunicipio'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdMunicipio'
-      Size = 50
-      Lookup = True
-    end
-    object adodsMasterIdPoblacion: TIntegerField
-      FieldName = 'IdPoblacion'
-      Visible = False
-    end
-    object adodsMasterPoblacion: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Poblacion'
-      LookupDataSet = adodsPoblacion
-      LookupKeyFields = 'IdPoblacion'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPoblacion'
-      Size = 150
-      Lookup = True
-    end
-    object adodsMasterColonia: TStringField
-      FieldName = 'Colonia'
-      Size = 50
-    end
-    object adodsMasterCalle: TStringField
-      FieldName = 'Calle'
-      Size = 30
-    end
-    object adodsMasterNoExterior: TStringField
-      FieldName = 'NoExterior'
-      Size = 10
-    end
-    object adodsMasterNoInterior: TStringField
-      FieldName = 'NoInterior'
-      Size = 10
-    end
-    object adodsMasterReferencia: TStringField
-      FieldName = 'Referencia'
-      Size = 200
-    end
-    object adodsMasterCodigoPostal: TStringField
-      FieldName = 'CodigoPostal'
-      Size = 10
-    end
-    object adodsMasterPredeterminado: TIntegerField
-      FieldName = 'Predeterminado'
-    end
   end
-  object adodsDomicilioTipo: TADODataSet
+  object adodsPaises: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'SELECT IdDomicilioTipo, Descripcion FROM DomiciliosTipos'
+    CommandText = 'select IdPais, Descripcion from Paises'
     Parameters = <>
-    Left = 104
-    Top = 136
+    Left = 56
+    Top = 112
   end
-  object adodsPais: TADODataSet
+  object dsPaises: TDataSource
+    DataSet = adodsPaises
+    Left = 136
+    Top = 112
+  end
+  object adodsEstados: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'SELECT IdPais, Descripcion FROM Paises'
-    Parameters = <>
-    Left = 104
-    Top = 200
-  end
-  object adodsEstado: TADODataSet
-    Connection = _dmConection.ADOConnection
     CommandText = 
-      'SELECT IdEstado, IdPais, Descripcion FROM Estados IdPais = :IdPa' +
-      'is'
-    DataSource = dsPais
+      'select IdEstado, IdPais, Identificador, Descripcion from Estados' +
+      #13#10'where IdPais = :IdPais'
+    DataSource = dsPaises
+    MasterFields = 'IdPais'
     Parameters = <
       item
         Name = 'IdPais'
-        Size = -1
-        Value = Null
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Value = 1
       end>
-    Left = 104
-    Top = 264
+    Left = 56
+    Top = 168
+    object adodsEstadosIdEstado: TAutoIncField
+      FieldName = 'IdEstado'
+      ReadOnly = True
+    end
+    object adodsEstadosIdPais: TIntegerField
+      FieldName = 'IdPais'
+    end
+    object adodsEstadosIdentificador: TStringField
+      FieldName = 'Identificador'
+      Required = True
+      Size = 5
+    end
+    object adodsEstadosDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
+      FieldName = 'Descripcion'
+      Required = True
+    end
   end
-  object adodsMunicipio: TADODataSet
+  object dsEstados: TDataSource
+    DataSet = adodsEstados
+    Left = 136
+    Top = 168
+  end
+  object adodsMunicipios: TADODataSet
     Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
     CommandText = 
-      'SELECT IdMunicipio, IdEstado, Descripcion FROM Municipios WHERE ' +
-      'IdEstado = :IdEstado'
-    DataSource = dsEstado
+      'select IdMunicipio, IdEstado, Identificador, Descripcion from Mu' +
+      'nicipios'#13#10'where IdEstado = :IdEstado'
+    DataSource = dsEstados
+    MasterFields = 'IdEstado'
     Parameters = <
       item
         Name = 'IdEstado'
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
-        Size = 4
-        Value = Null
+        Value = 1
       end>
-    Left = 104
-    Top = 328
+    Left = 56
+    Top = 232
+    object adodsMunicipiosIdMunicipio: TIntegerField
+      FieldName = 'IdMunicipio'
+      Visible = False
+    end
+    object adodsMunicipiosIdEstado: TIntegerField
+      FieldName = 'IdEstado'
+      Visible = False
+    end
+    object adodsMunicipiosIdentificador: TIntegerField
+      FieldName = 'Identificador'
+    end
+    object adodsMunicipiosDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
+      FieldName = 'Descripcion'
+      Size = 50
+    end
   end
-  object adodsPoblacion: TADODataSet
+  object dsMunicipios: TDataSource
+    DataSet = adodsMunicipios
+    Left = 136
+    Top = 232
+  end
+  object adodsPoblaciones: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdPoblacion, IdMunicipio, Descripcion FROM Poblaciones WH' +
-      'ERE IdMunicipio = :IdMunicipio'
-    DataSource = dsMunicipio
+      'select IdPoblacion, IdMunicipio, Identificador, Descripcion from' +
+      ' Poblaciones'#13#10'where IdMunicipio = :IdMunicipio'
+    DataSource = dsMunicipios
+    MasterFields = 'IdMunicipio'
     Parameters = <
       item
         Name = 'IdMunicipio'
@@ -190,22 +234,23 @@ inherited dmDomicilios: TdmDomicilios
         Size = 4
         Value = Null
       end>
-    Left = 104
-    Top = 392
-  end
-  object dsPais: TDataSource
-    DataSet = adodsPais
-    Left = 192
-    Top = 200
-  end
-  object dsEstado: TDataSource
-    DataSet = adodsEstado
-    Left = 192
-    Top = 264
-  end
-  object dsMunicipio: TDataSource
-    DataSet = adodsMunicipio
-    Left = 192
-    Top = 328
+    Left = 56
+    Top = 296
+    object adodsPoblacionesIdPoblacion: TIntegerField
+      FieldName = 'IdPoblacion'
+      Visible = False
+    end
+    object adodsPoblacionesIdMunicipio: TIntegerField
+      FieldName = 'IdMunicipio'
+      Visible = False
+    end
+    object adodsPoblacionesIdentificador: TIntegerField
+      FieldName = 'Identificador'
+    end
+    object adodsPoblacionesDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
+      FieldName = 'Descripcion'
+      Size = 50
+    end
   end
 end

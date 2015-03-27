@@ -174,6 +174,13 @@ object _frmGrid: T_frmGrid
       OnExecute = DatasetEditExecute
       DataSource = DataSource
     end
+    object actShow: TAction
+      Category = 'Dataset'
+      Caption = 'Consultar'
+      ImageIndex = 11
+      Visible = False
+      OnExecute = actShowExecute
+    end
     object DatasetPost: TDataSetPost
       Category = 'Dataset'
       Caption = 'P&ost'
@@ -194,6 +201,7 @@ object _frmGrid: T_frmGrid
       Hint = 'Actualizar'
       ImageIndex = 9
       ShortCut = 116
+      OnExecute = DatasetRefreshExecute
       DataSource = DataSource
     end
     object FileSaveAs1: TFileSaveAs
@@ -208,6 +216,7 @@ object _frmGrid: T_frmGrid
     end
   end
   object DataSource: TDataSource
+    AutoEdit = False
     Left = 408
     Top = 56
   end
@@ -240,13 +249,13 @@ object _frmGrid: T_frmGrid
       Caption = 'Navegaci'#243'n'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 82
+      DockedLeft = 105
       DockedTop = 0
       DockingStyle = dsTop
-      FloatLeft = 669
-      FloatTop = 8
-      FloatClientWidth = 0
-      FloatClientHeight = 0
+      FloatLeft = 592
+      FloatTop = 202
+      FloatClientWidth = 115
+      FloatClientHeight = 22
       ItemLinks = <
         item
           Visible = True
@@ -284,10 +293,10 @@ object _frmGrid: T_frmGrid
       DockedLeft = 0
       DockedTop = 0
       DockingStyle = dsTop
-      FloatLeft = 669
-      FloatTop = 8
-      FloatClientWidth = 0
-      FloatClientHeight = 0
+      FloatLeft = 413
+      FloatTop = 240
+      FloatClientWidth = 92
+      FloatClientHeight = 22
       ItemLinks = <
         item
           Visible = True
@@ -300,6 +309,10 @@ object _frmGrid: T_frmGrid
         item
           Visible = True
           ItemName = 'Delete1'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton7'
         end>
       OneOnRow = False
       Row = 0
@@ -314,13 +327,13 @@ object _frmGrid: T_frmGrid
       Caption = 'Herramientas'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 210
+      DockedLeft = 233
       DockedTop = 0
       DockingStyle = dsTop
-      FloatLeft = 669
-      FloatTop = 8
-      FloatClientWidth = 0
-      FloatClientHeight = 0
+      FloatLeft = 624
+      FloatTop = 209
+      FloatClientWidth = 51
+      FloatClientHeight = 22
       ItemLinks = <
         item
           Visible = True
@@ -362,6 +375,10 @@ object _frmGrid: T_frmGrid
     end
     object Delete1: TdxBarButton
       Action = DatasetDelete
+      Category = 0
+    end
+    object dxBarButton7: TdxBarButton
+      Action = actShow
       Category = 0
     end
     object dxBarSeparator1: TdxBarSeparator
@@ -1066,6 +1083,10 @@ object _frmGrid: T_frmGrid
       item
         Visible = True
         ItemName = 'Delete1'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarButton7'
       end
       item
         Visible = True

@@ -9,11 +9,12 @@ unit _StandarDMod;
 interface
 
 uses
-  SysUtils, Classes, Forms, DB, ADODB, Controls, Dialogs, _GridForm;
+  SysUtils, Classes, Forms, DB, ADODB, Controls, Dialogs, _GridForm, _EditForm;
 
 type
   T_dmStandar = class(TDataModule)
     adodsMaster: TADODataSet;
+    adodsUpdate: TADODataSet;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -27,9 +28,12 @@ type
     gFormDeatil1: T_frmGrid;
     gFormDeatil2: T_frmGrid;
     gFormDeatil3: T_frmGrid;
+    frmEdit: T_frmEdit;
   public
     { Public declarations }
     procedure ShowModule(pConteiner: TWinControl; pCation: TCaption);
+    function Add: Integer;
+    procedure Edit(Id: Integer);
     property MasterSource: TDataSource read FMasterSource write SetMasterSource;
     property MasterFields: string read FMasterFields write SetMasterFields;
   end;
@@ -40,6 +44,21 @@ uses _ConectionDmod;
 
 {$R *.dfm}
 
+function T_dmStandar.Add: Integer;
+begin
+  adodsUpdate.Open;
+  try
+    frmEdit.DataSet:= adodsUpdate;
+    adodsUpdate.Insert;
+    if frmEdit.ShowModal = mrOk then
+      Result:= adodsUpdate.Fields[0].Value
+    else
+      Result:= 0;
+  finally
+    adodsUpdate.Close;
+  end;
+end;
+
 procedure T_dmStandar.DataModuleCreate(Sender: TObject);
 begin
   if adodsMaster.CommandText <> EmptyStr then adodsMaster.Open;
@@ -48,6 +67,20 @@ end;
 procedure T_dmStandar.DataModuleDestroy(Sender: TObject);
 begin
   if adodsMaster.CommandText <> EmptyStr then adodsMaster.Close;
+end;
+
+procedure T_dmStandar.Edit(Id: Integer);
+begin
+  adodsUpdate.Close;
+  adodsUpdate.Parameters[0].Value:= Id;
+  adodsUpdate.Open;
+  try
+    frmEdit.DataSet:= adodsUpdate;
+    adodsUpdate.Edit;
+    frmEdit.ShowModal;
+  finally
+    adodsUpdate.Close;
+  end;
 end;
 
 procedure T_dmStandar.SetMasterFields(const Value: string);

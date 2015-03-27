@@ -8,10 +8,16 @@ uses
 
 type
   TdmEsquemaPagosMovimientosTipos = class(T_dmDualList)
-    adoqAvailableIdMovimientoTipo: TAutoIncField;
-    adoqAvailableDescripcion: TStringField;
     adoqAssignedIdMovimientoTipo: TAutoIncField;
     adoqAssignedDescripcion: TStringField;
+    adoqAvailableIdMovimientoTipo: TAutoIncField;
+    adoqAvailableIdentificador: TStringField;
+    adoqAvailableDescripcion: TStringField;
+    adoqAvailableCategoria: TStringField;
+    adoqAvailableEfecto: TStringField;
+    adoqAvailableValorDefault: TFMTBCDField;
+    adoqAvailableProduceCXC: TBooleanField;
+    adoqAvailableProduceCXP: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

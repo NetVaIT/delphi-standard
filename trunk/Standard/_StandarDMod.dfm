@@ -10,4 +10,10 @@ object _dmStandar: T_dmStandar
     Left = 24
     Top = 16
   end
+  object adodsUpdate: TADODataSet
+    Connection = _dmConection.ADOConnection
+    Parameters = <>
+    Left = 320
+    Top = 16
+  end
 end

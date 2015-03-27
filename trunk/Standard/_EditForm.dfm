@@ -14,6 +14,7 @@ object _frmEdit: T_frmEdit
   OldCreateOrder = False
   Position = poMainFormCenter
   ShowHint = True
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -34,10 +35,6 @@ object _frmEdit: T_frmEdit
     object tsGeneral: TcxTabSheet
       Caption = 'General'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
   end
   object pmlMain: TPanel
@@ -73,6 +70,7 @@ object _frmEdit: T_frmEdit
     end
   end
   object DataSource: TDataSource
+    AutoEdit = False
     Left = 184
   end
   object ActionList: TActionList

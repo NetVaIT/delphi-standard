@@ -79,6 +79,8 @@ type
     splDetail1: TSplitter;
     pnlDetail1: TPanel;
     splDetail2: TSplitter;
+    actShow: TAction;
+    dxBarButton7: TdxBarButton;
     procedure FormShow(Sender: TObject);
     procedure FileSaveAs1Accept(Sender: TObject);
     procedure DatasetInsertExecute(Sender: TObject);
@@ -87,15 +89,18 @@ type
     procedure tvMasterCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure actShowExecute(Sender: TObject);
+    procedure DatasetRefreshExecute(Sender: TObject);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
+    FgEditForm: T_frmEdit;
     procedure SetReadOnlyGrid(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
   protected
     tvStatus: TcxGridDBColumn;
-    gEditForm: T_frmEdit;
+    property gEditForm: T_frmEdit read FgEditForm write FgEditForm;
   public
     { Public declarations }
     property DataSet: TDataSet read FDataSet write SetDataSet;
@@ -107,6 +112,12 @@ implementation
 {$R *.dfm}
 
 uses _Utils;
+
+procedure T_frmGrid.actShowExecute(Sender: TObject);
+begin
+  if Assigned(gEditForm) then
+    gEditForm.ShowModal;
+end;
 
 procedure T_frmGrid.DatasetDeleteExecute(Sender: TObject);
 begin
@@ -135,6 +146,11 @@ begin
     gEditForm.ShowModal;
 end;
 
+procedure T_frmGrid.DatasetRefreshExecute(Sender: TObject);
+begin
+  DataSource.DataSet.Refresh;
+end;
+
 procedure T_frmGrid.FileSaveAs1Accept(Sender: TObject);
 begin
   case FileSaveAs1.Dialog.FilterIndex of
@@ -151,6 +167,8 @@ begin
     gEditForm.DataSet:= DataSet;
   cxGrid.SetFocus;
   tvMaster.ViewData.Expand(True);
+  dxbNavigator.DockedLeft:= 82;
+  dxbTools.DockedLeft:= 210;
 end;
 
 procedure T_frmGrid.SetDataSet(const Value: TDataSet);
@@ -164,13 +182,28 @@ begin
   FReadOnlyGrid := Value;
   DataSetInsert.Visible:= not Value;
   DataSetDelete.Visible:= not Value;
+  DatasetEdit.Visible:= not Value;
+  actShow.Visible:= Value;
+  if FReadOnlyGrid then
+  begin
+    dxbNavigator.DockedLeft:= 36;
+    dxbTools.DockedLeft:= 164;
+  end
+  else
+  begin
+    dxbNavigator.DockedLeft:= 82;
+    dxbTools.DockedLeft:= 210;
+  end;
 end;
 
 procedure T_frmGrid.tvMasterCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
   AShift: TShiftState; var AHandled: Boolean);
 begin
-  DatasetEdit.Execute;
+  if ReadOnlyGrid then
+    actShow.Execute
+  else
+    DatasetEdit.Execute;
 end;
 
 end.

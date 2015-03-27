@@ -10,21 +10,65 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT IdMovimientoTipo, Descripcion '
-      'FROM MovimientosTipos'
       
-        'WHERE (IdMovimientoTipo NOT IN (SELECT IdMovimientoTipo FROM Esq' +
-        'uemaPagosMovimientosTipos WHERE IdEsquemaPago = :IdEsquemaPago))'
-      'ORDER BY Descripcion')
+        'SELECT        MovimientosTipos.IdMovimientoTipo, MovimientosTipo' +
+        's.Identificador, MovimientosTipos.Descripcion, MovimientosTiposC' +
+        'ategorias.Descripcion AS Categoria, MovimientosTiposEfectos.Desc' +
+        'ripcion AS Efecto,'
+      
+        '                         MovimientosTipos.ValorDefault, Movimien' +
+        'tosTipos.ProduceCXC, MovimientosTipos.ProduceCXP'
+      'FROM            MovimientosTipos INNER JOIN'
+      
+        '                         MovimientosTiposCategorias ON Movimient' +
+        'osTipos.IdMovimientoTipoCategoria = MovimientosTiposCategorias.I' +
+        'dMovimientoTipoCategoria INNER JOIN'
+      
+        '                         MovimientosTiposEfectos ON MovimientosT' +
+        'ipos.IdMovimientoTipoEfecto = MovimientosTiposEfectos.IdMovimien' +
+        'toTipoEfecto'
+      
+        'WHERE (MovimientosTipos.IdMovimientoTipo NOT IN (SELECT IdMovimi' +
+        'entoTipo FROM EsquemaPagosMovimientosTipos WHERE IdEsquemaPago =' +
+        ' :IdEsquemaPago))'
+      'ORDER BY MovimientosTipos.Descripcion')
     object adoqAvailableIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
       ReadOnly = True
+      Visible = False
+    end
+    object adoqAvailableIdentificador: TStringField
+      FieldName = 'Identificador'
       Visible = False
     end
     object adoqAvailableDescripcion: TStringField
       DisplayLabel = 'Tipos de movimiento disponibles'
       FieldName = 'Descripcion'
       Size = 50
+    end
+    object adoqAvailableCategoria: TStringField
+      FieldName = 'Categoria'
+      Visible = False
+      Size = 100
+    end
+    object adoqAvailableEfecto: TStringField
+      FieldName = 'Efecto'
+      Visible = False
+      Size = 100
+    end
+    object adoqAvailableValorDefault: TFMTBCDField
+      FieldName = 'ValorDefault'
+      Visible = False
+      Precision = 18
+      Size = 6
+    end
+    object adoqAvailableProduceCXC: TBooleanField
+      FieldName = 'ProduceCXC'
+      Visible = False
+    end
+    object adoqAvailableProduceCXP: TBooleanField
+      FieldName = 'ProduceCXP'
+      Visible = False
     end
   end
   inherited adoqAssigned: TADOQuery

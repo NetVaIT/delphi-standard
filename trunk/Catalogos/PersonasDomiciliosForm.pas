@@ -1,4 +1,4 @@
-unit DomiciliosForm;
+unit PersonasDomiciliosForm;
 
 interface
 
@@ -24,57 +24,31 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmDomicilios = class(T_frmGrid)
+  TfrmPersonasDomicilios = class(T_frmGrid)
+    tvMasterIdPersonaDomicilio: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdDomicilio: TcxGridDBColumn;
-    tvMasterCalle: TcxGridDBColumn;
-    tvMasterNoExterior: TcxGridDBColumn;
-    tvMasterNoInterior: TcxGridDBColumn;
-    tvMasterColonia: TcxGridDBColumn;
-    tvMasterReferencia: TcxGridDBColumn;
-    tvMasterIdPoblacion: TcxGridDBColumn;
-    tvMasterIdMunicipio: TcxGridDBColumn;
-    tvMasterIdEstado: TcxGridDBColumn;
-    tvMasterIdPais: TcxGridDBColumn;
-    tvMasterPais: TcxGridDBColumn;
-    tvMasterEstado: TcxGridDBColumn;
-    tvMasterMunicipio: TcxGridDBColumn;
-    tvMasterPoblacion: TcxGridDBColumn;
-    tvMasterCodigoPostal: TcxGridDBColumn;
+    tvMasterIdDomicilioTipo: TcxGridDBColumn;
+    tvMasterDomicilio: TcxGridDBColumn;
+    tvMasterTipo: TcxGridDBColumn;
+    tvMasterPredeterminado: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    FDataSetPaises: TDataSet;
-    FDataSetPoblaciones: TDataSet;
-    FDataSetMunicipios: TDataSet;
-    FDataSetEstados: TDataSet;
   public
     { Public declarations }
-    property DataSetPaises: TDataSet read FDataSetPaises write FDataSetPaises;
-    property DataSetEstados: TDataSet read FDataSetEstados write FDataSetEstados;
-    property DataSetMunicipios: TDataSet read FDataSetMunicipios write FDataSetMunicipios;
-    property DataSetPoblaciones: TDataSet read FDataSetPoblaciones write FDataSetPoblaciones;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses DomiciliosDM, DomiciliosEdit;
+uses PersonasDomiciliosDM, PersonasDomiciliosEdit;
 
-procedure TfrmDomicilios.FormCreate(Sender: TObject);
+procedure TfrmPersonasDomicilios.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmDomiciliosEdit.Create(Self);
-end;
-
-procedure TfrmDomicilios.FormShow(Sender: TObject);
-begin
-  inherited;
-  TfrmDomiciliosEdit(gEditForm).DataSetPaises:= DataSetPaises;
-  TfrmDomiciliosEdit(gEditForm).DataSetEstados:= DataSetEstados;
-  TfrmDomiciliosEdit(gEditForm).DataSetMunicipios:= DataSetMunicipios;
-  TfrmDomiciliosEdit(gEditForm).DataSetPoblaciones:= DataSetPoblaciones;
+  gEditForm:= TfrmPersonasDomiciliosEdit.Create(Self);
 end;
 
 end.

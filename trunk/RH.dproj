@@ -364,8 +364,8 @@
             <Form>frmRolesEsquemasPagos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\PerosnasDomiciliosDM.pas">
-            <Form>dmPerosnasDomicilios</Form>
+        <DCCReference Include="Catalogos\PersonasDomiciliosDM.pas">
+            <Form>dmPersonasDomicilios</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -380,6 +380,14 @@
         </DCCReference>
         <DCCReference Include="Catalogos\RolesEdit.pas">
             <Form>frmRolesEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonasDomiciliosForm.pas">
+            <Form>frmPersonasDomicilios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonasDomiciliosEdit.pas">
+            <Form>frmPersonasDomiciliosEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
