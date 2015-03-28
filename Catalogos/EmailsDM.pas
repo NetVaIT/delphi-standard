@@ -13,6 +13,7 @@ type
     adodsMasterEmail: TStringField;
     adodsEmailTipo: TADODataSet;
     adodsMasterEmailTipo: TStringField;
+    adodsMasterPredeterminado: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

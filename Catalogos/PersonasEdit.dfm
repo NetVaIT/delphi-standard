@@ -1,19 +1,19 @@
 inherited frmPersonaEdit: TfrmPersonaEdit
   Caption = 'Persona'
-  ClientHeight = 491
+  ClientHeight = 301
   ClientWidth = 624
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 630
-  ExplicitHeight = 519
+  ExplicitHeight = 329
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 624
-    Height = 450
+    Height = 260
     ExplicitWidth = 624
     ExplicitHeight = 450
-    ClientRectBottom = 448
+    ClientRectBottom = 258
     ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
@@ -128,7 +128,6 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         BevelOuter = bvNone
         TabOrder = 2
         Visible = False
-        ExplicitTop = 137
         object Label5: TLabel
           Left = 16
           Top = 6
@@ -233,13 +232,12 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         Left = 0
         Top = 312
         Width = 620
-        Height = 108
+        Height = 0
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
-        ExplicitTop = 307
-        ExplicitHeight = 113
+        ExplicitHeight = 108
         object Label12: TLabel
           Left = 16
           Top = 52
@@ -263,18 +261,21 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
+      ExplicitHeight = 420
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
+      ExplicitHeight = 420
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
+      ExplicitHeight = 420
     end
   end
   inherited pmlMain: TPanel
-    Top = 450
+    Top = 260
     Width = 624
     ExplicitTop = 450
     ExplicitWidth = 624

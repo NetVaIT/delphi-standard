@@ -1,4 +1,5 @@
 inherited dmTelefonos: TdmTelefonos
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -28,10 +29,11 @@ inherited dmTelefonos: TdmTelefonos
       Size = 50
       Lookup = True
     end
-    object adodsMasterLada: TIntegerField
+    object adodsMasterLada: TStringField
       FieldName = 'Lada'
+      Size = 10
     end
-    object adodsMasterTelefono: TIntegerField
+    object adodsMasterTelefono: TStringField
       FieldName = 'Telefono'
     end
     object adodsMasterPredeterminado: TBooleanField
@@ -39,6 +41,7 @@ inherited dmTelefonos: TdmTelefonos
     end
   end
   object adodsTelefonoTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdTelefonoTipo, Descripcion FROM TelefonosTipos'

@@ -19,7 +19,7 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -31,23 +31,40 @@ type
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
     cxDBLookupComboBox4: TcxDBLookupComboBox;
+    tsKardex: TcxTabSheet;
+    tsCuentas: TcxTabSheet;
+    tsEsquemaPago: TcxTabSheet;
     procedure actPostExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FRol: TPRol;
+    procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
+    property Rol: TPRol read FRol write SetRol;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasDM;
-
 procedure TfrmPersonaRolesEdit.actPostExecute(Sender: TObject);
 begin
   DataSet.FieldByName('IdRolEsquemaPago').Value := 0;
   inherited;
+end;
+
+procedure TfrmPersonaRolesEdit.FormShow(Sender: TObject);
+begin
+  inherited;
+  if DataSource.DataSet.State in [dsInsert] then
+    cxDBLookupComboBox1.EditValue := Rol;
+end;
+
+procedure TfrmPersonaRolesEdit.SetRol(const Value: TPRol);
+begin
+  FRol := Value;
 end;
 
 end.

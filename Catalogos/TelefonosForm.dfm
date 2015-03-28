@@ -36,9 +36,6 @@ inherited frmTelefonos: TfrmTelefonos
       end
     end
   end
-  inherited DataSource: TDataSource
-    DataSet = dmTelefonos.adodsMaster
-  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0

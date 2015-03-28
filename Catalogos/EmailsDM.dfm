@@ -2,7 +2,9 @@ inherited dmEmails: TdmEmails
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
-    CommandText = 'SELECT IdEmail, IdPersona, IdEmailTipo, Email FROM Emails'
+    CommandText = 
+      'SELECT IdEmail, IdPersona, IdEmailTipo, Email, Predeterminado FR' +
+      'OM Emails'
     object adodsMasterIdEmail: TIntegerField
       FieldName = 'IdEmail'
       Visible = False
@@ -29,8 +31,12 @@ inherited dmEmails: TdmEmails
       Size = 50
       Lookup = True
     end
+    object adodsMasterPredeterminado: TBooleanField
+      FieldName = 'Predeterminado'
+    end
   end
   object adodsEmailTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdEmailTipo, Descripcion FROM EmailsTipos'

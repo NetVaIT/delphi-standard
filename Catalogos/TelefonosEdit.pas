@@ -24,11 +24,11 @@ uses
 type
   TfrmTelefonosEdit = class(T_frmEdit)
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     cxDBCheckBox1: TcxDBCheckBox;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
+    Label2: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
+    Label3: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
   private
     { Private declarations }

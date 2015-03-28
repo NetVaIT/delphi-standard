@@ -3,7 +3,7 @@ inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
   ClientHeight = 323
   ClientWidth = 564
   ExplicitWidth = 570
-  ExplicitHeight = 352
+  ExplicitHeight = 351
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
