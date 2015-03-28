@@ -3,7 +3,7 @@ unit PersonasDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB, Dialogs;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
 
 type
   TPRol = (rNone, rDuenoProceso, rOutSourcing, rCliente, rProveedor, rEmpleado);
@@ -139,6 +139,7 @@ procedure TdmPersona.SetRol(const Value: TPRol);
 begin
   FRol := Value;
   TfrmPersonas(gGridForm).Rol := Value;
+  TfrmPersonasRoles(gFormDeatil1).Rol := Value;
   AsignarConsulta;
   adodsMaster.Open;
   adodsPersonaRoles.Open;

@@ -29,9 +29,9 @@ type
     tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdTelefonoTipo: TcxGridDBColumn;
     tvMasterTelefonoTipo: TcxGridDBColumn;
+    tvMasterPredeterminado: TcxGridDBColumn;
     tvMasterLada: TcxGridDBColumn;
     tvMasterTelefono: TcxGridDBColumn;
-    tvMasterPredeterminado: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

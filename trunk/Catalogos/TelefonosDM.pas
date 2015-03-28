@@ -11,10 +11,10 @@ type
     adodsMasterIdTelefono: TIntegerField;
     adodsMasterIdPersona: TIntegerField;
     adodsMasterIdTelefonoTipo: TIntegerField;
-    adodsMasterLada: TIntegerField;
-    adodsMasterTelefono: TIntegerField;
     adodsMasterPredeterminado: TBooleanField;
     adodsMasterTelefonoTipo: TStringField;
+    adodsMasterLada: TStringField;
+    adodsMasterTelefono: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

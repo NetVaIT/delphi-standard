@@ -30,6 +30,7 @@ type
     tvMasterIdEmailTipo: TcxGridDBColumn;
     tvMasterEmail: TcxGridDBColumn;
     tvMasterEmailTipo: TcxGridDBColumn;
+    tvMasterPredeterminado: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

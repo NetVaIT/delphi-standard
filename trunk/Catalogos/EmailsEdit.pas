@@ -19,7 +19,7 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox, cxTextEdit, cxDBEdit;
+  cxDBLookupComboBox, cxTextEdit, cxDBEdit, cxCheckBox;
 
 type
   TfrmEmailsEdit = class(T_frmEdit)
@@ -27,6 +27,7 @@ type
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBCheckBox1: TcxDBCheckBox;
   private
     { Private declarations }
   public

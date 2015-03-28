@@ -9,13 +9,15 @@ inherited frmTelefonosEdit: TfrmTelefonosEdit
   inherited pcMain: TcxPageControl
     Width = 340
     Height = 195
+    ExplicitWidth = 340
+    ExplicitHeight = 195
     ClientRectBottom = 193
     ClientRectRight = 338
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 434
-      ExplicitHeight = 295
+      ExplicitWidth = 336
+      ExplicitHeight = 165
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -29,6 +31,7 @@ inherited frmTelefonosEdit: TfrmTelefonosEdit
         Width = 23
         Height = 13
         Caption = 'Lada'
+        FocusControl = cxDBTextEdit1
       end
       object Label3: TLabel
         Left = 24
@@ -36,6 +39,7 @@ inherited frmTelefonosEdit: TfrmTelefonosEdit
         Width = 42
         Height = 13
         Caption = 'Telefono'
+        FocusControl = cxDBTextEdit2
       end
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 192
@@ -56,12 +60,12 @@ inherited frmTelefonosEdit: TfrmTelefonosEdit
         Width = 145
       end
       object cxDBTextEdit1: TcxDBTextEdit
-        Left = 23
+        Left = 24
         Top = 80
         DataBinding.DataField = 'Lada'
         DataBinding.DataSource = DataSource
         TabOrder = 2
-        Width = 145
+        Width = 144
       end
       object cxDBTextEdit2: TcxDBTextEdit
         Left = 24
@@ -76,11 +80,15 @@ inherited frmTelefonosEdit: TfrmTelefonosEdit
   inherited pmlMain: TPanel
     Top = 195
     Width = 340
+    ExplicitTop = 195
+    ExplicitWidth = 340
     inherited btnOk: TButton
       Left = 177
+      ExplicitLeft = 177
     end
     inherited btnCancel: TButton
       Left = 258
+      ExplicitLeft = 258
     end
   end
   inherited cxImageList: TcxImageList

@@ -38,16 +38,20 @@ inherited frmPersonasRoles: TfrmPersonasRoles
         end
         object tvMasterRol: TcxGridDBColumn
           DataBinding.FieldName = 'Rol'
+          Width = 200
         end
         object tvMasterPersonaRelacionada: TcxGridDBColumn
           Caption = 'Persona Relacionada'
           DataBinding.FieldName = 'PersonaRelacionada'
+          Width = 400
         end
         object tvMasterRolEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'RolEstatus'
+          Width = 120
         end
         object tvMasterRolClase: TcxGridDBColumn
           DataBinding.FieldName = 'RolClase'
+          Width = 100
         end
       end
     end

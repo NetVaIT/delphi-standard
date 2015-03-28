@@ -83,6 +83,18 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         Width = 210
       end
     end
+    object tsKardex: TcxTabSheet
+      Caption = 'Kardex'
+      ImageIndex = 1
+    end
+    object tsCuentas: TcxTabSheet
+      Caption = 'Cuentas'
+      ImageIndex = 2
+    end
+    object tsEsquemaPago: TcxTabSheet
+      Caption = 'Esquema de Pago'
+      ImageIndex = 3
+    end
   end
   inherited pmlMain: TPanel
     Top = 221

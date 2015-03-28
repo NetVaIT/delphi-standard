@@ -21,11 +21,16 @@ inherited frmEmails: TfrmEmails
           Visible = False
         end
         object tvMasterEmail: TcxGridDBColumn
+          Caption = 'e-Mail'
           DataBinding.FieldName = 'Email'
           Width = 300
         end
         object tvMasterEmailTipo: TcxGridDBColumn
+          Caption = 'Tipo e-Mail'
           DataBinding.FieldName = 'EmailTipo'
+        end
+        object tvMasterPredeterminado: TcxGridDBColumn
+          DataBinding.FieldName = 'Predeterminado'
         end
       end
     end
