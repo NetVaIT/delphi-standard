@@ -416,13 +416,11 @@
             <Form>frmEmails</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\PersonaRolesEdit.pas">
+        <DCCReference Include="Catalogos\PersonasRolesEdit.pas">
             <Form>frmPersonaRolesEdit</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\PersonaRolesForm.pas">
+        <DCCReference Include="Catalogos\PersonasRolesForm.pas">
             <Form>frmPersonasRoles</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

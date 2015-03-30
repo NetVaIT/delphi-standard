@@ -1,12 +1,32 @@
 inherited frmPersonasRoles: TfrmPersonasRoles
-  Caption = 'frmPersonasRoles'
+  BorderStyle = bsToolWindow
+  Caption = 'Roles'
+  ClientHeight = 433
+  ClientWidth = 645
+  Visible = True
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
+  inherited splDetail3: TSplitter
+    Top = 389
+    Width = 645
+  end
+  inherited splDetail1: TSplitter
+    Top = 301
+    Width = 645
+  end
+  inherited splDetail2: TSplitter
+    Top = 345
+    Width = 645
+  end
   inherited pnlMaster: TPanel
+    Width = 645
+    Height = 270
     inherited cxGrid: TcxGrid
+      Width = 645
+      Height = 270
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPersonaRol: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersonaRol'
@@ -55,6 +75,18 @@ inherited frmPersonasRoles: TfrmPersonasRoles
         end
       end
     end
+  end
+  inherited pnlDetail3: TPanel
+    Top = 392
+    Width = 645
+  end
+  inherited pnlDetail2: TPanel
+    Top = 348
+    Width = 645
+  end
+  inherited pnlDetail1: TPanel
+    Top = 304
+    Width = 645
   end
   inherited DataSource: TDataSource
     DataSet = dmPersona.adodsPersonaRoles

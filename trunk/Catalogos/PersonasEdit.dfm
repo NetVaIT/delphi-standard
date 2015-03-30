@@ -12,14 +12,14 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     Width = 624
     Height = 260
     ExplicitWidth = 624
-    ExplicitHeight = 450
+    ExplicitHeight = 260
     ClientRectBottom = 258
     ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 620
-      ExplicitHeight = 420
+      ExplicitHeight = 230
       object pnlPersona: TPanel
         Left = 0
         Top = 0
@@ -237,7 +237,6 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
-        ExplicitHeight = 108
         object Label12: TLabel
           Left = 16
           Top = 52
@@ -261,23 +260,32 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 420
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 420
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 420
     end
   end
   inherited pmlMain: TPanel
     Top = 260
     Width = 624
-    ExplicitTop = 450
+    ExplicitTop = 260
     ExplicitWidth = 624
     inherited btnOk: TButton
       Left = 461

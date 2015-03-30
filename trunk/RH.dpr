@@ -101,8 +101,8 @@ uses
   EmailsDM in 'Catalogos\EmailsDM.pas' {dmEmails: TDataModule},
   EmailsEdit in 'Catalogos\EmailsEdit.pas' {frmEmailsEdit},
   EmailsForm in 'Catalogos\EmailsForm.pas' {frmEmails},
-  PersonaRolesEdit in 'Catalogos\PersonaRolesEdit.pas' {frmPersonaRolesEdit},
-  PersonaRolesForm in 'Catalogos\PersonaRolesForm.pas' {frmPersonasRoles};
+  PersonasRolesEdit in 'Catalogos\PersonasRolesEdit.pas' {frmPersonaRolesEdit},
+  PersonasRolesForm in 'Catalogos\PersonasRolesForm.pas' {frmPersonasRoles};
 
 {$R *.res}
 
