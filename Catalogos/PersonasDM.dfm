@@ -1,7 +1,7 @@
 inherited dmPersona: TdmPersona
   OldCreateOrder = True
-  Height = 764
-  Width = 697
+  Height = 651
+  Width = 731
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     Left = 56
@@ -108,6 +108,9 @@ inherited dmPersona: TdmPersona
       Lookup = True
     end
   end
+  inherited adodsUpdate: TADODataSet
+    Left = 216
+  end
   object ADODataSet1: TADODataSet
     Connection = _dmConection.ADOConnection
     Parameters = <>
@@ -202,8 +205,8 @@ inherited dmPersona: TdmPersona
     IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
     Parameters = <>
-    Left = 328
-    Top = 240
+    Left = 272
+    Top = 293
     object adodsPersonaRolesIdPersonaRol: TAutoIncField
       FieldName = 'IdPersonaRol'
       ReadOnly = True
@@ -279,38 +282,38 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 'SELECT IdPersona, RazonSocial FROM Personas'
     Parameters = <>
-    Left = 328
-    Top = 296
+    Left = 272
+    Top = 349
   end
   object adodsRol: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRol, Descripcion FROM Roles'
     Parameters = <>
-    Left = 328
-    Top = 352
+    Left = 272
+    Top = 405
   end
   object adodsRolEsquemaPago: TADODataSet
     Connection = _dmConection.ADOConnection
     Parameters = <>
-    Left = 328
-    Top = 408
+    Left = 272
+    Top = 461
   end
   object adodsRolEstatus: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolEstatus, Descripcion FROM RolesEstatus'
     Parameters = <>
-    Left = 328
-    Top = 464
+    Left = 272
+    Top = 517
   end
   object adodsRolClase: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolClase, Descripcion FROM RolesClases'
     Parameters = <>
-    Left = 328
-    Top = 520
+    Left = 272
+    Top = 573
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster

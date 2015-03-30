@@ -1,4 +1,4 @@
-unit PersonaRolesEdit;
+unit PersonasRolesEdit;
 
 interface
 
@@ -34,6 +34,7 @@ type
     tsKardex: TcxTabSheet;
     tsCuentas: TcxTabSheet;
     tsEsquemaPago: TcxTabSheet;
+    tsContactoEmergencia: TcxTabSheet;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -60,6 +61,26 @@ begin
   inherited;
   if DataSource.DataSet.State in [dsInsert] then
     cxDBLookupComboBox1.EditValue := Rol;
+  case DataSource.DataSet.FieldByName('IdRol').AsInteger of
+    3: begin
+        tsCuentas.TabVisible := True;
+        tsKardex.TabVisible             := False;
+        tsEsquemaPago.TabVisible        := False;
+        tsContactoEmergencia.TabVisible := False;
+       end;
+    4: begin
+        tsCuentas.TabVisible := True;
+        tsKardex.TabVisible             := False;
+        tsEsquemaPago.TabVisible        := False;
+        tsContactoEmergencia.TabVisible := False;
+       end;
+    5: begin
+        tsKardex.TabVisible             := True;
+        tsEsquemaPago.TabVisible        := True;
+        tsContactoEmergencia.TabVisible := True;
+        tsCuentas.TabVisible := False;
+       end;
+  end;
 end;
 
 procedure TfrmPersonaRolesEdit.SetRol(const Value: TPRol);

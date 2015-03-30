@@ -44,6 +44,7 @@ type
     tvMasterEstadoCivil: TcxGridDBColumn;
     tvMasterPais: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     FRol: TPRol;
@@ -63,6 +64,19 @@ procedure TfrmPersonas.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmPersonaEdit.Create(Self);
+end;
+
+procedure TfrmPersonas.FormShow(Sender: TObject);
+begin
+  inherited;
+  case Rol of
+    rNone: Self.Caption         := 'Personas';
+    rDuenoProceso: Self.Caption := 'Dueños de Proceso';
+    rOutSourcing: Self.Caption  := 'OutSourcing';
+    rCliente: Self.Caption      := 'Clientes';
+    rProveedor: Self.Caption    := 'Proveedores';
+    rEmpleado: Self.Caption     := 'Empleados';
+  end;
 end;
 
 procedure TfrmPersonas.SetRol(const Value: TPRol);

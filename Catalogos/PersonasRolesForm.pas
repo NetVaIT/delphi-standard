@@ -1,4 +1,4 @@
-unit PersonaRolesForm;
+unit PersonasRolesForm;
 
 interface
 
@@ -37,6 +37,7 @@ type
     tvMasterRolEstatus: TcxGridDBColumn;
     tvMasterRolClase: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     FRol: TPRol;
@@ -50,12 +51,25 @@ implementation
 
 {$R *.dfm}
 
-uses PersonaRolesEdit;
+uses PersonasRolesEdit;
 
 procedure TfrmPersonasRoles.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmPersonaRolesEdit.Create(Self);
+end;
+
+procedure TfrmPersonasRoles.FormShow(Sender: TObject);
+begin
+  inherited;
+  case Rol of
+    rNone: Self.Caption         := 'Roles de la Persona';
+    rDuenoProceso: Self.Caption := 'Roles del Dueño de Proceso';
+    rOutSourcing: Self.Caption  := 'Roles del Outsourcing';
+    rCliente: Self.Caption      := 'Roles del Cliente';
+    rProveedor: Self.Caption    := 'Roles del Proveedor';
+    rEmpleado: Self.Caption     := 'Roles del Empleado';
+  end;
 end;
 
 procedure TfrmPersonasRoles.SetRol(const Value: TPRol);

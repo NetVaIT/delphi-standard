@@ -70,7 +70,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses PersonasForm, PersonaRolesForm;
+uses PersonasForm, PersonasRolesForm;
 
 {$R *.dfm}
 

@@ -1,23 +1,34 @@
 inherited frmPersonas: TfrmPersonas
+  BorderStyle = bsToolWindow
   Caption = 'frmPersonas'
+  ClientHeight = 433
+  ClientWidth = 645
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
+  inherited splDetail3: TSplitter
+    Top = 389
+    Width = 645
+  end
   inherited splDetail1: TSplitter
-    Top = 132
+    Top = 108
+    Width = 645
     ExplicitTop = 132
   end
   inherited splDetail2: TSplitter
-    Top = 366
+    Top = 342
+    Width = 645
     ExplicitTop = 366
   end
   inherited pnlMaster: TPanel
-    Height = 101
+    Width = 645
+    Height = 77
     ExplicitHeight = 101
     inherited cxGrid: TcxGrid
-      Height = 101
+      Width = 645
+      Height = 77
       ExplicitHeight = 101
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPersona: TcxGridDBColumn
@@ -95,14 +106,20 @@ inherited frmPersonas: TfrmPersonas
       end
     end
   end
+  inherited pnlDetail3: TPanel
+    Top = 392
+    Width = 645
+  end
   inherited pnlDetail2: TPanel
-    Top = 369
+    Top = 345
+    Width = 645
     Height = 44
     ExplicitTop = 369
     ExplicitHeight = 44
   end
   inherited pnlDetail1: TPanel
-    Top = 135
+    Top = 111
+    Width = 645
     Height = 231
     ExplicitTop = 135
     ExplicitHeight = 231
