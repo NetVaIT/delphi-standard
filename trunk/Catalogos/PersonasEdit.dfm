@@ -29,21 +29,21 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         BevelOuter = bvNone
         TabOrder = 0
         object Label1: TLabel
-          Left = 16
+          Left = 200
           Top = 9
           Width = 20
           Height = 13
           Caption = 'RFC'
         end
         object Label2: TLabel
-          Left = 160
+          Left = 16
           Top = 8
           Width = 20
           Height = 13
           Caption = 'Tipo'
         end
         object cxDBTextEdit1: TcxDBTextEdit
-          Left = 16
+          Left = 200
           Top = 24
           DataBinding.DataField = 'RFC'
           DataBinding.DataSource = DataSource
@@ -51,7 +51,7 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           Width = 121
         end
         object cmbTipoPersona: TcxDBLookupComboBox
-          Left = 160
+          Left = 16
           Top = 24
           DataBinding.DataField = 'PersonaTipo'
           DataBinding.DataSource = DataSource
@@ -260,26 +260,14 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 420
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 420
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 420
     end
   end
   inherited pmlMain: TPanel
@@ -294,6 +282,17 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     inherited btnCancel: TButton
       Left = 542
       ExplicitLeft = 542
+    end
+    object btnNext: TButton
+      Left = 372
+      Top = 6
+      Width = 75
+      Height = 25
+      Hint = 'Siguiente'
+      Caption = 'Siguiente ->'
+      TabOrder = 2
+      Visible = False
+      OnClick = btnNextClick
     end
   end
   inherited DataSource: TDataSource

@@ -55,11 +55,13 @@ type
     tsCorreo: TcxTabSheet;
     Label11: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
+    btnNext: TButton;
     procedure FormShow(Sender: TObject);
     procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure edtNombreEditing(Sender: TObject; var CanEdit: Boolean);
+    procedure btnNextClick(Sender: TObject);
   private
     { Private declarations }
     FRol: TPRol;
@@ -77,6 +79,16 @@ implementation
 
 {$R *.dfm}
 
+
+procedure TfrmPersonaEdit.btnNextClick(Sender: TObject);
+begin
+  pcMain.SelectNextPage(True);
+  if pcMain.ActivePage = tsCorreo then
+  begin
+    btnOk.Visible := True;
+    btnNext.Visible := False;
+  end;
+end;
 
 procedure TfrmPersonaEdit.cxDBLookupComboBox1PropertiesChange(Sender: TObject);
 begin
@@ -148,9 +160,15 @@ begin
       pnlPersonaFisica.Visible := False;
     end;
     pnlOrigen.Visible := True;
+    cmbTipoPersona.Enabled := False;
   end;
   if DataSource.DataSet.State in [dsInsert] then
   begin
+    if Rol = rEmpleado then
+    begin
+      cmbTipoPersona.Enabled := False;
+      cmbTipoPersona.EditValue := 1;
+    end;
     if cmbTipoPersona.EditValue = 1 then
     begin
       pnlPersonaMoral.Visible := False;
@@ -163,6 +181,10 @@ begin
       pnlPersonaFisica.Visible := False;
       pnlOrigen.Visible := True;
     end;
+    cmbTipoPersona.Enabled := True;
+    btnNext.Left := btnOk.Left;
+    btnOk.Visible := False;
+    btnNext.Visible := True;
   end;
 end;
 
