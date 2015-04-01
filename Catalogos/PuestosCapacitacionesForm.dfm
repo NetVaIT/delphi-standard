@@ -4,10 +4,9 @@ inherited frmPuestosCapacitaciones: TfrmPuestosCapacitaciones
   TextHeight = 13
   inherited pnlMaster: TPanel
     inherited pnlAviable: TPanel
-      inherited cxGridAviable: TcxGrid
+      inherited cxGridAvailable: TcxGrid
         TabOrder = 1
-        ExplicitWidth = 350
-        inherited tvAviable: TcxGridDBTableView
+        inherited tvAvailable: TcxGridDBTableView
           object tvAviableIdBateriaCapacitacion: TcxGridDBColumn
             DataBinding.FieldName = 'IdBateriaCapacitacion'
             Visible = False
@@ -47,7 +46,7 @@ inherited frmPuestosCapacitaciones: TfrmPuestosCapacitaciones
       0
       0)
   end
-  inherited dsAviable: TDataSource
+  inherited dsAvailable: TDataSource
     DataSet = dmPuestosCapacitaciones.adoqAvailable
   end
   inherited dsAssigned: TDataSource

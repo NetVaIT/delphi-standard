@@ -1,7 +1,7 @@
 inherited dmMovimientosTipo: TdmMovimientosTipo
   OldCreateOrder = True
   Height = 229
-  Width = 272
+  Width = 553
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -69,6 +69,71 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     object adodsMasterProduceCXP: TBooleanField
       DisplayLabel = 'Produce CXP'
       FieldName = 'ProduceCXP'
+    end
+  end
+  inherited adodsUpdate: TADODataSet
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT IdMovimientoTipo, IdMovimientoTipoCategoria, IdMovimiento' +
+      'TipoEfecto, Identificador, Descripcion, ValorDefault, ProduceCXC' +
+      ', ProduceCXP FROM MovimientosTipos'#13#10'WHERE IdMovimientoTipo = :Id' +
+      'MovimientoTipo'
+    Parameters = <
+      item
+        Name = 'IdMovimientoTipo'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    object adodsUpdateIdMovimientoTipo: TAutoIncField
+      FieldName = 'IdMovimientoTipo'
+      ReadOnly = True
+    end
+    object adodsUpdateIdMovimientoTipoCategoria: TIntegerField
+      FieldName = 'IdMovimientoTipoCategoria'
+    end
+    object adodsUpdateIdMovimientoTipoEfecto: TIntegerField
+      FieldName = 'IdMovimientoTipoEfecto'
+    end
+    object adodsUpdateIdentificador: TStringField
+      FieldName = 'Identificador'
+    end
+    object adodsUpdateDescripcion: TStringField
+      FieldName = 'Descripcion'
+      Size = 50
+    end
+    object adodsUpdateValorDefault: TFMTBCDField
+      FieldName = 'ValorDefault'
+      Precision = 18
+      Size = 6
+    end
+    object adodsUpdateProduceCXC: TBooleanField
+      FieldName = 'ProduceCXC'
+    end
+    object adodsUpdateProduceCXP: TBooleanField
+      FieldName = 'ProduceCXP'
+    end
+    object adodsUpdateMovimientoTipoCategoria: TStringField
+      FieldKind = fkLookup
+      FieldName = 'MovimientoTipoCategoria'
+      LookupDataSet = adodsMovimientoTipoCategoria
+      LookupKeyFields = 'IdMovimientoTipoCategoria'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoTipoCategoria'
+      Size = 100
+      Lookup = True
+    end
+    object adodsUpdateMovimientoTipoEfecto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'MovimientoTipoEfecto'
+      LookupDataSet = adodsMovimientoTipoEfecto
+      LookupKeyFields = 'IdMovimientoTipoEfecto'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoTipoEfecto'
+      Size = 100
+      Lookup = True
     end
   end
   object adodsMovimientoTipoCategoria: TADODataSet

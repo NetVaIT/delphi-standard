@@ -20,7 +20,8 @@ uses
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
   dxSkinsdxBarPainter, dxBar, cxClasses, Vcl.ImgList, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.Menus,
+  Vcl.StdCtrls;
 
 type
   TfrmEsquemaPagosMovimientosTipos = class(T_frmDualList)

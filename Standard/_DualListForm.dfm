@@ -4,7 +4,7 @@ object _frmDualList: T_frmDualList
   BorderStyle = bsNone
   Caption = '_frmDualList'
   ClientHeight = 338
-  ClientWidth = 800
+  ClientWidth = 867
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,19 +12,21 @@ object _frmDualList: T_frmDualList
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMaster: TPanel
     Left = 0
     Top = 0
-    Width = 800
+    Width = 867
     Height = 338
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 800
     object Splitter: TSplitter
       Left = 414
       Top = 1
-      Height = 336
+      Height = 295
       ExplicitLeft = 440
       ExplicitTop = 72
       ExplicitHeight = 100
@@ -33,22 +35,25 @@ object _frmDualList: T_frmDualList
       Left = 1
       Top = 1
       Width = 413
-      Height = 336
+      Height = 295
       Align = alLeft
       Caption = 'pnlAviable'
       TabOrder = 0
-      object cxGridAviable: TcxGrid
+      ExplicitHeight = 336
+      object cxGridAvailable: TcxGrid
         Left = 1
         Top = 1
         Width = 380
-        Height = 334
+        Height = 293
         Align = alClient
+        PopupMenu = bpmAvailable
         TabOrder = 0
         LookAndFeel.Kind = lfStandard
-        object tvAviable: TcxGridDBTableView
+        ExplicitHeight = 334
+        object tvAvailable: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
-          OnCellDblClick = tvAviableCellDblClick
-          DataController.DataSource = dsAviable
+          OnCellDblClick = tvAvailableCellDblClick
+          DataController.DataSource = dsAvailable
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
@@ -61,35 +66,41 @@ object _frmDualList: T_frmDualList
           OptionsView.NoDataToDisplayInfoText = '<Ninguna disponible>'
           OptionsView.GroupByBox = False
         end
-        object cxGridAviableLevel1: TcxGridLevel
-          GridView = tvAviable
+        object cxGridAvailableLevel1: TcxGridLevel
+          GridView = tvAvailable
         end
       end
       object bcdTool: TdxBarDockControl
         Left = 381
         Top = 1
         Width = 31
-        Height = 334
+        Height = 293
         Align = dalRight
         BarManager = dxBarManager
+        ExplicitHeight = 334
       end
     end
     object pnlAssigned: TPanel
       Left = 417
       Top = 1
-      Width = 382
-      Height = 336
+      Width = 449
+      Height = 295
       Align = alClient
       Caption = 'pnlAssigned'
       TabOrder = 1
+      ExplicitWidth = 382
+      ExplicitHeight = 336
       object cxGridAssigned: TcxGrid
         Left = 1
         Top = 1
-        Width = 380
-        Height = 334
+        Width = 447
+        Height = 293
         Align = alClient
+        PopupMenu = bpmAssigned
         TabOrder = 0
         LookAndFeel.Kind = lfStandard
+        ExplicitWidth = 380
+        ExplicitHeight = 334
         object tvAssigned: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           OnCellDblClick = tvAssignedCellDblClick
@@ -109,6 +120,32 @@ object _frmDualList: T_frmDualList
         object cxGridAssignedLevel1: TcxGridLevel
           GridView = tvAssigned
         end
+      end
+    end
+    object pnlClose: TPanel
+      Left = 1
+      Top = 296
+      Width = 865
+      Height = 41
+      Align = alBottom
+      TabOrder = 2
+      Visible = False
+      ExplicitLeft = 848
+      ExplicitTop = 280
+      ExplicitWidth = 185
+      DesignSize = (
+        865
+        41)
+      object btnClose: TButton
+        Left = 780
+        Top = 6
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Cancel = True
+        Caption = 'Cerrar'
+        TabOrder = 0
+        OnClick = btnCloseClick
       end
     end
   end
@@ -131,19 +168,6 @@ object _frmDualList: T_frmDualList
       Color = 8421631
     end
     object cxsActive: TcxStyle
-    end
-  end
-  object ActionList: TActionList
-    Images = cxImageList
-    Left = 544
-    Top = 24
-    object actAdd: TAction
-      Caption = 'Agregar'
-      ImageIndex = 0
-    end
-    object actDelete: TAction
-      Caption = 'Quitar'
-      ImageIndex = 1
     end
   end
   object cxImageList: TcxImageList
@@ -279,20 +303,64 @@ object _frmDualList: T_frmDualList
       WholeRow = False
     end
     object btnAdd: TdxBarButton
-      Action = actAdd
+      Caption = 'Agregar'
       Category = 0
+      Visible = ivAlways
+      ImageIndex = 0
     end
     object btnDelete: TdxBarButton
-      Action = actDelete
+      Caption = 'Quitar'
       Category = 0
+      Visible = ivAlways
+      ImageIndex = 1
+    end
+    object btnViewAvailable: TdxBarButton
+      Caption = 'actAvailable'
+      Category = 0
+      Visible = ivAlways
+    end
+    object btnViewAssigned: TdxBarButton
+      Caption = 'actAssigned'
+      Category = 0
+      Visible = ivAlways
     end
   end
-  object dsAviable: TDataSource
+  object dsAvailable: TDataSource
     Left = 17
     Top = 24
   end
   object dsAssigned: TDataSource
     Left = 436
     Top = 24
+  end
+  object bpmAvailable: TdxBarPopupMenu
+    BarManager = dxBarManager
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'btnAdd'
+      end
+      item
+        Visible = True
+        ItemName = 'btnViewAvailable'
+      end>
+    UseOwnFont = False
+    Left = 25
+    Top = 81
+  end
+  object bpmAssigned: TdxBarPopupMenu
+    BarManager = dxBarManager
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'btnDelete'
+      end
+      item
+        Visible = True
+        ItemName = 'btnViewAssigned'
+      end>
+    UseOwnFont = False
+    Left = 441
+    Top = 81
   end
 end

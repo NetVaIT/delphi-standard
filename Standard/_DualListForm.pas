@@ -27,7 +27,7 @@ uses
   cxLookAndFeels, cxLookAndFeelPainters, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid;
+  cxGridDBTableView, cxGrid, Vcl.StdCtrls;
 
 type
   T_frmDualList = class(TForm)
@@ -38,32 +38,36 @@ type
     cxsInactive: TcxStyle;
     cxsDelete: TcxStyle;
     cxsActive: TcxStyle;
-    ActionList: TActionList;
     cxImageList: TcxImageList;
     dxBarManager: TdxBarManager;
     pnlAviable: TPanel;
     pnlAssigned: TPanel;
-    cxGridAviable: TcxGrid;
-    tvAviable: TcxGridDBTableView;
-    cxGridAviableLevel1: TcxGridLevel;
+    cxGridAvailable: TcxGrid;
+    tvAvailable: TcxGridDBTableView;
+    cxGridAvailableLevel1: TcxGridLevel;
     cxGridAssigned: TcxGrid;
     tvAssigned: TcxGridDBTableView;
     cxGridAssignedLevel1: TcxGridLevel;
     dxBarManagerBar1: TdxBar;
-    actAdd: TAction;
-    actDelete: TAction;
     btnAdd: TdxBarButton;
     btnDelete: TdxBarButton;
-    dsAviable: TDataSource;
+    dsAvailable: TDataSource;
     dsAssigned: TDataSource;
     bcdTool: TdxBarDockControl;
     Splitter: TSplitter;
-    procedure tvAviableCellDblClick(Sender: TcxCustomGridTableView;
+    bpmAvailable: TdxBarPopupMenu;
+    bpmAssigned: TdxBarPopupMenu;
+    btnViewAvailable: TdxBarButton;
+    btnViewAssigned: TdxBarButton;
+    pnlClose: TPanel;
+    btnClose: TButton;
+    procedure tvAvailableCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
     procedure tvAssignedCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure btnCloseClick(Sender: TObject);
   private
     { Private declarations }
     FDataSetAssigned: TDataSet;
@@ -71,17 +75,26 @@ type
     FDeleteItem: TBasicAction;
     FAddItem: TBasicAction;
     FParentWith: Integer;
+    FViewAssigned: TBasicAction;
+    FViewAviable: TBasicAction;
+    FView: Boolean;
     procedure SetDataSetAssigned(const Value: TDataSet);
     procedure SetDataSetAviable(const Value: TDataSet);
     procedure SetAddItem(const Value: TBasicAction);
     procedure SetDeleteItem(const Value: TBasicAction);
     procedure SetParentWith(const Value: Integer);
+    procedure SetViewAssigned(const Value: TBasicAction);
+    procedure SetViewAviable(const Value: TBasicAction);
+    procedure SetView(const Value: Boolean);
   public
     { Public declarations }
     property DataSetAviable: TDataSet read FDataSetAviable write SetDataSetAviable;
     property DataSetAssigned: TDataSet read FDataSetAssigned write SetDataSetAssigned;
     property AddItem: TBasicAction read FAddItem write SetAddItem;
     property DeleteItem: TBasicAction read FDeleteItem write SetDeleteItem;
+    property ViewAviable: TBasicAction read FViewAviable write SetViewAviable;
+    property ViewAssigned: TBasicAction read FViewAssigned write SetViewAssigned;
+    property View: Boolean read FView write SetView default False;
     property ParentWith: Integer read FParentWith write SetParentWith default 0;
   end;
 
@@ -90,6 +103,11 @@ implementation
 {$R *.dfm}
 
 { T_frmDualList }
+
+procedure T_frmDualList.btnCloseClick(Sender: TObject);
+begin
+  Close;
+end;
 
 procedure T_frmDualList.SetAddItem(const Value: TBasicAction);
 begin
@@ -106,7 +124,7 @@ end;
 procedure T_frmDualList.SetDataSetAviable(const Value: TDataSet);
 begin
   FDataSetAviable := Value;
-  dsAviable.DataSet:= Value;
+  dsAvailable.DataSet:= Value;
 end;
 
 procedure T_frmDualList.SetDeleteItem(const Value: TBasicAction);
@@ -120,23 +138,63 @@ begin
   FParentWith := Value;
   if Value > 0 then
   begin
-    Width:= Value;
-    pnlAviable.Width:= Trunc(Value/2);
+    if View then
+    begin
+      Width:= Trunc(Value/2);
+    end
+    else
+    begin
+      Width:= Value;
+      pnlAviable.Width:= Trunc(Value/2);
+    end;
   end;
+end;
+
+procedure T_frmDualList.SetView(const Value: Boolean);
+begin
+  FView := Value;
+  if Value then
+  begin
+    BorderStyle:= bsToolWindow;
+    btnAdd.Visible:= ivNever;
+    btnDelete.Visible:= ivNever;
+  end
+  else
+  begin
+    BorderStyle:= bsNone;
+    btnAdd.Visible:= ivAlways;
+    btnDelete.Visible:= ivAlways;
+  end;
+  pnlAviable.Visible:= not Value;
+  pnlClose.Visible:= Value;
+end;
+
+procedure T_frmDualList.SetViewAssigned(const Value: TBasicAction);
+begin
+  FViewAssigned := Value;
+  btnViewAssigned.Action:= Value;
+end;
+
+procedure T_frmDualList.SetViewAviable(const Value: TBasicAction);
+begin
+  FViewAviable := Value;
+  btnViewAvailable.Action:= Value;
 end;
 
 procedure T_frmDualList.tvAssignedCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
   AShift: TShiftState; var AHandled: Boolean);
 begin
-  Deleteitem.Execute;
+  if not View then
+    Deleteitem.Execute;
 end;
 
-procedure T_frmDualList.tvAviableCellDblClick(Sender: TcxCustomGridTableView;
+procedure T_frmDualList.tvAvailableCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
   AShift: TShiftState; var AHandled: Boolean);
 begin
-  AddItem.Execute;
+  if not View then
+    AddItem.Execute;
 end;
 
 end.

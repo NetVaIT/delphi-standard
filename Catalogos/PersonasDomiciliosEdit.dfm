@@ -1,30 +1,29 @@
 inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
-  Caption = 'frmPersonasDomiciliosEdit'
-  ClientHeight = 323
-  ClientWidth = 564
-  ExplicitWidth = 570
-  ExplicitHeight = 351
+  Caption = 'Domicilio'
+  ClientHeight = 271
+  ClientWidth = 545
+  ExplicitWidth = 551
+  ExplicitHeight = 300
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 564
-    Height = 282
-    ExplicitWidth = 564
-    ExplicitHeight = 282
-    ClientRectBottom = 280
-    ClientRectRight = 562
+    Width = 545
+    Height = 230
+    ExplicitWidth = 545
+    ExplicitHeight = 230
+    ClientRectBottom = 228
+    ClientRectRight = 543
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 560
-      ExplicitHeight = 252
+      ExplicitWidth = 541
+      ExplicitHeight = 200
       object Label1: TLabel
         Left = 16
         Top = 24
         Width = 40
         Height = 13
         Caption = 'Domicilio'
-        FocusControl = DBLookupComboBox1
       end
       object Label2: TLabel
         Left = 16
@@ -34,21 +33,12 @@ inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
         Caption = 'Tipo'
         FocusControl = DBLookupComboBox2
       end
-      object SpeedButton1: TSpeedButton
-        Left = 504
-        Top = 80
+      object btnUpdate: TSpeedButton
+        Left = 493
+        Top = 43
         Width = 23
         Height = 22
-        OnClick = SpeedButton1Click
-      end
-      object DBLookupComboBox1: TDBLookupComboBox
-        Left = 16
-        Top = 40
-        Width = 500
-        Height = 21
-        DataField = 'Domicilio'
-        DataSource = DataSource
-        TabOrder = 0
+        Action = actUpdate
       end
       object DBLookupComboBox2: TDBLookupComboBox
         Left = 16
@@ -57,7 +47,7 @@ inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
         Height = 21
         DataField = 'Tipo'
         DataSource = DataSource
-        TabOrder = 1
+        TabOrder = 0
       end
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 16
@@ -65,31 +55,36 @@ inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
         Caption = 'Predeterminado'
         DataBinding.DataField = 'Predeterminado'
         DataBinding.DataSource = DataSource
-        TabOrder = 2
+        TabOrder = 1
         Width = 121
       end
       object cxDBLabel1: TcxDBLabel
         Left = 16
-        Top = 72
+        Top = 43
         DataBinding.DataField = 'Domicilio'
         DataBinding.DataSource = DataSource
-        Height = 50
-        Width = 481
+        Height = 79
+        Width = 471
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 282
-    Width = 564
-    ExplicitTop = 282
-    ExplicitWidth = 564
+    Top = 230
+    Width = 545
+    ExplicitTop = 230
+    ExplicitWidth = 545
     inherited btnOk: TButton
-      Left = 401
-      ExplicitLeft = 401
+      Left = 382
+      ExplicitLeft = 382
     end
     inherited btnCancel: TButton
-      Left = 482
-      ExplicitLeft = 482
+      Left = 463
+      ExplicitLeft = 463
+    end
+  end
+  inherited ActionList: TActionList
+    object actUpdate: TAction
+      Caption = '...'
     end
   end
   inherited cxImageList: TcxImageList

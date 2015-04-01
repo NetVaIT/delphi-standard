@@ -33,10 +33,13 @@ type
     tvMasterTipo: TcxGridDBColumn;
     tvMasterPredeterminado: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FUpdateDomicilio: TBasicAction;
   public
     { Public declarations }
+    property UpdateDomicilio: TBasicAction read FUpdateDomicilio write FUpdateDomicilio;
   end;
 
 implementation
@@ -49,6 +52,12 @@ procedure TfrmPersonasDomicilios.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmPersonasDomiciliosEdit.Create(Self);
+end;
+
+procedure TfrmPersonasDomicilios.FormShow(Sender: TObject);
+begin
+  inherited;
+  TfrmPersonasDomiciliosEdit(gEditForm).UpdateDomicilio:= UpdateDomicilio;
 end;
 
 end.

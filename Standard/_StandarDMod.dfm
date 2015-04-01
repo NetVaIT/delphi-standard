@@ -16,4 +16,8 @@ object _dmStandar: T_dmStandar
     Left = 320
     Top = 16
   end
+  object ActionList: TActionList
+    Left = 320
+    Top = 88
+  end
 end

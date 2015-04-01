@@ -20,7 +20,7 @@ uses
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
   dxSkinsdxBarPainter, dxBar, cxClasses, Vcl.ImgList, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TfrmRolesEsquemasPagos = class(T_frmDualList)

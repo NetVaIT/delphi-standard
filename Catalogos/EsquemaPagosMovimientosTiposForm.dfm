@@ -1,7 +1,5 @@
 inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
-  Caption = 'frmEsquemaPagosMovimientosTipos'
-  ExplicitWidth = 800
-  ExplicitHeight = 338
+  Caption = 'Tipos de Movimiento'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
@@ -9,9 +7,8 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
       ExplicitLeft = 311
     end
     inherited pnlAviable: TPanel
-      inherited cxGridAviable: TcxGrid
-        ExplicitWidth = 380
-        inherited tvAviable: TcxGridDBTableView
+      inherited cxGridAvailable: TcxGrid
+        inherited tvAvailable: TcxGridDBTableView
           object tvAviableIdMovimientoTipo: TcxGridDBColumn
             DataBinding.FieldName = 'IdMovimientoTipo'
             Visible = False
@@ -47,10 +44,7 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
       end
     end
     inherited pnlAssigned: TPanel
-      ExplicitLeft = 417
-      ExplicitWidth = 382
       inherited cxGridAssigned: TcxGrid
-        ExplicitWidth = 380
         inherited tvAssigned: TcxGridDBTableView
           object tvAssignedIdMovimientoTipo: TcxGridDBColumn
             DataBinding.FieldName = 'IdMovimientoTipo'
@@ -61,6 +55,11 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
           end
         end
       end
+    end
+    inherited pnlClose: TPanel
+      ExplicitLeft = 1
+      ExplicitTop = 296
+      ExplicitWidth = 865
     end
   end
   inherited cxStyleRepository: TcxStyleRepository
@@ -75,8 +74,5 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
       0
       0
       0)
-  end
-  inherited dsAviable: TDataSource
-    DataSet = dmEsquemaPagosMovimientosTipos.adoqAvailable
   end
 end

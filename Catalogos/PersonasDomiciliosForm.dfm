@@ -35,6 +35,7 @@ inherited frmPersonasDomicilios: TfrmPersonasDomicilios
         end
         object tvMasterPredeterminado: TcxGridDBColumn
           DataBinding.FieldName = 'Predeterminado'
+          Width = 81
         end
       end
     end

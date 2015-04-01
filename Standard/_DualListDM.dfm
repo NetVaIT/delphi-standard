@@ -43,5 +43,13 @@ object _dmDualList: T_dmDualList
       OnExecute = actDeleteExecute
       OnUpdate = actDeleteUpdate
     end
+    object actViewAviable: TAction
+      Caption = 'Consultar'
+      Visible = False
+    end
+    object actViewAssigned: TAction
+      Caption = 'Consultar'
+      Visible = False
+    end
   end
 end

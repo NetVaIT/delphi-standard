@@ -142,4 +142,14 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
         Value = Null
       end>
   end
+  inherited ActionList: TActionList
+    inherited actViewAviable: TAction
+      Visible = True
+      OnExecute = actViewAviableExecute
+    end
+    inherited actViewAssigned: TAction
+      Visible = True
+      OnExecute = actViewAssignedExecute
+    end
+  end
 end

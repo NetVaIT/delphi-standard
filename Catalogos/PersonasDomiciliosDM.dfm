@@ -5,8 +5,8 @@ inherited dmPersonasDomicilios: TdmPersonasDomicilios
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'select IdPersonaDomicilio, IdPersona, IdDomicilio, IdDomicilioTi' +
-      'po, Predeterminado from PersonasDomicilios'#13#10'where IdPersona = :I' +
-      'dPersona'
+      'po, Predeterminado'#13#10'from PersonasDomicilios'#13#10'where IdPersona = :' +
+      'IdPersona'
     Parameters = <
       item
         Name = 'IdPersona'
@@ -25,11 +25,15 @@ inherited dmPersonasDomicilios: TdmPersonasDomicilios
       Visible = False
     end
     object adodsMasterIdDomicilio: TIntegerField
+      DisplayLabel = 'Domicilio'
       FieldName = 'IdDomicilio'
+      Required = True
       Visible = False
     end
     object adodsMasterIdDomicilioTipo: TIntegerField
+      DisplayLabel = 'Tipo'
       FieldName = 'IdDomicilioTipo'
+      Required = True
       Visible = False
     end
     object adodsMasterDomicilio: TStringField
@@ -54,9 +58,17 @@ inherited dmPersonasDomicilios: TdmPersonasDomicilios
     end
     object adodsMasterPredeterminado: TBooleanField
       FieldName = 'Predeterminado'
+      Required = True
+    end
+  end
+  inherited ActionList: TActionList
+    object actUpdate: TAction
+      Caption = '...'
+      OnExecute = actUpdateExecute
     end
   end
   object adodsDomiciliosTipos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdDomicilioTipo, Descripcion from DomiciliosTipos'
@@ -77,9 +89,18 @@ inherited dmPersonasDomicilios: TdmPersonasDomicilios
       'dPais = Paises.IdPais'#13#10'INNER JOIN Estados ON Domicilios.IdEstado' +
       ' = Estados.IdEstado'#13#10'INNER JOIN Municipios ON Domicilios.IdMunic' +
       'ipio = Municipios.IdMunicipio'#13#10'INNER JOIN Poblaciones ON Domicil' +
-      'ios.IdPoblacion = Poblaciones.IdPoblacion'
+      'ios.IdPoblacion = Poblaciones.IdPoblacion'#13#10
     Parameters = <>
     Left = 120
     Top = 48
+    object adodsDomiciliosIdDomicilio: TAutoIncField
+      FieldName = 'IdDomicilio'
+      ReadOnly = True
+    end
+    object adodsDomiciliosDomicilio: TStringField
+      FieldName = 'Domicilio'
+      ReadOnly = True
+      Size = 473
+    end
   end
 end

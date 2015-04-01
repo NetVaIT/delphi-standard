@@ -21,6 +21,8 @@ type
     ActionList: TActionList;
     actAdd: TAction;
     actDelete: TAction;
+    actViewAviable: TAction;
+    actViewAssigned: TAction;
     procedure actAddUpdate(Sender: TObject);
     procedure actDeleteUpdate(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
@@ -38,6 +40,7 @@ type
   public
     { Public declarations }
     procedure ShowModule(pConteiner: TWinControl);
+    procedure ViewAssigned(Id: Integer);
     property IdFieldName1: string read FIdFieldName1 write FIdFieldName1;
     property IdFieldName2: string read FIdFieldName2 write FIdFieldName2;
     property MasterSource: TDataSource read FMasterSource write SetMasterSource;
@@ -62,7 +65,8 @@ end;
 
 procedure T_dmDualList.actAddUpdate(Sender: TObject);
 begin
-  actAdd.Enabled := adoqAvailable.RecordCount <> 0;
+  if adoqAvailable.Active then
+    actAdd.Enabled := adoqAvailable.RecordCount <> 0;
 end;
 
 procedure T_dmDualList.actDeleteExecute(Sender: TObject);
@@ -76,7 +80,8 @@ end;
 
 procedure T_dmDualList.actDeleteUpdate(Sender: TObject);
 begin
-  actDelete.Enabled:= adoqAssigned.RecordCount <> 0;
+  if adoqAssigned.Active then
+    actDelete.Enabled:= adoqAssigned.RecordCount <> 0;
 end;
 
 procedure T_dmDualList.DataModuleCreate(Sender: TObject);
@@ -85,6 +90,8 @@ begin
   gGridForm.DataSetAssigned:= adoqAssigned;
   gGridForm.AddItem:= actAdd;
   gGridForm.DeleteItem:= actDelete;
+  gGridForm.ViewAviable:= actViewAviable;
+  gGridForm.ViewAssigned:= actViewAssigned;
 end;
 
 procedure T_dmDualList.DataModuleDestroy(Sender: TObject);
@@ -115,9 +122,25 @@ begin
   if Assigned(gGridForm) then
   begin
     gGridForm.Parent:= pConteiner;
-    gGridForm.ParentWith:= pConteiner.Width;
     gGridForm.Align:= alClient;
+    gGridForm.ParentWith:= pConteiner.Width;
+    gGridForm.View:= False;
     gGridForm.Show;
+  end;
+end;
+
+procedure T_dmDualList.ViewAssigned(Id: Integer);
+begin
+  if Assigned(gGridForm) then
+  begin
+    if adoqAssigned.SQL.Text <> EmptyStr then
+    begin
+      adoqAssigned.Close;
+      adoqAssigned.Parameters[0].Value:= Id;
+      adoqAssigned.Open;
+    end;
+    gGridForm.View:= True;
+    gGridForm.ShowModal;
   end;
 end;
 
