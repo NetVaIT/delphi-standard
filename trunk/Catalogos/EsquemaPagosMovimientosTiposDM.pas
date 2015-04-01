@@ -19,8 +19,11 @@ type
     adoqAvailableProduceCXC: TBooleanField;
     adoqAvailableProduceCXP: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure actViewAviableExecute(Sender: TObject);
+    procedure actViewAssignedExecute(Sender: TObject);
   private
     { Private declarations }
+    procedure ViewMovimientos(Id: Integer);
   public
     { Public declarations }
   end;
@@ -29,9 +32,28 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses EsquemaPagosMovimientosTiposForm;
+uses EsquemaPagosMovimientosTiposForm, MovimientosTiposDM;
 
 {$R *.dfm}
+
+procedure TdmEsquemaPagosMovimientosTipos.actViewAssignedExecute(
+  Sender: TObject);
+var
+  Id: Integer;
+begin
+  inherited;
+  Id:= adoqAssignedIdMovimientoTipo.Value;
+end;
+
+procedure TdmEsquemaPagosMovimientosTipos.actViewAviableExecute(
+  Sender: TObject);
+var
+  Id: Integer;
+begin
+  inherited;
+  Id:= adoqAvailableIdMovimientoTipo.Value;
+  ViewMovimientos(Id);
+end;
 
 procedure TdmEsquemaPagosMovimientosTipos.DataModuleCreate(Sender: TObject);
 begin
@@ -39,6 +61,18 @@ begin
   IdFieldName2:= 'IdMovimientoTipo';
   gGridForm:= TfrmEsquemaPagosMovimientosTipos.Create(Self);
   inherited;
+end;
+
+procedure TdmEsquemaPagosMovimientosTipos.ViewMovimientos(Id: Integer);
+var
+  dmMovimientosTipo: TdmMovimientosTipo;
+begin
+  dmMovimientosTipo := TdmMovimientosTipo.Create(Self);
+  try
+    dmMovimientosTipo.View(Id);
+  finally
+    dmMovimientosTipo.Free;
+  end;
 end;
 
 end.

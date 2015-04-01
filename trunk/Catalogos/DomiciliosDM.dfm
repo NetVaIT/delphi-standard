@@ -4,7 +4,6 @@ inherited dmDomicilios: TdmDomicilios
   Width = 380
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
-    AfterPost = adodsMasterAfterPost
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'SELECT Domicilios.IdDomicilio, Domicilios.IdPais, Domicilios.IdE' +
@@ -99,6 +98,8 @@ inherited dmDomicilios: TdmDomicilios
     end
   end
   inherited adodsUpdate: TADODataSet
+    CursorType = ctStatic
+    OnNewRecord = adodsUpdateNewRecord
     CommandText = 
       'SELECT Domicilios.IdDomicilio, Domicilios.IdPais, Domicilios.IdE' +
       'stado, Domicilios.IdMunicipio, Domicilios.IdPoblacion, '#13#10'Domicil' +
@@ -122,6 +123,76 @@ inherited dmDomicilios: TdmDomicilios
         Value = Null
       end>
     Top = 32
+    object adodsUpdateIdDomicilio: TAutoIncField
+      FieldName = 'IdDomicilio'
+      ReadOnly = True
+    end
+    object adodsUpdateCalle: TStringField
+      FieldName = 'Calle'
+      Required = True
+      Size = 30
+    end
+    object adodsUpdateNoExterior: TStringField
+      FieldName = 'NoExterior'
+      Required = True
+      Size = 10
+    end
+    object adodsUpdateNoInterior: TStringField
+      FieldName = 'NoInterior'
+      Required = True
+      Size = 10
+    end
+    object adodsUpdateColonia: TStringField
+      FieldName = 'Colonia'
+      Required = True
+      Size = 50
+    end
+    object adodsUpdateReferencia: TStringField
+      FieldName = 'Referencia'
+      Size = 200
+    end
+    object adodsUpdateIdPais: TIntegerField
+      DisplayLabel = 'Pa'#237's'
+      FieldName = 'IdPais'
+      Required = True
+    end
+    object adodsUpdateIdEstado: TIntegerField
+      DisplayLabel = 'Estado'
+      FieldName = 'IdEstado'
+      Required = True
+    end
+    object adodsUpdateIdMunicipio: TIntegerField
+      DisplayLabel = 'Municipio'
+      FieldName = 'IdMunicipio'
+      Required = True
+    end
+    object adodsUpdateIdPoblacion: TIntegerField
+      DisplayLabel = 'Poblaci'#243'n'
+      FieldName = 'IdPoblacion'
+      Required = True
+    end
+    object adodsUpdatePais: TStringField
+      FieldName = 'Pais'
+      Size = 100
+    end
+    object adodsUpdateEstado: TStringField
+      FieldName = 'Estado'
+      Size = 50
+    end
+    object adodsUpdateMunicipio: TStringField
+      FieldName = 'Municipio'
+      Size = 50
+    end
+    object adodsUpdatePoblacion: TStringField
+      FieldName = 'Poblacion'
+      Size = 150
+    end
+    object adodsUpdateCodigoPostal: TStringField
+      DisplayLabel = 'C'#243'digo postal'
+      FieldName = 'CodigoPostal'
+      Required = True
+      Size = 10
+    end
   end
   object adodsPaises: TADODataSet
     Connection = _dmConection.ADOConnection

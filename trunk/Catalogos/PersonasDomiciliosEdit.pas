@@ -24,44 +24,34 @@ uses
 type
   TfrmPersonasDomiciliosEdit = class(T_frmEdit)
     Label1: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
     Label2: TLabel;
     DBLookupComboBox2: TDBLookupComboBox;
     cxDBCheckBox1: TcxDBCheckBox;
     cxDBLabel1: TcxDBLabel;
-    SpeedButton1: TSpeedButton;
-    procedure SpeedButton1Click(Sender: TObject);
+    btnUpdate: TSpeedButton;
+    actUpdate: TAction;
   private
+    FUpdateDomicilio: TBasicAction;
+    procedure SetUpdateDomicilio(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
+    property UpdateDomicilio: TBasicAction read FUpdateDomicilio write SetUpdateDomicilio;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasDomiciliosDM, DomiciliosDM;
+uses PersonasDomiciliosDM;
 
-procedure TfrmPersonasDomiciliosEdit.SpeedButton1Click(Sender: TObject);
-var
-  dmDomicilios: TdmDomicilios;
-  id: integer;
+{ TfrmPersonasDomiciliosEdit }
+
+procedure TfrmPersonasDomiciliosEdit.SetUpdateDomicilio(
+  const Value: TBasicAction);
 begin
-  inherited;
-  dmDomicilios:= TdmDomicilios.Create(nil);
-  id:= DataSource.DataSet.FieldByName('IdDomicilio').AsInteger;
-  if Id  <> 0 then
-  begin
-    dmDomicilios.Edit(id);
-  end
-  else
-  begin
-    Id:= dmDomicilios.Add;
-    if  Id <> 0 then
-      DataSource.DataSet.FieldByName('IdDomicilio').AsInteger:= Id;
-  end;
-  dmDomicilios.Free;
+  FUpdateDomicilio := Value;
+  btnUpdate.Action:= Value;
 end;
 
 end.

@@ -3,7 +3,11 @@ unit DomiciliosDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
+
+const
+  IdPais_Predeterminado = 148;
 
 type
   TdmDomicilios = class(T_dmStandar)
@@ -41,13 +45,28 @@ type
     adodsPoblacionesIdMunicipio: TIntegerField;
     adodsPoblacionesIdentificador: TIntegerField;
     adodsPoblacionesDescripcion: TStringField;
+    adodsUpdateIdDomicilio: TAutoIncField;
+    adodsUpdateIdPais: TIntegerField;
+    adodsUpdateIdEstado: TIntegerField;
+    adodsUpdateIdMunicipio: TIntegerField;
+    adodsUpdateIdPoblacion: TIntegerField;
+    adodsUpdateCalle: TStringField;
+    adodsUpdateNoExterior: TStringField;
+    adodsUpdateNoInterior: TStringField;
+    adodsUpdateColonia: TStringField;
+    adodsUpdateReferencia: TStringField;
+    adodsUpdatePais: TStringField;
+    adodsUpdateEstado: TStringField;
+    adodsUpdateMunicipio: TStringField;
+    adodsUpdatePoblacion: TStringField;
+    adodsUpdateCodigoPostal: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterIdPaisChange(Sender: TField);
     procedure adodsMasterIdEstadoChange(Sender: TField);
     procedure adodsMasterIdMunicipioChange(Sender: TField);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure DataModuleDestroy(Sender: TObject);
-    procedure adodsMasterAfterPost(DataSet: TDataSet);
+    procedure adodsUpdateNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -61,12 +80,6 @@ implementation
 uses DomiciliosForm, DomiciliosEdit;
 
 {$R *.dfm}
-
-procedure TdmDomicilios.adodsMasterAfterPost(DataSet: TDataSet);
-begin
-  inherited;
-//  adodsMaster.Requery();
-end;
 
 procedure TdmDomicilios.adodsMasterIdEstadoChange(Sender: TField);
 begin
@@ -92,7 +105,13 @@ end;
 procedure TdmDomicilios.adodsMasterNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  adodsMasterIdPais.Value:= 148;
+  adodsMasterIdPais.Value:= IdPais_Predeterminado;
+end;
+
+procedure TdmDomicilios.adodsUpdateNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  adodsUpdateIdPais.Value:= IdPais_Predeterminado;
 end;
 
 procedure TdmDomicilios.DataModuleCreate(Sender: TObject);

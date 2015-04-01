@@ -1,14 +1,11 @@
 inherited frmRolesEsquemasPagos: TfrmRolesEsquemasPagos
   Caption = 'frmRolesEsquemasPagos'
-  ExplicitWidth = 800
-  ExplicitHeight = 338
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
     inherited pnlAviable: TPanel
-      inherited cxGridAviable: TcxGrid
-        ExplicitWidth = 380
-        inherited tvAviable: TcxGridDBTableView
+      inherited cxGridAvailable: TcxGrid
+        inherited tvAvailable: TcxGridDBTableView
           object tvAviableIdEsquemaPago: TcxGridDBColumn
             DataBinding.FieldName = 'IdEsquemaPago'
             Visible = False
@@ -20,10 +17,7 @@ inherited frmRolesEsquemasPagos: TfrmRolesEsquemasPagos
       end
     end
     inherited pnlAssigned: TPanel
-      ExplicitLeft = 417
-      ExplicitWidth = 382
       inherited cxGridAssigned: TcxGrid
-        ExplicitWidth = 380
         inherited tvAssigned: TcxGridDBTableView
           object tvAssignedIdEsquemaPago: TcxGridDBColumn
             DataBinding.FieldName = 'IdEsquemaPago'
