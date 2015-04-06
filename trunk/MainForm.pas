@@ -54,7 +54,7 @@ type
     dxBarLargeButton15: TdxBarLargeButton;
     dxBarLargeButton16: TdxBarLargeButton;
     actMovimientosTipo: TAction;
-    dxbPagos: TdxBar;
+    dxbEsquemas: TdxBar;
     actRoles: TAction;
     dxBarButton1: TdxBarButton;
     dxBarButton2: TdxBarButton;
@@ -68,6 +68,14 @@ type
     actOutsourcing: TAction;
     dxBarLargeButton7: TdxBarLargeButton;
     dxBarLargeButton8: TdxBarLargeButton;
+    dxRibbon1Tab3: TdxRibbonTab;
+    dxbPagos: TdxBar;
+    dxBarLargeButton13: TdxBarLargeButton;
+    dxBarButton6: TdxBarButton;
+    dxBarButton7: TdxBarButton;
+    actInstrucciones: TAction;
+    actIncidencias: TAction;
+    actMovimientos: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }

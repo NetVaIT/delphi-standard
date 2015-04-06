@@ -1,5 +1,7 @@
 inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
   Caption = 'Tipos de Movimiento'
+  ExplicitWidth = 867
+  ExplicitHeight = 338
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
@@ -8,58 +10,82 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
     end
     inherited pnlAviable: TPanel
       inherited cxGridAvailable: TcxGrid
+        ExplicitHeight = 293
         inherited tvAvailable: TcxGridDBTableView
-          object tvAviableIdMovimientoTipo: TcxGridDBColumn
+          object tvAvailableIdMovimientoTipo: TcxGridDBColumn
             DataBinding.FieldName = 'IdMovimientoTipo'
             Visible = False
           end
-          object tvAviableIdentificador: TcxGridDBColumn
+          object tvAvailableIdentificador: TcxGridDBColumn
             DataBinding.FieldName = 'Identificador'
             Visible = False
           end
-          object tvAviableDescripcion: TcxGridDBColumn
+          object tvAvailableDescripcion: TcxGridDBColumn
             DataBinding.FieldName = 'Descripcion'
+            Width = 184
           end
-          object tvAviableCategoria: TcxGridDBColumn
+          object tvAvailableCategoria: TcxGridDBColumn
             DataBinding.FieldName = 'Categoria'
-            Visible = False
+            Width = 184
           end
-          object tvAviableEfecto: TcxGridDBColumn
+          object tvAvailableEfecto: TcxGridDBColumn
             DataBinding.FieldName = 'Efecto'
-            Visible = False
+            Width = 184
           end
-          object tvAviableValorDefault: TcxGridDBColumn
+          object tvAvailableValorDefault: TcxGridDBColumn
             DataBinding.FieldName = 'ValorDefault'
-            Visible = False
           end
-          object tvAviableProduceCXC: TcxGridDBColumn
+          object tvAvailableProduceCXC: TcxGridDBColumn
             DataBinding.FieldName = 'ProduceCXC'
-            Visible = False
+            Width = 67
           end
-          object tvAviableProduceCXP: TcxGridDBColumn
+          object tvAvailableProduceCXP: TcxGridDBColumn
             DataBinding.FieldName = 'ProduceCXP'
-            Visible = False
+            Width = 66
           end
         end
       end
     end
     inherited pnlAssigned: TPanel
+      ExplicitWidth = 449
+      ExplicitHeight = 295
       inherited cxGridAssigned: TcxGrid
+        ExplicitWidth = 447
+        ExplicitHeight = 293
         inherited tvAssigned: TcxGridDBTableView
           object tvAssignedIdMovimientoTipo: TcxGridDBColumn
             DataBinding.FieldName = 'IdMovimientoTipo'
             Visible = False
           end
+          object tvAssignedIdentificador: TcxGridDBColumn
+            DataBinding.FieldName = 'Identificador'
+            Visible = False
+          end
           object tvAssignedDescripcion: TcxGridDBColumn
             DataBinding.FieldName = 'Descripcion'
+            Width = 184
+          end
+          object tvAssignedCategoria: TcxGridDBColumn
+            DataBinding.FieldName = 'Categoria'
+            Width = 184
+          end
+          object tvAssignedEfecto: TcxGridDBColumn
+            DataBinding.FieldName = 'Efecto'
+            Width = 184
+          end
+          object tvAssignedValorDefault: TcxGridDBColumn
+            DataBinding.FieldName = 'ValorDefault'
+          end
+          object tvAssignedProduceCXC: TcxGridDBColumn
+            DataBinding.FieldName = 'ProduceCXC'
+            Width = 67
+          end
+          object tvAssignedProduceCXP: TcxGridDBColumn
+            DataBinding.FieldName = 'ProduceCXP'
+            Width = 66
           end
         end
       end
-    end
-    inherited pnlClose: TPanel
-      ExplicitLeft = 1
-      ExplicitTop = 296
-      ExplicitWidth = 865
     end
   end
   inherited cxStyleRepository: TcxStyleRepository

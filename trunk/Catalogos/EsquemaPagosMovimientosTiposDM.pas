@@ -18,6 +18,12 @@ type
     adoqAvailableValorDefault: TFMTBCDField;
     adoqAvailableProduceCXC: TBooleanField;
     adoqAvailableProduceCXP: TBooleanField;
+    adoqAssignedIdentificador: TStringField;
+    adoqAssignedCategoria: TStringField;
+    adoqAssignedEfecto: TStringField;
+    adoqAssignedValorDefault: TFMTBCDField;
+    adoqAssignedProduceCXC: TBooleanField;
+    adoqAssignedProduceCXP: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actViewAviableExecute(Sender: TObject);
     procedure actViewAssignedExecute(Sender: TObject);

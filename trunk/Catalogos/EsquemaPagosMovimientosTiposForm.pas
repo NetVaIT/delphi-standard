@@ -25,16 +25,22 @@ uses
 
 type
   TfrmEsquemaPagosMovimientosTipos = class(T_frmDualList)
+    tvAvailableIdMovimientoTipo: TcxGridDBColumn;
+    tvAvailableIdentificador: TcxGridDBColumn;
+    tvAvailableDescripcion: TcxGridDBColumn;
+    tvAvailableCategoria: TcxGridDBColumn;
+    tvAvailableEfecto: TcxGridDBColumn;
+    tvAvailableValorDefault: TcxGridDBColumn;
+    tvAvailableProduceCXC: TcxGridDBColumn;
+    tvAvailableProduceCXP: TcxGridDBColumn;
     tvAssignedIdMovimientoTipo: TcxGridDBColumn;
+    tvAssignedIdentificador: TcxGridDBColumn;
     tvAssignedDescripcion: TcxGridDBColumn;
-    tvAviableIdMovimientoTipo: TcxGridDBColumn;
-    tvAviableIdentificador: TcxGridDBColumn;
-    tvAviableDescripcion: TcxGridDBColumn;
-    tvAviableCategoria: TcxGridDBColumn;
-    tvAviableEfecto: TcxGridDBColumn;
-    tvAviableValorDefault: TcxGridDBColumn;
-    tvAviableProduceCXC: TcxGridDBColumn;
-    tvAviableProduceCXP: TcxGridDBColumn;
+    tvAssignedCategoria: TcxGridDBColumn;
+    tvAssignedEfecto: TcxGridDBColumn;
+    tvAssignedValorDefault: TcxGridDBColumn;
+    tvAssignedProduceCXC: TcxGridDBColumn;
+    tvAssignedProduceCXP: TcxGridDBColumn;
   private
     { Private declarations }
   public
