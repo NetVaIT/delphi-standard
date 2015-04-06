@@ -48,27 +48,25 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
     end
     object adoqAvailableCategoria: TStringField
       FieldName = 'Categoria'
-      Visible = False
       Size = 100
     end
     object adoqAvailableEfecto: TStringField
       FieldName = 'Efecto'
-      Visible = False
       Size = 100
     end
     object adoqAvailableValorDefault: TFMTBCDField
+      DisplayLabel = 'Omisi'#243'n'
       FieldName = 'ValorDefault'
-      Visible = False
       Precision = 18
       Size = 6
     end
     object adoqAvailableProduceCXC: TBooleanField
+      DisplayLabel = 'Produce CXC'
       FieldName = 'ProduceCXC'
-      Visible = False
     end
     object adoqAvailableProduceCXP: TBooleanField
+      DisplayLabel = 'Produce CXP'
       FieldName = 'ProduceCXP'
-      Visible = False
     end
   end
   inherited adoqAssigned: TADOQuery
@@ -81,21 +79,63 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT IdMovimientoTipo, Descripcion '
-      'FROM MovimientosTipos'
       
-        'WHERE (IdMovimientoTipo IN (SELECT IdMovimientoTipo FROM Esquema' +
-        'PagosMovimientosTipos WHERE IdEsquemaPago = :IdEsquemaPago))'
-      'ORDER BY Descripcion')
+        'SELECT        MovimientosTipos.IdMovimientoTipo, MovimientosTipo' +
+        's.Identificador, MovimientosTipos.Descripcion, MovimientosTiposC' +
+        'ategorias.Descripcion AS Categoria, MovimientosTiposEfectos.Desc' +
+        'ripcion AS Efecto,'
+      
+        '                         MovimientosTipos.ValorDefault, Movimien' +
+        'tosTipos.ProduceCXC, MovimientosTipos.ProduceCXP'
+      'FROM            MovimientosTipos INNER JOIN'
+      
+        '                         MovimientosTiposCategorias ON Movimient' +
+        'osTipos.IdMovimientoTipoCategoria = MovimientosTiposCategorias.I' +
+        'dMovimientoTipoCategoria INNER JOIN'
+      
+        '                         MovimientosTiposEfectos ON MovimientosT' +
+        'ipos.IdMovimientoTipoEfecto = MovimientosTiposEfectos.IdMovimien' +
+        'toTipoEfecto'
+      
+        'WHERE (MovimientosTipos.IdMovimientoTipo IN (SELECT IdMovimiento' +
+        'Tipo FROM EsquemaPagosMovimientosTipos WHERE IdEsquemaPago = :Id' +
+        'EsquemaPago))'
+      'ORDER BY MovimientosTipos.Descripcion'
+      '')
     object adoqAssignedIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
       ReadOnly = True
       Visible = False
     end
+    object adoqAssignedIdentificador: TStringField
+      FieldName = 'Identificador'
+    end
     object adoqAssignedDescripcion: TStringField
       DisplayLabel = 'Tipos de movimiento asignados'
       FieldName = 'Descripcion'
       Size = 50
+    end
+    object adoqAssignedCategoria: TStringField
+      FieldName = 'Categoria'
+      Size = 100
+    end
+    object adoqAssignedEfecto: TStringField
+      FieldName = 'Efecto'
+      Size = 100
+    end
+    object adoqAssignedValorDefault: TFMTBCDField
+      DisplayLabel = 'Omisi'#243'n'
+      FieldName = 'ValorDefault'
+      Precision = 18
+      Size = 6
+    end
+    object adoqAssignedProduceCXC: TBooleanField
+      DisplayLabel = 'Produce CXC'
+      FieldName = 'ProduceCXC'
+    end
+    object adoqAssignedProduceCXP: TBooleanField
+      DisplayLabel = 'Produce CXP'
+      FieldName = 'ProduceCXP'
     end
   end
   inherited adocAdd: TADOCommand
