@@ -107,7 +107,8 @@ uses
   InstruccionesForm in 'Procesos\InstruccionesForm.pas' {frmInstrucciones},
   InstruccionesEdit in 'Procesos\InstruccionesEdit.pas' {frmInstruccionesEdit},
   ImportXLSDM in 'Procesos\ImportXLSDM.pas' {dmImportXLS: TDataModule},
-  ImportXLSForm in 'Procesos\ImportXLSForm.pas' {frmImportXLS};
+  ImportXLSForm in 'Procesos\ImportXLSForm.pas' {frmImportXLS},
+  ImportXLSSelect in 'Procesos\ImportXLSSelect.pas' {frmImportXLSSelect};
 
 {$R *.res}
 

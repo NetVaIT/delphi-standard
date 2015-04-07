@@ -29,7 +29,7 @@ uses
   System.Actions, Vcl.ActnList, Vcl.ImgList, dxBar, Vcl.ExtCtrls, cxGridLevel,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGrid, Vcl.Menus,
-  cxGridExportLink, _EditForm;
+  cxGridExportLink, _EditForm, Vcl.StdCtrls;
 
 type
   T_frmGrid = class(TForm)
@@ -81,6 +81,8 @@ type
     splDetail2: TSplitter;
     actShow: TAction;
     dxBarButton7: TdxBarButton;
+    pnlClose: TPanel;
+    btnClose: TButton;
     procedure FormShow(Sender: TObject);
     procedure FileSaveAs1Accept(Sender: TObject);
     procedure DatasetInsertExecute(Sender: TObject);
@@ -91,13 +93,16 @@ type
       AShift: TShiftState; var AHandled: Boolean);
     procedure actShowExecute(Sender: TObject);
     procedure DatasetRefreshExecute(Sender: TObject);
+    procedure btnCloseClick(Sender: TObject);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
     FgEditForm: T_frmEdit;
+    FView: Boolean;
     procedure SetReadOnlyGrid(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
+    procedure SetView(const Value: Boolean);
   protected
     tvStatus: TcxGridDBColumn;
     property gEditForm: T_frmEdit read FgEditForm write FgEditForm;
@@ -105,6 +110,7 @@ type
     { Public declarations }
     property DataSet: TDataSet read FDataSet write SetDataSet;
     property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
+    property View: Boolean read FView write SetView default False;
   end;
 
 implementation
@@ -117,6 +123,11 @@ procedure T_frmGrid.actShowExecute(Sender: TObject);
 begin
   if Assigned(gEditForm) then
     gEditForm.ShowModal;
+end;
+
+procedure T_frmGrid.btnCloseClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure T_frmGrid.DatasetDeleteExecute(Sender: TObject);
@@ -194,6 +205,20 @@ begin
     dxbNavigator.DockedLeft:= 82;
     dxbTools.DockedLeft:= 210;
   end;
+end;
+
+procedure T_frmGrid.SetView(const Value: Boolean);
+begin
+  FView := Value;
+  if Value then
+  begin
+    BorderStyle:= bsToolWindow;
+  end
+  else
+  begin
+    BorderStyle:= bsNone;
+  end;
+  pnlClose.Visible:= Value;
 end;
 
 procedure T_frmGrid.tvMasterCellDblClick(Sender: TcxCustomGridTableView;

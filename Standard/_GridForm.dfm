@@ -1,7 +1,6 @@
 object _frmGrid: T_frmGrid
   Left = 0
   Top = 0
-  BorderIcons = []
   BorderStyle = bsNone
   Caption = '_frmGrid'
   ClientHeight = 457
@@ -13,13 +12,14 @@ object _frmGrid: T_frmGrid
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   ShowHint = True
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object splDetail3: TSplitter
     Left = 0
-    Top = 413
+    Top = 372
     Width = 651
     Height = 3
     Cursor = crVSplit
@@ -30,7 +30,7 @@ object _frmGrid: T_frmGrid
   end
   object splDetail1: TSplitter
     Left = 0
-    Top = 325
+    Top = 284
     Width = 651
     Height = 3
     Cursor = crVSplit
@@ -41,7 +41,7 @@ object _frmGrid: T_frmGrid
   end
   object splDetail2: TSplitter
     Left = 0
-    Top = 369
+    Top = 328
     Width = 651
     Height = 3
     Cursor = crVSplit
@@ -53,19 +53,21 @@ object _frmGrid: T_frmGrid
     Left = 0
     Top = 31
     Width = 651
-    Height = 294
+    Height = 253
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitHeight = 294
     object cxGrid: TcxGrid
       Left = 0
       Top = 0
       Width = 651
-      Height = 294
+      Height = 253
       Align = alClient
       PopupMenu = PopupMenu
       TabOrder = 0
       LookAndFeel.Kind = lfStandard
+      ExplicitHeight = 294
       object tvMaster: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = tvMasterCellDblClick
@@ -88,33 +90,61 @@ object _frmGrid: T_frmGrid
   end
   object pnlDetail3: TPanel
     Left = 0
-    Top = 416
+    Top = 375
     Width = 651
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
     Visible = False
+    ExplicitTop = 416
   end
   object pnlDetail2: TPanel
     Left = 0
-    Top = 372
+    Top = 331
     Width = 651
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
     Visible = False
+    ExplicitTop = 372
   end
   object pnlDetail1: TPanel
     Left = 0
-    Top = 328
+    Top = 287
     Width = 651
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     Visible = False
+    ExplicitTop = 328
+  end
+  object pnlClose: TPanel
+    Left = 0
+    Top = 416
+    Width = 651
+    Height = 41
+    Align = alBottom
+    TabOrder = 8
+    Visible = False
+    ExplicitTop = 432
+    DesignSize = (
+      651
+      41)
+    object btnClose: TButton
+      Left = 566
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cerrar'
+      TabOrder = 0
+      OnClick = btnCloseClick
+      ExplicitLeft = 780
+    end
   end
   object ActionList: TActionList
     Images = cxImageList

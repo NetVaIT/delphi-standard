@@ -116,10 +116,19 @@ begin
   if Assigned(gGridForm) then
   begin
     if adodsMaster.CommandText <> EmptyStr then adodsMaster.Open;
-    gGridForm.Parent:= pConteiner;
-    gGridForm.Align:= alClient;
-//    gGridForm.Caption:= pCation;
-    gGridForm.Show;
+    if Assigned(pConteiner) then
+    begin
+      gGridForm.Parent:= pConteiner;
+      gGridForm.Align:= alClient;
+  //    gGridForm.Caption:= pCation;
+      gGridForm.View:= False;
+      gGridForm.Show;
+    end
+    else
+    begin
+      gGridForm.View:= True;
+      gGridForm.ShowModal;
+    end;
   end;
   if Assigned(gFormDeatil1) then
   begin
