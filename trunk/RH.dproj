@@ -422,6 +422,28 @@
         <DCCReference Include="Catalogos\PersonasRolesForm.pas">
             <Form>frmPersonasRoles</Form>
         </DCCReference>
+        <DCCReference Include="Procesos\InstruccionesDM.pas">
+            <Form>dmInstrucciones</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\InstruccionesForm.pas">
+            <Form>frmInstrucciones</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\InstruccionesEdit.pas">
+            <Form>frmInstruccionesEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\ImportXLSDM.pas">
+            <Form>dmImportXLS</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\ImportXLSForm.pas">
+            <Form>frmImportXLS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

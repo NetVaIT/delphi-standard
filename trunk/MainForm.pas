@@ -97,7 +97,7 @@ implementation
 
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
-  CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM;
+  CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -147,6 +147,7 @@ begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rOutSourcing;
        end;
+   30: gModulo := TdmInstrucciones.Create(Self);
   end;
   if Assigned(gModulo) then
   begin

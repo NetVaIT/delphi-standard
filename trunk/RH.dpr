@@ -102,7 +102,12 @@ uses
   EmailsEdit in 'Catalogos\EmailsEdit.pas' {frmEmailsEdit},
   EmailsForm in 'Catalogos\EmailsForm.pas' {frmEmails},
   PersonasRolesEdit in 'Catalogos\PersonasRolesEdit.pas' {frmPersonaRolesEdit},
-  PersonasRolesForm in 'Catalogos\PersonasRolesForm.pas' {frmPersonasRoles};
+  PersonasRolesForm in 'Catalogos\PersonasRolesForm.pas' {frmPersonasRoles},
+  InstruccionesDM in 'Procesos\InstruccionesDM.pas' {dmInstrucciones: TDataModule},
+  InstruccionesForm in 'Procesos\InstruccionesForm.pas' {frmInstrucciones},
+  InstruccionesEdit in 'Procesos\InstruccionesEdit.pas' {frmInstruccionesEdit},
+  ImportXLSDM in 'Procesos\ImportXLSDM.pas' {dmImportXLS: TDataModule},
+  ImportXLSForm in 'Procesos\ImportXLSForm.pas' {frmImportXLS};
 
 {$R *.res}
 
