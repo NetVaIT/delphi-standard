@@ -21,10 +21,18 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.StdCtrls,
+  cxCheckBox;
 
 type
   TfrmImportXLS = class(T_frmGrid)
+    tvMasterRecId: TcxGridDBColumn;
+    tvMasterIdMovimientoTipo: TcxGridDBColumn;
+    tvMasterNombre: TcxGridDBColumn;
+    tvMasterValor: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterMovimientoTipo: TcxGridDBColumn;
+    tvMasterEncontrada: TcxGridDBColumn;
   private
     { Private declarations }
   public
@@ -34,5 +42,7 @@ type
 implementation
 
 {$R *.dfm}
+
+uses ImportXLSDM;
 
 end.

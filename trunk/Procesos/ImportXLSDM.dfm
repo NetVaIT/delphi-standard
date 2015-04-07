@@ -17,7 +17,7 @@ inherited dmImportXLS: TdmImportXLS
       'FROM Instrucciones'
       'WHERE IdInstruccion = :IdInstruccion')
     Left = 40
-    Top = 80
+    Top = 72
     object adoqInstruccionesIdInstruccion: TAutoIncField
       FieldName = 'IdInstruccion'
       ReadOnly = True
@@ -30,7 +30,7 @@ inherited dmImportXLS: TdmImportXLS
     end
   end
   object QImport3XLS: TQImport3XLS
-    DataSet = dxMemData
+    DataSet = dxmdImportar
     Formats.DecimalSeparator = '.'
     Formats.ThousandSeparator = ','
     Formats.DateSeparator = '/'
@@ -49,31 +49,49 @@ inherited dmImportXLS: TdmImportXLS
     ErrorLogFileName = 'error.log'
     AddType = qatInsert
     OnBeforePost = QImport3XLSBeforePost
-    Left = 176
-    Top = 128
+    Left = 160
+    Top = 168
   end
-  object dxMemData: TdxMemData
+  object dxmdImportar: TdxMemData
     Indexes = <>
     Persistent.Data = {
       5665728FC2F5285C8FFE3F04000000FF000000010007004E6F6D627265000800
       00000600060056616C6F72000400000003000A004964506572736F6E61000400
       00000300110049644D6F76696D69656E746F5469706F00}
     SortOptions = []
-    Left = 256
-    Top = 128
-    object dxMemDataNombre: TStringField
+    OnNewRecord = dxmdImportarNewRecord
+    Left = 248
+    Top = 168
+    object dxmdImportarIdMovimientoTipo: TIntegerField
+      FieldName = 'IdMovimientoTipo'
+    end
+    object dxmdImportarNombre: TStringField
       DisplayWidth = 50
       FieldName = 'Nombre'
       Size = 255
     end
-    object dxMemDataValor: TFloatField
+    object dxmdImportarValor: TFloatField
       FieldName = 'Valor'
     end
-    object dxMemDataIdPersona: TIntegerField
+    object dxmdImportarIdPersona: TIntegerField
       FieldName = 'IdPersona'
     end
-    object dxMemDataIdMovimientoTipo: TIntegerField
-      FieldName = 'IdMovimientoTipo'
+    object dxmdImportarMovimientoTipo: TStringField
+      DisplayLabel = 'Tipo de movimiento'
+      FieldKind = fkLookup
+      FieldName = 'MovimientoTipo'
+      LookupDataSet = adodsMovimientosTipos
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoTipo'
+      Size = 50
+      Lookup = True
+    end
+    object dxmdImportarEncontrada: TBooleanField
+      FieldName = 'Encontrada'
+    end
+    object dxmdImportarGenerada: TBooleanField
+      FieldName = 'Generada'
     end
   end
   object adoqInstrucionesTipos: TADOQuery
@@ -100,7 +118,7 @@ inherited dmImportXLS: TdmImportXLS
       
         'WHERE InstruccionesTiposDetalle.IdInstruccionTipo = :IdInstrucci' +
         'onTipo')
-    Left = 176
+    Left = 160
     Top = 72
     object adoqInstrucionesTiposIdInstruccionTipoDetalle: TAutoIncField
       FieldName = 'IdInstruccionTipoDetalle'
@@ -151,8 +169,8 @@ inherited dmImportXLS: TdmImportXLS
         Size = -1
         Value = Null
       end>
-    Left = 152
-    Top = 200
+    Left = 160
+    Top = 232
   end
   object adocGetPersona: TADOCommand
     CommandText = 
@@ -173,8 +191,8 @@ inherited dmImportXLS: TdmImportXLS
         Size = -1
         Value = Null
       end>
-    Left = 256
-    Top = 200
+    Left = 56
+    Top = 232
   end
   object adocSetIncidenciasDetalle: TADOCommand
     CommandText = 
@@ -209,7 +227,15 @@ inherited dmImportXLS: TdmImportXLS
         Size = -1
         Value = Null
       end>
-    Left = 152
-    Top = 256
+    Left = 160
+    Top = 296
+  end
+  object adodsMovimientosTipos: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
+    Parameters = <>
+    Left = 320
+    Top = 184
   end
 end
