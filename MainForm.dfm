@@ -7,7 +7,6 @@ inherited frmMain: TfrmMain
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
     Width = 1099
-    ExplicitTop = 5
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
       Index = 0
@@ -65,6 +64,8 @@ inherited frmMain: TfrmMain
       FloatClientHeight = 22
     end
     inherited dxbArchivo: TdxBar
+      DockedDockControl = nil
+      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end
@@ -210,8 +211,8 @@ inherited frmMain: TfrmMain
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
-      FloatClientWidth = 0
-      FloatClientHeight = 0
+      FloatClientWidth = 86
+      FloatClientHeight = 76
       ItemLinks = <
         item
           Visible = True
