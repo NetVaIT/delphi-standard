@@ -2,17 +2,18 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
   Caption = 'frmInstruccionesEdit'
   ClientHeight = 322
   ExplicitWidth = 444
-  ExplicitHeight = 351
+  ExplicitHeight = 350
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Height = 281
+    ExplicitHeight = 281
     ClientRectBottom = 279
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 434
-      ExplicitHeight = 295
+      ExplicitHeight = 251
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -130,6 +131,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
   end
   inherited pmlMain: TPanel
     Top = 281
+    ExplicitTop = 281
   end
   inherited DataSource: TDataSource
     DataSet = dmInstrucciones.adodsMaster
