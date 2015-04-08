@@ -108,7 +108,15 @@ uses
   InstruccionesEdit in 'Procesos\InstruccionesEdit.pas' {frmInstruccionesEdit},
   ImportXLSDM in 'Procesos\ImportXLSDM.pas' {dmImportXLS: TDataModule},
   ImportXLSForm in 'Procesos\ImportXLSForm.pas' {frmImportXLS},
-  ImportXLSSelect in 'Procesos\ImportXLSSelect.pas' {frmImportXLSSelect};
+  ImportXLSSelect in 'Procesos\ImportXLSSelect.pas' {frmImportXLSSelect},
+  IncidenciasDetallesEdit in 'Procesos\IncidenciasDetallesEdit.pas' {frmIncidenciaDetallesEdit},
+  IncidenciasDetallesForm in 'Procesos\IncidenciasDetallesForm.pas' {frmIncidenciasDetalles},
+  IncidenciasDM in 'Procesos\IncidenciasDM.pas' {dmIncidencias: TDataModule},
+  IncidenciasEdit in 'Procesos\IncidenciasEdit.pas' {frmIncidenciasEdit},
+  IncidenciasForm in 'Procesos\IncidenciasForm.pas' {frmIncidencias},
+  ArchivosAdjuntosDM in 'Catalogos\ArchivosAdjuntosDM.pas' {dmArchivosAdjuntos: TDataModule},
+  ArchivosAdjuntosEdit in 'Catalogos\ArchivosAdjuntosEdit.pas' {frmArchivosAdjuntosEdit},
+  ArchivosAdjuntosForm in 'Catalogos\ArchivosAdjuntosForm.pas' {frmArchivosAdjuntos};
 
 {$R *.res}
 

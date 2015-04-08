@@ -76,6 +76,9 @@ type
     actInstrucciones: TAction;
     actIncidencias: TAction;
     actMovimientos: TAction;
+    dxBarLargeButton14: TdxBarLargeButton;
+    actArchivoAdjunto: TAction;
+    dxBarLargeButton17: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -97,7 +100,8 @@ implementation
 
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
-  CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM;
+  CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
+  IncidenciasDM, ArchivosAdjuntosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -148,6 +152,8 @@ begin
         TdmPersona(gModulo).Rol := rOutSourcing;
        end;
    30: gModulo := TdmInstrucciones.Create(Self);
+   31: gModulo := TdmIncidencias.Create(Self);
+  100: gModulo := TdmArchivosAdjuntos.Create(Self);
   end;
   if Assigned(gModulo) then
   begin
@@ -178,6 +184,9 @@ begin
   actProveedores.Enabled      := Conected;
   actDuenoProceso.Enabled     := Conected;
   actOutsourcing.Enabled      := Conected;
+  actInstrucciones.Enabled    := Conected;
+  actIncidencias.Enabled      := Conected;
+  actArchivoAdjunto.Enabled   := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

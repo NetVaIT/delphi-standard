@@ -2,16 +2,18 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
     Width = 1099
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
+      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
+      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -75,7 +77,7 @@ inherited frmMain: TfrmMain
       DockedTop = 0
       FloatLeft = 674
       FloatTop = 8
-      FloatClientWidth = 119
+      FloatClientWidth = 134
       FloatClientHeight = 216
       ItemLinks = <
         item
@@ -97,6 +99,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton10'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton17'
         end>
       OneOnRow = False
       Row = 0
@@ -107,7 +113,7 @@ inherited frmMain: TfrmMain
     object dxbOrganizacion: TdxBar [3]
       Caption = 'Organizacion'
       CaptionButtons = <>
-      DockedLeft = 338
+      DockedLeft = 402
       DockedTop = 0
       FloatLeft = 759
       FloatTop = 8
@@ -139,7 +145,7 @@ inherited frmMain: TfrmMain
     object dxbPresonas: TdxBar [4]
       Caption = 'Personas'
       CaptionButtons = <>
-      DockedLeft = 711
+      DockedLeft = 775
       DockedTop = 0
       FloatLeft = 764
       FloatTop = 8
@@ -179,7 +185,7 @@ inherited frmMain: TfrmMain
     object dxbEsquemas: TdxBar [5]
       Caption = 'Esquemas'
       CaptionButtons = <>
-      DockedLeft = 519
+      DockedLeft = 583
       DockedTop = 0
       FloatLeft = 1038
       FloatTop = 8
@@ -321,6 +327,17 @@ inherited frmMain: TfrmMain
     end
     object dxBarButton7: TdxBarButton
       Action = actMovimientos
+      Category = 0
+    end
+    object dxBarLargeButton14: TdxBarLargeButton
+      Caption = 'Documentos Adjuntos'
+      Category = 0
+      Visible = ivAlways
+      LargeImageIndex = 33
+      OnClick = actCatalogoExecute
+    end
+    object dxBarLargeButton17: TdxBarLargeButton
+      Action = actArchivoAdjunto
       Category = 0
     end
   end
@@ -472,7 +489,7 @@ inherited frmMain: TfrmMain
       OnExecute = actCatalogoExecute
     end
     object actIncidencias: TAction
-      Tag = 32
+      Tag = 31
       Category = 'Procesos'
       Caption = 'Incidencias'
       ImageIndex = 45
@@ -483,6 +500,13 @@ inherited frmMain: TfrmMain
       Category = 'Procesos'
       Caption = 'Movimientos'
       ImageIndex = 9
+      OnExecute = actCatalogoExecute
+    end
+    object actArchivoAdjunto: TAction
+      Tag = 100
+      Category = 'Catalogos'
+      Caption = 'Archivos Adjuntos'
+      ImageIndex = 33
       OnExecute = actCatalogoExecute
     end
   end

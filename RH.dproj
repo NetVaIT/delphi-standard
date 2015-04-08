@@ -448,6 +448,40 @@
             <Form>frmImportXLSSelect</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Procesos\IncidenciasDetallesEdit.pas">
+            <Form>frmIncidenciaDetallesEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\IncidenciasDetallesForm.pas">
+            <Form>frmIncidenciasDetalles</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\IncidenciasDM.pas">
+            <Form>dmIncidencias</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\IncidenciasEdit.pas">
+            <Form>frmIncidenciasEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\IncidenciasForm.pas">
+            <Form>frmIncidencias</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ArchivosAdjuntosDM.pas">
+            <Form>dmArchivosAdjuntos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ArchivosAdjuntosEdit.pas">
+            <Form>frmArchivosAdjuntosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ArchivosAdjuntosForm.pas">
+            <Form>frmArchivosAdjuntos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
