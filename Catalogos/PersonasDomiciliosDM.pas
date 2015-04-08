@@ -80,8 +80,3 @@ end;
 
 end.
 
-//  adodsDomicilios.Close;
-//  adodsDomicilios.Parameters[0].Value:= adodsMasterIdDomicilio.Value;
-//  adodsDomicilios.Open;
-//  adodsMasterDomicilio.Value:= adodsDomiciliosDomicilio.Value;
-
