@@ -71,7 +71,7 @@ uses
   ReglasNegocioForm in 'Catalogos\ReglasNegocioForm.pas' {frmReglasNegocio},
   DomiciliosDM in 'Catalogos\DomiciliosDM.pas' {dmDomicilios: TDataModule},
   EstablecimientosDM in 'Catalogos\EstablecimientosDM.pas' {dmEstablecimientos: TDataModule},
-  EstablecimientoForm in 'Catalogos\EstablecimientoForm.pas' {frmEstablecimiento},
+  EstablecimientosEdit in 'Catalogos\EstablecimientosEdit.pas' {frmEstablecimientosEdit},
   EstablecimientosForm in 'Catalogos\EstablecimientosForm.pas' {frmEstablecimientos},
   Monedas2DM in 'Catalogos\Monedas2DM.pas' {dmMonedas2: TDataModule},
   Puestos2DM in 'Catalogos\Puestos2DM.pas' {dmPuestos2: TDataModule},

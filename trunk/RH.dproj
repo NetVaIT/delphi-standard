@@ -301,8 +301,8 @@
             <Form>dmEstablecimientos</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\EstablecimientoForm.pas">
-            <Form>frmEstablecimiento</Form>
+        <DCCReference Include="Catalogos\EstablecimientosEdit.pas">
+            <Form>frmEstablecimientosEdit</Form>
         </DCCReference>
         <DCCReference Include="Catalogos\EstablecimientosForm.pas">
             <Form>frmEstablecimientos</Form>

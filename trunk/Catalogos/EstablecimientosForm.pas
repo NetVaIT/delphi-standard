@@ -21,7 +21,7 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TfrmEstablecimientos = class(T_frmGrid)
@@ -29,23 +29,33 @@ type
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterIdDomicilio: TcxGridDBColumn;
+    tvMasterDomicilio: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
+    FUpdateDomicilio: TBasicAction;
     { Private declarations }
   public
     { Public declarations }
+    property UpdateDomicilio: TBasicAction read FUpdateDomicilio write FUpdateDomicilio;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses EstablecimientosDM, EstablecimientoForm;
+uses EstablecimientosDM, EstablecimientosEdit;
 
 procedure TfrmEstablecimientos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmEstablecimiento.Create(Self);
+  gEditForm:= TfrmEstablecimientosEdit.Create(Self);
+end;
+
+procedure TfrmEstablecimientos.FormShow(Sender: TObject);
+begin
+  inherited;
+  TfrmEstablecimientosEdit(gEditForm).UpdateDomicilio:= UpdateDomicilio;
 end;
 
 end.

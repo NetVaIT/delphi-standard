@@ -3,7 +3,8 @@ unit EstablecimientosDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
 type
   TdmEstablecimientos = class(T_dmStandar)
@@ -11,7 +12,13 @@ type
     adodsMasterIdentificador: TStringField;
     adodsMasterDescripcion: TStringField;
     adodsMasterIdDomicilio: TIntegerField;
+    adodsDomicilios: TADODataSet;
+    adodsDomiciliosIdDomicilio: TAutoIncField;
+    adodsDomiciliosDomicilio: TStringField;
+    adodsMasterDomicilio: TStringField;
+    actUpdate: TAction;
     procedure DataModuleCreate(Sender: TObject);
+    procedure actUpdateExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -22,15 +29,41 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses EstablecimientosForm;
+uses EstablecimientosForm, DomiciliosDM;
 
 {$R *.dfm}
+
+procedure TdmEstablecimientos.actUpdateExecute(Sender: TObject);
+var
+  dmDomicilios: TdmDomicilios;
+  Id: Integer;
+begin
+  inherited;
+  dmDomicilios:= TdmDomicilios.Create(nil);
+  Id:= adodsMasterIdDomicilio.AsInteger;
+  if Id  <> 0 then
+  begin
+    dmDomicilios.Edit(Id);
+    adodsDomicilios.Requery();
+  end
+  else
+  begin
+    Id:= dmDomicilios.Add;
+    if  Id <> 0 then
+    begin
+      adodsDomicilios.Requery();
+      adodsMasterIdDomicilio.AsInteger:= Id;
+    end;
+  end;
+  dmDomicilios.Free;
+end;
 
 procedure TdmEstablecimientos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   gGridForm:= TfrmEstablecimientos.Create(Self);
   gGridForm.DataSet:= adodsMaster;
+  TfrmEstablecimientos(gGridForm).UpdateDomicilio:= actUpdate;
 end;
 
 end.
