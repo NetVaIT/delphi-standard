@@ -77,8 +77,14 @@ type
     actIncidencias: TAction;
     actMovimientos: TAction;
     dxBarLargeButton14: TdxBarLargeButton;
-    actArchivoAdjunto: TAction;
     dxBarLargeButton17: TdxBarLargeButton;
+    dxBarLargeButton18: TdxBarLargeButton;
+    dxBarLargeButton19: TdxBarLargeButton;
+    dxBarLargeButton20: TdxBarLargeButton;
+    actEjecutivos: TAction;
+    actSocios: TAction;
+    actAsociados: TAction;
+    actAccionistas: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -101,7 +107,7 @@ implementation
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
-  IncidenciasDM, ArchivosAdjuntosDM;
+  IncidenciasDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -151,9 +157,24 @@ begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rOutSourcing;
        end;
+   26: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rEjecutivo;
+       end;
+   27: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rSocio;
+       end;
+   28: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rAsociado;
+       end;
+   29: begin
+        gModulo := TdmPersona.Create(Self);
+        TdmPersona(gModulo).Rol := rAccionista;
+       end;
    30: gModulo := TdmInstrucciones.Create(Self);
    31: gModulo := TdmIncidencias.Create(Self);
-  100: gModulo := TdmArchivosAdjuntos.Create(Self);
   end;
   if Assigned(gModulo) then
   begin
@@ -184,9 +205,12 @@ begin
   actProveedores.Enabled      := Conected;
   actDuenoProceso.Enabled     := Conected;
   actOutsourcing.Enabled      := Conected;
+  actEjecutivos.Enabled       := Conected;
+  actSocios.Enabled           := Conected;
+  actAsociados.Enabled        := Conected;
+  actAccionistas.Enabled      := Conected;
   actInstrucciones.Enabled    := Conected;
   actIncidencias.Enabled      := Conected;
-  actArchivoAdjunto.Enabled   := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

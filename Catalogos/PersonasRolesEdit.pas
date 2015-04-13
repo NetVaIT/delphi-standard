@@ -80,6 +80,30 @@ begin
         tsContactoEmergencia.TabVisible := True;
         tsCuentas.TabVisible := False;
        end;
+    6: begin
+        tsCuentas.TabVisible := True;
+        tsKardex.TabVisible             := False;
+        tsEsquemaPago.TabVisible        := False;
+        tsContactoEmergencia.TabVisible := False;
+       end;
+    7: begin
+        tsCuentas.TabVisible := True;
+        tsKardex.TabVisible             := False;
+        tsEsquemaPago.TabVisible        := False;
+        tsContactoEmergencia.TabVisible := False;
+       end;
+    8: begin
+        tsCuentas.TabVisible := True;
+        tsKardex.TabVisible             := False;
+        tsEsquemaPago.TabVisible        := False;
+        tsContactoEmergencia.TabVisible := False;
+       end;
+    9: begin
+        tsCuentas.TabVisible := True;
+        tsKardex.TabVisible             := False;
+        tsEsquemaPago.TabVisible        := False;
+        tsContactoEmergencia.TabVisible := False;
+       end;
   end;
 end;
 

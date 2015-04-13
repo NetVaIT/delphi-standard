@@ -9,27 +9,33 @@ inherited frmPersonas: TfrmPersonas
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Top = 389
+    Top = 348
     Width = 645
+    ExplicitTop = 389
+    ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
-    Top = 108
+    Top = 67
     Width = 645
     ExplicitTop = 132
+    ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
-    Top = 342
+    Top = 301
     Width = 645
     ExplicitTop = 366
+    ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
     Width = 645
-    Height = 77
-    ExplicitHeight = 101
+    Height = 36
+    ExplicitWidth = 645
+    ExplicitHeight = 36
     inherited cxGrid: TcxGrid
       Width = 645
-      Height = 77
-      ExplicitHeight = 101
+      Height = 36
+      ExplicitWidth = 645
+      ExplicitHeight = 36
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPersona: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersona'
@@ -107,22 +113,30 @@ inherited frmPersonas: TfrmPersonas
     end
   end
   inherited pnlDetail3: TPanel
-    Top = 392
+    Top = 351
     Width = 645
+    ExplicitTop = 351
+    ExplicitWidth = 645
   end
   inherited pnlDetail2: TPanel
-    Top = 345
+    Top = 304
     Width = 645
     Height = 44
-    ExplicitTop = 369
+    ExplicitTop = 304
+    ExplicitWidth = 645
     ExplicitHeight = 44
   end
   inherited pnlDetail1: TPanel
-    Top = 111
+    Top = 70
     Width = 645
     Height = 231
-    ExplicitTop = 135
+    ExplicitTop = 70
+    ExplicitWidth = 645
     ExplicitHeight = 231
+  end
+  inherited pnlClose: TPanel
+    Top = 392
+    Width = 645
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

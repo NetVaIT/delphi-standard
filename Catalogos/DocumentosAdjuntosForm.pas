@@ -1,4 +1,4 @@
-unit ArchivosAdjuntosForm;
+unit DocumentosAdjuntosForm;
 
 interface
 
@@ -21,13 +21,15 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
-  TfrmArchivosAdjuntos = class(T_frmGrid)
-    tvMasterIdArchivoAdjunto: TcxGridDBColumn;
+  TfrmDocumentosAdjuntos = class(T_frmGrid)
     tvMasterIdDocumentoAdjunto: TcxGridDBColumn;
+    tvMasterIdDocumentoTipo: TcxGridDBColumn;
+    tvMasterIdDocumentoClase: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterNombreArchivo: TcxGridDBColumn;
     tvMasterIdArchivo: TcxGridDBColumn;
     tvMasterArchivo: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
@@ -41,12 +43,12 @@ implementation
 
 {$R *.dfm}
 
-uses ArchivosAdjuntosDM, ArchivosAdjuntosEdit;
+uses DocumentosAdjuntosDM, DocumentosAdjuntosEdit;
 
-procedure TfrmArchivosAdjuntos.FormCreate(Sender: TObject);
+procedure TfrmDocumentosAdjuntos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmArchivosAdjuntosEdit.Create(Self);
+  gEditForm:= TfrmDocumentosAdjuntosEdit.Create(Self);
 end;
 
 end.

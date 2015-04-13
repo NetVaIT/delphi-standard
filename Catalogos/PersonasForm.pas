@@ -21,7 +21,8 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, PersonasDM;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, PersonasDM,
+  Vcl.StdCtrls;
 
 type
   TfrmPersonas = class(T_frmGrid)
@@ -76,6 +77,10 @@ begin
     rCliente: Self.Caption      := 'Clientes';
     rProveedor: Self.Caption    := 'Proveedores';
     rEmpleado: Self.Caption     := 'Empleados';
+    rEjecutivo: Self.Caption    := 'Ejecutivos';
+    rSocio: Self.Caption        := 'Socios';
+    rAsociado:Self.Caption      := 'Asociados';
+    rAccionista: Self.Caption   := 'Accionistas';
   end;
 end;
 

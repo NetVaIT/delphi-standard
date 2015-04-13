@@ -20,7 +20,7 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
   Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  PersonasDM, TelefonosDM, EmailsDM, PersonasDomiciliosDM;
+  PersonasDM, TelefonosDM, EmailsDM, PersonasDomiciliosDM, ShellApi;
 
 type
   TfrmPersonaEdit = class(T_frmEdit)
@@ -56,12 +56,16 @@ type
     Label11: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     btnNext: TButton;
+    lblCURP: TLabel;
+    cxDBEditCURP: TcxDBMaskEdit;
+    btnWeb: TButton;
     procedure FormShow(Sender: TObject);
     procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure edtNombreEditing(Sender: TObject; var CanEdit: Boolean);
     procedure btnNextClick(Sender: TObject);
+    procedure btnWebClick(Sender: TObject);
   private
     { Private declarations }
     FRol: TPRol;
@@ -88,6 +92,12 @@ begin
     btnOk.Visible := True;
     btnNext.Visible := False;
   end;
+end;
+
+procedure TfrmPersonaEdit.btnWebClick(Sender: TObject);
+begin
+  inherited;
+  ShellExecute(Self.Handle,nil,PChar('https://rfc.siat.sat.gob.mx/PTSC/RFC/menu/index.jsp?opcion=2'),'','',SW_SHOWNORMAL);
 end;
 
 procedure TfrmPersonaEdit.cxDBLookupComboBox1PropertiesChange(Sender: TObject);
@@ -136,12 +146,16 @@ begin
   dmEmails.MasterFields:= 'IdPersona';
   dmEmails.ShowModule(tsCorreo,'');
   case Rol of
-    rNone: Self.Caption := 'Persona';
+    rNone: Self.Caption         := 'Persona';
     rDuenoProceso: Self.Caption := 'Dueño de Proceso';
-    rOutSourcing: Self.Caption := 'Outsourcing';
-    rCliente: Self.Caption := 'Cliente';
-    rProveedor: Self.Caption := 'Proveedor';
-    rEmpleado: Self.Caption := 'Empleado';
+    rOutSourcing: Self.Caption  := 'Outsourcing';
+    rCliente: Self.Caption      := 'Cliente';
+    rProveedor: Self.Caption    := 'Proveedor';
+    rEmpleado: Self.Caption     := 'Empleado';
+    rEjecutivo: Self.Caption    := 'Ejecutivo';
+    rSocio: Self.Caption        := 'Socio';
+    rAsociado:Self.Caption      := 'Asociado';
+    rAccionista: Self.Caption   := 'Accionista';
   end;
 end;
 
@@ -153,18 +167,26 @@ begin
     begin
       pnlPersonaMoral.Visible := False;
       pnlPersonaFisica.Visible := True;
+      lblCURP.Visible := True;
+      cxDBEditCURP.Visible := True;
+      btnWeb.Visible := True;
     end
     else
     begin
       pnlPersonaMoral.Visible := True;
       pnlPersonaFisica.Visible := False;
+      lblCURP.Visible := False;
+      cxDBEditCURP.Visible := False;
+      btnWeb.Visible := False;
     end;
     pnlOrigen.Visible := True;
     cmbTipoPersona.Enabled := False;
   end;
   if DataSource.DataSet.State in [dsInsert] then
   begin
-    if Rol = rEmpleado then
+    if (Rol = rEmpleado) or (Rol = rEjecutivo) or
+       (Rol = rSocio) or (Rol = rAsociado) or
+       (Rol = rEjecutivo) then
     begin
       cmbTipoPersona.Enabled := False;
       cmbTipoPersona.EditValue := 1;
