@@ -469,16 +469,16 @@
             <Form>frmIncidencias</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\ArchivosAdjuntosDM.pas">
+        <DCCReference Include="Catalogos\DocumentosAdjuntosDM.pas">
             <Form>dmArchivosAdjuntos</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\ArchivosAdjuntosEdit.pas">
+        <DCCReference Include="Catalogos\DocumentosAdjuntosEdit.pas">
             <Form>frmArchivosAdjuntosEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\ArchivosAdjuntosForm.pas">
+        <DCCReference Include="Catalogos\DocumentosAdjuntosForm.pas">
             <Form>frmArchivosAdjuntos</Form>
             <FormType>dfm</FormType>
         </DCCReference>

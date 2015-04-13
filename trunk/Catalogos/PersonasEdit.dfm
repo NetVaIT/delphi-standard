@@ -31,9 +31,9 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         object Label1: TLabel
           Left = 200
           Top = 9
-          Width = 20
+          Width = 32
           Height = 13
-          Caption = 'RFC'
+          Caption = 'R.F.C.'
         end
         object Label2: TLabel
           Left = 16
@@ -41,6 +41,13 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           Width = 20
           Height = 13
           Caption = 'Tipo'
+        end
+        object lblCURP: TLabel
+          Left = 344
+          Top = 8
+          Width = 43
+          Height = 13
+          Caption = 'C.U.R.P.'
         end
         object cxDBTextEdit1: TcxDBTextEdit
           Left = 200
@@ -59,6 +66,23 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           Properties.OnChange = cxDBLookupComboBox1PropertiesChange
           TabOrder = 1
           Width = 161
+        end
+        object cxDBEditCURP: TcxDBMaskEdit
+          Left = 344
+          Top = 24
+          DataBinding.DataField = 'CURP'
+          DataBinding.DataSource = DataSource
+          TabOrder = 2
+          Width = 169
+        end
+        object btnWeb: TButton
+          Left = 512
+          Top = 25
+          Width = 19
+          Height = 19
+          Caption = '...'
+          TabOrder = 3
+          OnClick = btnWebClick
         end
       end
       object pnlPersonaMoral: TPanel
@@ -296,15 +320,15 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     end
   end
   inherited DataSource: TDataSource
-    Left = 376
+    Left = 448
     Top = 8
   end
   inherited ActionList: TActionList
-    Left = 432
-    Top = 16
+    Left = 504
+    Top = 8
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
-    DesignInfo = 1114592
+    DesignInfo = 590392
   end
 end

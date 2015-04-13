@@ -114,9 +114,9 @@ uses
   IncidenciasDM in 'Procesos\IncidenciasDM.pas' {dmIncidencias: TDataModule},
   IncidenciasEdit in 'Procesos\IncidenciasEdit.pas' {frmIncidenciasEdit},
   IncidenciasForm in 'Procesos\IncidenciasForm.pas' {frmIncidencias},
-  ArchivosAdjuntosDM in 'Catalogos\ArchivosAdjuntosDM.pas' {dmArchivosAdjuntos: TDataModule},
-  ArchivosAdjuntosEdit in 'Catalogos\ArchivosAdjuntosEdit.pas' {frmArchivosAdjuntosEdit},
-  ArchivosAdjuntosForm in 'Catalogos\ArchivosAdjuntosForm.pas' {frmArchivosAdjuntos};
+  DocumentosAdjuntosDM in 'Catalogos\DocumentosAdjuntosDM.pas' {dmArchivosAdjuntos: TDataModule},
+  DocumentosAdjuntosEdit in 'Catalogos\DocumentosAdjuntosEdit.pas' {frmArchivosAdjuntosEdit},
+  DocumentosAdjuntosForm in 'Catalogos\DocumentosAdjuntosForm.pas' {frmArchivosAdjuntos};
 
 {$R *.res}
 

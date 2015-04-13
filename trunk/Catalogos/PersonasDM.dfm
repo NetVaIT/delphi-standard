@@ -14,6 +14,10 @@ inherited dmPersona: TdmPersona
       FieldName = 'RFC'
       Size = 13
     end
+    object adodsMasterCURP: TStringField
+      FieldName = 'CURP'
+      Size = 18
+    end
     object adodsMasterIdPersonaTipo: TIntegerField
       FieldName = 'IdPersonaTipo'
       Visible = False

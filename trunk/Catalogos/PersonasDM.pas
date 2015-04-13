@@ -3,10 +3,12 @@ unit PersonasDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
 type
-  TPRol = (rNone, rDuenoProceso, rOutSourcing, rCliente, rProveedor, rEmpleado);
+  TPRol = (rNone, rDuenoProceso, rOutSourcing, rCliente, rProveedor, rEmpleado,
+           rEjecutivo, rSocio, rAsociado, rAccionista);
   TdmPersona = class(T_dmStandar)
     ADODataSet1: TADODataSet;
     adodsMasterIdPersona: TAutoIncField;
@@ -55,6 +57,7 @@ type
     adodsPersonaRolesRolEstatus: TStringField;
     adodsPersonaRolesRolClase: TStringField;
     dsMaster: TDataSource;
+    adodsMasterCURP: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -78,7 +81,7 @@ procedure TdmPersona.AsignarConsulta;
 var
   ConsultaP, ConsultaPR : String;
 begin
-  ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.IdPersonaTipo, ' +  #10#13 +
+  ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' +  #10#13 +
                'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' +  #10#13 +
                'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' +  #10#13 +
                'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' +  #10#13 +
@@ -91,19 +94,19 @@ begin
                 'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
   case Rol of
     rNone: begin
-            ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.IdPersonaTipo, ' + #10#13 +
+             ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' + #10#13 +
                          'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' + #10#13 +
                          'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' + #10#13 +
                          'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' + #10#13 +
                          'Personas.FechaNacimiento FROM Personas';
-            ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
+             ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
                           'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
                           'FROM Personas ' + #10#13 +
                           'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
            end;
     rDuenoProceso: begin
-                    ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 1)';
-                    ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 0)';
+                     ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 1)';
+                     ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 0)';
                    end;
     rOutSourcing: begin
                     ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
@@ -118,9 +121,25 @@ begin
                   ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
                 end;
     rEmpleado: begin
-                ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 5)';
-                ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                 ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 5)';
+                 ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
                end;
+    rEjecutivo: begin
+                  ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 6)';
+                  ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                end;
+    rSocio: begin
+              ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 7)';
+              ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+            end;
+    rAsociado: begin
+                 ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 8)';
+                 ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+               end;
+    rAccionista: begin
+                   ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 9)';
+                   ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                 end;
   end;
   adodsMaster.CommandText := ConsultaP;
   adodsPersonaRelacionada.CommandText := ConsultaPR;
