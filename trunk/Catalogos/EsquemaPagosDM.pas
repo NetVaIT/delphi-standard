@@ -3,7 +3,8 @@ unit EsquemaPagosDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
 type
   TdmEsquemaPagos = class(T_dmStandar)

@@ -1,8 +1,6 @@
 inherited frmInstrucciones: TfrmInstrucciones
-  Caption = 'frmInstrucciones'
+  Caption = 'Instrucciones'
   OnCreate = FormCreate
-  ExplicitWidth = 651
-  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
@@ -67,6 +65,10 @@ inherited frmInstrucciones: TfrmInstrucciones
         end
         item
           Visible = True
+          ItemName = 'dxbbPreview'
+        end
+        item
+          Visible = True
           ItemName = 'dxbbProcessXLS'
         end>
     end
@@ -81,5 +83,11 @@ inherited frmInstrucciones: TfrmInstrucciones
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
+      BuiltInReportLink = True
+    end
   end
 end

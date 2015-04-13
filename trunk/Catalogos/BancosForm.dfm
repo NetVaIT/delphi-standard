@@ -1,8 +1,6 @@
 inherited frmBancos: TfrmBancos
-  Caption = 'frmBancos'
+  Caption = 'Bancos'
   OnCreate = FormCreate
-  ExplicitWidth = 651
-  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
@@ -36,6 +34,11 @@ inherited frmBancos: TfrmBancos
       end
     end
   end
+  inherited pnlClose: TPanel
+    DesignSize = (
+      645
+      41)
+  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -48,5 +51,11 @@ inherited frmBancos: TfrmBancos
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
   end
 end

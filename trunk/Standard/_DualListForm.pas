@@ -185,16 +185,18 @@ procedure T_frmDualList.tvAssignedCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
   AShift: TShiftState; var AHandled: Boolean);
 begin
-  if not View then
-    Deleteitem.Execute;
+//  if not View then
+//    Deleteitem.Execute;
+  ViewAssigned.Execute;
 end;
 
 procedure T_frmDualList.tvAvailableCellDblClick(Sender: TcxCustomGridTableView;
   ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
   AShift: TShiftState; var AHandled: Boolean);
 begin
-  if not View then
-    AddItem.Execute;
+//  if not View then
+//    AddItem.Execute;
+  ViewAviable.Execute;
 end;
 
 end.

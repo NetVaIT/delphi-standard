@@ -1,12 +1,16 @@
 inherited frmMovimientosTipos: TfrmMovimientosTipos
-  Caption = 'frmMovimientosTipos'
+  Caption = 'Tipos de movimiento'
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
+    ExplicitWidth = 645
+    ExplicitHeight = 224
     inherited cxGrid: TcxGrid
+      ExplicitWidth = 645
+      ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdMovimientoTipo: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimientoTipo'
@@ -48,6 +52,23 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
       end
     end
   end
+  inherited pnlDetail3: TPanel
+    ExplicitTop = 346
+    ExplicitWidth = 645
+  end
+  inherited pnlDetail2: TPanel
+    ExplicitTop = 302
+    ExplicitWidth = 645
+  end
+  inherited pnlDetail1: TPanel
+    ExplicitTop = 258
+    ExplicitWidth = 645
+  end
+  inherited pnlClose: TPanel
+    inherited btnClose: TButton
+      ExplicitLeft = 560
+    end
+  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -60,5 +81,11 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
+      BuiltInReportLink = True
+    end
   end
 end

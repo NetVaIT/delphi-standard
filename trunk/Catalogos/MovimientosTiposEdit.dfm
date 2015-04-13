@@ -1,18 +1,18 @@
 inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
   ClientHeight = 347
-  ClientWidth = 594
-  ExplicitWidth = 600
+  ClientWidth = 542
+  ExplicitWidth = 548
   ExplicitHeight = 376
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 594
+    Width = 542
     Height = 306
     ExplicitWidth = 594
     ExplicitHeight = 306
     ClientRectBottom = 304
-    ClientRectRight = 592
+    ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
@@ -39,7 +39,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Top = 96
         Width = 47
         Height = 13
-        Caption = 'Categoria'
+        Caption = 'Categor'#237'a'
         FocusControl = cxDBLookupComboBox1
       end
       object Label4: TLabel
@@ -55,7 +55,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Top = 176
         Width = 62
         Height = 13
-        Caption = 'Valor omision'
+        Caption = 'Valor omisi'#243'n'
         FocusControl = cxDBTextEdit3
       end
       object cxDBTextEdit1: TcxDBTextEdit
@@ -72,7 +72,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = DataSource
         TabOrder = 1
-        Width = 121
+        Width = 500
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
         Left = 24
@@ -122,15 +122,15 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   end
   inherited pmlMain: TPanel
     Top = 306
-    Width = 594
+    Width = 542
     ExplicitTop = 306
     ExplicitWidth = 594
     inherited btnOk: TButton
-      Left = 431
+      Left = 379
       ExplicitLeft = 431
     end
     inherited btnCancel: TButton
-      Left = 512
+      Left = 460
       ExplicitLeft = 512
     end
   end

@@ -23,7 +23,7 @@ inherited dmRolesEsquemasPagos: TdmRolesEsquemasPagos
     object adoqAvailableDescripcion: TStringField
       DisplayLabel = 'Esquemas de pago disponibles'
       FieldName = 'Descripcion'
-      Size = 50
+      Size = 200
     end
   end
   inherited adoqAssigned: TADOQuery
@@ -50,7 +50,7 @@ inherited dmRolesEsquemasPagos: TdmRolesEsquemasPagos
     object adoqAssignedDescripcion: TStringField
       DisplayLabel = 'Esquemas de pago asignados'
       FieldName = 'Descripcion'
-      Size = 50
+      Size = 200
     end
   end
   inherited adocAdd: TADOCommand

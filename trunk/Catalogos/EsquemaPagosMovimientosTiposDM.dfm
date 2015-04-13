@@ -47,6 +47,7 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
       Size = 50
     end
     object adoqAvailableCategoria: TStringField
+      DisplayLabel = 'Categor'#237'a'
       FieldName = 'Categoria'
       Size = 100
     end
@@ -116,6 +117,7 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
       Size = 50
     end
     object adoqAssignedCategoria: TStringField
+      DisplayLabel = 'Categor'#237'a'
       FieldName = 'Categoria'
       Size = 100
     end

@@ -238,4 +238,25 @@ inherited dmImportXLS: TdmImportXLS
     Left = 320
     Top = 184
   end
+  object QImport3Xlsx1: TQImport3Xlsx
+    Formats.DecimalSeparator = '.'
+    Formats.ThousandSeparator = ','
+    Formats.DateSeparator = '/'
+    Formats.TimeSeparator = ':'
+    Formats.BooleanTrue.Strings = (
+      'True')
+    Formats.BooleanFalse.Strings = (
+      'False')
+    Formats.NullValues.Strings = (
+      'Null')
+    Formats.ShortDateFormat = 'dd/MM/yyyy'
+    Formats.LongDateFormat = 'dddd, d'#39' de '#39'MMMM'#39' de '#39'yyyy'
+    Formats.ShortTimeFormat = 'hh:mm AMPM'
+    Formats.LongTimeFormat = 'hh:mm:ss AMPM'
+    FieldFormats = <>
+    ErrorLogFileName = 'error.log'
+    AddType = qatInsert
+    Left = 64
+    Top = 168
+  end
 end

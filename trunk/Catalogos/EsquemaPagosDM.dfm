@@ -22,7 +22,7 @@ inherited dmEsquemaPagos: TdmEsquemaPagos
       DisplayLabel = 'Descripci'#243'n'
       FieldName = 'Descripcion'
       Required = True
-      Size = 50
+      Size = 200
     end
     object adodsMasterEsquemaPagoEstatus: TStringField
       DisplayLabel = 'Estatus'

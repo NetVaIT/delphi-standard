@@ -22,7 +22,6 @@ object _frmDualList: T_frmDualList
     Height = 338
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 800
     object Splitter: TSplitter
       Left = 414
       Top = 1
@@ -39,7 +38,6 @@ object _frmDualList: T_frmDualList
       Align = alLeft
       Caption = 'pnlAviable'
       TabOrder = 0
-      ExplicitHeight = 336
       object cxGridAvailable: TcxGrid
         Left = 1
         Top = 1
@@ -49,7 +47,6 @@ object _frmDualList: T_frmDualList
         PopupMenu = bpmAvailable
         TabOrder = 0
         LookAndFeel.Kind = lfStandard
-        ExplicitHeight = 334
         object tvAvailable: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           OnCellDblClick = tvAvailableCellDblClick
@@ -77,7 +74,6 @@ object _frmDualList: T_frmDualList
         Height = 293
         Align = dalRight
         BarManager = dxBarManager
-        ExplicitHeight = 334
       end
     end
     object pnlAssigned: TPanel
@@ -88,8 +84,6 @@ object _frmDualList: T_frmDualList
       Align = alClient
       Caption = 'pnlAssigned'
       TabOrder = 1
-      ExplicitWidth = 382
-      ExplicitHeight = 336
       object cxGridAssigned: TcxGrid
         Left = 1
         Top = 1
@@ -99,8 +93,6 @@ object _frmDualList: T_frmDualList
         PopupMenu = bpmAssigned
         TabOrder = 0
         LookAndFeel.Kind = lfStandard
-        ExplicitWidth = 380
-        ExplicitHeight = 334
         object tvAssigned: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           OnCellDblClick = tvAssignedCellDblClick
@@ -130,9 +122,6 @@ object _frmDualList: T_frmDualList
       Align = alBottom
       TabOrder = 2
       Visible = False
-      ExplicitLeft = 848
-      ExplicitTop = 280
-      ExplicitWidth = 185
       DesignSize = (
         865
         41)

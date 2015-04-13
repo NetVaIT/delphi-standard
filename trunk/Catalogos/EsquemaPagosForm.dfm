@@ -1,5 +1,5 @@
 inherited frmEsquemaPagos: TfrmEsquemaPagos
-  Caption = 'frmEsquemaPagos'
+  Caption = 'Esquemas de pago'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 651
@@ -12,7 +12,11 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
   end
   inherited pnlMaster: TPanel
     Align = alTop
+    ExplicitWidth = 645
+    ExplicitHeight = 224
     inherited cxGrid: TcxGrid
+      ExplicitWidth = 645
+      ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdEsquemaPago: TcxGridDBColumn
           DataBinding.FieldName = 'IdEsquemaPago'
@@ -34,9 +38,24 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
       end
     end
   end
+  inherited pnlDetail3: TPanel
+    ExplicitTop = 346
+    ExplicitWidth = 645
+  end
+  inherited pnlDetail2: TPanel
+    ExplicitTop = 302
+    ExplicitWidth = 645
+  end
   inherited pnlDetail1: TPanel
     Align = alClient
     Visible = True
+    ExplicitTop = 258
+    ExplicitWidth = 645
+  end
+  inherited pnlClose: TPanel
+    inherited btnClose: TButton
+      ExplicitLeft = 560
+    end
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -50,5 +69,11 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
+      BuiltInReportLink = True
+    end
   end
 end

@@ -1,10 +1,11 @@
 object _frmGrid: T_frmGrid
   Left = 0
   Top = 0
-  BorderStyle = bsNone
+  BorderIcons = []
+  BorderStyle = bsToolWindow
   Caption = '_frmGrid'
-  ClientHeight = 457
-  ClientWidth = 651
+  ClientHeight = 428
+  ClientWidth = 645
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,55 +20,56 @@ object _frmGrid: T_frmGrid
   TextHeight = 13
   object splDetail3: TSplitter
     Left = 0
-    Top = 372
-    Width = 651
+    Top = 343
+    Width = 645
     Height = 3
     Cursor = crVSplit
     Align = alBottom
     Visible = False
     ExplicitLeft = 8
     ExplicitTop = 422
+    ExplicitWidth = 651
   end
   object splDetail1: TSplitter
     Left = 0
-    Top = 284
-    Width = 651
+    Top = 255
+    Width = 645
     Height = 3
     Cursor = crVSplit
     Align = alBottom
     Visible = False
     ExplicitLeft = 8
     ExplicitTop = 300
+    ExplicitWidth = 651
   end
   object splDetail2: TSplitter
     Left = 0
-    Top = 328
-    Width = 651
+    Top = 299
+    Width = 645
     Height = 3
     Cursor = crVSplit
     Align = alBottom
     Visible = False
     ExplicitTop = 375
+    ExplicitWidth = 651
   end
   object pnlMaster: TPanel
     Left = 0
     Top = 31
-    Width = 651
-    Height = 253
+    Width = 645
+    Height = 224
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 294
     object cxGrid: TcxGrid
       Left = 0
       Top = 0
-      Width = 651
-      Height = 253
+      Width = 645
+      Height = 224
       Align = alClient
       PopupMenu = PopupMenu
       TabOrder = 0
       LookAndFeel.Kind = lfStandard
-      ExplicitHeight = 294
       object tvMaster: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = tvMasterCellDblClick
@@ -90,51 +92,47 @@ object _frmGrid: T_frmGrid
   end
   object pnlDetail3: TPanel
     Left = 0
-    Top = 375
-    Width = 651
+    Top = 346
+    Width = 645
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
     Visible = False
-    ExplicitTop = 416
   end
   object pnlDetail2: TPanel
     Left = 0
-    Top = 331
-    Width = 651
+    Top = 302
+    Width = 645
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
     Visible = False
-    ExplicitTop = 372
   end
   object pnlDetail1: TPanel
     Left = 0
-    Top = 287
-    Width = 651
+    Top = 258
+    Width = 645
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     Visible = False
-    ExplicitTop = 328
   end
   object pnlClose: TPanel
     Left = 0
-    Top = 416
-    Width = 651
+    Top = 387
+    Width = 645
     Height = 41
     Align = alBottom
     TabOrder = 8
     Visible = False
-    ExplicitTop = 432
     DesignSize = (
-      651
+      645
       41)
     object btnClose: TButton
-      Left = 566
+      Left = 560
       Top = 6
       Width = 75
       Height = 25
@@ -143,7 +141,6 @@ object _frmGrid: T_frmGrid
       Caption = 'Cerrar'
       TabOrder = 0
       OnClick = btnCloseClick
-      ExplicitLeft = 780
     end
   end
   object ActionList: TActionList
@@ -243,6 +240,13 @@ object _frmGrid: T_frmGrid
       Hint = 'Guardar como|Exporta la informaci'#243'n a un archivo'
       ImageIndex = 14
       OnAccept = FileSaveAs1Accept
+    end
+    object actPreview: TAction
+      Category = 'File'
+      Caption = 'Vista previa'
+      Hint = 'Vista previa'
+      ImageIndex = 15
+      OnExecute = actPreviewExecute
     end
   end
   object DataSource: TDataSource
@@ -368,6 +372,10 @@ object _frmGrid: T_frmGrid
         item
           Visible = True
           ItemName = 'dxBarButton6'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbPreview'
         end>
       OneOnRow = False
       Row = 0
@@ -420,6 +428,10 @@ object _frmGrid: T_frmGrid
     end
     object dxBarButton6: TdxBarButton
       Action = FileSaveAs1
+      Category = 0
+    end
+    object dxbbPreview: TdxBarButton
+      Action = actPreview
       Category = 0
     end
   end
@@ -1097,6 +1109,43 @@ object _frmGrid: T_frmGrid
           FF00000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000000000000000
           0000}
+      end
+      item
+        Image.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000020000000700000010000000180000
+          00210000001D0000000E00000002000000000000000000000000000000000000
+          0002000000060000000C000000130000002A03030355070707980B0A0ABE2D2D
+          2DEE0C0C0CE401010170000000190000000400000000000000000000000A0000
+          0021030303520A0A0A90191919BC353535EC383737FB848584FFC0C8C4FFBDBF
+          BFFF4C4C4CFF252525FB030303A1000000240000000900000001303030AF7070
+          70ED2D2D2DFC383838FF424242FF525252FF6F6D6FFFB9C2BDFF6FD09DFFC8CF
+          CCFF575455FF6C6C6CFF414141FF0C0C0CCB000000450000000F9C9C9CFCF9F9
+          F9FF7E7E7EFF828282FFB2B2B2FFDDDDDDFFEAEAEBFFEDEFEDFFE0E6E3FFD8D9
+          D8FF5F5F5FFF6D6D6DFF777777FF606060FF191919E90303036EA8A8A8F3FFFF
+          FFFFF7F7F7FFFBFBFBFFF3F3F3FFE5E5E5FFDBDBDBFFCCCCCCFFC3C2C3FFBBBB
+          BBFF979797FF686868FF797979FF808080FF808080FF232323F5B6B6B6F7F1F1
+          F1FFE4E4E4FFDBDBDBFFD5D5D5FFCDCDCDFFCBCBCBFFCACACAFFC7C8C8FFBCBC
+          BDFFAEB1B5FF8D8F91FF747272FF828282FF929292FF383838F93F3F3F94D6D6
+          D6FFE0E0E0FFDBDDDDFFD4D6D9FFCDCDCDFFBBBBB9FFA0A09FFF95918CFF8F8A
+          80FF62462CFF3B3127FF949799FF808080FF949494FF404040F0000000024141
+          4196D3D3D4FFD4D3D1FFBB9A76FFC2B8ACFFC7BDAFFFCDC0ACFFCBBBA3FFD1C2
+          A9FFC2955DFF875F3BFFB2B7BBFFA8A8A8FF999999FF4A4A4AF7000000000000
+          00002C2C2C7BB6B5B5F4DAAF7EFFF3E6D9FFEFE7DDFFE9E0D1FFE5D9C8FFE1D4
+          C2FFD9C6ABFFA8723CFF8E8D8BFB727476F2646464EB353535C8000000000000
+          000000000000090909377E6E5DC8F1DDC6FFF6F4F1FFF0EAE1FFECE3D9FFE7DE
+          D1FFE6DECFFFBD8D52FF1E171079000000170000000E00000007000000000000
+          000000000000000000000202011BCCAD86ECFDFEFEFFF9F7F3FFF4F0EAFFF0EA
+          E1FFEDE7DDFFDFCDB7FF40250E9E000000000000000000000000000000000000
+          00000000000000000000000000004C3D2C91FAF0E6FFFFFFFFFFFBFBF9FFF8F7
+          F3FFF4F1EBFFF3F1ECFFBD9566F8080501380000000000000000000000000000
+          000000000000000000000000000004030224D8BD9EF1FFFFFFFFFFFFFFFFFEFD
+          FDFFFAF9F7FFF8F3EFFFEADDCCFF6B4019C80000000B00000000000000000000
+          000000000000000000000000000000000000392F247CD5B693EFCAAA87EAB393
+          6DDEAD8B61DC8E6C43C9825E37C6563615AF0705043000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000}
       end>
   end
   object PopupMenu: TdxBarPopupMenu
@@ -1129,5 +1178,28 @@ object _frmGrid: T_frmGrid
     UseOwnFont = False
     Left = 416
     Top = 128
+  end
+  object dxComponentPrinter: TdxComponentPrinter
+    CurrentLink = dxcplGrid
+    Version = 0
+    Left = 512
+    Top = 127
+    object dxcplGrid: TdxGridReportLink
+      Component = cxGrid
+      PageNumberFormat = pnfNumeral
+      PrinterPage.DMPaper = 1
+      PrinterPage.Footer = 6350
+      PrinterPage.Header = 6350
+      PrinterPage.Margins.Bottom = 12700
+      PrinterPage.Margins.Left = 12700
+      PrinterPage.Margins.Right = 12700
+      PrinterPage.Margins.Top = 12700
+      PrinterPage.PageSize.X = 215900
+      PrinterPage.PageSize.Y = 279400
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
   end
 end
