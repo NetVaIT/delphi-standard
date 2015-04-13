@@ -7,7 +7,7 @@ uses
   Data.DB, Data.Win.ADODB, Vcl.Controls,
   System.Variants,
   Dialogs,
-  QImport3, QImport3XLS, dxmdaset;
+  QImport3, QImport3XLS, dxmdaset, QImport3Xlsx;
 
 const
   IdPersonaSinAsignar = 1;
@@ -36,6 +36,7 @@ type
     dxmdImportarEncontrada: TBooleanField;
     adodsMovimientosTipos: TADODataSet;
     dxmdImportarMovimientoTipo: TStringField;
+    QImport3Xlsx1: TQImport3Xlsx;
     procedure QImport3XLSBeforePost(Sender: TObject; Row: TQImportRow;
       var Accept: Boolean);
     procedure DataModuleCreate(Sender: TObject);

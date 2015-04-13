@@ -30,10 +30,10 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       DisplayLabel = 'Descripci'#243'n'
       FieldName = 'Descripcion'
       Required = True
-      Size = 50
+      Size = 100
     end
     object adodsMasterMovimientoTipoCategoria: TStringField
-      DisplayLabel = 'Categoria'
+      DisplayLabel = 'Categor'#237'a'
       FieldKind = fkLookup
       FieldName = 'MovimientoTipoCategoria'
       LookupDataSet = adodsMovimientoTipoCategoria
@@ -57,7 +57,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Lookup = True
     end
     object adodsMasterValorDefault: TFMTBCDField
-      DisplayLabel = 'Valor omision'
+      DisplayLabel = 'Valor omisi'#243'n'
       FieldName = 'ValorDefault'
       Precision = 18
       Size = 6

@@ -49,6 +49,7 @@ var
 begin
   inherited;
   Id:= adoqAssignedIdMovimientoTipo.Value;
+  ViewMovimientos(Id);
 end;
 
 procedure TdmEsquemaPagosMovimientosTipos.actViewAviableExecute(

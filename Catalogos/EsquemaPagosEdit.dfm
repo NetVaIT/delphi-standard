@@ -1,18 +1,18 @@
 inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   Caption = 'Esquema de Pago'
   ClientHeight = 226
-  ClientWidth = 394
-  ExplicitWidth = 400
+  ClientWidth = 529
+  ExplicitWidth = 535
   ExplicitHeight = 255
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 394
+    Width = 529
     Height = 185
     ExplicitWidth = 394
     ExplicitHeight = 185
     ClientRectBottom = 183
-    ClientRectRight = 392
+    ClientRectRight = 527
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
@@ -31,7 +31,7 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
         Top = 56
         Width = 54
         Height = 13
-        Caption = 'Descripcion'
+        Caption = 'Descripci'#243'n'
         FocusControl = cxDBTextEdit2
       end
       object Label3: TLabel
@@ -55,7 +55,7 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
         DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = DataSource
         TabOrder = 1
-        Width = 345
+        Width = 500
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
         Left = 16
@@ -70,15 +70,15 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   end
   inherited pmlMain: TPanel
     Top = 185
-    Width = 394
+    Width = 529
     ExplicitTop = 185
     ExplicitWidth = 394
     inherited btnOk: TButton
-      Left = 231
+      Left = 366
       ExplicitLeft = 231
     end
     inherited btnCancel: TButton
-      Left = 312
+      Left = 447
       ExplicitLeft = 312
     end
   end

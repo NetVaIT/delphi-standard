@@ -29,7 +29,13 @@ uses
   System.Actions, Vcl.ActnList, Vcl.ImgList, dxBar, Vcl.ExtCtrls, cxGridLevel,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGrid, Vcl.Menus,
-  cxGridExportLink, _EditForm, Vcl.StdCtrls;
+  cxGridExportLink, _EditForm, Vcl.StdCtrls, dxPSGlbl, dxPSUtl, dxPSEngn,
+  dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxPSCompsProvider, dxPSFillPatterns,
+  dxPSEdgePatterns, dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils,
+  dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxPageControlProducer,
+  dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxPScxEditorProducers,
+  dxPScxExtEditorProducers, dxSkinsdxRibbonPainter, dxPSCore, dxPScxCommon,
+  dxPrnDlg;
 
 type
   T_frmGrid = class(TForm)
@@ -83,6 +89,10 @@ type
     dxBarButton7: TdxBarButton;
     pnlClose: TPanel;
     btnClose: TButton;
+    dxComponentPrinter: TdxComponentPrinter;
+    dxcplGrid: TdxGridReportLink;
+    dxbbPreview: TdxBarButton;
+    actPreview: TAction;
     procedure FormShow(Sender: TObject);
     procedure FileSaveAs1Accept(Sender: TObject);
     procedure DatasetInsertExecute(Sender: TObject);
@@ -94,6 +104,7 @@ type
     procedure actShowExecute(Sender: TObject);
     procedure DatasetRefreshExecute(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure actPreviewExecute(Sender: TObject);
   private
     { Private declarations }
     FReadOnlyGrid: Boolean;
@@ -118,6 +129,12 @@ implementation
 {$R *.dfm}
 
 uses _Utils;
+
+procedure T_frmGrid.actPreviewExecute(Sender: TObject);
+begin
+//  dxComponentPrinter.PrintEx(pnAll,1,False);
+  dxComponentPrinter.Preview();
+end;
 
 procedure T_frmGrid.actShowExecute(Sender: TObject);
 begin
@@ -210,14 +227,7 @@ end;
 procedure T_frmGrid.SetView(const Value: Boolean);
 begin
   FView := Value;
-  if Value then
-  begin
-    BorderStyle:= bsToolWindow;
-  end
-  else
-  begin
-    BorderStyle:= bsNone;
-  end;
+  BorderStyle:= bsToolWindow;
   pnlClose.Visible:= Value;
 end;
 
