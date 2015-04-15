@@ -32,14 +32,18 @@ uses
 type
   TfrmRoles = class(T_frmGrid)
     tvMasterIdRol: TcxGridDBColumn;
+    tvMasterIdRolTipo: TcxGridDBColumn;
+    tvMasterIdEsquemaPago: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterRolTipo: TcxGridDBColumn;
+    tvMasterEsquemaPago: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    dmRolesEsquemasPagos: TdmRolesEsquemasPagos;
+//    dmRolesEsquemasPagos: TdmRolesEsquemasPagos;
   public
     { Public declarations }
   end;
@@ -54,20 +58,20 @@ procedure TfrmRoles.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmRolesEdit.Create(Self);
-  dmRolesEsquemasPagos:= TdmRolesEsquemasPagos.Create(nil);
+//  dmRolesEsquemasPagos:= TdmRolesEsquemasPagos.Create(nil);
 end;
 
 procedure TfrmRoles.FormDestroy(Sender: TObject);
 begin
   inherited;
-  FreeAndNil(dmRolesEsquemasPagos);
+//  FreeAndNil(dmRolesEsquemasPagos);
 end;
 
 procedure TfrmRoles.FormShow(Sender: TObject);
 begin
   inherited;
-  dmRolesEsquemasPagos.MasterSource:= DataSource;
-  dmRolesEsquemasPagos.ShowModule(pnlDetail1);
+//  dmRolesEsquemasPagos.MasterSource:= DataSource;
+//  dmRolesEsquemasPagos.ShowModule(pnlDetail1);
 end;
 
 end.
