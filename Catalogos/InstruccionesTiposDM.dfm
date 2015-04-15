@@ -1,0 +1,93 @@
+inherited dmInstruccionesTipos: TdmInstruccionesTipos
+  OldCreateOrder = True
+  inherited adodsMaster: TADODataSet
+    CursorType = ctStatic
+    CommandText = 
+      'select IdInstruccionTipo, Identificador, Descripcion, Nombre fro' +
+      'm InstruccionesTipos'
+    object adodsMasterIdInstruccionTipo: TAutoIncField
+      FieldName = 'IdInstruccionTipo'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsMasterIdentificador: TStringField
+      FieldName = 'Identificador'
+      Required = True
+      Size = 10
+    end
+    object adodsMasterDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
+      FieldName = 'Descripcion'
+      Required = True
+      Size = 50
+    end
+    object adodsMasterNombre: TStringField
+      FieldName = 'Nombre'
+      Required = True
+      Size = 255
+    end
+  end
+  object dtMaster: TDataSource
+    DataSet = adodsMaster
+    Left = 104
+    Top = 16
+  end
+  object adodsInstruccionesTiposDetalle: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'select IdInstruccionTipoDetalle, IdInstruccionTipo, IdMovimiento' +
+      'Tipo, Valor from InstruccionesTiposDetalle'#13#10'where IdInstruccionT' +
+      'ipo = :IdInstruccionTipo'
+    DataSource = dtMaster
+    MasterFields = 'IdInstruccionTipo'
+    Parameters = <
+      item
+        Name = 'IdInstruccionTipo'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Value = 1
+      end>
+    Left = 32
+    Top = 88
+    object adodsInstruccionesTiposDetalleIdInstruccionTipoDetalle: TAutoIncField
+      FieldName = 'IdInstruccionTipoDetalle'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsInstruccionesTiposDetalleIdInstruccionTipo: TIntegerField
+      FieldName = 'IdInstruccionTipo'
+      Visible = False
+    end
+    object adodsInstruccionesTiposDetalleIdMovimientoTipo: TIntegerField
+      FieldName = 'IdMovimientoTipo'
+      Required = True
+      Visible = False
+    end
+    object adodsInstruccionesTiposDetalleMovimientoTipo: TStringField
+      DisplayLabel = 'Tipo de movimiento'
+      FieldKind = fkLookup
+      FieldName = 'MovimientoTipo'
+      LookupDataSet = adodsMovimientosTipos
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoTipo'
+      Size = 100
+      Lookup = True
+    end
+    object adodsInstruccionesTiposDetalleValor: TStringField
+      FieldName = 'Valor'
+      Required = True
+      Size = 255
+    end
+  end
+  object adodsMovimientosTipos: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
+    Parameters = <>
+    Left = 176
+    Top = 88
+  end
+end

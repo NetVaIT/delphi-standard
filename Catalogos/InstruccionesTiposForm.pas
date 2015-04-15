@@ -1,4 +1,4 @@
-unit DocumentosAdjuntosForm;
+unit InstruccionesTiposForm;
 
 interface
 
@@ -18,28 +18,23 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
-  dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
-  cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
-  Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.StdCtrls,
-  dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev,
-  dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore,
-  dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
-  dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
-  dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxRibbonPainter,
-  dxPSCore, dxPScxCommon;
+  dxSkinsdxBarPainter, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap,
+  dxPrnDev, dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns,
+  dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv,
+  dxPSPrVwRibbon, dxPScxPageControlProducer, dxPScxGridLnk,
+  dxPScxGridLayoutViewLnk, dxPScxEditorProducers, dxPScxExtEditorProducers,
+  dxSkinsdxRibbonPainter, dxPSCore, dxPScxCommon, dxBar, Vcl.ImgList,
+  cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
+  System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
+  Vcl.ExtCtrls;
 
 type
-  TfrmDocumentosAdjuntos = class(T_frmGrid)
-    tvMasterIdDocumentoAdjunto: TcxGridDBColumn;
-    tvMasterNombreArchivo: TcxGridDBColumn;
+  TfrmInstruccionesTipos = class(T_frmGrid)
+    tvMasterIdInstruccionTipo: TcxGridDBColumn;
+    tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterIdDocumentoTipo: TcxGridDBColumn;
-    tvMasterDocumentoTipo: TcxGridDBColumn;
-    tvMasterIdDocumentoClase: TcxGridDBColumn;
-    tvMasterDocumentoClase: TcxGridDBColumn;
-    tvMasterArchivo: TcxGridDBColumn;
-    tvMasterIdArchivo: TcxGridDBColumn;
+    tvMasterNombre: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -51,12 +46,12 @@ implementation
 
 {$R *.dfm}
 
-uses DocumentosAdjuntosDM, DocumentosAdjuntosEdit;
+uses InstruccionesTiposDM, InstruccionesTiposEdit;
 
-procedure TfrmDocumentosAdjuntos.FormCreate(Sender: TObject);
+procedure TfrmInstruccionesTipos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmDocumentosAdjuntosEdit.Create(Self);
+  gEditForm:= TfrmInstruccionesTiposEdit.Create(Self);
 end;
 
 end.

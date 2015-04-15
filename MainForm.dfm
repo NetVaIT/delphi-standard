@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -109,7 +109,7 @@ inherited frmMain: TfrmMain
     object dxbOrganizacion: TdxBar [3]
       Caption = 'Organizacion'
       CaptionButtons = <>
-      DockedLeft = 338
+      DockedLeft = 267
       DockedTop = 0
       FloatLeft = 759
       FloatTop = 8
@@ -141,7 +141,7 @@ inherited frmMain: TfrmMain
     object dxbPresonas: TdxBar [4]
       Caption = 'Personas'
       CaptionButtons = <>
-      DockedLeft = 667
+      DockedLeft = 640
       DockedTop = 0
       FloatLeft = 764
       FloatTop = 8
@@ -197,7 +197,7 @@ inherited frmMain: TfrmMain
     object dxbEsquemas: TdxBar [5]
       Caption = 'Esquemas'
       CaptionButtons = <>
-      DockedLeft = 519
+      DockedLeft = 448
       DockedTop = 0
       FloatLeft = 1038
       FloatTop = 8
@@ -215,6 +215,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarButton5'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton8'
         end>
       OneOnRow = False
       Row = 0
@@ -364,6 +368,10 @@ inherited frmMain: TfrmMain
       Action = actAccionistas
       Category = 0
     end
+    object dxBarButton8: TdxBarButton
+      Action = actIntruccionesTipos
+      Category = 0
+    end
   end
   inherited cxSmallImages: TcxImageList
     FormatVersion = 1
@@ -461,6 +469,13 @@ inherited frmMain: TfrmMain
       Category = 'Catalogos'
       Caption = 'Tipo de movimientos'
       ImageIndex = 7
+      OnExecute = actCatalogoExecute
+    end
+    object actIntruccionesTipos: TAction
+      Tag = 14
+      Category = 'Catalogos'
+      Caption = 'Tipo de intrucciones'
+      ImageIndex = 5
       OnExecute = actCatalogoExecute
     end
     object actEmpleados: TAction

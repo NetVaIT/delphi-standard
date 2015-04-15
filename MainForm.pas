@@ -85,6 +85,8 @@ type
     actSocios: TAction;
     actAsociados: TAction;
     actAccionistas: TAction;
+    dxBarButton8: TdxBarButton;
+    actIntruccionesTipos: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -107,7 +109,7 @@ implementation
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
-  IncidenciasDM;
+  IncidenciasDM, InstruccionesTiposDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -133,6 +135,7 @@ begin
    11: gModulo := TdmRoles.Create(Self);
    12: gModulo := TdmEsquemaPagos.Create(Self);
    13: gModulo := TdmMovimientosTipo.Create(Self);
+   14: gModulo := TdmInstruccionesTipos.Create(Self);
    20: begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rNone;

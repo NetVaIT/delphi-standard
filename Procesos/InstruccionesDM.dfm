@@ -5,8 +5,8 @@ inherited dmInstrucciones: TdmInstrucciones
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'select IdInstruccion, IdInstruccionTipo, IdPersonaSolicita, IdDo' +
-      'cumentoAdjunto, IdPeriodicidad, Concepto, Fecha, ContadorDesde, ' +
-      'ContadorHasta, FechaInicio, FechaFin from Instrucciones'
+      'cumentoAdjunto, IdPeriodoTipo, Concepto, Fecha, ContadorDesde, C' +
+      'ontadorHasta, FechaInicio, FechaFin from Instrucciones'
     object adodsMasterIdInstruccion: TAutoIncField
       FieldName = 'IdInstruccion'
       ReadOnly = True
@@ -16,12 +16,8 @@ inherited dmInstrucciones: TdmInstrucciones
       FieldName = 'IdPersonaSolicita'
       Visible = False
     end
-    object adodsMasterIdDocumentoAdjunto: TIntegerField
-      FieldName = 'IdDocumentoAdjunto'
-      Visible = False
-    end
-    object adodsMasterIdPeriodicidad: TIntegerField
-      FieldName = 'IdPeriodicidad'
+    object adodsMasterIdPeriodoTipo: TIntegerField
+      FieldName = 'IdPeriodoTipo'
       Visible = False
     end
     object adodsMasterConcepto: TStringField
@@ -43,6 +39,22 @@ inherited dmInstrucciones: TdmInstrucciones
       LookupResultField = 'Descripcion'
       KeyFields = 'IdInstruccionTipo'
       Size = 50
+      Lookup = True
+    end
+    object adodsMasterIdDocumentoAdjunto: TIntegerField
+      FieldName = 'IdDocumentoAdjunto'
+      Required = True
+      Visible = False
+    end
+    object adodsMasterNombreArchivo: TStringField
+      DisplayLabel = 'Archivo'
+      FieldKind = fkLookup
+      FieldName = 'NombreArchivo'
+      LookupDataSet = adodsDocumentosAdjuntos
+      LookupKeyFields = 'IdDocumentoAdjunto'
+      LookupResultField = 'NombreArchivo'
+      KeyFields = 'IdDocumentoAdjunto'
+      Size = 200
       Lookup = True
     end
     object adodsMasterFecha: TDateTimeField
@@ -72,13 +84,28 @@ inherited dmInstrucciones: TdmInstrucciones
       ImageIndex = 13
       OnExecute = actProcessXLSExecute
     end
+    object actUpdateFile: TAction
+      Caption = '...'
+      Hint = 'Asigna archivo'
+      OnExecute = actUpdateFileExecute
+    end
   end
   object adodsInstruccionesTipos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdInstruccionTipo, Descripcion from InstruccionesTipos'
     Parameters = <>
     Left = 104
     Top = 64
+  end
+  object adodsDocumentosAdjuntos: TADODataSet
+    Active = True
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdDocumentoAdjunto, NombreArchivo from DocumentosAdjuntos'
+    Parameters = <>
+    Left = 104
+    Top = 120
   end
 end

@@ -238,7 +238,8 @@ inherited dmImportXLS: TdmImportXLS
     Left = 320
     Top = 184
   end
-  object QImport3Xlsx1: TQImport3Xlsx
+  object QImport3Xlsx: TQImport3Xlsx
+    DataSet = dxmdImportar
     Formats.DecimalSeparator = '.'
     Formats.ThousandSeparator = ','
     Formats.DateSeparator = '/'
@@ -256,6 +257,7 @@ inherited dmImportXLS: TdmImportXLS
     FieldFormats = <>
     ErrorLogFileName = 'error.log'
     AddType = qatInsert
+    OnBeforePost = QImport3XlsxBeforePost
     Left = 64
     Top = 168
   end

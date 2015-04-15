@@ -12,7 +12,6 @@ type
     adodsMasterIdInstruccionTipo: TIntegerField;
     adodsMasterIdPersonaSolicita: TIntegerField;
     adodsMasterIdDocumentoAdjunto: TIntegerField;
-    adodsMasterIdPeriodicidad: TIntegerField;
     adodsMasterConcepto: TStringField;
     adodsMasterFecha: TDateTimeField;
     adodsMasterContadorDesde: TIntegerField;
@@ -22,9 +21,14 @@ type
     adodsInstruccionesTipos: TADODataSet;
     adodsMasterIntruccionTipo: TStringField;
     actProcessXLS: TAction;
+    actUpdateFile: TAction;
+    adodsDocumentosAdjuntos: TADODataSet;
+    adodsMasterNombreArchivo: TStringField;
+    adodsMasterIdPeriodoTipo: TIntegerField;
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcessXLSExecute(Sender: TObject);
+    procedure actUpdateFileExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +39,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses InstruccionesForm, ImportXLSDM;
+uses InstruccionesForm, ImportXLSDM, DocumentosAdjuntosDM;
 
 {$R *.dfm}
 
@@ -53,6 +57,31 @@ begin
   end;
 end;
 
+procedure TdmInstrucciones.actUpdateFileExecute(Sender: TObject);
+var
+  dmDocumentosAdjuntos: TdmDocumentosAdjuntos;
+  Id: Integer;
+begin
+  inherited;
+  dmDocumentosAdjuntos:= TdmDocumentosAdjuntos.Create(nil);
+  Id:= adodsMasterIdDocumentoAdjunto.AsInteger;
+  if Id  <> 0 then
+  begin
+    dmDocumentosAdjuntos.Edit(Id);
+//    adodsDomicilios.Requery();
+  end
+  else
+  begin
+    Id:= dmDocumentosAdjuntos.Add;
+    if  Id <> 0 then
+    begin
+//      adodsDomicilios.Requery();
+      adodsMasterIdDocumentoAdjunto.AsInteger:= Id;
+    end;
+  end;
+  dmDocumentosAdjuntos.Free;
+end;
+
 procedure TdmInstrucciones.adodsMasterNewRecord(DataSet: TDataSet);
 begin
   inherited;
@@ -65,6 +94,7 @@ begin
   gGridForm:= TfrmInstrucciones.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   TfrmInstrucciones(gGridForm).ProcessXLS:= actProcessXLS;
+  TfrmInstrucciones(gGridForm).UpdateFile:= actUpdateFile;
 end;
 
 end.
