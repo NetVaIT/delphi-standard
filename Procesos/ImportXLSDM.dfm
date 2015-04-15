@@ -49,8 +49,8 @@ inherited dmImportXLS: TdmImportXLS
     ErrorLogFileName = 'error.log'
     AddType = qatInsert
     OnBeforePost = QImport3XLSBeforePost
-    Left = 160
-    Top = 168
+    Left = 152
+    Top = 160
   end
   object dxmdImportar: TdxMemData
     Indexes = <>
@@ -60,8 +60,8 @@ inherited dmImportXLS: TdmImportXLS
       00000300110049644D6F76696D69656E746F5469706F00}
     SortOptions = []
     OnNewRecord = dxmdImportarNewRecord
-    Left = 248
-    Top = 168
+    Left = 320
+    Top = 176
     object dxmdImportarIdMovimientoTipo: TIntegerField
       FieldName = 'IdMovimientoTipo'
     end
@@ -235,8 +235,8 @@ inherited dmImportXLS: TdmImportXLS
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
-    Left = 320
-    Top = 184
+    Left = 312
+    Top = 232
   end
   object QImport3Xlsx: TQImport3Xlsx
     DataSet = dxmdImportar
@@ -259,6 +259,6 @@ inherited dmImportXLS: TdmImportXLS
     AddType = qatInsert
     OnBeforePost = QImport3XlsxBeforePost
     Left = 64
-    Top = 168
+    Top = 160
   end
 end

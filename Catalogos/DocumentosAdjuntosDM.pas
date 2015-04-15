@@ -51,12 +51,13 @@ type
     { Private declarations }
     FFilename: TFileName;
     FFileAllowed: TFileAllowed;
+    procedure WriteFile(FileName: TFileName);
+    procedure ReadFile(FileName: TFileName);
     procedure TuneOpenDialog;
     procedure SetFileAllowed(const Value: TFileAllowed);
   public
     { Public declarations }
-    procedure WriteFile(FileName: TFileName);
-    procedure ReadFile(FileName: TFileName);
+    function GetFileName(IdDocumentoAdjunto: Integer): TFileName;
     property FileAllowed: TFileAllowed read FFileAllowed write SetFileAllowed;
   end;
 
@@ -71,6 +72,7 @@ uses DocumentosAdjuntosForm, DocumentosAdjuntosEdit;
 procedure TdmDocumentosAdjuntos.actLoadFileExecute(Sender: TObject);
 begin
   inherited;
+  FileAllowed:= faXLSx;
   if OpenDialog.Execute then
   begin
     FFilename:= OpenDialog.FileName;
@@ -94,7 +96,7 @@ procedure TdmDocumentosAdjuntos.actSaveFileUpdate(Sender: TObject);
 begin
   inherited;
   if Sender is TAction then
-    TAction(Sender).Enabled:= adodsUpdateNombreArchivo.Value <> EmptyStr;
+    TAction(Sender).Enabled:= adodsUpdateNombreArchivo.AsString <> EmptyStr;
 end;
 
 procedure TdmDocumentosAdjuntos.actViewFileExecute(Sender: TObject);
@@ -102,7 +104,7 @@ var
   FileName: TFileName;
 begin
   inherited;
-  FileName:= TPath.GetTempPath + adodsUpdateNombreArchivo.Value;
+  FileName:= TPath.GetTempPath + adodsUpdateNombreArchivo.AsString;
   ReadFile(FileName);
   ShellExecute(TfrmDocumentosAdjuntosEdit(frmEdit).Handle, 'open', PChar(FileName), nil, nil, 0);
 end;
@@ -111,7 +113,7 @@ procedure TdmDocumentosAdjuntos.actViewFileUpdate(Sender: TObject);
 begin
   inherited;
   if Sender is TAction then
-    TAction(Sender).Enabled:= adodsUpdateNombreArchivo.Value <> EmptyStr;
+    TAction(Sender).Enabled:= adodsUpdateNombreArchivo.AsString <> EmptyStr;
 end;
 
 procedure TdmDocumentosAdjuntos.DataModuleCreate(Sender: TObject);
@@ -123,6 +125,18 @@ begin
   TfrmDocumentosAdjuntosEdit(frmEdit).actViewFile:= actViewFile;
   gGridForm := TfrmDocumentosAdjuntos.Create(Self);
   gGridForm.DataSet := adodsMaster;
+end;
+
+function TdmDocumentosAdjuntos.GetFileName(IdDocumentoAdjunto: Integer): TFileName;
+var
+  FileName: TFileName;
+begin
+  adodsUpdate.Close;
+  adodsUpdate.Parameters[0].Value:= IdDocumentoAdjunto;
+  adodsUpdate.Open;
+  FileName:= TPath.GetTempPath + adodsUpdateNombreArchivo.AsString;
+  ReadFile(FileName);
+  Result:= FileName;
 end;
 
 procedure TdmDocumentosAdjuntos.ReadFile(FileName: TFileName);
@@ -152,20 +166,6 @@ begin
 //      raise EQImportError.Create(QImportLoadStr(QIE_UnknownImportSource));
     FFileAllowed := Value;
 //    rbtXLS.Checked := FImportType = aiXLS;
-//    rbtXlsx.Checked := FImportType = aiXlsx;
-//    rbtDocx.Checked := FImportType = aiDocx;
-//    rbtODS.Checked := FImportType = aiODS;
-//    rbtODT.Checked := FImportType = aiODT;
-//    rbtDBF.Checked := FImportType = aiDBF;
-//    rbtHTML.Checked := FImportType = aiHTML;
-//    rbtXML.Checked := FImportType = aiXML;
-//    cbXMLDocumentType.Enabled  := FImportType = aiXML;
-//    laXMLDocumentType.Enabled  := FImportType = aiXML;
-//    rbtXMLDoc.Checked := FImportType = aiXMLDoc;
-//    rbtTXT.Checked := FImportType = aiTXT;
-//    rbtCSV.Checked := FImportType = aiCSV;
-//    rbtAccess.Checked := FImportType = aiAccess;
-    //----
     TuneOpenDialog;
 //    ChangeExtension;
   end;
@@ -197,16 +197,6 @@ begin
     faXLSx: OpenDialog.Filter:= 'Archivo Microsoft Excel|*.xlsx';
   end;
 end;
-
-//function GetTempDir: string;
-//var
-//  Buffer : Array[0..Max_path] of char;
-//begin
-//  FillChar(Buffer,Max_Path + 1, 0);
-//  GetTempPath(Max_path, Buffer);
-//  Result := String(Buffer);
-//  if Result[Length(Result)] <> '\' then Result := Result + '\';
-//end;
 
 //procedure TQImport3WizardF.ChangeExtension;
 //begin

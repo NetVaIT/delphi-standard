@@ -68,14 +68,14 @@ begin
   if Id  <> 0 then
   begin
     dmDocumentosAdjuntos.Edit(Id);
-//    adodsDomicilios.Requery();
+    adodsDocumentosAdjuntos.Requery();
   end
   else
   begin
     Id:= dmDocumentosAdjuntos.Add;
     if  Id <> 0 then
     begin
-//      adodsDomicilios.Requery();
+      adodsDocumentosAdjuntos.Requery();
       adodsMasterIdDocumentoAdjunto.AsInteger:= Id;
     end;
   end;
