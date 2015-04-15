@@ -3,13 +3,11 @@ unit PuestosDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
 type
   TdmPuestos = class(T_dmStandar)
-    adodsMasterIdUnidadNegocio: TIntegerField;
-    adodsMasterIdentificador: TStringField;
-    adodsMasterDescripcion: TStringField;
     adodsGerencias: TADODataSet;
     dsMaster: TDataSource;
     adodsDepartamentos: TADODataSet;
@@ -35,6 +33,12 @@ type
     adodsPuestosPuestoSuperior: TStringField;
     adodsPuestosPuestoCategoria: TStringField;
     adodsPuestosFechaCreacion: TDateTimeField;
+    adodsMasterIdUnidadNegocio: TAutoIncField;
+    adodsMasterIdPersona: TIntegerField;
+    adodsMasterIdentificador: TStringField;
+    adodsMasterDescripcion: TStringField;
+    adodsPersonas: TADODataSet;
+    adodsMasterPersona: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -47,7 +51,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses UnidadesdeNegocioForm, GerenciasForm, DepartamentosForm, PuestosForm;
+uses UnidadesNegocioForm, GerenciasForm, DepartamentosForm, PuestosForm;
 
 {$R *.dfm}
 
@@ -57,7 +61,7 @@ begin
   adodsGerencias.Open;
   adodsDepartamentos.Open;
   adodsPuestos.Open;
-  gGridForm:= TfrmUnidadesdeNegocio.Create(Self);
+  gGridForm:= TfrmUnidadesNegocio.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   gFormDeatil1:= TfrmGerencias.Create(Self);
   gFormDeatil1.DataSet:= adodsGerencias;

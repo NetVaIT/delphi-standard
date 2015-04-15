@@ -7,7 +7,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     CommandText = 
       'SELECT IdMovimientoTipo, IdMovimientoTipoCategoria, IdMovimiento' +
       'TipoEfecto, Identificador, Descripcion, ValorDefault, ProduceCXC' +
-      ', ProduceCXP FROM MovimientosTipos'
+      ', ProduceCXP, AgruparTipo, BaseCalculo FROM MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -69,6 +69,14 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     object adodsMasterProduceCXP: TBooleanField
       DisplayLabel = 'Produce CXP'
       FieldName = 'ProduceCXP'
+    end
+    object adodsMasterAgruparTipo: TBooleanField
+      DisplayLabel = 'Agrupar por tipo'
+      FieldName = 'AgruparTipo'
+    end
+    object adodsMasterBaseCalculo: TBooleanField
+      DisplayLabel = 'Base para c'#225'lculo'
+      FieldName = 'BaseCalculo'
     end
   end
   inherited adodsUpdate: TADODataSet
@@ -137,6 +145,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
   end
   object adodsMovimientoTipoCategoria: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -147,6 +156,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 72
   end
   object adodsMovimientoTipoEfecto: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
