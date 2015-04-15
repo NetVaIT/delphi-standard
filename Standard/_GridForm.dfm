@@ -2,10 +2,10 @@ object _frmGrid: T_frmGrid
   Left = 0
   Top = 0
   BorderIcons = []
-  BorderStyle = bsToolWindow
+  BorderStyle = bsNone
   Caption = '_frmGrid'
-  ClientHeight = 428
-  ClientWidth = 645
+  ClientHeight = 457
+  ClientWidth = 651
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,56 +20,57 @@ object _frmGrid: T_frmGrid
   TextHeight = 13
   object splDetail3: TSplitter
     Left = 0
-    Top = 343
-    Width = 645
+    Top = 372
+    Width = 651
     Height = 3
     Cursor = crVSplit
     Align = alBottom
     Visible = False
     ExplicitLeft = 8
     ExplicitTop = 422
-    ExplicitWidth = 651
   end
   object splDetail1: TSplitter
     Left = 0
-    Top = 255
-    Width = 645
+    Top = 284
+    Width = 651
     Height = 3
     Cursor = crVSplit
     Align = alBottom
     Visible = False
     ExplicitLeft = 8
     ExplicitTop = 300
-    ExplicitWidth = 651
   end
   object splDetail2: TSplitter
     Left = 0
-    Top = 299
-    Width = 645
+    Top = 328
+    Width = 651
     Height = 3
     Cursor = crVSplit
     Align = alBottom
     Visible = False
     ExplicitTop = 375
-    ExplicitWidth = 651
   end
   object pnlMaster: TPanel
     Left = 0
     Top = 31
-    Width = 645
-    Height = 224
+    Width = 651
+    Height = 253
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 645
+    ExplicitHeight = 224
     object cxGrid: TcxGrid
       Left = 0
       Top = 0
-      Width = 645
-      Height = 224
+      Width = 651
+      Height = 253
       Align = alClient
       PopupMenu = PopupMenu
       TabOrder = 0
       LookAndFeel.Kind = lfStandard
+      ExplicitWidth = 645
+      ExplicitHeight = 224
       object tvMaster: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = tvMasterCellDblClick
@@ -92,47 +93,55 @@ object _frmGrid: T_frmGrid
   end
   object pnlDetail3: TPanel
     Left = 0
-    Top = 346
-    Width = 645
+    Top = 375
+    Width = 651
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
     Visible = False
+    ExplicitTop = 346
+    ExplicitWidth = 645
   end
   object pnlDetail2: TPanel
     Left = 0
-    Top = 302
-    Width = 645
+    Top = 331
+    Width = 651
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
     Visible = False
+    ExplicitTop = 302
+    ExplicitWidth = 645
   end
   object pnlDetail1: TPanel
     Left = 0
-    Top = 258
-    Width = 645
+    Top = 287
+    Width = 651
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     Visible = False
+    ExplicitTop = 258
+    ExplicitWidth = 645
   end
   object pnlClose: TPanel
     Left = 0
-    Top = 387
-    Width = 645
+    Top = 416
+    Width = 651
     Height = 41
     Align = alBottom
     TabOrder = 8
     Visible = False
+    ExplicitTop = 387
+    ExplicitWidth = 645
     DesignSize = (
-      645
+      651
       41)
     object btnClose: TButton
-      Left = 560
+      Left = 566
       Top = 6
       Width = 75
       Height = 25
@@ -141,6 +150,7 @@ object _frmGrid: T_frmGrid
       Caption = 'Cerrar'
       TabOrder = 0
       OnClick = btnCloseClick
+      ExplicitLeft = 560
     end
   end
   object ActionList: TActionList
@@ -1186,6 +1196,7 @@ object _frmGrid: T_frmGrid
     Top = 127
     object dxcplGrid: TdxGridReportLink
       Component = cxGrid
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1197,6 +1208,7 @@ object _frmGrid: T_frmGrid
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

@@ -1,23 +1,23 @@
 inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
-  ClientHeight = 347
+  ClientHeight = 415
   ClientWidth = 542
   ExplicitWidth = 548
-  ExplicitHeight = 376
+  ExplicitHeight = 444
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 542
-    Height = 306
-    ExplicitWidth = 594
-    ExplicitHeight = 306
-    ClientRectBottom = 304
+    Height = 374
+    ExplicitWidth = 542
+    ExplicitHeight = 374
+    ClientRectBottom = 372
     ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 590
-      ExplicitHeight = 276
+      ExplicitWidth = 538
+      ExplicitHeight = 344
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -118,20 +118,38 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         TabOrder = 6
         Width = 121
       end
+      object cxDBCheckBox3: TcxDBCheckBox
+        Left = 24
+        Top = 265
+        Caption = 'Agrupar por tipo'
+        DataBinding.DataField = 'AgruparTipo'
+        DataBinding.DataSource = DataSource
+        TabOrder = 7
+        Width = 121
+      end
+      object cxDBCheckBox4: TcxDBCheckBox
+        Left = 24
+        Top = 290
+        Caption = 'Base para c'#225'lculo'
+        DataBinding.DataField = 'BaseCalculo'
+        DataBinding.DataSource = DataSource
+        TabOrder = 8
+        Width = 121
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 306
+    Top = 374
     Width = 542
-    ExplicitTop = 306
-    ExplicitWidth = 594
+    ExplicitTop = 374
+    ExplicitWidth = 542
     inherited btnOk: TButton
       Left = 379
-      ExplicitLeft = 431
+      ExplicitLeft = 379
     end
     inherited btnCancel: TButton
       Left = 460
-      ExplicitLeft = 512
+      ExplicitLeft = 460
     end
   end
   inherited cxImageList: TcxImageList

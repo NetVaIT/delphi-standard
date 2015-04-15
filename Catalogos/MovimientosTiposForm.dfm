@@ -6,11 +6,11 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
-    ExplicitWidth = 645
-    ExplicitHeight = 224
+    ExplicitWidth = 651
+    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
-      ExplicitWidth = 645
-      ExplicitHeight = 224
+      ExplicitWidth = 651
+      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdMovimientoTipo: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimientoTipo'
@@ -49,24 +49,32 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
           DataBinding.FieldName = 'ProduceCXP'
           Width = 66
         end
+        object tvMasterAgruparTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'AgruparTipo'
+          Width = 84
+        end
+        object tvMasterBaseCalculo: TcxGridDBColumn
+          DataBinding.FieldName = 'BaseCalculo'
+          Width = 88
+        end
       end
     end
   end
   inherited pnlDetail3: TPanel
-    ExplicitTop = 346
-    ExplicitWidth = 645
+    ExplicitTop = 375
+    ExplicitWidth = 651
   end
   inherited pnlDetail2: TPanel
-    ExplicitTop = 302
-    ExplicitWidth = 645
+    ExplicitTop = 331
+    ExplicitWidth = 651
   end
   inherited pnlDetail1: TPanel
-    ExplicitTop = 258
-    ExplicitWidth = 645
+    ExplicitTop = 287
+    ExplicitWidth = 651
   end
   inherited pnlClose: TPanel
     inherited btnClose: TButton
-      ExplicitLeft = 560
+      ExplicitLeft = 566
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -84,7 +92,6 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

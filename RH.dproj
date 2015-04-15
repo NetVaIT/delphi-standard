@@ -183,11 +183,11 @@
         <DCCReference Include="Catalogos\MonedasForm.pas">
             <Form>frmMonedas</Form>
         </DCCReference>
-        <DCCReference Include="Catalogos\UnidaddeNegocioForm.pas">
-            <Form>frmUnidaddeNegocio</Form>
+        <DCCReference Include="Catalogos\UnidadesNegocioEdit.pas">
+            <Form>frmUnidadesNegocioEdit</Form>
         </DCCReference>
-        <DCCReference Include="Catalogos\UnidadesdeNegocioForm.pas">
-            <Form>frmUnidadesdeNegocio</Form>
+        <DCCReference Include="Catalogos\UnidadesNegocioForm.pas">
+            <Form>frmUnidadesNegocio</Form>
         </DCCReference>
         <DCCReference Include="Catalogos\PuestosDM.pas">
             <Form>dmPuestos</Form>

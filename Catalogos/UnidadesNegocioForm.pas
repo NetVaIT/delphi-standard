@@ -1,4 +1,4 @@
-unit MovimientosTiposForm;
+unit UnidadesNegocioForm;
 
 interface
 
@@ -30,19 +30,12 @@ uses
   dxPSCore, dxPScxCommon, Vcl.StdCtrls;
 
 type
-  TfrmMovimientosTipos = class(T_frmGrid)
-    tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoTipoCategoria: TcxGridDBColumn;
-    tvMasterIdMovimientoTipoEfecto: TcxGridDBColumn;
+  TfrmUnidadesNegocio = class(T_frmGrid)
+    tvMasterIdUnidadNegocio: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterMovimientoTipoCategoria: TcxGridDBColumn;
-    tvMasterMovimientoTipoEfecto: TcxGridDBColumn;
-    tvMasterValorDefault: TcxGridDBColumn;
-    tvMasterProduceCXC: TcxGridDBColumn;
-    tvMasterProduceCXP: TcxGridDBColumn;
-    tvMasterAgruparTipo: TcxGridDBColumn;
-    tvMasterBaseCalculo: TcxGridDBColumn;
+    tvMasterPersona: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -54,12 +47,12 @@ implementation
 
 {$R *.dfm}
 
-uses MovimientosTiposDM, MovimientosTiposEdit;
+uses PuestosDM, UnidadesNegocioEdit;
 
-procedure TfrmMovimientosTipos.FormCreate(Sender: TObject);
+procedure TfrmUnidadesNegocio.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmMovimientosTipoEdit.Create(Self);
+  gEditForm:= TfrmUnidadesNegocioEdit.Create(Self);
 end;
 
 end.

@@ -120,8 +120,8 @@ begin
     begin
       gGridForm.Parent:= pConteiner;
       gGridForm.Align:= alClient;
-  //    gGridForm.Caption:= pCation;
-      gGridForm.View:= False;
+//      gGridForm.Caption:= pCation;
+//      gGridForm.View:= False;
       gGridForm.Show;
     end
     else

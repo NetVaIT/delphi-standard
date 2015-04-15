@@ -1,11 +1,10 @@
-inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
+inherited frmUnidadesNegocio: TfrmUnidadesNegocio
   BorderStyle = bsToolWindow
   Caption = 'Unidades de Negocio'
   ClientHeight = 380
   ClientWidth = 645
   OnCreate = FormCreate
-  ExplicitWidth = 651
-  ExplicitHeight = 404
+  ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -34,16 +33,18 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
     Width = 645
     Height = 100
     Align = alTop
-    ExplicitWidth = 645
     ExplicitHeight = 100
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 100
-      ExplicitWidth = 645
       ExplicitHeight = 100
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdUnidadNegocio: TcxGridDBColumn
           DataBinding.FieldName = 'IdUnidadNegocio'
+          Visible = False
+        end
+        object tvMasterIdPersona: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersona'
           Visible = False
         end
         object tvMasterIdentificador: TcxGridDBColumn
@@ -51,6 +52,11 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
         end
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
+          Width = 304
+        end
+        object tvMasterPersona: TcxGridDBColumn
+          DataBinding.FieldName = 'Persona'
+          Width = 500
         end
       end
     end
@@ -61,7 +67,6 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
     Height = 31
     Align = alClient
     ExplicitTop = 440
-    ExplicitWidth = 645
     ExplicitHeight = 31
   end
   inherited pnlDetail2: TPanel
@@ -70,7 +75,6 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
     Height = 150
     Align = alTop
     ExplicitTop = 287
-    ExplicitWidth = 645
     ExplicitHeight = 150
   end
   inherited pnlDetail1: TPanel
@@ -79,8 +83,17 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
     Height = 150
     Align = alTop
     ExplicitTop = 134
-    ExplicitWidth = 645
     ExplicitHeight = 150
+  end
+  inherited pnlClose: TPanel
+    Top = 339
+    Width = 645
+    inherited btnClose: TButton
+      Left = 560
+    end
+  end
+  inherited DataSource: TDataSource
+    DataSet = dmPuestos.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -94,5 +107,11 @@ inherited frmUnidadesdeNegocio: TfrmUnidadesdeNegocio
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
+      BuiltInReportLink = True
+    end
   end
 end

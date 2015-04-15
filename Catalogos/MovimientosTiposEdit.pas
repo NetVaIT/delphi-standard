@@ -35,6 +35,8 @@ type
     cxDBCheckBox2: TcxDBCheckBox;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
+    cxDBCheckBox3: TcxDBCheckBox;
+    cxDBCheckBox4: TcxDBCheckBox;
   private
     { Private declarations }
   public

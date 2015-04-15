@@ -5,19 +5,36 @@ inherited dmPuestos: TdmPuestos
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdUnidadNegocio, Identificador, Descripcion FROM Unidades' +
-      'DeNegocio'
+      'SELECT IdUnidadNegocio, IdPersona, Identificador, Descripcion FR' +
+      'OM UnidadesNegocio'
     Left = 48
-    object adodsMasterIdUnidadNegocio: TIntegerField
+    object adodsMasterIdUnidadNegocio: TAutoIncField
       FieldName = 'IdUnidadNegocio'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsMasterIdPersona: TIntegerField
+      FieldName = 'IdPersona'
       Visible = False
     end
     object adodsMasterIdentificador: TStringField
       FieldName = 'Identificador'
     end
     object adodsMasterDescripcion: TStringField
+      DisplayLabel = 'Descripci'#243'n'
       FieldName = 'Descripcion'
       Size = 200
+    end
+    object adodsMasterPersona: TStringField
+      DisplayLabel = 'Outsourcing'
+      FieldKind = fkLookup
+      FieldName = 'Persona'
+      LookupDataSet = adodsPersonas
+      LookupKeyFields = 'IdPersona'
+      LookupResultField = 'RazonSocial'
+      KeyFields = 'IdPersona'
+      Size = 300
+      Lookup = True
     end
   end
   object adodsGerencias: TADODataSet
@@ -188,15 +205,27 @@ inherited dmPuestos: TdmPuestos
     CursorType = ctStatic
     CommandText = 'SELECT IdPuestoCategoria, Descripcion FROM PuestosCategorias'
     Parameters = <>
-    Left = 264
-    Top = 264
+    Left = 120
+    Top = 320
   end
   object adodsPuestoSuperior: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPuesto, Descripcion FROM Puestos'
     Parameters = <>
-    Left = 264
-    Top = 208
+    Left = 120
+    Top = 264
+  end
+  object adodsPersonas: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT Personas.IdPersona, Personas.RazonSocial'#13#10'FROM Personas '#13 +
+      #10'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.' +
+      'IdPersona '#13#10'INNER JOIN Roles ON PersonasRoles.IdRol = Roles.IdRo' +
+      'l'#13#10'WHERE (Roles.IdRolTipo = 2)'
+    Parameters = <>
+    Left = 224
+    Top = 16
   end
 end

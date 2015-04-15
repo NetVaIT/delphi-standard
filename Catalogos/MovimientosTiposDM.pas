@@ -30,6 +30,8 @@ type
     adodsUpdateProduceCXP: TBooleanField;
     adodsUpdateMovimientoTipoCategoria: TStringField;
     adodsUpdateMovimientoTipoEfecto: TStringField;
+    adodsMasterAgruparTipo: TBooleanField;
+    adodsMasterBaseCalculo: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
