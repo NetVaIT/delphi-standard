@@ -18,7 +18,8 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, cxTextEdit, cxDBEdit;
+  cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxMaskEdit, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Vcl.DBCtrls;
 
 type
   TfrmRolesEdit = class(T_frmEdit)
@@ -26,6 +27,10 @@ type
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBLookupComboBox2: TcxDBLookupComboBox;
   private
     { Private declarations }
   public
