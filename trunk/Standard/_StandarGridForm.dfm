@@ -29,6 +29,10 @@ object _frmStandarGrid: T_frmStandarGrid
     OnChanging = pcMainChanging
     object tsGrid: TTabSheet
       Hint = 'Lista'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Splitter: TSplitter
         Left = 0
         Top = 335
@@ -162,6 +166,10 @@ object _frmStandarGrid: T_frmStandarGrid
     object tsData: TTabSheet
       Hint = 'Datos'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object tbarData: TToolBar
         Left = 0
         Top = 0
@@ -249,7 +257,7 @@ object _frmStandarGrid: T_frmStandarGrid
     Left = 440
     Top = 8
     Bitmap = {
-      494C010102000400140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -480,7 +488,7 @@ object _frmStandarGrid: T_frmStandarGrid
     Left = 504
     Top = 8
     Bitmap = {
-      494C01010B000E00140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B000E00180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

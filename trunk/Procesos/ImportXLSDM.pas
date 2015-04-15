@@ -6,11 +6,17 @@ uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
   Data.DB, Data.Win.ADODB, Vcl.Controls,
   System.Variants,
-  Dialogs,
+  System.UITypes,
+  Vcl.Dialogs,
   QImport3, QImport3XLS, dxmdaset, QImport3Xlsx;
 
 const
+  XLSxExt = '.XLSX';
   IdPersonaSinAsignar = 1;
+
+resourcestring
+  strInvalidFile = 'El archivo guardado no es valido para el proceso, requiere archivo %s.';
+  StrNotInstruction = 'No existe la instruccion seleccionada.';
 
 type
   TdmImportXLS = class(T_dmStandar)
@@ -68,7 +74,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses _ConectionDmod, ImportXLSForm, ImportXLSSelect;
+uses _ConectionDmod, ImportXLSForm, ImportXLSSelect, DocumentosAdjuntosDM;
 
 {$R *.dfm}
 
@@ -91,7 +97,32 @@ end;
 procedure TdmImportXLS.Execute;
 var
   frmSelect: TfrmImportXLSSelect;
+  Ejecutar: Boolean;
+
+  function SetArchivo: Boolean;
+  var
+    dmDocumentos: TdmDocumentosAdjuntos;
+    FileName: TFileName;
+    Ext: string;
+  begin
+    Result:= False;
+    dmDocumentos := TdmDocumentosAdjuntos.Create(Self);
+    try
+      FileName:= dmDocumentos.GetFileName(adoqInstruccionesIdDocumentoAdjunto.Value);
+    finally
+      dmDocumentos.Free;
+    end;
+    Ext:= UpperCase(ExtractFileExt(FileName));
+    if Ext = XLSxExt then
+    begin
+//    Se podria soportar: ArchivoXLS:= 'C:\Temp\Prueba.xls';
+      ArchivoXLSx:= FileName;
+      Result:= True;
+    end;
+  end;
+
 begin
+  Ejecutar:= True;
   // Obtiene parametros
   adoqInstrucciones.Close;
   adoqInstrucciones.Parameters.ParamByName('IdInstruccion').Value:= IdInstruccion;
@@ -100,32 +131,39 @@ begin
     if not adoqInstrucciones.IsEmpty then
     begin
       IdInstruccionTipo:= adoqInstruccionesIdInstruccionTipo.Value;
-//      ArchivoXLS:= 'C:\Temp\Prueba.xls';
-      ArchivoXLSx:= 'C:\Temp\Prueba.xlsx';
+      if not SetArchivo then
+      begin
+        Ejecutar:= False;
+        MessageDlg(Format(strInvalidFile, [XLSxExt]), mtInformation, [mbOK], 0);
+      end;
     end
     else
     begin
-      ShowMessage('No existe la instruccion seleccionada.');
+      Ejecutar:= False;
+      MessageDlg(StrNotInstruction, mtInformation, [mbOK], 0);
     end;
   finally
     adoqInstrucciones.Close;
   end;
   // Ejecuta el proceso
-  dxmdImportar.Close;
-  dxmdImportar.Open;
-  try
-    GetInstrucciones;
-    CorrectInstrucciones;
-    frmSelect:= TfrmImportXLSSelect.Create(Self);
-    try
-      ShowModule(frmSelect.pnlMaster,'');
-      if frmSelect.ShowModal = mrOk then
-        SetIncidencias;
-    finally
-      frmSelect.Free;
-    end;
-  finally
+  if Ejecutar then
+  begin
     dxmdImportar.Close;
+    dxmdImportar.Open;
+    try
+      GetInstrucciones;
+      CorrectInstrucciones;
+      frmSelect:= TfrmImportXLSSelect.Create(Self);
+      try
+        ShowModule(frmSelect.pnlMaster,'');
+        if frmSelect.ShowModal = mrOk then
+          SetIncidencias;
+      finally
+        frmSelect.Free;
+      end;
+    finally
+      dxmdImportar.Close;
+    end;
   end;
 end;
 

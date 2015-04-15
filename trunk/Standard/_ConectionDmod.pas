@@ -9,7 +9,7 @@ unit _ConectionDmod;
 interface
 
 uses
-  SysUtils, Classes, Controls, DB, ADODB, Dialogs, _Utils;
+  SysUtils, Classes, Controls, DB, ADODB, Vcl.Dialogs, System.UITypes, _Utils;
 
 type
   T_dmConection = class(TDataModule)
