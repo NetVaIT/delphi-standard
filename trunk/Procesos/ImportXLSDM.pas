@@ -36,23 +36,28 @@ type
     dxmdImportarEncontrada: TBooleanField;
     adodsMovimientosTipos: TADODataSet;
     dxmdImportarMovimientoTipo: TStringField;
-    QImport3Xlsx1: TQImport3Xlsx;
+    QImport3Xlsx: TQImport3Xlsx;
     procedure QImport3XLSBeforePost(Sender: TObject; Row: TQImportRow;
       var Accept: Boolean);
     procedure DataModuleCreate(Sender: TObject);
     procedure dxmdImportarNewRecord(DataSet: TDataSet);
+    procedure QImport3XlsxBeforePost(Sender: TObject; Row: TQImportRow;
+      var Accept: Boolean);
   private
     { Private declarations }
     FIdInstruccion: Integer;
     FIdInstruccionTipo: Integer;
     FArchivoXLS: string;
+    FArchivoXLSx: string;
     procedure SetArchivoXLS(const Value: string);
     procedure SetIdInstruccionTipo(const Value: Integer);
     procedure GetInstrucciones;
     procedure SetIncidencias;
     function CorrectInstrucciones: Boolean;
+    procedure SetArchivoXLSx(const Value: string);
     property IdInstruccionTipo: Integer read FIdInstruccionTipo write SetIdInstruccionTipo;
     property ArchivoXLS: string read FArchivoXLS write SetArchivoXLS;
+    property ArchivoXLSx: string read FArchivoXLSx write SetArchivoXLSx;
   public
     { Public declarations }
     procedure Execute;
@@ -95,7 +100,8 @@ begin
     if not adoqInstrucciones.IsEmpty then
     begin
       IdInstruccionTipo:= adoqInstruccionesIdInstruccionTipo.Value;
-      ArchivoXLS:= 'C:\Temp\Prueba.xls';
+//      ArchivoXLS:= 'C:\Temp\Prueba.xls';
+      ArchivoXLSx:= 'C:\Temp\Prueba.xlsx';
     end
     else
     begin
@@ -135,11 +141,23 @@ begin
   adoqInstrucionesTipos.Open;
   while not adoqInstrucionesTipos.Eof do
   begin
-    QImport3XLS.Map.Clear;
-    QImport3XLS.Map.Add(MapFieldNombre + MapSeparador + adoqInstrucionesTiposNombre.AsString + MapFinal);
-    QImport3XLS.Map.Add(MapFieldValor + MapSeparador + adoqInstrucionesTiposValor.AsString + MapFinal);
-    QImport3XLS.Map.Add('IdMovimientoTipo=A1;');
-    QImport3XLS.Execute;
+    if ArchivoXLS <> EmptyStr then
+    begin
+      QImport3XLS.Map.Clear;
+      QImport3XLS.Map.Add(MapFieldNombre + MapSeparador + adoqInstrucionesTiposNombre.AsString + MapFinal);
+      QImport3XLS.Map.Add(MapFieldValor + MapSeparador + adoqInstrucionesTiposValor.AsString + MapFinal);
+      QImport3XLS.Map.Add('IdMovimientoTipo=A1;');
+      QImport3XLS.Execute;
+    end;
+    if ArchivoXLSx <> EmptyStr then
+    begin
+      QImport3Xlsx.Map.Clear;
+      QImport3Xlsx.Map.Add(MapFieldNombre + MapSeparador + adoqInstrucionesTiposNombre.AsString + MapFinal);
+      QImport3Xlsx.Map.Add(MapFieldValor + MapSeparador + adoqInstrucionesTiposValor.AsString + MapFinal);
+      QImport3Xlsx.Map.Add('IdMovimientoTipo=A1;');
+      QImport3Xlsx.Execute;
+    end;
+
     adoqInstrucionesTipos.Next;
   end;
   adoqInstrucionesTipos.Close;
@@ -158,10 +176,29 @@ begin
   end;
 end;
 
+procedure TdmImportXLS.QImport3XlsxBeforePost(Sender: TObject;
+  Row: TQImportRow; var Accept: Boolean);
+var
+  i: integer;
+begin
+  for i := 0 to Row.Count - 1 do begin
+    if Row[i].Name = 'IdMovimientoTipo' then begin
+      Row[i].Value := adoqInstrucionesTiposIdMovimientoTipo.AsString;
+      Continue;
+    end;
+  end;
+end;
+
 procedure TdmImportXLS.SetArchivoXLS(const Value: string);
 begin
   FArchivoXLS := Value;
   QImport3XLS.FileName:= Value;
+end;
+
+procedure TdmImportXLS.SetArchivoXLSx(const Value: string);
+begin
+  FArchivoXLSx := Value;
+  QImport3Xlsx.FileName:= Value;
 end;
 
 procedure TdmImportXLS.SetIdInstruccionTipo(const Value: Integer);

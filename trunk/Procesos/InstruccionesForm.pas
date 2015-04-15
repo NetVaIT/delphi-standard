@@ -44,14 +44,18 @@ type
     tvMasterFechaInicio: TcxGridDBColumn;
     tvMasterFechaFin: TcxGridDBColumn;
     dxbbProcessXLS: TdxBarButton;
+    tvMasterNombreArchivo: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     FProcessXLS: TBasicAction;
+    FUpdateFile: TBasicAction;
     procedure SetProcessXLS(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
     property ProcessXLS: TBasicAction read FProcessXLS write SetProcessXLS;
+    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
 implementation
@@ -64,6 +68,12 @@ procedure TfrmInstrucciones.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmInstruccionesEdit.Create(Self);
+end;
+
+procedure TfrmInstrucciones.FormShow(Sender: TObject);
+begin
+  inherited;
+  TfrmInstruccionesEdit(gEditForm).UpdateFile:= UpdateFile;
 end;
 
 procedure TfrmInstrucciones.SetProcessXLS(const Value: TBasicAction);

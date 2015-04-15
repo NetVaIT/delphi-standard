@@ -19,30 +19,35 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxBlobEdit, cxDBEdit,
-  cxTextEdit, DBTables, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxTextEdit, DBTables, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  Vcl.DBCtrls, Vcl.Buttons, cxButtonEdit;
 
 type
   TfrmDocumentosAdjuntosEdit = class(T_frmEdit)
-    Label1: TLabel;
-    cxDBTextEdit1: TcxDBTextEdit;
-    Label2: TLabel;
-    Button1: TButton;
-    odlgCargar: TOpenDialog;
-    sdlgBajar: TSaveDialog;
-    Button2: TButton;
-    Label3: TLabel;
-    Label4: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
-    procedure actPostExecute(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    Label1: TLabel;
+    Label2: TLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Action1: TAction;
+    Action2: TAction;
+    Action3: TAction;
+    edtArchivo: TcxDBButtonEdit;
   private
     { Private declarations }
-    RutaCarga : String;
-    RutaGuarda : String;
+    FactLoadFile: TBasicAction;
+    FactViewFile: TBasicAction;
+    FactSaveFile: TBasicAction;
+    procedure SetactLoadFile(const Value: TBasicAction);
+    procedure SetactSaveFile(const Value: TBasicAction);
+    procedure SetactViewFile(const Value: TBasicAction);
   public
     { Public declarations }
+    property actLoadFile: TBasicAction read FactLoadFile write SetactLoadFile;
+    property actSaveFile: TBasicAction read FactSaveFile write SetactSaveFile;
+    property actViewFile: TBasicAction read FactViewFile write SetactViewFile;
   end;
 
 implementation
@@ -51,59 +56,22 @@ implementation
 
 uses DocumentosAdjuntosDM;
 
-procedure TfrmDocumentosAdjuntosEdit.actPostExecute(Sender: TObject);
-var
-  Blob : TStream;
-  Fs : TFileStream;
+procedure TfrmDocumentosAdjuntosEdit.SetactLoadFile(const Value: TBasicAction);
 begin
-//  inherited;
-  if DataSource.DataSet.State in [dsInsert, dsEdit] then
-  Begin
-    DataSource.DataSet.FieldByName('NombreArchivo').Value := ExtractFileName(RutaCarga);
-    Blob := DataSource.DataSet.CreateBlobStream(DataSource.DataSet.FieldByName('Archivo'), bmWrite);
-    try
-      Blob.Seek(0, soFromBeginning);
-      Fs := TFileStream.Create(RutaCarga, fmOpenRead or fmShareDenyWrite);
-      try
-        blob.CopyFrom(fs, fs.Size)
-      finally
-        fs.Free
-      end;
-    finally
-      blob.Free
-    end;
-    DataSource.DataSet.Post;
-  End;
-  ModalResult:= mrOk;
+  FactLoadFile := Value;
+  edtArchivo.Properties.Buttons[0].Action:= Value;
 end;
 
-procedure TfrmDocumentosAdjuntosEdit.Button1Click(Sender: TObject);
+procedure TfrmDocumentosAdjuntosEdit.SetactSaveFile(const Value: TBasicAction);
 begin
-  inherited;
-  odlgCargar.Execute(ParentWindow);
-  RutaCarga := odlgCargar.FileName;
+  FactSaveFile := Value;
+  edtArchivo.Properties.Buttons[1].Action:= Value;
 end;
 
-procedure TfrmDocumentosAdjuntosEdit.Button2Click(Sender: TObject);
-var
-  Blob : TStream;
+procedure TfrmDocumentosAdjuntosEdit.SetactViewFile(const Value: TBasicAction);
 begin
-  inherited;
-  sdlgBajar.Execute(ParentWindow);
-  RutaGuarda := sdlgBajar.FileName;
-blob := DataSource.DataSet.CreateBlobStream(DataSource.Dataset.FieldByName('Archivo'), bmRead);
-try
-  blob.Seek(0, soFromBeginning);
-  with TFileStream.Create(RutaGuarda, fmCreate) do
-    try
-      CopyFrom(blob, blob.Size)
-    finally
-      Free
-    end;
-finally
-  blob.Free
-end;
-
+  FactViewFile := Value;
+  edtArchivo.Properties.Buttons[2].Action:= Value;
 end;
 
 end.

@@ -1,19 +1,22 @@
 inherited frmInstruccionesEdit: TfrmInstruccionesEdit
-  Caption = 'frmInstruccionesEdit'
-  ClientHeight = 322
-  ExplicitWidth = 444
-  ExplicitHeight = 350
+  Caption = 'Instrucci'#243'n'
+  ClientHeight = 373
+  ClientWidth = 546
+  ExplicitWidth = 552
+  ExplicitHeight = 402
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Height = 281
+    Width = 546
+    Height = 332
     ExplicitHeight = 281
-    ClientRectBottom = 279
+    ClientRectBottom = 330
+    ClientRectRight = 544
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
-      ExplicitWidth = 434
-      ExplicitHeight = 251
+      ExplicitLeft = 3
+      ExplicitTop = 30
+      ExplicitWidth = 708
+      ExplicitHeight = 581
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -32,7 +35,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object Label3: TLabel
         Left = 24
-        Top = 104
+        Top = 160
         Width = 29
         Height = 13
         Caption = 'Fecha'
@@ -40,7 +43,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object Label4: TLabel
         Left = 24
-        Top = 144
+        Top = 200
         Width = 77
         Height = 13
         Caption = 'Contador desde'
@@ -48,7 +51,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object Label5: TLabel
         Left = 168
-        Top = 144
+        Top = 200
         Width = 75
         Height = 13
         Caption = 'Contador hasta'
@@ -56,7 +59,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object Label6: TLabel
         Left = 24
-        Top = 184
+        Top = 240
         Width = 25
         Height = 13
         Caption = 'Inicio'
@@ -64,11 +67,24 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object Label7: TLabel
         Left = 168
-        Top = 184
+        Top = 240
         Width = 14
         Height = 13
         Caption = 'Fin'
         FocusControl = cxDBDateEdit3
+      end
+      object Label8: TLabel
+        Left = 24
+        Top = 104
+        Width = 36
+        Height = 13
+        Caption = 'Archivo'
+      end
+      object btnUpdateFile: TSpeedButton
+        Left = 494
+        Top = 115
+        Width = 23
+        Height = 22
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
@@ -89,7 +105,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object cxDBDateEdit1: TcxDBDateEdit
         Left = 24
-        Top = 120
+        Top = 176
         DataBinding.DataField = 'Fecha'
         DataBinding.DataSource = DataSource
         TabOrder = 2
@@ -97,7 +113,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object cxDBSpinEdit1: TcxDBSpinEdit
         Left = 24
-        Top = 160
+        Top = 216
         DataBinding.DataField = 'ContadorDesde'
         DataBinding.DataSource = DataSource
         TabOrder = 3
@@ -105,7 +121,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object cxDBSpinEdit2: TcxDBSpinEdit
         Left = 168
-        Top = 160
+        Top = 216
         DataBinding.DataField = 'ContadorHasta'
         DataBinding.DataSource = DataSource
         TabOrder = 4
@@ -113,7 +129,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object cxDBDateEdit2: TcxDBDateEdit
         Left = 24
-        Top = 200
+        Top = 256
         DataBinding.DataField = 'FechaInicio'
         DataBinding.DataSource = DataSource
         TabOrder = 5
@@ -121,20 +137,32 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object cxDBDateEdit3: TcxDBDateEdit
         Left = 168
-        Top = 200
+        Top = 256
         DataBinding.DataField = 'FechaFin'
         DataBinding.DataSource = DataSource
         TabOrder = 6
         Width = 121
       end
+      object cxDBLabel1: TcxDBLabel
+        Left = 24
+        Top = 115
+        DataBinding.DataField = 'NombreArchivo'
+        DataBinding.DataSource = DataSource
+        Height = 42
+        Width = 471
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 281
+    Top = 332
+    Width = 546
     ExplicitTop = 281
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmInstrucciones.adodsMaster
+    inherited btnOk: TButton
+      Left = 383
+    end
+    inherited btnCancel: TButton
+      Left = 464
+    end
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

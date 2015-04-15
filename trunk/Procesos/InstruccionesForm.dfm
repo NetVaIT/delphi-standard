@@ -33,6 +33,10 @@ inherited frmInstrucciones: TfrmInstrucciones
         object tvMasterIntruccionTipo: TcxGridDBColumn
           DataBinding.FieldName = 'IntruccionTipo'
         end
+        object tvMasterNombreArchivo: TcxGridDBColumn
+          DataBinding.FieldName = 'NombreArchivo'
+          Width = 304
+        end
         object tvMasterFecha: TcxGridDBColumn
           DataBinding.FieldName = 'Fecha'
         end
@@ -86,7 +90,6 @@ inherited frmInstrucciones: TfrmInstrucciones
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

@@ -116,7 +116,12 @@ uses
   IncidenciasForm in 'Procesos\IncidenciasForm.pas' {frmIncidencias},
   DocumentosAdjuntosDM in 'Catalogos\DocumentosAdjuntosDM.pas' {dmArchivosAdjuntos: TDataModule},
   DocumentosAdjuntosEdit in 'Catalogos\DocumentosAdjuntosEdit.pas' {frmArchivosAdjuntosEdit},
-  DocumentosAdjuntosForm in 'Catalogos\DocumentosAdjuntosForm.pas' {frmArchivosAdjuntos};
+  DocumentosAdjuntosForm in 'Catalogos\DocumentosAdjuntosForm.pas' {frmArchivosAdjuntos},
+  InstruccionesTiposDM in 'Catalogos\InstruccionesTiposDM.pas' {dmInstruccionesTipos: TDataModule},
+  InstruccionesTiposEdit in 'Catalogos\InstruccionesTiposEdit.pas' {frmInstruccionesTiposEdit},
+  InstruccionesTiposForm in 'Catalogos\InstruccionesTiposForm.pas' {frmInstruccionesTipos},
+  InstruccionesTiposDetalleForm in 'Catalogos\InstruccionesTiposDetalleForm.pas' {frmInstruccionesTiposDetalle},
+  InstruccionesTiposDetalleEdit in 'Catalogos\InstruccionesTiposDetalleEdit.pas' {frmInstruccionesTiposDetalleEdit};
 
 {$R *.res}
 
