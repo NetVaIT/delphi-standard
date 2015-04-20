@@ -11,12 +11,22 @@ uses
   QImport3, QImport3XLS, dxmdaset, QImport3Xlsx;
 
 const
-  XLSxExt = '.XLSX';
+  MapFieldNombre = 'NOMBRE';
+  MapFieldValor  = 'VALOR';
+  MapFieldTipo   = 'IdMovimientoTipo';
+  MapFieldMoneda = 'IdMoneda';
+  MapSeparador   = '=';
+  MapFinal       = ';';
+  XLSxExt        = '.XLSX';
   IdPersonaSinAsignar = 1;
 
 resourcestring
-  strInvalidFile = 'El archivo guardado no es valido para el proceso, requiere archivo %s.';
+  StrInvalidFile    = 'El archivo guardado no es valido para el proceso, requiere archivo %s.';
   StrNotInstruction = 'No existe la instruccion seleccionada.';
+  StrGetInfo        = 'Obteniendo datos';
+  StrVerifInfo      = 'Verificando información';
+  StrSetInfo        = 'Procesando información';
+
 
 type
   TdmImportXLS = class(T_dmStandar)
@@ -43,12 +53,15 @@ type
     adodsMovimientosTipos: TADODataSet;
     dxmdImportarMovimientoTipo: TStringField;
     QImport3Xlsx: TQImport3Xlsx;
+    adoqInstrucionesTiposIdMoneda: TIntegerField;
+    dxmdImportarIdMoneda: TIntegerField;
     procedure QImport3XLSBeforePost(Sender: TObject; Row: TQImportRow;
       var Accept: Boolean);
     procedure DataModuleCreate(Sender: TObject);
     procedure dxmdImportarNewRecord(DataSet: TDataSet);
     procedure QImport3XlsxBeforePost(Sender: TObject; Row: TQImportRow;
       var Accept: Boolean);
+    procedure QImport3XlsxImportRecord(Sender: TObject);
   private
     { Private declarations }
     FIdInstruccion: Integer;
@@ -74,7 +87,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses _ConectionDmod, ImportXLSForm, ImportXLSSelect, DocumentosAdjuntosDM;
+uses _ConectionDmod, ImportXLSForm, ImportXLSSelect, DocumentosAdjuntosDM,
+  _Utils;
 
 {$R *.dfm}
 
@@ -168,15 +182,15 @@ begin
 end;
 
 procedure TdmImportXLS.GetInstrucciones;
-const
-  MapFieldNombre = 'NOMBRE';
-  MapFieldValor  = 'VALOR';
-  MapSeparador   = '=';
-  MapFinal       = ';';
+var
+  Total: Integer;
+  Position: Integer;
 begin
   adoqInstrucionesTipos.Close;
   adoqInstrucionesTipos.Parameters.ParamByName('IdInstruccionTipo').Value:= IdInstruccionTipo;
   adoqInstrucionesTipos.Open;
+  Total:= adoqInstrucionesTipos.RecordCount;
+  ShowProgress(Position, Total, StrGetInfo);
   while not adoqInstrucionesTipos.Eof do
   begin
     if ArchivoXLS <> EmptyStr then
@@ -185,6 +199,7 @@ begin
       QImport3XLS.Map.Add(MapFieldNombre + MapSeparador + adoqInstrucionesTiposNombre.AsString + MapFinal);
       QImport3XLS.Map.Add(MapFieldValor + MapSeparador + adoqInstrucionesTiposValor.AsString + MapFinal);
       QImport3XLS.Map.Add('IdMovimientoTipo=A1;');
+      QImport3XLS.Map.Add('IdMoneda=A2;');
       QImport3XLS.Execute;
     end;
     if ArchivoXLSx <> EmptyStr then
@@ -193,9 +208,11 @@ begin
       QImport3Xlsx.Map.Add(MapFieldNombre + MapSeparador + adoqInstrucionesTiposNombre.AsString + MapFinal);
       QImport3Xlsx.Map.Add(MapFieldValor + MapSeparador + adoqInstrucionesTiposValor.AsString + MapFinal);
       QImport3Xlsx.Map.Add('IdMovimientoTipo=A1;');
+      QImport3Xlsx.Map.Add('IdMoneda=A2;');
       QImport3Xlsx.Execute;
     end;
-
+    Inc(Position);
+    ShowProgress(Position, Total, StrGetInfo);
     adoqInstrucionesTipos.Next;
   end;
   adoqInstrucionesTipos.Close;
@@ -207,8 +224,22 @@ var
   i: integer;
 begin
   for i := 0 to Row.Count - 1 do begin
-    if Row[i].Name = 'IdMovimientoTipo' then begin
+    if Row[i].Name = MapFieldNombre then
+    begin
+      if Row[i].Value = EmptyStr then
+      begin
+        Accept:= False;
+        Continue;
+      end;
+    end;
+    if Row[i].Name = MapFieldTipo then
+    begin
       Row[i].Value := adoqInstrucionesTiposIdMovimientoTipo.AsString;
+      Continue;
+    end;
+    if Row[i].Name = MapFieldMoneda then
+    begin
+      Row[i].Value := adoqInstrucionesTiposIdMoneda.AsString;
       Continue;
     end;
   end;
@@ -220,11 +251,31 @@ var
   i: integer;
 begin
   for i := 0 to Row.Count - 1 do begin
-    if Row[i].Name = 'IdMovimientoTipo' then begin
+    if Row[i].Name = MapFieldNombre then
+    begin
+      if Row[i].Value = EmptyStr then
+      begin
+        Accept:= False;
+        Continue;
+      end;
+    end;
+    if Row[i].Name = MapFieldTipo then
+    begin
       Row[i].Value := adoqInstrucionesTiposIdMovimientoTipo.AsString;
       Continue;
     end;
+    if Row[i].Name = MapFieldMoneda then
+    begin
+      Row[i].Value := adoqInstrucionesTiposIdMoneda.AsString;
+      Continue;
+    end;
   end;
+end;
+
+procedure TdmImportXLS.QImport3XlsxImportRecord(Sender: TObject);
+begin
+  inherited;
+//  ShowProgress(QImport3Xlsx.ImportedRecs, 50);
 end;
 
 procedure TdmImportXLS.SetArchivoXLS(const Value: string);
@@ -247,11 +298,16 @@ end;
 procedure TdmImportXLS.SetIncidencias;
 var
   IdIncidencia: Integer;
+  Total: Integer;
+  Position: Integer;
 begin
   dxmdImportar.First;
+  Total:= dxmdImportar.RecordCount;
+  ShowProgress(Position, Total, StrSetInfo);
   while not dxmdImportar.Eof do
   begin
-    if dxmdImportarIdPersona.Value <> IdPersonaSinAsignar then
+    if (dxmdImportarIdPersona.Value <> IdPersonaSinAsignar) and
+    (dxmdImportarValor.Value <> 0) then
     begin
       // Inserta Insidencia
       adocSetIncidencias.Parameters.ParamByName('IdInstruccion').Value:=  IdInstruccion;
@@ -261,6 +317,7 @@ begin
       // Inserta Insidencia detalle
       adocSetIncidenciasDetalle.Parameters.ParamByName('IdIncidencia').Value:= IdIncidencia;
       adocSetIncidenciasDetalle.Parameters.ParamByName('IdMovimientoTipo').Value:= dxmdImportarIdMovimientoTipo.Value;
+      adocSetIncidenciasDetalle.Parameters.ParamByName('IdMoneda').Value:= dxmdImportarIdMoneda.Value;
       adocSetIncidenciasDetalle.Parameters.ParamByName('Importe').Value:= dxmdImportarValor.Value;
       adocSetIncidenciasDetalle.Execute;
       // Actualiza
@@ -268,6 +325,8 @@ begin
       dxmdImportarGenerada.Value:= True;
       dxmdImportar.Post;
     end;
+    Inc(Position);
+    ShowProgress(Position, Total, StrSetInfo);
     dxmdImportar.Next;
   end;
 end;
@@ -275,9 +334,14 @@ end;
 function TdmImportXLS.CorrectInstrucciones: Boolean;
 
 function SetIdPersona: Boolean;
+var
+  Total: Integer;
+  Position: Integer;
 begin
   Result:= True;
   dxmdImportar.First;
+  Total:= dxmdImportar.RecordCount;
+  ShowProgress(Position, Total, StrVerifInfo);
   while not dxmdImportar.Eof do
   begin
     adocGetPersona.Parameters.ParamByName('Nombre').Value:=  dxmdImportarNombre.AsString;
@@ -294,6 +358,8 @@ begin
       dxmdImportarEncontrada.Value:= True;
       dxmdImportarIdPersona.Value:= adocGetPersona.Parameters.ParamByName('IdPersona').Value;
     end;
+    Inc(Position);
+    ShowProgress(Position, Total, StrVerifInfo);
     dxmdImportar.Next;
   end;
 end;

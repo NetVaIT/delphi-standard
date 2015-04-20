@@ -29,6 +29,9 @@ type
     dsMaster: TDataSource;
     adodsIncidenciaDetalleMovimientoTipo: TStringField;
     adodsIncidenciaDetalleIncidenciaEstatus: TStringField;
+    adodsIncidenciaDetalleIdMoneda: TIntegerField;
+    adodsMoneda: TADODataSet;
+    adodsIncidenciaDetalleMoneda: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -47,6 +50,7 @@ uses IncidenciasForm, IncidenciasDetallesForm;
 procedure TdmIncidencias.DataModuleCreate(Sender: TObject);
 begin
   inherited;
+  adodsIncidenciaDetalle.Open;
   gGridForm:= TfrmIncidencias.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   gFormDeatil1:= TfrmIncidenciasDetalles.Create(Self);

@@ -39,10 +39,6 @@ type
     tvMasterConcepto: TcxGridDBColumn;
     tvMasterIntruccionTipo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;
-    tvMasterContadorDesde: TcxGridDBColumn;
-    tvMasterContadorHasta: TcxGridDBColumn;
-    tvMasterFechaInicio: TcxGridDBColumn;
-    tvMasterFechaFin: TcxGridDBColumn;
     dxbbProcessXLS: TdxBarButton;
     tvMasterNombreArchivo: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);

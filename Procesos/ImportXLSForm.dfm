@@ -1,9 +1,15 @@
 inherited frmImportXLS: TfrmImportXLS
   Caption = 'Instrucciones obtenidas'
+  ExplicitWidth = 651
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
+    ExplicitWidth = 651
+    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
+      ExplicitWidth = 651
+      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterRecId: TcxGridDBColumn
           DataBinding.FieldName = 'RecId'
@@ -36,29 +42,45 @@ inherited frmImportXLS: TfrmImportXLS
       end
     end
   end
+  inherited pnlDetail3: TPanel
+    ExplicitTop = 375
+    ExplicitWidth = 651
+  end
+  inherited pnlDetail2: TPanel
+    ExplicitTop = 331
+    ExplicitWidth = 651
+  end
+  inherited pnlDetail1: TPanel
+    ExplicitTop = 287
+    ExplicitWidth = 651
+  end
   inherited pnlClose: TPanel
     inherited btnClose: TButton
       ExplicitLeft = 566
     end
   end
-  inherited cxGridPopupMenu: TcxGridPopupMenu [8]
+  inherited cxStyleRepository: TcxStyleRepository [8]
+    PixelsPerInch = 96
   end
-  inherited cxImageList: TcxImageList [9]
-    FormatVersion = 1
+  inherited dxBarManager: TdxBarManager [9]
+    DockControlHeights = (
+      0
+      0
+      31
+      0)
   end
   inherited ActionList: TActionList [10]
   end
   inherited DataSource: TDataSource [11]
     DataSet = dmImportXLS.dxmdImportar
   end
-  inherited cxStyleRepository: TcxStyleRepository [12]
-    PixelsPerInch = 96
+  inherited cxImageList: TcxImageList
+    FormatVersion = 1
   end
-  inherited dxBarManager: TdxBarManager [13]
-    DockControlHeights = (
-      0
-      0
-      31
-      0)
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
   end
 end

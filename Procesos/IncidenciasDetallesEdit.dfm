@@ -1,19 +1,23 @@
 inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
   Caption = 'Incidencia Detalle'
-  ClientHeight = 228
-  ClientWidth = 338
-  ExplicitWidth = 344
-  ExplicitHeight = 256
+  ClientHeight = 265
+  ClientWidth = 528
+  ExplicitWidth = 534
+  ExplicitHeight = 294
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 338
-    Height = 187
+    Width = 528
+    Height = 224
     ExplicitWidth = 338
     ExplicitHeight = 187
-    ClientRectBottom = 185
-    ClientRectRight = 336
+    ClientRectBottom = 222
+    ClientRectRight = 526
     inherited tsGeneral: TcxTabSheet
+      ExplicitLeft = 2
+      ExplicitTop = 28
+      ExplicitWidth = 334
+      ExplicitHeight = 157
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -31,17 +35,25 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
       end
       object Label3: TLabel
         Left = 16
-        Top = 96
-        Width = 102
+        Top = 135
+        Width = 36
         Height = 13
-        Caption = 'Estatus de Incidencia'
+        Caption = 'Estatus'
+      end
+      object Label4: TLabel
+        Left = 16
+        Top = 96
+        Width = 38
+        Height = 13
+        Caption = 'Moneda'
+        FocusControl = cxDBLookupComboBox3
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16
         Top = 72
         DataBinding.DataField = 'Importe'
         DataBinding.DataSource = DataSource
-        TabOrder = 0
+        TabOrder = 1
         Width = 121
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
@@ -50,13 +62,22 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
         DataBinding.DataField = 'MovimientoTipo'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
-        TabOrder = 1
-        Width = 300
+        TabOrder = 0
+        Width = 500
       end
       object cxDBLookupComboBox2: TcxDBLookupComboBox
         Left = 16
-        Top = 112
+        Top = 151
         DataBinding.DataField = 'IncidenciaEstatus'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 3
+        Width = 300
+      end
+      object cxDBLookupComboBox3: TcxDBLookupComboBox
+        Left = 16
+        Top = 112
+        DataBinding.DataField = 'Moneda'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
         TabOrder = 2
@@ -65,16 +86,16 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
     end
   end
   inherited pmlMain: TPanel
-    Top = 187
-    Width = 338
+    Top = 224
+    Width = 528
     ExplicitTop = 187
     ExplicitWidth = 338
     inherited btnOk: TButton
-      Left = 175
+      Left = 365
       ExplicitLeft = 175
     end
     inherited btnCancel: TButton
-      Left = 256
+      Left = 446
       ExplicitLeft = 256
     end
   end

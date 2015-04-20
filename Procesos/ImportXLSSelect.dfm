@@ -1,10 +1,10 @@
 object frmImportXLSSelect: TfrmImportXLSSelect
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
+  BorderStyle = bsSizeToolWin
   Caption = 'Seleccionar'
-  ClientHeight = 309
-  ClientWidth = 645
+  ClientHeight = 761
+  ClientWidth = 634
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,30 +18,27 @@ object frmImportXLSSelect: TfrmImportXLSSelect
   object pnlMaster: TPanel
     Left = 0
     Top = 41
-    Width = 645
-    Height = 268
+    Width = 634
+    Height = 720
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 152
-    ExplicitTop = 136
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitWidth = 645
+    ExplicitHeight = 268
   end
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 645
+    Width = 634
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 268
-    ExplicitWidth = 438
+    ExplicitWidth = 645
     DesignSize = (
-      645
+      634
       41)
     object btnOk: TButton
-      Left = 482
+      Left = 471
       Top = 6
       Width = 75
       Height = 25
@@ -50,10 +47,10 @@ object frmImportXLSSelect: TfrmImportXLSSelect
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 275
+      ExplicitLeft = 482
     end
     object btnCancel: TButton
-      Left = 563
+      Left = 552
       Top = 6
       Width = 75
       Height = 25
@@ -62,7 +59,7 @@ object frmImportXLSSelect: TfrmImportXLSSelect
       Caption = 'Cancelar'
       ModalResult = 2
       TabOrder = 1
-      ExplicitLeft = 356
+      ExplicitLeft = 563
     end
     object cxLabel1: TcxLabel
       Left = 16

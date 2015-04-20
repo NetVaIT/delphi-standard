@@ -4,8 +4,8 @@ object _frmProgress: T_frmProgress
   Cursor = crSQLWait
   BorderStyle = bsNone
   Caption = '_frmProgress'
-  ClientHeight = 136
-  ClientWidth = 300
+  ClientHeight = 200
+  ClientWidth = 400
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +17,8 @@ object _frmProgress: T_frmProgress
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = 52
-    Top = 24
+    Left = 60
+    Top = 48
     Width = 48
     Height = 48
     Picture.Data = {
@@ -154,20 +154,25 @@ object _frmProgress: T_frmProgress
     Transparent = True
   end
   object Label1: TLabel
-    Left = 116
-    Top = 24
-    Width = 134
+    Left = 124
+    Top = 48
+    Width = 234
     Height = 26
     Caption = 'Por favor espere mientra se ejecuta el proceso.'
     WordWrap = True
   end
   object cxProgressBar: TcxProgressBar
-    Left = 50
-    Top = 88
-    Properties.BarStyle = cxbsGradient
+    Left = 58
+    Top = 112
+    Properties.BarStyle = cxbsAnimation
+    Properties.BeginColor = 54056
     Properties.Max = 100.000000000000000000
     Properties.PeakValue = 100.000000000000000000
+    Style.LookAndFeel.NativeStyle = True
+    StyleDisabled.LookAndFeel.NativeStyle = True
+    StyleFocused.LookAndFeel.NativeStyle = True
+    StyleHot.LookAndFeel.NativeStyle = True
     TabOrder = 0
-    Width = 200
+    Width = 300
   end
 end

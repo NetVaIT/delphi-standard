@@ -33,12 +33,15 @@ type
     { Private declarations }
     FTotal: Double;
     FPosition: Double;
+    FText: string;
     procedure SetPosition(const Value: Double);
     procedure SetTotal(const Value: Double);
+    procedure SetText(const Value: string);
   public
     { Public declarations }
     property Total: Double read FTotal write SetTotal;
     property Position: Double read FPosition write SetPosition;
+    property Text: string read FText write SetText;
   end;
 
 var
@@ -54,6 +57,18 @@ procedure T_frmProgress.SetPosition(const Value: Double);
 begin
   FPosition := Value;
   cxProgressBar.Position := Value
+end;
+
+procedure T_frmProgress.SetText(const Value: string);
+begin
+  FText := Value;
+  if Value <> EmptyStr then
+  begin
+    cxProgressBar.Properties.ShowTextStyle:= cxtsText;
+    cxProgressBar.Properties.Text := Value;
+  end
+  else
+    cxProgressBar.Properties.ShowTextStyle:= cxtsPercent;
 end;
 
 procedure T_frmProgress.SetTotal(const Value: Double);

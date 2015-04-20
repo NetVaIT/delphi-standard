@@ -69,7 +69,8 @@ procedure SetRegistryStringValue(const vKey, vName, vValue: string);
 procedure SetKeyboardToForm(pForm: TForm);
 procedure VersionInformation(pApplicationName: String; ListInfo: TStringList);
 procedure RefreshADODS(pADODataSet: TCustomADODataSet; ID: TField);
-procedure ShowProgress(pPosition, pTotal: Double);
+procedure ShowProgress(pPosition, pTotal: Double); overload;
+procedure ShowProgress(pPosition, pTotal: Double; pText: string); overload;
 
 implementation
 
@@ -199,14 +200,32 @@ begin
   try
     _frmProgress.Total:= pTotal;
     _frmProgress.Position := pPosition;
+    _frmProgress.Text:= EmptyStr;
     if pPosition <> pTotal
     then _frmProgress.Show
     else _frmProgress.Close;
+    Application.ProcessMessages;
   except
     _frmProgress.Close;
     Raise;
   end;
-
 end;
+
+procedure ShowProgress(pPosition, pTotal: Double; pText: string);
+begin
+  try
+    _frmProgress.Total:= pTotal;
+    _frmProgress.Position := pPosition;
+    _frmProgress.Text:= pText;
+    if pPosition <> pTotal
+    then _frmProgress.Show
+    else _frmProgress.Close;
+    Application.ProcessMessages;
+  except
+    _frmProgress.Close;
+    Raise;
+  end;
+end;
+
 
 end.
