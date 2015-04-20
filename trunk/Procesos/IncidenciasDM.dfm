@@ -57,49 +57,44 @@ inherited dmIncidencias: TdmIncidencias
     end
   end
   object adodsMovimientoTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdMovimientoTipo, Descripcion FROM MovimientosTipos'
     Parameters = <>
-    Left = 312
-    Top = 336
+    Left = 184
+    Top = 216
   end
   object adodsInstruccion: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdInstruccion, Concepto FROM Instrucciones'
     Parameters = <>
-    Left = 72
-    Top = 96
+    Left = 192
+    Top = 24
   end
   object adodsPersona: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPersona, RazonSocial FROM Personas'
     Parameters = <>
-    Left = 72
-    Top = 160
+    Left = 192
+    Top = 88
   end
   object adodsPersonaRelacionada: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPersona, RazonSocial FROM Personas'
     Parameters = <>
-    Left = 72
-    Top = 224
+    Left = 192
+    Top = 152
   end
   object adodsIncidenciaDetalle: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdIncidenciaDetalle, IdIncidencia, IdMovimientoTipo, Impo' +
-      'rte, IdIncidenciaEstatus FROM IncidenciasDetalle WHERE IdInciden' +
-      'cia = :IdIncidencia'
+      'SELECT IdIncidenciaDetalle, IdIncidencia, IdMovimientoTipo, IdMo' +
+      'neda, Importe, IdIncidenciaEstatus FROM IncidenciasDetalle WHERE' +
+      ' IdIncidencia = :IdIncidencia'
     DataSource = dsMaster
     IndexFieldNames = 'IdIncidencia'
     MasterFields = 'IdIncidencia'
@@ -109,11 +104,10 @@ inherited dmIncidencias: TdmIncidencias
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
-        Size = 4
-        Value = Null
+        Value = 61
       end>
-    Left = 312
-    Top = 280
+    Left = 48
+    Top = 216
     object adodsIncidenciaDetalleIdIncidenciaDetalle: TAutoIncField
       FieldName = 'IdIncidenciaDetalle'
       ReadOnly = True
@@ -127,11 +121,17 @@ inherited dmIncidencias: TdmIncidencias
       FieldName = 'IdMovimientoTipo'
       Visible = False
     end
+    object adodsIncidenciaDetalleIdMoneda: TIntegerField
+      FieldName = 'IdMoneda'
+      Required = True
+      Visible = False
+    end
     object adodsIncidenciaDetalleIdIncidenciaEstatus: TIntegerField
       FieldName = 'IdIncidenciaEstatus'
       Visible = False
     end
     object adodsIncidenciaDetalleMovimientoTipo: TStringField
+      DisplayLabel = 'Tipo de Movimiento'
       FieldKind = fkLookup
       FieldName = 'MovimientoTipo'
       LookupDataSet = adodsMovimientoTipo
@@ -146,7 +146,18 @@ inherited dmIncidencias: TdmIncidencias
       Precision = 18
       Size = 6
     end
+    object adodsIncidenciaDetalleMoneda: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Moneda'
+      LookupDataSet = adodsMoneda
+      LookupKeyFields = 'IdMoneda'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMoneda'
+      Size = 80
+      Lookup = True
+    end
     object adodsIncidenciaDetalleIncidenciaEstatus: TStringField
+      DisplayLabel = 'Estatus'
       FieldKind = fkLookup
       FieldName = 'IncidenciaEstatus'
       LookupDataSet = adodsIncidenciaEstatus
@@ -158,17 +169,24 @@ inherited dmIncidencias: TdmIncidencias
     end
   end
   object adodsIncidenciaEstatus: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdIncidenciaEstatus, Descripcion FROM IncidenciasEstatus'
     Parameters = <>
-    Left = 312
-    Top = 392
+    Left = 184
+    Top = 272
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
-    Left = 144
-    Top = 24
+    Left = 120
+    Top = 16
+  end
+  object adodsMoneda: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMoneda, Descripcion from Monedas'
+    Parameters = <>
+    Left = 184
+    Top = 336
   end
 end

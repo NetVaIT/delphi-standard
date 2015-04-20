@@ -37,8 +37,8 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
     CursorType = ctStatic
     CommandText = 
       'select IdInstruccionTipoDetalle, IdInstruccionTipo, IdMovimiento' +
-      'Tipo, Valor from InstruccionesTiposDetalle'#13#10'where IdInstruccionT' +
-      'ipo = :IdInstruccionTipo'
+      'Tipo, IdMoneda, Valor from InstruccionesTiposDetalle'#13#10'where IdIn' +
+      'struccionTipo = :IdInstruccionTipo'
     DataSource = dtMaster
     MasterFields = 'IdInstruccionTipo'
     Parameters = <
@@ -47,6 +47,7 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
+        Size = 4
         Value = 1
       end>
     Left = 32
@@ -81,13 +82,37 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
       Required = True
       Size = 255
     end
+    object adodsInstruccionesTiposDetalleIdMoneda: TIntegerField
+      FieldName = 'IdMoneda'
+      Required = True
+      Visible = False
+    end
+    object adodsInstruccionesTiposDetalleMoneda: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Moneda'
+      LookupDataSet = adodsMoneda
+      LookupKeyFields = 'IdMoneda'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMoneda'
+      Size = 80
+      Lookup = True
+    end
   end
   object adodsMovimientosTipos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
     Left = 176
     Top = 88
+  end
+  object adodsMoneda: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMoneda, Descripcion from Monedas'
+    Parameters = <>
+    Left = 176
+    Top = 152
   end
 end

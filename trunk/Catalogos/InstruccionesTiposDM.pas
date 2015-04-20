@@ -20,6 +20,9 @@ type
     adodsInstruccionesTiposDetalleValor: TStringField;
     adodsMovimientosTipos: TADODataSet;
     adodsInstruccionesTiposDetalleMovimientoTipo: TStringField;
+    adodsMoneda: TADODataSet;
+    adodsInstruccionesTiposDetalleIdMoneda: TIntegerField;
+    adodsInstruccionesTiposDetalleMoneda: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

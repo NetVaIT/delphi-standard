@@ -21,7 +21,13 @@ uses
   dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, dxPSGlbl, dxPSUtl,
+  dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxPSCompsProvider,
+  dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore, dxPSPDFExport,
+  cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
+  dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
+  dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxRibbonPainter,
+  dxPSCore, dxPScxCommon, Vcl.StdCtrls;
 
 type
   TfrmIncidenciasDetalles = class(T_frmGrid)
@@ -32,6 +38,8 @@ type
     tvMasterMovimientoTipo: TcxGridDBColumn;
     tvMasterImporte: TcxGridDBColumn;
     tvMasterIncidenciaEstatus: TcxGridDBColumn;
+    tvMasterIdMoneda: TcxGridDBColumn;
+    tvMasterMoneda: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

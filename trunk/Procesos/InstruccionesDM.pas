@@ -14,10 +14,6 @@ type
     adodsMasterIdDocumentoAdjunto: TIntegerField;
     adodsMasterConcepto: TStringField;
     adodsMasterFecha: TDateTimeField;
-    adodsMasterContadorDesde: TIntegerField;
-    adodsMasterContadorHasta: TIntegerField;
-    adodsMasterFechaInicio: TDateTimeField;
-    adodsMasterFechaFin: TDateTimeField;
     adodsInstruccionesTipos: TADODataSet;
     adodsMasterIntruccionTipo: TStringField;
     actProcessXLS: TAction;
@@ -25,10 +21,19 @@ type
     adodsDocumentosAdjuntos: TADODataSet;
     adodsMasterNombreArchivo: TStringField;
     adodsMasterIdPeriodoTipo: TIntegerField;
+    adodsMasterRepetir: TBooleanField;
+    adodsMasterRepetirDia: TIntegerField;
+    adodsMasterRepetirInicio: TDateTimeField;
+    adodsMasterRepetirFinaliza: TIntegerField;
+    adodsMasterRepetirFin: TDateTimeField;
+    adodsMasterRepetirHasta: TIntegerField;
+    adodsPeriodosTipo: TADODataSet;
+    adodsMasterPeriodoTipo: TStringField;
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcessXLSExecute(Sender: TObject);
     procedure actUpdateFileExecute(Sender: TObject);
+    procedure adodsMasterRepetirChange(Sender: TField);
   private
     { Private declarations }
   public
@@ -86,6 +91,17 @@ procedure TdmInstrucciones.adodsMasterNewRecord(DataSet: TDataSet);
 begin
   inherited;
   adodsMasterIdPersonaSolicita.Value:= 1;
+end;
+
+procedure TdmInstrucciones.adodsMasterRepetirChange(Sender: TField);
+begin
+  inherited;
+  adodsMasterPeriodoTipo.Clear;
+  adodsMasterRepetirDia.Clear;
+  adodsMasterRepetirInicio.Clear;
+  adodsMasterRepetirFinaliza.Clear;
+  adodsMasterRepetirHasta.Clear;
+  adodsMasterRepetirFin.Clear;
 end;
 
 procedure TdmInstrucciones.DataModuleCreate(Sender: TObject);

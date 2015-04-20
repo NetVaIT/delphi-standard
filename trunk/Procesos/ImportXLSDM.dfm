@@ -65,6 +65,9 @@ inherited dmImportXLS: TdmImportXLS
     object dxmdImportarIdMovimientoTipo: TIntegerField
       FieldName = 'IdMovimientoTipo'
     end
+    object dxmdImportarIdMoneda: TIntegerField
+      FieldName = 'IdMoneda'
+    end
     object dxmdImportarNombre: TStringField
       DisplayWidth = 50
       FieldName = 'Nombre'
@@ -110,8 +113,9 @@ inherited dmImportXLS: TdmImportXLS
       
         'SELECT InstruccionesTiposDetalle.IdInstruccionTipoDetalle, Instr' +
         'uccionesTiposDetalle.IdMovimientoTipo, InstruccionesTipos.Nombre' +
-        ', InstruccionesTiposDetalle.Valor'
-      'FROM InstruccionesTiposDetalle '
+        ', InstruccionesTiposDetalle.Valor, InstruccionesTiposDetalle.IdM' +
+        'oneda'
+      'FROM InstruccionesTiposDetalle'
       
         'INNER JOIN InstruccionesTipos ON InstruccionesTiposDetalle.IdIns' +
         'truccionTipo = InstruccionesTipos.IdInstruccionTipo'
@@ -134,6 +138,9 @@ inherited dmImportXLS: TdmImportXLS
     object adoqInstrucionesTiposValor: TStringField
       FieldName = 'Valor'
       Size = 255
+    end
+    object adoqInstrucionesTiposIdMoneda: TIntegerField
+      FieldName = 'IdMoneda'
     end
   end
   object adocSetIncidencias: TADOCommand
@@ -197,16 +204,17 @@ inherited dmImportXLS: TdmImportXLS
   object adocSetIncidenciasDetalle: TADOCommand
     CommandText = 
       'DECLARE @IdIncidencia int;'#13#10'DECLARE @IdMovimientoTipo int;'#13#10'DECL' +
-      'ARE @Importe decimal(18,6);'#13#10'SET @IdIncidencia = :IdIncidencia;'#13 +
-      #10'SET @IdMovimientoTipo = :IdMovimientoTipo;'#13#10'SET @Importe = :Imp' +
-      'orte;'#13#10'IF NOT EXISTS (SELECT * FROM IncidenciasDetalle WHERE IdI' +
-      'ncidencia = @IdIncidencia AND IdMovimientoTipo = @IdMovimientoTi' +
-      'po) '#13#10'BEGIN'#13#10'  INSERT INTO IncidenciasDetalle (IdIncidencia, IdM' +
-      'ovimientoTipo, Importe, IdIncidenciaEstatus) VALUES (@IdIncidenc' +
-      'ia, @IdMovimientoTipo, @Importe, 1);'#13#10'END'#13#10'ELSE'#13#10'BEGIN'#13#10'  UPDATE' +
-      ' IncidenciasDetalle SET Importe = @Importe, IdIncidenciaEstatus ' +
-      '= 1 WHERE IdIncidencia = @IdIncidencia AND IdMovimientoTipo = @I' +
-      'dMovimientoTipo;'#13#10'END;'#13#10
+      'ARE @IdMoneda int;'#13#10'DECLARE @Importe decimal(18,6);'#13#10'SET @IdInci' +
+      'dencia = :IdIncidencia;'#13#10'SET @IdMovimientoTipo = :IdMovimientoTi' +
+      'po;'#13#10'SET @IdMoneda = :IdMoneda ;'#13#10'SET @Importe = :Importe;'#13#10'IF N' +
+      'OT EXISTS (SELECT * FROM IncidenciasDetalle WHERE IdIncidencia =' +
+      ' @IdIncidencia AND IdMovimientoTipo = @IdMovimientoTipo) '#13#10'BEGIN' +
+      #13#10'  INSERT INTO IncidenciasDetalle (IdIncidencia, IdMovimientoTi' +
+      'po, IdMoneda, Importe, IdIncidenciaEstatus) VALUES (@IdIncidenci' +
+      'a, @IdMovimientoTipo, @IdMoneda, @Importe, 1);'#13#10'END'#13#10'ELSE'#13#10'BEGIN' +
+      #13#10'  UPDATE IncidenciasDetalle SET IdMoneda = @IdMoneda, Importe ' +
+      '= @Importe, IdIncidenciaEstatus = 1 WHERE IdIncidencia = @IdInci' +
+      'dencia AND IdMovimientoTipo = @IdMovimientoTipo;'#13#10'END;'#13#10
     Connection = _dmConection.ADOConnection
     Parameters = <
       item
@@ -217,6 +225,12 @@ inherited dmImportXLS: TdmImportXLS
       end
       item
         Name = 'IdMovimientoTipo'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'IdMoneda'
         DataType = ftInteger
         Size = -1
         Value = Null
@@ -257,6 +271,7 @@ inherited dmImportXLS: TdmImportXLS
     FieldFormats = <>
     ErrorLogFileName = 'error.log'
     AddType = qatInsert
+    OnImportRecord = QImport3XlsxImportRecord
     OnBeforePost = QImport3XlsxBeforePost
     Left = 64
     Top = 160

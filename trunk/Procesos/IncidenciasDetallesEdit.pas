@@ -29,6 +29,8 @@ type
     Label3: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
+    Label4: TLabel;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
   private
     { Private declarations }
   public

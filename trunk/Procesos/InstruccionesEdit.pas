@@ -19,7 +19,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxSpinEdit, cxDBEdit, cxMaskEdit, cxDropDownEdit,
-  cxCalendar, Vcl.DBCtrls, cxTextEdit, Vcl.Buttons, cxLabel, cxDBLabel;
+  cxCalendar, Vcl.DBCtrls, cxTextEdit, Vcl.Buttons, cxLabel, cxDBLabel,
+  cxCheckBox, cxGroupBox, cxRadioGroup;
 
 type
   TfrmInstruccionesEdit = class(T_frmEdit)
@@ -29,17 +30,18 @@ type
     DBLookupComboBox1: TDBLookupComboBox;
     Label3: TLabel;
     cxDBDateEdit1: TcxDBDateEdit;
-    Label4: TLabel;
-    cxDBSpinEdit1: TcxDBSpinEdit;
-    Label5: TLabel;
-    cxDBSpinEdit2: TcxDBSpinEdit;
-    Label6: TLabel;
-    cxDBDateEdit2: TcxDBDateEdit;
-    Label7: TLabel;
-    cxDBDateEdit3: TcxDBDateEdit;
     Label8: TLabel;
     cxDBLabel1: TcxDBLabel;
     btnUpdateFile: TSpeedButton;
+    cxDBCheckBox1: TcxDBCheckBox;
+    Label4: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
+    cxDBRadioGroup1: TcxDBRadioGroup;
+    Label5: TLabel;
+    cxDBDateEdit2: TcxDBDateEdit;
+    cxDBRadioGroup2: TcxDBRadioGroup;
+    cxDBSpinEdit1: TcxDBSpinEdit;
+    cxDBDateEdit3: TcxDBDateEdit;
   private
     FUpdateFile: TBasicAction;
     procedure SetUpdateFile(const Value: TBasicAction);

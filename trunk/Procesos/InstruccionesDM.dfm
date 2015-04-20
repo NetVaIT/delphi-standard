@@ -5,8 +5,9 @@ inherited dmInstrucciones: TdmInstrucciones
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'select IdInstruccion, IdInstruccionTipo, IdPersonaSolicita, IdDo' +
-      'cumentoAdjunto, IdPeriodoTipo, Concepto, Fecha, ContadorDesde, C' +
-      'ontadorHasta, FechaInicio, FechaFin from Instrucciones'
+      'cumentoAdjunto, Concepto, Fecha, Repetir, IdPeriodoTipo, Repetir' +
+      'Dia, RepetirInicio, RepetirFinaliza, RepetirFin, RepetirHasta fr' +
+      'om Instrucciones'
     object adodsMasterIdInstruccion: TAutoIncField
       FieldName = 'IdInstruccion'
       ReadOnly = True
@@ -61,26 +62,47 @@ inherited dmInstrucciones: TdmInstrucciones
       FieldName = 'Fecha'
       Required = True
     end
-    object adodsMasterContadorDesde: TIntegerField
-      DisplayLabel = 'Contador desde'
-      FieldName = 'ContadorDesde'
+    object adodsMasterRepetir: TBooleanField
+      FieldName = 'Repetir'
+      Required = True
+      OnChange = adodsMasterRepetirChange
     end
-    object adodsMasterContadorHasta: TIntegerField
-      DisplayLabel = 'Contador hasta'
-      FieldName = 'ContadorHasta'
+    object adodsMasterPeriodoTipo: TStringField
+      DisplayLabel = 'Se repite cada'
+      FieldKind = fkLookup
+      FieldName = 'PeriodoTipo'
+      LookupDataSet = adodsPeriodosTipo
+      LookupKeyFields = 'IdPeriodoTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdPeriodoTipo'
+      Size = 50
+      Lookup = True
     end
-    object adodsMasterFechaInicio: TDateTimeField
-      DisplayLabel = 'Inicio'
-      FieldName = 'FechaInicio'
+    object adodsMasterRepetirDia: TIntegerField
+      DisplayLabel = 'Repetir el'
+      FieldName = 'RepetirDia'
     end
-    object adodsMasterFechaFin: TDateTimeField
-      DisplayLabel = 'Fin'
-      FieldName = 'FechaFin'
+    object adodsMasterRepetirInicio: TDateTimeField
+      DisplayLabel = 'Empieza el'
+      FieldName = 'RepetirInicio'
+    end
+    object adodsMasterRepetirFinaliza: TIntegerField
+      DisplayLabel = 'Finaliza'
+      FieldName = 'RepetirFinaliza'
+    end
+    object adodsMasterRepetirHasta: TIntegerField
+      DisplayLabel = 'Finaliza despu'#233's de'
+      FieldName = 'RepetirHasta'
+    end
+    object adodsMasterRepetirFin: TDateTimeField
+      DisplayLabel = 'Finaliza el'
+      FieldName = 'RepetirFin'
     end
   end
   inherited ActionList: TActionList
     object actProcessXLS: TAction
-      Caption = 'Procesar XLS'
+      Caption = 'Genera incidencias'
+      Hint = 'Genera incidencias'
       ImageIndex = 13
       OnExecute = actProcessXLSExecute
     end
@@ -107,5 +129,15 @@ inherited dmInstrucciones: TdmInstrucciones
     Parameters = <>
     Left = 104
     Top = 120
+  end
+  object adodsPeriodosTipo: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'select IdPeriodoTipo, Descripcion from PeriodosTipos'#13#10'WHERE Iden' +
+      'tificador IN ('#39'S'#39','#39'M'#39')'
+    Parameters = <>
+    Left = 104
+    Top = 184
   end
 end
