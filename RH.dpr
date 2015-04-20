@@ -120,8 +120,20 @@ uses
   InstruccionesTiposDM in 'Catalogos\InstruccionesTiposDM.pas' {dmInstruccionesTipos: TDataModule},
   InstruccionesTiposEdit in 'Catalogos\InstruccionesTiposEdit.pas' {frmInstruccionesTiposEdit},
   InstruccionesTiposForm in 'Catalogos\InstruccionesTiposForm.pas' {frmInstruccionesTipos},
-  InstruccionesTiposDetalleForm in 'Catalogos\InstruccionesTiposDetalleForm.pas' {frmInstruccionesTiposDetalle},
-  InstruccionesTiposDetalleEdit in 'Catalogos\InstruccionesTiposDetalleEdit.pas' {frmInstruccionesTiposDetalleEdit};
+  IntruccionesTiposDetalleEdit in 'Catalogos\IntruccionesTiposDetalleEdit.pas' {frmIntruccionesTiposDetalleEdit},
+  IntruccionesTiposDetalleForm in 'Catalogos\IntruccionesTiposDetalleForm.pas' {frmIntruccionesTiposDetalle},
+  PeriodosDM in 'Catalogos\PeriodosDM.pas' {dmPeriodos: TDataModule},
+  PeriodosEdit in 'Catalogos\PeriodosEdit.pas' {frmPeriodosEdit},
+  PeriodosForm in 'Catalogos\PeriodosForm.pas' {frmPeriodos},
+  PeriodosCalculo in 'Catalogos\PeriodosCalculo.pas' {frmPeriodosCalculo},
+  CuentasBancariasEdit in 'Catalogos\CuentasBancariasEdit.pas' {frmCuentasBancariasEdit},
+  CuentasBancariasDM in 'Catalogos\CuentasBancariasDM.pas' {dmCuentasBancarias: TDataModule},
+  CuentasBancariasForm in 'Catalogos\CuentasBancariasForm.pas' {frmCuentasBancarias},
+  UsuariosXCuentaBancariaForm in 'Catalogos\UsuariosXCuentaBancariaForm.pas' {frmUsuariosXCuentaBancaria},
+  UsuariosXCuentaBancariaEdit in 'Catalogos\UsuariosXCuentaBancariaEdit.pas' {frmUsuariosXCuentaBancariaEdit},
+  ClientesDM in 'Catalogos\ClientesDM.pas' {dmClientes: TDataModule},
+  ClientesEdit in 'Catalogos\ClientesEdit.pas' {frmClientesEdit},
+  ClientesForm in 'Catalogos\ClientesForm.pas' {frmClientes};
 
 {$R *.res}
 
@@ -147,6 +159,7 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
+  Application.CreateForm(TfrmPeriodosCalculo, frmPeriodosCalculo);
   Application.Run;
   end;
 end.

@@ -22,7 +22,12 @@ uses
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, PersonasDM,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev,
+  dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore,
+  dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
+  dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
+  dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxRibbonPainter,
+  dxPSCore, dxPScxCommon;
 
 type
   TfrmPersonas = class(T_frmGrid)
@@ -77,10 +82,8 @@ begin
     rCliente: Self.Caption      := 'Clientes';
     rProveedor: Self.Caption    := 'Proveedores';
     rEmpleado: Self.Caption     := 'Empleados';
-    rEjecutivo: Self.Caption    := 'Ejecutivos';
     rSocio: Self.Caption        := 'Socios';
-    rAsociado:Self.Caption      := 'Asociados';
-    rAccionista: Self.Caption   := 'Accionistas';
+    rComisionista:Self.Caption  := 'Comisionistas';
   end;
 end;
 

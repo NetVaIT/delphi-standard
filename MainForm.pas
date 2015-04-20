@@ -81,12 +81,12 @@ type
     dxBarLargeButton18: TdxBarLargeButton;
     dxBarLargeButton19: TdxBarLargeButton;
     dxBarLargeButton20: TdxBarLargeButton;
-    actEjecutivos: TAction;
+    actComisionistas: TAction;
     actSocios: TAction;
-    actAsociados: TAction;
-    actAccionistas: TAction;
     dxBarButton8: TdxBarButton;
     actIntruccionesTipos: TAction;
+    actPeriodos: TAction;
+    dxBarLargeButton21: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -109,7 +109,7 @@ implementation
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
-  IncidenciasDM, InstruccionesTiposDM;
+  IncidenciasDM, InstruccionesTiposDM, PeriodosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -127,6 +127,7 @@ begin
     2: gModulo := TdmBancos.Create(Self);
     3: gModulo := TdmMonedas.Create(Self);
     4: gModulo := TdmPlazasTurnos.Create(Self);
+    5: gModulo := TdmPeriodos.Create(Self);
     6: gModulo := TdmFormulas.Create(Self);
     7: gModulo := TdmReglasNegocio.Create(Self);
     8: gModulo := TdmPuestos.Create(Self);
@@ -162,19 +163,11 @@ begin
        end;
    26: begin
         gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rEjecutivo;
+        TdmPersona(gModulo).Rol := rComisionista;
        end;
    27: begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rSocio;
-       end;
-   28: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rAsociado;
-       end;
-   29: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rAccionista;
        end;
    30: gModulo := TdmInstrucciones.Create(Self);
    31: gModulo := TdmIncidencias.Create(Self);
@@ -208,10 +201,8 @@ begin
   actProveedores.Enabled      := Conected;
   actDuenoProceso.Enabled     := Conected;
   actOutsourcing.Enabled      := Conected;
-  actEjecutivos.Enabled       := Conected;
+  actComisionistas.Enabled    := Conected;
   actSocios.Enabled           := Conected;
-  actAsociados.Enabled        := Conected;
-  actAccionistas.Enabled      := Conected;
   actInstrucciones.Enabled    := Conected;
   actIncidencias.Enabled      := Conected;
 end;

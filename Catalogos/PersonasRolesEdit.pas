@@ -19,7 +19,7 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM, CuentasBancariasDM;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -35,11 +35,15 @@ type
     tsCuentas: TcxTabSheet;
     tsEsquemaPago: TcxTabSheet;
     tsContactoEmergencia: TcxTabSheet;
+    tsCuentasBancarias: TcxTabSheet;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
     FRol: TPRol;
+    dmCuentasBancarias: TdmCuentasBancarias;
     procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
@@ -54,6 +58,18 @@ procedure TfrmPersonaRolesEdit.actPostExecute(Sender: TObject);
 begin
   DataSet.FieldByName('IdRolEsquemaPago').Value := 0;
   inherited;
+end;
+
+procedure TfrmPersonaRolesEdit.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dmCuentasBancarias := TdmCuentasBancarias.Create(nil);
+end;
+
+procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmCuentasBancarias);
 end;
 
 procedure TfrmPersonaRolesEdit.FormShow(Sender: TObject);
@@ -75,7 +91,7 @@ begin
         tsContactoEmergencia.TabVisible := False;
        end;
     5: begin
-        tsKardex.TabVisible             := True;
+       // tsKardex.TabVisible             := True;
         tsEsquemaPago.TabVisible        := True;
         tsContactoEmergencia.TabVisible := True;
         tsCuentas.TabVisible := False;
@@ -105,6 +121,9 @@ begin
         tsContactoEmergencia.TabVisible := False;
        end;
   end;
+  dmCuentasBancarias.MasterSource := DataSource;
+  dmCuentasBancarias.MasterFields:= 'IdPersona';
+  dmCuentasBancarias.ShowModule(tsCuentasBancarias,'');
 end;
 
 procedure TfrmPersonaRolesEdit.SetRol(const Value: TPRol);

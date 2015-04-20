@@ -495,12 +495,63 @@
             <Form>frmInstruccionesTipos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\InstruccionesTiposDetalleForm.pas">
-            <Form>frmInstruccionesTiposDetalle</Form>
+        <DCCReference Include="Catalogos\IntruccionesTiposDetalleEdit.pas">
+            <Form>frmIntruccionesTiposDetalleEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\InstruccionesTiposDetalleEdit.pas">
-            <Form>frmInstruccionesTiposDetalleEdit</Form>
+        <DCCReference Include="Catalogos\IntruccionesTiposDetalleForm.pas">
+            <Form>frmIntruccionesTiposDetalle</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PeriodosDM.pas">
+            <Form>dmPeriodos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PeriodosEdit.pas">
+            <Form>frmPeriodosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PeriodosForm.pas">
+            <Form>frmPeriodos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PeriodosCalculo.pas">
+            <Form>frmPeriodosCalculo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasBancariasEdit.pas">
+            <Form>frmCuentasBancariasEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasBancariasDM.pas">
+            <Form>dmCuentasBancarias</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasBancariasForm.pas">
+            <Form>frmCuentasBancarias</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UsuariosXCuentaBancariaForm.pas">
+            <Form>frmUsuariosXCuentaBancaria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UsuariosXCuentaBancariaEdit.pas">
+            <Form>frmUsuariosXCuentaBancariaEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ClientesDM.pas">
+            <Form>dmClientes</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ClientesEdit.pas">
+            <Form>frmClientesEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ClientesForm.pas">
+            <Form>frmClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -570,6 +621,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

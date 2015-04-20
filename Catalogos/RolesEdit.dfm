@@ -3,7 +3,7 @@ inherited frmRolesEdit: TfrmRolesEdit
   ClientHeight = 277
   ClientWidth = 560
   ExplicitWidth = 566
-  ExplicitHeight = 306
+  ExplicitHeight = 305
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
