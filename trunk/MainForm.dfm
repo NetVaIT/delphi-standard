@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -78,7 +78,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 674
       FloatTop = 8
       FloatClientWidth = 134
-      FloatClientHeight = 162
+      FloatClientHeight = 216
       ItemLinks = <
         item
           Visible = True
@@ -99,6 +99,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton10'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton21'
         end>
       OneOnRow = False
       Row = 0
@@ -109,7 +113,7 @@ inherited frmMain: TfrmMain
     object dxbOrganizacion: TdxBar [3]
       Caption = 'Organizacion'
       CaptionButtons = <>
-      DockedLeft = 267
+      DockedLeft = 332
       DockedTop = 0
       FloatLeft = 759
       FloatTop = 8
@@ -141,12 +145,12 @@ inherited frmMain: TfrmMain
     object dxbPresonas: TdxBar [4]
       Caption = 'Personas'
       CaptionButtons = <>
-      DockedLeft = 640
+      DockedLeft = 705
       DockedTop = 0
       FloatLeft = 764
       FloatTop = 8
       FloatClientWidth = 112
-      FloatClientHeight = 540
+      FloatClientHeight = 432
       ItemLinks = <
         item
           Visible = True
@@ -179,14 +183,6 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton18'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton19'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton20'
         end>
       OneOnRow = False
       Row = 0
@@ -197,12 +193,12 @@ inherited frmMain: TfrmMain
     object dxbEsquemas: TdxBar [5]
       Caption = 'Esquemas'
       CaptionButtons = <>
-      DockedLeft = 448
+      DockedLeft = 513
       DockedTop = 0
       FloatLeft = 1038
       FloatTop = 8
       FloatClientWidth = 90
-      FloatClientHeight = 54
+      FloatClientHeight = 76
       ItemLinks = <
         item
           Visible = True
@@ -353,7 +349,7 @@ inherited frmMain: TfrmMain
       OnClick = actCatalogoExecute
     end
     object dxBarLargeButton17: TdxBarLargeButton
-      Action = actEjecutivos
+      Action = actComisionistas
       Category = 0
     end
     object dxBarLargeButton18: TdxBarLargeButton
@@ -361,15 +357,25 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton19: TdxBarLargeButton
-      Action = actAsociados
+      Caption = 'Asociados'
       Category = 0
+      Visible = ivAlways
+      LargeImageIndex = 18
+      OnClick = actCatalogoExecute
     end
     object dxBarLargeButton20: TdxBarLargeButton
-      Action = actAccionistas
+      Caption = 'Accionistas'
       Category = 0
+      Visible = ivAlways
+      LargeImageIndex = 34
+      OnClick = actCatalogoExecute
     end
     object dxBarButton8: TdxBarButton
       Action = actIntruccionesTipos
+      Category = 0
+    end
+    object dxBarLargeButton21: TdxBarLargeButton
+      Action = actPeriodos
       Category = 0
     end
   end
@@ -541,10 +547,10 @@ inherited frmMain: TfrmMain
       ImageIndex = 9
       OnExecute = actCatalogoExecute
     end
-    object actEjecutivos: TAction
+    object actComisionistas: TAction
       Tag = 26
       Category = 'Catalogos'
-      Caption = 'Ejecutivos'
+      Caption = 'Comisionistas'
       ImageIndex = 43
       OnExecute = actCatalogoExecute
     end
@@ -555,18 +561,11 @@ inherited frmMain: TfrmMain
       ImageIndex = 33
       OnExecute = actCatalogoExecute
     end
-    object actAsociados: TAction
-      Tag = 28
+    object actPeriodos: TAction
+      Tag = 5
       Category = 'Catalogos'
-      Caption = 'Asociados'
-      ImageIndex = 18
-      OnExecute = actCatalogoExecute
-    end
-    object actAccionistas: TAction
-      Tag = 29
-      Category = 'Catalogos'
-      Caption = 'Accionistas'
-      ImageIndex = 34
+      Caption = 'Periodos'
+      ImageIndex = 41
       OnExecute = actCatalogoExecute
     end
   end

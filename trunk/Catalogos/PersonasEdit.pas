@@ -146,16 +146,14 @@ begin
   dmEmails.MasterFields:= 'IdPersona';
   dmEmails.ShowModule(tsCorreo,'');
   case Rol of
-    rNone: Self.Caption         := 'Persona';
+    rNone:         Self.Caption := 'Persona';
     rDuenoProceso: Self.Caption := 'Dueño de Proceso';
-    rOutSourcing: Self.Caption  := 'Outsourcing';
-    rCliente: Self.Caption      := 'Cliente';
-    rProveedor: Self.Caption    := 'Proveedor';
-    rEmpleado: Self.Caption     := 'Empleado';
-    rEjecutivo: Self.Caption    := 'Ejecutivo';
-    rSocio: Self.Caption        := 'Socio';
-    rAsociado:Self.Caption      := 'Asociado';
-    rAccionista: Self.Caption   := 'Accionista';
+    rOutSourcing:  Self.Caption := 'Outsourcing';
+    rCliente:      Self.Caption := 'Cliente';
+    rProveedor:    Self.Caption := 'Proveedor';
+    rEmpleado:     Self.Caption := 'Empleado';
+    rSocio:        Self.Caption := 'Socio';
+    rComisionista: Self.Caption := 'Comisionista';
   end;
 end;
 
@@ -184,9 +182,8 @@ begin
   end;
   if DataSource.DataSet.State in [dsInsert] then
   begin
-    if (Rol = rEmpleado) or (Rol = rEjecutivo) or
-       (Rol = rSocio) or (Rol = rAsociado) or
-       (Rol = rEjecutivo) then
+    if (Rol = rEmpleado) or (Rol = rComisionista) or
+       (Rol = rSocio) then
     begin
       cmbTipoPersona.Enabled := False;
       cmbTipoPersona.EditValue := 1;

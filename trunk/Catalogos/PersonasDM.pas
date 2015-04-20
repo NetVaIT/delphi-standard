@@ -8,7 +8,7 @@ uses
 
 type
   TPRol = (rNone, rDuenoProceso, rOutSourcing, rCliente, rProveedor, rEmpleado,
-           rEjecutivo, rSocio, rAsociado, rAccionista);
+           rSocio, rAutoridad, rComisionista);
   TdmPersona = class(T_dmStandar)
     ADODataSet1: TADODataSet;
     adodsMasterIdPersona: TAutoIncField;
@@ -87,7 +87,8 @@ begin
                'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' +  #10#13 +
                'Personas.FechaNacimiento, PersonasRoles.IdRol, PersonasRoles.IdPersona ' +  #10#13 +
                'FROM Personas ' +  #10#13 +
-               'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
+               'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ' + #10#13 +
+               'INNER JOIN Roles ON PersonasRoles.IdRol = Roles.IdRol ';
   ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
                 'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
                 'FROM Personas ' + #10#13 +
@@ -105,41 +106,33 @@ begin
                           'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
            end;
     rDuenoProceso: begin
-                     ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 1)';
+                     ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 1)';
                      ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 0)';
                    end;
     rOutSourcing: begin
-                    ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                    ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 2)';
                     ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 1)';
                   end;
     rCliente: begin
-                ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 3)';
+                ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 3)';
                 ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';//(PersonasRoles.IdRol <> 5 AND PersonasRoles.IdRol <> 0)'
               end;
     rProveedor: begin
-                  ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 4)';
+                  ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 4)';
                   ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
                 end;
     rEmpleado: begin
-                 ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 5)';
+                 ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 5)';
                  ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
                end;
-    rEjecutivo: begin
-                  ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 6)';
-                  ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
-                end;
     rSocio: begin
-              ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 7)';
+              ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 6)';
               ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
             end;
-    rAsociado: begin
-                 ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 8)';
-                 ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
-               end;
-    rAccionista: begin
-                   ConsultaP := ConsultaP + #10#13 + 'WHERE (PersonasRoles.IdRol = 9)';
-                   ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
-                 end;
+    rComisionista: begin
+                     ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 8)';
+                     ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                   end;
   end;
   adodsMaster.CommandText := ConsultaP;
   adodsPersonaRelacionada.CommandText := ConsultaPR;
@@ -148,10 +141,10 @@ end;
 procedure TdmPersona.DataModuleCreate(Sender: TObject);
 begin
 //  inherited;
-  gGridForm:= TfrmPersonas.Create(Self);
-  gGridForm.DataSet:= adodsMaster;
-  gFormDeatil1:= TfrmPersonasRoles.Create(Self);
-  gFormDeatil1.DataSet:= adodsPersonaRoles;
+  gGridForm := TfrmPersonas.Create(Self);
+  gGridForm.DataSet := adodsMaster;
+  gFormDeatil1 := TfrmPersonasRoles.Create(Self);
+  gFormDeatil1.DataSet := adodsPersonaRoles;
 end;
 
 procedure TdmPersona.SetRol(const Value: TPRol);
