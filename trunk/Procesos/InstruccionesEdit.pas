@@ -20,32 +20,42 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxSpinEdit, cxDBEdit, cxMaskEdit, cxDropDownEdit,
   cxCalendar, Vcl.DBCtrls, cxTextEdit, Vcl.Buttons, cxLabel, cxDBLabel,
-  cxCheckBox, cxGroupBox, cxRadioGroup;
+  cxCheckBox, cxGroupBox, cxRadioGroup, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
   TfrmInstruccionesEdit = class(T_frmEdit)
     Label1: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
     Label3: TLabel;
     cxDBDateEdit1: TcxDBDateEdit;
     Label8: TLabel;
     cxDBLabel1: TcxDBLabel;
     btnUpdateFile: TSpeedButton;
-    cxDBCheckBox1: TcxDBCheckBox;
+    cbRepetir: TcxDBCheckBox;
     Label4: TLabel;
-    DBLookupComboBox2: TDBLookupComboBox;
-    cxDBRadioGroup1: TcxDBRadioGroup;
+    rgRepetirDia: TcxDBRadioGroup;
     Label5: TLabel;
-    cxDBDateEdit2: TcxDBDateEdit;
-    cxDBRadioGroup2: TcxDBRadioGroup;
+    deRepetirInicio: TcxDBDateEdit;
+    rgFinaliza: TcxDBRadioGroup;
+    edtRepetirHasta: TcxDBSpinEdit;
+    edtRepetirFin: TcxDBDateEdit;
+    Label6: TLabel;
     cxDBSpinEdit1: TcxDBSpinEdit;
-    cxDBDateEdit3: TcxDBDateEdit;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    lcbPeriodoTipo: TcxDBLookupComboBox;
+    procedure rgFinalizaClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure cbRepetirClick(Sender: TObject);
+    procedure lcbPeriodoTipoClick(Sender: TObject);
   private
+    { Private declarations }
     FUpdateFile: TBasicAction;
     procedure SetUpdateFile(const Value: TBasicAction);
-    { Private declarations }
+    procedure SetFinaliza;
+    procedure SetRepetir;
+    procedure SetPeriodoTipo;
   public
     { Public declarations }
     property UpdateFile: TBasicAction read FUpdateFile write SetUpdateFile;
@@ -58,6 +68,86 @@ implementation
 uses InstruccionesDM;
 
 { TfrmInstruccionesEdit }
+
+procedure TfrmInstruccionesEdit.cbRepetirClick(Sender: TObject);
+begin
+  inherited;
+  if cbRepetir.EditValue = True then
+    lcbPeriodoTipo.EditValue:= 2
+  else
+    lcbPeriodoTipo.Clear;
+//  rgRepetirDia.Clear;
+  rgFinaliza.EditValue:= 0;
+  edtRepetirHasta.Clear;
+  edtRepetirFin.Clear;
+  SetRepetir;
+end;
+
+procedure TfrmInstruccionesEdit.rgFinalizaClick(Sender: TObject);
+begin
+  inherited;
+  edtRepetirHasta.Clear;
+  edtRepetirFin.Clear;
+  SetFinaliza;
+end;
+
+procedure TfrmInstruccionesEdit.FormShow(Sender: TObject);
+begin
+  inherited;
+  SetRepetir;
+  SetPeriodoTipo;
+  SetFinaliza;
+end;
+
+procedure TfrmInstruccionesEdit.lcbPeriodoTipoClick(Sender: TObject);
+begin
+  inherited;
+//  if lcbPeriodoTipo.EditValue = 2 then
+//    rgRepetirDia.EditValue:= 6
+//  else
+//    rgRepetirDia.Clear;
+  SetPeriodoTipo;
+end;
+
+procedure TfrmInstruccionesEdit.SetFinaliza;
+begin
+  if VarIsNull(rgFinaliza.EditingValue) then exit;
+  case rgFinaliza.EditingValue of
+    0: begin
+      edtRepetirHasta.Enabled:= False;
+      edtRepetirFin.Enabled:= False;
+    end;
+    1: begin
+      edtRepetirHasta.Enabled:= True;
+      edtRepetirFin.Enabled:= False;
+    end;
+    2: begin
+      edtRepetirHasta.Enabled:= False;
+      edtRepetirFin.Enabled:= True;
+    end;
+  end;
+end;
+
+procedure TfrmInstruccionesEdit.SetPeriodoTipo;
+begin
+//  rgRepetirDia.Visible:= (lcbPeriodoTipo.EditValue = 2);
+end;
+
+procedure TfrmInstruccionesEdit.SetRepetir;
+begin
+  if cbRepetir.EditValue = True then
+  begin
+    lcbPeriodoTipo.Enabled:= True;
+//    rgRepetirDia.Enabled:= True;
+    rgFinaliza.Enabled:= True;
+  end
+  else
+  begin
+    lcbPeriodoTipo.Enabled:= False;
+//    rgRepetirDia.Enabled:= False;
+    rgFinaliza.Enabled:= False;
+  end;
+end;
 
 procedure TfrmInstruccionesEdit.SetUpdateFile(const Value: TBasicAction);
 begin

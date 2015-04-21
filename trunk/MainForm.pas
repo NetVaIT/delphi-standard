@@ -109,7 +109,7 @@ implementation
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
-  IncidenciasDM, InstruccionesTiposDM, PeriodosDM;
+  IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -171,6 +171,7 @@ begin
        end;
    30: gModulo := TdmInstrucciones.Create(Self);
    31: gModulo := TdmIncidencias.Create(Self);
+   32: gModulo := TdmMovimientos.Create(Self);
   end;
   if Assigned(gModulo) then
   begin
@@ -189,6 +190,7 @@ begin
   actPuestos.Enabled          := Conected;
   actCapacitaciones.Enabled   := Conected;
   actPlazasTurnos.Enabled     := Conected;
+  actPeriodos.Enabled         := Conected;
   actFormulas.Enabled         := Conected;
   actReglasNegocio.Enabled    := Conected;
   actEstablecimientos.Enabled := Conected;
@@ -205,6 +207,8 @@ begin
   actSocios.Enabled           := Conected;
   actInstrucciones.Enabled    := Conected;
   actIncidencias.Enabled      := Conected;
+  actIntruccionesTipos.Enabled:= Conected;
+  actMovimientos.Enabled:= Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

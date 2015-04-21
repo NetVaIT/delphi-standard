@@ -120,8 +120,6 @@ uses
   InstruccionesTiposDM in 'Catalogos\InstruccionesTiposDM.pas' {dmInstruccionesTipos: TDataModule},
   InstruccionesTiposEdit in 'Catalogos\InstruccionesTiposEdit.pas' {frmInstruccionesTiposEdit},
   InstruccionesTiposForm in 'Catalogos\InstruccionesTiposForm.pas' {frmInstruccionesTipos},
-  IntruccionesTiposDetalleEdit in 'Catalogos\IntruccionesTiposDetalleEdit.pas' {frmIntruccionesTiposDetalleEdit},
-  IntruccionesTiposDetalleForm in 'Catalogos\IntruccionesTiposDetalleForm.pas' {frmIntruccionesTiposDetalle},
   PeriodosDM in 'Catalogos\PeriodosDM.pas' {dmPeriodos: TDataModule},
   PeriodosEdit in 'Catalogos\PeriodosEdit.pas' {frmPeriodosEdit},
   PeriodosForm in 'Catalogos\PeriodosForm.pas' {frmPeriodos},
@@ -139,25 +137,32 @@ uses
   ProveedoresForm in 'Catalogos\ProveedoresForm.pas' {frmProveedores},
   PersonasContactoEdit in 'Catalogos\PersonasContactoEdit.pas' {frmPersonasContactoEdit},
   PersonasContactoForm in 'Catalogos\PersonasContactoForm.pas' {frmPersonasContacto},
-  PersonasContactoDM in 'Catalogos\PersonasContactoDM.pas' {dmPersonasContacto: TDataModule};
+  PersonasContactoDM in 'Catalogos\PersonasContactoDM.pas' {dmPersonasContacto: TDataModule},
+  MovimientosDM in 'Procesos\MovimientosDM.pas' {dmMovimientos: TDataModule},
+  MovimientosFrm in 'Procesos\MovimientosFrm.pas' {frmMovimientos},
+  MovimientosEdit in 'Procesos\MovimientosEdit.pas' {frmMovimientosEdit},
+  MovimientosDetalleFrm in 'Procesos\MovimientosDetalleFrm.pas' {frmMovimientosDetalle},
+  MovimientosDetalleEdit in 'Procesos\MovimientosDetalleEdit.pas' {frmMovimientosDetalleEdit},
+  InstruccionesTiposDetalleForm in 'Catalogos\InstruccionesTiposDetalleForm.pas' {frmInstruccionesTiposDetalle},
+  InstruccionesTiposDetalleEdit in 'Catalogos\InstruccionesTiposDetalleEdit.pas' {frmInstruccionesTiposDetalleEdit};
 
 {$R *.res}
 
 var
-  vFrmSplash : T_frmSplash;
+//  vFrmSplash : T_frmSplash;
   vCheckOK: boolean;
 
 begin
   Application.Initialize;
-  vFrmSplash := T_frmSplash.Create(nil);
-  try
-    vFrmSplash.Show;
-    Application.ProcessMessages;
-    Sleep(1800);
-    vCheckOK := True
-  finally
-    vFrmSplash.Free;
-  end;
+//  vFrmSplash := T_frmSplash.Create(nil);
+//  try
+//    vFrmSplash.Show;
+//    Application.ProcessMessages;
+//    Sleep(1800);
+    vCheckOK := True;
+//  finally
+//    vFrmSplash.Free;
+//  end;
   if vCheckOK then
   begin
     Application.MainFormOnTaskbar := True;

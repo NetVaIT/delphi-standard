@@ -495,14 +495,6 @@
             <Form>frmInstruccionesTipos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\IntruccionesTiposDetalleEdit.pas">
-            <Form>frmIntruccionesTiposDetalleEdit</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\IntruccionesTiposDetalleForm.pas">
-            <Form>frmIntruccionesTiposDetalle</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Catalogos\PeriodosDM.pas">
             <Form>dmPeriodos</Form>
             <FormType>dfm</FormType>
@@ -579,6 +571,35 @@
             <Form>dmPersonasContacto</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\MovimientosDM.pas">
+            <Form>dmMovimientos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\MovimientosFrm.pas">
+            <Form>frmMovimientos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\MovimientosEdit.pas">
+            <Form>frmMovimientosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\MovimientosDetalleFrm.pas">
+            <Form>frmMovimientosDetalle</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\MovimientosDetalleEdit.pas">
+            <Form>frmMovimientosDetalleEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\InstruccionesTiposDetalleForm.pas">
+            <Form>frmInstruccionesTiposDetalle</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\InstruccionesTiposDetalleEdit.pas">
+            <Form>frmInstruccionesTiposDetalleEdit</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

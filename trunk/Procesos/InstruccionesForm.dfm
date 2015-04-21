@@ -28,8 +28,8 @@ inherited frmInstrucciones: TfrmInstrucciones
           DataBinding.FieldName = 'IdDocumentoAdjunto'
           Visible = False
         end
-        object tvMasterIdPeriodicidad: TcxGridDBColumn
-          DataBinding.FieldName = 'IdPeriodicidad'
+        object tvMasterIdPeriodoTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPeriodoTipo'
           Visible = False
         end
         object tvMasterConcepto: TcxGridDBColumn
@@ -45,6 +45,33 @@ inherited frmInstrucciones: TfrmInstrucciones
         end
         object tvMasterFecha: TcxGridDBColumn
           DataBinding.FieldName = 'Fecha'
+        end
+        object tvMasterRepetirInicio: TcxGridDBColumn
+          DataBinding.FieldName = 'RepetirInicio'
+        end
+        object tvMasterRepetir: TcxGridDBColumn
+          DataBinding.FieldName = 'Repetir'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+        end
+        object tvMasterPeriodoTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'PeriodoTipo'
+          Visible = False
+        end
+        object tvMasterRepetirDia: TcxGridDBColumn
+          DataBinding.FieldName = 'RepetirDia'
+          Visible = False
+        end
+        object tvMasterRepetirFinaliza: TcxGridDBColumn
+          DataBinding.FieldName = 'RepetirFinaliza'
+          Visible = False
+        end
+        object tvMasterRepetirHasta: TcxGridDBColumn
+          DataBinding.FieldName = 'RepetirHasta'
+          Visible = False
+        end
+        object tvMasterRepetirFin: TcxGridDBColumn
+          DataBinding.FieldName = 'RepetirFin'
+          Visible = False
         end
       end
     end
