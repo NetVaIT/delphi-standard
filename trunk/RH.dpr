@@ -133,7 +133,13 @@ uses
   UsuariosXCuentaBancariaEdit in 'Catalogos\UsuariosXCuentaBancariaEdit.pas' {frmUsuariosXCuentaBancariaEdit},
   ClientesDM in 'Catalogos\ClientesDM.pas' {dmClientes: TDataModule},
   ClientesEdit in 'Catalogos\ClientesEdit.pas' {frmClientesEdit},
-  ClientesForm in 'Catalogos\ClientesForm.pas' {frmClientes};
+  ClientesForm in 'Catalogos\ClientesForm.pas' {frmClientes},
+  ProveedoresDM in 'Catalogos\ProveedoresDM.pas' {dmProveedores: TDataModule},
+  ProveedoresEdit in 'Catalogos\ProveedoresEdit.pas' {frmProveedoresEdit},
+  ProveedoresForm in 'Catalogos\ProveedoresForm.pas' {frmProveedores},
+  PersonasContactoEdit in 'Catalogos\PersonasContactoEdit.pas' {frmPersonasContactoEdit},
+  PersonasContactoForm in 'Catalogos\PersonasContactoForm.pas' {frmPersonasContacto},
+  PersonasContactoDM in 'Catalogos\PersonasContactoDM.pas' {dmPersonasContacto: TDataModule};
 
 {$R *.res}
 
@@ -159,7 +165,6 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
-  Application.CreateForm(TfrmPeriodosCalculo, frmPeriodosCalculo);
   Application.Run;
   end;
 end.
