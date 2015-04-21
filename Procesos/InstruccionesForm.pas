@@ -27,7 +27,7 @@ uses
   cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
   dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
   dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxRibbonPainter,
-  dxPSCore, dxPScxCommon, Vcl.StdCtrls;
+  dxPSCore, dxPScxCommon, Vcl.StdCtrls, cxCheckBox;
 
 type
   TfrmInstrucciones = class(T_frmGrid)
@@ -35,12 +35,19 @@ type
     tvMasterIdInstruccionTipo: TcxGridDBColumn;
     tvMasterIdPersonaSolicita: TcxGridDBColumn;
     tvMasterIdDocumentoAdjunto: TcxGridDBColumn;
-    tvMasterIdPeriodicidad: TcxGridDBColumn;
     tvMasterConcepto: TcxGridDBColumn;
     tvMasterIntruccionTipo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;
     dxbbProcessXLS: TdxBarButton;
     tvMasterNombreArchivo: TcxGridDBColumn;
+    tvMasterIdPeriodoTipo: TcxGridDBColumn;
+    tvMasterRepetirInicio: TcxGridDBColumn;
+    tvMasterRepetir: TcxGridDBColumn;
+    tvMasterPeriodoTipo: TcxGridDBColumn;
+    tvMasterRepetirDia: TcxGridDBColumn;
+    tvMasterRepetirFinaliza: TcxGridDBColumn;
+    tvMasterRepetirHasta: TcxGridDBColumn;
+    tvMasterRepetirFin: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

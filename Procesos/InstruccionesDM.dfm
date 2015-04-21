@@ -62,6 +62,11 @@ inherited dmInstrucciones: TdmInstrucciones
       FieldName = 'Fecha'
       Required = True
     end
+    object adodsMasterRepetirInicio: TDateTimeField
+      DisplayLabel = 'Empieza el'
+      FieldName = 'RepetirInicio'
+      Required = True
+    end
     object adodsMasterRepetir: TBooleanField
       FieldName = 'Repetir'
       Required = True
@@ -75,28 +80,29 @@ inherited dmInstrucciones: TdmInstrucciones
       LookupKeyFields = 'IdPeriodoTipo'
       LookupResultField = 'Descripcion'
       KeyFields = 'IdPeriodoTipo'
+      Visible = False
       Size = 50
       Lookup = True
     end
     object adodsMasterRepetirDia: TIntegerField
       DisplayLabel = 'Repetir el'
       FieldName = 'RepetirDia'
-    end
-    object adodsMasterRepetirInicio: TDateTimeField
-      DisplayLabel = 'Empieza el'
-      FieldName = 'RepetirInicio'
+      Visible = False
     end
     object adodsMasterRepetirFinaliza: TIntegerField
       DisplayLabel = 'Finaliza'
       FieldName = 'RepetirFinaliza'
+      Visible = False
     end
     object adodsMasterRepetirHasta: TIntegerField
       DisplayLabel = 'Finaliza despu'#233's de'
       FieldName = 'RepetirHasta'
+      Visible = False
     end
     object adodsMasterRepetirFin: TDateTimeField
       DisplayLabel = 'Finaliza el'
       FieldName = 'RepetirFin'
+      Visible = False
     end
   end
   inherited ActionList: TActionList

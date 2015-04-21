@@ -1,23 +1,23 @@
 inherited frmInstruccionesEdit: TfrmInstruccionesEdit
   Caption = 'Instrucci'#243'n'
-  ClientHeight = 607
+  ClientHeight = 601
   ClientWidth = 541
   ExplicitWidth = 547
-  ExplicitHeight = 636
+  ExplicitHeight = 630
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 541
-    Height = 566
-    ExplicitWidth = 602
-    ExplicitHeight = 575
-    ClientRectBottom = 564
+    Height = 560
+    ExplicitWidth = 541
+    ExplicitHeight = 560
+    ClientRectBottom = 558
     ClientRectRight = 539
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 598
-      ExplicitHeight = 545
+      ExplicitWidth = 537
+      ExplicitHeight = 530
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -32,7 +32,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
         Width = 20
         Height = 13
         Caption = 'Tipo'
-        FocusControl = DBLookupComboBox1
+        FocusControl = cxDBLookupComboBox1
       end
       object Label3: TLabel
         Left = 24
@@ -57,19 +57,27 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object Label4: TLabel
         Left = 24
-        Top = 256
+        Top = 296
         Width = 69
         Height = 13
         Caption = 'Se repite cada'
-        FocusControl = DBLookupComboBox2
+        FocusControl = lcbPeriodoTipo
       end
       object Label5: TLabel
         Left = 24
-        Top = 352
+        Top = 229
         Width = 50
         Height = 13
         Caption = 'Empieza el'
-        FocusControl = cxDBDateEdit2
+        FocusControl = deRepetirInicio
+      end
+      object Label6: TLabel
+        Left = 296
+        Top = 264
+        Width = 66
+        Height = 13
+        Caption = 'IdPeriodoTipo'
+        FocusControl = cxDBSpinEdit1
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
@@ -79,21 +87,12 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
         TabOrder = 0
         Width = 304
       end
-      object DBLookupComboBox1: TDBLookupComboBox
-        Left = 24
-        Top = 80
-        Width = 304
-        Height = 21
-        DataField = 'IntruccionTipo'
-        DataSource = DataSource
-        TabOrder = 1
-      end
       object cxDBDateEdit1: TcxDBDateEdit
         Left = 24
         Top = 176
         DataBinding.DataField = 'Fecha'
         DataBinding.DataSource = DataSource
-        TabOrder = 2
+        TabOrder = 3
         Width = 121
       end
       object cxDBLabel1: TcxDBLabel
@@ -104,27 +103,19 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
         Height = 42
         Width = 471
       end
-      object cxDBCheckBox1: TcxDBCheckBox
+      object cbRepetir: TcxDBCheckBox
         Left = 24
-        Top = 232
+        Top = 272
         Caption = 'Repetir'
         DataBinding.DataField = 'Repetir'
         DataBinding.DataSource = DataSource
-        TabOrder = 4
+        TabOrder = 5
+        OnClick = cbRepetirClick
         Width = 121
       end
-      object DBLookupComboBox2: TDBLookupComboBox
+      object rgRepetirDia: TcxDBRadioGroup
         Left = 24
-        Top = 272
-        Width = 200
-        Height = 21
-        DataField = 'PeriodoTipo'
-        DataSource = DataSource
-        TabOrder = 5
-      end
-      object cxDBRadioGroup1: TcxDBRadioGroup
-        Left = 24
-        Top = 297
+        Top = 337
         Caption = 'Repetir el '
         DataBinding.DataField = 'RepetirDia'
         DataBinding.DataSource = DataSource
@@ -158,21 +149,22 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
             Caption = 'Domingo'
             Value = '1'
           end>
-        TabOrder = 6
+        TabOrder = 7
+        Visible = False
         Height = 49
         Width = 500
       end
-      object cxDBDateEdit2: TcxDBDateEdit
+      object deRepetirInicio: TcxDBDateEdit
         Left = 24
-        Top = 368
+        Top = 245
         DataBinding.DataField = 'RepetirInicio'
         DataBinding.DataSource = DataSource
-        TabOrder = 7
+        TabOrder = 4
         Width = 121
       end
-      object cxDBRadioGroup2: TcxDBRadioGroup
+      object rgFinaliza: TcxDBRadioGroup
         Left = 24
-        Top = 395
+        Top = 392
         Caption = 'Finaliza'
         DataBinding.DataField = 'RepetirFinaliza'
         DataBinding.DataSource = DataSource
@@ -190,39 +182,67 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
             Value = '2'
           end>
         TabOrder = 8
+        OnClick = rgFinalizaClick
         Height = 117
         Width = 500
       end
-      object cxDBSpinEdit1: TcxDBSpinEdit
+      object edtRepetirHasta: TcxDBSpinEdit
         Left = 120
-        Top = 448
+        Top = 447
         DataBinding.DataField = 'RepetirHasta'
         DataBinding.DataSource = DataSource
         TabOrder = 9
         Width = 50
       end
-      object cxDBDateEdit3: TcxDBDateEdit
+      object edtRepetirFin: TcxDBDateEdit
         Left = 88
-        Top = 478
+        Top = 476
         DataBinding.DataField = 'RepetirFin'
         DataBinding.DataSource = DataSource
         TabOrder = 10
         Width = 121
       end
+      object cxDBSpinEdit1: TcxDBSpinEdit
+        Left = 296
+        Top = 280
+        DataBinding.DataField = 'IdPeriodoTipo'
+        DataBinding.DataSource = DataSource
+        TabOrder = 11
+        Width = 121
+      end
+      object cxDBLookupComboBox1: TcxDBLookupComboBox
+        Left = 24
+        Top = 80
+        DataBinding.DataField = 'IntruccionTipo'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 1
+        Width = 304
+      end
+      object lcbPeriodoTipo: TcxDBLookupComboBox
+        Left = 24
+        Top = 312
+        DataBinding.DataField = 'PeriodoTipo'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 6
+        OnClick = lcbPeriodoTipoClick
+        Width = 200
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 566
+    Top = 560
     Width = 541
-    ExplicitTop = 575
-    ExplicitWidth = 602
+    ExplicitTop = 560
+    ExplicitWidth = 541
     inherited btnOk: TButton
       Left = 378
-      ExplicitLeft = 439
+      ExplicitLeft = 378
     end
     inherited btnCancel: TButton
       Left = 459
-      ExplicitLeft = 520
+      ExplicitLeft = 459
     end
   end
   inherited DataSource: TDataSource

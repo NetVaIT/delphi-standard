@@ -91,17 +91,19 @@ procedure TdmInstrucciones.adodsMasterNewRecord(DataSet: TDataSet);
 begin
   inherited;
   adodsMasterIdPersonaSolicita.Value:= 1;
+  adodsMasterRepetirFinaliza.Value:= 0;
 end;
 
 procedure TdmInstrucciones.adodsMasterRepetirChange(Sender: TField);
 begin
   inherited;
-  adodsMasterPeriodoTipo.Clear;
-  adodsMasterRepetirDia.Clear;
-  adodsMasterRepetirInicio.Clear;
-  adodsMasterRepetirFinaliza.Clear;
-  adodsMasterRepetirHasta.Clear;
-  adodsMasterRepetirFin.Clear;
+//  adodsMasterPeriodoTipo.Clear;
+//  adodsMasterRepetirDia.Clear;
+////  adodsMasterRepetirInicio.Clear;
+////  adodsMasterRepetirFinaliza.Clear;
+//  adodsMasterRepetirFinaliza.Value:= 0;
+//  adodsMasterRepetirHasta.Clear;
+//  adodsMasterRepetirFin.Clear;
 end;
 
 procedure TdmInstrucciones.DataModuleCreate(Sender: TObject);
