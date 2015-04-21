@@ -16,18 +16,23 @@ type
     Button2: TButton;
     edtAnio: TEdit;
     procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
 
-var
-  frmPeriodosCalculo: TfrmPeriodosCalculo;
-
 implementation
 
 {$R *.dfm}
+
+uses PeriodosDM;
+
+procedure TfrmPeriodosCalculo.Button1Click(Sender: TObject);
+begin
+  PeriodosDM.TdmPeriodos(Sender).AnioPeriodo := StrToInt(edtAnio.Text);
+end;
 
 procedure TfrmPeriodosCalculo.FormShow(Sender: TObject);
 var
@@ -35,6 +40,8 @@ var
 begin
   DecodeDate(Now(), aa, mm, dd);
   edtAnio.Text := IntToStr(aa);
+  //PeriodosDM.TdmPeriodos
+  cbxPeriodos.AddItem('SEMANAL',self);
 end;
 
 end.
