@@ -1,26 +1,25 @@
 inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   Caption = 'Rol Asociado'
-  ClientHeight = 262
+  ClientHeight = 385
   ClientWidth = 555
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 561
-  ExplicitHeight = 290
+  ExplicitHeight = 413
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 555
-    Height = 221
-    Properties.ActivePage = tsCuentasBancarias
+    Height = 344
     ExplicitWidth = 555
-    ExplicitHeight = 221
-    ClientRectBottom = 219
+    ExplicitHeight = 344
+    ClientRectBottom = 342
     ClientRectRight = 553
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 551
-      ExplicitHeight = 191
+      ExplicitHeight = 314
       object Label1: TLabel
         Left = 16
         Top = 19
@@ -90,31 +89,52 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       Caption = 'Kardex'
       ImageIndex = 1
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsCuentas: TcxTabSheet
       Caption = 'Cuentas'
       ImageIndex = 2
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsEsquemaPago: TcxTabSheet
       Caption = 'Esquema de Pago'
       ImageIndex = 3
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
-    object tsContactoEmergencia: TcxTabSheet
-      Caption = 'Contactos Emergencia'
+    object tsContactos: TcxTabSheet
+      Caption = 'Contactos'
       ImageIndex = 1
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 191
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
       ImageIndex = 1
+      TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   inherited pmlMain: TPanel
-    Top = 221
+    Top = 344
     Width = 555
-    ExplicitTop = 221
+    ExplicitTop = 344
     ExplicitWidth = 555
     inherited btnOk: TButton
       Left = 392

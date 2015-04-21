@@ -19,7 +19,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM, CuentasBancariasDM;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM, CuentasBancariasDM,
+  ClientesDM, ProveedoresDM, PersonasContactoDM;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -34,7 +35,7 @@ type
     tsKardex: TcxTabSheet;
     tsCuentas: TcxTabSheet;
     tsEsquemaPago: TcxTabSheet;
-    tsContactoEmergencia: TcxTabSheet;
+    tsContactos: TcxTabSheet;
     tsCuentasBancarias: TcxTabSheet;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -44,6 +45,9 @@ type
     { Private declarations }
     FRol: TPRol;
     dmCuentasBancarias: TdmCuentasBancarias;
+    dmClientes: TdmClientes;
+    dmProveedores: TdmProveedores;
+    dmPersonasContacto: TdmPersonasContacto;
     procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
@@ -64,12 +68,18 @@ procedure TfrmPersonaRolesEdit.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCuentasBancarias := TdmCuentasBancarias.Create(nil);
+  dmClientes := TdmClientes.Create(nil);
+  dmProveedores := TdmProveedores.Create(nil);
+  dmPersonasContacto := TdmPersonasContacto.Create(nil);
 end;
 
 procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
 begin
   inherited;
   FreeAndNil(dmCuentasBancarias);
+  FreeAndNil(dmClientes);
+  FreeAndNil(dmProveedores);
+  FreeAndNil(dmPersonasContacto);
 end;
 
 procedure TfrmPersonaRolesEdit.FormShow(Sender: TObject);
@@ -82,48 +92,61 @@ begin
         tsCuentas.TabVisible := True;
         tsKardex.TabVisible             := False;
         tsEsquemaPago.TabVisible        := False;
-        tsContactoEmergencia.TabVisible := False;
+        tsContactos.TabVisible := True;
+        tsCuentasBancarias.TabVisible   := True;
+        dmClientes.MasterSource := DataSource;
+        dmClientes.MasterFields:= 'IdPersonaRol';
+        dmClientes.ShowModule(tsCuentas,'');
        end;
     4: begin
         tsCuentas.TabVisible := True;
         tsKardex.TabVisible             := False;
         tsEsquemaPago.TabVisible        := False;
-        tsContactoEmergencia.TabVisible := False;
+        tsContactos.TabVisible := True;
+        tsCuentasBancarias.TabVisible   := True;
+        dmProveedores.MasterSource := DataSource;
+        dmProveedores.MasterFields:= 'IdPersonaRol';
+        dmProveedores.ShowModule(tsCuentas,'');
        end;
     5: begin
        // tsKardex.TabVisible             := True;
         tsEsquemaPago.TabVisible        := True;
-        tsContactoEmergencia.TabVisible := True;
-        tsCuentas.TabVisible := False;
+        tsContactos.TabVisible := True;
+        tsCuentas.TabVisible            := False;
+        tsCuentasBancarias.TabVisible   := True;
        end;
     6: begin
         tsCuentas.TabVisible := True;
         tsKardex.TabVisible             := False;
         tsEsquemaPago.TabVisible        := False;
-        tsContactoEmergencia.TabVisible := False;
+        tsContactos.TabVisible := False;
        end;
     7: begin
         tsCuentas.TabVisible := True;
         tsKardex.TabVisible             := False;
         tsEsquemaPago.TabVisible        := False;
-        tsContactoEmergencia.TabVisible := False;
+        tsContactos.TabVisible := False;
        end;
     8: begin
         tsCuentas.TabVisible := True;
         tsKardex.TabVisible             := False;
         tsEsquemaPago.TabVisible        := False;
-        tsContactoEmergencia.TabVisible := False;
+        tsContactos.TabVisible := False;
        end;
     9: begin
         tsCuentas.TabVisible := True;
         tsKardex.TabVisible             := False;
         tsEsquemaPago.TabVisible        := False;
-        tsContactoEmergencia.TabVisible := False;
+        tsContactos.TabVisible := False;
        end;
   end;
   dmCuentasBancarias.MasterSource := DataSource;
   dmCuentasBancarias.MasterFields:= 'IdPersona';
   dmCuentasBancarias.ShowModule(tsCuentasBancarias,'');
+  dmPersonasContacto.MasterSource := DataSource;
+  dmPersonasContacto.MasterFields:= 'IdPersona';
+  dmPersonasContacto.ShowModule(tsContactos,'');
+
 end;
 
 procedure TfrmPersonaRolesEdit.SetRol(const Value: TPRol);

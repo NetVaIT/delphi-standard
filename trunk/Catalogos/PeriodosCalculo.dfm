@@ -12,6 +12,7 @@ object frmPeriodosCalculo: TfrmPeriodosCalculo
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -22,10 +23,6 @@ object frmPeriodosCalculo: TfrmPeriodosCalculo
     Height = 213
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -8
-    ExplicitTop = -16
-    ExplicitWidth = 343
-    ExplicitHeight = 214
     object Label1: TLabel
       Left = 40
       Top = 16
@@ -64,6 +61,7 @@ object frmPeriodosCalculo: TfrmPeriodosCalculo
       Default = True
       ModalResult = 1
       TabOrder = 2
+      OnClick = Button1Click
     end
     object Button2: TButton
       Left = 206

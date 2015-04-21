@@ -1,4 +1,4 @@
-unit PeriodosForm;
+unit PersonasContactoForm;
 
 interface
 
@@ -30,46 +30,29 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmPeriodos = class(T_frmGrid)
-    dxbbCalculaPeriodo: TdxBarButton;
-    tvMasterIdPeriodo: TcxGridDBColumn;
-    tvMasterIdPeriodoTipo: TcxGridDBColumn;
-    tvMasterNumero: TcxGridDBColumn;
-    tvMasterPeriodoTipo: TcxGridDBColumn;
-    tvMasterIdPeriodoEstatus: TcxGridDBColumn;
-    tvMasterPeriodoEstatus: TcxGridDBColumn;
-    tvMasterFechaInicio: TcxGridDBColumn;
-    tvMasterFechaFin: TcxGridDBColumn;
-    tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterAnio: TcxGridDBColumn;
+  TfrmPersonasContacto = class(T_frmGrid)
+    tvMasterIdPersonaContacto: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterIdContacto: TcxGridDBColumn;
+    tvMasterContacto: TcxGridDBColumn;
+    tvMasterPrincipal: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    FCalcPeriodo: TBasicAction;
-    procedure SetCalcPeriodo(const Value: TBasicAction);
-  protected
-
   public
     { Public declarations }
-    property CalcPeriodo: TBasicAction read FCalcPeriodo write SetCalcPeriodo;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasDM, PeriodosDM, PeriodosEdit;
+uses PersonasContactoDM, PersonasContactoEdit;
 
-procedure TfrmPeriodos.FormCreate(Sender: TObject);
+procedure TfrmPersonasContacto.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm := TfrmPeriodosEdit.Create(Self);
-end;
-
-procedure TfrmPeriodos.SetCalcPeriodo(const Value: TBasicAction);
-begin
-  FCalcPeriodo := Value;
-  dxbbCalculaPeriodo.Action := Value;
+  gEditForm:= TfrmPersonasContactoEdit.Create(Self);
 end;
 
 end.

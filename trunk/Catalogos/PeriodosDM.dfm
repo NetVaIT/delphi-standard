@@ -59,7 +59,9 @@ inherited dmPeriodos: TdmPeriodos
   end
   inherited ActionList: TActionList
     object actCalculaPeriodo: TAction
-      Caption = 'actCalculaPeriodo'
+      Hint = 'Calcula Periodos'
+      ImageIndex = 13
+      OnExecute = actCalculaPeriodoExecute
     end
   end
   object adodsPeriodoTipo: TADODataSet
