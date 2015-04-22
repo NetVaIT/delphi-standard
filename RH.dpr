@@ -146,7 +146,10 @@ uses
   InstruccionesTiposDetalleForm in 'Catalogos\InstruccionesTiposDetalleForm.pas' {frmInstruccionesTiposDetalle},
   InstruccionesTiposDetalleEdit in 'Catalogos\InstruccionesTiposDetalleEdit.pas' {frmInstruccionesTiposDetalleEdit},
   InstruccionesPeriodosDM in 'Procesos\InstruccionesPeriodosDM.pas' {dmInstruccionesPeriodos: TDataModule},
-  InstruccionesPeriodosForm in 'Procesos\InstruccionesPeriodosForm.pas' {frmInstruccionesPeriodos};
+  InstruccionesPeriodosForm in 'Procesos\InstruccionesPeriodosForm.pas' {frmInstruccionesPeriodos},
+  ArchivosGenerarFacturasDM in 'Catalogos\ArchivosGenerarFacturasDM.pas' {dmArchivosGenerarFacturas: TDataModule},
+  ArchivosGenerarFacturasEdit in 'Catalogos\ArchivosGenerarFacturasEdit.pas' {frmArchivosGenerarFacturasEdit},
+  ArchivosGenerarFacturasForm in 'Catalogos\ArchivosGenerarFacturasForm.pas' {frmArchivosGenerarFacturas};
 
 {$R *.res}
 

@@ -58,6 +58,7 @@ type
     adodsPersonaRolesRolClase: TStringField;
     dsMaster: TDataSource;
     adodsMasterCURP: TStringField;
+    adodsPersonaRolesFacturar: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

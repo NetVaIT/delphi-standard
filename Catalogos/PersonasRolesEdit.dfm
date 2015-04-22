@@ -1,25 +1,26 @@
 inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   Caption = 'Rol Asociado'
-  ClientHeight = 385
-  ClientWidth = 555
+  ClientHeight = 430
+  ClientWidth = 621
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ExplicitWidth = 561
-  ExplicitHeight = 413
+  ExplicitWidth = 627
+  ExplicitHeight = 458
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 555
-    Height = 344
-    ExplicitWidth = 555
-    ExplicitHeight = 344
-    ClientRectBottom = 342
-    ClientRectRight = 553
+    Width = 621
+    Height = 389
+    Properties.ActivePage = nil
+    ExplicitWidth = 621
+    ExplicitHeight = 389
+    ClientRectBottom = 387
+    ClientRectRight = 619
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 551
-      ExplicitHeight = 314
+      ExplicitWidth = 617
+      ExplicitHeight = 359
       object Label1: TLabel
         Left = 16
         Top = 19
@@ -84,6 +85,15 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         TabOrder = 3
         Width = 210
       end
+      object dbchkFacturar: TcxDBCheckBox
+        Left = 416
+        Top = 36
+        Caption = 'Facturar'
+        DataBinding.DataField = 'Facturar'
+        DataBinding.DataSource = DataSource
+        TabOrder = 4
+        Width = 121
+      end
     end
     object tsKardex: TcxTabSheet
       Caption = 'Kardex'
@@ -119,7 +129,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       ExplicitLeft = 0
       ExplicitTop = 0
       ExplicitWidth = 0
-      ExplicitHeight = 191
+      ExplicitHeight = 0
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
@@ -130,23 +140,29 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       ExplicitWidth = 0
       ExplicitHeight = 0
     end
+    object tsArchivosFacturar: TcxTabSheet
+      Caption = 'Archivos para Facturar'
+      ImageIndex = 1
+      TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+    end
   end
   inherited pmlMain: TPanel
-    Top = 344
-    Width = 555
-    ExplicitTop = 344
-    ExplicitWidth = 555
+    Top = 389
+    Width = 621
+    ExplicitTop = 389
+    ExplicitWidth = 621
     inherited btnOk: TButton
-      Left = 392
-      ExplicitLeft = 392
+      Left = 458
+      ExplicitLeft = 458
     end
     inherited btnCancel: TButton
-      Left = 473
-      ExplicitLeft = 473
+      Left = 539
+      ExplicitLeft = 539
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmPersona.adodsPersonaRoles
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

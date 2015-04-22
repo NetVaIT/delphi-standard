@@ -1,4 +1,4 @@
-unit IntruccionesTiposDetalleEdit;
+unit ArchivosGenerarFacturasEdit;
 
 interface
 
@@ -17,10 +17,18 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
-  System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC;
+  System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
+  cxContainer, cxEdit, cxDBEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
+  cxBlobEdit;
 
 type
-  TfrmIntruccionesTiposDetalleEdit = class(T_frmEdit)
+  TfrmArchivosGenerarFacturasEdit = class(T_frmEdit)
+    Label1: TLabel;
+    cxDBBlobEdit1: TcxDBBlobEdit;
+    Label2: TLabel;
+    cxDBBlobEdit2: TcxDBBlobEdit;
+    Label3: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
   private
     { Private declarations }
   public
@@ -30,5 +38,7 @@ type
 implementation
 
 {$R *.dfm}
+
+uses ArchivosGenerarFacturasDM;
 
 end.
