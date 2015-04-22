@@ -107,8 +107,8 @@ inherited dmInstrucciones: TdmInstrucciones
   end
   inherited ActionList: TActionList
     object actProcessXLS: TAction
-      Caption = 'Genera incidencias'
-      Hint = 'Genera incidencias'
+      Caption = 'Generar incidencias'
+      Hint = 'Generar incidencias'
       ImageIndex = 13
       OnExecute = actProcessXLSExecute
     end
@@ -116,6 +116,12 @@ inherited dmInstrucciones: TdmInstrucciones
       Caption = '...'
       Hint = 'Asigna archivo'
       OnExecute = actUpdateFileExecute
+    end
+    object actCreateMov: TAction
+      Caption = 'Generar movimientos'
+      Hint = 'Generar movimientos'
+      ImageIndex = 16
+      OnExecute = actCreateMovExecute
     end
   end
   object adodsInstruccionesTipos: TADODataSet

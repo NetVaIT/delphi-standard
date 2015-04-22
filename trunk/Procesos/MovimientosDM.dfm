@@ -98,10 +98,23 @@ inherited dmMovimientos: TdmMovimientos
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'select IdMovimientoDetalle, IdMovimiento, IdMovimientoTipo, Impo' +
-      'rte, IdMovimientoEstatus from MovimientosDetalle'#13#10'WHERE IdMovimi' +
-      'ento = :IdMovimiento'
+      'SELECT MovimientosDetalle.IdMovimientoDetalle, MovimientosDetall' +
+      'e.IdMovimiento, MovimientosDetalle.IdMovimientoTipo, Movimientos' +
+      'Detalle.Importe, MovimientosDetalle.IdMovimientoEstatus, '#13#10'Movim' +
+      'ientosTipos.Descripcion AS Tipo, MovimientosTiposCategorias.Desc' +
+      'ripcion AS Categoria, MovimientosTiposEfectos.Descripcion AS Efe' +
+      'cto, MovimientosEstatus.Descripcion AS Estatus'#13#10'FROM Movimientos' +
+      'Detalle INNER JOIN'#13#10'MovimientosTipos ON MovimientosDetalle.IdMov' +
+      'imientoTipo = MovimientosTipos.IdMovimientoTipo INNER JOIN'#13#10'Movi' +
+      'mientosTiposCategorias ON MovimientosTipos.IdMovimientoTipoCateg' +
+      'oria = MovimientosTiposCategorias.IdMovimientoTipoCategoria INNE' +
+      'R JOIN'#13#10'MovimientosTiposEfectos ON MovimientosTipos.IdMovimiento' +
+      'TipoEfecto = MovimientosTiposEfectos.IdMovimientoTipoEfecto INNE' +
+      'R JOIN'#13#10'MovimientosEstatus ON MovimientosDetalle.IdMovimientoEst' +
+      'atus = MovimientosEstatus.IdMovimientoEstatus'#13#10'WHERE Movimientos' +
+      'Detalle.IdMovimiento = :IdMovimiento'
     DataSource = dsMaster
+    MasterFields = 'IdMovimiento'
     Parameters = <
       item
         Name = 'IdMovimiento'
@@ -126,25 +139,30 @@ inherited dmMovimientos: TdmMovimientos
       FieldName = 'IdMovimientoTipo'
       Visible = False
     end
-    object adodsMovimientosDetMovimineotTipo: TStringField
-      DisplayLabel = 'Tipo'
-      FieldKind = fkLookup
-      FieldName = 'MovimientoTipo'
-      LookupDataSet = adodsMovimientosTipo
-      LookupKeyFields = 'IdMovimientoTipo'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdMovimientoTipo'
+    object adodsMovimientosDetIdMovimientoEstatus: TIntegerField
+      FieldName = 'IdMovimientoEstatus'
+      Visible = False
+    end
+    object adodsMovimientosDetTipo: TStringField
+      FieldName = 'Tipo'
       Size = 100
-      Lookup = True
     end
     object adodsMovimientosDetImporte: TFMTBCDField
       FieldName = 'Importe'
       Precision = 18
       Size = 6
     end
-    object adodsMovimientosDetIdMovimientoEstatus: TIntegerField
-      FieldName = 'IdMovimientoEstatus'
-      Visible = False
+    object adodsMovimientosDetCategoria: TStringField
+      FieldName = 'Categoria'
+      Size = 100
+    end
+    object adodsMovimientosDetEfecto: TStringField
+      FieldName = 'Efecto'
+      Size = 100
+    end
+    object adodsMovimientosDetEstatus: TStringField
+      FieldName = 'Estatus'
+      Size = 100
     end
   end
   object adodsMovimientosTipo: TADODataSet

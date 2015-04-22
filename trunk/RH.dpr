@@ -108,7 +108,7 @@ uses
   InstruccionesEdit in 'Procesos\InstruccionesEdit.pas' {frmInstruccionesEdit},
   ImportXLSDM in 'Procesos\ImportXLSDM.pas' {dmImportXLS: TDataModule},
   ImportXLSForm in 'Procesos\ImportXLSForm.pas' {frmImportXLS},
-  ImportXLSSelect in 'Procesos\ImportXLSSelect.pas' {frmImportXLSSelect},
+  VerificarForm in 'Procesos\VerificarForm.pas' {frmVerificar},
   IncidenciasDetallesEdit in 'Procesos\IncidenciasDetallesEdit.pas' {frmIncidenciaDetallesEdit},
   IncidenciasDetallesForm in 'Procesos\IncidenciasDetallesForm.pas' {frmIncidenciasDetalles},
   IncidenciasDM in 'Procesos\IncidenciasDM.pas' {dmIncidencias: TDataModule},
@@ -144,7 +144,9 @@ uses
   MovimientosDetalleFrm in 'Procesos\MovimientosDetalleFrm.pas' {frmMovimientosDetalle},
   MovimientosDetalleEdit in 'Procesos\MovimientosDetalleEdit.pas' {frmMovimientosDetalleEdit},
   InstruccionesTiposDetalleForm in 'Catalogos\InstruccionesTiposDetalleForm.pas' {frmInstruccionesTiposDetalle},
-  InstruccionesTiposDetalleEdit in 'Catalogos\InstruccionesTiposDetalleEdit.pas' {frmInstruccionesTiposDetalleEdit};
+  InstruccionesTiposDetalleEdit in 'Catalogos\InstruccionesTiposDetalleEdit.pas' {frmInstruccionesTiposDetalleEdit},
+  InstruccionesPeriodosDM in 'Procesos\InstruccionesPeriodosDM.pas' {dmInstruccionesPeriodos: TDataModule},
+  InstruccionesPeriodosForm in 'Procesos\InstruccionesPeriodosForm.pas' {frmInstruccionesPeriodos};
 
 {$R *.res}
 

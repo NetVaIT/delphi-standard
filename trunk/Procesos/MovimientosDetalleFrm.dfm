@@ -10,25 +10,27 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
   inherited splDetail3: TSplitter
     Top = 343
     Width = 645
+    ExplicitTop = 343
+    ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
     Top = 255
     Width = 645
+    ExplicitTop = 255
+    ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
     Top = 299
     Width = 645
+    ExplicitTop = 299
+    ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
     Width = 645
     Height = 224
-    ExplicitWidth = 651
-    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 224
-      ExplicitWidth = 651
-      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdMovimientoDetalle: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimientoDetalle'
@@ -42,16 +44,28 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
           DataBinding.FieldName = 'IdMovimientoTipo'
           Visible = False
         end
-        object tvMasterMovimientoTipo: TcxGridDBColumn
-          DataBinding.FieldName = 'MovimientoTipo'
-          Width = 300
+        object tvMasterIdMovimientoEstatus: TcxGridDBColumn
+          DataBinding.FieldName = 'IdMovimientoEstatus'
+          Visible = False
+        end
+        object tvMasterTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'Tipo'
+          Width = 304
         end
         object tvMasterImporte: TcxGridDBColumn
           DataBinding.FieldName = 'Importe'
         end
-        object tvMasterIdMovimientoEstatus: TcxGridDBColumn
-          DataBinding.FieldName = 'IdMovimientoEstatus'
-          Visible = False
+        object tvMasterCategoria: TcxGridDBColumn
+          DataBinding.FieldName = 'Categoria'
+          Width = 304
+        end
+        object tvMasterEfecto: TcxGridDBColumn
+          DataBinding.FieldName = 'Efecto'
+          Width = 304
+        end
+        object tvMasterEstatus: TcxGridDBColumn
+          DataBinding.FieldName = 'Estatus'
+          Width = 304
         end
       end
     end
@@ -59,27 +73,22 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
   inherited pnlDetail3: TPanel
     Top = 346
     Width = 645
-    ExplicitTop = 375
-    ExplicitWidth = 651
   end
   inherited pnlDetail2: TPanel
     Top = 302
     Width = 645
-    ExplicitTop = 331
-    ExplicitWidth = 651
   end
   inherited pnlDetail1: TPanel
     Top = 258
     Width = 645
-    ExplicitTop = 287
-    ExplicitWidth = 651
   end
   inherited pnlClose: TPanel
     Top = 387
     Width = 645
+    ExplicitTop = 387
+    ExplicitWidth = 645
     inherited btnClose: TButton
       Left = 560
-      ExplicitLeft = 566
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -97,7 +106,6 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

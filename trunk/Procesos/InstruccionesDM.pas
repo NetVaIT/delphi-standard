@@ -29,11 +29,13 @@ type
     adodsMasterRepetirHasta: TIntegerField;
     adodsPeriodosTipo: TADODataSet;
     adodsMasterPeriodoTipo: TStringField;
+    actCreateMov: TAction;
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcessXLSExecute(Sender: TObject);
     procedure actUpdateFileExecute(Sender: TObject);
     procedure adodsMasterRepetirChange(Sender: TField);
+    procedure actCreateMovExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,9 +46,23 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses InstruccionesForm, ImportXLSDM, DocumentosAdjuntosDM;
+uses InstruccionesForm, ImportXLSDM, DocumentosAdjuntosDM,
+  InstruccionesPeriodosDM;
 
 {$R *.dfm}
+
+procedure TdmInstrucciones.actCreateMovExecute(Sender: TObject);
+var
+  dmInstruccionesPeriodos: TdmInstruccionesPeriodos;
+begin
+  inherited;
+  dmInstruccionesPeriodos := TdmInstruccionesPeriodos.Create(Self);
+  try
+    dmInstruccionesPeriodos.Execute;
+  finally
+    dmInstruccionesPeriodos.Free;
+  end;
+end;
 
 procedure TdmInstrucciones.actProcessXLSExecute(Sender: TObject);
 var
@@ -112,6 +128,7 @@ begin
   gGridForm:= TfrmInstrucciones.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   TfrmInstrucciones(gGridForm).ProcessXLS:= actProcessXLS;
+  TfrmInstrucciones(gGridForm).CreateMov:= actCreateMov;
   TfrmInstrucciones(gGridForm).UpdateFile:= actUpdateFile;
 end;
 

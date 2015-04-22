@@ -1,4 +1,4 @@
-unit ImportXLSSelect;
+unit VerificarForm;
 
 interface
 
@@ -19,20 +19,31 @@ uses
   dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel;
 
 type
-  TfrmImportXLSSelect = class(TForm)
+  TfrmVerificar = class(TForm)
     pnlMaster: TPanel;
     pnlMain: TPanel;
     btnOk: TButton;
     btnCancel: TButton;
-    cxLabel1: TcxLabel;
+    lblInfo: TcxLabel;
   private
+    FInfo: string;
+    procedure SetInfo(const Value: string);
     { Private declarations }
   public
     { Public declarations }
+    property Info: string read FInfo write SetInfo;
   end;
 
 implementation
 
 {$R *.dfm}
+
+{ TfrmImportXLSSelect }
+
+procedure TfrmVerificar.SetInfo(const Value: string);
+begin
+  FInfo := Value;
+  lblInfo.Caption:= Value;
+end;
 
 end.
