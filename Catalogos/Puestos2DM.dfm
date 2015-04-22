@@ -94,7 +94,6 @@ inherited dmPuestos2: TdmPuestos2
     end
   end
   object adodsPuestoSuperior: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPuesto, Descripcion FROM Puestos'
@@ -103,7 +102,6 @@ inherited dmPuestos2: TdmPuestos2
     Top = 16
   end
   object adodsPuestosCategorias: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPuestoCategoria, Descripcion FROM PuestosCategorias'
@@ -112,7 +110,6 @@ inherited dmPuestos2: TdmPuestos2
     Top = 72
   end
   object adodsPerfiles: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -200,7 +197,6 @@ inherited dmPuestos2: TdmPuestos2
     end
   end
   object adodsPuestosPerfilCategorias: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

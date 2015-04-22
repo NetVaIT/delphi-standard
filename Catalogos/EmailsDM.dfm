@@ -36,7 +36,6 @@ inherited dmEmails: TdmEmails
     end
   end
   object adodsEmailTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdEmailTipo, Descripcion FROM EmailsTipos'

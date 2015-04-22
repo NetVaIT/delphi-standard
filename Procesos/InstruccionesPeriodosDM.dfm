@@ -1,7 +1,6 @@
 inherited dmInstruccionesPeriodos: TdmInstruccionesPeriodos
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
-    Active = True
     AutoCalcFields = False
     CursorType = ctStatic
     CommandText = 
