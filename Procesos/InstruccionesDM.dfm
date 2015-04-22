@@ -106,21 +106,21 @@ inherited dmInstrucciones: TdmInstrucciones
     end
   end
   inherited ActionList: TActionList
-    object actProcessXLS: TAction
-      Caption = 'Generar incidencias'
-      Hint = 'Generar incidencias'
-      ImageIndex = 13
-      OnExecute = actProcessXLSExecute
-    end
     object actUpdateFile: TAction
       Caption = '...'
       Hint = 'Asigna archivo'
       OnExecute = actUpdateFileExecute
     end
+    object actProcessXLS: TAction
+      Caption = 'Generar incidencias'
+      Hint = 'Generar incidencias'
+      ImageIndex = 16
+      OnExecute = actProcessXLSExecute
+    end
     object actCreateMov: TAction
       Caption = 'Generar movimientos'
       Hint = 'Generar movimientos'
-      ImageIndex = 16
+      ImageIndex = 17
       OnExecute = actCreateMovExecute
     end
   end
