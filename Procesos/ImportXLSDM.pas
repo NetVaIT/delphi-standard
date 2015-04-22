@@ -26,7 +26,7 @@ resourcestring
   StrGetInfo        = 'Obteniendo datos';
   StrVerifInfo      = 'Verificando información';
   StrSetInfo        = 'Procesando información';
-
+  StrSelectInfo     = 'Las personas no encontradas no podran generar incidencias, ¿Desa continuar?';
 
 type
   TdmImportXLS = class(T_dmStandar)
@@ -87,7 +87,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses _ConectionDmod, ImportXLSForm, ImportXLSSelect, DocumentosAdjuntosDM,
+uses _ConectionDmod, ImportXLSForm, VerificarForm, DocumentosAdjuntosDM,
   _Utils;
 
 {$R *.dfm}
@@ -110,7 +110,7 @@ end;
 
 procedure TdmImportXLS.Execute;
 var
-  frmSelect: TfrmImportXLSSelect;
+  frmSelect: TfrmVerificar;
   Ejecutar: Boolean;
 
   function SetArchivo: Boolean;
@@ -167,8 +167,9 @@ begin
     try
       GetInstrucciones;
       CorrectInstrucciones;
-      frmSelect:= TfrmImportXLSSelect.Create(Self);
+      frmSelect:= TfrmVerificar.Create(Self);
       try
+        frmSelect.Info:= StrSelectInfo;
         ShowModule(frmSelect.pnlMaster,'');
         if frmSelect.ShowModal = mrOk then
           SetIncidencias;
@@ -190,6 +191,7 @@ begin
   adoqInstrucionesTipos.Parameters.ParamByName('IdInstruccionTipo').Value:= IdInstruccionTipo;
   adoqInstrucionesTipos.Open;
   Total:= adoqInstrucionesTipos.RecordCount;
+  Position:= 0;
   ShowProgress(Position, Total, StrGetInfo);
   while not adoqInstrucionesTipos.Eof do
   begin
@@ -303,6 +305,7 @@ var
 begin
   dxmdImportar.First;
   Total:= dxmdImportar.RecordCount;
+  Position:= 0;
   ShowProgress(Position, Total, StrSetInfo);
   while not dxmdImportar.Eof do
   begin
@@ -341,6 +344,7 @@ begin
   Result:= True;
   dxmdImportar.First;
   Total:= dxmdImportar.RecordCount;
+  Position:= 0;
   ShowProgress(Position, Total, StrVerifInfo);
   while not dxmdImportar.Eof do
   begin

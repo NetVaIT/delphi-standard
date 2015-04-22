@@ -48,16 +48,20 @@ type
     tvMasterRepetirFinaliza: TcxGridDBColumn;
     tvMasterRepetirHasta: TcxGridDBColumn;
     tvMasterRepetirFin: TcxGridDBColumn;
+    dxbbCreateMov: TdxBarButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     FProcessXLS: TBasicAction;
     FUpdateFile: TBasicAction;
+    FCreateMov: TBasicAction;
     procedure SetProcessXLS(const Value: TBasicAction);
+    procedure SetCreateMov(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
     property ProcessXLS: TBasicAction read FProcessXLS write SetProcessXLS;
+    property CreateMov: TBasicAction read FCreateMov write SetCreateMov;
     property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
@@ -77,6 +81,12 @@ procedure TfrmInstrucciones.FormShow(Sender: TObject);
 begin
   inherited;
   TfrmInstruccionesEdit(gEditForm).UpdateFile:= UpdateFile;
+end;
+
+procedure TfrmInstrucciones.SetCreateMov(const Value: TBasicAction);
+begin
+  FCreateMov := Value;
+  dxbbCreateMov.Action:= Value;
 end;
 
 procedure TfrmInstrucciones.SetProcessXLS(const Value: TBasicAction);

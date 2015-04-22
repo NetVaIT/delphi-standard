@@ -23,13 +23,16 @@ type
     adodsMasterPariodo: TStringField;
     dsMaster: TDataSource;
     adodsMovimientosDet: TADODataSet;
+    adodsMovimientosTipo: TADODataSet;
     adodsMovimientosDetIdMovimientoDetalle: TAutoIncField;
     adodsMovimientosDetIdMovimiento: TIntegerField;
     adodsMovimientosDetIdMovimientoTipo: TIntegerField;
     adodsMovimientosDetImporte: TFMTBCDField;
     adodsMovimientosDetIdMovimientoEstatus: TIntegerField;
-    adodsMovimientosTipo: TADODataSet;
-    adodsMovimientosDetMovimineotTipo: TStringField;
+    adodsMovimientosDetTipo: TStringField;
+    adodsMovimientosDetCategoria: TStringField;
+    adodsMovimientosDetEfecto: TStringField;
+    adodsMovimientosDetEstatus: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

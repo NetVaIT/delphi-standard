@@ -1,4 +1,4 @@
-unit MovimientosDetalleFrm;
+unit InstruccionesPeriodosForm;
 
 interface
 
@@ -30,16 +30,13 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmMovimientosDetalle = class(T_frmGrid)
-    tvMasterIdMovimientoDetalle: TcxGridDBColumn;
-    tvMasterIdMovimiento: TcxGridDBColumn;
-    tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoEstatus: TcxGridDBColumn;
-    tvMasterTipo: TcxGridDBColumn;
-    tvMasterImporte: TcxGridDBColumn;
-    tvMasterCategoria: TcxGridDBColumn;
-    tvMasterEfecto: TcxGridDBColumn;
-    tvMasterEstatus: TcxGridDBColumn;
+  TfrmInstruccionesPeriodos = class(T_frmGrid)
+    tvMasterIdInstruccion: TcxGridDBColumn;
+    tvMasterIdPeriodo: TcxGridDBColumn;
+    tvMasterPeriodo: TcxGridDBColumn;
+    tvMasterFecha: TcxGridDBColumn;
+    tvMasterInstruccion: TcxGridDBColumn;
+    tvMasterArchivo: TcxGridDBColumn;
   private
     { Private declarations }
   public
@@ -50,6 +47,6 @@ implementation
 
 {$R *.dfm}
 
-uses MovimientosDM;
+uses InstruccionesPeriodosDM;
 
 end.
