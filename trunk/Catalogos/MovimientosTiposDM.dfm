@@ -145,7 +145,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
   end
   object adodsMovimientoTipoCategoria: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -156,7 +155,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 72
   end
   object adodsMovimientoTipoEfecto: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

@@ -125,7 +125,6 @@ inherited dmInstrucciones: TdmInstrucciones
     end
   end
   object adodsInstruccionesTipos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdInstruccionTipo, Descripcion from InstruccionesTipos'
@@ -134,7 +133,6 @@ inherited dmInstrucciones: TdmInstrucciones
     Top = 64
   end
   object adodsDocumentosAdjuntos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdDocumentoAdjunto, NombreArchivo from DocumentosAdjuntos'

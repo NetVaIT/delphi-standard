@@ -68,7 +68,6 @@ inherited dmPersonasDomicilios: TdmPersonasDomicilios
     end
   end
   object adodsDomiciliosTipos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdDomicilioTipo, Descripcion from DomiciliosTipos'

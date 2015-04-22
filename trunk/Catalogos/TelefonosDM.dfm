@@ -41,7 +41,6 @@ inherited dmTelefonos: TdmTelefonos
     end
   end
   object adodsTelefonoTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdTelefonoTipo, Descripcion FROM TelefonosTipos'
