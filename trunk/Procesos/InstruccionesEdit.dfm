@@ -71,14 +71,6 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
         Caption = 'Empieza el'
         FocusControl = deRepetirInicio
       end
-      object Label6: TLabel
-        Left = 296
-        Top = 264
-        Width = 66
-        Height = 13
-        Caption = 'IdPeriodoTipo'
-        FocusControl = cxDBSpinEdit1
-      end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
         Top = 40
@@ -200,14 +192,6 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
         DataBinding.DataField = 'RepetirFin'
         DataBinding.DataSource = DataSource
         TabOrder = 10
-        Width = 121
-      end
-      object cxDBSpinEdit1: TcxDBSpinEdit
-        Left = 296
-        Top = 280
-        DataBinding.DataField = 'IdPeriodoTipo'
-        DataBinding.DataSource = DataSource
-        TabOrder = 11
         Width = 121
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox

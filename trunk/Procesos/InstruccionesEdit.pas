@@ -41,8 +41,6 @@ type
     rgFinaliza: TcxDBRadioGroup;
     edtRepetirHasta: TcxDBSpinEdit;
     edtRepetirFin: TcxDBDateEdit;
-    Label6: TLabel;
-    cxDBSpinEdit1: TcxDBSpinEdit;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     lcbPeriodoTipo: TcxDBLookupComboBox;
     procedure rgFinalizaClick(Sender: TObject);
