@@ -1,4 +1,4 @@
-unit IntruccionesTiposDetalleForm;
+unit ArchivosGenerarFacturasForm;
 
 interface
 
@@ -30,7 +30,15 @@ uses
   Vcl.ExtCtrls;
 
 type
-  T_frmGrid1 = class(T_frmGrid)
+  TfrmArchivosGenerarFacturas = class(T_frmGrid)
+    tvMasterIdArchivoGeneraFactura: TcxGridDBColumn;
+    tvMasterIdPersonaRol: TcxGridDBColumn;
+    tvMasterIdCSD: TcxGridDBColumn;
+    tvMasterArchivoCSD: TcxGridDBColumn;
+    tvMasterIdKey: TcxGridDBColumn;
+    tvMasterArchivoKEY: TcxGridDBColumn;
+    tvMasterClave: TcxGridDBColumn;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,5 +48,13 @@ type
 implementation
 
 {$R *.dfm}
+
+uses ArchivosGenerarFacturasDM, ArchivosGenerarFacturasEdit;
+
+procedure TfrmArchivosGenerarFacturas.FormCreate(Sender: TObject);
+begin
+  inherited;
+  gEditForm:= TfrmArchivosGenerarFacturasEdit.Create(Self);
+end;
 
 end.

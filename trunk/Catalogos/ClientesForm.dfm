@@ -33,21 +33,27 @@ inherited frmClientes: TfrmClientes
           Visible = False
         end
         object tvMasterCuentaContable: TcxGridDBColumn
+          Caption = 'Cuenta Contable'
           DataBinding.FieldName = 'CuentaContable'
         end
         object tvMasterCuentaContableNCA: TcxGridDBColumn
+          Caption = 'Cuenta Contable NCA'
           DataBinding.FieldName = 'CuentaContableNCA'
         end
         object tvMasterCuentaContableNCR: TcxGridDBColumn
+          Caption = 'Cuenta Contable NCR'
           DataBinding.FieldName = 'CuentaContableNCR'
         end
         object tvMasterCuentaContableAnticipo: TcxGridDBColumn
+          Caption = 'Cuenta Contable Anticipo'
           DataBinding.FieldName = 'CuentaContableAnticipo'
         end
         object tvMasterTotalFacturado: TcxGridDBColumn
+          Caption = 'Total Facturado'
           DataBinding.FieldName = 'TotalFacturado'
         end
         object tvMasterSaldoPendiente: TcxGridDBColumn
+          Caption = 'Saldo Pendiente'
           DataBinding.FieldName = 'SaldoPendiente'
         end
         object tvMasterCalificacion: TcxGridDBColumn
@@ -91,7 +97,6 @@ inherited frmClientes: TfrmClientes
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

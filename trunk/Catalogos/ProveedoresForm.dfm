@@ -1,10 +1,16 @@
 inherited frmProveedores: TfrmProveedores
   Caption = 'frmProveedores'
   OnCreate = FormCreate
+  ExplicitWidth = 651
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
+    ExplicitWidth = 651
+    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
+      ExplicitWidth = 651
+      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPersonaRol: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersonaRol'
@@ -27,27 +33,50 @@ inherited frmProveedores: TfrmProveedores
           Visible = False
         end
         object tvMasterCuentaContable: TcxGridDBColumn
+          Caption = 'Cuenta Contable'
           DataBinding.FieldName = 'CuentaContable'
         end
         object tvMasterCuentaContableNCA: TcxGridDBColumn
+          Caption = 'Cuenta Contable NCA'
           DataBinding.FieldName = 'CuentaContableNCA'
         end
         object tvMasterCuentaContableNCR: TcxGridDBColumn
+          Caption = 'Cuenta Contable NCR'
           DataBinding.FieldName = 'CuentaContableNCR'
         end
         object tvMasterCuentaContableAnticipo: TcxGridDBColumn
+          Caption = 'Cuenta Contable Anticipo'
           DataBinding.FieldName = 'CuentaContableAnticipo'
         end
         object tvMasterTotalFacturado: TcxGridDBColumn
+          Caption = 'Total Facturado'
           DataBinding.FieldName = 'TotalFacturado'
         end
         object tvMasterSaldoPendiente: TcxGridDBColumn
+          Caption = 'Saldo Pendiente'
           DataBinding.FieldName = 'SaldoPendiente'
         end
         object tvMasterCalificacion: TcxGridDBColumn
           DataBinding.FieldName = 'Calificacion'
         end
       end
+    end
+  end
+  inherited pnlDetail3: TPanel
+    ExplicitTop = 375
+    ExplicitWidth = 651
+  end
+  inherited pnlDetail2: TPanel
+    ExplicitTop = 331
+    ExplicitWidth = 651
+  end
+  inherited pnlDetail1: TPanel
+    ExplicitTop = 287
+    ExplicitWidth = 651
+  end
+  inherited pnlClose: TPanel
+    inherited btnClose: TButton
+      ExplicitLeft = 566
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -65,7 +94,6 @@ inherited frmProveedores: TfrmProveedores
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
