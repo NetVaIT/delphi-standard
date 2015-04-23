@@ -34,16 +34,15 @@ type
     tvMasterIdCuentaBancaria: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdCuentaBancariaTipo: TcxGridDBColumn;
+    tvMasterCuentaBancariaTipo: TcxGridDBColumn;
     tvMasterIdBanco: TcxGridDBColumn;
-    tvMasterIdMoneda: TcxGridDBColumn;
+    tvMasterBanco: TcxGridDBColumn;
     tvMasterCuentaBancaria: TcxGridDBColumn;
     tvMasterClabeInterbancaria: TcxGridDBColumn;
+    tvMasterIdMoneda: TcxGridDBColumn;
+    tvMasterMoneda: TcxGridDBColumn;
     tvMasterEstructuraEstadoCuenta: TcxGridDBColumn;
     tvMasterSaldoCuenta: TcxGridDBColumn;
-    tvMasterBanco: TcxGridDBColumn;
-    tvMasterTipoCtaBan: TcxGridDBColumn;
-    tvMasterMoneda: TcxGridDBColumn;
-    tvMasterPersona: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

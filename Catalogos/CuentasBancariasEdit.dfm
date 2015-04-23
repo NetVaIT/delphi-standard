@@ -1,34 +1,26 @@
 inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
   Caption = 'Cuentas Bancarias'
-  ClientHeight = 462
-  ClientWidth = 560
-  ExplicitWidth = 566
-  ExplicitHeight = 490
+  ClientHeight = 331
+  ClientWidth = 542
+  ExplicitWidth = 548
+  ExplicitHeight = 359
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 560
-    Height = 421
+    Width = 542
+    Height = 290
     ExplicitWidth = 560
     ExplicitHeight = 421
-    ClientRectBottom = 419
-    ClientRectRight = 558
+    ClientRectBottom = 288
+    ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 556
       ExplicitHeight = 391
-      object Label1: TLabel
-        Left = 24
-        Top = 24
-        Width = 114
-        Height = 13
-        Caption = 'Propietario de la cuenta'
-        FocusControl = DBLookupComboBox1
-      end
       object Label2: TLabel
         Left = 24
-        Top = 183
+        Top = 103
         Width = 79
         Height = 13
         Caption = 'Cuenta Bancaria'
@@ -36,7 +28,7 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
       end
       object Label3: TLabel
         Left = 24
-        Top = 301
+        Top = 197
         Width = 89
         Height = 13
         Caption = 'Archivo Estructura'
@@ -44,7 +36,7 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
       end
       object Label4: TLabel
         Left = 362
-        Top = 183
+        Top = 103
         Width = 64
         Height = 13
         Caption = 'Saldo Cuenta'
@@ -52,31 +44,28 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
       end
       object Label5: TLabel
         Left = 24
-        Top = 73
+        Top = 17
         Width = 29
         Height = 13
         Caption = 'Banco'
-        FocusControl = DBLookupComboBox2
       end
       object Label6: TLabel
         Left = 24
-        Top = 124
+        Top = 60
         Width = 102
         Height = 13
         Caption = 'Tipo Cuenta Bancaria'
-        FocusControl = DBLookupComboBox3
       end
       object Label7: TLabel
         Left = 362
-        Top = 127
+        Top = 63
         Width = 38
         Height = 13
         Caption = 'Moneda'
-        FocusControl = DBLookupComboBox4
       end
       object Label8: TLabel
         Left = 24
-        Top = 247
+        Top = 151
         Width = 95
         Height = 13
         Caption = 'Clabe Interbancaria'
@@ -84,7 +73,7 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
       end
       object SpdBtnArchiConf: TSpeedButton
         Left = 474
-        Top = 304
+        Top = 200
         Width = 37
         Height = 37
         Glyph.Data = {
@@ -285,87 +274,78 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         NumGlyphs = 2
         OnClick = SpdBtnArchiConfClick
       end
-      object DBLookupComboBox1: TDBLookupComboBox
-        Left = 24
-        Top = 40
-        Width = 488
-        Height = 21
-        DataField = 'Persona'
-        DataSource = DataSource
-        TabOrder = 0
-      end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
-        Top = 202
+        Top = 122
         DataBinding.DataField = 'CuentaBancaria'
         DataBinding.DataSource = DataSource
-        TabOrder = 1
+        TabOrder = 0
         Width = 300
       end
       object cxDBTxtEdtArchConf: TcxDBTextEdit
         Left = 24
-        Top = 320
+        Top = 216
         DataBinding.DataField = 'EstructuraEstadoCuenta'
         DataBinding.DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 2
+        TabOrder = 1
         Width = 444
       end
       object cxDBCurrencyEdit1: TcxDBCurrencyEdit
         Left = 362
-        Top = 202
+        Top = 122
         DataBinding.DataField = 'SaldoCuenta'
         DataBinding.DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 3
+        TabOrder = 2
         Width = 150
-      end
-      object DBLookupComboBox2: TDBLookupComboBox
-        Left = 24
-        Top = 92
-        Width = 300
-        Height = 21
-        DataField = 'Banco'
-        DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 4
-      end
-      object DBLookupComboBox3: TDBLookupComboBox
-        Left = 24
-        Top = 143
-        Width = 300
-        Height = 21
-        DataField = 'TipoCtaBan'
-        DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 5
-      end
-      object DBLookupComboBox4: TDBLookupComboBox
-        Left = 362
-        Top = 143
-        Width = 150
-        Height = 21
-        DataField = 'Moneda'
-        DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 6
       end
       object cxDBTextEdit3: TcxDBTextEdit
         Left = 24
-        Top = 263
+        Top = 167
         DataBinding.DataField = 'ClabeInterbancaria'
         DataBinding.DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 7
+        TabOrder = 3
         Width = 488
+      end
+      object cxDBLookupComboBox1: TcxDBLookupComboBox
+        Left = 23
+        Top = 35
+        DataBinding.DataField = 'Banco'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 4
+        Width = 301
+      end
+      object cxDBLookupComboBox2: TcxDBLookupComboBox
+        Left = 23
+        Top = 78
+        DataBinding.DataField = 'CuentaBancariaTipo'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 5
+        Width = 301
+      end
+      object cxDBLookupComboBox3: TcxDBLookupComboBox
+        Left = 361
+        Top = 78
+        DataBinding.DataField = 'Moneda'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 6
+        Width = 150
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 421
-    Width = 560
+    Top = 290
+    Width = 542
     ExplicitTop = 421
     ExplicitWidth = 560
     inherited btnOk: TButton
-      Left = 397
+      Left = 379
       ExplicitLeft = 397
     end
     inherited btnCancel: TButton
-      Left = 478
+      Left = 460
       ExplicitLeft = 478
     end
   end

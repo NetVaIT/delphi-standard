@@ -21,7 +21,7 @@ uses
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
   Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   PersonasDM, TelefonosDM, EmailsDM, PersonasDomiciliosDM, PersonasContactoDM,
-  ShellApi;
+  CuentasBancariasDM, ShellApi;
 
 type
   TfrmPersonaEdit = class(T_frmEdit)
@@ -61,10 +61,7 @@ type
     tsContacto: TcxTabSheet;
     Label12: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
-    Label13: TLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
-    Label14: TLabel;
-    cxDBDateEdit2: TcxDBDateEdit;
+    tsCuentasBancarias: TcxTabSheet;
     procedure FormShow(Sender: TObject);
     procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -79,6 +76,7 @@ type
     dmEmails: TdmEmails;
     dmDomicilios: TdmPersonasDomicilios;
     dmPersonasContacto: TdmPersonasContacto;
+    dmCuentasBancarias: TdmCuentasBancarias;
     procedure MostrarPanel();
     procedure SetRol(const Value: TPRol);
   public
@@ -94,7 +92,7 @@ implementation
 procedure TfrmPersonaEdit.btnNextClick(Sender: TObject);
 begin
   pcMain.SelectNextPage(True);
-  if pcMain.ActivePage = tsContacto then
+  if pcMain.ActivePage = tsCuentasBancarias then
   begin
     btnOk.Visible := True;
     btnNext.Visible := False;
@@ -127,6 +125,7 @@ begin
   dmEmails := TdmEmails.Create(nil);
   dmDomicilios := TdmPersonasDomicilios.Create(nil);
   dmPersonasContacto := TdmPersonasContacto.Create(nil);
+  dmCuentasBancarias := TdmCuentasBancarias.Create(nil);
 end;
 
 procedure TfrmPersonaEdit.FormDestroy(Sender: TObject);
@@ -136,6 +135,7 @@ begin
   FreeAndNil(dmEmails);
   FreeAndNil(dmDomicilios);
   FreeAndNil(dmPersonasContacto);
+  FreeAndNil(dmCuentasBancarias);
 end;
 
 procedure TfrmPersonaEdit.FormShow(Sender: TObject);
@@ -157,6 +157,9 @@ begin
   dmPersonasContacto.MasterSource := DataSource;
   dmPersonasContacto.MasterFields := 'IdPersona';
   dmPersonasContacto.ShowModule(tsContacto,'');
+  dmCuentasBancarias.MasterSource := DataSource;
+  dmCuentasBancarias.MasterFields := 'IdPersona';
+  dmCuentasBancarias.ShowModule(tsCuentasBancarias,'');
   case Rol of
     rNone:         Self.Caption := 'Persona';
     rDuenoProceso: Self.Caption := 'Dueño de Proceso';

@@ -42,7 +42,6 @@ type
     tvMasterPersonaRelacionada: TcxGridDBColumn;
     tvMasterRolEstatus: TcxGridDBColumn;
     tvMasterRolClase: TcxGridDBColumn;
-    tvMasterFacturar: TcxGridDBColumn;
     tvMasterFechaIngreso: TcxGridDBColumn;
     tvMasterFechaBaja: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
