@@ -258,6 +258,7 @@ inherited dmPersona: TdmPersona
       Lookup = True
     end
     object adodsPersonaRolesPersonaRelacionada: TStringField
+      DisplayLabel = 'Persona relacionada'
       FieldKind = fkLookup
       FieldName = 'PersonaRelacionada'
       LookupDataSet = adodsPersonaRelacionada
@@ -268,6 +269,7 @@ inherited dmPersona: TdmPersona
       Lookup = True
     end
     object adodsPersonaRolesRolEstatus: TStringField
+      DisplayLabel = 'Estatus'
       FieldKind = fkLookup
       FieldName = 'RolEstatus'
       LookupDataSet = adodsRolEstatus
@@ -278,6 +280,7 @@ inherited dmPersona: TdmPersona
       Lookup = True
     end
     object adodsPersonaRolesRolClase: TStringField
+      DisplayLabel = 'Clase'
       FieldKind = fkLookup
       FieldName = 'RolClase'
       LookupDataSet = adodsRolClase
@@ -289,11 +292,14 @@ inherited dmPersona: TdmPersona
     end
     object adodsPersonaRolesFacturar: TBooleanField
       FieldName = 'Facturar'
+      Visible = False
     end
     object adodsPersonaRolesFechaIngreso: TDateTimeField
+      DisplayLabel = 'Fecha de ingreso'
       FieldName = 'FechaIngreso'
     end
     object adodsPersonaRolesFechaBaja: TDateTimeField
+      DisplayLabel = 'Fecha de baja'
       FieldName = 'FechaBaja'
     end
   end
