@@ -107,6 +107,14 @@ inherited frmPersonas: TfrmPersonas
           DataBinding.FieldName = 'Pais'
           Visible = False
         end
+        object tvMasterCURP: TcxGridDBColumn
+          DataBinding.FieldName = 'CURP'
+          Visible = False
+        end
+        object tvMasterLugarNacimiento: TcxGridDBColumn
+          DataBinding.FieldName = 'LugarNacimiento'
+          Visible = False
+        end
       end
     end
   end
@@ -134,6 +142,9 @@ inherited frmPersonas: TfrmPersonas
     Width = 645
     ExplicitTop = 392
     ExplicitWidth = 645
+    inherited btnClose: TButton
+      ExplicitLeft = 566
+    end
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

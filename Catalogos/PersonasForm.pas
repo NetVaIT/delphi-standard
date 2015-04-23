@@ -49,6 +49,8 @@ type
     tvMasterSexo: TcxGridDBColumn;
     tvMasterEstadoCivil: TcxGridDBColumn;
     tvMasterPais: TcxGridDBColumn;
+    tvMasterCURP: TcxGridDBColumn;
+    tvMasterLugarNacimiento: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

@@ -111,6 +111,10 @@ inherited dmPersona: TdmPersona
       Size = 100
       Lookup = True
     end
+    object adodsMasterLugarNacimiento: TStringField
+      FieldName = 'LugarNacimiento'
+      Size = 100
+    end
   end
   inherited adodsUpdate: TADODataSet
     Left = 216
