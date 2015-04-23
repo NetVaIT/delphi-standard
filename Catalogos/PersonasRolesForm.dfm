@@ -6,7 +6,7 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   Visible = True
   OnCreate = FormCreate
   ExplicitWidth = 651
-  ExplicitHeight = 457
+  ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -66,30 +66,27 @@ inherited frmPersonasRoles: TfrmPersonasRoles
         end
         object tvMasterRol: TcxGridDBColumn
           DataBinding.FieldName = 'Rol'
-          Width = 200
         end
         object tvMasterPersonaRelacionada: TcxGridDBColumn
-          Caption = 'Persona Relacionada'
           DataBinding.FieldName = 'PersonaRelacionada'
-          Width = 400
+          Width = 304
         end
         object tvMasterRolEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'RolEstatus'
-          Width = 120
+          Width = 104
         end
         object tvMasterRolClase: TcxGridDBColumn
           DataBinding.FieldName = 'RolClase'
-          Width = 100
+          Width = 104
         end
         object tvMasterFacturar: TcxGridDBColumn
           DataBinding.FieldName = 'Facturar'
+          Visible = False
         end
         object tvMasterFechaIngreso: TcxGridDBColumn
-          Caption = 'Fecha de Ingreso'
           DataBinding.FieldName = 'FechaIngreso'
         end
         object tvMasterFechaBaja: TcxGridDBColumn
-          Caption = 'Fecha de Baja'
           DataBinding.FieldName = 'FechaBaja'
         end
       end
@@ -137,7 +134,6 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

@@ -5,7 +5,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 627
-  ExplicitHeight = 458
+  ExplicitHeight = 459
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
@@ -30,30 +30,30 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       object Label2: TLabel
         Left = 16
         Top = 59
-        Width = 100
+        Width = 97
         Height = 13
-        Caption = 'Persona Relacionada'
+        Caption = 'Persona relacionada'
       end
       object Label3: TLabel
         Left = 16
         Top = 99
-        Width = 71
+        Width = 36
         Height = 13
-        Caption = 'Estatus del Rol'
+        Caption = 'Estatus'
       end
       object Label4: TLabel
         Left = 16
         Top = 139
-        Width = 61
+        Width = 26
         Height = 13
-        Caption = 'Clase del Rol'
+        Caption = 'Clase'
       end
       object Label5: TLabel
         Left = 16
         Top = 181
-        Width = 84
+        Width = 82
         Height = 13
-        Caption = 'Fecha de Ingreso'
+        Caption = 'Fecha de ingreso'
         FocusControl = cxDBDateEdit1
       end
       object Label6: TLabel
@@ -61,7 +61,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         Top = 224
         Width = 68
         Height = 13
-        Caption = 'Fecha de Baja'
+        Caption = 'Fecha de baja'
         FocusControl = cxDBDateEdit2
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
