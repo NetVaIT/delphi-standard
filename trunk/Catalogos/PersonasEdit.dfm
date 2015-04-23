@@ -1,30 +1,31 @@
 inherited frmPersonaEdit: TfrmPersonaEdit
   Caption = 'Persona'
-  ClientHeight = 342
+  ClientHeight = 380
   ClientWidth = 624
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 630
-  ExplicitHeight = 370
+  ExplicitHeight = 408
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 624
-    Height = 301
+    Height = 339
+    Properties.ActivePage = tsCuentasBancarias
     ExplicitWidth = 624
-    ExplicitHeight = 259
-    ClientRectBottom = 299
+    ExplicitHeight = 260
+    ClientRectBottom = 337
     ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 620
-      ExplicitHeight = 229
+      ExplicitHeight = 230
       object pnlPersona: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 89
+        Height = 49
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
@@ -48,22 +49,6 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           Width = 43
           Height = 13
           Caption = 'C.U.R.P.'
-        end
-        object Label13: TLabel
-          Left = 16
-          Top = 53
-          Width = 31
-          Height = 13
-          Caption = 'N.S.S.'
-          FocusControl = cxDBTextEdit3
-        end
-        object Label14: TLabel
-          Left = 200
-          Top = 53
-          Width = 122
-          Height = 13
-          Caption = 'Fecha de Ingreso al IMSS'
-          FocusControl = cxDBDateEdit2
         end
         object cxDBTextEdit1: TcxDBTextEdit
           Left = 200
@@ -100,33 +85,16 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           TabOrder = 3
           OnClick = btnWebClick
         end
-        object cxDBTextEdit3: TcxDBTextEdit
-          Left = 16
-          Top = 69
-          DataBinding.DataField = 'NSS'
-          DataBinding.DataSource = DataSource
-          TabOrder = 4
-          Width = 161
-        end
-        object cxDBDateEdit2: TcxDBDateEdit
-          Left = 200
-          Top = 69
-          DataBinding.DataField = 'FechaIngresoIMSS'
-          DataBinding.DataSource = DataSource
-          TabOrder = 5
-          Width = 121
-        end
       end
       object pnlPersonaMoral: TPanel
         Left = 0
-        Top = 89
+        Top = 49
         Width = 620
         Height = 93
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
         Visible = False
-        ExplicitTop = 49
         object Label3: TLabel
           Left = 16
           Top = 8
@@ -178,14 +146,13 @@ inherited frmPersonaEdit: TfrmPersonaEdit
       end
       object pnlPersonaFisica: TPanel
         Left = 0
-        Top = 182
+        Top = 142
         Width = 620
         Height = 170
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 2
         Visible = False
-        ExplicitTop = 142
         object Label5: TLabel
           Left = 16
           Top = 6
@@ -304,42 +271,45 @@ inherited frmPersonaEdit: TfrmPersonaEdit
       end
       object pnlOrigen: TPanel
         Left = 0
-        Top = 352
+        Top = 312
         Width = 620
         Height = 0
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
-        ExplicitTop = 312
-        ExplicitHeight = 5
       end
     end
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
-      ExplicitHeight = 457
+      ExplicitHeight = 230
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
-      ExplicitHeight = 457
+      ExplicitHeight = 230
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
-      ExplicitHeight = 457
+      ExplicitHeight = 230
     end
     object tsContacto: TcxTabSheet
       Caption = 'Contactos'
       ImageIndex = 4
-      ExplicitHeight = 457
+      ExplicitHeight = 230
+    end
+    object tsCuentasBancarias: TcxTabSheet
+      Caption = 'Cuentas Bancarias'
+      ImageIndex = 5
+      ExplicitHeight = 230
     end
   end
   inherited pmlMain: TPanel
-    Top = 301
+    Top = 339
     Width = 624
-    ExplicitTop = 259
+    ExplicitTop = 260
     ExplicitWidth = 624
     inherited btnOk: TButton
       Left = 461

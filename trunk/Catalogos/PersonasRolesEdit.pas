@@ -19,12 +19,20 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM, CuentasBancariasDM,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
   ClientesDM, ProveedoresDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
   EmpleadosDM, cxCalendar;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
+    tsKardex: TcxTabSheet;
+    tsCuentas: TcxTabSheet;
+    tsEsquemaPago: TcxTabSheet;
+    tsArchivosFacturar: TcxTabSheet;
+    tsEmpleado: TcxTabSheet;
+    pnlRol: TPanel;
+    pnlProveedor: TPanel;
+    pnlEmpleado: TPanel;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -33,17 +41,15 @@ type
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
     cxDBLookupComboBox4: TcxDBLookupComboBox;
-    tsKardex: TcxTabSheet;
-    tsCuentas: TcxTabSheet;
-    tsEsquemaPago: TcxTabSheet;
-    tsCuentasBancarias: TcxTabSheet;
-    dbchkFacturar: TcxDBCheckBox;
-    tsArchivosFacturar: TcxTabSheet;
-    tsEmpleado: TcxTabSheet;
     Label5: TLabel;
     cxDBDateEdit1: TcxDBDateEdit;
     Label6: TLabel;
     cxDBDateEdit2: TcxDBDateEdit;
+    dbchkFacturar: TcxDBCheckBox;
+    Label7: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Label8: TLabel;
+    cxDBDateEdit3: TcxDBDateEdit;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -51,7 +57,6 @@ type
   private
     { Private declarations }
     FRol: TPRol;
-    dmCuentasBancarias: TdmCuentasBancarias;
     dmClientes: TdmClientes;
     dmProveedores: TdmProveedores;
     dmEmpleados: TdmEmpleados;
@@ -75,7 +80,6 @@ end;
 procedure TfrmPersonaRolesEdit.FormCreate(Sender: TObject);
 begin
   inherited;
-  dmCuentasBancarias := TdmCuentasBancarias.Create(nil);
   dmClientes := TdmClientes.Create(nil);
   dmProveedores := TdmProveedores.Create(nil);
   dmEmpleados := TdmEmpleados.Create(nil);
@@ -85,7 +89,6 @@ end;
 procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
 begin
   inherited;
-  FreeAndNil(dmCuentasBancarias);
   FreeAndNil(dmClientes);
   FreeAndNil(dmProveedores);
   FreeAndNil(dmEmpleados);
@@ -97,17 +100,22 @@ begin
   inherited;
   if DataSource.DataSet.State in [dsInsert] then
     cxDBLookupComboBox1.EditValue := Rol;
-    dbchkFacturar.Visible := False;
+    pnlProveedor.Visible := False;
     tsArchivosFacturar.TabVisible := False;
+    pnlEmpleado.Visible := False;
   case DataSource.DataSet.FieldByName('IdRol').AsInteger of
+    1: begin
+
+       end;
     2: begin
-        dbchkFacturar.Visible := True;
+        pnlProveedor.Visible := True;
+
        end;
     3: begin
         tsCuentas.TabVisible          := True;
 //        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
-        tsCuentasBancarias.TabVisible := True;
+
         dmClientes.MasterSource       := DataSource;
         dmClientes.MasterFields       := 'IdPersonaRol';
         dmClientes.ShowModule(tsCuentas,'');
@@ -116,18 +124,19 @@ begin
         tsCuentas.TabVisible          := True;
 //        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
-        tsCuentasBancarias.TabVisible := True;
+
         dmProveedores.MasterSource    := DataSource;
         dmProveedores.MasterFields    := 'IdPersonaRol';
         dmProveedores.ShowModule(tsCuentas,'');
-        dbchkFacturar.Visible         := True;
+        pnlProveedor.Visible          := True;
         tsArchivosFacturar.TabVisible := True;
        end;
     5: begin
+        pnlEmpleado.Visible           := True;
 //        tsEmpleado.TabVisible         := True;
         tsEsquemaPago.TabVisible      := False; //TMP
         tsCuentas.TabVisible          := False;
-        tsCuentasBancarias.TabVisible := True;
+
        end;
     6: begin
         tsCuentas.TabVisible     := True;
@@ -150,9 +159,6 @@ begin
         tsEsquemaPago.TabVisible := False;
        end;
   end;
-  dmCuentasBancarias.MasterSource := DataSource;
-  dmCuentasBancarias.MasterFields := 'IdPersona';
-  dmCuentasBancarias.ShowModule(tsCuentasBancarias,'');
 //  dmEmpleados.MasterSource := DataSource;
 //  dmEmpleados.MasterFields := 'IdPersonaRol';
 //  dmEmpleados.ShowModule(tsEmpleado,'');

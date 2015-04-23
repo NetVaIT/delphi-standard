@@ -19,12 +19,11 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxCurrencyEdit,
-  Vcl.ExtDlgs, Vcl.Buttons;
+  Vcl.ExtDlgs, Vcl.Buttons, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox;
 
 type
   TfrmCuentasBancariasEdit = class(T_frmEdit)
-    Label1: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
     Label2: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label3: TLabel;
@@ -32,15 +31,15 @@ type
     Label4: TLabel;
     cxDBCurrencyEdit1: TcxDBCurrencyEdit;
     Label5: TLabel;
-    DBLookupComboBox2: TDBLookupComboBox;
     Label6: TLabel;
-    DBLookupComboBox3: TDBLookupComboBox;
     Label7: TLabel;
-    DBLookupComboBox4: TDBLookupComboBox;
     Label8: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
     SpdBtnArchiConf: TSpeedButton;
     OpnTxtFlDlgCarga: TOpenTextFileDialog;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBLookupComboBox2: TcxDBLookupComboBox;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
     procedure SpdBtnArchiConfClick(Sender: TObject);
   private
     { Private declarations }

@@ -115,22 +115,9 @@ inherited dmPersona: TdmPersona
       FieldName = 'LugarNacimiento'
       Size = 100
     end
-    object adodsMasterNSS: TStringField
-      FieldName = 'NSS'
-      Size = 100
-    end
-    object adodsMasterFechaIngresoIMSS: TDateTimeField
-      FieldName = 'FechaIngresoIMSS'
-    end
   end
   inherited adodsUpdate: TADODataSet
     Left = 216
-  end
-  object ADODataSet1: TADODataSet
-    Connection = _dmConection.ADOConnection
-    Parameters = <>
-    Left = 536
-    Top = 24
   end
   object adodsPersonaTipo: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -210,8 +197,8 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPersonaRol, IdPersona, IdPersonaRelacionada, IdRol, IdR' +
-      'olEsquemaPago, IdRolEstatus, IdRolClase, Facturar, FechaIngreso,' +
-      ' FechaBaja '#13#10'FROM PersonasRoles'
+      'olEsquemaPago, IdRolEstatus, IdRolClase, NSS, FechaAltaIMSS, Fac' +
+      'turar, FechaIngreso, FechaBaja FROM PersonasRoles'
     DataSource = dsMaster
     IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
@@ -293,6 +280,13 @@ inherited dmPersona: TdmPersona
     object adodsPersonaRolesFacturar: TBooleanField
       FieldName = 'Facturar'
       Visible = False
+    end
+    object adodsPersonaRolesNSS: TStringField
+      FieldName = 'NSS'
+      Size = 15
+    end
+    object adodsPersonaRolesFechaAltaIMSS: TDateTimeField
+      FieldName = 'FechaAltaIMSS'
     end
     object adodsPersonaRolesFechaIngreso: TDateTimeField
       DisplayLabel = 'Fecha de ingreso'

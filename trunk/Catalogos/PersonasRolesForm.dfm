@@ -6,7 +6,7 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   Visible = True
   OnCreate = FormCreate
   ExplicitWidth = 651
-  ExplicitHeight = 462
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -79,10 +79,6 @@ inherited frmPersonasRoles: TfrmPersonasRoles
           DataBinding.FieldName = 'RolClase'
           Width = 104
         end
-        object tvMasterFacturar: TcxGridDBColumn
-          DataBinding.FieldName = 'Facturar'
-          Visible = False
-        end
         object tvMasterFechaIngreso: TcxGridDBColumn
           DataBinding.FieldName = 'FechaIngreso'
         end
@@ -115,9 +111,6 @@ inherited frmPersonasRoles: TfrmPersonasRoles
     inherited btnClose: TButton
       ExplicitLeft = 566
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmPersona.adodsPersonaRoles
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
