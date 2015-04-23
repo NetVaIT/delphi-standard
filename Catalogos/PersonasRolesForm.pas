@@ -22,7 +22,12 @@ uses
   cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, PersonasDM,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev,
+  dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore,
+  dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
+  dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
+  dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxRibbonPainter,
+  dxPSCore, dxPScxCommon;
 
 type
   TfrmPersonasRoles = class(T_frmGrid)
@@ -37,6 +42,9 @@ type
     tvMasterPersonaRelacionada: TcxGridDBColumn;
     tvMasterRolEstatus: TcxGridDBColumn;
     tvMasterRolClase: TcxGridDBColumn;
+    tvMasterFacturar: TcxGridDBColumn;
+    tvMasterFechaIngreso: TcxGridDBColumn;
+    tvMasterFechaBaja: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

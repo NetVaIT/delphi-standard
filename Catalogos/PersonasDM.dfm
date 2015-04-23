@@ -115,6 +115,13 @@ inherited dmPersona: TdmPersona
       FieldName = 'LugarNacimiento'
       Size = 100
     end
+    object adodsMasterNSS: TStringField
+      FieldName = 'NSS'
+      Size = 100
+    end
+    object adodsMasterFechaIngresoIMSS: TDateTimeField
+      FieldName = 'FechaIngresoIMSS'
+    end
   end
   inherited adodsUpdate: TADODataSet
     Left = 216
@@ -203,8 +210,8 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPersonaRol, IdPersona, IdPersonaRelacionada, IdRol, IdR' +
-      'olEsquemaPago, IdRolEstatus, IdRolClase, Facturar '#13#10'FROM Persona' +
-      'sRoles'
+      'olEsquemaPago, IdRolEstatus, IdRolClase, Facturar, FechaIngreso,' +
+      ' FechaBaja '#13#10'FROM PersonasRoles'
     DataSource = dsMaster
     IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
@@ -282,6 +289,12 @@ inherited dmPersona: TdmPersona
     end
     object adodsPersonaRolesFacturar: TBooleanField
       FieldName = 'Facturar'
+    end
+    object adodsPersonaRolesFechaIngreso: TDateTimeField
+      FieldName = 'FechaIngreso'
+    end
+    object adodsPersonaRolesFechaBaja: TDateTimeField
+      FieldName = 'FechaBaja'
     end
   end
   object adodsPersonaRelacionada: TADODataSet
