@@ -30,12 +30,10 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   inherited pnlMaster: TPanel
     Width = 645
     Height = 229
-    ExplicitWidth = 645
     ExplicitHeight = 229
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 229
-      ExplicitWidth = 645
       ExplicitHeight = 229
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPersonaRol: TcxGridDBColumn
@@ -83,6 +81,17 @@ inherited frmPersonasRoles: TfrmPersonasRoles
           DataBinding.FieldName = 'RolClase'
           Width = 100
         end
+        object tvMasterFacturar: TcxGridDBColumn
+          DataBinding.FieldName = 'Facturar'
+        end
+        object tvMasterFechaIngreso: TcxGridDBColumn
+          Caption = 'Fecha de Ingreso'
+          DataBinding.FieldName = 'FechaIngreso'
+        end
+        object tvMasterFechaBaja: TcxGridDBColumn
+          Caption = 'Fecha de Baja'
+          DataBinding.FieldName = 'FechaBaja'
+        end
       end
     end
   end
@@ -90,25 +99,25 @@ inherited frmPersonasRoles: TfrmPersonasRoles
     Top = 351
     Width = 645
     ExplicitTop = 351
-    ExplicitWidth = 645
   end
   inherited pnlDetail2: TPanel
     Top = 307
     Width = 645
     ExplicitTop = 307
-    ExplicitWidth = 645
   end
   inherited pnlDetail1: TPanel
     Top = 263
     Width = 645
     ExplicitTop = 263
-    ExplicitWidth = 645
   end
   inherited pnlClose: TPanel
     Top = 392
     Width = 645
     ExplicitTop = 392
     ExplicitWidth = 645
+    inherited btnClose: TButton
+      ExplicitLeft = 566
+    end
   end
   inherited DataSource: TDataSource
     DataSet = dmPersona.adodsPersonaRoles
@@ -125,5 +134,11 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      BuiltInReportLink = True
+    end
   end
 end

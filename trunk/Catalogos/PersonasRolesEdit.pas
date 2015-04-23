@@ -21,7 +21,7 @@ uses
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM, CuentasBancariasDM,
   ClientesDM, ProveedoresDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
-  EmpleadosDM;
+  EmpleadosDM, cxCalendar;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -40,6 +40,10 @@ type
     dbchkFacturar: TcxDBCheckBox;
     tsArchivosFacturar: TcxTabSheet;
     tsEmpleado: TcxTabSheet;
+    Label5: TLabel;
+    cxDBDateEdit1: TcxDBDateEdit;
+    Label6: TLabel;
+    cxDBDateEdit2: TcxDBDateEdit;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -101,7 +105,7 @@ begin
        end;
     3: begin
         tsCuentas.TabVisible          := True;
-        tsEmpleado.TabVisible           := False;
+//        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
         tsCuentasBancarias.TabVisible := True;
         dmClientes.MasterSource       := DataSource;
@@ -110,7 +114,7 @@ begin
        end;
     4: begin
         tsCuentas.TabVisible          := True;
-        tsEmpleado.TabVisible           := False;
+//        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
         tsCuentasBancarias.TabVisible := True;
         dmProveedores.MasterSource    := DataSource;
@@ -120,38 +124,38 @@ begin
         tsArchivosFacturar.TabVisible := True;
        end;
     5: begin
-        tsEmpleado.TabVisible         := True;
-        tsEsquemaPago.TabVisible      := True;
+//        tsEmpleado.TabVisible         := True;
+        tsEsquemaPago.TabVisible      := False; //TMP
         tsCuentas.TabVisible          := False;
         tsCuentasBancarias.TabVisible := True;
        end;
     6: begin
         tsCuentas.TabVisible     := True;
-        tsEmpleado.TabVisible      := False;
+//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
     7: begin
         tsCuentas.TabVisible     := True;
-        tsEmpleado.TabVisible      := False;
+//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
     8: begin
         tsCuentas.TabVisible     := True;
-        tsEmpleado.TabVisible      := False;
+//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
     9: begin
         tsCuentas.TabVisible     := True;
-        tsEmpleado.TabVisible      := False;
+//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
   end;
   dmCuentasBancarias.MasterSource := DataSource;
   dmCuentasBancarias.MasterFields := 'IdPersona';
   dmCuentasBancarias.ShowModule(tsCuentasBancarias,'');
-  dmEmpleados.MasterSource := DataSource;
-  dmEmpleados.MasterFields := 'IdPersonaRol';
-  dmEmpleados.ShowModule(tsEmpleado,'');
+//  dmEmpleados.MasterSource := DataSource;
+//  dmEmpleados.MasterFields := 'IdPersonaRol';
+//  dmEmpleados.ShowModule(tsEmpleado,'');
   if tsArchivosFacturar.TabVisible = True then
   begin
     dmArchivosGenerarFacturas.MasterSource := DataSource;

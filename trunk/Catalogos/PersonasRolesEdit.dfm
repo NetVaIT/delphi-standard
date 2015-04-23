@@ -11,7 +11,6 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 621
     Height = 389
-    Properties.ActivePage = tsCuentas
     ExplicitWidth = 621
     ExplicitHeight = 389
     ClientRectBottom = 387
@@ -48,6 +47,22 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         Width = 61
         Height = 13
         Caption = 'Clase del Rol'
+      end
+      object Label5: TLabel
+        Left = 16
+        Top = 181
+        Width = 84
+        Height = 13
+        Caption = 'Fecha de Ingreso'
+        FocusControl = cxDBDateEdit1
+      end
+      object Label6: TLabel
+        Left = 15
+        Top = 224
+        Width = 68
+        Height = 13
+        Caption = 'Fecha de Baja'
+        FocusControl = cxDBDateEdit2
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
         Left = 15
@@ -92,6 +107,22 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         DataBinding.DataField = 'Facturar'
         DataBinding.DataSource = DataSource
         TabOrder = 4
+        Width = 121
+      end
+      object cxDBDateEdit1: TcxDBDateEdit
+        Left = 16
+        Top = 197
+        DataBinding.DataField = 'FechaIngreso'
+        DataBinding.DataSource = DataSource
+        TabOrder = 5
+        Width = 121
+      end
+      object cxDBDateEdit2: TcxDBDateEdit
+        Left = 15
+        Top = 240
+        DataBinding.DataField = 'FechaBaja'
+        DataBinding.DataSource = DataSource
+        TabOrder = 6
         Width = 121
       end
     end
