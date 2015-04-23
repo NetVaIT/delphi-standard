@@ -149,7 +149,10 @@ uses
   InstruccionesPeriodosForm in 'Procesos\InstruccionesPeriodosForm.pas' {frmInstruccionesPeriodos},
   ArchivosGenerarFacturasDM in 'Catalogos\ArchivosGenerarFacturasDM.pas' {dmArchivosGenerarFacturas: TDataModule},
   ArchivosGenerarFacturasEdit in 'Catalogos\ArchivosGenerarFacturasEdit.pas' {frmArchivosGenerarFacturasEdit},
-  ArchivosGenerarFacturasForm in 'Catalogos\ArchivosGenerarFacturasForm.pas' {frmArchivosGenerarFacturas};
+  ArchivosGenerarFacturasForm in 'Catalogos\ArchivosGenerarFacturasForm.pas' {frmArchivosGenerarFacturas},
+  EmpleadosDM in 'Catalogos\EmpleadosDM.pas' {dmEmpleados: TDataModule},
+  EmpleadosEdit in 'Catalogos\EmpleadosEdit.pas' {frmEmpleadosEdit},
+  EmpleadosForm in 'Catalogos\EmpleadosForm.pas' {frmEmpleados};
 
 {$R *.res}
 

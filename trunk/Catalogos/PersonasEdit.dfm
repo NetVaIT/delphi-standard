@@ -1,25 +1,25 @@
 inherited frmPersonaEdit: TfrmPersonaEdit
   Caption = 'Persona'
-  ClientHeight = 301
+  ClientHeight = 300
   ClientWidth = 624
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 630
-  ExplicitHeight = 329
+  ExplicitHeight = 328
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 624
-    Height = 260
+    Height = 259
     ExplicitWidth = 624
-    ExplicitHeight = 260
-    ClientRectBottom = 258
+    ExplicitHeight = 259
+    ClientRectBottom = 257
     ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 620
-      ExplicitHeight = 230
+      ExplicitHeight = 229
       object pnlPersona: TPanel
         Left = 0
         Top = 0
@@ -198,6 +198,14 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           Height = 13
           Caption = 'Estado Civil'
         end
+        object Label12: TLabel
+          Left = 161
+          Top = 86
+          Width = 97
+          Height = 13
+          Caption = 'Lugar de Nacimiento'
+          FocusControl = cxDBTextEdit2
+        end
         object edtNombre: TcxDBTextEdit
           Left = 16
           Top = 22
@@ -251,65 +259,47 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           TabOrder = 5
           Width = 137
         end
+        object cxDBTextEdit2: TcxDBTextEdit
+          Left = 161
+          Top = 102
+          DataBinding.DataField = 'LugarNacimiento'
+          DataBinding.DataSource = DataSource
+          TabOrder = 6
+          Width = 440
+        end
       end
       object pnlOrigen: TPanel
         Left = 0
         Top = 312
         Width = 620
-        Height = 0
+        Height = 5
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
-        object Label12: TLabel
-          Left = 16
-          Top = 52
-          Width = 45
-          Height = 13
-          Caption = 'Poblacion'
-          FocusControl = DBLookupComboBox6
-          Visible = False
-        end
-        object DBLookupComboBox6: TDBLookupComboBox
-          Left = 16
-          Top = 70
-          Width = 300
-          Height = 21
-          DataSource = DataSource
-          TabOrder = 0
-          Visible = False
-        end
       end
     end
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+    end
+    object tsContacto: TcxTabSheet
+      Caption = 'Contactos'
+      ImageIndex = 4
     end
   end
   inherited pmlMain: TPanel
-    Top = 260
+    Top = 259
     Width = 624
-    ExplicitTop = 260
+    ExplicitTop = 259
     ExplicitWidth = 624
     inherited btnOk: TButton
       Left = 461

@@ -20,7 +20,8 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
   Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  PersonasDM, TelefonosDM, EmailsDM, PersonasDomiciliosDM, ShellApi;
+  PersonasDM, TelefonosDM, EmailsDM, PersonasDomiciliosDM, PersonasContactoDM,
+  ShellApi;
 
 type
   TfrmPersonaEdit = class(T_frmEdit)
@@ -48,8 +49,6 @@ type
     cxDBLookupComboBox3: TcxDBLookupComboBox;
     cxDBLookupComboBox4: TcxDBLookupComboBox;
     pnlOrigen: TPanel;
-    Label12: TLabel;
-    DBLookupComboBox6: TDBLookupComboBox;
     tsDomicilio: TcxTabSheet;
     tsTelefono: TcxTabSheet;
     tsCorreo: TcxTabSheet;
@@ -59,6 +58,9 @@ type
     lblCURP: TLabel;
     cxDBEditCURP: TcxDBMaskEdit;
     btnWeb: TButton;
+    tsContacto: TcxTabSheet;
+    Label12: TLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
     procedure FormShow(Sender: TObject);
     procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -72,6 +74,7 @@ type
     dmTelefonos: TdmTelefonos;
     dmEmails: TdmEmails;
     dmDomicilios: TdmPersonasDomicilios;
+    dmPersonasContacto: TdmPersonasContacto;
     procedure MostrarPanel();
     procedure SetRol(const Value: TPRol);
   public
@@ -87,7 +90,7 @@ implementation
 procedure TfrmPersonaEdit.btnNextClick(Sender: TObject);
 begin
   pcMain.SelectNextPage(True);
-  if pcMain.ActivePage = tsCorreo then
+  if pcMain.ActivePage = tsContacto then
   begin
     btnOk.Visible := True;
     btnNext.Visible := False;
@@ -119,6 +122,7 @@ begin
   dmTelefonos := TdmTelefonos.Create(nil);
   dmEmails := TdmEmails.Create(nil);
   dmDomicilios := TdmPersonasDomicilios.Create(nil);
+  dmPersonasContacto := TdmPersonasContacto.Create(nil);
 end;
 
 procedure TfrmPersonaEdit.FormDestroy(Sender: TObject);
@@ -127,6 +131,7 @@ begin
   FreeAndNil(dmTelefonos);
   FreeAndNil(dmEmails);
   FreeAndNil(dmDomicilios);
+  FreeAndNil(dmPersonasContacto);
 end;
 
 procedure TfrmPersonaEdit.FormShow(Sender: TObject);
@@ -145,6 +150,9 @@ begin
   dmEmails.MasterSource := DataSource;
   dmEmails.MasterFields:= 'IdPersona';
   dmEmails.ShowModule(tsCorreo,'');
+  dmPersonasContacto.MasterSource := DataSource;
+  dmPersonasContacto.MasterFields := 'IdPersona';
+  dmPersonasContacto.ShowModule(tsContacto,'');
   case Rol of
     rNone:         Self.Caption := 'Persona';
     rDuenoProceso: Self.Caption := 'Dueño de Proceso';
