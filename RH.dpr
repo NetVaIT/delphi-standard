@@ -152,7 +152,9 @@ uses
   ArchivosGenerarFacturasForm in 'Catalogos\ArchivosGenerarFacturasForm.pas' {frmArchivosGenerarFacturas},
   EmpleadosDM in 'Catalogos\EmpleadosDM.pas' {dmEmpleados: TDataModule},
   EmpleadosEdit in 'Catalogos\EmpleadosEdit.pas' {frmEmpleadosEdit},
-  EmpleadosForm in 'Catalogos\EmpleadosForm.pas' {frmEmpleados};
+  EmpleadosForm in 'Catalogos\EmpleadosForm.pas' {frmEmpleados},
+  UbicacionesForm in 'Catalogos\UbicacionesForm.pas' {frmUbicaciones},
+  UbicacionesEdit in 'Catalogos\UbicacionesEdit.pas' {frmUbicacionesEdit};
 
 {$R *.res}
 

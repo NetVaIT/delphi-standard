@@ -1,22 +1,22 @@
 inherited frmPlazasEdit: TfrmPlazasEdit
   Caption = 'Plaza'
   ClientHeight = 437
-  ClientWidth = 446
-  ExplicitWidth = 452
-  ExplicitHeight = 466
+  ClientWidth = 515
+  ExplicitWidth = 521
+  ExplicitHeight = 465
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 446
+    Width = 515
     Height = 396
-    ExplicitWidth = 497
+    ExplicitWidth = 446
     ExplicitHeight = 396
     ClientRectBottom = 394
-    ClientRectRight = 444
+    ClientRectRight = 513
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 493
+      ExplicitWidth = 442
       ExplicitHeight = 366
       object Label1: TLabel
         Left = 24
@@ -81,6 +81,13 @@ inherited frmPlazasEdit: TfrmPlazasEdit
         Height = 13
         Caption = 'Empleado'
         FocusControl = cxDBLookupComboBox1
+      end
+      object Label9: TLabel
+        Left = 179
+        Top = 299
+        Width = 26
+        Height = 13
+        Caption = 'Clase'
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
@@ -150,20 +157,29 @@ inherited frmPlazasEdit: TfrmPlazasEdit
         TabOrder = 7
         Width = 121
       end
+      object cxDBLookupComboBox5: TcxDBLookupComboBox
+        Left = 179
+        Top = 315
+        DataBinding.DataField = 'PlazaClase'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 8
+        Width = 145
+      end
     end
   end
   inherited pmlMain: TPanel
     Top = 396
-    Width = 446
+    Width = 515
     ExplicitTop = 396
-    ExplicitWidth = 497
+    ExplicitWidth = 446
     inherited btnOk: TButton
-      Left = 283
-      ExplicitLeft = 334
+      Left = 352
+      ExplicitLeft = 283
     end
     inherited btnCancel: TButton
-      Left = 364
-      ExplicitLeft = 415
+      Left = 433
+      ExplicitLeft = 364
     end
   end
   inherited cxImageList: TcxImageList

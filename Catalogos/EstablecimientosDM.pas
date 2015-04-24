@@ -17,6 +17,15 @@ type
     adodsDomiciliosDomicilio: TStringField;
     adodsMasterDomicilio: TStringField;
     actUpdate: TAction;
+    adodsUbicacion: TADODataSet;
+    adodsUbicacionIdUbicacion: TAutoIncField;
+    adodsUbicacionIdEstablecimiento: TIntegerField;
+    adodsUbicacionIdentificador: TStringField;
+    adodsUbicacionDescripcion: TStringField;
+    adodsUbicacionIdUbicacionSuperior: TIntegerField;
+    adodsUbicacionSuperior: TADODataSet;
+    dsMaster: TDataSource;
+    adodsUbicacionUbicacionSuperior: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actUpdateExecute(Sender: TObject);
   private
@@ -29,7 +38,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses EstablecimientosForm, DomiciliosDM;
+uses EstablecimientosForm, DomiciliosDM, UbicacionesForm;
 
 {$R *.dfm}
 
@@ -64,6 +73,9 @@ begin
   gGridForm:= TfrmEstablecimientos.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   TfrmEstablecimientos(gGridForm).UpdateDomicilio:= actUpdate;
+  gFormDeatil1 := TfrmUbicaciones.Create(Self);
+  gFormDeatil1.DataSet := adodsUbicacion;
+  adodsUbicacion.Open;
 end;
 
 end.

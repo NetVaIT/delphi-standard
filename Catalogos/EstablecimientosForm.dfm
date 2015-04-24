@@ -5,8 +5,25 @@ inherited frmEstablecimientos: TfrmEstablecimientos
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
+  inherited splDetail3: TSplitter
+    Top = 365
+  end
+  inherited splDetail1: TSplitter
+    Top = 77
+    ExplicitTop = 191
+  end
+  inherited splDetail2: TSplitter
+    Top = 309
+    ExplicitTop = 264
+  end
   inherited pnlMaster: TPanel
+    Height = 46
+    ExplicitWidth = 651
+    ExplicitHeight = 160
     inherited cxGrid: TcxGrid
+      Height = 46
+      ExplicitWidth = 651
+      ExplicitHeight = 160
       inherited tvMaster: TcxGridDBTableView
         Preview.Column = tvMasterDomicilio
         Preview.Visible = True
@@ -30,24 +47,48 @@ inherited frmEstablecimientos: TfrmEstablecimientos
       end
     end
   end
-  inherited pnlClose: TPanel
-    ExplicitTop = 432
+  inherited pnlDetail3: TPanel
+    Top = 368
+    Height = 48
+    ExplicitTop = 368
+    ExplicitWidth = 651
+    ExplicitHeight = 48
   end
-  inherited dxBarManager: TdxBarManager [8]
+  inherited pnlDetail2: TPanel
+    Top = 312
+    Height = 53
+    ExplicitTop = 312
+    ExplicitWidth = 651
+    ExplicitHeight = 53
+  end
+  inherited pnlDetail1: TPanel
+    Top = 80
+    Height = 229
+    ExplicitTop = 80
+    ExplicitWidth = 651
+    ExplicitHeight = 229
+  end
+  inherited pnlClose: TPanel
+    inherited btnClose: TButton
+      ExplicitLeft = 566
+    end
+  end
+  inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
       0
       31
       0)
   end
-  inherited cxStyleRepository: TcxStyleRepository [9]
+  inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
-  end
-  inherited DataSource: TDataSource [10]
-  end
-  inherited ActionList: TActionList [11]
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      BuiltInReportLink = True
+    end
   end
 end
