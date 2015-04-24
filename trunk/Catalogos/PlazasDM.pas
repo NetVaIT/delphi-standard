@@ -3,7 +3,8 @@ unit PlazasDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
 type
   TdmPlazas = class(T_dmStandar)
@@ -25,6 +26,9 @@ type
     adodsMasterFechaCreacion: TDateTimeField;
     adodsEmpleado: TADODataSet;
     adodsMasterEmpleado: TStringField;
+    adodsMasterIdPlazaClase: TIntegerField;
+    adodsPlazaClase: TADODataSet;
+    adodsMasterPlazaClase: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

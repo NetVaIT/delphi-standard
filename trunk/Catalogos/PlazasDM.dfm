@@ -4,8 +4,9 @@ inherited dmPlazas: TdmPlazas
     CursorType = ctStatic
     CommandText = 
       'select IdPlaza, IdPuesto, IdPersonaEmpleado, IdPlazaTurno, IdUbi' +
-      'cacion, IdPlazaTemporalidadTipo, Identificador, Descripcion, Sal' +
-      'arioBase, FechaCreacion from Plazas'#13#10'where IdPuesto = :IdPuesto'
+      'cacion, IdPlazaTemporalidadTipo, IdPlazaClase, Identificador, De' +
+      'scripcion, SalarioBase, FechaCreacion from Plazas'#13#10'where IdPuest' +
+      'o = :IdPuesto'
     Parameters = <
       item
         Name = 'IdPuesto'
@@ -38,6 +39,19 @@ inherited dmPlazas: TdmPlazas
     object adodsMasterIdPlazaTemporalidadTipo: TIntegerField
       FieldName = 'IdPlazaTemporalidadTipo'
       Visible = False
+    end
+    object adodsMasterIdPlazaClase: TIntegerField
+      FieldName = 'IdPlazaClase'
+    end
+    object adodsMasterPlazaClase: TStringField
+      FieldKind = fkLookup
+      FieldName = 'PlazaClase'
+      LookupDataSet = adodsPlazaClase
+      LookupKeyFields = 'IdPlazaClase'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdPlazaClase'
+      Size = 50
+      Lookup = True
     end
     object adodsMasterIdentificador: TStringField
       FieldName = 'Identificador'
@@ -107,6 +121,7 @@ inherited dmPlazas: TdmPlazas
     end
   end
   object adodsPlazaTemporalidadTipos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -117,6 +132,7 @@ inherited dmPlazas: TdmPlazas
     Top = 192
   end
   object adodsUbicacion: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdUbicacion, Descripcion FROM Ubicaciones'
@@ -125,6 +141,7 @@ inherited dmPlazas: TdmPlazas
     Top = 128
   end
   object adodsPlazaTurnos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPlazaTurno, Descripcion FROM PlazasTurnos'
@@ -133,11 +150,20 @@ inherited dmPlazas: TdmPlazas
     Top = 72
   end
   object adodsEmpleado: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial as Nombre from Personas'
     Parameters = <>
     Left = 128
     Top = 16
+  end
+  object adodsPlazaClase: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdPlazaClase, Descripcion FROM PlazasClases'
+    Parameters = <>
+    Left = 128
+    Top = 248
   end
 end

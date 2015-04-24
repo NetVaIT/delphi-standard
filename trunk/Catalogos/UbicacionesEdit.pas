@@ -1,4 +1,4 @@
-unit PlazasEdit;
+unit UbicacionesEdit;
 
 interface
 
@@ -18,30 +18,17 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, Vcl.DBCtrls, cxDBEdit, cxTextEdit, cxCurrencyEdit,
-  cxDropDownEdit, cxCalendar, cxMaskEdit, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox;
+  cxContainer, cxEdit, Vcl.DBCtrls, cxTextEdit, cxDBEdit, cxMaskEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
-  TfrmPlazasEdit = class(T_frmEdit)
+  TfrmUbicacionesEdit = class(T_frmEdit)
     Label1: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     Label3: TLabel;
-    cxDBCurrencyEdit1: TcxDBCurrencyEdit;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    cxDBLookupComboBox2: TcxDBLookupComboBox;
-    cxDBLookupComboBox3: TcxDBLookupComboBox;
-    cxDBLookupComboBox4: TcxDBLookupComboBox;
-    Label7: TLabel;
-    cxDBDateEdit1: TcxDBDateEdit;
-    Label8: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
-    Label9: TLabel;
-    cxDBLookupComboBox5: TcxDBLookupComboBox;
   private
     { Private declarations }
   public
@@ -52,6 +39,6 @@ implementation
 
 {$R *.dfm}
 
-uses PlazasDM;
+uses EstablecimientosDM;
 
 end.

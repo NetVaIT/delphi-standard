@@ -1,4 +1,4 @@
-unit PoblacionesForm;
+unit UbicacionesForm;
 
 interface
 
@@ -18,23 +18,25 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
-  dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
-  cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
-  Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, dxPSGlbl, dxPSUtl,
-  dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxPSCompsProvider,
-  dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore, dxPSPDFExport,
-  cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
-  dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
-  dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxRibbonPainter,
-  dxPSCore, dxPScxCommon, Vcl.StdCtrls;
+  dxSkinsdxBarPainter, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap,
+  dxPrnDev, dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns,
+  dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv,
+  dxPSPrVwRibbon, dxPScxPageControlProducer, dxPScxGridLnk,
+  dxPScxGridLayoutViewLnk, dxPScxEditorProducers, dxPScxExtEditorProducers,
+  dxSkinsdxRibbonPainter, dxPSCore, dxPScxCommon, dxBar, Vcl.ImgList,
+  cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
+  System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
+  Vcl.ExtCtrls;
 
 type
-  TfrmPoblaciones = class(T_frmGrid)
-    tvMasterIdPoblacion: TcxGridDBColumn;
-    tvMasterIdMunicipio: TcxGridDBColumn;
+  TfrmUbicaciones = class(T_frmGrid)
+    tvMasterIdUbicacion: TcxGridDBColumn;
+    tvMasterIdEstablecimiento: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterIdUbicacionSuperior: TcxGridDBColumn;
+    tvMasterUbicacionSuperior: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -46,12 +48,12 @@ implementation
 
 {$R *.dfm}
 
-uses PoblacionForm;
+uses EstablecimientosDM, UbicacionesEdit;
 
-procedure TfrmPoblaciones.FormCreate(Sender: TObject);
+procedure TfrmUbicaciones.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmPoblacion.Create(Self);
+  gEditForm:= TfrmUbicacionesEdit.Create(Self);
 end;
 
 end.

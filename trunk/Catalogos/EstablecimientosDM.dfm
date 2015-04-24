@@ -1,5 +1,6 @@
 inherited dmEstablecimientos: TdmEstablecimientos
   OldCreateOrder = True
+  Height = 407
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -43,6 +44,7 @@ inherited dmEstablecimientos: TdmEstablecimientos
     end
   end
   object adodsDomicilios: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -57,8 +59,8 @@ inherited dmEstablecimientos: TdmEstablecimientos
       'ipio = Municipios.IdMunicipio'#13#10'INNER JOIN Poblaciones ON Domicil' +
       'ios.IdPoblacion = Poblaciones.IdPoblacion'#13#10
     Parameters = <>
-    Left = 120
-    Top = 48
+    Left = 152
+    Top = 80
     object adodsDomiciliosIdDomicilio: TAutoIncField
       FieldName = 'IdDomicilio'
       ReadOnly = True
@@ -68,5 +70,62 @@ inherited dmEstablecimientos: TdmEstablecimientos
       ReadOnly = True
       Size = 473
     end
+  end
+  object adodsUbicacion: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT IdUbicacion, IdEstablecimiento, Identificador, Descripcio' +
+      'n, IdUbicacionSuperior FROM Ubicaciones'
+    DataSource = dsMaster
+    IndexFieldNames = 'IdEstablecimiento'
+    MasterFields = 'IdEstablecimiento'
+    Parameters = <>
+    Left = 64
+    Top = 136
+    object adodsUbicacionIdUbicacion: TAutoIncField
+      FieldName = 'IdUbicacion'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsUbicacionIdEstablecimiento: TIntegerField
+      FieldName = 'IdEstablecimiento'
+      Visible = False
+    end
+    object adodsUbicacionIdentificador: TStringField
+      FieldName = 'Identificador'
+      Size = 10
+    end
+    object adodsUbicacionDescripcion: TStringField
+      FieldName = 'Descripcion'
+      Size = 50
+    end
+    object adodsUbicacionIdUbicacionSuperior: TIntegerField
+      FieldName = 'IdUbicacionSuperior'
+      Visible = False
+    end
+    object adodsUbicacionUbicacionSuperior: TStringField
+      FieldKind = fkLookup
+      FieldName = 'UbicacionSuperior'
+      LookupDataSet = adodsUbicacionSuperior
+      LookupKeyFields = 'IdUbicacion'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdUbicacionSuperior'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object adodsUbicacionSuperior: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdUbicacion, Descripcion FROM Ubicaciones'
+    Parameters = <>
+    Left = 72
+    Top = 216
+  end
+  object dsMaster: TDataSource
+    DataSet = adodsMaster
+    Left = 104
+    Top = 16
   end
 end
