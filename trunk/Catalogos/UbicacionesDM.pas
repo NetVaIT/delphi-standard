@@ -3,8 +3,11 @@ unit UbicacionesDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
+const
+  IdPais_Predeterminado = 148;
 
 type
   TdmUbicaciones = class(T_dmStandar)
@@ -30,6 +33,7 @@ type
     adodsPoblacionesIdentificador: TIntegerField;
     adodsPoblacionesDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure adodsMasterAfterOpen(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -43,6 +47,12 @@ implementation
 uses PaisesForm, EstadosForm, MunicipiosForm, PoblacionesForm;
 
 {$R *.dfm}
+
+procedure TdmUbicaciones.adodsMasterAfterOpen(DataSet: TDataSet);
+begin
+  inherited;
+  adodsMaster.Locate('IdPais', IdPais_Predeterminado, []);
+end;
 
 procedure TdmUbicaciones.DataModuleCreate(Sender: TObject);
 begin

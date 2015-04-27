@@ -1,17 +1,17 @@
 inherited frmInstruccionesEdit: TfrmInstruccionesEdit
   Caption = 'Instrucci'#243'n'
-  ClientHeight = 601
+  ClientHeight = 553
   ClientWidth = 541
   ExplicitWidth = 547
-  ExplicitHeight = 630
+  ExplicitHeight = 582
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 541
-    Height = 560
+    Height = 512
     ExplicitWidth = 541
     ExplicitHeight = 560
-    ClientRectBottom = 558
+    ClientRectBottom = 510
     ClientRectRight = 539
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
@@ -105,47 +105,6 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
         OnClick = cbRepetirClick
         Width = 121
       end
-      object rgRepetirDia: TcxDBRadioGroup
-        Left = 24
-        Top = 337
-        Caption = 'Repetir el '
-        DataBinding.DataField = 'RepetirDia'
-        DataBinding.DataSource = DataSource
-        Properties.Columns = 7
-        Properties.Items = <
-          item
-            Caption = 'Lunes'
-            Value = '2'
-          end
-          item
-            Caption = 'Martes'
-            Value = '3'
-          end
-          item
-            Caption = 'Miercoles'
-            Value = '4'
-          end
-          item
-            Caption = 'Jueves'
-            Value = '5'
-          end
-          item
-            Caption = 'Viernes'
-            Value = '6'
-          end
-          item
-            Caption = 'S'#225'bado'
-            Value = '7'
-          end
-          item
-            Caption = 'Domingo'
-            Value = '1'
-          end>
-        TabOrder = 7
-        Visible = False
-        Height = 49
-        Width = 500
-      end
       object deRepetirInicio: TcxDBDateEdit
         Left = 24
         Top = 245
@@ -156,7 +115,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
       end
       object rgFinaliza: TcxDBRadioGroup
         Left = 24
-        Top = 392
+        Top = 335
         Caption = 'Finaliza'
         DataBinding.DataField = 'RepetirFinaliza'
         DataBinding.DataSource = DataSource
@@ -173,25 +132,26 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
             Caption = 'El dia'
             Value = '2'
           end>
-        TabOrder = 8
+        TabOrder = 7
         OnClick = rgFinalizaClick
-        Height = 117
+        Height = 120
         Width = 500
       end
       object edtRepetirHasta: TcxDBSpinEdit
-        Left = 120
-        Top = 447
+        Left = 119
+        Top = 394
         DataBinding.DataField = 'RepetirHasta'
         DataBinding.DataSource = DataSource
-        TabOrder = 9
+        Properties.MinValue = 1.000000000000000000
+        TabOrder = 8
         Width = 50
       end
       object edtRepetirFin: TcxDBDateEdit
-        Left = 88
-        Top = 476
+        Left = 86
+        Top = 425
         DataBinding.DataField = 'RepetirFin'
         DataBinding.DataSource = DataSource
-        TabOrder = 10
+        TabOrder = 9
         Width = 121
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
@@ -216,7 +176,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
     end
   end
   inherited pmlMain: TPanel
-    Top = 560
+    Top = 512
     Width = 541
     ExplicitTop = 560
     ExplicitWidth = 541

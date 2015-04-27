@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -371,7 +371,7 @@ inherited frmMain: TfrmMain
       OnClick = actCatalogoExecute
     end
     object dxBarButton8: TdxBarButton
-      Action = actIntruccionesTipos
+      Action = actInstruccionesTipos
       Category = 0
     end
     object dxBarLargeButton21: TdxBarLargeButton
@@ -477,10 +477,10 @@ inherited frmMain: TfrmMain
       ImageIndex = 7
       OnExecute = actCatalogoExecute
     end
-    object actIntruccionesTipos: TAction
+    object actInstruccionesTipos: TAction
       Tag = 14
       Category = 'Catalogos'
-      Caption = 'Tipo de intrucciones'
+      Caption = 'Tipo de instrucciones'
       ImageIndex = 5
       OnExecute = actCatalogoExecute
     end

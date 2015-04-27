@@ -37,6 +37,11 @@ type
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBCheckBox3: TcxDBCheckBox;
     cxDBCheckBox4: TcxDBCheckBox;
+    Label6: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label7: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
+    cxDBCheckBox5: TcxDBCheckBox;
   private
     { Private declarations }
   public

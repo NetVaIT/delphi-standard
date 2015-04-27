@@ -43,6 +43,11 @@ type
     tvMasterProduceCXP: TcxGridDBColumn;
     tvMasterAgruparTipo: TcxGridDBColumn;
     tvMasterBaseCalculo: TcxGridDBColumn;
+    tvMasterIdPeriodoTipo: TcxGridDBColumn;
+    tvMasterIdMovimientoTipoAcumular: TcxGridDBColumn;
+    tvMasterPeriodoTipo: TcxGridDBColumn;
+    tvMasterMovimientoTipo: TcxGridDBColumn;
+    tvMasterAplicarISR: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

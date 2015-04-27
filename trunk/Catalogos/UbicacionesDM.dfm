@@ -2,6 +2,7 @@ inherited dmUbicaciones: TdmUbicaciones
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    AfterOpen = adodsMasterAfterOpen
     CommandText = 'select IdPais, Identificador, Descripcion from Paises'
     Left = 40
     object adodsMasterIdPais: TAutoIncField
