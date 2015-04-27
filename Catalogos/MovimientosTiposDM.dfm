@@ -1,13 +1,14 @@
 inherited dmMovimientosTipo: TdmMovimientosTipo
   OldCreateOrder = True
-  Height = 229
-  Width = 553
+  Height = 370
+  Width = 399
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
       'SELECT IdMovimientoTipo, IdMovimientoTipoCategoria, IdMovimiento' +
       'TipoEfecto, Identificador, Descripcion, ValorDefault, ProduceCXC' +
-      ', ProduceCXP, AgruparTipo, BaseCalculo FROM MovimientosTipos'
+      ', ProduceCXP, AgruparTipo, BaseCalculo, IdPeriodoTipo, IdMovimie' +
+      'ntoTipoAcumular, AplicarISR FROM MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -78,6 +79,40 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       DisplayLabel = 'Base para c'#225'lculo'
       FieldName = 'BaseCalculo'
     end
+    object adodsMasterIdPeriodoTipo: TIntegerField
+      FieldName = 'IdPeriodoTipo'
+      Visible = False
+    end
+    object adodsMasterIdMovimientoTipoAcumular: TIntegerField
+      FieldName = 'IdMovimientoTipoAcumular'
+      Visible = False
+    end
+    object adodsMasterPeriodoTipo: TStringField
+      DisplayLabel = 'Periodo'
+      FieldKind = fkLookup
+      FieldName = 'PeriodoTipo'
+      LookupDataSet = adodsPeriodoTipo
+      LookupKeyFields = 'IdPeriodoTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdPeriodoTipo'
+      Size = 50
+      Lookup = True
+    end
+    object adodsMasterMovimientoTipo: TStringField
+      DisplayLabel = 'Acumular movimiento'
+      FieldKind = fkLookup
+      FieldName = 'MovimientoTipo'
+      LookupDataSet = adodsMovimientoTipo
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoTipoAcumular'
+      Size = 100
+      Lookup = True
+    end
+    object adodsMasterAplicarISR: TBooleanField
+      DisplayLabel = 'Aplicar ISR'
+      FieldName = 'AplicarISR'
+    end
   end
   inherited adodsUpdate: TADODataSet
     CursorType = ctStatic
@@ -145,6 +180,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
   end
   object adodsMovimientoTipoCategoria: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -155,6 +191,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 72
   end
   object adodsMovimientoTipoEfecto: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -163,5 +200,21 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Parameters = <>
     Left = 120
     Top = 128
+  end
+  object adodsPeriodoTipo: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdPeriodoTipo, Descripcion from PeriodosTipos'
+    Parameters = <>
+    Left = 120
+    Top = 184
+  end
+  object adodsMovimientoTipo: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
+    Parameters = <>
+    Left = 120
+    Top = 248
   end
 end

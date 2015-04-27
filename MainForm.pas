@@ -84,7 +84,7 @@ type
     actComisionistas: TAction;
     actSocios: TAction;
     dxBarButton8: TdxBarButton;
-    actIntruccionesTipos: TAction;
+    actInstruccionesTipos: TAction;
     actPeriodos: TAction;
     dxBarLargeButton21: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
@@ -207,7 +207,7 @@ begin
   actSocios.Enabled           := Conected;
   actInstrucciones.Enabled    := Conected;
   actIncidencias.Enabled      := Conected;
-  actIntruccionesTipos.Enabled:= Conected;
+  actInstruccionesTipos.Enabled:= Conected;
   actMovimientos.Enabled:= Conected;
 end;
 

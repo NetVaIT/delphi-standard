@@ -6,8 +6,8 @@ inherited dmInstrucciones: TdmInstrucciones
     CommandText = 
       'select IdInstruccion, IdInstruccionTipo, IdPersonaSolicita, IdDo' +
       'cumentoAdjunto, Concepto, Fecha, Repetir, IdPeriodoTipo, Repetir' +
-      'Dia, RepetirInicio, RepetirFinaliza, RepetirFin, RepetirHasta fr' +
-      'om Instrucciones'
+      'Inicio, RepetirFinaliza, RepetirFin, RepetirHasta from Instrucci' +
+      'ones'
     object adodsMasterIdInstruccion: TAutoIncField
       FieldName = 'IdInstruccion'
       ReadOnly = True
@@ -83,11 +83,6 @@ inherited dmInstrucciones: TdmInstrucciones
       Visible = False
       Size = 50
       Lookup = True
-    end
-    object adodsMasterRepetirDia: TIntegerField
-      DisplayLabel = 'Repetir el'
-      FieldName = 'RepetirDia'
-      Visible = False
     end
     object adodsMasterRepetirFinaliza: TIntegerField
       DisplayLabel = 'Finaliza'

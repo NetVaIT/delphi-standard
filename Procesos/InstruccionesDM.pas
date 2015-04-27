@@ -22,7 +22,6 @@ type
     adodsMasterNombreArchivo: TStringField;
     adodsMasterIdPeriodoTipo: TIntegerField;
     adodsMasterRepetir: TBooleanField;
-    adodsMasterRepetirDia: TIntegerField;
     adodsMasterRepetirInicio: TDateTimeField;
     adodsMasterRepetirFinaliza: TIntegerField;
     adodsMasterRepetirFin: TDateTimeField;

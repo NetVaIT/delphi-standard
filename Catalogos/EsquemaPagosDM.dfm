@@ -3,8 +3,8 @@ inherited dmEsquemaPagos: TdmEsquemaPagos
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdEsquemaPago, Identificador, Descripcion, IdEsquemaPagoE' +
-      'status FROM EsquemaPagos'
+      'SELECT IdEsquemaPago, Identificador, Descripcion, ExisteCuentaCo' +
+      'ntrol, IdEsquemaPagoEstatus FROM EsquemaPagos'
     object adodsMasterIdEsquemaPago: TIntegerField
       FieldName = 'IdEsquemaPago'
       Visible = False
@@ -24,6 +24,10 @@ inherited dmEsquemaPagos: TdmEsquemaPagos
       Required = True
       Size = 200
     end
+    object adodsMasterExisteCuentaControl: TBooleanField
+      DisplayLabel = 'Existe cuenta de control'
+      FieldName = 'ExisteCuentaControl'
+    end
     object adodsMasterEsquemaPagoEstatus: TStringField
       DisplayLabel = 'Estatus'
       FieldKind = fkLookup
@@ -38,6 +42,7 @@ inherited dmEsquemaPagos: TdmEsquemaPagos
     end
   end
   object adodsEsquemaPagoEstatus: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

@@ -35,7 +35,6 @@ type
     btnUpdateFile: TSpeedButton;
     cbRepetir: TcxDBCheckBox;
     Label4: TLabel;
-    rgRepetirDia: TcxDBRadioGroup;
     Label5: TLabel;
     deRepetirInicio: TcxDBDateEdit;
     rgFinaliza: TcxDBRadioGroup;
@@ -74,7 +73,6 @@ begin
     lcbPeriodoTipo.EditValue:= 2
   else
     lcbPeriodoTipo.Clear;
-//  rgRepetirDia.Clear;
   rgFinaliza.EditValue:= 0;
   edtRepetirHasta.Clear;
   edtRepetirFin.Clear;
@@ -100,10 +98,6 @@ end;
 procedure TfrmInstruccionesEdit.lcbPeriodoTipoClick(Sender: TObject);
 begin
   inherited;
-//  if lcbPeriodoTipo.EditValue = 2 then
-//    rgRepetirDia.EditValue:= 6
-//  else
-//    rgRepetirDia.Clear;
   SetPeriodoTipo;
 end;
 
@@ -128,7 +122,6 @@ end;
 
 procedure TfrmInstruccionesEdit.SetPeriodoTipo;
 begin
-//  rgRepetirDia.Visible:= (lcbPeriodoTipo.EditValue = 2);
 end;
 
 procedure TfrmInstruccionesEdit.SetRepetir;
@@ -136,13 +129,11 @@ begin
   if cbRepetir.EditValue = True then
   begin
     lcbPeriodoTipo.Enabled:= True;
-//    rgRepetirDia.Enabled:= True;
     rgFinaliza.Enabled:= True;
   end
   else
   begin
     lcbPeriodoTipo.Enabled:= False;
-//    rgRepetirDia.Enabled:= False;
     rgFinaliza.Enabled:= False;
   end;
 end;

@@ -14,6 +14,7 @@ type
     adodsMasterIdEsquemaPagoEstatus: TIntegerField;
     adodsEsquemaPagoEstatus: TADODataSet;
     adodsMasterEsquemaPagoEstatus: TStringField;
+    adodsMasterExisteCuentaControl: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

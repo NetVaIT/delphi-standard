@@ -1,23 +1,23 @@
 inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
-  ClientHeight = 415
+  ClientHeight = 423
   ClientWidth = 542
   ExplicitWidth = 548
-  ExplicitHeight = 444
+  ExplicitHeight = 452
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 542
-    Height = 374
+    Height = 382
     ExplicitWidth = 542
     ExplicitHeight = 374
-    ClientRectBottom = 372
+    ClientRectBottom = 380
     ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
+      ExplicitLeft = 3
+      ExplicitTop = 30
       ExplicitWidth = 538
-      ExplicitHeight = 344
+      ExplicitHeight = 401
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -57,6 +57,22 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Height = 13
         Caption = 'Valor omisi'#243'n'
         FocusControl = cxDBTextEdit3
+      end
+      object Label6: TLabel
+        Left = 160
+        Top = 234
+        Width = 36
+        Height = 13
+        Caption = 'Periodo'
+        FocusControl = DBLookupComboBox1
+      end
+      object Label7: TLabel
+        Left = 160
+        Top = 274
+        Width = 101
+        Height = 13
+        Caption = 'Acumular movimiento'
+        FocusControl = DBLookupComboBox2
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
@@ -136,10 +152,37 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         TabOrder = 8
         Width = 121
       end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 160
+        Top = 250
+        Width = 200
+        Height = 21
+        DataField = 'PeriodoTipo'
+        DataSource = DataSource
+        TabOrder = 9
+      end
+      object DBLookupComboBox2: TDBLookupComboBox
+        Left = 160
+        Top = 290
+        Width = 200
+        Height = 21
+        DataField = 'MovimientoTipo'
+        DataSource = DataSource
+        TabOrder = 10
+      end
+      object cxDBCheckBox5: TcxDBCheckBox
+        Left = 24
+        Top = 315
+        Caption = 'Aplicar ISR'
+        DataBinding.DataField = 'AplicarISR'
+        DataBinding.DataSource = DataSource
+        TabOrder = 11
+        Width = 121
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 374
+    Top = 382
     Width = 542
     ExplicitTop = 374
     ExplicitWidth = 542

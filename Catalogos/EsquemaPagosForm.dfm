@@ -12,11 +12,11 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
   end
   inherited pnlMaster: TPanel
     Align = alTop
-    ExplicitWidth = 645
-    ExplicitHeight = 224
+    ExplicitWidth = 651
+    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
-      ExplicitWidth = 645
-      ExplicitHeight = 224
+      ExplicitWidth = 651
+      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdEsquemaPago: TcxGridDBColumn
           DataBinding.FieldName = 'IdEsquemaPago'
@@ -32,6 +32,11 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
           DataBinding.FieldName = 'IdEsquemaPagoEstatus'
           Visible = False
         end
+        object tvMasterExisteCuentaControl: TcxGridDBColumn
+          Caption = 'Existe CC'
+          DataBinding.FieldName = 'ExisteCuentaControl'
+          Width = 51
+        end
         object tvMasterEsquemaPagoEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'EsquemaPagoEstatus'
         end
@@ -39,22 +44,22 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
     end
   end
   inherited pnlDetail3: TPanel
-    ExplicitTop = 346
-    ExplicitWidth = 645
+    ExplicitTop = 375
+    ExplicitWidth = 651
   end
   inherited pnlDetail2: TPanel
-    ExplicitTop = 302
-    ExplicitWidth = 645
+    ExplicitTop = 331
+    ExplicitWidth = 651
   end
   inherited pnlDetail1: TPanel
     Align = alClient
     Visible = True
-    ExplicitTop = 258
-    ExplicitWidth = 645
+    ExplicitTop = 287
+    ExplicitWidth = 651
   end
   inherited pnlClose: TPanel
     inherited btnClose: TButton
-      ExplicitLeft = 560
+      ExplicitLeft = 566
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -72,7 +77,6 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

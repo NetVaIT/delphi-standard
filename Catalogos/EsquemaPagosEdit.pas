@@ -19,7 +19,7 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, Vcl.DBCtrls, cxTextEdit, cxDBEdit, cxMaskEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxCheckBox;
 
 type
   TfrmEsquemaPagosEdit = class(T_frmEdit)
@@ -29,6 +29,7 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label3: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBCheckBox1: TcxDBCheckBox;
   private
     { Private declarations }
   public
