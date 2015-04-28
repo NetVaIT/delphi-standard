@@ -12,7 +12,7 @@ uses
   FileExts: array[0..6] of string = ('.xml', '.doc', '.docx', '.xls', '.xlsx', '.txt', '.csv');
 
 type
-  TFileAllowed = (faXML, faDOC, faDOCx, faXLS, faXLSx, faTXT, faCSV);
+  TFileAllowed = (faAll, faXML, faDOC, faDOCx, faXLS, faXLSx, faTXT, faCSV);
   TFilesAllowed = set of TFileAllowed;
 
   TdmDocumentosAdjuntos = class(T_dmStandar)
@@ -58,7 +58,7 @@ type
   public
     { Public declarations }
     function GetFileName(IdDocumentoAdjunto: Integer): TFileName;
-    property FileAllowed: TFileAllowed read FFileAllowed write SetFileAllowed;
+    property FileAllowed: TFileAllowed read FFileAllowed write SetFileAllowed default faXLSx;
   end;
 
 implementation
@@ -72,7 +72,6 @@ uses DocumentosAdjuntosForm, DocumentosAdjuntosEdit;
 procedure TdmDocumentosAdjuntos.actLoadFileExecute(Sender: TObject);
 begin
   inherited;
-  FileAllowed:= faXLSx;
   if OpenDialog.Execute then
   begin
     FFilename:= OpenDialog.FileName;
@@ -193,6 +192,7 @@ end;
 procedure TdmDocumentosAdjuntos.TuneOpenDialog;
 begin
   case FFileAllowed of
+    faAll: OpenDialog.Filter:= 'Todos los Archivos|*.*';
     faXLS: OpenDialog.Filter:= 'Archivo Microsoft Excel|*.xls';
     faXLSx: OpenDialog.Filter:= 'Archivo Microsoft Excel|*.xlsx';
   end;

@@ -154,7 +154,16 @@ uses
   EmpleadosEdit in 'Catalogos\EmpleadosEdit.pas' {frmEmpleadosEdit},
   EmpleadosForm in 'Catalogos\EmpleadosForm.pas' {frmEmpleados},
   UbicacionesForm in 'Catalogos\UbicacionesForm.pas' {frmUbicaciones},
-  UbicacionesEdit in 'Catalogos\UbicacionesEdit.pas' {frmUbicacionesEdit};
+  UbicacionesEdit in 'Catalogos\UbicacionesEdit.pas' {frmUbicacionesEdit},
+  RolesDocumentosDM in 'Catalogos\RolesDocumentosDM.pas' {dmRolesDocumentos: TDataModule},
+  RolesDocumentosForm in 'Catalogos\RolesDocumentosForm.pas' {frmRolesDocumentos},
+  RolesCuentasBancariasDM in 'Catalogos\RolesCuentasBancariasDM.pas' {dmRolesCuentasBancarias: TDataModule},
+  RolesCuentasBancariasForm in 'Catalogos\RolesCuentasBancariasForm.pas' {frmRolesCuentasBancarias},
+  RolesCuentasBancariasEdit in 'Catalogos\RolesCuentasBancariasEdit.pas' {frmRolesCuentasBancariasEdit},
+  RolesDocumentosEdit in 'Catalogos\RolesDocumentosEdit.pas' {frmRolesDocumentosEdit},
+  UsuariosDM in 'Catalogos\UsuariosDM.pas' {dmUsuarios: TDataModule},
+  UsuariosEdit in 'Catalogos\UsuariosEdit.pas' {frmUsuariosEdit},
+  UsuariosForm in 'Catalogos\UsuariosForm.pas' {frmUsuarios};
 
 {$R *.res}
 

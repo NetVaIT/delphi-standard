@@ -4,7 +4,7 @@ inherited dmPeriodos: TdmPeriodos
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPeriodo, IdPeriodoTipo, Numero, IdPeriodoEstatus, Fecha' +
-      'Inicio, FechaFin, Descripcion, Anio FROM Periodos'
+      'Inicio, FechaFin, Descripcion, Mes, Anio FROM Periodos'
     object adodsMasterIdPeriodo: TAutoIncField
       FieldName = 'IdPeriodo'
       ReadOnly = True
@@ -53,6 +53,9 @@ inherited dmPeriodos: TdmPeriodos
       FieldName = 'Descripcion'
       Size = 100
     end
+    object adodsMasterMes: TIntegerField
+      FieldName = 'Mes'
+    end
     object adodsMasterAnio: TIntegerField
       FieldName = 'Anio'
     end
@@ -65,6 +68,7 @@ inherited dmPeriodos: TdmPeriodos
     end
   end
   object adodsPeriodoTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPeriodoTipo, Descripcion FROM PeriodosTipos'
@@ -73,6 +77,7 @@ inherited dmPeriodos: TdmPeriodos
     Top = 96
   end
   object adodsPeriodoEstatus: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPeriodoEstatus, Descripcion FROM PeriodosEstatus'

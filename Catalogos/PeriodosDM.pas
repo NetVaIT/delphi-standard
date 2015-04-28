@@ -22,6 +22,7 @@ type
     adodsMasterDescripcion: TStringField;
     adodsMasterAnio: TIntegerField;
     dsMaster: TDataSource;
+    adodsMasterMes: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalculaPeriodoExecute(Sender: TObject);
   private
@@ -29,7 +30,7 @@ type
     FAnioPeriodo : integer;
     FgPCalculoForm: TfrmPeriodosCalculo;
     procedure SetAnioP(Const Anio:Integer);
-    procedure PeriodoSemanal(FInicio,FFin:TDate);
+    procedure PeriodoSemanal();
     procedure CrearPeriodo(Inicio,Fin:TDate;Orden,TipoPeriodo:Integer;Describe:String);
     function DescripcionPeriodo(Periodo:String;Inicio,Fin:TDate):String;
   protected
@@ -67,6 +68,7 @@ begin
   dsMaster.DataSet.FieldByName('FechaInicio').AsDateTime := Inicio;
   dsMaster.DataSet.FieldByName('FechaFin').AsDateTime    := Fin;
   dsMaster.DataSet.FieldByName('Descripcion').Value      := Describe;
+  dsMaster.DataSet.FieldByName('Mes').Value              := MonthOf(Fin);
   dsMaster.DataSet.FieldByName('Anio').Value             := FAnioPeriodo;
   dsMaster.DataSet.Post;
 end;
@@ -86,36 +88,24 @@ begin
 end;
 
 procedure TdmPeriodos.Execute;
-var
-  InicioPeriodo, FinPeriodo : TDate;
 begin
-  InicioPeriodo := EncodeDate(FAnioPeriodo,01,04);
-  FinPeriodo := EncodeDate((FAnioPeriodo + 1),01,02);
-  PeriodoSemanal(InicioPeriodo, FinPeriodo);
+  PeriodoSemanal();
 end;
 
-procedure TdmPeriodos.PeriodoSemanal(FInicio, FFin: TDate);
+procedure TdmPeriodos.PeriodoSemanal();
 var
   ISemana, FSemana : TDateTime;
   Descripcion : String;
-  CuentaPeriodo : Integer;
+  I, SemanasAnio : Integer;
 begin
-  CuentaPeriodo := 1;
-  if DayOfWeek(FInicio) = 1 then
+  SemanasAnio := WeeksInAYear(FAnioPeriodo);
+  for I := 1 to SemanasAnio do
   begin
-    ISemana := FInicio;
-  end
-  else
-  begin
-
-  end;
-  repeat
-    FSemana := IncDay(ISemana,6);
+    ISemana := StartOfAWeek(FAnioPeriodo,I,1);
+    FSemana := StartOfAWeek(FAnioPeriodo,I,7);
     Descripcion := DescripcionPeriodo('Semanal',ISemana,FSemana);
-    CrearPeriodo(ISemana,FSemana,CuentaPeriodo,2,Descripcion);
-    ISemana := IncDay(FSemana,1);
-    CuentaPeriodo := CuentaPeriodo + 1;
-  until FSemana >= FFin;
+    CrearPeriodo(ISemana,FSemana,I,2,Descripcion);
+  end;
 end;
 
 procedure TdmPeriodos.SetAnioP(Const Anio: Integer);

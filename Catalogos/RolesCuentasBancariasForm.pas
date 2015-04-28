@@ -1,4 +1,4 @@
-unit PeriodosForm;
+unit RolesCuentasBancariasForm;
 
 interface
 
@@ -30,47 +30,31 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmPeriodos = class(T_frmGrid)
-    dxbbCalculaPeriodo: TdxBarButton;
-    tvMasterIdPeriodo: TcxGridDBColumn;
-    tvMasterIdPeriodoTipo: TcxGridDBColumn;
-    tvMasterNumero: TcxGridDBColumn;
-    tvMasterPeriodoTipo: TcxGridDBColumn;
-    tvMasterIdPeriodoEstatus: TcxGridDBColumn;
-    tvMasterPeriodoEstatus: TcxGridDBColumn;
-    tvMasterFechaInicio: TcxGridDBColumn;
-    tvMasterFechaFin: TcxGridDBColumn;
-    tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterAnio: TcxGridDBColumn;
-    tvMasterMes: TcxGridDBColumn;
+  TfrmRolesCuentasBancarias = class(T_frmGrid)
+    tvMasterIdRolCuentaBancaria: TcxGridDBColumn;
+    tvMasterIdPersonaRol: TcxGridDBColumn;
+    tvMasterIdCuentaBancaria: TcxGridDBColumn;
+    tvMasterCuentaBancaria: TcxGridDBColumn;
+    tvMasterPorcentaje: TcxGridDBColumn;
+    tvMasterLimiteInferior: TcxGridDBColumn;
+    tvMasterLimiteSuperior: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    FCalcPeriodo: TBasicAction;
-    procedure SetCalcPeriodo(const Value: TBasicAction);
-  protected
-
   public
     { Public declarations }
-    property CalcPeriodo: TBasicAction read FCalcPeriodo write SetCalcPeriodo;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasDM, PeriodosDM, PeriodosEdit;
+uses RolesCuentasBancariasDM, RolesCuentasBancariasEdit;
 
-procedure TfrmPeriodos.FormCreate(Sender: TObject);
+procedure TfrmRolesCuentasBancarias.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm := TfrmPeriodosEdit.Create(Self);
-end;
-
-procedure TfrmPeriodos.SetCalcPeriodo(const Value: TBasicAction);
-begin
-  FCalcPeriodo := Value;
-  dxbbCalculaPeriodo.Action := Value;
+  gEditForm:= TfrmRolesCuentasBancariasEdit.Create(Self);
 end;
 
 end.

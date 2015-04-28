@@ -1,4 +1,4 @@
-unit PeriodosForm;
+unit RolesDocumentosForm;
 
 interface
 
@@ -30,47 +30,37 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmPeriodos = class(T_frmGrid)
-    dxbbCalculaPeriodo: TdxBarButton;
-    tvMasterIdPeriodo: TcxGridDBColumn;
-    tvMasterIdPeriodoTipo: TcxGridDBColumn;
-    tvMasterNumero: TcxGridDBColumn;
-    tvMasterPeriodoTipo: TcxGridDBColumn;
-    tvMasterIdPeriodoEstatus: TcxGridDBColumn;
-    tvMasterPeriodoEstatus: TcxGridDBColumn;
-    tvMasterFechaInicio: TcxGridDBColumn;
-    tvMasterFechaFin: TcxGridDBColumn;
-    tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterAnio: TcxGridDBColumn;
-    tvMasterMes: TcxGridDBColumn;
+  TfrmRolesDocumentos = class(T_frmGrid)
+    tvMasterIdRolDocumento: TcxGridDBColumn;
+    tvMasterIdPersonaRol: TcxGridDBColumn;
+    tvMasterIdDocumentoAdjunto: TcxGridDBColumn;
+    tvMasterDocumentoAdjunto: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    FCalcPeriodo: TBasicAction;
-    procedure SetCalcPeriodo(const Value: TBasicAction);
-  protected
-
+    FUpdateFile: TBasicAction;
   public
     { Public declarations }
-    property CalcPeriodo: TBasicAction read FCalcPeriodo write SetCalcPeriodo;
+    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasDM, PeriodosDM, PeriodosEdit;
+uses RolesDocumentosDM, RolesDocumentosEdit;
 
-procedure TfrmPeriodos.FormCreate(Sender: TObject);
+procedure TfrmRolesDocumentos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm := TfrmPeriodosEdit.Create(Self);
+  gEditForm:= TfrmRolesDocumentosEdit.Create(Self);
 end;
 
-procedure TfrmPeriodos.SetCalcPeriodo(const Value: TBasicAction);
+procedure TfrmRolesDocumentos.FormShow(Sender: TObject);
 begin
-  FCalcPeriodo := Value;
-  dxbbCalculaPeriodo.Action := Value;
+  inherited;
+  TfrmRolesDocumentosEdit(gEditForm).UpdateFile := UpdateFile;
 end;
 
 end.

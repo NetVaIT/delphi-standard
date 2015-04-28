@@ -21,7 +21,7 @@ uses
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
   ClientesDM, ProveedoresDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
-  EmpleadosDM, cxCalendar;
+  EmpleadosDM, RolesCuentasBancariasDM, RolesDocumentosDM, cxCalendar;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -50,6 +50,8 @@ type
     cxDBTextEdit1: TcxDBTextEdit;
     Label8: TLabel;
     cxDBDateEdit3: TcxDBDateEdit;
+    tsCuentasBancarias: TcxTabSheet;
+    tsExpedienteDigital: TcxTabSheet;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -60,7 +62,9 @@ type
     dmClientes: TdmClientes;
     dmProveedores: TdmProveedores;
     dmEmpleados: TdmEmpleados;
-    dmArchivosGenerarFacturas : TdmArchivosGenerarFacturas;
+    dmArchivosGenerarFacturas: TdmArchivosGenerarFacturas;
+    dmRolesCuentasBancarias: TdmRolesCuentasBancarias;
+    dmRolesDocumentos: TdmRolesDocumentos;
     procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
@@ -84,6 +88,8 @@ begin
   dmProveedores := TdmProveedores.Create(nil);
   dmEmpleados := TdmEmpleados.Create(nil);
   dmArchivosGenerarFacturas := TdmArchivosGenerarFacturas.Create(nil);
+  dmRolesCuentasBancarias := TdmRolesCuentasBancarias.Create(nil);
+  dmRolesDocumentos := TdmRolesDocumentos.Create(nil);
 end;
 
 procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
@@ -93,6 +99,8 @@ begin
   FreeAndNil(dmProveedores);
   FreeAndNil(dmEmpleados);
   FreeAndNil(dmArchivosGenerarFacturas);
+  FreeAndNil(dmRolesCuentasBancarias);
+  FreeAndNil(dmRolesDocumentos);
 end;
 
 procedure TfrmPersonaRolesEdit.FormShow(Sender: TObject);
@@ -162,6 +170,15 @@ begin
 //  dmEmpleados.MasterSource := DataSource;
 //  dmEmpleados.MasterFields := 'IdPersonaRol';
 //  dmEmpleados.ShowModule(tsEmpleado,'');
+  dmRolesCuentasBancarias.MasterSource := DataSource;
+  dmRolesCuentasBancarias.MasterFields := 'IdPersonaRol';
+  dmRolesCuentasBancarias.PersonaAct := DataSet.FieldByName('IdPersona').Value;
+  dmRolesCuentasBancarias.ShowModule(tsCuentasBancarias,'');
+  dmRolesDocumentos.MasterSource := DataSource;
+  dmRolesDocumentos.MasterFields := 'IdPersonaRol';
+  dmRolesDocumentos.ShowModule(tsExpedienteDigital,'');
+  tsCuentasBancarias.TabVisible := True;
+  tsExpedienteDigital.TabVisible := True;
   if tsArchivosFacturar.TabVisible = True then
   begin
     dmArchivosGenerarFacturas.MasterSource := DataSource;
