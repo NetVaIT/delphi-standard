@@ -87,6 +87,10 @@ type
     actInstruccionesTipos: TAction;
     actPeriodos: TAction;
     dxBarLargeButton21: TdxBarLargeButton;
+    dxRibbon1Tab4: TdxRibbonTab;
+    dxbUsuarios: TdxBar;
+    dxBarLargeButton22: TdxBarLargeButton;
+    actUsuarios: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -109,7 +113,7 @@ implementation
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
-  IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM;
+  IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -172,6 +176,7 @@ begin
    30: gModulo := TdmInstrucciones.Create(Self);
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);
+   40: gModulo := TdmUsuarios.Create(Self);
   end;
   if Assigned(gModulo) then
   begin
@@ -184,31 +189,32 @@ procedure TfrmMain.ConfigControls;
 begin
   inherited;
 //  actCFDI.Enabled:= Conected and _dmConection.EnabledAction(actCFDI.Tag);
-  actUbicaciones.Enabled      := Conected;
-  actBancos.Enabled           := Conected;
-  actMonedas.Enabled          := Conected;
-  actPuestos.Enabled          := Conected;
-  actCapacitaciones.Enabled   := Conected;
-  actPlazasTurnos.Enabled     := Conected;
-  actPeriodos.Enabled         := Conected;
-  actFormulas.Enabled         := Conected;
-  actReglasNegocio.Enabled    := Conected;
-  actEstablecimientos.Enabled := Conected;
-  actRoles.Enabled            := Conected;
-  actEsquemasPago.Enabled     := Conected;
-  actMovimientosTipo.Enabled  := Conected;
-  actPersonas.Enabled         := Conected;
-  actEmpleados.Enabled        := Conected;
-  actClientes.Enabled         := Conected;
-  actProveedores.Enabled      := Conected;
-  actDuenoProceso.Enabled     := Conected;
-  actOutsourcing.Enabled      := Conected;
-  actComisionistas.Enabled    := Conected;
-  actSocios.Enabled           := Conected;
-  actInstrucciones.Enabled    := Conected;
-  actIncidencias.Enabled      := Conected;
-  actInstruccionesTipos.Enabled:= Conected;
-  actMovimientos.Enabled:= Conected;
+  actUbicaciones.Enabled        := Conected;
+  actBancos.Enabled             := Conected;
+  actMonedas.Enabled            := Conected;
+  actPuestos.Enabled            := Conected;
+  actCapacitaciones.Enabled     := Conected;
+  actPlazasTurnos.Enabled       := Conected;
+  actPeriodos.Enabled           := Conected;
+  actFormulas.Enabled           := Conected;
+  actReglasNegocio.Enabled      := Conected;
+  actEstablecimientos.Enabled   := Conected;
+  actRoles.Enabled              := Conected;
+  actEsquemasPago.Enabled       := Conected;
+  actMovimientosTipo.Enabled    := Conected;
+  actPersonas.Enabled           := Conected;
+  actEmpleados.Enabled          := Conected;
+  actClientes.Enabled           := Conected;
+  actProveedores.Enabled        := Conected;
+  actDuenoProceso.Enabled       := Conected;
+  actOutsourcing.Enabled        := Conected;
+  actComisionistas.Enabled      := Conected;
+  actSocios.Enabled             := Conected;
+  actInstrucciones.Enabled      := Conected;
+  actIncidencias.Enabled        := Conected;
+  actInstruccionesTipos.Enabled := Conected;
+  actMovimientos.Enabled        := Conected;
+  actUsuarios.Enabled           := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

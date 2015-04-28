@@ -11,7 +11,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 719
     Height = 361
-    Properties.ActivePage = tsArchivosFacturar
+    Properties.ActivePage = tsEmpleado
     ExplicitWidth = 719
     ExplicitHeight = 361
     ClientRectBottom = 359
@@ -192,40 +192,34 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       Caption = 'Kardex'
       ImageIndex = 1
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 617
-      ExplicitHeight = 359
     end
     object tsEmpleado: TcxTabSheet
       Caption = 'Empleado'
       ImageIndex = 1
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 617
-      ExplicitHeight = 359
     end
     object tsCuentas: TcxTabSheet
       Caption = 'Cuentas'
       ImageIndex = 2
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 617
-      ExplicitHeight = 359
     end
     object tsEsquemaPago: TcxTabSheet
       Caption = 'Esquema de Pago'
       ImageIndex = 3
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 617
-      ExplicitHeight = 359
     end
     object tsArchivosFacturar: TcxTabSheet
       Caption = 'Archivos para Facturar'
+      ImageIndex = 1
+      TabVisible = False
+    end
+    object tsCuentasBancarias: TcxTabSheet
+      Caption = 'Cuentas Bancarias'
+      ImageIndex = 1
+      TabVisible = False
+    end
+    object tsExpedienteDigital: TcxTabSheet
+      Caption = 'Expediente Digital'
       ImageIndex = 1
       TabVisible = False
     end

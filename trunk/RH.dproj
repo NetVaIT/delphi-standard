@@ -661,6 +661,45 @@
             <Form>frmUbicacionesEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Catalogos\RolesDocumentosDM.pas">
+            <Form>dmRolesDocumentos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RolesDocumentosForm.pas">
+            <Form>frmRolesDocumentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RolesCuentasBancariasDM.pas">
+            <Form>dmRolesCuentasBancarias</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RolesCuentasBancariasForm.pas">
+            <Form>frmRolesCuentasBancarias</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RolesCuentasBancariasEdit.pas">
+            <Form>frmRolesCuentasBancariasEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\RolesDocumentosEdit.pas">
+            <Form>frmRolesDocumentosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UsuariosDM.pas">
+            <Form>dmUsuarios</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UsuariosEdit.pas">
+            <Form>frmUsuariosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\UsuariosForm.pas">
+            <Form>frmUsuarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

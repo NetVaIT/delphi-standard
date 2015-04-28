@@ -1,4 +1,4 @@
-unit PeriodosForm;
+unit UsuariosForm;
 
 interface
 
@@ -27,50 +27,36 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, cxTextEdit;
 
 type
-  TfrmPeriodos = class(T_frmGrid)
-    dxbbCalculaPeriodo: TdxBarButton;
-    tvMasterIdPeriodo: TcxGridDBColumn;
-    tvMasterIdPeriodoTipo: TcxGridDBColumn;
-    tvMasterNumero: TcxGridDBColumn;
-    tvMasterPeriodoTipo: TcxGridDBColumn;
-    tvMasterIdPeriodoEstatus: TcxGridDBColumn;
-    tvMasterPeriodoEstatus: TcxGridDBColumn;
-    tvMasterFechaInicio: TcxGridDBColumn;
-    tvMasterFechaFin: TcxGridDBColumn;
-    tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterAnio: TcxGridDBColumn;
-    tvMasterMes: TcxGridDBColumn;
+  TfrmUsuarios = class(T_frmGrid)
+    tvMasterIdUsuario: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterPersona: TcxGridDBColumn;
+    tvMasterIdUsuarioEstatus: TcxGridDBColumn;
+    tvMasterUsuarioEstatus: TcxGridDBColumn;
+    tvMasterLogin: TcxGridDBColumn;
+    tvMasterPassword: TcxGridDBColumn;
+    tvMasterLoginServidor: TcxGridDBColumn;
+    tvMasterPassServidor: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    FCalcPeriodo: TBasicAction;
-    procedure SetCalcPeriodo(const Value: TBasicAction);
-  protected
-
   public
     { Public declarations }
-    property CalcPeriodo: TBasicAction read FCalcPeriodo write SetCalcPeriodo;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses PersonasDM, PeriodosDM, PeriodosEdit;
+uses UsuariosDM, UsuariosEdit;
 
-procedure TfrmPeriodos.FormCreate(Sender: TObject);
+procedure TfrmUsuarios.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm := TfrmPeriodosEdit.Create(Self);
-end;
-
-procedure TfrmPeriodos.SetCalcPeriodo(const Value: TBasicAction);
-begin
-  FCalcPeriodo := Value;
-  dxbbCalculaPeriodo.Action := Value;
+  gEditForm:= TfrmUsuariosEdit.Create(Self);
 end;
 
 end.

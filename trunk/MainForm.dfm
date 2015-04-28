@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -13,7 +13,6 @@ inherited frmMain: TfrmMain
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
-      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -37,6 +36,15 @@ inherited frmMain: TfrmMain
           ToolbarName = 'dxbPagos'
         end>
       Index = 2
+    end
+    object dxRibbon1Tab4: TdxRibbonTab
+      Active = True
+      Caption = 'Configuraci'#243'n'
+      Groups = <
+        item
+          ToolbarName = 'dxbUsuarios'
+        end>
+      Index = 3
     end
   end
   inherited dxRibbonBackstageView1: TdxRibbonBackstageView
@@ -250,6 +258,26 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
+    object dxbUsuarios: TdxBar [7]
+      Caption = 'Usuarios'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1133
+      FloatTop = 8
+      FloatClientWidth = 51
+      FloatClientHeight = 22
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton22'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
     object dxBarLargeButton1: TdxBarLargeButton
       Action = actUbicaciones
       Category = 0
@@ -378,6 +406,10 @@ inherited frmMain: TfrmMain
       Action = actPeriodos
       Category = 0
     end
+    object dxBarLargeButton22: TdxBarLargeButton
+      Action = actUsuarios
+      Category = 0
+    end
   end
   inherited cxSmallImages: TcxImageList
     FormatVersion = 1
@@ -388,6 +420,7 @@ inherited frmMain: TfrmMain
     DesignInfo = 12059116
   end
   inherited ActionList: TActionList
+    Left = 400
     object actCatalogo: TAction
       Category = 'Catalogos'
       Caption = 'actCatalogo'
@@ -568,5 +601,16 @@ inherited frmMain: TfrmMain
       ImageIndex = 41
       OnExecute = actCatalogoExecute
     end
+    object actUsuarios: TAction
+      Tag = 40
+      Category = 'Configuracion'
+      Caption = 'Usuarios'
+      ImageIndex = 42
+      OnExecute = actCatalogoExecute
+    end
+  end
+  inherited dxBarScreenTipRepository: TdxBarScreenTipRepository
+    Left = 536
+    Top = 67
   end
 end
