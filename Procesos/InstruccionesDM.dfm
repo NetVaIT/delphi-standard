@@ -5,9 +5,8 @@ inherited dmInstrucciones: TdmInstrucciones
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'select IdInstruccion, IdInstruccionTipo, IdPersonaSolicita, IdDo' +
-      'cumentoAdjunto, Concepto, Fecha, Repetir, IdPeriodoTipo, Repetir' +
-      'Inicio, RepetirFinaliza, RepetirFin, RepetirHasta from Instrucci' +
-      'ones'
+      'cumento, Concepto, Fecha, Repetir, IdPeriodoTipo, RepetirInicio,' +
+      ' RepetirFinaliza, RepetirFin, RepetirHasta from Instrucciones'
     object adodsMasterIdInstruccion: TAutoIncField
       FieldName = 'IdInstruccion'
       ReadOnly = True
@@ -42,8 +41,8 @@ inherited dmInstrucciones: TdmInstrucciones
       Size = 50
       Lookup = True
     end
-    object adodsMasterIdDocumentoAdjunto: TIntegerField
-      FieldName = 'IdDocumentoAdjunto'
+    object adodsMasterIdDocumento: TIntegerField
+      FieldName = 'IdDocumento'
       Required = True
       Visible = False
     end
@@ -51,10 +50,10 @@ inherited dmInstrucciones: TdmInstrucciones
       DisplayLabel = 'Archivo'
       FieldKind = fkLookup
       FieldName = 'NombreArchivo'
-      LookupDataSet = adodsDocumentosAdjuntos
-      LookupKeyFields = 'IdDocumentoAdjunto'
+      LookupDataSet = adodsDocumentos
+      LookupKeyFields = 'IdDocumento'
       LookupResultField = 'NombreArchivo'
-      KeyFields = 'IdDocumentoAdjunto'
+      KeyFields = 'IdDocumento'
       Size = 200
       Lookup = True
     end
@@ -127,10 +126,10 @@ inherited dmInstrucciones: TdmInstrucciones
     Left = 104
     Top = 64
   end
-  object adodsDocumentosAdjuntos: TADODataSet
+  object adodsDocumentos: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'select IdDocumentoAdjunto, NombreArchivo from DocumentosAdjuntos'
+    CommandText = 'select IdDocumento, NombreArchivo from Documentos'
     Parameters = <>
     Left = 104
     Top = 120

@@ -93,7 +93,7 @@ inherited frmUsuariosEdit: TfrmUsuariosEdit
       object cxDBTextEdit4: TcxDBTextEdit
         Left = 24
         Top = 224
-        DataBinding.DataField = 'PassServidor'
+        DataBinding.DataField = 'PasswordServidor'
         DataBinding.DataSource = DataSource
         Properties.EchoMode = eemPassword
         Properties.PasswordChar = '*'
@@ -133,9 +133,6 @@ inherited frmUsuariosEdit: TfrmUsuariosEdit
       Left = 398
       ExplicitLeft = 398
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmUsuarios.adodsMaster
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

@@ -3,21 +3,21 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
   ClientHeight = 553
   ClientWidth = 541
   ExplicitWidth = 547
-  ExplicitHeight = 582
+  ExplicitHeight = 581
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 541
     Height = 512
     ExplicitWidth = 541
-    ExplicitHeight = 560
+    ExplicitHeight = 512
     ClientRectBottom = 510
     ClientRectRight = 539
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 537
-      ExplicitHeight = 530
+      ExplicitHeight = 482
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -178,7 +178,7 @@ inherited frmInstruccionesEdit: TfrmInstruccionesEdit
   inherited pmlMain: TPanel
     Top = 512
     Width = 541
-    ExplicitTop = 560
+    ExplicitTop = 512
     ExplicitWidth = 541
     inherited btnOk: TButton
       Left = 378

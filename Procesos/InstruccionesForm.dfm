@@ -24,8 +24,8 @@ inherited frmInstrucciones: TfrmInstrucciones
           DataBinding.FieldName = 'IdPersonaSolicita'
           Visible = False
         end
-        object tvMasterIdDocumentoAdjunto: TcxGridDBColumn
-          DataBinding.FieldName = 'IdDocumentoAdjunto'
+        object tvMasterIdDocumento: TcxGridDBColumn
+          DataBinding.FieldName = 'IdDocumento'
           Visible = False
         end
         object tvMasterIdPeriodoTipo: TcxGridDBColumn
@@ -900,6 +900,7 @@ inherited frmInstrucciones: TfrmInstrucciones
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

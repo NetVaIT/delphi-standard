@@ -1,4 +1,4 @@
-unit RolesCuentasBancariasDM;
+unit PersonasRolesCuentasBancariasDM;
 
 interface
 
@@ -7,15 +7,18 @@ uses
   Data.DB, Data.Win.ADODB;
 
 type
-  TdmRolesCuentasBancarias = class(T_dmStandar)
-    adodsMasterIdRolCuentaBancaria: TAutoIncField;
+  TdmPersonasRolesCuentasBancarias = class(T_dmStandar)
+    adodsCuentaBancaria: TADODataSet;
+    adodsCuentaBancariaPerfil: TADODataSet;
+    adodsMasterIdPersonaRolCuentaBancaria: TAutoIncField;
     adodsMasterIdPersonaRol: TIntegerField;
     adodsMasterIdCuentaBancaria: TIntegerField;
+    adodsMasterIdCuentaBancariaPerfil: TIntegerField;
     adodsMasterPorcentaje: TBCDField;
     adodsMasterLimiteInferior: TBCDField;
     adodsMasterLimiteSuperior: TBCDField;
-    adodsCuentaBancaria: TADODataSet;
     adodsMasterCuentaBancaria: TStringField;
+    adodsMasterCuentaBancariaPerfil: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -30,21 +33,21 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses RolesCuentasBancariasForm;
+uses PersonasRolesCuentasBancariasForm;
 
 {$R *.dfm}
 
 { TdmRolesCuentasBancarias }
 
-procedure TdmRolesCuentasBancarias.DataModuleCreate(Sender: TObject);
+procedure TdmPersonasRolesCuentasBancarias.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm:= TfrmRolesCuentasBancarias.Create(Self);
+  gGridForm:= TfrmPersonasRolesCuentasBancarias.Create(Self);
   gGridForm.DataSet:= adodsMaster;
   adodsCuentaBancaria.CommandText := 'SELECT IdCuentaBancaria, IdPersona, CuentaBancaria FROM CuentasBancarias';
 end;
 
-procedure TdmRolesCuentasBancarias.SetPersonaCta(const Value: Integer);
+procedure TdmPersonasRolesCuentasBancarias.SetPersonaCta(const Value: Integer);
 begin
   fPersonaCta := Value;
   adodsCuentaBancaria.Filter := 'IdPersona = ' + IntToStr(fPersonaCta);

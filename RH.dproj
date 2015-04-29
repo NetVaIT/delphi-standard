@@ -486,17 +486,17 @@
             <Form>frmIncidencias</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\DocumentosAdjuntosDM.pas">
-            <Form>dmArchivosAdjuntos</Form>
+        <DCCReference Include="Catalogos\DocumentosDM.pas">
+            <Form>dmDocumentos</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\DocumentosAdjuntosEdit.pas">
-            <Form>frmArchivosAdjuntosEdit</Form>
+        <DCCReference Include="Catalogos\DocumentosEdit.pas">
+            <Form>frmDocumentosEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\DocumentosAdjuntosForm.pas">
-            <Form>frmArchivosAdjuntos</Form>
+        <DCCReference Include="Catalogos\DocumentosForm.pas">
+            <Form>frmDocumentos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Catalogos\InstruccionesTiposDM.pas">
@@ -661,30 +661,30 @@
             <Form>frmUbicacionesEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\RolesDocumentosDM.pas">
-            <Form>dmRolesDocumentos</Form>
+        <DCCReference Include="Catalogos\PersonasRolesDocumentosDM.pas">
+            <Form>dmPersonasRolesDocumentos</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\RolesDocumentosForm.pas">
-            <Form>frmRolesDocumentos</Form>
+        <DCCReference Include="Catalogos\PersonasRolesDocumentosForm.pas">
+            <Form>frmPersonasRolesDocumentos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\RolesCuentasBancariasDM.pas">
-            <Form>dmRolesCuentasBancarias</Form>
+        <DCCReference Include="Catalogos\PersonasRolesCuentasBancariasDM.pas">
+            <Form>dmPersonasRolesCuentasBancarias</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\RolesCuentasBancariasForm.pas">
-            <Form>frmRolesCuentasBancarias</Form>
+        <DCCReference Include="Catalogos\PersonasRolesCuentasBancariasForm.pas">
+            <Form>frmPersonasRolesCuentasBancarias</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\RolesCuentasBancariasEdit.pas">
-            <Form>frmRolesCuentasBancariasEdit</Form>
+        <DCCReference Include="Catalogos\PersonasRolesCuentasBancariasEdit.pas">
+            <Form>frmPersonasRolesCuentasBancariasEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\RolesDocumentosEdit.pas">
-            <Form>frmRolesDocumentosEdit</Form>
+        <DCCReference Include="Catalogos\PersonasRolesDocumentosEdit.pas">
+            <Form>frmPersonasRolesDocumentosEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Catalogos\UsuariosDM.pas">

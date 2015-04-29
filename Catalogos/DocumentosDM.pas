@@ -1,4 +1,4 @@
-unit DocumentosAdjuntosDM;
+unit DocumentosDM;
 
 interface
 
@@ -15,8 +15,8 @@ type
   TFileAllowed = (faAll, faXML, faDOC, faDOCx, faXLS, faXLSx, faTXT, faCSV);
   TFilesAllowed = set of TFileAllowed;
 
-  TdmDocumentosAdjuntos = class(T_dmStandar)
-    adodsMasterIdDocumentoAdjunto: TAutoIncField;
+  TdmDocumentos = class(T_dmStandar)
+    adodsMasterIdDocumento: TAutoIncField;
     adodsMasterIdDocumentoTipo: TIntegerField;
     adodsMasterIdDocumentoClase: TIntegerField;
     adodsMasterDescripcion: TStringField;
@@ -27,7 +27,7 @@ type
     adodsDocumentoClase: TADODataSet;
     adodsMasterDocumentoTipo: TStringField;
     adodsMasterDocumentoClase: TStringField;
-    adodsUpdateIdDocumentoAdjunto: TAutoIncField;
+    adodsUpdateIdDocumento: TAutoIncField;
     adodsUpdateIdDocumentoTipo: TIntegerField;
     adodsUpdateIdDocumentoClase: TIntegerField;
     adodsUpdateDescripcion: TStringField;
@@ -57,7 +57,7 @@ type
     procedure SetFileAllowed(const Value: TFileAllowed);
   public
     { Public declarations }
-    function GetFileName(IdDocumentoAdjunto: Integer): TFileName;
+    function GetFileName(IdDocumento: Integer): TFileName;
     property FileAllowed: TFileAllowed read FFileAllowed write SetFileAllowed default faXLSx;
   end;
 
@@ -65,11 +65,11 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses DocumentosAdjuntosForm, DocumentosAdjuntosEdit;
+uses DocumentosForm, DocumentosEdit;
 
 {$R *.dfm}
 
-procedure TdmDocumentosAdjuntos.actLoadFileExecute(Sender: TObject);
+procedure TdmDocumentos.actLoadFileExecute(Sender: TObject);
 begin
   inherited;
   if OpenDialog.Execute then
@@ -80,7 +80,7 @@ begin
   end;
 end;
 
-procedure TdmDocumentosAdjuntos.actSaveFileExecute(Sender: TObject);
+procedure TdmDocumentos.actSaveFileExecute(Sender: TObject);
 begin
   inherited;
   SaveDialog.FileName:= adodsUpdateNombreArchivo.AsString;
@@ -91,54 +91,54 @@ begin
   end;
 end;
 
-procedure TdmDocumentosAdjuntos.actSaveFileUpdate(Sender: TObject);
+procedure TdmDocumentos.actSaveFileUpdate(Sender: TObject);
 begin
   inherited;
   if Sender is TAction then
     TAction(Sender).Enabled:= adodsUpdateNombreArchivo.AsString <> EmptyStr;
 end;
 
-procedure TdmDocumentosAdjuntos.actViewFileExecute(Sender: TObject);
+procedure TdmDocumentos.actViewFileExecute(Sender: TObject);
 var
   FileName: TFileName;
 begin
   inherited;
   FileName:= TPath.GetTempPath + adodsUpdateNombreArchivo.AsString;
   ReadFile(FileName);
-  ShellExecute(TfrmDocumentosAdjuntosEdit(frmEdit).Handle, 'open', PChar(FileName), nil, nil, 0);
+  ShellExecute(TfrmDocumentosEdit(frmEdit).Handle, 'open', PChar(FileName), nil, nil, 0);
 end;
 
-procedure TdmDocumentosAdjuntos.actViewFileUpdate(Sender: TObject);
+procedure TdmDocumentos.actViewFileUpdate(Sender: TObject);
 begin
   inherited;
   if Sender is TAction then
     TAction(Sender).Enabled:= adodsUpdateNombreArchivo.AsString <> EmptyStr;
 end;
 
-procedure TdmDocumentosAdjuntos.DataModuleCreate(Sender: TObject);
+procedure TdmDocumentos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  frmEdit:= TfrmDocumentosAdjuntosEdit.Create(Self);
-  TfrmDocumentosAdjuntosEdit(frmEdit).actLoadFile:= actLoadFile;
-  TfrmDocumentosAdjuntosEdit(frmEdit).actSaveFile:= actSaveFile;
-  TfrmDocumentosAdjuntosEdit(frmEdit).actViewFile:= actViewFile;
-  gGridForm := TfrmDocumentosAdjuntos.Create(Self);
+  frmEdit:= TfrmDocumentosEdit.Create(Self);
+  TfrmDocumentosEdit(frmEdit).actLoadFile:= actLoadFile;
+  TfrmDocumentosEdit(frmEdit).actSaveFile:= actSaveFile;
+  TfrmDocumentosEdit(frmEdit).actViewFile:= actViewFile;
+  gGridForm := TfrmDocumentos.Create(Self);
   gGridForm.DataSet := adodsMaster;
 end;
 
-function TdmDocumentosAdjuntos.GetFileName(IdDocumentoAdjunto: Integer): TFileName;
+function TdmDocumentos.GetFileName(IdDocumento: Integer): TFileName;
 var
   FileName: TFileName;
 begin
   adodsUpdate.Close;
-  adodsUpdate.Parameters[0].Value:= IdDocumentoAdjunto;
+  adodsUpdate.Parameters[0].Value:= IdDocumento;
   adodsUpdate.Open;
   FileName:= TPath.GetTempPath + adodsUpdateNombreArchivo.AsString;
   ReadFile(FileName);
   Result:= FileName;
 end;
 
-procedure TdmDocumentosAdjuntos.ReadFile(FileName: TFileName);
+procedure TdmDocumentos.ReadFile(FileName: TFileName);
 var
   Blob : TStream;
   Fs: TFileStream;
@@ -157,7 +157,7 @@ begin
   end;
 end;
 
-procedure TdmDocumentosAdjuntos.SetFileAllowed(const Value: TFileAllowed);
+procedure TdmDocumentos.SetFileAllowed(const Value: TFileAllowed);
 begin
   if FFileAllowed <> Value then
   begin
@@ -170,7 +170,7 @@ begin
   end;
 end;
 
-procedure TdmDocumentosAdjuntos.WriteFile(FileName: TFileName);
+procedure TdmDocumentos.WriteFile(FileName: TFileName);
 var
   Blob: TStream;
   Fs: TFileStream;
@@ -189,7 +189,7 @@ begin
   end;
 end;
 
-procedure TdmDocumentosAdjuntos.TuneOpenDialog;
+procedure TdmDocumentos.TuneOpenDialog;
 begin
   case FFileAllowed of
     faAll: OpenDialog.Filter:= 'Todos los Archivos|*.*';

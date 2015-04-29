@@ -46,13 +46,6 @@ inherited frmUsuariosXCuentaBancariaEdit: TfrmUsuariosXCuentaBancariaEdit
         Caption = 'Observaciones 2'
         FocusControl = cxDBTextEdit3
       end
-      object Label5: TLabel
-        Left = 32
-        Top = 20
-        Width = 79
-        Height = 13
-        Caption = 'Cuenta Bancaria'
-      end
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 32
         Top = 86
@@ -85,11 +78,6 @@ inherited frmUsuariosXCuentaBancariaEdit: TfrmUsuariosXCuentaBancariaEdit
         DataBinding.DataSource = DataSource
         TabOrder = 3
         Width = 385
-      end
-      object lblCuenta: TcxLabel
-        Left = 32
-        Top = 39
-        Caption = 'lblCuenta'
       end
     end
   end

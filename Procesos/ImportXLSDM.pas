@@ -47,7 +47,7 @@ type
     adoqInstrucionesTiposValor: TStringField;
     adoqInstruccionesIdInstruccion: TAutoIncField;
     adoqInstruccionesIdInstruccionTipo: TIntegerField;
-    adoqInstruccionesIdDocumentoAdjunto: TIntegerField;
+    adoqInstruccionesIdDocumento: TIntegerField;
     dxmdImportarGenerada: TBooleanField;
     dxmdImportarEncontrada: TBooleanField;
     adodsMovimientosTipos: TADODataSet;
@@ -87,7 +87,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses _ConectionDmod, ImportXLSForm, VerificarForm, DocumentosAdjuntosDM,
+uses _ConectionDmod, ImportXLSForm, VerificarForm, DocumentosDM,
   _Utils;
 
 {$R *.dfm}
@@ -115,14 +115,14 @@ var
 
   function SetArchivo: Boolean;
   var
-    dmDocumentos: TdmDocumentosAdjuntos;
+    dmDocumentos: TdmDocumentos;
     FileName: TFileName;
     Ext: string;
   begin
     Result:= False;
-    dmDocumentos := TdmDocumentosAdjuntos.Create(Self);
+    dmDocumentos := TdmDocumentos.Create(Self);
     try
-      FileName:= dmDocumentos.GetFileName(adoqInstruccionesIdDocumentoAdjunto.Value);
+      FileName:= dmDocumentos.GetFileName(adoqInstruccionesIdDocumento.Value);
     finally
       dmDocumentos.Free;
     end;

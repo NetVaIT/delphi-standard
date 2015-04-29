@@ -21,7 +21,7 @@ uses
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
   ClientesDM, ProveedoresDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
-  EmpleadosDM, RolesCuentasBancariasDM, RolesDocumentosDM, cxCalendar;
+  EmpleadosDM, PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -52,6 +52,9 @@ type
     cxDBDateEdit3: TcxDBDateEdit;
     tsCuentasBancarias: TcxTabSheet;
     tsExpedienteDigital: TcxTabSheet;
+    cxDBCheckBox1: TcxDBCheckBox;
+    Label9: TLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -63,8 +66,8 @@ type
     dmProveedores: TdmProveedores;
     dmEmpleados: TdmEmpleados;
     dmArchivosGenerarFacturas: TdmArchivosGenerarFacturas;
-    dmRolesCuentasBancarias: TdmRolesCuentasBancarias;
-    dmRolesDocumentos: TdmRolesDocumentos;
+    dmRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
+    dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos;
     procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
@@ -88,8 +91,8 @@ begin
   dmProveedores := TdmProveedores.Create(nil);
   dmEmpleados := TdmEmpleados.Create(nil);
   dmArchivosGenerarFacturas := TdmArchivosGenerarFacturas.Create(nil);
-  dmRolesCuentasBancarias := TdmRolesCuentasBancarias.Create(nil);
-  dmRolesDocumentos := TdmRolesDocumentos.Create(nil);
+  dmRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
+  dmPersonasRolesDocumentos := TdmPersonasRolesDocumentos.Create(nil);
 end;
 
 procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
@@ -100,7 +103,7 @@ begin
   FreeAndNil(dmEmpleados);
   FreeAndNil(dmArchivosGenerarFacturas);
   FreeAndNil(dmRolesCuentasBancarias);
-  FreeAndNil(dmRolesDocumentos);
+  FreeAndNil(dmPersonasRolesDocumentos);
 end;
 
 procedure TfrmPersonaRolesEdit.FormShow(Sender: TObject);
@@ -174,9 +177,9 @@ begin
   dmRolesCuentasBancarias.MasterFields := 'IdPersonaRol';
   dmRolesCuentasBancarias.PersonaAct := DataSet.FieldByName('IdPersona').Value;
   dmRolesCuentasBancarias.ShowModule(tsCuentasBancarias,'');
-  dmRolesDocumentos.MasterSource := DataSource;
-  dmRolesDocumentos.MasterFields := 'IdPersonaRol';
-  dmRolesDocumentos.ShowModule(tsExpedienteDigital,'');
+  dmPersonasRolesDocumentos.MasterSource := DataSource;
+  dmPersonasRolesDocumentos.MasterFields := 'IdPersonaRol';
+  dmPersonasRolesDocumentos.ShowModule(tsExpedienteDigital,'');
   tsCuentasBancarias.TabVisible := True;
   tsExpedienteDigital.TabVisible := True;
   if tsArchivosFacturar.TabVisible = True then

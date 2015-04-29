@@ -19,7 +19,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Vcl.DBCtrls;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Vcl.DBCtrls, cxLabel,
+  cxDBLabel, Vcl.Buttons;
 
 type
   TfrmRolesEdit = class(T_frmEdit)
@@ -31,10 +32,16 @@ type
     Label4: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
+    Label5: TLabel;
+    cxDBLabel1: TcxDBLabel;
+    btnUpdateFile: TSpeedButton;
   private
     { Private declarations }
+    FUpdateFile: TBasicAction;
+    procedure SetUpdateFile(const Value: TBasicAction);
   public
     { Public declarations }
+    property UpdateFile: TBasicAction read FUpdateFile write SetUpdateFile;
   end;
 
 implementation
@@ -42,5 +49,13 @@ implementation
 {$R *.dfm}
 
 uses RolesDM;
+
+{ TfrmRolesEdit }
+
+procedure TfrmRolesEdit.SetUpdateFile(const Value: TBasicAction);
+begin
+  FUpdateFile := Value;
+  btnUpdateFile.Action := Value;
+end;
 
 end.

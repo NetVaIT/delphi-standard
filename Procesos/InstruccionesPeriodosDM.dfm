@@ -6,13 +6,12 @@ inherited dmInstruccionesPeriodos: TdmInstruccionesPeriodos
     CommandText = 
       'SELECT InstruccionesPeriodos.IdInstruccion, InstruccionesPeriodo' +
       's.IdPeriodo, InstruccionesPeriodos.Fecha, '#13#10'Instrucciones.Concep' +
-      'to AS Instruccion, DocumentosAdjuntos.NombreArchivo AS Archivo, ' +
-      'Periodos.Descripcion AS Periodo'#13#10'FROM InstruccionesPeriodos '#13#10'IN' +
-      'NER JOIN Instrucciones ON InstruccionesPeriodos.IdInstruccion = ' +
-      'Instrucciones.IdInstruccion'#13#10'INNER JOIN Periodos ON Instruccione' +
-      'sPeriodos.IdPeriodo = Periodos.IdPeriodo'#13#10'INNER JOIN DocumentosA' +
-      'djuntos ON Instrucciones.IdDocumentoAdjunto = DocumentosAdjuntos' +
-      '.IdDocumentoAdjunto'
+      'to AS Instruccion, Documentos.NombreArchivo AS Archivo, Periodos' +
+      '.Descripcion AS Periodo'#13#10'FROM InstruccionesPeriodos '#13#10'INNER JOIN' +
+      ' Instrucciones ON InstruccionesPeriodos.IdInstruccion = Instrucc' +
+      'iones.IdInstruccion'#13#10'INNER JOIN Periodos ON InstruccionesPeriodo' +
+      's.IdPeriodo = Periodos.IdPeriodo'#13#10'INNER JOIN Documentos ON Instr' +
+      'ucciones.IdDocumento = Documentos.IdDocumento'
     object adodsMasterIdInstruccion: TIntegerField
       FieldName = 'IdInstruccion'
       Visible = False

@@ -1,23 +1,23 @@
-inherited frmDocumentosAdjuntosEdit: TfrmDocumentosAdjuntosEdit
+inherited frmDocumentosEdit: TfrmDocumentosEdit
   Caption = 'Documento adjunto'
   ClientHeight = 277
   ClientWidth = 545
   ExplicitWidth = 551
-  ExplicitHeight = 306
+  ExplicitHeight = 305
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 545
     Height = 236
-    ExplicitWidth = 439
-    ExplicitHeight = 424
+    ExplicitWidth = 545
+    ExplicitHeight = 236
     ClientRectBottom = 234
     ClientRectRight = 543
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 435
-      ExplicitHeight = 394
+      ExplicitWidth = 541
+      ExplicitHeight = 206
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -100,19 +100,16 @@ inherited frmDocumentosAdjuntosEdit: TfrmDocumentosAdjuntosEdit
   inherited pmlMain: TPanel
     Top = 236
     Width = 545
-    ExplicitTop = 424
-    ExplicitWidth = 439
+    ExplicitTop = 236
+    ExplicitWidth = 545
     inherited btnOk: TButton
       Left = 382
-      ExplicitLeft = 276
+      ExplicitLeft = 382
     end
     inherited btnCancel: TButton
       Left = 463
-      ExplicitLeft = 357
+      ExplicitLeft = 463
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmDocumentosAdjuntos.adodsMaster
   end
   inherited ActionList: TActionList
     object Action1: TAction

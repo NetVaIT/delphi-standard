@@ -15,7 +15,7 @@ type
     adodsMasterLogin: TStringField;
     adodsMasterPassword: TStringField;
     adodsMasterLoginServidor: TStringField;
-    adodsMasterPassServidor: TStringField;
+    adodsMasterPasswordServidor: TStringField;
     adodsUsuarioEstatus: TADODataSet;
     adodsMasterPersona: TStringField;
     adodsMasterUsuarioEstatus: TStringField;

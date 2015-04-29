@@ -1,14 +1,13 @@
-inherited dmDocumentosAdjuntos: TdmDocumentosAdjuntos
+inherited dmDocumentos: TdmDocumentos
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdDocumentoAdjunto, IdDocumentoTipo, IdDocumentoClase, De' +
-      'scripcion, NombreArchivo, IdArchivo, Archivo FROM DocumentosAdju' +
-      'ntos'
+      'SELECT IdDocumento, IdDocumentoTipo, IdDocumentoClase, Descripci' +
+      'on, NombreArchivo, IdArchivo, Archivo FROM Documentos'
     Left = 40
-    object adodsMasterIdDocumentoAdjunto: TAutoIncField
-      FieldName = 'IdDocumentoAdjunto'
+    object adodsMasterIdDocumento: TAutoIncField
+      FieldName = 'IdDocumento'
       ReadOnly = True
       Visible = False
     end
@@ -70,20 +69,20 @@ inherited dmDocumentosAdjuntos: TdmDocumentosAdjuntos
   inherited adodsUpdate: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdDocumentoAdjunto, IdDocumentoTipo, IdDocumentoClase, De' +
-      'scripcion, NombreArchivo, IdArchivo, Archivo FROM DocumentosAdju' +
-      'ntos'#13#10'WHERE IdDocumentoAdjunto =:IdDocumentoAdjunto'
+      'SELECT IdDocumento, IdDocumentoTipo, IdDocumentoClase, Descripci' +
+      'on, NombreArchivo, IdArchivo, Archivo FROM Documentos'#13#10'WHERE IdD' +
+      'ocumento =:IdDocumento'
     Parameters = <
       item
-        Name = 'IdDocumentoAdjunto'
+        Name = 'IdDocumento'
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
         Size = 4
         Value = Null
       end>
-    object adodsUpdateIdDocumentoAdjunto: TAutoIncField
-      FieldName = 'IdDocumentoAdjunto'
+    object adodsUpdateIdDocumento: TAutoIncField
+      FieldName = 'IdDocumento'
       ReadOnly = True
     end
     object adodsUpdateIdDocumentoTipo: TIntegerField

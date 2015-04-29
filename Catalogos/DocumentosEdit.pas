@@ -1,4 +1,4 @@
-unit DocumentosAdjuntosEdit;
+unit DocumentosEdit;
 
 interface
 
@@ -23,7 +23,7 @@ uses
   Vcl.DBCtrls, Vcl.Buttons, cxButtonEdit;
 
 type
-  TfrmDocumentosAdjuntosEdit = class(T_frmEdit)
+  TfrmDocumentosEdit = class(T_frmEdit)
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     Label1: TLabel;
@@ -54,21 +54,21 @@ implementation
 
 {$R *.dfm}
 
-uses DocumentosAdjuntosDM;
+uses DocumentosDM;
 
-procedure TfrmDocumentosAdjuntosEdit.SetactLoadFile(const Value: TBasicAction);
+procedure TfrmDocumentosEdit.SetactLoadFile(const Value: TBasicAction);
 begin
   FactLoadFile := Value;
   edtArchivo.Properties.Buttons[0].Action:= Value;
 end;
 
-procedure TfrmDocumentosAdjuntosEdit.SetactSaveFile(const Value: TBasicAction);
+procedure TfrmDocumentosEdit.SetactSaveFile(const Value: TBasicAction);
 begin
   FactSaveFile := Value;
   edtArchivo.Properties.Buttons[1].Action:= Value;
 end;
 
-procedure TfrmDocumentosAdjuntosEdit.SetactViewFile(const Value: TBasicAction);
+procedure TfrmDocumentosEdit.SetactViewFile(const Value: TBasicAction);
 begin
   FactViewFile := Value;
   edtArchivo.Properties.Buttons[2].Action:= Value;

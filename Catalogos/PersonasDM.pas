@@ -63,6 +63,8 @@ type
     adodsPersonaRolesFechaBaja: TDateTimeField;
     adodsPersonaRolesNSS: TStringField;
     adodsPersonaRolesFechaAltaIMSS: TDateTimeField;
+    adodsPersonaRolesCalcular: TBooleanField;
+    adodsPersonaRolesPorcentajeCalculo: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -136,7 +138,7 @@ begin
             end;
     rComisionista: begin
                      ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 8)';
-                     ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                     ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
                    end;
   end;
   adodsMaster.CommandText := ConsultaP;
