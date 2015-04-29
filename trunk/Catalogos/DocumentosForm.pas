@@ -1,4 +1,4 @@
-unit DocumentosAdjuntosForm;
+unit DocumentosForm;
 
 interface
 
@@ -30,8 +30,8 @@ uses
   dxPSCore, dxPScxCommon;
 
 type
-  TfrmDocumentosAdjuntos = class(T_frmGrid)
-    tvMasterIdDocumentoAdjunto: TcxGridDBColumn;
+  TfrmDocumentos = class(T_frmGrid)
+    tvMasterIdDocumento: TcxGridDBColumn;
     tvMasterNombreArchivo: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterIdDocumentoTipo: TcxGridDBColumn;
@@ -51,12 +51,12 @@ implementation
 
 {$R *.dfm}
 
-uses DocumentosAdjuntosDM, DocumentosAdjuntosEdit;
+uses DocumentosDM, DocumentosEdit;
 
-procedure TfrmDocumentosAdjuntos.FormCreate(Sender: TObject);
+procedure TfrmDocumentos.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmDocumentosAdjuntosEdit.Create(Self);
+  gEditForm:= TfrmDocumentosEdit.Create(Self);
 end;
 
 end.

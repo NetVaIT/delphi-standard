@@ -30,8 +30,6 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label4: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
-    Label5: TLabel;
-    lblCuenta: TcxLabel;
   private
     FCuenta: string;
     procedure SetCuenta(const Value: string);
@@ -49,8 +47,8 @@ uses CuentasBancariasDM;
 
 procedure TfrmUsuariosXCuentaBancariaEdit.SetCuenta(const Value: string);
 begin
-  FCuenta := Value;
-  lblCuenta.Caption:= Value;
+//  FCuenta := Value;
+//  lblCuenta.Caption:= Value;
 end;
 
 end.

@@ -34,7 +34,7 @@ type
     tvMasterIdInstruccion: TcxGridDBColumn;
     tvMasterIdInstruccionTipo: TcxGridDBColumn;
     tvMasterIdPersonaSolicita: TcxGridDBColumn;
-    tvMasterIdDocumentoAdjunto: TcxGridDBColumn;
+    tvMasterIdDocumento: TcxGridDBColumn;
     tvMasterConcepto: TcxGridDBColumn;
     tvMasterIntruccionTipo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;

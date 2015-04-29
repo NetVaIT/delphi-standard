@@ -3,8 +3,8 @@ inherited dmRoles: TdmRoles
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'select IdRol, IdRolTipo, IdEsquemaPago, Identificador, Descripci' +
-      'on from Roles'
+      'SELECT IdRol, IdRolTipo, IdEsquemaPago, Identificador, Descripci' +
+      'on, IdDocumento FROM Roles'
     object adodsMasterIdRol: TAutoIncField
       FieldName = 'IdRol'
       ReadOnly = True
@@ -53,8 +53,29 @@ inherited dmRoles: TdmRoles
       Size = 200
       Lookup = True
     end
+    object adodsMasterIdDocumento: TIntegerField
+      FieldName = 'IdDocumento'
+    end
+    object adodsMasterDocumento: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Documento'
+      LookupDataSet = adodsDocumento
+      LookupKeyFields = 'IdDocumento'
+      LookupResultField = 'NombreArchivo'
+      KeyFields = 'IdDocumento'
+      Size = 200
+      Lookup = True
+    end
+  end
+  inherited ActionList: TActionList
+    object actUpdateFile: TAction
+      Caption = '...'
+      Hint = 'Asigna Archivo'
+      OnExecute = actUpdateFileExecute
+    end
   end
   object adodsRolesTipos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdRolTipo, Descripcion from RolesTipos'
@@ -63,11 +84,20 @@ inherited dmRoles: TdmRoles
     Top = 64
   end
   object adodsEsquemaPagos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdEsquemaPago, Descripcion from EsquemaPagos'
     Parameters = <>
     Left = 112
     Top = 120
+  end
+  object adodsDocumento: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
+    Parameters = <>
+    Left = 112
+    Top = 176
   end
 end

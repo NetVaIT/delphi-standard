@@ -39,7 +39,7 @@ type
     tvMasterLogin: TcxGridDBColumn;
     tvMasterPassword: TcxGridDBColumn;
     tvMasterLoginServidor: TcxGridDBColumn;
-    tvMasterPassServidor: TcxGridDBColumn;
+    tvMasterPasswordServidor: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

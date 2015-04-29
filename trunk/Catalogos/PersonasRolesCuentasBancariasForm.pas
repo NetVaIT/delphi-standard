@@ -1,4 +1,4 @@
-unit RolesDocumentosForm;
+unit PersonasRolesCuentasBancariasForm;
 
 interface
 
@@ -30,37 +30,33 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmRolesDocumentos = class(T_frmGrid)
-    tvMasterIdRolDocumento: TcxGridDBColumn;
+  TfrmPersonasRolesCuentasBancarias = class(T_frmGrid)
+    tvMasterIdPersonaRolCuentaBancaria: TcxGridDBColumn;
     tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdDocumentoAdjunto: TcxGridDBColumn;
-    tvMasterDocumentoAdjunto: TcxGridDBColumn;
+    tvMasterIdCuentaBancaria: TcxGridDBColumn;
+    tvMasterCuentaBancaria: TcxGridDBColumn;
+    tvMasterIdCuentaBancariaPerfil: TcxGridDBColumn;
+    tvMasterCuentaBancariaPerfil: TcxGridDBColumn;
+    tvMasterPorcentaje: TcxGridDBColumn;
+    tvMasterLimiteInferior: TcxGridDBColumn;
+    tvMasterLimiteSuperior: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    FUpdateFile: TBasicAction;
   public
     { Public declarations }
-    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses RolesDocumentosDM, RolesDocumentosEdit;
+uses PersonasRolesCuentasBancariasDM, PersonasRolesCuentasBancariasEdit;
 
-procedure TfrmRolesDocumentos.FormCreate(Sender: TObject);
+procedure TfrmPersonasRolesCuentasBancarias.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmRolesDocumentosEdit.Create(Self);
-end;
-
-procedure TfrmRolesDocumentos.FormShow(Sender: TObject);
-begin
-  inherited;
-  TfrmRolesDocumentosEdit(gEditForm).UpdateFile := UpdateFile;
+  gEditForm:= TfrmPersonasRolesCuentasBancariasEdit.Create(Self);
 end;
 
 end.

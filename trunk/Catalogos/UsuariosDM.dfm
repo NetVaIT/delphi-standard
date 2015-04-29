@@ -1,9 +1,10 @@
 inherited dmUsuarios: TdmUsuarios
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
       'SELECT IdUsuario, IdPersona, IdUsuarioEstatus, Login, Password, ' +
-      'LoginServidor, PassServidor FROM Usuarios'
+      'LoginServidor, PasswordServidor FROM Usuarios'
     Left = 32
     Top = 24
     object adodsMasterIdUsuario: TAutoIncField
@@ -30,6 +31,7 @@ inherited dmUsuarios: TdmUsuarios
       Visible = False
     end
     object adodsMasterUsuarioEstatus: TStringField
+      DisplayLabel = 'Estatus'
       FieldKind = fkLookup
       FieldName = 'UsuarioEstatus'
       LookupDataSet = adodsUsuarioEstatus
@@ -48,11 +50,13 @@ inherited dmUsuarios: TdmUsuarios
       Size = 15
     end
     object adodsMasterLoginServidor: TStringField
+      DisplayLabel = 'Login Servidor'
       FieldName = 'LoginServidor'
       Size = 10
     end
-    object adodsMasterPassServidor: TStringField
-      FieldName = 'PassServidor'
+    object adodsMasterPasswordServidor: TStringField
+      DisplayLabel = 'Password Servidor'
+      FieldName = 'PasswordServidor'
       Size = 130
     end
   end

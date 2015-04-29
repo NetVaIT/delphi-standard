@@ -38,14 +38,17 @@ type
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterRolTipo: TcxGridDBColumn;
     tvMasterEsquemaPago: TcxGridDBColumn;
+    tvMasterIdDocumento: TcxGridDBColumn;
+    tvMasterDocumento: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-//    dmRolesEsquemasPagos: TdmRolesEsquemasPagos;
+    FUpdateFile: TBasicAction;
   public
     { Public declarations }
+    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
 implementation
@@ -72,6 +75,7 @@ begin
   inherited;
 //  dmRolesEsquemasPagos.MasterSource:= DataSource;
 //  dmRolesEsquemasPagos.ShowModule(pnlDetail1);
+  TfrmRolesEdit(gEditForm).UpdateFile := UpdateFile;
 end;
 
 end.

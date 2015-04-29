@@ -28,7 +28,8 @@ inherited frmUsuarios: TfrmUsuarios
           Visible = False
         end
         object tvMasterUsuarioEstatus: TcxGridDBColumn
-          DataBinding.FieldName = 'Estatus del Usuario'
+          Caption = 'Estatus del Usuario'
+          DataBinding.FieldName = 'UsuarioEstatus'
         end
         object tvMasterLogin: TcxGridDBColumn
           DataBinding.FieldName = 'Login'
@@ -40,10 +41,10 @@ inherited frmUsuarios: TfrmUsuarios
           Visible = False
         end
         object tvMasterLoginServidor: TcxGridDBColumn
-          DataBinding.FieldName = 'Login Servidor'
+          DataBinding.FieldName = 'LoginServidor'
         end
-        object tvMasterPassServidor: TcxGridDBColumn
-          DataBinding.FieldName = 'Password Servidor'
+        object tvMasterPasswordServidor: TcxGridDBColumn
+          DataBinding.FieldName = 'PasswordServidor'
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.EchoMode = eemPassword
           Visible = False
@@ -67,6 +68,9 @@ inherited frmUsuarios: TfrmUsuarios
     inherited btnClose: TButton
       ExplicitLeft = 566
     end
+  end
+  inherited DataSource: TDataSource
+    DataSet = dmUsuarios.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

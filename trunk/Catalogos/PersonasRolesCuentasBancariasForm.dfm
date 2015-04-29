@@ -1,5 +1,5 @@
-inherited frmRolesCuentasBancarias: TfrmRolesCuentasBancarias
-  Caption = 'frmRolesCuentasBancarias'
+inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
+  Caption = 'frmPersonasRolesCuentasBancarias'
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
@@ -12,8 +12,8 @@ inherited frmRolesCuentasBancarias: TfrmRolesCuentasBancarias
       ExplicitWidth = 651
       ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdRolCuentaBancaria: TcxGridDBColumn
-          DataBinding.FieldName = 'IdRolCuentaBancaria'
+        object tvMasterIdPersonaRolCuentaBancaria: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersonaRolCuentaBancaria'
           Visible = False
         end
         object tvMasterIdPersonaRol: TcxGridDBColumn
@@ -26,6 +26,13 @@ inherited frmRolesCuentasBancarias: TfrmRolesCuentasBancarias
         end
         object tvMasterCuentaBancaria: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancaria'
+        end
+        object tvMasterIdCuentaBancariaPerfil: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaBancariaPerfil'
+          Visible = False
+        end
+        object tvMasterCuentaBancariaPerfil: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaBancariaPerfil'
         end
         object tvMasterPorcentaje: TcxGridDBColumn
           DataBinding.FieldName = 'Porcentaje'
@@ -57,7 +64,7 @@ inherited frmRolesCuentasBancarias: TfrmRolesCuentasBancarias
     end
   end
   inherited DataSource: TDataSource
-    DataSet = dmRolesCuentasBancarias.adodsMaster
+    DataSet = dmPersonasRolesCuentasBancarias.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -74,7 +81,6 @@ inherited frmRolesCuentasBancarias: TfrmRolesCuentasBancarias
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

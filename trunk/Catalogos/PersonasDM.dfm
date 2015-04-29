@@ -197,8 +197,9 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPersonaRol, IdPersona, IdPersonaRelacionada, IdRol, IdR' +
-      'olEsquemaPago, IdRolEstatus, IdRolClase, NSS, FechaAltaIMSS, Fac' +
-      'turar, FechaIngreso, FechaBaja FROM PersonasRoles'
+      'olEsquemaPago, IdRolEstatus, IdRolClase, Calcular, PorcentajeCal' +
+      'culo, NSS, FechaAltaIMSS, Facturar, FechaIngreso, FechaBaja FROM' +
+      ' PersonasRoles'
     DataSource = dsMaster
     IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
@@ -280,6 +281,15 @@ inherited dmPersona: TdmPersona
     object adodsPersonaRolesFacturar: TBooleanField
       FieldName = 'Facturar'
       Visible = False
+    end
+    object adodsPersonaRolesCalcular: TBooleanField
+      FieldName = 'Calcular'
+    end
+    object adodsPersonaRolesPorcentajeCalculo: TFMTBCDField
+      DisplayLabel = 'Porcentaje Calculo'
+      FieldName = 'PorcentajeCalculo'
+      Precision = 18
+      Size = 6
     end
     object adodsPersonaRolesNSS: TStringField
       FieldName = 'NSS'

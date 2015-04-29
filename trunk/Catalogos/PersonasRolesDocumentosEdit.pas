@@ -1,4 +1,4 @@
-unit RolesCuentasBancariasEdit;
+unit PersonasRolesDocumentosEdit;
 
 interface
 
@@ -18,29 +18,34 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, cxTextEdit, cxCurrencyEdit, cxDBEdit, Vcl.DBCtrls,
-  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxContainer, cxEdit, cxLabel, cxDBLabel, Vcl.Buttons;
 
 type
-  TfrmRolesCuentasBancariasEdit = class(T_frmEdit)
+  TfrmPersonasRolesDocumentosEdit = class(T_frmEdit)
     Label1: TLabel;
-    Label2: TLabel;
-    cxDBCurrencyEdit1: TcxDBCurrencyEdit;
-    Label3: TLabel;
-    cxDBCurrencyEdit2: TcxDBCurrencyEdit;
-    Label4: TLabel;
-    cxDBCurrencyEdit3: TcxDBCurrencyEdit;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBLabel1: TcxDBLabel;
+    btnUpdateFile: TSpeedButton;
   private
     { Private declarations }
+    FUpdateFile: TBasicAction;
+    procedure SetUpdateFile(const Value: TBasicAction);
   public
     { Public declarations }
+    property UpdateFile: TBasicAction read FUpdateFile write SetUpdateFile;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses RolesCuentasBancariasDM;
+uses PersonasRolesDocumentosDM;
+
+{ TfrmRolesDocumentosEdit }
+
+procedure TfrmPersonasRolesDocumentosEdit.SetUpdateFile(const Value: TBasicAction);
+begin
+  FUpdateFile := Value;
+  btnUpdateFile.Action:= Value;
+end;
 
 end.

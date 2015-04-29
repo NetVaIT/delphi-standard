@@ -11,14 +11,14 @@ type
     adodsMasterIdInstruccion: TAutoIncField;
     adodsMasterIdInstruccionTipo: TIntegerField;
     adodsMasterIdPersonaSolicita: TIntegerField;
-    adodsMasterIdDocumentoAdjunto: TIntegerField;
+    adodsMasterIdDocumento: TIntegerField;
     adodsMasterConcepto: TStringField;
     adodsMasterFecha: TDateTimeField;
     adodsInstruccionesTipos: TADODataSet;
     adodsMasterIntruccionTipo: TStringField;
     actProcessXLS: TAction;
     actUpdateFile: TAction;
-    adodsDocumentosAdjuntos: TADODataSet;
+    adodsDocumentos: TADODataSet;
     adodsMasterNombreArchivo: TStringField;
     adodsMasterIdPeriodoTipo: TIntegerField;
     adodsMasterRepetir: TBooleanField;
@@ -45,7 +45,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses InstruccionesForm, ImportXLSDM, DocumentosAdjuntosDM,
+uses InstruccionesForm, ImportXLSDM, DocumentosDM,
   InstruccionesPeriodosDM;
 
 {$R *.dfm}
@@ -79,27 +79,27 @@ end;
 
 procedure TdmInstrucciones.actUpdateFileExecute(Sender: TObject);
 var
-  dmDocumentosAdjuntos: TdmDocumentosAdjuntos;
+  dmDocumentos: TdmDocumentos;
   Id: Integer;
 begin
   inherited;
-  dmDocumentosAdjuntos:= TdmDocumentosAdjuntos.Create(nil);
-  Id:= adodsMasterIdDocumentoAdjunto.AsInteger;
+  dmDocumentos:= TdmDocumentos.Create(nil);
+  Id:= adodsMasterIdDocumento.AsInteger;
   if Id  <> 0 then
   begin
-    dmDocumentosAdjuntos.Edit(Id);
-    adodsDocumentosAdjuntos.Requery();
+    dmDocumentos.Edit(Id);
+    adodsDocumentos.Requery();
   end
   else
   begin
-    Id:= dmDocumentosAdjuntos.Add;
+    Id:= dmDocumentos.Add;
     if  Id <> 0 then
     begin
-      adodsDocumentosAdjuntos.Requery();
-      adodsMasterIdDocumentoAdjunto.AsInteger:= Id;
+      adodsDocumentos.Requery();
+      adodsMasterIdDocumento.AsInteger:= Id;
     end;
   end;
-  dmDocumentosAdjuntos.Free;
+  dmDocumentos.Free;
 end;
 
 procedure TdmInstrucciones.adodsMasterNewRecord(DataSet: TDataSet);

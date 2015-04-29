@@ -1,4 +1,4 @@
-inherited frmRolesDocumentosEdit: TfrmRolesDocumentosEdit
+inherited frmPersonasRolesDocumentosEdit: TfrmPersonasRolesDocumentosEdit
   Caption = 'Documento'
   ClientHeight = 196
   ClientWidth = 416
@@ -34,7 +34,7 @@ inherited frmRolesDocumentosEdit: TfrmRolesDocumentosEdit
       object cxDBLabel1: TcxDBLabel
         Left = 16
         Top = 43
-        DataBinding.DataField = 'DocumentoAdjunto'
+        DataBinding.DataField = 'Documento'
         DataBinding.DataSource = DataSource
         Height = 49
         Width = 353
@@ -56,7 +56,7 @@ inherited frmRolesDocumentosEdit: TfrmRolesDocumentosEdit
     end
   end
   inherited DataSource: TDataSource
-    DataSet = dmRolesDocumentos.adodsMaster
+    DataSet = dmPersonasRolesDocumentos.adodsMaster
     Left = 144
   end
   inherited cxImageList: TcxImageList

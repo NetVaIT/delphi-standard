@@ -13,7 +13,7 @@ inherited dmImportXLS: TdmImportXLS
         Value = Null
       end>
     SQL.Strings = (
-      'SELECT IdInstruccion, IdInstruccionTipo, IdDocumentoAdjunto'
+      'SELECT IdInstruccion, IdInstruccionTipo, IdDocumento'
       'FROM Instrucciones'
       'WHERE IdInstruccion = :IdInstruccion')
     Left = 40
@@ -25,8 +25,8 @@ inherited dmImportXLS: TdmImportXLS
     object adoqInstruccionesIdInstruccionTipo: TIntegerField
       FieldName = 'IdInstruccionTipo'
     end
-    object adoqInstruccionesIdDocumentoAdjunto: TIntegerField
-      FieldName = 'IdDocumentoAdjunto'
+    object adoqInstruccionesIdDocumento: TIntegerField
+      FieldName = 'IdDocumento'
     end
   end
   object QImport3XLS: TQImport3XLS

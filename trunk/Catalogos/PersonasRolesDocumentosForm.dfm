@@ -1,5 +1,5 @@
-inherited frmRolesDocumentos: TfrmRolesDocumentos
-  Caption = 'frmRolesDocumentos'
+inherited frmPersonasRolesDocumentos: TfrmPersonasRolesDocumentos
+  Caption = 'frmPersonasRolesDocumentos'
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
@@ -20,13 +20,12 @@ inherited frmRolesDocumentos: TfrmRolesDocumentos
           DataBinding.FieldName = 'IdPersonaRol'
           Visible = False
         end
-        object tvMasterIdDocumentoAdjunto: TcxGridDBColumn
-          DataBinding.FieldName = 'IdDocumentoAdjunto'
+        object tvMasterIdDocumento: TcxGridDBColumn
+          DataBinding.FieldName = 'IdDocumento'
           Visible = False
         end
-        object tvMasterDocumentoAdjunto: TcxGridDBColumn
-          Caption = 'Documento Adjunto'
-          DataBinding.FieldName = 'DocumentoAdjunto'
+        object tvMasterDocumento: TcxGridDBColumn
+          DataBinding.FieldName = 'Documento'
         end
       end
     end
@@ -49,7 +48,7 @@ inherited frmRolesDocumentos: TfrmRolesDocumentos
     end
   end
   inherited DataSource: TDataSource
-    DataSet = dmRolesDocumentos.adodsMaster
+    DataSet = dmPersonasRolesDocumentos.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

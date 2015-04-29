@@ -1,4 +1,4 @@
-inherited frmDocumentosAdjuntos: TfrmDocumentosAdjuntos
+inherited frmDocumentos: TfrmDocumentos
   Caption = 'Documentos adjuntos'
   OnCreate = FormCreate
   ExplicitWidth = 651
@@ -8,8 +8,8 @@ inherited frmDocumentosAdjuntos: TfrmDocumentosAdjuntos
   inherited pnlMaster: TPanel
     inherited cxGrid: TcxGrid
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdDocumentoAdjunto: TcxGridDBColumn
-          DataBinding.FieldName = 'IdDocumentoAdjunto'
+        object tvMasterIdDocumento: TcxGridDBColumn
+          DataBinding.FieldName = 'IdDocumento'
           Visible = False
         end
         object tvMasterNombreArchivo: TcxGridDBColumn
@@ -45,9 +45,6 @@ inherited frmDocumentosAdjuntos: TfrmDocumentosAdjuntos
       end
     end
   end
-  inherited DataSource: TDataSource
-    DataSet = dmDocumentosAdjuntos.adodsMaster
-  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -63,7 +60,6 @@ inherited frmDocumentosAdjuntos: TfrmDocumentosAdjuntos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
