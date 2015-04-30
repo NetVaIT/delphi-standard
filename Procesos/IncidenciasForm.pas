@@ -37,7 +37,6 @@ type
     tvMasterIdPersonaRelacionada: TcxGridDBColumn;
     tvMasterInstruccion: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
-    tvMasterPersonaRelacionada: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

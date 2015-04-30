@@ -46,6 +46,9 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
           DataBinding.FieldName = 'MovimientoTipoEfecto'
           Width = 304
         end
+        object tvMasterPorcentajeCalculo: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajeCalculo'
+        end
         object tvMasterValorDefault: TcxGridDBColumn
           DataBinding.FieldName = 'ValorDefault'
         end
@@ -115,7 +118,6 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

@@ -40,6 +40,10 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
           DataBinding.FieldName = 'IdMovimiento'
           Visible = False
         end
+        object tvMasterIdPersonaRelacionada: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersonaRelacionada'
+          Visible = False
+        end
         object tvMasterIdMovimientoTipo: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimientoTipo'
           Visible = False
@@ -47,6 +51,10 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
         object tvMasterIdMovimientoEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimientoEstatus'
           Visible = False
+        end
+        object tvMasterPersonaRelacionada: TcxGridDBColumn
+          DataBinding.FieldName = 'PersonaRelacionada'
+          Width = 304
         end
         object tvMasterTipo: TcxGridDBColumn
           DataBinding.FieldName = 'Tipo'
@@ -91,6 +99,9 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
       Left = 560
     end
   end
+  inherited DataSource: TDataSource
+    DataSet = dmMovimientos.adodsMovimientosDet
+  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -106,6 +117,7 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

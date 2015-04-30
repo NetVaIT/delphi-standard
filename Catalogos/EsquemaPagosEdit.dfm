@@ -10,14 +10,14 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
     Width = 529
     Height = 207
     ExplicitWidth = 529
-    ExplicitHeight = 185
+    ExplicitHeight = 207
     ClientRectBottom = 205
     ClientRectRight = 527
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 525
-      ExplicitHeight = 155
+      ExplicitHeight = 177
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -69,7 +69,7 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 16
         Top = 99
-        Caption = 'Existe cuenta de control'
+        Caption = 'Existe cuenta bancaria de control'
         DataBinding.DataField = 'ExisteCuentaControl'
         DataBinding.DataSource = DataSource
         TabOrder = 2
@@ -80,7 +80,7 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   inherited pmlMain: TPanel
     Top = 207
     Width = 529
-    ExplicitTop = 185
+    ExplicitTop = 207
     ExplicitWidth = 529
     inherited btnOk: TButton
       Left = 366

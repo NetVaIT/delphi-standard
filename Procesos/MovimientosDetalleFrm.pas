@@ -40,6 +40,8 @@ type
     tvMasterCategoria: TcxGridDBColumn;
     tvMasterEfecto: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
+    tvMasterIdPersonaRelacionada: TcxGridDBColumn;
+    tvMasterPersonaRelacionada: TcxGridDBColumn;
   private
     { Private declarations }
   public

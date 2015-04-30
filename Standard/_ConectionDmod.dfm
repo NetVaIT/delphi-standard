@@ -3,6 +3,7 @@ object _dmConection: T_dmConection
   Height = 180
   Width = 227
   object ADOConnection: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=as47Pw3K;Persist Security Info=True' +
       ';User ID=sa;Initial Catalog=IntervaRH;Data Source=NAS1\COMPAC'
@@ -13,39 +14,34 @@ object _dmConection: T_dmConection
     Left = 32
     Top = 8
   end
-  object adoqOperadores: TADOQuery
+  object adoqUsuarios: TADOQuery
     Connection = ADOConnection
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       
-        'SELECT     Operadores.indice, Operadores.operador, Operadores.no' +
-        'mbre, Operadores.password, operadores_roles.ADMIN_PROD'
-      'FROM         Operadores INNER JOIN'
-      
-        '                      operadores_roles ON Operadores.operador_ro' +
-        'l = operadores_roles.indice'
-      'WHERE     (Operadores.status = '#39'A'#39')')
+        'SELECT Usuarios.IdUsuario, Personas.RazonSocial, Usuarios.Login,' +
+        ' Usuarios.Password'
+      'FROM Usuarios'
+      'INNER JOIN Personas ON Usuarios.IdPersona = Personas.IdPersona'
+      'WHERE Usuarios.IdUsuarioEstatus = 1')
     Left = 32
     Top = 72
-    object adoqOperadoresindice: TAutoIncField
-      FieldName = 'indice'
+    object adoqUsuariosIdUsuario: TAutoIncField
+      FieldName = 'IdUsuario'
       ReadOnly = True
     end
-    object adoqOperadoresoperador: TStringField
-      FieldName = 'operador'
-      Size = 10
+    object adoqUsuariosRazonSocial: TStringField
+      FieldName = 'RazonSocial'
+      Size = 300
     end
-    object adoqOperadoresnombre: TStringField
-      FieldName = 'nombre'
-      Size = 30
+    object adoqUsuariosLogin: TStringField
+      FieldName = 'Login'
+      Size = 15
     end
-    object adoqOperadorespassword: TStringField
-      FieldName = 'password'
-    end
-    object adoqOperadoresADMIN_PROD: TStringField
-      FieldName = 'ADMIN_PROD'
-      Size = 30
+    object adoqUsuariosPassword: TStringField
+      FieldName = 'Password'
+      Size = 15
     end
   end
 end

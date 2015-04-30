@@ -33,7 +33,6 @@ type
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcessXLSExecute(Sender: TObject);
     procedure actUpdateFileExecute(Sender: TObject);
-    procedure adodsMasterRepetirChange(Sender: TField);
     procedure actCreateMovExecute(Sender: TObject);
   private
     { Private declarations }
@@ -107,18 +106,6 @@ begin
   inherited;
   adodsMasterIdPersonaSolicita.Value:= 1;
   adodsMasterRepetirFinaliza.Value:= 0;
-end;
-
-procedure TdmInstrucciones.adodsMasterRepetirChange(Sender: TField);
-begin
-  inherited;
-//  adodsMasterPeriodoTipo.Clear;
-//  adodsMasterRepetirDia.Clear;
-////  adodsMasterRepetirInicio.Clear;
-////  adodsMasterRepetirFinaliza.Clear;
-//  adodsMasterRepetirFinaliza.Value:= 0;
-//  adodsMasterRepetirHasta.Clear;
-//  adodsMasterRepetirFin.Clear;
 end;
 
 procedure TdmInstrucciones.DataModuleCreate(Sender: TObject);

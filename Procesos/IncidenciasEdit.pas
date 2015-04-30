@@ -25,10 +25,8 @@ type
   TfrmIncidenciasEdit = class(T_frmEdit)
     Label1: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
-    cxDBLookupComboBox3: TcxDBLookupComboBox;
   private
     { Private declarations }
   public

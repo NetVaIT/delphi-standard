@@ -25,7 +25,7 @@ inherited dmEsquemaPagos: TdmEsquemaPagos
       Size = 200
     end
     object adodsMasterExisteCuentaControl: TBooleanField
-      DisplayLabel = 'Existe cuenta de control'
+      DisplayLabel = 'Existe cuenta bancaria de control'
       FieldName = 'ExisteCuentaControl'
     end
     object adodsMasterEsquemaPagoEstatus: TStringField

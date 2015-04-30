@@ -1,23 +1,23 @@
 inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
-  ClientHeight = 423
+  ClientHeight = 438
   ClientWidth = 542
   ExplicitWidth = 548
-  ExplicitHeight = 452
+  ExplicitHeight = 467
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 542
-    Height = 382
+    Height = 397
     ExplicitWidth = 542
-    ExplicitHeight = 374
-    ClientRectBottom = 380
+    ExplicitHeight = 382
+    ClientRectBottom = 395
     ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 3
-      ExplicitTop = 30
+      ExplicitLeft = 2
+      ExplicitTop = 28
       ExplicitWidth = 538
-      ExplicitHeight = 401
+      ExplicitHeight = 352
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -73,6 +73,14 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Height = 13
         Caption = 'Acumular movimiento'
         FocusControl = DBLookupComboBox2
+      end
+      object Label8: TLabel
+        Left = 160
+        Top = 317
+        Width = 102
+        Height = 13
+        Caption = 'Porcentaje de c'#225'lculo'
+        FocusControl = cxDBTextEdit4
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
@@ -179,12 +187,20 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         TabOrder = 11
         Width = 121
       end
+      object cxDBTextEdit4: TcxDBTextEdit
+        Left = 160
+        Top = 333
+        DataBinding.DataField = 'PorcentajeCalculo'
+        DataBinding.DataSource = DataSource
+        TabOrder = 12
+        Width = 121
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 382
+    Top = 397
     Width = 542
-    ExplicitTop = 374
+    ExplicitTop = 382
     ExplicitWidth = 542
     inherited btnOk: TButton
       Left = 379

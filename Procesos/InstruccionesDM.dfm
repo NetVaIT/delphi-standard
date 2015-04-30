@@ -69,7 +69,6 @@ inherited dmInstrucciones: TdmInstrucciones
     object adodsMasterRepetir: TBooleanField
       FieldName = 'Repetir'
       Required = True
-      OnChange = adodsMasterRepetirChange
     end
     object adodsMasterPeriodoTipo: TStringField
       DisplayLabel = 'Se repite cada'

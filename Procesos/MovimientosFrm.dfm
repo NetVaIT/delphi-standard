@@ -10,28 +10,30 @@ inherited frmMovimientos: TfrmMovimientos
   inherited splDetail3: TSplitter
     Top = 343
     Width = 645
+    ExplicitTop = 343
+    ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
     Top = 255
     Width = 645
     Align = alTop
     Visible = True
+    ExplicitTop = 255
+    ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
     Top = 299
     Width = 645
+    ExplicitTop = 299
+    ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
     Width = 645
     Height = 224
     Align = alTop
-    ExplicitWidth = 651
-    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 224
-      ExplicitWidth = 651
-      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdMovimiento: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimiento'
@@ -45,32 +47,48 @@ inherited frmMovimientos: TfrmMovimientos
           DataBinding.FieldName = 'IdPersona'
           Visible = False
         end
-        object tvMasterIdPersonaRelacionada: TcxGridDBColumn
-          DataBinding.FieldName = 'IdPersonaRelacionada'
-          Visible = False
-        end
         object tvMasterIdPeriodo: TcxGridDBColumn
           DataBinding.FieldName = 'IdPeriodo'
           Visible = False
         end
         object tvMasterPeriodo: TcxGridDBColumn
           DataBinding.FieldName = 'Periodo'
+          Visible = False
           Width = 300
         end
         object tvMasterFecha: TcxGridDBColumn
           DataBinding.FieldName = 'Fecha'
         end
-        object tvMasterConcepto: TcxGridDBColumn
-          DataBinding.FieldName = 'Concepto'
-          Width = 300
-        end
         object tvMasterPersona: TcxGridDBColumn
           DataBinding.FieldName = 'Persona'
           Width = 300
         end
-        object tvMasterPersonaRelacionada: TcxGridDBColumn
-          DataBinding.FieldName = 'PersonaRelacionada'
-          Width = 300
+        object tvMasterIngresos: TcxGridDBColumn
+          DataBinding.FieldName = 'Ingresos'
+        end
+        object tvMasterDescuentos: TcxGridDBColumn
+          DataBinding.FieldName = 'Descuentos'
+        end
+        object tvMasterNeto: TcxGridDBColumn
+          DataBinding.FieldName = 'Neto'
+        end
+        object tvMasterPercepciones: TcxGridDBColumn
+          DataBinding.FieldName = 'Percepciones'
+        end
+        object tvMasterDeducciones: TcxGridDBColumn
+          DataBinding.FieldName = 'Deducciones'
+        end
+        object tvMasterPrestaciones: TcxGridDBColumn
+          DataBinding.FieldName = 'Prestaciones'
+        end
+        object tvMasterObligaciones: TcxGridDBColumn
+          DataBinding.FieldName = 'Obligaciones'
+        end
+        object tvMasterOperaciones: TcxGridDBColumn
+          DataBinding.FieldName = 'Operaciones'
+        end
+        object tvMasterCosto: TcxGridDBColumn
+          DataBinding.FieldName = 'Costo'
         end
       end
     end
@@ -78,30 +96,28 @@ inherited frmMovimientos: TfrmMovimientos
   inherited pnlDetail3: TPanel
     Top = 346
     Width = 645
-    ExplicitTop = 375
-    ExplicitWidth = 651
   end
   inherited pnlDetail2: TPanel
     Top = 302
     Width = 645
-    ExplicitTop = 331
-    ExplicitWidth = 651
   end
   inherited pnlDetail1: TPanel
     Top = 258
     Width = 645
     Align = alClient
     Visible = True
-    ExplicitTop = 287
-    ExplicitWidth = 651
   end
   inherited pnlClose: TPanel
     Top = 387
     Width = 645
+    ExplicitTop = 387
+    ExplicitWidth = 645
     inherited btnClose: TButton
       Left = 560
-      ExplicitLeft = 566
     end
+  end
+  inherited DataSource: TDataSource
+    DataSet = dmMovimientos.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -109,6 +125,26 @@ inherited frmMovimientos: TfrmMovimientos
       0
       31
       0)
+    inherited dxbTools: TdxBar
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarButton6'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbPreview'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbCalcular'
+        end>
+    end
+    object dxbbCalcular: TdxBarButton
+      Category = 0
+      Visible = ivAlways
+      ImageIndex = 13
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
