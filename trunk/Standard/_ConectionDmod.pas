@@ -14,12 +14,11 @@ uses
 type
   T_dmConection = class(TDataModule)
     ADOConnection: TADOConnection;
-    adoqOperadores: TADOQuery;
-    adoqOperadoresindice: TAutoIncField;
-    adoqOperadoresoperador: TStringField;
-    adoqOperadoresnombre: TStringField;
-    adoqOperadorespassword: TStringField;
-    adoqOperadoresADMIN_PROD: TStringField;
+    adoqUsuarios: TADOQuery;
+    adoqUsuariosIdUsuario: TAutoIncField;
+    adoqUsuariosRazonSocial: TStringField;
+    adoqUsuariosLogin: TStringField;
+    adoqUsuariosPassword: TStringField;
     procedure ADOConnectionConnectComplete(Connection: TADOConnection;
       const Error: Error; var EventStatus: TEventStatus);
     procedure ADOConnectionDisconnect(Connection: TADOConnection;
@@ -114,28 +113,27 @@ var
 
   function LoginCorrect: Boolean;
   begin
-//    adoqOperadores.Open;
-//    if adoqOperadores.Locate('operador', frmLogin.User, []) then
-//      if (frmLogin.Password = Trim(adoqOperadorespassword.Value)) then
-//      begin
-//        Result:= True;
-//        FIndiceOperador:= adoqOperadoresindice.Value;
-//        FOperador:= adoqOperadoresoperador.Value;
-//        FNombreOperador:= adoqOperadoresnombre.Value;
+    adoqUsuarios.Open;
+    if adoqUsuarios.Locate('Login', frmLogin.User, []) then
+      if (frmLogin.Password = Trim(adoqusuariosPassword.AsString)) then
+      begin
+        Result:= True;
+        FIndiceOperador:= adoqUsuariosIdUsuario.Value;
+        FOperador:= adoqUsuariosLogin.AsString;
+        FNombreOperador:= adoqUsuariosRazonSocial.AsString;
 //        FADMIN_PROD:= adoqOperadoresADMIN_PROD.Value;
-//      end
-//      else
-//      begin
-//        MessageDlg(strIncorrectPass, mtInformation, [mbOK], 0);
-//        Result:= False;
-//      end
-//    else
-//    begin
-//      MessageDlg(strIncorrectUser, mtInformation, [mbOK], 0);
-//      Result:= False;
-//    end;
-//    adoqOperadores.Close;
-    Result:= True;
+      end
+      else
+      begin
+        MessageDlg(strIncorrectPass, mtInformation, [mbOK], 0);
+        Result:= False;
+      end
+    else
+    begin
+      MessageDlg(strIncorrectUser, mtInformation, [mbOK], 0);
+      Result:= False;
+    end;
+    adoqUsuarios.Close;
   end;
 
 begin

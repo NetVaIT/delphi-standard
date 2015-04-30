@@ -1,10 +1,12 @@
 inherited dmMovimientos: TdmMovimientos
   OldCreateOrder = True
+  Height = 484
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'select IdMovimiento, IdInstruccion, IdPersona, IdPersonaRelacion' +
-      'ada, IdPeriodo, Fecha, Concepto from Movimientos'
+      'select IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha,' +
+      ' Ingresos, Descuentos, Neto, Percepciones, Deducciones, Prestaci' +
+      'ones, Obligaciones, Operaciones, Costo from Movimientos'
     object adodsMasterIdMovimiento: TAutoIncField
       FieldName = 'IdMovimiento'
       ReadOnly = True
@@ -16,10 +18,6 @@ inherited dmMovimientos: TdmMovimientos
     end
     object adodsMasterIdPersona: TIntegerField
       FieldName = 'IdPersona'
-      Visible = False
-    end
-    object adodsMasterIdPersonaRelacionada: TIntegerField
-      FieldName = 'IdPersonaRelacionada'
       Visible = False
     end
     object adodsMasterIdPeriodo: TIntegerField
@@ -39,10 +37,6 @@ inherited dmMovimientos: TdmMovimientos
     object adodsMasterFecha: TDateTimeField
       FieldName = 'Fecha'
     end
-    object adodsMasterConcepto: TStringField
-      FieldName = 'Concepto'
-      Size = 200
-    end
     object adodsMasterPersona: TStringField
       FieldKind = fkLookup
       FieldName = 'Persona'
@@ -53,41 +47,95 @@ inherited dmMovimientos: TdmMovimientos
       Size = 500
       Lookup = True
     end
-    object adodsMasterPersonaRelacionada: TStringField
-      DisplayLabel = 'Persona relacionada'
-      FieldKind = fkLookup
-      FieldName = 'PersonaRelacionada'
-      LookupDataSet = adodsPersonaR
-      LookupKeyFields = 'IdPersona'
-      LookupResultField = 'RazonSocial'
-      KeyFields = 'IdPersonaRelacionada'
-      Size = 500
-      Lookup = True
+    object adodsMasterIngresos: TFMTBCDField
+      FieldName = 'Ingresos'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterDescuentos: TFMTBCDField
+      FieldName = 'Descuentos'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterNeto: TFMTBCDField
+      FieldName = 'Neto'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterPercepciones: TFMTBCDField
+      FieldName = 'Percepciones'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterDeducciones: TFMTBCDField
+      FieldName = 'Deducciones'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterPrestaciones: TFMTBCDField
+      FieldName = 'Prestaciones'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterObligaciones: TFMTBCDField
+      FieldName = 'Obligaciones'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterOperaciones: TFMTBCDField
+      FieldName = 'Operaciones'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterCosto: TFMTBCDField
+      FieldName = 'Costo'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+  end
+  inherited ActionList: TActionList
+    object actMovimientosCalculados: TAction
+      Caption = 'Movimientos calculados'
+      Hint = 'Movimientos calculados'
+      ImageIndex = 13
+      OnExecute = actMovimientosCalculadosExecute
     end
   end
   object adodsPersona: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
     Parameters = <>
-    Left = 200
-    Top = 64
+    Left = 192
+    Top = 24
   end
   object adodsPersonaR: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
     Parameters = <>
-    Left = 200
-    Top = 120
+    Left = 192
+    Top = 256
   end
   object adodsPeriodo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
     Parameters = <>
-    Left = 200
-    Top = 176
+    Left = 192
+    Top = 88
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
@@ -99,20 +147,21 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     CommandText = 
       'SELECT MovimientosDetalle.IdMovimientoDetalle, MovimientosDetall' +
-      'e.IdMovimiento, MovimientosDetalle.IdMovimientoTipo, Movimientos' +
-      'Detalle.Importe, MovimientosDetalle.IdMovimientoEstatus, '#13#10'Movim' +
-      'ientosTipos.Descripcion AS Tipo, MovimientosTiposCategorias.Desc' +
-      'ripcion AS Categoria, MovimientosTiposEfectos.Descripcion AS Efe' +
-      'cto, MovimientosEstatus.Descripcion AS Estatus'#13#10'FROM Movimientos' +
-      'Detalle INNER JOIN'#13#10'MovimientosTipos ON MovimientosDetalle.IdMov' +
-      'imientoTipo = MovimientosTipos.IdMovimientoTipo INNER JOIN'#13#10'Movi' +
-      'mientosTiposCategorias ON MovimientosTipos.IdMovimientoTipoCateg' +
-      'oria = MovimientosTiposCategorias.IdMovimientoTipoCategoria INNE' +
-      'R JOIN'#13#10'MovimientosTiposEfectos ON MovimientosTipos.IdMovimiento' +
-      'TipoEfecto = MovimientosTiposEfectos.IdMovimientoTipoEfecto INNE' +
-      'R JOIN'#13#10'MovimientosEstatus ON MovimientosDetalle.IdMovimientoEst' +
-      'atus = MovimientosEstatus.IdMovimientoEstatus'#13#10'WHERE Movimientos' +
-      'Detalle.IdMovimiento = :IdMovimiento'
+      'e.IdMovimiento, MovimientosDetalle.IdPersonaRelacionada,  Movimi' +
+      'entosDetalle.IdMovimientoTipo, MovimientosDetalle.Importe, Movim' +
+      'ientosDetalle.IdMovimientoEstatus, '#13#10'MovimientosTipos.Descripcio' +
+      'n AS Tipo, MovimientosTiposCategorias.Descripcion AS Categoria, ' +
+      'MovimientosTiposEfectos.Descripcion AS Efecto, MovimientosEstatu' +
+      's.Descripcion AS Estatus'#13#10'FROM MovimientosDetalle INNER JOIN'#13#10'Mo' +
+      'vimientosTipos ON MovimientosDetalle.IdMovimientoTipo = Movimien' +
+      'tosTipos.IdMovimientoTipo INNER JOIN'#13#10'MovimientosTiposCategorias' +
+      ' ON MovimientosTipos.IdMovimientoTipoCategoria = MovimientosTipo' +
+      'sCategorias.IdMovimientoTipoCategoria INNER JOIN'#13#10'MovimientosTip' +
+      'osEfectos ON MovimientosTipos.IdMovimientoTipoEfecto = Movimient' +
+      'osTiposEfectos.IdMovimientoTipoEfecto INNER JOIN'#13#10'MovimientosEst' +
+      'atus ON MovimientosDetalle.IdMovimientoEstatus = MovimientosEsta' +
+      'tus.IdMovimientoEstatus'#13#10'WHERE MovimientosDetalle.IdMovimiento =' +
+      ' :IdMovimiento'
     DataSource = dsMaster
     MasterFields = 'IdMovimiento'
     Parameters = <
@@ -125,7 +174,7 @@ inherited dmMovimientos: TdmMovimientos
         Value = Null
       end>
     Left = 48
-    Top = 88
+    Top = 200
     object adodsMovimientosDetIdMovimientoDetalle: TAutoIncField
       FieldName = 'IdMovimientoDetalle'
       ReadOnly = True
@@ -133,6 +182,10 @@ inherited dmMovimientos: TdmMovimientos
     end
     object adodsMovimientosDetIdMovimiento: TIntegerField
       FieldName = 'IdMovimiento'
+      Visible = False
+    end
+    object adodsMovimientosDetIdPersonaRelacionada: TIntegerField
+      FieldName = 'IdPersonaRelacionada'
       Visible = False
     end
     object adodsMovimientosDetIdMovimientoTipo: TIntegerField
@@ -143,12 +196,24 @@ inherited dmMovimientos: TdmMovimientos
       FieldName = 'IdMovimientoEstatus'
       Visible = False
     end
+    object adodsMovimientosDetPersonaRelacionada: TStringField
+      DisplayLabel = 'Persona relacionada'
+      FieldKind = fkLookup
+      FieldName = 'PersonaRelacionada'
+      LookupDataSet = adodsPersonaR
+      LookupKeyFields = 'IdPersona'
+      LookupResultField = 'RazonSocial'
+      KeyFields = 'IdPersonaRelacionada'
+      Size = 500
+      Lookup = True
+    end
     object adodsMovimientosDetTipo: TStringField
       FieldName = 'Tipo'
       Size = 100
     end
     object adodsMovimientosDetImporte: TFMTBCDField
       FieldName = 'Importe'
+      currency = True
       Precision = 18
       Size = 6
     end
@@ -170,7 +235,45 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
-    Left = 96
-    Top = 152
+    Left = 192
+    Top = 200
+  end
+  object adocGetPeriodoActual: TADOCommand
+    CommandText = 
+      'DECLARE @IdPeriodo int;'#13#10'SELECT @IdPeriodo = IdPeriodo FROM Peri' +
+      'odos WHERE IdPeriodoEstatus = 1;'#13#10'SET :IdPeriodo  = @IdPeriodo;'#13 +
+      #10
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'IdPeriodo'
+        DataType = ftInteger
+        Direction = pdOutput
+        Size = -1
+        Value = Null
+      end>
+    Left = 48
+    Top = 344
+  end
+  object adospMovimientosCalculados: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_GenMovimientosCalculados;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 48
+    Top = 400
   end
 end

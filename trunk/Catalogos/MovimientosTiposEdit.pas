@@ -42,6 +42,8 @@ type
     Label7: TLabel;
     DBLookupComboBox2: TDBLookupComboBox;
     cxDBCheckBox5: TcxDBCheckBox;
+    Label8: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
   private
     { Private declarations }
   public

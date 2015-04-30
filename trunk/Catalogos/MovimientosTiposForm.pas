@@ -48,6 +48,7 @@ type
     tvMasterPeriodoTipo: TcxGridDBColumn;
     tvMasterMovimientoTipo: TcxGridDBColumn;
     tvMasterAplicarISR: TcxGridDBColumn;
+    tvMasterPorcentajeCalculo: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

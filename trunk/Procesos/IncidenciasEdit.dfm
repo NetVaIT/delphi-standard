@@ -1,17 +1,17 @@
 inherited frmIncidenciasEdit: TfrmIncidenciasEdit
   Caption = 'Incidencia'
-  ClientHeight = 224
+  ClientHeight = 188
   ClientWidth = 666
   ExplicitWidth = 672
-  ExplicitHeight = 252
+  ExplicitHeight = 217
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 666
-    Height = 183
+    Height = 147
     ExplicitWidth = 666
     ExplicitHeight = 183
-    ClientRectBottom = 181
+    ClientRectBottom = 145
     ClientRectRight = 664
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
@@ -32,13 +32,6 @@ inherited frmIncidenciasEdit: TfrmIncidenciasEdit
         Height = 13
         Caption = 'Persona'
       end
-      object Label3: TLabel
-        Left = 16
-        Top = 96
-        Width = 100
-        Height = 13
-        Caption = 'Persona Relacionada'
-      end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
         Left = 16
         Top = 32
@@ -57,19 +50,10 @@ inherited frmIncidenciasEdit: TfrmIncidenciasEdit
         TabOrder = 1
         Width = 630
       end
-      object cxDBLookupComboBox3: TcxDBLookupComboBox
-        Left = 16
-        Top = 112
-        DataBinding.DataField = 'PersonaRelacionada'
-        DataBinding.DataSource = DataSource
-        Properties.ListColumns = <>
-        TabOrder = 2
-        Width = 630
-      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 183
+    Top = 147
     Width = 666
     ExplicitTop = 183
     ExplicitWidth = 666

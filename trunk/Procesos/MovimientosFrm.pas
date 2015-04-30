@@ -34,17 +34,27 @@ type
     tvMasterIdMovimiento: TcxGridDBColumn;
     tvMasterIdInstruccion: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
-    tvMasterIdPersonaRelacionada: TcxGridDBColumn;
     tvMasterIdPeriodo: TcxGridDBColumn;
     tvMasterPeriodo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;
-    tvMasterConcepto: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
-    tvMasterPersonaRelacionada: TcxGridDBColumn;
+    dxbbCalcular: TdxBarButton;
+    tvMasterIngresos: TcxGridDBColumn;
+    tvMasterDescuentos: TcxGridDBColumn;
+    tvMasterNeto: TcxGridDBColumn;
+    tvMasterPercepciones: TcxGridDBColumn;
+    tvMasterDeducciones: TcxGridDBColumn;
+    tvMasterPrestaciones: TcxGridDBColumn;
+    tvMasterObligaciones: TcxGridDBColumn;
+    tvMasterOperaciones: TcxGridDBColumn;
+    tvMasterCosto: TcxGridDBColumn;
   private
+    FMovimientosCalculados: TBasicAction;
+    procedure SetMovimientosCalculados(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
+    property MovimientosCalculados: TBasicAction read FMovimientosCalculados write SetMovimientosCalculados;
   end;
 
 implementation
@@ -52,5 +62,15 @@ implementation
 {$R *.dfm}
 
 uses MovimientosDM;
+
+{ TfrmMovimientos }
+
+{ TfrmMovimientos }
+
+procedure TfrmMovimientos.SetMovimientosCalculados(const Value: TBasicAction);
+begin
+  FMovimientosCalculados := Value;
+  dxbbCalcular.Action:= Value;
+end;
 
 end.

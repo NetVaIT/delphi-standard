@@ -4,9 +4,7 @@ inherited dmIncidencias: TdmIncidencias
   Width = 535
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
-    CommandText = 
-      'SELECT IdIncidencia, IdInstruccion, IdPersona, IdPersonaRelacion' +
-      'ada FROM Incidencias'
+    CommandText = 'SELECT IdIncidencia, IdInstruccion, IdPersona FROM Incidencias'
     Left = 40
     object adodsMasterIdIncidencia: TAutoIncField
       FieldName = 'IdIncidencia'
@@ -19,10 +17,6 @@ inherited dmIncidencias: TdmIncidencias
     end
     object adodsMasterIdPersona: TIntegerField
       FieldName = 'IdPersona'
-      Visible = False
-    end
-    object adodsMasterIdPersonaRelacionada: TIntegerField
-      FieldName = 'IdPersonaRelacionada'
       Visible = False
     end
     object adodsMasterInstruccion: TStringField
@@ -42,16 +36,6 @@ inherited dmIncidencias: TdmIncidencias
       LookupKeyFields = 'IdPersona'
       LookupResultField = 'RazonSocial'
       KeyFields = 'IdPersona'
-      Size = 150
-      Lookup = True
-    end
-    object adodsMasterPersonaRelacionada: TStringField
-      FieldKind = fkLookup
-      FieldName = 'PersonaRelacionada'
-      LookupDataSet = adodsPersonaRelacionada
-      LookupKeyFields = 'IdPersona'
-      LookupResultField = 'RazonSocial'
-      KeyFields = 'IdPersonaRelacionada'
       Size = 150
       Lookup = True
     end
@@ -79,14 +63,6 @@ inherited dmIncidencias: TdmIncidencias
     Parameters = <>
     Left = 192
     Top = 88
-  end
-  object adodsPersonaRelacionada: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'SELECT IdPersona, RazonSocial FROM Personas'
-    Parameters = <>
-    Left = 192
-    Top = 152
   end
   object adodsIncidenciaDetalle: TADODataSet
     Connection = _dmConection.ADOConnection

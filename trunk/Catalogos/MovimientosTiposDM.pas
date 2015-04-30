@@ -39,6 +39,15 @@ type
     adodsMovimientoTipo: TADODataSet;
     adodsMasterPeriodoTipo: TStringField;
     adodsMasterMovimientoTipo: TStringField;
+    adodsMasterPorcentajeCalculo: TFMTBCDField;
+    adodsUpdateAgruparTipo: TBooleanField;
+    adodsUpdateBaseCalculo: TBooleanField;
+    adodsUpdateIdPeriodoTipo: TIntegerField;
+    adodsUpdateIdMovimientoTipoAcumular: TIntegerField;
+    adodsUpdateAplicarISR: TBooleanField;
+    adodsUpdatePorcentajeCalculo: TFMTBCDField;
+    adodsUpdatePeriodoTipo: TStringField;
+    adodsUpdateMovimientoTipo: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

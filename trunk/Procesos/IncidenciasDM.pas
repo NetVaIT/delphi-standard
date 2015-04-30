@@ -11,14 +11,11 @@ type
     adodsMasterIdIncidencia: TAutoIncField;
     adodsMasterIdInstruccion: TIntegerField;
     adodsMasterIdPersona: TIntegerField;
-    adodsMasterIdPersonaRelacionada: TIntegerField;
     adodsMovimientoTipo: TADODataSet;
     adodsInstruccion: TADODataSet;
     adodsPersona: TADODataSet;
-    adodsPersonaRelacionada: TADODataSet;
     adodsMasterInstruccion: TStringField;
     adodsMasterPersona: TStringField;
-    adodsMasterPersonaRelacionada: TStringField;
     adodsIncidenciaDetalle: TADODataSet;
     adodsIncidenciaDetalleIdIncidenciaDetalle: TAutoIncField;
     adodsIncidenciaDetalleIdIncidencia: TIntegerField;
