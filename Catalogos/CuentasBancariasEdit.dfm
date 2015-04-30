@@ -2,6 +2,8 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
   Caption = 'Cuentas Bancarias'
   ClientHeight = 331
   ClientWidth = 542
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   ExplicitWidth = 548
   ExplicitHeight = 359
   PixelsPerInch = 96
@@ -9,15 +11,15 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
   inherited pcMain: TcxPageControl
     Width = 542
     Height = 290
-    ExplicitWidth = 560
-    ExplicitHeight = 421
+    ExplicitWidth = 542
+    ExplicitHeight = 290
     ClientRectBottom = 288
     ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 556
-      ExplicitHeight = 391
+      ExplicitWidth = 538
+      ExplicitHeight = 260
       object Label2: TLabel
         Left = 24
         Top = 103
@@ -334,19 +336,27 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         Width = 150
       end
     end
+    object tsExpedienteDigital: TcxTabSheet
+      Caption = 'Expediente Digital'
+      ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+    end
   end
   inherited pmlMain: TPanel
     Top = 290
     Width = 542
-    ExplicitTop = 421
-    ExplicitWidth = 560
+    ExplicitTop = 290
+    ExplicitWidth = 542
     inherited btnOk: TButton
       Left = 379
-      ExplicitLeft = 397
+      ExplicitLeft = 379
     end
     inherited btnCancel: TButton
       Left = 460
-      ExplicitLeft = 478
+      ExplicitLeft = 460
     end
   end
   inherited DataSource: TDataSource

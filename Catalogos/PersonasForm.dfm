@@ -115,6 +115,13 @@ inherited frmPersonas: TfrmPersonas
           DataBinding.FieldName = 'LugarNacimiento'
           Visible = False
         end
+        object tvMasterIdPersonaTitular: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersonaTitular'
+          Visible = False
+        end
+        object tvMasterTitular: TcxGridDBColumn
+          DataBinding.FieldName = 'Titular'
+        end
       end
     end
   end

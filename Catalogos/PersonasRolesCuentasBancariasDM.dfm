@@ -22,7 +22,6 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
       Visible = False
     end
     object adodsMasterCuentaBancaria: TStringField
-      DisplayLabel = 'Cuenta Bancaria'
       FieldKind = fkLookup
       FieldName = 'CuentaBancaria'
       LookupDataSet = adodsCuentaBancaria
@@ -69,13 +68,20 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT CuentasBancarias.IdBanco, CuentasBancarias.IdMoneda, Cuen' +
-      'tasBancarias.IdCuentaBancaria, Bancos.Nombre, Monedas.Identifica' +
-      'dor, CuentasBancarias.CuentaBancaria'#13#10'  FROM Bancos'#13#10'INNER JOIN ' +
-      'CuentasBancarias ON Bancos.IdBanco = CuentasBancarias.IdBanco'#13#10'I' +
-      'NNER JOIN Monedas ON CuentasBancarias.IdMoneda = Monedas.IdMoned' +
-      'a'
-    Parameters = <>
+      'SELECT CuentasBancarias.IdCuentaBancaria, Bancos.Nombre, Monedas' +
+      '.Identificador, CuentasBancarias.CuentaBancaria'#13#10'  FROM Bancos'#13#10 +
+      'INNER JOIN CuentasBancarias ON Bancos.IdBanco = CuentasBancarias' +
+      '.IdBanco'#13#10'INNER JOIN Monedas ON CuentasBancarias.IdMoneda = Mone' +
+      'das.IdMoneda'#13#10'WHERE CuentasBancarias.IdPersona = :IdPersona'
+    Parameters = <
+      item
+        Name = 'IdPersona'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     Left = 152
     Top = 104
   end

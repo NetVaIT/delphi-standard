@@ -20,7 +20,7 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxCurrencyEdit,
   Vcl.ExtDlgs, Vcl.Buttons, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox;
+  cxDBLookupEdit, cxDBLookupComboBox, CuentasBancariasDocumentosDM;
 
 type
   TfrmCuentasBancariasEdit = class(T_frmEdit)
@@ -40,9 +40,14 @@ type
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
+    tsExpedienteDigital: TcxTabSheet;
     procedure SpdBtnArchiConfClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos;
   public
     { Public declarations }
   end;
@@ -52,6 +57,30 @@ implementation
 {$R *.dfm}
 
 uses CuentasBancariasDM;
+
+procedure TfrmCuentasBancariasEdit.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dmCuentasBancariasDocumentos := TdmCuentasBancariasDocumentos.Create(nil);
+end;
+
+procedure TfrmCuentasBancariasEdit.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmCuentasBancariasDocumentos);
+end;
+
+procedure TfrmCuentasBancariasEdit.FormShow(Sender: TObject);
+begin
+  inherited;
+  dmCuentasBancariasDocumentos.MasterSource := DataSource;
+  dmCuentasBancariasDocumentos.MasterFields := 'IdCuentaBancaria';
+  dmCuentasBancariasDocumentos.ShowModule(tsExpedienteDigital,'');
+  if DataSource.DataSet.State In [dsInsert] then
+    tsExpedienteDigital.TabVisible := False
+  else
+    tsExpedienteDigital.TabVisible := True;
+end;
 
 procedure TfrmCuentasBancariasEdit.SpdBtnArchiConfClick(Sender: TObject);
 begin

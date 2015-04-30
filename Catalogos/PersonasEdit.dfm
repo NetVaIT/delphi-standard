@@ -1,26 +1,25 @@
 inherited frmPersonaEdit: TfrmPersonaEdit
   Caption = 'Persona'
-  ClientHeight = 380
+  ClientHeight = 438
   ClientWidth = 624
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 630
-  ExplicitHeight = 408
+  ExplicitHeight = 466
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 624
-    Height = 339
-    Properties.ActivePage = tsCuentasBancarias
+    Height = 397
     ExplicitWidth = 624
-    ExplicitHeight = 260
-    ClientRectBottom = 337
+    ExplicitHeight = 397
+    ClientRectBottom = 395
     ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 620
-      ExplicitHeight = 230
+      ExplicitHeight = 367
       object pnlPersona: TPanel
         Left = 0
         Top = 0
@@ -148,7 +147,7 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         Left = 0
         Top = 142
         Width = 620
-        Height = 170
+        Height = 219
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 2
@@ -206,6 +205,13 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           Height = 13
           Caption = 'Lugar de Nacimiento'
           FocusControl = cxDBTextEdit2
+        end
+        object Label13: TLabel
+          Left = 16
+          Top = 168
+          Width = 30
+          Height = 13
+          Caption = 'Titular'
         end
         object edtNombre: TcxDBTextEdit
           Left = 16
@@ -268,12 +274,21 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           TabOrder = 6
           Width = 440
         end
+        object cxDBLookupComboBox5: TcxDBLookupComboBox
+          Left = 15
+          Top = 183
+          DataBinding.DataField = 'Titular'
+          DataBinding.DataSource = DataSource
+          Properties.ListColumns = <>
+          TabOrder = 7
+          Width = 586
+        end
       end
       object pnlOrigen: TPanel
         Left = 0
-        Top = 312
+        Top = 361
         Width = 620
-        Height = 0
+        Height = 6
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 3
@@ -283,33 +298,28 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
-      ExplicitHeight = 230
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
-      ExplicitHeight = 230
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
-      ExplicitHeight = 230
     end
     object tsContacto: TcxTabSheet
       Caption = 'Contactos'
       ImageIndex = 4
-      ExplicitHeight = 230
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
       ImageIndex = 5
-      ExplicitHeight = 230
     end
   end
   inherited pmlMain: TPanel
-    Top = 339
+    Top = 397
     Width = 624
-    ExplicitTop = 260
+    ExplicitTop = 397
     ExplicitWidth = 624
     inherited btnOk: TButton
       Left = 461

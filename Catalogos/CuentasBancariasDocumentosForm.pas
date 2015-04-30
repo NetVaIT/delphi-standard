@@ -1,4 +1,4 @@
-unit PersonasRolesDocumentosForm;
+unit CuentasBancariasDocumentosForm;
 
 interface
 
@@ -27,21 +27,19 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls, Vcl.Buttons;
+  Vcl.ExtCtrls;
 
 type
-  TfrmPersonasRolesDocumentos = class(T_frmGrid)
-    tvMasterIdRolDocumento: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
+  TfrmCuentasBancariasDocumentos = class(T_frmGrid)
+    tvMasterIdCuentaBancariaDocumento: TcxGridDBColumn;
+    tvMasterIdCuentaBancaria: TcxGridDBColumn;
     tvMasterIdDocumento: TcxGridDBColumn;
     tvMasterDocumento: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    procedure DatasetInsertExecute(Sender: TObject);
+    procedure DatasetEditExecute(Sender: TObject);
     procedure tvMasterCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
-    procedure DatasetInsertExecute(Sender: TObject);
-    procedure DatasetEditExecute(Sender: TObject);
   private
     { Private declarations }
     FUpdateFile: TBasicAction;
@@ -55,9 +53,11 @@ implementation
 
 {$R *.dfm}
 
-uses PersonasRolesDocumentosDM{, PersonasRolesDocumentosEdit};
+uses CuentasBancariasDocumentosDM;
 
-procedure TfrmPersonasRolesDocumentos.DatasetEditExecute(Sender: TObject);
+{ TfrmCuentasBancariasDocumentos }
+
+procedure TfrmCuentasBancariasDocumentos.DatasetEditExecute(Sender: TObject);
 begin
 //  inherited;
   DataSource.DataSet.Edit;
@@ -65,7 +65,7 @@ begin
   DataSource.DataSet.Post;
 end;
 
-procedure TfrmPersonasRolesDocumentos.DatasetInsertExecute(Sender: TObject);
+procedure TfrmCuentasBancariasDocumentos.DatasetInsertExecute(Sender: TObject);
 begin
 //  inherited;
   DataSource.DataSet.Insert;
@@ -73,28 +73,17 @@ begin
   DataSource.DataSet.Post;
 end;
 
-procedure TfrmPersonasRolesDocumentos.FormCreate(Sender: TObject);
-begin
-  inherited;
-//  gEditForm := TfrmPersonasRolesDocumentosEdit.Create(Self);
-end;
-
-procedure TfrmPersonasRolesDocumentos.FormShow(Sender: TObject);
-begin
-  inherited;
-//  TfrmPersonasRolesDocumentosEdit(gEditForm).UpdateFile := UpdateFile;
-end;
-
-procedure TfrmPersonasRolesDocumentos.SetUpdateFile(const Value: TBasicAction);
+procedure TfrmCuentasBancariasDocumentos.SetUpdateFile(
+  const Value: TBasicAction);
 begin
   FUpdateFile := Value;
 end;
 
-procedure TfrmPersonasRolesDocumentos.tvMasterCellDblClick(
+procedure TfrmCuentasBancariasDocumentos.tvMasterCellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
-//  inherited;
+  inherited;
   DataSource.DataSet.Edit;
   FUpdateFile.Execute;
   DataSource.DataSet.Post;

@@ -1,14 +1,14 @@
-inherited dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos
+inherited dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos
   OldCreateOrder = True
-  Height = 343
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdPersonaRolDocumento, IdPersonaRol, IdDocumento FROM Per' +
-      'sonasRolesDocumentos WHERE IdPersonaRol = :IdPersonaRol'
+      'SELECT IdCuentaBancariaDocumento, IdCuentaBancaria, IdDocumento ' +
+      'FROM CuentasBancariasDocumentos WHERE IdCuentaBancaria = :IdCuen' +
+      'taBancaria'
     Parameters = <
       item
-        Name = 'IdPersonaRol'
+        Name = 'IdCuentaBancaria'
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
@@ -17,13 +17,13 @@ inherited dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos
       end>
     Left = 32
     Top = 24
-    object adodsMasterIdPersonaRolDocumento: TAutoIncField
-      FieldName = 'IdPersonaRolDocumento'
+    object adodsMasterIdCuentaBancariaDocumento: TAutoIncField
+      FieldName = 'IdCuentaBancariaDocumento'
       ReadOnly = True
       Visible = False
     end
-    object adodsMasterIdPersonaRol: TIntegerField
-      FieldName = 'IdPersonaRol'
+    object adodsMasterIdCuentaBancaria: TIntegerField
+      FieldName = 'IdCuentaBancaria'
       Visible = False
     end
     object adodsMasterIdDocumento: TIntegerField
@@ -48,7 +48,13 @@ inherited dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos
       OnExecute = actExpedienteDigitalExecute
     end
   end
+  object dsMaster: TDataSource
+    DataSet = adodsMaster
+    Left = 120
+    Top = 24
+  end
   object adodsDocumento: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -62,6 +68,7 @@ inherited dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos
     Top = 96
   end
   object adodsDocumentoTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumentoTipo, Descripcion FROM DocumentosTipos'
@@ -70,16 +77,12 @@ inherited dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos
     Top = 152
   end
   object adodsDocumentoClase: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumentoClase, Descripcion FROM DocumentosClases'
     Parameters = <>
     Left = 208
     Top = 216
-  end
-  object dsMaster: TDataSource
-    DataSet = adodsMaster
-    Left = 128
-    Top = 24
   end
 end

@@ -1,4 +1,4 @@
-unit PersonasRolesDocumentosDM;
+unit CuentasBancariasDocumentosDM;
 
 interface
 
@@ -7,18 +7,18 @@ uses
   Data.DB, Data.Win.ADODB;
 
 type
-  TdmPersonasRolesDocumentos = class(T_dmStandar)
-    adodsMasterIdPersonaRolDocumento: TAutoIncField;
-    adodsMasterIdPersonaRol: TIntegerField;
+  TdmCuentasBancariasDocumentos = class(T_dmStandar)
+    dsMaster: TDataSource;
+    adodsMasterIdCuentaBancariaDocumento: TAutoIncField;
+    adodsMasterIdCuentaBancaria: TIntegerField;
+    adodsMasterIdDocumento: TIntegerField;
     adodsDocumento: TADODataSet;
     adodsDocumentoTipo: TADODataSet;
     adodsDocumentoClase: TADODataSet;
-    adodsMasterIdDocumento: TIntegerField;
     adodsMasterDocumento: TStringField;
-    dsMaster: TDataSource;
     actExpedienteDigital: TAction;
-    procedure DataModuleCreate(Sender: TObject);
     procedure actExpedienteDigitalExecute(Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,13 +29,12 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses PersonasRolesDocumentosForm, DocumentosDM;
+uses DocumentosDM, CuentasBancariasDocumentosForm;
 
 {$R *.dfm}
 
-{ TdmPersonasRolesDocumentos }
-
-procedure TdmPersonasRolesDocumentos.actExpedienteDigitalExecute(Sender: TObject);
+procedure TdmCuentasBancariasDocumentos.actExpedienteDigitalExecute(
+  Sender: TObject);
 var
   dmDocumentos: TdmDocumentos;
   Id: Integer;
@@ -61,12 +60,12 @@ begin
   dmDocumentos.Free;
 end;
 
-procedure TdmPersonasRolesDocumentos.DataModuleCreate(Sender: TObject);
+procedure TdmCuentasBancariasDocumentos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm := TfrmPersonasRolesDocumentos.Create(Self);
+  gGridForm := TfrmCuentasBancariasDocumentos.Create(Self);
   gGridForm.DataSet := adodsMaster;
-  TfrmPersonasRolesDocumentos(gGridForm).UpdateFile := actExpedienteDigital;
+  TfrmCuentasBancariasDocumentos(gGridForm).UpdateFile := actExpedienteDigital;
 end;
 
 end.

@@ -17,8 +17,8 @@ type
     adodsMasterPorcentaje: TBCDField;
     adodsMasterLimiteInferior: TBCDField;
     adodsMasterLimiteSuperior: TBCDField;
-    adodsMasterCuentaBancaria: TStringField;
     adodsMasterCuentaBancariaPerfil: TStringField;
+    adodsMasterCuentaBancaria: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -42,16 +42,16 @@ uses PersonasRolesCuentasBancariasForm;
 procedure TdmPersonasRolesCuentasBancarias.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm:= TfrmPersonasRolesCuentasBancarias.Create(Self);
+  gGridForm := TfrmPersonasRolesCuentasBancarias.Create(Self);
   gGridForm.DataSet:= adodsMaster;
-  adodsCuentaBancaria.CommandText := 'SELECT IdCuentaBancaria, IdPersona, CuentaBancaria FROM CuentasBancarias';
 end;
 
 procedure TdmPersonasRolesCuentasBancarias.SetPersonaCta(const Value: Integer);
 begin
   fPersonaCta := Value;
-  adodsCuentaBancaria.Filter := 'IdPersona = ' + IntToStr(fPersonaCta);
-  adodsCuentaBancaria.Filtered := True;
+  adodsCuentaBancaria.Close;
+  adodsCuentaBancaria.Parameters.ParamByName('IdPersona').Value := IntToStr(fPersonaCta);
+  adodsCuentaBancaria.OPen;
 end;
 
 end.

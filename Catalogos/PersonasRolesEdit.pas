@@ -55,6 +55,9 @@ type
     cxDBCheckBox1: TcxDBCheckBox;
     Label9: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
+    pnlOutsourcing: TPanel;
+    Label10: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -66,7 +69,7 @@ type
     dmProveedores: TdmProveedores;
     dmEmpleados: TdmEmpleados;
     dmArchivosGenerarFacturas: TdmArchivosGenerarFacturas;
-    dmRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
+    dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
     dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos;
     procedure SetRol(const Value: TPRol);
   public
@@ -91,7 +94,7 @@ begin
   dmProveedores := TdmProveedores.Create(nil);
   dmEmpleados := TdmEmpleados.Create(nil);
   dmArchivosGenerarFacturas := TdmArchivosGenerarFacturas.Create(nil);
-  dmRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
+  dmPersonasRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
   dmPersonasRolesDocumentos := TdmPersonasRolesDocumentos.Create(nil);
 end;
 
@@ -102,7 +105,7 @@ begin
   FreeAndNil(dmProveedores);
   FreeAndNil(dmEmpleados);
   FreeAndNil(dmArchivosGenerarFacturas);
-  FreeAndNil(dmRolesCuentasBancarias);
+  FreeAndNil(dmPersonasRolesCuentasBancarias);
   FreeAndNil(dmPersonasRolesDocumentos);
 end;
 
@@ -112,6 +115,7 @@ begin
   if DataSource.DataSet.State in [dsInsert] then
     cxDBLookupComboBox1.EditValue := Rol;
     pnlProveedor.Visible := False;
+    pnlOutsourcing.Visible := False;
     tsArchivosFacturar.TabVisible := False;
     pnlEmpleado.Visible := False;
   case DataSource.DataSet.FieldByName('IdRol').AsInteger of
@@ -120,13 +124,12 @@ begin
        end;
     2: begin
         pnlProveedor.Visible := True;
-
+        pnlOutsourcing.Visible := True;
        end;
     3: begin
         tsCuentas.TabVisible          := True;
 //        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
-
         dmClientes.MasterSource       := DataSource;
         dmClientes.MasterFields       := 'IdPersonaRol';
         dmClientes.ShowModule(tsCuentas,'');
@@ -135,7 +138,6 @@ begin
         tsCuentas.TabVisible          := True;
 //        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
-
         dmProveedores.MasterSource    := DataSource;
         dmProveedores.MasterFields    := 'IdPersonaRol';
         dmProveedores.ShowModule(tsCuentas,'');
@@ -147,7 +149,6 @@ begin
 //        tsEmpleado.TabVisible         := True;
         tsEsquemaPago.TabVisible      := False; //TMP
         tsCuentas.TabVisible          := False;
-
        end;
     6: begin
         tsCuentas.TabVisible     := True;
@@ -173,10 +174,10 @@ begin
 //  dmEmpleados.MasterSource := DataSource;
 //  dmEmpleados.MasterFields := 'IdPersonaRol';
 //  dmEmpleados.ShowModule(tsEmpleado,'');
-  dmRolesCuentasBancarias.MasterSource := DataSource;
-  dmRolesCuentasBancarias.MasterFields := 'IdPersonaRol';
-  dmRolesCuentasBancarias.PersonaAct := DataSet.FieldByName('IdPersona').Value;
-  dmRolesCuentasBancarias.ShowModule(tsCuentasBancarias,'');
+  dmPersonasRolesCuentasBancarias.MasterSource := DataSource;
+  dmPersonasRolesCuentasBancarias.MasterFields := 'IdPersonaRol';
+  dmPersonasRolesCuentasBancarias.PersonaAct := DataSet.FieldByName('IdPersona').Value;
+  dmPersonasRolesCuentasBancarias.ShowModule(tsCuentasBancarias,'');
   dmPersonasRolesDocumentos.MasterSource := DataSource;
   dmPersonasRolesDocumentos.MasterFields := 'IdPersonaRol';
   dmPersonasRolesDocumentos.ShowModule(tsExpedienteDigital,'');

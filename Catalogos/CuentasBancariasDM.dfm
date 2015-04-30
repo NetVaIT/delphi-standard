@@ -96,9 +96,10 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'select  IdCuentaBancariaUsuario, IdPersona, IdCuentaBancaria, Nu' +
-      'meroSerieToken, Observaciones1, Observaciones2 from CuentasBanca' +
-      'riasUsuarios'#13#10'where IdCuentaBancaria =:IdCuentaBancaria'
+      'SELECT  IdCuentaBancariaUsuario, IdCuentaBancaria, IdPersonaResp' +
+      'onsable, LoginBanco, NumeroSerieToken, Observaciones1, Observaci' +
+      'ones2 FROM CuentasBancariasUsuarios'#13#10'WHERE IdCuentaBancaria =:Id' +
+      'CuentaBancaria'
     DataSource = dsMaster
     MasterFields = 'IdCuentaBancaria'
     Parameters = <
@@ -107,45 +108,53 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
+        Size = 4
         Value = 1
       end>
     Left = 64
     Top = 264
-    object adodsUsuariosXCtaBanIdCuentaBancariaUsuario: TIntegerField
+    object adodsUsuariosXCtaBanIdCuentaBancariaUsuario: TAutoIncField
       FieldName = 'IdCuentaBancariaUsuario'
-      Visible = False
-    end
-    object adodsUsuariosXCtaBanIdPersona: TIntegerField
-      FieldName = 'IdPersona'
+      ReadOnly = True
       Visible = False
     end
     object adodsUsuariosXCtaBanIdCuentaBancaria: TIntegerField
       FieldName = 'IdCuentaBancaria'
       Visible = False
     end
+    object adodsUsuariosXCtaBanIdPersonaResponsable: TIntegerField
+      FieldName = 'IdPersonaResponsable'
+      Visible = False
+    end
+    object adodsUsuariosXCtaBanResponsable: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Responsable'
+      LookupDataSet = adodsPersonaUsuario
+      LookupKeyFields = 'IdPersona'
+      LookupResultField = 'RazonSocial'
+      KeyFields = 'IdPersonaResponsable'
+      Size = 50
+      Lookup = True
+    end
+    object adodsUsuariosXCtaBanLoginBanco: TStringField
+      DisplayLabel = 'Login Banco'
+      FieldName = 'LoginBanco'
+      Size = 100
+    end
     object adodsUsuariosXCtaBanNumeroSerieToken: TStringField
-      DisplayLabel = 'Token n'#250'mero de serie'
+      DisplayLabel = 'Numero de Serie Token'
       FieldName = 'NumeroSerieToken'
       Size = 100
     end
     object adodsUsuariosXCtaBanObservaciones1: TStringField
+      DisplayLabel = 'Observaciones 1'
       FieldName = 'Observaciones1'
       Size = 100
     end
     object adodsUsuariosXCtaBanObservaciones2: TStringField
+      DisplayLabel = 'Observaciones 2'
       FieldName = 'Observaciones2'
       Size = 100
-    end
-    object adodsUsuariosXCtaBanPersona: TStringField
-      DisplayWidth = 100
-      FieldKind = fkLookup
-      FieldName = 'Persona'
-      LookupDataSet = adodsPersonaUsuario
-      LookupKeyFields = 'IdPersona'
-      LookupResultField = 'RazonSocial'
-      KeyFields = 'IdPersona'
-      Size = 500
-      Lookup = True
     end
   end
   object adodsPersona: TADODataSet

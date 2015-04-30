@@ -21,10 +21,6 @@ type
     adodsMasterSaldoCuenta: TBCDField;
     adodsUsuariosXCtaBan: TADODataSet;
     dsMaster: TDataSource;
-    adodsUsuariosXCtaBanIdCuentaBancariaUsuario: TIntegerField;
-    adodsUsuariosXCtaBanIdPersona: TIntegerField;
-    adodsUsuariosXCtaBanIdCuentaBancaria: TIntegerField;
-    adodsUsuariosXCtaBanNumeroSerieToken: TStringField;
     adodsPersona: TADODataSet;
     adodsCuentaBancariaTipo: TADODataSet;
     adodsBanco: TADODataSet;
@@ -50,10 +46,15 @@ type
     StringField5: TStringField;
     adodsPersonaUsuarioNombreCompleto: TStringField;
     adodsMasterEstructuraEstadoCuenta: TStringField;
+    adodsMasterCuentaBancariaTipo: TStringField;
+    adodsUsuariosXCtaBanIdCuentaBancariaUsuario: TAutoIncField;
+    adodsUsuariosXCtaBanIdCuentaBancaria: TIntegerField;
+    adodsUsuariosXCtaBanIdPersonaResponsable: TIntegerField;
+    adodsUsuariosXCtaBanLoginBanco: TStringField;
+    adodsUsuariosXCtaBanNumeroSerieToken: TStringField;
     adodsUsuariosXCtaBanObservaciones1: TStringField;
     adodsUsuariosXCtaBanObservaciones2: TStringField;
-    adodsUsuariosXCtaBanPersona: TStringField;
-    adodsMasterCuentaBancariaTipo: TStringField;
+    adodsUsuariosXCtaBanResponsable: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure adodsUpdateNewRecord(DataSet: TDataSet);

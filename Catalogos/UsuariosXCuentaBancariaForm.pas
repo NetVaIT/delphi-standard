@@ -32,12 +32,13 @@ uses
 type
   TfrmUsuariosXCuentaBancaria = class(T_frmGrid)
     tvMasterIdCuentaBancariaUsuario: TcxGridDBColumn;
-    tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdCuentaBancaria: TcxGridDBColumn;
+    tvMasterIdPersonaResponsable: TcxGridDBColumn;
+    tvMasterResponsable: TcxGridDBColumn;
+    tvMasterLoginBanco: TcxGridDBColumn;
     tvMasterNumeroSerieToken: TcxGridDBColumn;
     tvMasterObservaciones1: TcxGridDBColumn;
     tvMasterObservaciones2: TcxGridDBColumn;
-    tvMasterPersona: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
