@@ -85,7 +85,8 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         Top = 31
         DataBinding.DataField = 'CuentaBancaria'
         DataBinding.DataSource = DataSource
-        Properties.KeyFieldNames = 'IdCuentaBancaria'
+        Properties.HideSelection = False
+        Properties.KeyFieldNames = 'CuentaBancaria'
         Properties.ListColumns = <
           item
             Caption = 'Banco'
@@ -94,8 +95,11 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
           item
             Caption = 'Moneda'
             FieldName = 'Identificador'
+          end
+          item
+            Caption = 'No. Cuenta'
+            FieldName = 'CuentaBancaria'
           end>
-        Properties.ListFieldIndex = 1
         Properties.ListSource = dsCuentaBancaria
         TabOrder = 3
         Width = 506

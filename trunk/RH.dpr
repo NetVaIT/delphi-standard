@@ -163,7 +163,9 @@ uses
   PersonasRolesDocumentosEdit in 'Catalogos\PersonasRolesDocumentosEdit.pas' {frmPersonasRolesDocumentosEdit},
   UsuariosDM in 'Catalogos\UsuariosDM.pas' {dmUsuarios: TDataModule},
   UsuariosEdit in 'Catalogos\UsuariosEdit.pas' {frmUsuariosEdit},
-  UsuariosForm in 'Catalogos\UsuariosForm.pas' {frmUsuarios};
+  UsuariosForm in 'Catalogos\UsuariosForm.pas' {frmUsuarios},
+  CuentasBancariasDocumentosDM in 'Catalogos\CuentasBancariasDocumentosDM.pas' {dmCuentasBancariasDocumentos: TDataModule},
+  CuentasBancariasDocumentosForm in 'Catalogos\CuentasBancariasDocumentosForm.pas' {frmCuentasBancariasDocumentos};
 
 {$R *.res}
 

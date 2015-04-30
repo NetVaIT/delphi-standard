@@ -4,6 +4,11 @@ inherited dmPersona: TdmPersona
   Width = 731
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    CommandText = 
+      'SELECT IdPersona, RFC, CURP, IdPersonaTipo, IdRazonSocialTipo, I' +
+      'dSexo, IdEstadoCivil, IdPais, IdPoblacion, RazonSocial, Nombre, ' +
+      'ApellidoPaterno, ApellidoMaterno, LugarNacimiento, FechaNacimien' +
+      'to, IdPersonaTitular FROM Personas'
     Left = 56
     object adodsMasterIdPersona: TAutoIncField
       FieldName = 'IdPersona'
@@ -115,6 +120,20 @@ inherited dmPersona: TdmPersona
       FieldName = 'LugarNacimiento'
       Size = 100
     end
+    object adodsMasterIdPersonaTitular: TIntegerField
+      FieldName = 'IdPersonaTitular'
+      Visible = False
+    end
+    object adodsMasterTitular: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Titular'
+      LookupDataSet = adodsPersonaTitular
+      LookupKeyFields = 'IdPersona'
+      LookupResultField = 'RazonSocial'
+      KeyFields = 'IdPersonaTitular'
+      Size = 50
+      Lookup = True
+    end
   end
   inherited adodsUpdate: TADODataSet
     Left = 216
@@ -198,8 +217,8 @@ inherited dmPersona: TdmPersona
     CommandText = 
       'SELECT IdPersonaRol, IdPersona, IdPersonaRelacionada, IdRol, IdR' +
       'olEsquemaPago, IdRolEstatus, IdRolClase, Calcular, PorcentajeCal' +
-      'culo, NSS, FechaAltaIMSS, Facturar, FechaIngreso, FechaBaja FROM' +
-      ' PersonasRoles'
+      'culo, RegistroPatronalIMSS, NSS, FechaAltaIMSS, Facturar, FechaI' +
+      'ngreso, FechaBaja FROM PersonasRoles'
     DataSource = dsMaster
     IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
@@ -291,6 +310,10 @@ inherited dmPersona: TdmPersona
       Precision = 18
       Size = 6
     end
+    object adodsPersonaRolesRegistroPatronalIMSS: TStringField
+      FieldName = 'RegistroPatronalIMSS'
+      Size = 15
+    end
     object adodsPersonaRolesNSS: TStringField
       FieldName = 'NSS'
       Size = 15
@@ -349,5 +372,15 @@ inherited dmPersona: TdmPersona
     DataSet = adodsMaster
     Left = 144
     Top = 16
+  end
+  object adodsPersonaTitular: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT IdPersona, RazonSocial FROM Personas'#13#10'WHERE IdPersonaTipo' +
+      ' = 1'
+    Parameters = <>
+    Left = 464
+    Top = 269
   end
 end

@@ -45,7 +45,7 @@ uses PersonasRolesDocumentosDM;
 procedure TfrmPersonasRolesDocumentosEdit.SetUpdateFile(const Value: TBasicAction);
 begin
   FUpdateFile := Value;
-  btnUpdateFile.Action:= Value;
+  btnUpdateFile.Action := Value;
 end;
 
 end.

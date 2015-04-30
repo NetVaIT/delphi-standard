@@ -1,17 +1,16 @@
-inherited frmPersonasRolesDocumentos: TfrmPersonasRolesDocumentos
-  Caption = 'frmPersonasRolesDocumentos'
-  OnCreate = FormCreate
+inherited frmCuentasBancariasDocumentos: TfrmCuentasBancariasDocumentos
+  Caption = 'frmCuentasBancariasDocumentos'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
     inherited cxGrid: TcxGrid
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdRolDocumento: TcxGridDBColumn
-          DataBinding.FieldName = 'IdRolDocumento'
+        object tvMasterIdCuentaBancariaDocumento: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaBancariaDocumento'
           Visible = False
         end
-        object tvMasterIdPersonaRol: TcxGridDBColumn
-          DataBinding.FieldName = 'IdPersonaRol'
+        object tvMasterIdCuentaBancaria: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaBancaria'
           Visible = False
         end
         object tvMasterIdDocumento: TcxGridDBColumn
@@ -23,9 +22,6 @@ inherited frmPersonasRolesDocumentos: TfrmPersonasRolesDocumentos
         end
       end
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmPersonasRolesDocumentos.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

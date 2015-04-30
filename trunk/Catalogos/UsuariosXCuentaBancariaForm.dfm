@@ -11,17 +11,19 @@ inherited frmUsuariosXCuentaBancaria: TfrmUsuariosXCuentaBancaria
           DataBinding.FieldName = 'IdCuentaBancariaUsuario'
           Visible = False
         end
-        object tvMasterIdPersona: TcxGridDBColumn
-          DataBinding.FieldName = 'IdPersona'
-          Visible = False
-        end
         object tvMasterIdCuentaBancaria: TcxGridDBColumn
           DataBinding.FieldName = 'IdCuentaBancaria'
           Visible = False
         end
-        object tvMasterPersona: TcxGridDBColumn
-          DataBinding.FieldName = 'Persona'
-          Width = 350
+        object tvMasterIdPersonaResponsable: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersonaResponsable'
+          Visible = False
+        end
+        object tvMasterResponsable: TcxGridDBColumn
+          DataBinding.FieldName = 'Responsable'
+        end
+        object tvMasterLoginBanco: TcxGridDBColumn
+          DataBinding.FieldName = 'LoginBanco'
         end
         object tvMasterNumeroSerieToken: TcxGridDBColumn
           DataBinding.FieldName = 'NumeroSerieToken'
@@ -53,7 +55,6 @@ inherited frmUsuariosXCuentaBancaria: TfrmUsuariosXCuentaBancaria
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

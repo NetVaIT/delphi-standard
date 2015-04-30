@@ -18,18 +18,21 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, cxTextEdit, cxDBEdit, Vcl.DBCtrls, cxLabel;
+  cxContainer, cxEdit, cxTextEdit, cxDBEdit, Vcl.DBCtrls, cxLabel, cxMaskEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
   TfrmUsuariosXCuentaBancariaEdit = class(T_frmEdit)
     Label1: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
     Label2: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label3: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     Label4: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
+    Label5: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
   private
     FCuenta: string;
     procedure SetCuenta(const Value: string);
