@@ -21,7 +21,7 @@ uses
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
   ClientesDM, ProveedoresDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
-  EmpleadosDM, PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar;
+  PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -67,7 +67,6 @@ type
     FRol: TPRol;
     dmClientes: TdmClientes;
     dmProveedores: TdmProveedores;
-    dmEmpleados: TdmEmpleados;
     dmArchivosGenerarFacturas: TdmArchivosGenerarFacturas;
     dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
     dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos;
@@ -92,7 +91,6 @@ begin
   inherited;
   dmClientes := TdmClientes.Create(nil);
   dmProveedores := TdmProveedores.Create(nil);
-  dmEmpleados := TdmEmpleados.Create(nil);
   dmArchivosGenerarFacturas := TdmArchivosGenerarFacturas.Create(nil);
   dmPersonasRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
   dmPersonasRolesDocumentos := TdmPersonasRolesDocumentos.Create(nil);
@@ -103,7 +101,6 @@ begin
   inherited;
   FreeAndNil(dmClientes);
   FreeAndNil(dmProveedores);
-  FreeAndNil(dmEmpleados);
   FreeAndNil(dmArchivosGenerarFacturas);
   FreeAndNil(dmPersonasRolesCuentasBancarias);
   FreeAndNil(dmPersonasRolesDocumentos);
@@ -123,8 +120,9 @@ begin
 
        end;
     2: begin
-        pnlProveedor.Visible := True;
+        pnlProveedor.Visible   := True;
         pnlOutsourcing.Visible := True;
+        tsCuentas.TabVisible   := False;
        end;
     3: begin
         tsCuentas.TabVisible          := True;

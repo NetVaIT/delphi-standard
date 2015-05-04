@@ -64,6 +64,8 @@ type
     tsCuentasBancarias: TcxTabSheet;
     Label13: TLabel;
     cxDBLookupComboBox5: TcxDBLookupComboBox;
+    Label14: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
     procedure FormShow(Sender: TObject);
     procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);

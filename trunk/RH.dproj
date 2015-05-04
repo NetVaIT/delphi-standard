@@ -640,19 +640,6 @@
             <Form>frmArchivosGenerarFacturas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\EmpleadosDM.pas">
-            <Form>dmEmpleados</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\EmpleadosEdit.pas">
-            <Form>frmEmpleadosEdit</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Catalogos\EmpleadosForm.pas">
-            <Form>frmEmpleados</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Catalogos\UbicacionesForm.pas">
             <Form>frmUbicaciones</Form>
             <FormType>dfm</FormType>
@@ -707,6 +694,31 @@
         </DCCReference>
         <DCCReference Include="Catalogos\CuentasBancariasDocumentosForm.pas">
             <Form>frmCuentasBancariasDocumentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasContablesDM.pas">
+            <Form>dmCuentasContables</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasContablesForm.pas">
+            <Form>frmCuentasContables</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasContablesEdit.pas">
+            <Form>frmCuentasContablesEdit</Form>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasGastosDM.pas">
+            <Form>dmCuentasGastos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasGastosForm.pas">
+            <Form>frmCuentasGastos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasGastosEdit.pas">
+            <Form>frmCuentasGastosEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

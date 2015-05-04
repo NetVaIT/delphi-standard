@@ -126,19 +126,19 @@ begin
                   end;
     rCliente: begin
                 ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 3)';
-                ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';//(PersonasRoles.IdRol <> 5 AND PersonasRoles.IdRol <> 0)'
+                ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';//(PersonasRoles.IdRol <> 5 AND PersonasRoles.IdRol <> 0)'
               end;
     rProveedor: begin
                   ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 4)';
-                  ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                  ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
                 end;
     rEmpleado: begin
                  ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 5)';
-                 ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+                 ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
                end;
     rSocio: begin
               ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 6)';
-              ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2)';
+              ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
             end;
     rComisionista: begin
                      ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 8)';

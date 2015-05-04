@@ -91,6 +91,11 @@ type
     dxbUsuarios: TdxBar;
     dxBarLargeButton22: TdxBarLargeButton;
     actUsuarios: TAction;
+    dxBarManagerBar1: TdxBar;
+    dxBarLargeButton23: TdxBarLargeButton;
+    dxBarLargeButton24: TdxBarLargeButton;
+    actCuentasContables: TAction;
+    actCuentasGastos: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -113,7 +118,8 @@ implementation
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
-  IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM;
+  IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
+  CuentasContablesDM, CuentasGastosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -176,6 +182,8 @@ begin
    30: gModulo := TdmInstrucciones.Create(Self);
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);
+   33: gModulo := TdmCuentasContables.Create(Self);
+   34: gModulo := TdmCuentasGastos.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
   end;
   if Assigned(gModulo) then
@@ -215,6 +223,8 @@ begin
   actInstruccionesTipos.Enabled := Conected;
   actMovimientos.Enabled        := Conected;
   actUsuarios.Enabled           := Conected;
+  actCuentasContables.Enabled   := Conected;
+  actCuentasGastos.Enabled      := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

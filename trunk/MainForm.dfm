@@ -9,9 +9,11 @@ inherited frmMain: TfrmMain
     Width = 1099
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
+      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
+      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -25,6 +27,9 @@ inherited frmMain: TfrmMain
         end
         item
           ToolbarName = 'dxbPresonas'
+        end
+        item
+          ToolbarName = 'dxBarManagerBar1'
         end>
       Index = 1
     end
@@ -72,6 +77,8 @@ inherited frmMain: TfrmMain
       FloatClientHeight = 22
     end
     inherited dxbArchivo: TdxBar
+      DockedDockControl = nil
+      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end
@@ -117,7 +124,7 @@ inherited frmMain: TfrmMain
     object dxbOrganizacion: TdxBar [3]
       Caption = 'Organizacion'
       CaptionButtons = <>
-      DockedLeft = 332
+      DockedLeft = 224
       DockedTop = 0
       FloatLeft = 759
       FloatTop = 8
@@ -149,7 +156,7 @@ inherited frmMain: TfrmMain
     object dxbPresonas: TdxBar [4]
       Caption = 'Personas'
       CaptionButtons = <>
-      DockedLeft = 705
+      DockedLeft = 597
       DockedTop = 0
       FloatLeft = 764
       FloatTop = 8
@@ -197,7 +204,7 @@ inherited frmMain: TfrmMain
     object dxbEsquemas: TdxBar [5]
       Caption = 'Esquemas'
       CaptionButtons = <>
-      DockedLeft = 513
+      DockedLeft = 405
       DockedTop = 0
       FloatLeft = 1038
       FloatTop = 8
@@ -269,6 +276,30 @@ inherited frmMain: TfrmMain
           ItemName = 'dxBarLargeButton22'
         end>
       OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object dxBarManagerBar1: TdxBar [8]
+      Caption = 'Cuentas Contables'
+      CaptionButtons = <>
+      DockedLeft = 914
+      DockedTop = 0
+      FloatLeft = 1133
+      FloatTop = 8
+      FloatClientWidth = 115
+      FloatClientHeight = 108
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton23'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton24'
+        end>
+      OneOnRow = False
       Row = 0
       UseOwnFont = False
       Visible = True
@@ -404,6 +435,14 @@ inherited frmMain: TfrmMain
     end
     object dxBarLargeButton22: TdxBarLargeButton
       Action = actUsuarios
+      Category = 0
+    end
+    object dxBarLargeButton23: TdxBarLargeButton
+      Action = actCuentasContables
+      Category = 0
+    end
+    object dxBarLargeButton24: TdxBarLargeButton
+      Action = actCuentasGastos
       Category = 0
     end
   end
@@ -602,6 +641,20 @@ inherited frmMain: TfrmMain
       Category = 'Configuracion'
       Caption = 'Usuarios'
       ImageIndex = 42
+      OnExecute = actCatalogoExecute
+    end
+    object actCuentasContables: TAction
+      Tag = 33
+      Category = 'Catalogos'
+      Caption = 'Cuentas Contables'
+      ImageIndex = 18
+      OnExecute = actCatalogoExecute
+    end
+    object actCuentasGastos: TAction
+      Tag = 34
+      Category = 'Catalogos'
+      Caption = 'Cuentas Gastos'
+      ImageIndex = 19
       OnExecute = actCatalogoExecute
     end
   end
