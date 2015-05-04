@@ -112,9 +112,9 @@ inherited dmImportXLS: TdmImportXLS
     SQL.Strings = (
       
         'SELECT InstruccionesTiposDetalle.IdInstruccionTipoDetalle, Instr' +
-        'uccionesTiposDetalle.IdMovimientoTipo, InstruccionesTipos.Nombre' +
-        ', InstruccionesTiposDetalle.Valor, InstruccionesTiposDetalle.IdM' +
-        'oneda'
+        'uccionesTiposDetalle.IdMovimientoTipo, InstruccionesTiposDetalle' +
+        '.Nombre, InstruccionesTiposDetalle.Valor, InstruccionesTiposDeta' +
+        'lle.IdMoneda'
       'FROM InstruccionesTiposDetalle'
       
         'INNER JOIN InstruccionesTipos ON InstruccionesTiposDetalle.IdIns' +

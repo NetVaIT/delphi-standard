@@ -34,21 +34,23 @@ type
     tvMasterIdMovimientoTipo: TcxGridDBColumn;
     tvMasterIdMovimientoTipoCategoria: TcxGridDBColumn;
     tvMasterIdMovimientoTipoEfecto: TcxGridDBColumn;
+    tvMasterIdMovimientoTipoAcumular: TcxGridDBColumn;
+    tvMasterIdPersonaRol: TcxGridDBColumn;
+    tvMasterIdImpuesto: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterMovimientoTipoCategoria: TcxGridDBColumn;
     tvMasterMovimientoTipoEfecto: TcxGridDBColumn;
+    tvMasterDescuento: TcxGridDBColumn;
     tvMasterValorDefault: TcxGridDBColumn;
     tvMasterProduceCXC: TcxGridDBColumn;
     tvMasterProduceCXP: TcxGridDBColumn;
     tvMasterAgruparTipo: TcxGridDBColumn;
-    tvMasterBaseCalculo: TcxGridDBColumn;
-    tvMasterIdPeriodoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoTipoAcumular: TcxGridDBColumn;
-    tvMasterPeriodoTipo: TcxGridDBColumn;
     tvMasterMovimientoTipo: TcxGridDBColumn;
     tvMasterAplicarISR: TcxGridDBColumn;
+    tvMasterBaseCalculo: TcxGridDBColumn;
     tvMasterPorcentajeCalculo: TcxGridDBColumn;
+    tvMasterAcumularMensualmente: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

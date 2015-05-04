@@ -3,8 +3,8 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'select IdInstruccionTipo, Identificador, Descripcion, Nombre fro' +
-      'm InstruccionesTipos'
+      'select IdInstruccionTipo, Identificador, Descripcion from Instru' +
+      'ccionesTipos'
     object adodsMasterIdInstruccionTipo: TAutoIncField
       FieldName = 'IdInstruccionTipo'
       ReadOnly = True
@@ -21,11 +21,6 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
       Required = True
       Size = 50
     end
-    object adodsMasterNombre: TStringField
-      FieldName = 'Nombre'
-      Required = True
-      Size = 255
-    end
   end
   object dtMaster: TDataSource
     DataSet = adodsMaster
@@ -37,8 +32,8 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
     CursorType = ctStatic
     CommandText = 
       'select IdInstruccionTipoDetalle, IdInstruccionTipo, IdMovimiento' +
-      'Tipo, IdMoneda, Valor from InstruccionesTiposDetalle'#13#10'where IdIn' +
-      'struccionTipo = :IdInstruccionTipo'
+      'Tipo, IdMoneda, Nombre, Valor from InstruccionesTiposDetalle'#13#10'wh' +
+      'ere IdInstruccionTipo = :IdInstruccionTipo'
     DataSource = dtMaster
     MasterFields = 'IdInstruccionTipo'
     Parameters = <
@@ -77,6 +72,11 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
       Size = 100
       Lookup = True
     end
+    object adodsInstruccionesTiposDetalleNombre: TStringField
+      FieldName = 'Nombre'
+      Required = True
+      Size = 255
+    end
     object adodsInstruccionesTiposDetalleValor: TStringField
       FieldName = 'Valor'
       Required = True
@@ -99,6 +99,7 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
     end
   end
   object adodsMovimientosTipos: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -107,6 +108,7 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
     Top = 88
   end
   object adodsMoneda: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMoneda, Descripcion from Monedas'

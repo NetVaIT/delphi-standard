@@ -38,6 +38,7 @@ type
     tvMasterValor: TcxGridDBColumn;
     tvMasterIdMoneda: TcxGridDBColumn;
     tvMasterMoneda: TcxGridDBColumn;
+    tvMasterNombre: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
