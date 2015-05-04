@@ -32,23 +32,23 @@ type
     adodsUpdateMovimientoTipoEfecto: TStringField;
     adodsMasterAgruparTipo: TBooleanField;
     adodsMasterBaseCalculo: TBooleanField;
-    adodsMasterIdPeriodoTipo: TIntegerField;
     adodsMasterIdMovimientoTipoAcumular: TIntegerField;
     adodsMasterAplicarISR: TBooleanField;
-    adodsPeriodoTipo: TADODataSet;
     adodsMovimientoTipo: TADODataSet;
-    adodsMasterPeriodoTipo: TStringField;
     adodsMasterMovimientoTipo: TStringField;
     adodsMasterPorcentajeCalculo: TFMTBCDField;
     adodsUpdateAgruparTipo: TBooleanField;
     adodsUpdateBaseCalculo: TBooleanField;
-    adodsUpdateIdPeriodoTipo: TIntegerField;
     adodsUpdateIdMovimientoTipoAcumular: TIntegerField;
     adodsUpdateAplicarISR: TBooleanField;
     adodsUpdatePorcentajeCalculo: TFMTBCDField;
-    adodsUpdatePeriodoTipo: TStringField;
     adodsUpdateMovimientoTipo: TStringField;
+    adodsMasterIdPersonaRol: TIntegerField;
+    adodsMasterIdImpuesto: TIntegerField;
+    adodsMasterAcumularMensualmente: TBooleanField;
+    adodsMasterDescuento: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure adodsMasterNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -62,6 +62,16 @@ implementation
 uses MovimientosTiposForm, MovimientosTiposEdit;
 
 {$R *.dfm}
+
+procedure TdmMovimientosTipo.adodsMasterNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  adodsMasterProduceCXC.Value:= False;
+  adodsMasterProduceCXP.Value:= False;
+  adodsMasterAgruparTipo.Value:= False;
+  adodsMasterBaseCalculo.Value:= False;
+  adodsMasterAplicarISR.Value:= False;
+end;
 
 procedure TdmMovimientosTipo.DataModuleCreate(Sender: TObject);
 begin

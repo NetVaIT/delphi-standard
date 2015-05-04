@@ -11,7 +11,6 @@ type
     adodsMasterIdInstruccionTipo: TAutoIncField;
     adodsMasterIdentificador: TStringField;
     adodsMasterDescripcion: TStringField;
-    adodsMasterNombre: TStringField;
     dtMaster: TDataSource;
     adodsInstruccionesTiposDetalle: TADODataSet;
     adodsInstruccionesTiposDetalleIdInstruccionTipoDetalle: TAutoIncField;
@@ -23,6 +22,7 @@ type
     adodsMoneda: TADODataSet;
     adodsInstruccionesTiposDetalleIdMoneda: TIntegerField;
     adodsInstruccionesTiposDetalleMoneda: TStringField;
+    adodsInstruccionesTiposDetalleNombre: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

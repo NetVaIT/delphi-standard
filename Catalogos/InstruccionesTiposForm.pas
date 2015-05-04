@@ -34,7 +34,6 @@ type
     tvMasterIdInstruccionTipo: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
-    tvMasterNombre: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

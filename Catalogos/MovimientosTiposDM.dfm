@@ -4,12 +4,13 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
   Width = 399
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    OnNewRecord = adodsMasterNewRecord
     CommandText = 
-      'SELECT IdMovimientoTipo, IdMovimientoTipoCategoria, IdMovimiento' +
-      'TipoEfecto, Identificador, Descripcion, ValorDefault, ProduceCXC' +
-      ', ProduceCXP, AgruparTipo, BaseCalculo, IdPeriodoTipo, IdMovimie' +
-      'ntoTipoAcumular, AplicarISR, PorcentajeCalculo FROM MovimientosT' +
-      'ipos'
+      'select IdMovimientoTipo, IdMovimientoTipoCategoria, IdMovimiento' +
+      'TipoEfecto, IdMovimientoTipoAcumular, IdPersonaRol, IdImpuesto, ' +
+      'Identificador, Descripcion, ValorDefault, ProduceCXC, ProduceCXP' +
+      ', AgruparTipo, AplicarISR, BaseCalculo, PorcentajeCalculo, Acumu' +
+      'larMensualmente, Descuento from MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -22,6 +23,18 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
     object adodsMasterIdMovimientoTipoEfecto: TIntegerField
       FieldName = 'IdMovimientoTipoEfecto'
+      Visible = False
+    end
+    object adodsMasterIdMovimientoTipoAcumular: TIntegerField
+      FieldName = 'IdMovimientoTipoAcumular'
+      Visible = False
+    end
+    object adodsMasterIdPersonaRol: TIntegerField
+      FieldName = 'IdPersonaRol'
+      Visible = False
+    end
+    object adodsMasterIdImpuesto: TIntegerField
+      FieldName = 'IdImpuesto'
       Visible = False
     end
     object adodsMasterIdentificador: TStringField
@@ -58,6 +71,9 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Size = 100
       Lookup = True
     end
+    object adodsMasterDescuento: TBooleanField
+      FieldName = 'Descuento'
+    end
     object adodsMasterValorDefault: TFMTBCDField
       DisplayLabel = 'Valor omisi'#243'n'
       FieldName = 'ValorDefault'
@@ -76,29 +92,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       DisplayLabel = 'Agrupar por tipo'
       FieldName = 'AgruparTipo'
     end
-    object adodsMasterBaseCalculo: TBooleanField
-      DisplayLabel = 'Base para c'#225'lculo'
-      FieldName = 'BaseCalculo'
-    end
-    object adodsMasterIdPeriodoTipo: TIntegerField
-      FieldName = 'IdPeriodoTipo'
-      Visible = False
-    end
-    object adodsMasterIdMovimientoTipoAcumular: TIntegerField
-      FieldName = 'IdMovimientoTipoAcumular'
-      Visible = False
-    end
-    object adodsMasterPeriodoTipo: TStringField
-      DisplayLabel = 'Periodo'
-      FieldKind = fkLookup
-      FieldName = 'PeriodoTipo'
-      LookupDataSet = adodsPeriodoTipo
-      LookupKeyFields = 'IdPeriodoTipo'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPeriodoTipo'
-      Size = 50
-      Lookup = True
-    end
     object adodsMasterMovimientoTipo: TStringField
       DisplayLabel = 'Acumular movimiento'
       FieldKind = fkLookup
@@ -111,14 +104,22 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Lookup = True
     end
     object adodsMasterAplicarISR: TBooleanField
-      DisplayLabel = 'Aplicar ISR'
+      DisplayLabel = 'Aplicar ISR Mensual'
       FieldName = 'AplicarISR'
+    end
+    object adodsMasterBaseCalculo: TBooleanField
+      DisplayLabel = 'Base para c'#225'lculo'
+      FieldName = 'BaseCalculo'
     end
     object adodsMasterPorcentajeCalculo: TFMTBCDField
       DisplayLabel = 'Porcentaje de c'#225'lculo'
       FieldName = 'PorcentajeCalculo'
       Precision = 18
       Size = 6
+    end
+    object adodsMasterAcumularMensualmente: TBooleanField
+      DisplayLabel = 'Acumular mensualmente'
+      FieldName = 'AcumularMensualmente'
     end
   end
   inherited adodsUpdate: TADODataSet
@@ -192,9 +193,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     object adodsUpdateBaseCalculo: TBooleanField
       FieldName = 'BaseCalculo'
     end
-    object adodsUpdateIdPeriodoTipo: TIntegerField
-      FieldName = 'IdPeriodoTipo'
-    end
     object adodsUpdateIdMovimientoTipoAcumular: TIntegerField
       FieldName = 'IdMovimientoTipoAcumular'
     end
@@ -205,17 +203,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       FieldName = 'PorcentajeCalculo'
       Precision = 18
       Size = 6
-    end
-    object adodsUpdatePeriodoTipo: TStringField
-      DisplayLabel = 'Periodo'
-      FieldKind = fkLookup
-      FieldName = 'PeriodoTipo'
-      LookupDataSet = adodsPeriodoTipo
-      LookupKeyFields = 'IdPeriodoTipo'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPeriodoTipo'
-      Size = 50
-      Lookup = True
     end
     object adodsUpdateMovimientoTipo: TStringField
       DisplayLabel = 'Acumular movimiento'
@@ -230,7 +217,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
   end
   object adodsMovimientoTipoCategoria: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -241,7 +227,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 72
   end
   object adodsMovimientoTipoEfecto: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -251,17 +236,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Left = 120
     Top = 128
   end
-  object adodsPeriodoTipo: TADODataSet
-    Active = True
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'select IdPeriodoTipo, Descripcion from PeriodosTipos'
-    Parameters = <>
-    Left = 120
-    Top = 184
-  end
   object adodsMovimientoTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'

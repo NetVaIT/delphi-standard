@@ -12,6 +12,7 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
     Top = 365
     Width = 645
     ExplicitTop = 377
+    ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
     Top = 289
@@ -19,22 +20,22 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
     Align = alTop
     Visible = True
     ExplicitTop = 289
+    ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
     Top = 321
     Width = 645
     ExplicitTop = 333
+    ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
     Width = 645
     Height = 258
     Align = alTop
-    ExplicitWidth = 651
     ExplicitHeight = 258
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 258
-      ExplicitWidth = 651
       ExplicitHeight = 258
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdInstruccionTipo: TcxGridDBColumn
@@ -47,24 +48,18 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
         end
-        object tvMasterNombre: TcxGridDBColumn
-          DataBinding.FieldName = 'Nombre'
-          Width = 304
-        end
       end
     end
   end
   inherited pnlDetail3: TPanel
     Top = 368
     Width = 645
-    ExplicitTop = 397
-    ExplicitWidth = 651
+    ExplicitTop = 368
   end
   inherited pnlDetail2: TPanel
     Top = 324
     Width = 645
-    ExplicitTop = 353
-    ExplicitWidth = 651
+    ExplicitTop = 324
   end
   inherited pnlDetail1: TPanel
     Top = 292
@@ -73,16 +68,15 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
     Align = alClient
     Visible = True
     ExplicitTop = 292
-    ExplicitWidth = 651
-    ExplicitHeight = 58
+    ExplicitHeight = 29
   end
   inherited pnlClose: TPanel
     Top = 409
     Width = 645
-    ExplicitTop = 438
+    ExplicitTop = 409
+    ExplicitWidth = 645
     inherited btnClose: TButton
       Left = 560
-      ExplicitLeft = 566
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -100,6 +94,7 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
