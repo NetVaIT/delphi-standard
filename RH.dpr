@@ -150,9 +150,6 @@ uses
   ArchivosGenerarFacturasDM in 'Catalogos\ArchivosGenerarFacturasDM.pas' {dmArchivosGenerarFacturas: TDataModule},
   ArchivosGenerarFacturasEdit in 'Catalogos\ArchivosGenerarFacturasEdit.pas' {frmArchivosGenerarFacturasEdit},
   ArchivosGenerarFacturasForm in 'Catalogos\ArchivosGenerarFacturasForm.pas' {frmArchivosGenerarFacturas},
-  EmpleadosDM in 'Catalogos\EmpleadosDM.pas' {dmEmpleados: TDataModule},
-  EmpleadosEdit in 'Catalogos\EmpleadosEdit.pas' {frmEmpleadosEdit},
-  EmpleadosForm in 'Catalogos\EmpleadosForm.pas' {frmEmpleados},
   UbicacionesForm in 'Catalogos\UbicacionesForm.pas' {frmUbicaciones},
   UbicacionesEdit in 'Catalogos\UbicacionesEdit.pas' {frmUbicacionesEdit},
   PersonasRolesDocumentosDM in 'Catalogos\PersonasRolesDocumentosDM.pas' {dmPersonasRolesDocumentos: TDataModule},
@@ -165,7 +162,13 @@ uses
   UsuariosEdit in 'Catalogos\UsuariosEdit.pas' {frmUsuariosEdit},
   UsuariosForm in 'Catalogos\UsuariosForm.pas' {frmUsuarios},
   CuentasBancariasDocumentosDM in 'Catalogos\CuentasBancariasDocumentosDM.pas' {dmCuentasBancariasDocumentos: TDataModule},
-  CuentasBancariasDocumentosForm in 'Catalogos\CuentasBancariasDocumentosForm.pas' {frmCuentasBancariasDocumentos};
+  CuentasBancariasDocumentosForm in 'Catalogos\CuentasBancariasDocumentosForm.pas' {frmCuentasBancariasDocumentos},
+  CuentasContablesDM in 'Catalogos\CuentasContablesDM.pas' {dmCuentasContables: TDataModule},
+  CuentasContablesForm in 'Catalogos\CuentasContablesForm.pas' {frmCuentasContables},
+  CuentasContablesEdit in 'Catalogos\CuentasContablesEdit.pas' {frmCuentasContablesEdit},
+  CuentasGastosDM in 'Catalogos\CuentasGastosDM.pas' {dmCuentasGastos: TDataModule},
+  CuentasGastosForm in 'Catalogos\CuentasGastosForm.pas' {frmCuentasGastos},
+  CuentasGastosEdit in 'Catalogos\CuentasGastosEdit.pas' {frmCuentasGastosEdit};
 
 {$R *.res}
 

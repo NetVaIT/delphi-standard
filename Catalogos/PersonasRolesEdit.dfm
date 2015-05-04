@@ -1,5 +1,5 @@
 inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
-  Caption = 'Rol Asociado'
+  Caption = 'Rol Asignado'
   ClientHeight = 414
   ClientWidth = 719
   OnCreate = FormCreate
@@ -11,15 +11,16 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 719
     Height = 373
+    Properties.ActivePage = tsExpedienteDigital
     ExplicitWidth = 719
-    ExplicitHeight = 382
+    ExplicitHeight = 373
     ClientRectBottom = 371
     ClientRectRight = 717
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 715
-      ExplicitHeight = 352
+      ExplicitHeight = 343
       object pnlRol: TPanel
         Left = 0
         Top = 0
@@ -242,49 +243,66 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       Caption = 'Kardex'
       ImageIndex = 1
       TabVisible = False
-      ExplicitHeight = 352
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsEmpleado: TcxTabSheet
       Caption = 'Empleado'
       ImageIndex = 1
       TabVisible = False
-      ExplicitHeight = 352
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsCuentas: TcxTabSheet
-      Caption = 'Cuentas'
+      Caption = 'Cuentas Contables'
       ImageIndex = 2
       TabVisible = False
-      ExplicitHeight = 352
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsEsquemaPago: TcxTabSheet
       Caption = 'Esquema de Pago'
       ImageIndex = 3
       TabVisible = False
-      ExplicitHeight = 352
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsArchivosFacturar: TcxTabSheet
       Caption = 'Archivos para Facturar'
       ImageIndex = 1
       TabVisible = False
-      ExplicitHeight = 352
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
       ImageIndex = 1
       TabVisible = False
-      ExplicitHeight = 352
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsExpedienteDigital: TcxTabSheet
       Caption = 'Expediente Digital'
       ImageIndex = 1
       TabVisible = False
-      ExplicitHeight = 352
     end
   end
   inherited pmlMain: TPanel
     Top = 373
     Width = 719
-    ExplicitTop = 382
+    ExplicitTop = 373
     ExplicitWidth = 719
     inherited btnOk: TButton
       Left = 556
