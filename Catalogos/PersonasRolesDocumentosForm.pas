@@ -62,8 +62,8 @@ begin
 //  inherited;
   DataSource.DataSet.Edit;
   FUpdateFile.Execute;
-  if DataSource.DataSet.State in [dsEdit, dsInsert] then
-    DataSource.DataSet.Post;
+//  if DataSource.DataSet.State in [dsEdit, dsInsert] then
+//    DataSource.DataSet.Post;
 end;
 
 procedure TfrmPersonasRolesDocumentos.DatasetInsertExecute(Sender: TObject);
@@ -71,8 +71,8 @@ begin
 //  inherited;
   DataSource.DataSet.Insert;
   FUpdateFile.Execute;
-  if DataSource.DataSet.State in [dsEdit, dsInsert] then
-    DataSource.DataSet.Post;
+//  if DataSource.DataSet.State in [dsEdit, dsInsert] then
+//    DataSource.DataSet.Post;
 end;
 
 procedure TfrmPersonasRolesDocumentos.FormCreate(Sender: TObject);
@@ -99,8 +99,8 @@ begin
 //  inherited;
   DataSource.DataSet.Edit;
   FUpdateFile.Execute;
-  if DataSource.DataSet.State in [dsEdit, dsInsert] then
-    DataSource.DataSet.Post;
+//  if DataSource.DataSet.State in [dsEdit, dsInsert] then
+//    DataSource.DataSet.Post;
 end;
 
 end.

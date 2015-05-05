@@ -45,7 +45,6 @@ type
     StringField4: TStringField;
     StringField5: TStringField;
     adodsPersonaUsuarioNombreCompleto: TStringField;
-    adodsMasterEstructuraEstadoCuenta: TStringField;
     adodsMasterCuentaBancariaTipo: TStringField;
     adodsUsuariosXCtaBanIdCuentaBancariaUsuario: TAutoIncField;
     adodsUsuariosXCtaBanIdCuentaBancaria: TIntegerField;
@@ -55,9 +54,14 @@ type
     adodsUsuariosXCtaBanObservaciones1: TStringField;
     adodsUsuariosXCtaBanObservaciones2: TStringField;
     adodsUsuariosXCtaBanResponsable: TStringField;
+    adodsMasterIdDocumento: TIntegerField;
+    adodsDocumento: TADODataSet;
+    adodsMasterEstructuraEstadoCuenta: TStringField;
+    actUpdateFile: TAction;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure adodsUpdateNewRecord(DataSet: TDataSet);
+    procedure actUpdateFileExecute(Sender: TObject);
   private
     { Private declarations }
     fFiltroPersona:String; //Mar 25/15
@@ -73,9 +77,35 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses CuentasBancariasForm, UsuariosXCuentaBancariaForm;
+uses CuentasBancariasForm, UsuariosXCuentaBancariaForm, DocumentosDM;
 
 {$R *.dfm}
+
+procedure TdmCuentasBancarias.actUpdateFileExecute(Sender: TObject);
+var
+  dmDocumentos: TdmDocumentos;
+  Id : Integer;
+begin
+  inherited;
+  dmDocumentos := TdmDocumentos.Create(nil);
+  dmDocumentos.FileAllowed := faAll;
+  Id := adodsMasterIdDocumento.AsInteger;
+  if Id  <> 0 then
+  begin
+    dmDocumentos.Edit(Id);
+    adodsDocumento.Requery();
+  end
+  else
+  begin
+    Id := dmDocumentos.Add;
+    if  Id <> 0 then
+    begin
+      adodsDocumento.Requery();
+      adodsMasterIdDocumento.AsInteger := Id;
+    end;
+  end;
+  dmDocumentos.Free;
+end;
 
 procedure TdmCuentasBancarias.adodsMasterNewRecord(DataSet: TDataSet);
 begin
@@ -108,6 +138,7 @@ begin
   gFormDeatil1:= TfrmUsuariosXCuentaBancaria.Create(Self);
   gFormDeatil1.DataSet:= adodsUsuariosXCtaBan;
 //  TfrmUsuariosXCuentaBancaria(gFormDeatil1).Cuenta := adodsMasterCuentaBancaria.AsString; //JCRC 20/04/2015 Inhabilite
+  TfrmCuentasBancarias(gGridForm).UpdateFile := actUpdateFile;
 end;
 
 

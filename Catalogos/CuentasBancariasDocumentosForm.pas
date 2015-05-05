@@ -3,12 +3,12 @@ unit CuentasBancariasDocumentosForm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _GridForm, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack,
-  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
-  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, _GridForm, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
   dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
   dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
   dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
@@ -35,14 +35,11 @@ type
     tvMasterIdCuentaBancaria: TcxGridDBColumn;
     tvMasterIdDocumento: TcxGridDBColumn;
     tvMasterDocumento: TcxGridDBColumn;
-    procedure DatasetInsertExecute(Sender: TObject);
-    procedure DatasetEditExecute(Sender: TObject);
-    procedure tvMasterCellDblClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
     FUpdateFile: TBasicAction;
+    FNuevoFile : TBasicAction;
+    FEditaFile : TBasicAction;
     procedure SetUpdateFile(const Value: TBasicAction);
   public
     { Public declarations }
@@ -57,36 +54,10 @@ uses CuentasBancariasDocumentosDM;
 
 { TfrmCuentasBancariasDocumentos }
 
-procedure TfrmCuentasBancariasDocumentos.DatasetEditExecute(Sender: TObject);
-begin
-//  inherited;
-  DataSource.DataSet.Edit;
-  FUpdateFile.Execute;
-  DataSource.DataSet.Post;
-end;
-
-procedure TfrmCuentasBancariasDocumentos.DatasetInsertExecute(Sender: TObject);
-begin
-//  inherited;
-  DataSource.DataSet.Insert;
-  FUpdateFile.Execute;
-  DataSource.DataSet.Post;
-end;
-
 procedure TfrmCuentasBancariasDocumentos.SetUpdateFile(
   const Value: TBasicAction);
 begin
   FUpdateFile := Value;
-end;
-
-procedure TfrmCuentasBancariasDocumentos.tvMasterCellDblClick(
-  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
-  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-begin
-  inherited;
-  DataSource.DataSet.Edit;
-  FUpdateFile.Execute;
-  DataSource.DataSet.Post;
 end;
 
 end.

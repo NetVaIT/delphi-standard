@@ -75,7 +75,7 @@ begin
   if OpenDialog.Execute then
   begin
     FFilename:= OpenDialog.FileName;
-    adodsUpdateNombreArchivo.AsString:= ExtractFileName(FFilename);
+    adodsUpdateNombreArchivo.AsString := ExtractFileName(FFilename);
     WriteFile(FFilename);
   end;
 end;

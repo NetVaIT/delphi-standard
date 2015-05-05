@@ -20,14 +20,14 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxCurrencyEdit,
   Vcl.ExtDlgs, Vcl.Buttons, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox, CuentasBancariasDocumentosDM;
+  cxDBLookupEdit, cxDBLookupComboBox, CuentasBancariasDocumentosDM, cxLabel,
+  cxDBLabel;
 
 type
   TfrmCuentasBancariasEdit = class(T_frmEdit)
     Label2: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
     Label3: TLabel;
-    cxDBTxtEdtArchConf: TcxDBTextEdit;
     Label4: TLabel;
     cxDBCurrencyEdit1: TcxDBCurrencyEdit;
     Label5: TLabel;
@@ -35,21 +35,23 @@ type
     Label7: TLabel;
     Label8: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
-    SpdBtnArchiConf: TSpeedButton;
-    OpnTxtFlDlgCarga: TOpenTextFileDialog;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
     tsExpedienteDigital: TcxTabSheet;
-    procedure SpdBtnArchiConfClick(Sender: TObject);
+    btnUpdateFile: TSpeedButton;
+    cxDBLabel1: TcxDBLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FUpdateFile: TBasicAction;
     dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos;
+    procedure SetUpdateFile(const Value: TBasicAction);
   public
     { Public declarations }
+    property UpdateFile: TBasicAction read FUpdateFile write SetUpdateFile;
   end;
 
 implementation
@@ -82,14 +84,10 @@ begin
     tsExpedienteDigital.TabVisible := True;
 end;
 
-procedure TfrmCuentasBancariasEdit.SpdBtnArchiConfClick(Sender: TObject);
+procedure TfrmCuentasBancariasEdit.SetUpdateFile(const Value: TBasicAction);
 begin
-  inherited;
-  OpnTxtFlDlgCarga.FilterIndex:=0;
-  if cxDBTxtEdtArchConf.Text<>'' then
-    OpnTxtFlDlgCarga.InitialDir:= extractFilePath(cxDBTxtEdtArchConf.Text);
-  if OpnTxtFlDlgCarga.Execute then
-    datasource.dataset.FieldByName('EstructuraEstadoCuenta').AsString:=OpnTxtFlDlgCarga.FileName;
+  FUpdateFile := Value;
+  btnUpdateFile.Action := Value;
 end;
 
 end.
