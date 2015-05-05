@@ -47,6 +47,14 @@ inherited dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos
       Hint = 'Asigna archivo'
       OnExecute = actExpedienteDigitalExecute
     end
+    object actNuevoDocumento: TAction
+      Caption = 'actNuevoDocumento'
+      OnExecute = actNuevoDocumentoExecute
+    end
+    object actEditaDocumento: TAction
+      Caption = 'actEditaDocumento'
+      OnExecute = actEditaDocumentoExecute
+    end
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster

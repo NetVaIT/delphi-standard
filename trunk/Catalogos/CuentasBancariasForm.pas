@@ -44,12 +44,13 @@ type
     tvMasterEstructuraEstadoCuenta: TcxGridDBColumn;
     tvMasterSaldoCuenta: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-
+    FUpdateFile: TBasicAction;
   public
     { Public declarations }
-
+    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
 implementation
@@ -62,9 +63,12 @@ procedure TfrmCuentasBancarias.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TFrmCuentasBancariasEdit.Create(Self);
-
 end;
 
-
+procedure TfrmCuentasBancarias.FormShow(Sender: TObject);
+begin
+  inherited;
+  TfrmCuentasBancariasEdit(gEditForm).UpdateFile := UpdateFile;
+end;
 
 end.

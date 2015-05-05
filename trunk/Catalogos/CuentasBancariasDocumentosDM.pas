@@ -17,8 +17,12 @@ type
     adodsDocumentoClase: TADODataSet;
     adodsMasterDocumento: TStringField;
     actExpedienteDigital: TAction;
+    actNuevoDocumento: TAction;
+    actEditaDocumento: TAction;
     procedure actExpedienteDigitalExecute(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
+    procedure actNuevoDocumentoExecute(Sender: TObject);
+    procedure actEditaDocumentoExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,6 +36,24 @@ implementation
 uses DocumentosDM, CuentasBancariasDocumentosForm;
 
 {$R *.dfm}
+
+procedure TdmCuentasBancariasDocumentos.actEditaDocumentoExecute(
+  Sender: TObject);
+var
+  dmDocumentos: TdmDocumentos;
+  Id: Integer;
+begin
+  inherited;
+  dmDocumentos := TdmDocumentos.Create(nil);
+  dmDocumentos.FileAllowed:= faAll;
+  Id := adodsMasterIdDocumento.AsInteger;
+  if Id  <> 0 then
+  begin
+    dmDocumentos.Edit(Id);
+    adodsDocumento.Requery();
+  end;
+  dmDocumentos.Free;
+end;
 
 procedure TdmCuentasBancariasDocumentos.actExpedienteDigitalExecute(
   Sender: TObject);
@@ -49,6 +71,28 @@ begin
     adodsDocumento.Requery();
   end
   else
+  begin
+    Id:= dmDocumentos.Add;
+    if  Id <> 0 then
+    begin
+      adodsDocumento.Requery();
+      adodsMasterIdDocumento.AsInteger:= Id;
+    end;
+  end;
+  dmDocumentos.Free;
+end;
+
+procedure TdmCuentasBancariasDocumentos.actNuevoDocumentoExecute(
+  Sender: TObject);
+var
+  dmDocumentos: TdmDocumentos;
+  Id: Integer;
+begin
+  inherited;
+  dmDocumentos := TdmDocumentos.Create(nil);
+  dmDocumentos.FileAllowed:= faAll;
+  Id := adodsMasterIdDocumento.AsInteger;
+  if Id = 0 then
   begin
     Id:= dmDocumentos.Add;
     if  Id <> 0 then

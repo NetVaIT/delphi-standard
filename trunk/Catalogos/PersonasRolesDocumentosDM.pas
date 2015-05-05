@@ -51,11 +51,11 @@ begin
   end
   else
   begin
-    Id:= dmDocumentos.Add;
+    Id := dmDocumentos.Add;
     if  Id <> 0 then
     begin
       adodsDocumento.Requery();
-      adodsMasterIdDocumento.AsInteger:= Id;
+      adodsMasterIdDocumento.AsInteger := Id;
     end;
   end;
   dmDocumentos.Free;

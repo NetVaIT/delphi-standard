@@ -1,5 +1,6 @@
 inherited dmCuentasBancarias: TdmCuentasBancarias
   OldCreateOrder = True
+  Height = 413
   Width = 457
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
@@ -8,8 +9,8 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
       'SELECT IdCuentaBancaria,'#13#10'             IdPersona,'#13#10'             ' +
       'IdCuentaBancariaTipo,'#13#10'             IdBanco,'#13#10'             Cuent' +
       'aBancaria,'#13#10'             ClabeInterbancaria,'#13#10'             IdMon' +
-      'eda,'#13#10'             EstructuraEstadoCuenta,'#13#10'             SaldoCu' +
-      'enta'#13#10'  FROM CuentasBancarias'#13#10
+      'eda,             '#13#10'             IdDocumento,'#13#10'             Saldo' +
+      'Cuenta'#13#10'  FROM CuentasBancarias'#13#10
     Left = 32
     object adodsMasterIdCuentaBancaria: TAutoIncField
       FieldName = 'IdCuentaBancaria'
@@ -70,9 +71,18 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
       Size = 10
       Lookup = True
     end
+    object adodsMasterIdDocumento: TIntegerField
+      FieldName = 'IdDocumento'
+    end
     object adodsMasterEstructuraEstadoCuenta: TStringField
+      FieldKind = fkLookup
       FieldName = 'EstructuraEstadoCuenta'
-      Size = 500
+      LookupDataSet = adodsDocumento
+      LookupKeyFields = 'IdDocumento'
+      LookupResultField = 'NombreArchivo'
+      KeyFields = 'IdDocumento'
+      Size = 200
+      Lookup = True
     end
     object adodsMasterSaldoCuenta: TBCDField
       FieldName = 'SaldoCuenta'
@@ -86,6 +96,11 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
   end
   inherited ActionList: TActionList
     Left = 384
+    object actUpdateFile: TAction
+      Caption = '...'
+      Hint = 'Asigna archivo'
+      OnExecute = actUpdateFileExecute
+    end
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
@@ -192,6 +207,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     end
   end
   object adodsCuentaBancariaTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -202,6 +218,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     Top = 80
   end
   object adodsBanco: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdBanco, Nombre from Bancos'
@@ -218,6 +235,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     end
   end
   object adodsMoneda: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMoneda, Descripcion from Monedas'
@@ -272,5 +290,13 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
       Size = 150
       Calculated = True
     end
+  end
+  object adodsDocumento: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
+    Parameters = <>
+    Left = 232
+    Top = 328
   end
 end
