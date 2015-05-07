@@ -168,7 +168,8 @@ uses
   CuentasContablesEdit in 'Catalogos\CuentasContablesEdit.pas' {frmCuentasContablesEdit},
   CuentasGastosDM in 'Catalogos\CuentasGastosDM.pas' {dmCuentasGastos: TDataModule},
   CuentasGastosForm in 'Catalogos\CuentasGastosForm.pas' {frmCuentasGastos},
-  CuentasGastosEdit in 'Catalogos\CuentasGastosEdit.pas' {frmCuentasGastosEdit};
+  CuentasGastosEdit in 'Catalogos\CuentasGastosEdit.pas' {frmCuentasGastosEdit},
+  _ReportDMod in 'Standard\_ReportDMod.pas' {_dmReport: TDataModule};
 
 {$R *.res}
 

@@ -92,8 +92,8 @@
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_PreRelease>true</VerInfo_PreRelease>
-        <VerInfo_Build>267</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=0.6.1.267;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>268</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=0.6.1.268;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -720,6 +720,11 @@
         <DCCReference Include="Catalogos\CuentasGastosEdit.pas">
             <Form>frmCuentasGastosEdit</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Standard\_ReportDMod.pas">
+            <Form>_dmReport</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
