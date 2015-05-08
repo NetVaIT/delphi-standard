@@ -1,23 +1,23 @@
 inherited frmEstablecimientosEdit: TfrmEstablecimientosEdit
   Caption = 'Establecimiento'
-  ClientHeight = 298
+  ClientHeight = 326
   ClientWidth = 537
   ExplicitWidth = 543
-  ExplicitHeight = 327
+  ExplicitHeight = 354
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 537
-    Height = 257
-    ExplicitWidth = 681
-    ExplicitHeight = 762
-    ClientRectBottom = 255
+    Height = 285
+    ExplicitWidth = 537
+    ExplicitHeight = 257
+    ClientRectBottom = 283
     ClientRectRight = 535
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
-      ExplicitWidth = 677
-      ExplicitHeight = 732
+      ExplicitLeft = 1
+      ExplicitTop = 27
+      ExplicitWidth = 533
+      ExplicitHeight = 496
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -43,7 +43,7 @@ inherited frmEstablecimientosEdit: TfrmEstablecimientosEdit
       end
       object btnUpdate: TSpeedButton
         Left = 494
-        Top = 123
+        Top = 152
         Width = 23
         Height = 22
       end
@@ -65,26 +65,35 @@ inherited frmEstablecimientosEdit: TfrmEstablecimientosEdit
       end
       object cxDBLabel1: TcxDBLabel
         Left = 24
-        Top = 123
+        Top = 152
         DataBinding.DataField = 'Domicilio'
         DataBinding.DataSource = DataSource
         Height = 79
         Width = 471
       end
+      object cxDBLookupComboBox1: TcxDBLookupComboBox
+        Left = 24
+        Top = 123
+        DataBinding.DataField = 'Domicilio'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 3
+        Width = 493
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 257
+    Top = 285
     Width = 537
-    ExplicitTop = 762
-    ExplicitWidth = 681
+    ExplicitTop = 257
+    ExplicitWidth = 537
     inherited btnOk: TButton
       Left = 374
-      ExplicitLeft = 518
+      ExplicitLeft = 374
     end
     inherited btnCancel: TButton
       Left = 455
-      ExplicitLeft = 599
+      ExplicitLeft = 455
     end
   end
   inherited cxImageList: TcxImageList

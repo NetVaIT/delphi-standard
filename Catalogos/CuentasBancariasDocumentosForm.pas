@@ -41,9 +41,13 @@ type
     FNuevoFile : TBasicAction;
     FEditaFile : TBasicAction;
     procedure SetUpdateFile(const Value: TBasicAction);
+    procedure SetNuevoFile(const Value: TBasicAction);
+    procedure SetEditaFile(const Value: TBasicAction);
   public
     { Public declarations }
     property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
+    property NuevoFile : TBasicAction read FNuevoFile write FNuevoFile;
+    property EditaFile : TBasicAction read FEditaFile write FEditaFile;
   end;
 
 implementation
@@ -53,6 +57,20 @@ implementation
 uses CuentasBancariasDocumentosDM;
 
 { TfrmCuentasBancariasDocumentos }
+
+procedure TfrmCuentasBancariasDocumentos.SetEditaFile(
+  const Value: TBasicAction);
+begin
+  FEditaFile := Value;
+  Edit1.Action := FEditaFile;
+end;
+
+procedure TfrmCuentasBancariasDocumentos.SetNuevoFile(
+  const Value: TBasicAction);
+begin
+  FNuevoFile := Value;
+  Insert1.Action := FNuevoFile;
+end;
 
 procedure TfrmCuentasBancariasDocumentos.SetUpdateFile(
   const Value: TBasicAction);

@@ -19,7 +19,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxMaskEdit, cxSpinEdit, Vcl.DBCtrls,
-  Vcl.Buttons, cxLabel, cxDBLabel;
+  Vcl.Buttons, cxLabel, cxDBLabel, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
   TfrmEstablecimientosEdit = class(T_frmEdit)
@@ -30,6 +31,7 @@ type
     Label3: TLabel;
     cxDBLabel1: TcxDBLabel;
     btnUpdate: TSpeedButton;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
   private
     FUpdateDomicilio: TBasicAction;
     procedure SetUpdateDomicilio(const Value: TBasicAction);

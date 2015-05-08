@@ -1,13 +1,14 @@
-inherited dmCuentasGastos: TdmCuentasGastos
+inherited dmCuentasInternas: TdmCuentasInternas
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdCuentaGasto, IdPersona, CuentaGasto, DescripcionGasto, ' +
-      'IdCuentaGastoPadre FROM CuentasGastos'
+      'SELECT IdCuentaInterna, IdPersona, CuentaInterna, Descripcion, I' +
+      'dCuentaInternaPadre FROM CuentasInternas'
     Left = 32
     Top = 24
-    object adodsMasterIdCuentaGasto: TAutoIncField
-      FieldName = 'IdCuentaGasto'
+    object adodsMasterIdCuentaInterna: TAutoIncField
+      FieldName = 'IdCuentaInterna'
       ReadOnly = True
       Visible = False
     end
@@ -22,32 +23,29 @@ inherited dmCuentasGastos: TdmCuentasGastos
       LookupKeyFields = 'IdPersona'
       LookupResultField = 'RazonSocial'
       KeyFields = 'IdPersona'
-      Size = 200
+      Size = 50
       Lookup = True
     end
-    object adodsMasterCuentaGasto: TStringField
-      DisplayLabel = 'Cuenta Gasto'
-      FieldName = 'CuentaGasto'
+    object adodsMasterCuentaInterna: TStringField
+      FieldName = 'CuentaInterna'
       Size = 50
     end
-    object adodsMasterDescripcionGasto: TStringField
-      DisplayLabel = 'Descripcion Gasto'
-      FieldName = 'DescripcionGasto'
+    object adodsMasterDescripcion: TStringField
+      FieldName = 'Descripcion'
       Size = 200
     end
-    object adodsMasterIdCuentaGastoPadre: TIntegerField
-      FieldName = 'IdCuentaGastoPadre'
+    object adodsMasterIdCuentaInternaPadre: TIntegerField
+      FieldName = 'IdCuentaInternaPadre'
       Visible = False
     end
-    object adodsMasterCuentaGastoPadre: TStringField
-      DisplayLabel = 'Cuenta Gasto Padre'
+    object adodsMasterCuentaInternaPadre: TStringField
       FieldKind = fkLookup
-      FieldName = 'CuentaGastoPadre'
-      LookupDataSet = adodsCuentaGastoPadre
-      LookupKeyFields = 'IdCuentaGasto'
-      LookupResultField = 'CuentaGasto'
-      KeyFields = 'IdCuentaGastoPadre'
-      Size = 100
+      FieldName = 'CuentaInternaPadre'
+      LookupDataSet = adodsCuentaInternaPadre
+      LookupKeyFields = 'IdCuentaInterna'
+      LookupResultField = 'CuentaInterna'
+      KeyFields = 'IdCuentaInterna'
+      Size = 50
       Lookup = True
     end
   end
@@ -59,12 +57,12 @@ inherited dmCuentasGastos: TdmCuentasGastos
     Left = 152
     Top = 88
   end
-  object adodsCuentaGastoPadre: TADODataSet
+  object adodsCuentaInternaPadre: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdCuentaGasto, CuentaGasto, DescripcionGasto FROM Cuentas' +
-      'Gastos'
+      'SELECT IdCuentaInterna, CuentaInterna, Descripcion FROM CuentasI' +
+      'nternas'
     Parameters = <>
     Left = 152
     Top = 160

@@ -1,5 +1,5 @@
-inherited frmCuentasGastosEdit: TfrmCuentasGastosEdit
-  Caption = 'Cuenta Gasto'
+inherited frmCuentasInternasEdit: TfrmCuentasInternasEdit
+  Caption = 'Cuenta Interna'
   ClientHeight = 268
   ClientWidth = 524
   ExplicitWidth = 530
@@ -9,13 +9,15 @@ inherited frmCuentasGastosEdit: TfrmCuentasGastosEdit
   inherited pcMain: TcxPageControl
     Width = 524
     Height = 227
+    ExplicitWidth = 524
+    ExplicitHeight = 227
     ClientRectBottom = 225
     ClientRectRight = 522
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = -22
-      ExplicitTop = 30
-      ExplicitWidth = 539
-      ExplicitHeight = 295
+      ExplicitLeft = 2
+      ExplicitTop = 28
+      ExplicitWidth = 520
+      ExplicitHeight = 197
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -26,30 +28,30 @@ inherited frmCuentasGastosEdit: TfrmCuentasGastosEdit
       object Label2: TLabel
         Left = 16
         Top = 56
-        Width = 66
+        Width = 74
         Height = 13
-        Caption = 'Cuenta Gasto'
+        Caption = 'Cuenta Interna'
         FocusControl = cxDBTextEdit1
       end
       object Label3: TLabel
         Left = 16
         Top = 96
-        Width = 85
+        Width = 54
         Height = 13
-        Caption = 'Descripcion Gasto'
+        Caption = 'Descripcion'
         FocusControl = cxDBTextEdit2
       end
       object Label4: TLabel
         Left = 16
         Top = 136
-        Width = 97
+        Width = 105
         Height = 13
-        Caption = 'Cuenta Gasto Padre'
+        Caption = 'Cuenta Interna Padre'
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16
         Top = 72
-        DataBinding.DataField = 'CuentaGasto'
+        DataBinding.DataField = 'CuentaInterna'
         DataBinding.DataSource = DataSource
         TabOrder = 0
         Width = 193
@@ -57,7 +59,7 @@ inherited frmCuentasGastosEdit: TfrmCuentasGastosEdit
       object cxDBTextEdit2: TcxDBTextEdit
         Left = 16
         Top = 112
-        DataBinding.DataField = 'DescripcionGasto'
+        DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = DataSource
         TabOrder = 1
         Width = 489
@@ -74,7 +76,7 @@ inherited frmCuentasGastosEdit: TfrmCuentasGastosEdit
       object cxDBLookupComboBox2: TcxDBLookupComboBox
         Left = 16
         Top = 151
-        DataBinding.DataField = 'CuentaGastoPadre'
+        DataBinding.DataField = 'CuentaInternaPadre'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
         TabOrder = 3
@@ -85,11 +87,15 @@ inherited frmCuentasGastosEdit: TfrmCuentasGastosEdit
   inherited pmlMain: TPanel
     Top = 227
     Width = 524
+    ExplicitTop = 227
+    ExplicitWidth = 524
     inherited btnOk: TButton
       Left = 361
+      ExplicitLeft = 361
     end
     inherited btnCancel: TButton
       Left = 442
+      ExplicitLeft = 442
     end
   end
   inherited cxImageList: TcxImageList

@@ -40,12 +40,12 @@ uses DocumentosDM, CuentasBancariasDocumentosForm;
 procedure TdmCuentasBancariasDocumentos.actEditaDocumentoExecute(
   Sender: TObject);
 var
-  dmDocumentos: TdmDocumentos;
-  Id: Integer;
+  dmDocumentos : TdmDocumentos;
+  Id : Integer;
 begin
   inherited;
   dmDocumentos := TdmDocumentos.Create(nil);
-  dmDocumentos.FileAllowed:= faAll;
+  dmDocumentos.FileAllowed := faAll;
   Id := adodsMasterIdDocumento.AsInteger;
   if Id  <> 0 then
   begin
@@ -58,12 +58,12 @@ end;
 procedure TdmCuentasBancariasDocumentos.actExpedienteDigitalExecute(
   Sender: TObject);
 var
-  dmDocumentos: TdmDocumentos;
-  Id: Integer;
+  dmDocumentos : TdmDocumentos;
+  Id : Integer;
 begin
   inherited;
   dmDocumentos := TdmDocumentos.Create(nil);
-  dmDocumentos.FileAllowed:= faAll;
+  dmDocumentos.FileAllowed := faAll;
   Id := adodsMasterIdDocumento.AsInteger;
   if Id  <> 0 then
   begin
@@ -76,7 +76,7 @@ begin
     if  Id <> 0 then
     begin
       adodsDocumento.Requery();
-      adodsMasterIdDocumento.AsInteger:= Id;
+      adodsMasterIdDocumento.AsInteger := Id;
     end;
   end;
   dmDocumentos.Free;
@@ -90,15 +90,15 @@ var
 begin
   inherited;
   dmDocumentos := TdmDocumentos.Create(nil);
-  dmDocumentos.FileAllowed:= faAll;
+  dmDocumentos.FileAllowed := faAll;
   Id := adodsMasterIdDocumento.AsInteger;
   if Id = 0 then
   begin
-    Id:= dmDocumentos.Add;
+    Id := dmDocumentos.Add;
     if  Id <> 0 then
     begin
       adodsDocumento.Requery();
-      adodsMasterIdDocumento.AsInteger:= Id;
+      adodsMasterIdDocumento.AsInteger := Id;
     end;
   end;
   dmDocumentos.Free;
@@ -110,6 +110,8 @@ begin
   gGridForm := TfrmCuentasBancariasDocumentos.Create(Self);
   gGridForm.DataSet := adodsMaster;
   TfrmCuentasBancariasDocumentos(gGridForm).UpdateFile := actExpedienteDigital;
+  TfrmCuentasBancariasDocumentos(gGridForm).NuevoFile := actNuevoDocumento;
+  TfrmCuentasBancariasDocumentos(gGridForm).EditaFile := actEditaDocumento;
 end;
 
 end.

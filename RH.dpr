@@ -166,10 +166,11 @@ uses
   CuentasContablesDM in 'Catalogos\CuentasContablesDM.pas' {dmCuentasContables: TDataModule},
   CuentasContablesForm in 'Catalogos\CuentasContablesForm.pas' {frmCuentasContables},
   CuentasContablesEdit in 'Catalogos\CuentasContablesEdit.pas' {frmCuentasContablesEdit},
-  CuentasGastosDM in 'Catalogos\CuentasGastosDM.pas' {dmCuentasGastos: TDataModule},
-  CuentasGastosForm in 'Catalogos\CuentasGastosForm.pas' {frmCuentasGastos},
-  CuentasGastosEdit in 'Catalogos\CuentasGastosEdit.pas' {frmCuentasGastosEdit},
-  _ReportDMod in 'Standard\_ReportDMod.pas' {_dmReport: TDataModule};
+  _ReportDMod in 'Standard\_ReportDMod.pas' {_dmReport: TDataModule},
+  CuentasInternasDM in 'Catalogos\CuentasInternasDM.pas' {dmCuentasInternas: TDataModule},
+  CuentasInternasEdit in 'Catalogos\CuentasInternasEdit.pas' {frmCuentasInternasEdit},
+  CuentasInternasForm in 'Catalogos\CuentasInternasForm.pas' {frmCuentasInternas},
+  ReporteMovimientosDM in 'Reportes\ReporteMovimientosDM.pas' {dmReporteMovimientos: TDataModule};
 
 {$R *.res}
 

@@ -11,7 +11,6 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 719
     Height = 373
-    Properties.ActivePage = tsExpedienteDigital
     ExplicitWidth = 719
     ExplicitHeight = 373
     ClientRectBottom = 371

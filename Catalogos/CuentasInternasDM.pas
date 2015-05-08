@@ -1,4 +1,4 @@
-unit CuentasGastosDM;
+unit CuentasInternasDM;
 
 interface
 
@@ -7,16 +7,16 @@ uses
   Data.DB, Data.Win.ADODB;
 
 type
-  TdmCuentasGastos = class(T_dmStandar)
+  TdmCuentasInternas = class(T_dmStandar)
     adodsPersona: TADODataSet;
-    adodsCuentaGastoPadre: TADODataSet;
-    adodsMasterIdCuentaGasto: TAutoIncField;
+    adodsCuentaInternaPadre: TADODataSet;
+    adodsMasterIdCuentaInterna: TAutoIncField;
     adodsMasterIdPersona: TIntegerField;
-    adodsMasterCuentaGasto: TStringField;
-    adodsMasterDescripcionGasto: TStringField;
-    adodsMasterIdCuentaGastoPadre: TIntegerField;
+    adodsMasterCuentaInterna: TStringField;
+    adodsMasterDescripcion: TStringField;
+    adodsMasterIdCuentaInternaPadre: TIntegerField;
     adodsMasterPersona: TStringField;
-    adodsMasterCuentaGastoPadre: TStringField;
+    adodsMasterCuentaInternaPadre: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -28,14 +28,14 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses CuentasGastosForm;
+uses CuentasInternasForm;
 
 {$R *.dfm}
 
-procedure TdmCuentasGastos.DataModuleCreate(Sender: TObject);
+procedure TdmCuentasInternas.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm:= TfrmCuentasGastos.Create(Self);
+  gGridForm:= TfrmCuentasInternas.Create(Self);
   gGridForm.DataSet:= adodsMaster;
 end;
 

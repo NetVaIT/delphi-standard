@@ -12,14 +12,14 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     Width = 624
     Height = 437
     ExplicitWidth = 624
-    ExplicitHeight = 529
+    ExplicitHeight = 437
     ClientRectBottom = 435
     ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 620
-      ExplicitHeight = 499
+      ExplicitHeight = 407
       object pnlPersona: TPanel
         Left = 0
         Top = 0
@@ -152,8 +152,6 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         BevelOuter = bvNone
         TabOrder = 2
         Visible = False
-        ExplicitLeft = 16
-        ExplicitTop = 141
         object Label5: TLabel
           Left = 16
           Top = 2
@@ -211,9 +209,9 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         object Label13: TLabel
           Left = 16
           Top = 207
-          Width = 30
+          Width = 58
           Height = 13
-          Caption = 'Titular'
+          Caption = 'Asociado de'
         end
         object Label14: TLabel
           Left = 16
@@ -311,40 +309,33 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
-        ExplicitTop = 417
-        ExplicitHeight = 82
       end
     end
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
-      ExplicitHeight = 499
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
-      ExplicitHeight = 499
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
-      ExplicitHeight = 499
     end
     object tsContacto: TcxTabSheet
       Caption = 'Contactos'
       ImageIndex = 4
-      ExplicitHeight = 499
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
       ImageIndex = 5
-      ExplicitHeight = 499
     end
   end
   inherited pmlMain: TPanel
     Top = 437
     Width = 624
-    ExplicitTop = 529
+    ExplicitTop = 437
     ExplicitWidth = 624
     inherited btnOk: TButton
       Left = 461

@@ -1,5 +1,5 @@
-inherited frmCuentasGastos: TfrmCuentasGastos
-  Caption = 'frmCuentasGastos'
+inherited frmCuentasInternas: TfrmCuentasInternas
+  Caption = 'Cuentas Internas'
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
@@ -12,8 +12,8 @@ inherited frmCuentasGastos: TfrmCuentasGastos
       ExplicitWidth = 651
       ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdCuentaGasto: TcxGridDBColumn
-          DataBinding.FieldName = 'IdCuentaGasto'
+        object tvMasterIdCuentaInterna: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaInterna'
           Visible = False
         end
         object tvMasterIdPersona: TcxGridDBColumn
@@ -23,18 +23,18 @@ inherited frmCuentasGastos: TfrmCuentasGastos
         object tvMasterPersona: TcxGridDBColumn
           DataBinding.FieldName = 'Persona'
         end
-        object tvMasterCuentaGasto: TcxGridDBColumn
-          DataBinding.FieldName = 'CuentaGasto'
+        object tvMasterCuentaInterna: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaInterna'
         end
-        object tvMasterDescripcionGasto: TcxGridDBColumn
-          DataBinding.FieldName = 'DescripcionGasto'
+        object tvMasterDescripcion: TcxGridDBColumn
+          DataBinding.FieldName = 'Descripcion'
         end
-        object tvMasterIdCuentaGastoPadre: TcxGridDBColumn
-          DataBinding.FieldName = 'IdCuentaGastoPadre'
+        object tvMasterIdCuentaInternaPadre: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaInternaPadre'
           Visible = False
         end
-        object tvMasterCuentaGastoPadre: TcxGridDBColumn
-          DataBinding.FieldName = 'CuentaGastoPadre'
+        object tvMasterCuentaInternaPadre: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaInternaPadre'
         end
       end
     end
