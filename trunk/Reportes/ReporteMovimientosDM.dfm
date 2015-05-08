@@ -46,8 +46,8 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
     object dbpReportppField1: TppField
       FieldAlias = 'Persona'
       FieldName = 'Persona'
-      FieldLength = 300
-      DisplayWidth = 300
+      FieldLength = 0
+      DisplayWidth = 0
       Position = 0
     end
     object dbpReportppField2: TppField
@@ -78,24 +78,21 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
     AutoStop = True
     DataPipeline = nil
     PrinterSetup.Orientation = poLandscape
-    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.mmPaperHeight = 215900
     PrinterSetup.mmPaperWidth = 279400
-    Left = 264
     DataPipelineName = ''
     inherited ppTitleBand1: TppTitleBand
       inherited pplblTitle: TppLabel
         SaveOrder = -1
+        mmWidth = 272521
         LayerName = Foreground
       end
     end
     inherited ppHeaderBand1: TppHeaderBand
       PrintHeight = phDynamic
-      mmHeight = 18256
     end
     inherited ppDetailBand1: TppDetailBand
       PrintHeight = phDynamic
-      mmHeight = 14552
       object ppCrossTab1: TppCrossTab
         UserName = 'CrossTab1'
         DataPipeline = dbpReport
@@ -105,7 +102,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
         DataPipelineName = 'dbpReport'
         mmHeight = 5027
         mmLeft = 0
-        mmTop = 3704
+        mmTop = 1058
         mmWidth = 266700
         BandType = 4
         LayerName = Foreground
@@ -128,6 +125,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
           object TppTotalDef
             ChildType = 3
             Color = clWhite
+            DisplayFormat = '$#,0.00;-$#,0.00'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -149,6 +147,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
           object TppTotalDef
             ChildType = 3
             Color = clWhite
+            DisplayFormat = '$#,0.00;-$#,0.00'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -179,6 +178,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
             object TppTotalDef
               ChildType = 3
               Color = clWhite
+              DisplayFormat = '$#,0.00;-$#,0.00'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -13
@@ -210,6 +210,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
             object TppTotalDef
               ChildType = 3
               Color = clWhite
+              DisplayFormat = '$#,0.00;-$#,0.00'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -13
@@ -242,6 +243,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
             object TppTotalDef
               ChildType = 3
               Color = clWhite
+              DisplayFormat = '$#,0.00;-$#,0.00'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -13
@@ -255,6 +257,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
           FieldAlias = 'Importe'
           FieldName = 'Importe'
           Color = clWhite
+          DisplayFormat = '$#,0.00;-$#,0.00'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -274,8 +277,8 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
       end
     end
     inherited ppFooterBand1: TppFooterBand
-      mmHeight = 10319
       inherited ppLineFooter: TppLine
+        mmWidth = 264055
         LayerName = Foreground
       end
       inherited pplblPrintDate: TppSystemVariable
@@ -284,6 +287,7 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
       end
       inherited pplblPageNo: TppSystemVariable
         SaveOrder = -1
+        mmLeft = 254794
         LayerName = Foreground
       end
     end

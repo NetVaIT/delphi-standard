@@ -28,11 +28,10 @@ type
     { Private declarations }
     FTitle: string;
     procedure SetTitle(const Value: string);
-  protected
-    property Title: string read FTitle write SetTitle;
   public
     { Public declarations }
     procedure Execute; virtual; abstract;
+    property Title: string read FTitle write SetTitle;
   end;
 
 implementation

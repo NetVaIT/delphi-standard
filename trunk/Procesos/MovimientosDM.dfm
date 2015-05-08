@@ -3,6 +3,7 @@ inherited dmMovimientos: TdmMovimientos
   Height = 484
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    AfterScroll = adodsMasterAfterScroll
     CommandText = 
       'select IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha,' +
       ' Ingresos, Descuentos, Neto, Percepciones, Deducciones, Prestaci' +
@@ -111,7 +112,6 @@ inherited dmMovimientos: TdmMovimientos
     end
   end
   object adodsPersona: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
@@ -119,17 +119,7 @@ inherited dmMovimientos: TdmMovimientos
     Left = 192
     Top = 24
   end
-  object adodsPersonaR: TADODataSet
-    Active = True
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'select IdPersona, RazonSocial from Personas'
-    Parameters = <>
-    Left = 192
-    Top = 256
-  end
   object adodsPeriodo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
@@ -146,22 +136,9 @@ inherited dmMovimientos: TdmMovimientos
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT MovimientosDetalle.IdMovimientoDetalle, MovimientosDetall' +
-      'e.IdMovimiento, MovimientosDetalle.IdPersonaRelacionada,  Movimi' +
-      'entosDetalle.IdMovimientoTipo, MovimientosDetalle.Importe, Movim' +
-      'ientosDetalle.IdMovimientoEstatus, '#13#10'MovimientosTipos.Descripcio' +
-      'n AS Tipo, MovimientosTiposCategorias.Descripcion AS Categoria, ' +
-      'MovimientosTiposEfectos.Descripcion AS Efecto, MovimientosEstatu' +
-      's.Descripcion AS Estatus'#13#10'FROM MovimientosDetalle INNER JOIN'#13#10'Mo' +
-      'vimientosTipos ON MovimientosDetalle.IdMovimientoTipo = Movimien' +
-      'tosTipos.IdMovimientoTipo INNER JOIN'#13#10'MovimientosTiposCategorias' +
-      ' ON MovimientosTipos.IdMovimientoTipoCategoria = MovimientosTipo' +
-      'sCategorias.IdMovimientoTipoCategoria INNER JOIN'#13#10'MovimientosTip' +
-      'osEfectos ON MovimientosTipos.IdMovimientoTipoEfecto = Movimient' +
-      'osTiposEfectos.IdMovimientoTipoEfecto INNER JOIN'#13#10'MovimientosEst' +
-      'atus ON MovimientosDetalle.IdMovimientoEstatus = MovimientosEsta' +
-      'tus.IdMovimientoEstatus'#13#10'WHERE MovimientosDetalle.IdMovimiento =' +
-      ' :IdMovimiento'
+      'select IdMovimientoDetalle, IdMovimiento, IdPersonaRol, IdMovimi' +
+      'entoTipo, IdMovimientoEstatus, IdCuentaXPagar, Importe from Movi' +
+      'mientosDetalle'#13#10'WHERE IdMovimiento = :IdMovimiento'
     DataSource = dsMaster
     MasterFields = 'IdMovimiento'
     Parameters = <
@@ -184,8 +161,8 @@ inherited dmMovimientos: TdmMovimientos
       FieldName = 'IdMovimiento'
       Visible = False
     end
-    object adodsMovimientosDetIdPersonaRelacionada: TIntegerField
-      FieldName = 'IdPersonaRelacionada'
+    object adodsMovimientosDetIdPersonaRol: TIntegerField
+      FieldName = 'IdPersonaRol'
       Visible = False
     end
     object adodsMovimientosDetIdMovimientoTipo: TIntegerField
@@ -196,20 +173,30 @@ inherited dmMovimientos: TdmMovimientos
       FieldName = 'IdMovimientoEstatus'
       Visible = False
     end
+    object adodsMovimientosDetIdCuentaXPagar: TIntegerField
+      FieldName = 'IdCuentaXPagar'
+      Visible = False
+    end
     object adodsMovimientosDetPersonaRelacionada: TStringField
       DisplayLabel = 'Persona relacionada'
       FieldKind = fkLookup
       FieldName = 'PersonaRelacionada'
-      LookupDataSet = adodsPersonaR
-      LookupKeyFields = 'IdPersona'
-      LookupResultField = 'RazonSocial'
-      KeyFields = 'IdPersonaRelacionada'
+      LookupDataSet = adodsPersonaRol
+      LookupKeyFields = 'IdPersonaRol'
+      LookupResultField = 'PersonaRelacionada'
+      KeyFields = 'IdPersonaRol'
       Size = 500
       Lookup = True
     end
     object adodsMovimientosDetTipo: TStringField
+      FieldKind = fkLookup
       FieldName = 'Tipo'
+      LookupDataSet = adodsMovimientosTipo
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'Tipo'
+      KeyFields = 'IdMovimientoTipo'
       Size = 100
+      Lookup = True
     end
     object adodsMovimientosDetImporte: TFMTBCDField
       FieldName = 'Importe'
@@ -217,26 +204,16 @@ inherited dmMovimientos: TdmMovimientos
       Precision = 18
       Size = 6
     end
-    object adodsMovimientosDetCategoria: TStringField
-      FieldName = 'Categoria'
-      Size = 100
-    end
-    object adodsMovimientosDetEfecto: TStringField
-      FieldName = 'Efecto'
-      Size = 100
-    end
     object adodsMovimientosDetEstatus: TStringField
+      FieldKind = fkLookup
       FieldName = 'Estatus'
-      Size = 100
+      LookupDataSet = adodsMovimientosEstatus
+      LookupKeyFields = 'IdMovimientoEstatus'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoEstatus'
+      Size = 50
+      Lookup = True
     end
-  end
-  object adodsMovimientosTipo: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
-    Parameters = <>
-    Left = 192
-    Top = 200
   end
   object adocGetPeriodoActual: TADOCommand
     CommandText = 
@@ -275,5 +252,44 @@ inherited dmMovimientos: TdmMovimientos
       end>
     Left = 48
     Top = 400
+  end
+  object adodsPersonaRol: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT        PersonasRoles.IdPersonaRol, PersonasRoles.IdPerson' +
+      'a, Roles.Descripcion AS Rol, Personas.RazonSocial AS PersonaRela' +
+      'cionada'#13#10'FROM            PersonasRoles INNER JOIN'#13#10'             ' +
+      '            Roles ON PersonasRoles.IdRol = Roles.IdRol INNER JOI' +
+      'N'#13#10'                         Personas ON PersonasRoles.IdPersonaR' +
+      'elacionada = Personas.IdPersona'#13#10
+    Parameters = <>
+    Left = 176
+    Top = 200
+  end
+  object adodsMovimientosTipo: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT        MovimientosTipos.IdMovimientoTipo, MovimientosTipo' +
+      's.Descripcion AS Tipo, MovimientosTiposCategorias.Descripcion AS' +
+      ' Categoria, MovimientosTiposEfectos.Descripcion AS Efecto'#13#10'FROM ' +
+      '           MovimientosTipos INNER JOIN'#13#10'                        ' +
+      ' MovimientosTiposCategorias ON MovimientosTipos.IdMovimientoTipo' +
+      'Categoria = MovimientosTiposCategorias.IdMovimientoTipoCategoria' +
+      ' INNER JOIN'#13#10'                         MovimientosTiposEfectos ON' +
+      ' MovimientosTipos.IdMovimientoTipoEfecto = MovimientosTiposEfect' +
+      'os.IdMovimientoTipoEfecto'
+    Parameters = <>
+    Left = 176
+    Top = 256
+  end
+  object adodsMovimientosEstatus: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMovimientoEstatus, Descripcion from MovimientosEstatus'
+    Parameters = <>
+    Left = 176
+    Top = 320
   end
 end

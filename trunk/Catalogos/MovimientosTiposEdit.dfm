@@ -1,23 +1,23 @@
 inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
-  ClientHeight = 566
+  ClientHeight = 561
   ClientWidth = 542
   ExplicitWidth = 548
-  ExplicitHeight = 595
+  ExplicitHeight = 590
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 542
-    Height = 525
+    Height = 520
     ExplicitWidth = 542
-    ExplicitHeight = 397
-    ClientRectBottom = 523
+    ExplicitHeight = 520
+    ClientRectBottom = 518
     ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 538
-      ExplicitHeight = 367
+      ExplicitHeight = 490
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -60,15 +60,15 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
       end
       object Label6: TLabel
         Left = 24
-        Top = 320
-        Width = 101
+        Top = 347
+        Width = 110
         Height = 13
-        Caption = 'Acumular movimiento'
+        Caption = 'Acumular a movimiento'
         FocusControl = DBLookupComboBox1
       end
       object Label7: TLabel
         Left = 24
-        Top = 408
+        Top = 435
         Width = 102
         Height = 13
         Caption = 'Porcentaje de c'#225'lculo'
@@ -111,11 +111,11 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 24
         Top = 184
-        Caption = 'Descuento'
+        Caption = 'Descontar al ingreso'
         DataBinding.DataField = 'Descuento'
         DataBinding.DataSource = DataSource
         TabOrder = 4
-        Width = 121
+        Width = 200
       end
       object cxDBTextEdit3: TcxDBTextEdit
         Left = 24
@@ -127,34 +127,34 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
       end
       object cxDBCheckBox2: TcxDBCheckBox
         Left = 24
-        Top = 248
+        Top = 251
         Caption = 'Produce CXC'
         DataBinding.DataField = 'ProduceCXC'
         DataBinding.DataSource = DataSource
         TabOrder = 6
-        Width = 121
+        Width = 200
       end
       object cxDBCheckBox3: TcxDBCheckBox
         Left = 24
-        Top = 272
+        Top = 275
         Caption = 'Produce CXP'
         DataBinding.DataField = 'ProduceCXP'
         DataBinding.DataSource = DataSource
         TabOrder = 7
-        Width = 121
+        Width = 200
       end
       object cxDBCheckBox4: TcxDBCheckBox
         Left = 24
-        Top = 296
-        Caption = 'Agrupar por tipo'
+        Top = 299
+        Caption = 'Agrupar por tipo de movimiento'
         DataBinding.DataField = 'AgruparTipo'
         DataBinding.DataSource = DataSource
         TabOrder = 8
-        Width = 121
+        Width = 200
       end
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 24
-        Top = 336
+        Top = 363
         Width = 304
         Height = 21
         DataField = 'MovimientoTipo'
@@ -163,25 +163,25 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
       end
       object cxDBCheckBox5: TcxDBCheckBox
         Left = 24
-        Top = 360
+        Top = 387
         Caption = 'Aplicar ISR Mensual'
         DataBinding.DataField = 'AplicarISR'
         DataBinding.DataSource = DataSource
         TabOrder = 10
-        Width = 121
+        Width = 200
       end
       object cxDBCheckBox6: TcxDBCheckBox
         Left = 24
-        Top = 384
+        Top = 411
         Caption = 'Base para c'#225'lculo'
         DataBinding.DataField = 'BaseCalculo'
         DataBinding.DataSource = DataSource
         TabOrder = 11
-        Width = 121
+        Width = 200
       end
       object cxDBTextEdit4: TcxDBTextEdit
         Left = 24
-        Top = 424
+        Top = 451
         DataBinding.DataField = 'PorcentajeCalculo'
         DataBinding.DataSource = DataSource
         TabOrder = 12
@@ -189,19 +189,19 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
       end
       object cxDBCheckBox7: TcxDBCheckBox
         Left = 24
-        Top = 448
+        Top = 324
         Caption = 'Acumular mensualmente'
         DataBinding.DataField = 'AcumularMensualmente'
         DataBinding.DataSource = DataSource
         TabOrder = 13
-        Width = 161
+        Width = 200
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 525
+    Top = 520
     Width = 542
-    ExplicitTop = 397
+    ExplicitTop = 520
     ExplicitWidth = 542
     inherited btnOk: TButton
       Left = 379

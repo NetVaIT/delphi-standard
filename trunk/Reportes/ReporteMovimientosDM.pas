@@ -5,25 +5,22 @@ interface
 uses
   System.SysUtils, System.Classes, _ReportDMod, ppParameter, ppDesignLayer,
   ppVar, ppCtrls, ppBands, ppPrnabl, ppClass, ppCache, ppProd, ppReport, ppComm,
-  ppRelatv, ppDB, ppDBPipe, Data.DB, Data.Win.ADODB, ppStrtch, ppCTMain,
-  ReporteMovimientosForm;
+  ppRelatv, ppDB, ppDBPipe, Data.DB, Data.Win.ADODB, ppStrtch, ppCTMain;
 
 type
   TdmReporteMovimientos = class(T_dmReport)
-    ppCrossTab1: TppCrossTab;
     adodsReportPersona: TStringField;
     adodsReportCatagoria: TStringField;
     adodsReportTipo: TStringField;
     adodsReportImporte: TFMTBCDField;
     adodsPeriodos: TADODataSet;
+    ppCrossTab1: TppCrossTab;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
-  protected
-    gParametrosForm: TfrmReporteMovimientos;
   public
     { Public declarations }
-    procedure Execute;
+    procedure Execute; reintroduce;
   end;
 
 implementation

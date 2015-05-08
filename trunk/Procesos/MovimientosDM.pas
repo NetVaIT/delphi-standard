@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
-  Data.DB, Data.Win.ADODB;
+  Data.DB, Data.Win.ADODB, Dialogs;
 
 type
   TdmMovimientos = class(T_dmStandar)
@@ -14,24 +14,11 @@ type
     adodsMasterIdPeriodo: TIntegerField;
     adodsMasterFecha: TDateTimeField;
     adodsPersona: TADODataSet;
-    adodsPersonaR: TADODataSet;
     adodsPeriodo: TADODataSet;
     adodsMasterPersona: TStringField;
     adodsMasterPariodo: TStringField;
     dsMaster: TDataSource;
     adodsMovimientosDet: TADODataSet;
-    adodsMovimientosTipo: TADODataSet;
-    adodsMovimientosDetIdMovimientoDetalle: TAutoIncField;
-    adodsMovimientosDetIdMovimiento: TIntegerField;
-    adodsMovimientosDetIdMovimientoTipo: TIntegerField;
-    adodsMovimientosDetImporte: TFMTBCDField;
-    adodsMovimientosDetIdMovimientoEstatus: TIntegerField;
-    adodsMovimientosDetTipo: TStringField;
-    adodsMovimientosDetCategoria: TStringField;
-    adodsMovimientosDetEfecto: TStringField;
-    adodsMovimientosDetEstatus: TStringField;
-    adodsMovimientosDetIdPersonaRelacionada: TIntegerField;
-    adodsMovimientosDetPersonaRelacionada: TStringField;
     adocGetPeriodoActual: TADOCommand;
     actMovimientosCalculados: TAction;
     adospMovimientosCalculados: TADOStoredProc;
@@ -44,8 +31,22 @@ type
     adodsMasterObligaciones: TFMTBCDField;
     adodsMasterOperaciones: TFMTBCDField;
     adodsMasterCosto: TFMTBCDField;
+    adodsPersonaRol: TADODataSet;
+    adodsMovimientosTipo: TADODataSet;
+    adodsMovimientosDetIdMovimientoDetalle: TAutoIncField;
+    adodsMovimientosDetIdMovimiento: TIntegerField;
+    adodsMovimientosDetIdPersonaRol: TIntegerField;
+    adodsMovimientosDetIdMovimientoTipo: TIntegerField;
+    adodsMovimientosDetIdMovimientoEstatus: TIntegerField;
+    adodsMovimientosDetImporte: TFMTBCDField;
+    adodsMovimientosDetPersonaRelacionada: TStringField;
+    adodsMovimientosDetTipo: TStringField;
+    adodsMovimientosEstatus: TADODataSet;
+    adodsMovimientosDetEstatus: TStringField;
+    adodsMovimientosDetIdCuentaXPagar: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actMovimientosCalculadosExecute(Sender: TObject);
+    procedure adodsMasterAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
     function SetMovimientosCalculados: Boolean;
@@ -65,6 +66,14 @@ procedure TdmMovimientos.actMovimientosCalculadosExecute(Sender: TObject);
 begin
   inherited;
   SetMovimientosCalculados;
+end;
+
+procedure TdmMovimientos.adodsMasterAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  adodsPersonaRol.Filtered:= False;
+  adodsPersonaRol.Filter:= 'IdPersona = ' + adodsMasterIdPersona.AsString;
+  adodsPersonaRol.Filtered:= True;
 end;
 
 procedure TdmMovimientos.DataModuleCreate(Sender: TObject);

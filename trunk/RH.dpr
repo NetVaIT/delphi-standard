@@ -170,7 +170,9 @@ uses
   CuentasInternasDM in 'Catalogos\CuentasInternasDM.pas' {dmCuentasInternas: TDataModule},
   CuentasInternasEdit in 'Catalogos\CuentasInternasEdit.pas' {frmCuentasInternasEdit},
   CuentasInternasForm in 'Catalogos\CuentasInternasForm.pas' {frmCuentasInternas},
-  ReporteMovimientosDM in 'Reportes\ReporteMovimientosDM.pas' {dmReporteMovimientos: TDataModule};
+  ReporteMovimientosDM in 'Reportes\ReporteMovimientosDM.pas' {dmReporteMovimientos: TDataModule},
+  CuentasXPagarDM in 'Procesos\CuentasXPagarDM.pas' {dmCuentasXPagar: TDataModule},
+  CuentasXPagarForm in 'Procesos\CuentasXPagarForm.pas' {frmCuentasXPagar};
 
 {$R *.res}
 

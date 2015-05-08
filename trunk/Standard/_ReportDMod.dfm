@@ -59,13 +59,14 @@ object _dmReport: T_dmReport
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PreviewFormSettings.WindowState = wsMaximized
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
     TextFileName = '($MyDocuments)\Report.pdf'
-    TextSearchSettings.DefaultString = '<Texto a buscar>'
+    TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
     XLSSettings.AppName = 'ReportBuilder'
     XLSSettings.Author = 'ReportBuilder'
@@ -83,6 +84,7 @@ object _dmReport: T_dmReport
       mmPrintPosition = 0
       object pplblTitle: TppLabel
         UserName = 'Titulo'
+        Anchors = [atLeft, atTop, atRight, atBottom]
         AutoSize = False
         Caption = 'dbpReport'
         Font.Charset = DEFAULT_CHARSET
@@ -120,6 +122,7 @@ object _dmReport: T_dmReport
       mmPrintPosition = 0
       object ppLineFooter: TppLine
         UserName = 'LineFooter'
+        Anchors = [atLeft, atTop, atRight, atBottom]
         Pen.Color = clGray
         Pen.Width = 2
         Weight = 1.500000000000000000
@@ -148,6 +151,7 @@ object _dmReport: T_dmReport
       end
       object pplblPageNo: TppSystemVariable
         UserName = 'lblPageNo'
+        Anchors = [atRight, atBottom]
         VarType = vtPageNoDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
