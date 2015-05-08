@@ -1,4 +1,4 @@
-unit MovimientosDetalleFrm;
+unit CuentasXPagarForm;
 
 interface
 
@@ -30,18 +30,26 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmMovimientosDetalle = class(T_frmGrid)
-    tvMasterIdMovimientoDetalle: TcxGridDBColumn;
-    tvMasterIdMovimiento: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoEstatus: TcxGridDBColumn;
-    tvMasterImporte: TcxGridDBColumn;
-    tvMasterPersonaRelacionada: TcxGridDBColumn;
-    tvMasterTipo: TcxGridDBColumn;
-    tvMasterEstatus: TcxGridDBColumn;
+  TfrmCuentasXPagar = class(T_frmGrid)
     tvMasterIdCuentaXPagar: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+    tvMasterIdPersonaRol: TcxGridDBColumn;
+    tvMasterIdPeriodo: TcxGridDBColumn;
+    tvMasterIdCuentaXPagarEstatus: TcxGridDBColumn;
+    tvMasterPersona: TcxGridDBColumn;
+    tvMasterPersonaRelacionada: TcxGridDBColumn;
+    tvMasterConceptoGenerico: TcxGridDBColumn;
+    tvMasterSumaSubtotal: TcxGridDBColumn;
+    tvMasterSumaTotal: TcxGridDBColumn;
+    tvMasterSumaDescuentos: TcxGridDBColumn;
+    tvMasterTotalIVATrasladado: TcxGridDBColumn;
+    tvMasterTotalISRTrasladado: TcxGridDBColumn;
+    tvMasterTotalIEPSTrasladado: TcxGridDBColumn;
+    tvMasterTotalLocalesTrasladado: TcxGridDBColumn;
+    tvMasterTotalIVARetenido: TcxGridDBColumn;
+    tvMasterTotalISRRetenido: TcxGridDBColumn;
+    tvMasterTotalLocalesRetenido: TcxGridDBColumn;
+    tvMasterSaldoPendiente: TcxGridDBColumn;
+    tvMasterEstatus: TcxGridDBColumn;
   private
     { Private declarations }
   public
@@ -52,12 +60,8 @@ implementation
 
 {$R *.dfm}
 
-uses MovimientosDM, MovimientosDetalleEdit;
+uses CuentasXPagarDM;
 
-procedure TfrmMovimientosDetalle.FormCreate(Sender: TObject);
-begin
-  inherited;
-  gEditForm:= TfrmMovimientosDetalleEdit.Create(Self);
-end;
+{ TfrmCuentasXPagar }
 
 end.

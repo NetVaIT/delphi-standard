@@ -100,6 +100,8 @@ type
     dxBarManagerBar2: TdxBar;
     dxBarLargeButton25: TdxBarLargeButton;
     actReporteMovimientos: TAction;
+    dxBarButton9: TdxBarButton;
+    actCuentasXPagar: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -124,7 +126,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
-  CuentasContablesDM, CuentasInternasDM, ReporteMovimientosDM;
+  CuentasContablesDM, CuentasInternasDM, ReporteMovimientosDM, CuentasXPagarDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -152,6 +154,8 @@ begin
    12: gModulo := TdmEsquemaPagos.Create(Self);
    13: gModulo := TdmMovimientosTipo.Create(Self);
    14: gModulo := TdmInstruccionesTipos.Create(Self);
+   15: gModulo := TdmCuentasContables.Create(Self);
+   16: gModulo := TdmCuentasInternas.Create(Self);
    20: begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rNone;
@@ -187,8 +191,7 @@ begin
    30: gModulo := TdmInstrucciones.Create(Self);
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);
-   33: gModulo := TdmCuentasContables.Create(Self);
-   34: gModulo := TdmCuentasInternas.Create(Self);
+   33: gModulo := TdmCuentasXPagar.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
    50: begin
          gReport := TdmReporteMovimientos.Create(Self);

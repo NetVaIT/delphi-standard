@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -33,6 +33,7 @@ inherited frmMain: TfrmMain
       Index = 1
     end
     object dxRibbon1Tab3: TdxRibbonTab
+      Active = True
       Caption = 'Procesos'
       Groups = <
         item
@@ -49,7 +50,6 @@ inherited frmMain: TfrmMain
       Index = 3
     end
     object dxRibbon1Tab5: TdxRibbonTab
-      Active = True
       Caption = 'Reportes'
       Groups = <
         item
@@ -251,7 +251,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 86
-      FloatClientHeight = 76
+      FloatClientHeight = 98
       ItemLinks = <
         item
           Visible = True
@@ -264,6 +264,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarButton7'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton9'
         end>
       OneOnRow = True
       Row = 0
@@ -479,6 +483,10 @@ inherited frmMain: TfrmMain
       Action = actReporteMovimientos
       Category = 0
     end
+    object dxBarButton9: TdxBarButton
+      Action = actCuentasXPagar
+      Category = 0
+    end
   end
   inherited dxSkinController: TdxSkinController
     Left = 608
@@ -683,14 +691,14 @@ inherited frmMain: TfrmMain
       OnExecute = actCatalogoExecute
     end
     object actCuentasContables: TAction
-      Tag = 33
+      Tag = 15
       Category = 'Catalogos'
       Caption = 'Cuentas Contables'
       ImageIndex = 18
       OnExecute = actCatalogoExecute
     end
     object actCuentasInternas: TAction
-      Tag = 34
+      Tag = 16
       Category = 'Catalogos'
       Caption = 'Cuentas Internas'
       ImageIndex = 19
@@ -699,8 +707,15 @@ inherited frmMain: TfrmMain
     object actReporteMovimientos: TAction
       Tag = 50
       Category = 'Reportes'
-      Caption = 'Reporte Movimientos'
+      Caption = 'Movimientos por categor'#237'a'
       ImageIndex = 5
+      OnExecute = actCatalogoExecute
+    end
+    object actCuentasXPagar: TAction
+      Tag = 33
+      Category = 'Procesos'
+      Caption = 'Cuentas por pagar'
+      ImageIndex = 40
       OnExecute = actCatalogoExecute
     end
   end

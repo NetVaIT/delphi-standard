@@ -50,6 +50,8 @@ implementation
 
 {$R *.dfm}
 
+uses _Utils;
+
 procedure T_frmEdit.actCancelExecute(Sender: TObject);
 begin
   if DataSource.DataSet.State in [dsInsert, dsEdit] then
@@ -60,7 +62,12 @@ end;
 procedure T_frmEdit.actPostExecute(Sender: TObject);
 begin
   if DataSource.DataSet.State in [dsInsert, dsEdit] then
-    DataSource.DataSet.Post;
+//    try
+      DataSource.DataSet.Post;
+//    except on E: EDatabaseError do
+//      if Pos('UNIQUE KEY',E.Message)>0 then
+//        MessageDlg(strUniqueKeyError, mtError, [mbOk], 0)
+//    end;
   ModalResult:= mrOk;
 end;
 

@@ -72,6 +72,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Lookup = True
     end
     object adodsMasterDescuento: TBooleanField
+      DisplayLabel = 'Descontar al ingreso'
       FieldName = 'Descuento'
     end
     object adodsMasterValorDefault: TFMTBCDField
@@ -89,11 +90,11 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       FieldName = 'ProduceCXP'
     end
     object adodsMasterAgruparTipo: TBooleanField
-      DisplayLabel = 'Agrupar por tipo'
+      DisplayLabel = 'Agrupar por tipo de movimiento'
       FieldName = 'AgruparTipo'
     end
     object adodsMasterMovimientoTipo: TStringField
-      DisplayLabel = 'Acumular movimiento'
+      DisplayLabel = 'Acumular a movimiento'
       FieldKind = fkLookup
       FieldName = 'MovimientoTipo'
       LookupDataSet = adodsMovimientoTipo

@@ -17,10 +17,19 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
-  System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC;
+  System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
+  cxContainer, cxEdit, cxTextEdit, cxDBEdit, Vcl.DBCtrls;
 
 type
   TfrmMovimientosDetalleEdit = class(T_frmEdit)
+    Label1: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label2: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
+    Label3: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Label4: TLabel;
+    DBLookupComboBox3: TDBLookupComboBox;
   private
     { Private declarations }
   public
@@ -30,5 +39,7 @@ type
 implementation
 
 {$R *.dfm}
+
+uses MovimientosDM;
 
 end.
