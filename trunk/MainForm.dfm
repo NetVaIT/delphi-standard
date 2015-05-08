@@ -13,7 +13,6 @@ inherited frmMain: TfrmMain
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
-      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -49,6 +48,16 @@ inherited frmMain: TfrmMain
         end>
       Index = 3
     end
+    object dxRibbon1Tab5: TdxRibbonTab
+      Active = True
+      Caption = 'Reportes'
+      Groups = <
+        item
+          Caption = ''
+          ToolbarName = 'dxBarManagerBar2'
+        end>
+      Index = 4
+    end
   end
   inherited dxRibbonBackstageView1: TdxRibbonBackstageView
     inherited dxRibbonBackstageViewTabSheet1: TdxRibbonBackstageViewTabSheet
@@ -66,7 +75,8 @@ inherited frmMain: TfrmMain
     ExplicitWidth = 1099
   end
   inherited dxBarManager: TdxBarManager
-    Left = 576
+    Left = 696
+    Top = 16
     DockControlHeights = (
       0
       0
@@ -305,6 +315,26 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
+    object dxBarManagerBar2: TdxBar [9]
+      Caption = 'Custom 1'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1133
+      FloatTop = 8
+      FloatClientWidth = 130
+      FloatClientHeight = 54
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton25'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
     object dxBarLargeButton1: TdxBarLargeButton
       Action = actUbicaciones
       Category = 0
@@ -442,9 +472,17 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton24: TdxBarLargeButton
-      Action = actCuentasGastos
+      Action = actCuentasInternas
       Category = 0
     end
+    object dxBarLargeButton25: TdxBarLargeButton
+      Action = actReporteMovimientos
+      Category = 0
+    end
+  end
+  inherited dxSkinController: TdxSkinController
+    Left = 608
+    Top = 16
   end
   inherited cxSmallImages: TcxImageList
     FormatVersion = 1
@@ -455,7 +493,8 @@ inherited frmMain: TfrmMain
     DesignInfo = 12059116
   end
   inherited ActionList: TActionList
-    Left = 400
+    Left = 528
+    Top = 16
     object actCatalogo: TAction
       Category = 'Catalogos'
       Caption = 'actCatalogo'
@@ -650,11 +689,18 @@ inherited frmMain: TfrmMain
       ImageIndex = 18
       OnExecute = actCatalogoExecute
     end
-    object actCuentasGastos: TAction
+    object actCuentasInternas: TAction
       Tag = 34
       Category = 'Catalogos'
-      Caption = 'Cuentas Gastos'
+      Caption = 'Cuentas Internas'
       ImageIndex = 19
+      OnExecute = actCatalogoExecute
+    end
+    object actReporteMovimientos: TAction
+      Tag = 50
+      Category = 'Reportes'
+      Caption = 'Reporte Movimientos'
+      ImageIndex = 5
       OnExecute = actCatalogoExecute
     end
   end

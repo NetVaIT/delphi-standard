@@ -708,21 +708,26 @@
         <DCCReference Include="Catalogos\CuentasContablesEdit.pas">
             <Form>frmCuentasContablesEdit</Form>
         </DCCReference>
-        <DCCReference Include="Catalogos\CuentasGastosDM.pas">
-            <Form>dmCuentasGastos</Form>
+        <DCCReference Include="Standard\_ReportDMod.pas">
+            <Form>_dmReport</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\CuentasGastosForm.pas">
-            <Form>frmCuentasGastos</Form>
+        <DCCReference Include="Catalogos\CuentasInternasDM.pas">
+            <Form>dmCuentasInternas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasInternasEdit.pas">
+            <Form>frmCuentasInternasEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\CuentasGastosEdit.pas">
-            <Form>frmCuentasGastosEdit</Form>
+        <DCCReference Include="Catalogos\CuentasInternasForm.pas">
+            <Form>frmCuentasInternas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Standard\_ReportDMod.pas">
-            <Form>_dmReport</Form>
+        <DCCReference Include="Reportes\ReporteMovimientosDM.pas">
+            <Form>dmReporteMovimientos</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>

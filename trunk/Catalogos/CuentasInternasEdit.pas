@@ -1,4 +1,4 @@
-unit CuentasGastosEdit;
+unit CuentasInternasEdit;
 
 interface
 
@@ -22,7 +22,7 @@ uses
   cxDBLookupComboBox, cxTextEdit, cxDBEdit, Vcl.DBCtrls;
 
 type
-  TfrmCuentasGastosEdit = class(T_frmEdit)
+  TfrmCuentasInternasEdit = class(T_frmEdit)
     Label1: TLabel;
     Label2: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
@@ -41,6 +41,6 @@ implementation
 
 {$R *.dfm}
 
-uses CuentasGastosDM;
+uses CuentasInternasDM;
 
 end.

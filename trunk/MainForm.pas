@@ -21,7 +21,7 @@ uses
   Vcl.StdActns, System.Actions, Vcl.ActnList, Vcl.ImgList, dxSkinsForm, dxBar,
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
-  cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod;
+  cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod, _ReportDMod;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -95,12 +95,17 @@ type
     dxBarLargeButton23: TdxBarLargeButton;
     dxBarLargeButton24: TdxBarLargeButton;
     actCuentasContables: TAction;
-    actCuentasGastos: TAction;
+    actCuentasInternas: TAction;
+    dxRibbon1Tab5: TdxRibbonTab;
+    dxBarManagerBar2: TdxBar;
+    dxBarLargeButton25: TdxBarLargeButton;
+    actReporteMovimientos: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
   protected
     gModulo: T_dmStandar;
+    gReport: T_dmReport;
     procedure CreateModule(pModulo: Integer; pCaption: String); override;
     procedure ConfigControls; override;
     procedure DestroyModule; override;
@@ -119,7 +124,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
-  CuentasContablesDM, CuentasGastosDM;
+  CuentasContablesDM, CuentasInternasDM, ReporteMovimientosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -183,8 +188,13 @@ begin
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);
    33: gModulo := TdmCuentasContables.Create(Self);
-   34: gModulo := TdmCuentasGastos.Create(Self);
+   34: gModulo := TdmCuentasInternas.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
+   50: begin
+         gReport := TdmReporteMovimientos.Create(Self);
+         gReport.Title:=  pCaption;
+         TdmReporteMovimientos(gReport).Execute;
+       end;
   end;
   if Assigned(gModulo) then
   begin
@@ -224,7 +234,8 @@ begin
   actMovimientos.Enabled        := Conected;
   actUsuarios.Enabled           := Conected;
   actCuentasContables.Enabled   := Conected;
-  actCuentasGastos.Enabled      := Conected;
+  actCuentasInternas.Enabled    := Conected;
+  actReporteMovimientos.Enabled := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

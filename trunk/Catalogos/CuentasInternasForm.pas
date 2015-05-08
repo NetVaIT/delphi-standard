@@ -1,4 +1,4 @@
-unit CuentasGastosForm;
+unit CuentasInternasForm;
 
 interface
 
@@ -30,14 +30,14 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmCuentasGastos = class(T_frmGrid)
-    tvMasterIdCuentaGasto: TcxGridDBColumn;
+  TfrmCuentasInternas = class(T_frmGrid)
+    tvMasterIdCuentaInterna: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
-    tvMasterCuentaGasto: TcxGridDBColumn;
-    tvMasterDescripcionGasto: TcxGridDBColumn;
-    tvMasterIdCuentaGastoPadre: TcxGridDBColumn;
-    tvMasterCuentaGastoPadre: TcxGridDBColumn;
+    tvMasterCuentaInterna: TcxGridDBColumn;
+    tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterIdCuentaInternaPadre: TcxGridDBColumn;
+    tvMasterCuentaInternaPadre: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -49,12 +49,12 @@ implementation
 
 {$R *.dfm}
 
-uses CuentasGastosDM, CuentasGastosEdit;
+uses CuentasInternasDM, CuentasInternasEdit;
 
-procedure TfrmCuentasGastos.FormCreate(Sender: TObject);
+procedure TfrmCuentasInternas.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmCuentasGastosEdit.Create(Self);
+  gEditForm := TfrmCuentasInternasEdit.Create(Self);
 end;
 
 end.
