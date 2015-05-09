@@ -21,7 +21,8 @@ uses
   Vcl.StdActns, System.Actions, Vcl.ActnList, Vcl.ImgList, dxSkinsForm, dxBar,
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
-  cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod, _ReportDMod;
+  cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod, _ReportDMod,
+  RptMovimientosDmod;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -126,7 +127,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
-  CuentasContablesDM, CuentasInternasDM, ReporteMovimientosDM, CuentasXPagarDM;
+  CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -194,9 +195,9 @@ begin
    33: gModulo := TdmCuentasXPagar.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
    50: begin
-         gReport := TdmReporteMovimientos.Create(Self);
+         gReport := TdmRptMovimientos.Create(Self);
          gReport.Title:=  pCaption;
-         TdmReporteMovimientos(gReport).Execute;
+         gReport.Execute;
        end;
   end;
   if Assigned(gModulo) then

@@ -19,6 +19,8 @@ uses
   _Utils in 'Standard\_Utils.pas',
   _DualListDM in 'Standard\_DualListDM.pas' {_dmDualList: TDataModule},
   _DualListForm in 'Standard\_DualListForm.pas' {_frmDualList},
+  _ReportDMod in 'Standard\_ReportDMod.pas' {_dmReport: TDataModule},
+  _ReportForm in 'Standard\_ReportForm.pas' {_frmReport},
   MainForm in 'MainForm.pas' {frmMain},
   UbicacionesDM in 'Catalogos\UbicacionesDM.pas' {dmUbicaciones: TDataModule},
   PaisesForm in 'Catalogos\PaisesForm.pas' {frmPaises},
@@ -166,13 +168,13 @@ uses
   CuentasContablesDM in 'Catalogos\CuentasContablesDM.pas' {dmCuentasContables: TDataModule},
   CuentasContablesForm in 'Catalogos\CuentasContablesForm.pas' {frmCuentasContables},
   CuentasContablesEdit in 'Catalogos\CuentasContablesEdit.pas' {frmCuentasContablesEdit},
-  _ReportDMod in 'Standard\_ReportDMod.pas' {_dmReport: TDataModule},
   CuentasInternasDM in 'Catalogos\CuentasInternasDM.pas' {dmCuentasInternas: TDataModule},
   CuentasInternasEdit in 'Catalogos\CuentasInternasEdit.pas' {frmCuentasInternasEdit},
   CuentasInternasForm in 'Catalogos\CuentasInternasForm.pas' {frmCuentasInternas},
-  ReporteMovimientosDM in 'Reportes\ReporteMovimientosDM.pas' {dmReporteMovimientos: TDataModule},
+  RptMovimientosDmod in 'Reportes\RptMovimientosDmod.pas' {dmRptMovimientos: TDataModule},
   CuentasXPagarDM in 'Procesos\CuentasXPagarDM.pas' {dmCuentasXPagar: TDataModule},
-  CuentasXPagarForm in 'Procesos\CuentasXPagarForm.pas' {frmCuentasXPagar};
+  CuentasXPagarForm in 'Procesos\CuentasXPagarForm.pas' {frmCuentasXPagar},
+  RptMovimientosForm in 'Reportes\RptMovimientosForm.pas' {frmRptMovimientos};
 
 {$R *.res}
 
