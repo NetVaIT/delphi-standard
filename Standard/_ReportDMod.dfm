@@ -1,7 +1,7 @@
 object _dmReport: T_dmReport
   OldCreateOrder = False
-  Height = 116
-  Width = 304
+  Height = 156
+  Width = 394
   object adodsReport: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
@@ -177,5 +177,11 @@ object _dmReport: T_dmReport
     end
     object ppParameterList1: TppParameterList
     end
+  end
+  object mdParams: TdxMemData
+    Indexes = <>
+    SortOptions = []
+    Left = 200
+    Top = 88
   end
 end

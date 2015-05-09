@@ -1,10 +1,9 @@
-inherited dmReporteMovimientos: TdmReporteMovimientos
+inherited dmRptMovimientos: TdmRptMovimientos
   OldCreateOrder = True
   OnCreate = DataModuleCreate
-  Height = 463
-  Width = 547
+  Height = 242
+  Width = 356
   inherited adodsReport: TADODataSet
-    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +
@@ -19,7 +18,17 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
       '   MovimientosTiposEfectos ON MovimientosTipos.IdMovimientoTipoE' +
       'fecto = MovimientosTiposEfectos.IdMovimientoTipoEfecto INNER JOI' +
       'N'#13#10'                         Personas ON Movimientos.IdPersona = ' +
-      'Personas.IdPersona'#13#10'WHERE        (Movimientos.IdPeriodo = 70)'#13#10
+      'Personas.IdPersona'#13#10'WHERE        (Movimientos.IdPeriodo = :IdPer' +
+      'iodo)'#13#10
+    Parameters = <
+      item
+        Name = 'IdPeriodo'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     object adodsReportPersona: TStringField
       FieldName = 'Persona'
       Size = 300
@@ -43,36 +52,6 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
   end
   inherited dbpReport: TppDBPipeline
     Left = 184
-    object dbpReportppField1: TppField
-      FieldAlias = 'Persona'
-      FieldName = 'Persona'
-      FieldLength = 0
-      DisplayWidth = 0
-      Position = 0
-    end
-    object dbpReportppField2: TppField
-      FieldAlias = 'Catagoria'
-      FieldName = 'Catagoria'
-      FieldLength = 100
-      DisplayWidth = 100
-      Position = 1
-    end
-    object dbpReportppField3: TppField
-      FieldAlias = 'Tipo'
-      FieldName = 'Tipo'
-      FieldLength = 100
-      DisplayWidth = 100
-      Position = 2
-    end
-    object dbpReportppField4: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'Importe'
-      FieldName = 'Importe'
-      FieldLength = 6
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 3
-    end
   end
   inherited ppReport: TppReport
     AutoStop = True
@@ -292,12 +271,25 @@ inherited dmReporteMovimientos: TdmReporteMovimientos
       end
     end
   end
+  inherited mdParams: TdxMemData
+    object mdParamsIdPeriodo: TIntegerField
+      FieldName = 'IdPeriodo'
+    end
+  end
   object adodsPeriodos: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPeriodo, Descripcion FROM Periodos'
     Parameters = <>
-    Left = 160
-    Top = 240
+    Left = 32
+    Top = 112
+    object adodsPeriodosIdPeriodo: TAutoIncField
+      FieldName = 'IdPeriodo'
+      ReadOnly = True
+    end
+    object adodsPeriodosDescripcion: TStringField
+      FieldName = 'Descripcion'
+      Size = 100
+    end
   end
 end
