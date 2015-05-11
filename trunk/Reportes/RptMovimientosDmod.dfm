@@ -4,6 +4,7 @@ inherited dmRptMovimientos: TdmRptMovimientos
   Height = 242
   Width = 356
   inherited adodsReport: TADODataSet
+    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +
@@ -52,6 +53,36 @@ inherited dmRptMovimientos: TdmRptMovimientos
   end
   inherited dbpReport: TppDBPipeline
     Left = 184
+    object dbpReportppField1: TppField
+      FieldAlias = 'Persona'
+      FieldName = 'Persona'
+      FieldLength = 0
+      DisplayWidth = 0
+      Position = 0
+    end
+    object dbpReportppField2: TppField
+      FieldAlias = 'Catagoria'
+      FieldName = 'Catagoria'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 1
+    end
+    object dbpReportppField3: TppField
+      FieldAlias = 'Tipo'
+      FieldName = 'Tipo'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 2
+    end
+    object dbpReportppField4: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'Importe'
+      FieldName = 'Importe'
+      FieldLength = 6
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 3
+    end
   end
   inherited ppReport: TppReport
     AutoStop = True
@@ -208,7 +239,7 @@ inherited dmRptMovimientos: TdmRptMovimientos
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           object TppSubTotal
             ChildType = 5
             object TppTotalCaptionDef

@@ -669,6 +669,19 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Catalogos\CuentasXCobrarConceptosDM.pas">
+            <Form>dmCuentasXCobrarConceptos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasXCobrarConceptosForm.pas">
+            <Form>frmCuentasXCobrarConceptos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\CuentasXCobrarConceptosEdit.pas">
+            <Form>frmCuentasXCobrarConceptosEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Classes, _ReportDMod, ppParameter, ppDesignLayer,
   ppVar, ppCtrls, ppBands, ppPrnabl, ppClass, ppCache, ppProd, ppReport, ppComm,
-  ppRelatv, ppDB, ppDBPipe, Data.DB, Data.Win.ADODB, dxmdaset;
+  ppRelatv, ppDB, ppDBPipe, Data.DB, Data.Win.ADODB, dxmdaset, ppModule,
+  raCodMod;
 
 type
   TdmMovimientosrpt = class(T_dmReport)
@@ -27,6 +28,13 @@ type
     adodsPeriodosIdPeriodo: TAutoIncField;
     adodsPeriodosDescripcion: TStringField;
     mdParamsIdPeriodo: TIntegerField;
+    ppGroup2: TppGroup;
+    ppGroupHeaderBand2: TppGroupHeaderBand;
+    ppGroupFooterBand2: TppGroupFooterBand;
+    ppVariable1: TppVariable;
+    raCodeModule1: TraCodeModule;
+    ppLine1: TppLine;
+    ppLabel4: TppLabel;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
