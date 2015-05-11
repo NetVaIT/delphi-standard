@@ -3,6 +3,7 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
   OnCreate = DataModuleCreate
   Height = 273
   inherited adodsReport: TADODataSet
+    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +
@@ -46,6 +47,38 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
       Size = 6
     end
   end
+  inherited dbpReport: TppDBPipeline
+    object dbpReportppField1: TppField
+      FieldAlias = 'Persona'
+      FieldName = 'Persona'
+      FieldLength = 300
+      DisplayWidth = 300
+      Position = 0
+    end
+    object dbpReportppField2: TppField
+      FieldAlias = 'Catagoria'
+      FieldName = 'Catagoria'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 1
+    end
+    object dbpReportppField3: TppField
+      FieldAlias = 'Tipo'
+      FieldName = 'Tipo'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 2
+    end
+    object dbpReportppField4: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'Importe'
+      FieldName = 'Importe'
+      FieldLength = 6
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 3
+    end
+  end
   inherited ppReport: TppReport
     PrinterSetup.PaperName = 'Letter'
     DataPipelineName = 'dbpReport'
@@ -56,28 +89,10 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
       end
     end
     inherited ppHeaderBand1: TppHeaderBand
-      mmHeight = 0
+      mmHeight = 6879
     end
     inherited ppDetailBand1: TppDetailBand
-      mmHeight = 14023
-      object ppDBText2: TppDBText
-        UserName = 'DBText2'
-        DataField = 'Catagoria'
-        DataPipeline = dbpReport
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 12
-        Font.Style = []
-        Transparent = True
-        DataPipelineName = 'dbpReport'
-        mmHeight = 4763
-        mmLeft = 2646
-        mmTop = 1852
-        mmWidth = 136261
-        BandType = 4
-        LayerName = Foreground
-      end
+      mmHeight = 8467
       object ppDBText3: TppDBText
         UserName = 'DBText3'
         DataField = 'Tipo'
@@ -89,10 +104,10 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
         Font.Style = []
         Transparent = True
         DataPipelineName = 'dbpReport'
-        mmHeight = 5293
-        mmLeft = 10848
-        mmTop = 7408
-        mmWidth = 150548
+        mmHeight = 5292
+        mmLeft = 13758
+        mmTop = 1323
+        mmWidth = 147373
         BandType = 4
         LayerName = Foreground
       end
@@ -100,6 +115,7 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
         UserName = 'DBText4'
         DataField = 'Importe'
         DataPipeline = dbpReport
+        DisplayFormat = '$#,0.00;-$#,0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -107,10 +123,11 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
+        VerticalAlignment = avCenter
         DataPipelineName = 'dbpReport'
-        mmHeight = 5293
+        mmHeight = 5292
         mmLeft = 164836
-        mmTop = 7408
+        mmTop = 1323
         mmWidth = 34660
         BandType = 4
         LayerName = Foreground
@@ -155,12 +172,12 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 12
-          Font.Style = []
+          Font.Style = [fsBold]
           Transparent = True
           DataPipelineName = 'dbpReport'
-          mmHeight = 4763
-          mmLeft = 3969
-          mmTop = 3175
+          mmHeight = 5293
+          mmLeft = 2118
+          mmTop = 1588
           mmWidth = 199232
           BandType = 3
           GroupNo = 0
@@ -173,12 +190,12 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 12
-          Font.Style = []
+          Font.Size = 11
+          Font.Style = [fsBold]
           Transparent = True
           mmHeight = 4763
-          mmLeft = 3969
-          mmTop = 10055
+          mmLeft = 5029
+          mmTop = 10585
           mmWidth = 19579
           BandType = 3
           GroupNo = 0
@@ -191,12 +208,12 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 12
+          Font.Size = 11
           Font.Style = []
           Transparent = True
           mmHeight = 4763
-          mmLeft = 62442
-          mmTop = 10054
+          mmLeft = 61912
+          mmTop = 10584
           mmWidth = 9260
           BandType = 3
           GroupNo = 0
@@ -209,12 +226,12 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 12
+          Font.Size = 11
           Font.Style = []
           Transparent = True
           mmHeight = 4763
-          mmLeft = 182034
-          mmTop = 10054
+          mmLeft = 183624
+          mmTop = 10584
           mmWidth = 14817
           BandType = 3
           GroupNo = 0
@@ -228,6 +245,118 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
         mmHeight = 0
         mmPrintPosition = 0
       end
+    end
+    object ppGroup2: TppGroup [5]
+      BreakName = 'Catagoria'
+      DataPipeline = dbpReport
+      GroupFileSettings.NewFile = False
+      GroupFileSettings.EmailFile = False
+      KeepTogether = True
+      OutlineSettings.CreateNode = True
+      StartOnOddPage = False
+      UserName = 'Group2'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'dbpReport'
+      NewFile = False
+      object ppGroupHeaderBand2: TppGroupHeaderBand
+        Background.Brush.Style = bsClear
+        mmBottomOffset = 0
+        mmHeight = 6615
+        mmPrintPosition = 0
+        object ppDBText2: TppDBText
+          UserName = 'DBText2'
+          DataField = 'Catagoria'
+          DataPipeline = dbpReport
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 12
+          Font.Style = [fsBold]
+          Transparent = True
+          DataPipelineName = 'dbpReport'
+          mmHeight = 4763
+          mmLeft = 2117
+          mmTop = 794
+          mmWidth = 136261
+          BandType = 3
+          GroupNo = 1
+          LayerName = Foreground
+        end
+      end
+      object ppGroupFooterBand2: TppGroupFooterBand
+        Background.Brush.Style = bsClear
+        HideWhenOneDetail = False
+        mmBottomOffset = 0
+        mmHeight = 10054
+        mmPrintPosition = 0
+        object ppVariable1: TppVariable
+          UserName = 'Variable1'
+          AutoSize = False
+          BlankWhenZero = False
+          CalcOrder = 0
+          CalcComponent = ppGroup2
+          CalcType = veGroupStart
+          DataType = dtCurrency
+          DisplayFormat = '$#,0.00;-$#,0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 12
+          Font.Style = []
+          ResetComponent = ppGroup2
+          ResetType = veGroupEnd
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 4763
+          mmLeft = 164836
+          mmTop = 3969
+          mmWidth = 33602
+          BandType = 5
+          GroupNo = 1
+          LayerName = Foreground
+        end
+        object ppLine1: TppLine
+          UserName = 'Line1'
+          Weight = 0.750000000000000000
+          mmHeight = 1323
+          mmLeft = 164836
+          mmTop = 1323
+          mmWidth = 33602
+          BandType = 5
+          GroupNo = 1
+          LayerName = Foreground
+        end
+        object ppLabel4: TppLabel
+          UserName = 'Label4'
+          Caption = 'Sub-Total'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 11
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 4498
+          mmLeft = 142346
+          mmTop = 3969
+          mmWidth = 16669
+          BandType = 5
+          GroupNo = 1
+          LayerName = Foreground
+        end
+      end
+    end
+    object raCodeModule1: TraCodeModule [6]
+      ProgramStream = {
+        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060F
+        5661726961626C65314F6E43616C630B50726F6772616D54797065070B747450
+        726F63656475726506536F75726365066270726F636564757265205661726961
+        626C65314F6E43616C63287661722056616C75653A2056617269616E74293B0D
+        0A626567696E0D0A0D0A202056616C7565203A3D206462705265706F72745B27
+        496D706F727465275D0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D
+        6506095661726961626C6531094576656E744E616D6506064F6E43616C630745
+        76656E7449440221084361726574506F730102000200000000}
     end
   end
   inherited mdParams: TdxMemData

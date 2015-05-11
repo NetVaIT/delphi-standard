@@ -37,15 +37,15 @@ uses RptMovimientosForm;
 
 procedure TdmRptMovimientos.AssignParam;
 begin
-  adodsReport.Parameters.ParamByName('IdPeriodo').Value:= mdParamsIdPeriodo.Value;
+  adodsReport.Parameters.ParamByName('IdPeriodo').Value := mdParamsIdPeriodo.Value;
 end;
 
 procedure TdmRptMovimientos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gReportForm:= TfrmRptMovimientos.Create(Self);
+  gReportForm := TfrmRptMovimientos.Create(Self);
   adodsPeriodos.Open;
-  TfrmRptMovimientos(gReportForm).DataSetPeriodo:= adodsPeriodos;
+  TfrmRptMovimientos(gReportForm).DataSetPeriodo := adodsPeriodos;
 end;
 
 end.

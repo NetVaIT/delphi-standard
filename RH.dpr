@@ -175,7 +175,10 @@ uses
   CuentasXPagarDM in 'Procesos\CuentasXPagarDM.pas' {dmCuentasXPagar: TDataModule},
   CuentasXPagarForm in 'Procesos\CuentasXPagarForm.pas' {frmCuentasXPagar},
   RptMovimientosForm in 'Reportes\RptMovimientosForm.pas' {frmRptMovimientos},
-  RptMovimientosPersonaDmod in 'Reportes\RptMovimientosPersonaDmod.pas' {dmMovimientosrpt: TDataModule};
+  RptMovimientosPersonaDmod in 'Reportes\RptMovimientosPersonaDmod.pas' {dmMovimientosrpt: TDataModule},
+  CuentasXCobrarConceptosDM in 'Catalogos\CuentasXCobrarConceptosDM.pas' {dmCuentasXCobrarConceptos: TDataModule},
+  CuentasXCobrarConceptosForm in 'Catalogos\CuentasXCobrarConceptosForm.pas' {frmCuentasXCobrarConceptos},
+  CuentasXCobrarConceptosEdit in 'Catalogos\CuentasXCobrarConceptosEdit.pas' {frmCuentasXCobrarConceptosEdit};
 
 {$R *.res}
 

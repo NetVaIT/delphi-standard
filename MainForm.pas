@@ -105,6 +105,8 @@ type
     actCuentasXPagar: TAction;
     actMovimientosPersona: TAction;
     dxBarLargeButton26: TdxBarLargeButton;
+    actCXCConceptos: TAction;
+    dxBarLargeButton27: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -129,7 +131,8 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
-  CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM;
+  CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
+  CuentasXCobrarConceptosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -159,6 +162,7 @@ begin
    14: gModulo := TdmInstruccionesTipos.Create(Self);
    15: gModulo := TdmCuentasContables.Create(Self);
    16: gModulo := TdmCuentasInternas.Create(Self);
+   17: gModulo := TdmCuentasXCobrarConceptos.Create(Self);
    20: begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rNone;
@@ -246,6 +250,7 @@ begin
   actUsuarios.Enabled           := Conected;
   actCuentasContables.Enabled   := Conected;
   actCuentasInternas.Enabled    := Conected;
+  actCXCConceptos.Enabled       := Conected;
   actReporteMovimientos.Enabled := Conected;
   actMovimientosPersona.Enabled := Conected;
 end;
