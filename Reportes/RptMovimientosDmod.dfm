@@ -57,6 +57,7 @@ inherited dmRptMovimientos: TdmRptMovimientos
     AutoStop = True
     DataPipeline = nil
     PrinterSetup.Orientation = poLandscape
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.mmPaperHeight = 215900
     PrinterSetup.mmPaperWidth = 279400
     DataPipelineName = ''

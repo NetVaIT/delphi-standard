@@ -22,7 +22,7 @@ uses
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
   cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod, _ReportDMod,
-  RptMovimientosDmod;
+  RptMovimientosDmod, RptMovimientosPersonaDmod;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -103,6 +103,8 @@ type
     actReporteMovimientos: TAction;
     dxBarButton9: TdxBarButton;
     actCuentasXPagar: TAction;
+    actMovimientosPersona: TAction;
+    dxBarLargeButton26: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -199,6 +201,11 @@ begin
          gReport.Title:=  pCaption;
          gReport.Execute;
        end;
+   51: begin
+         gReport := TdmMovimientosrpt.Create(Self);
+         gReport.Title := pCaption;
+         gReport.Execute;
+       end;
   end;
   if Assigned(gModulo) then
   begin
@@ -240,6 +247,7 @@ begin
   actCuentasContables.Enabled   := Conected;
   actCuentasInternas.Enabled    := Conected;
   actReporteMovimientos.Enabled := Conected;
+  actMovimientosPersona.Enabled := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

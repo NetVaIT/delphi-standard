@@ -174,7 +174,8 @@ uses
   RptMovimientosDmod in 'Reportes\RptMovimientosDmod.pas' {dmRptMovimientos: TDataModule},
   CuentasXPagarDM in 'Procesos\CuentasXPagarDM.pas' {dmCuentasXPagar: TDataModule},
   CuentasXPagarForm in 'Procesos\CuentasXPagarForm.pas' {frmCuentasXPagar},
-  RptMovimientosForm in 'Reportes\RptMovimientosForm.pas' {frmRptMovimientos};
+  RptMovimientosForm in 'Reportes\RptMovimientosForm.pas' {frmRptMovimientos},
+  RptMovimientosPersonaDmod in 'Reportes\RptMovimientosPersonaDmod.pas' {dmMovimientosrpt: TDataModule};
 
 {$R *.res}
 
@@ -200,6 +201,7 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
+  Application.CreateForm(TdmMovimientosrpt, dmMovimientosrpt);
   Application.Run;
   end;
 end.

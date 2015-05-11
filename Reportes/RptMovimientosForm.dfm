@@ -1,15 +1,23 @@
 inherited frmRptMovimientos: TfrmRptMovimientos
   Caption = 'frmRptMovimientos'
-  ExplicitWidth = 444
-  ExplicitHeight = 395
+  ClientHeight = 230
+  ClientWidth = 361
+  ExplicitWidth = 367
+  ExplicitHeight = 258
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
+    Width = 361
+    Height = 189
+    ExplicitWidth = 361
+    ExplicitHeight = 189
+    ClientRectBottom = 187
+    ClientRectRight = 359
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 434
-      ExplicitHeight = 295
+      ExplicitWidth = 357
+      ExplicitHeight = 159
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -17,6 +25,20 @@ inherited frmRptMovimientos: TfrmRptMovimientos
         Height = 13
         Caption = 'Periodo'
       end
+    end
+  end
+  inherited pmlMain: TPanel
+    Top = 189
+    Width = 361
+    ExplicitTop = 189
+    ExplicitWidth = 361
+    inherited btnOk: TButton
+      Left = 198
+      ExplicitLeft = 198
+    end
+    inherited btnCancel: TButton
+      Left = 279
+      ExplicitLeft = 279
     end
   end
   object lcbPeriodo: TcxDBLookupComboBox [2]
