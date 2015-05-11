@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -33,7 +33,6 @@ inherited frmMain: TfrmMain
       Index = 1
     end
     object dxRibbon1Tab3: TdxRibbonTab
-      Active = True
       Caption = 'Procesos'
       Groups = <
         item
@@ -50,6 +49,7 @@ inherited frmMain: TfrmMain
       Index = 3
     end
     object dxRibbon1Tab5: TdxRibbonTab
+      Active = True
       Caption = 'Reportes'
       Groups = <
         item
@@ -251,7 +251,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 86
-      FloatClientHeight = 98
+      FloatClientHeight = 76
       ItemLinks = <
         item
           Visible = True
@@ -326,12 +326,16 @@ inherited frmMain: TfrmMain
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
-      FloatClientWidth = 130
+      FloatClientWidth = 159
       FloatClientHeight = 54
       ItemLinks = <
         item
           Visible = True
           ItemName = 'dxBarLargeButton25'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton26'
         end>
       OneOnRow = True
       Row = 0
@@ -485,6 +489,10 @@ inherited frmMain: TfrmMain
     end
     object dxBarButton9: TdxBarButton
       Action = actCuentasXPagar
+      Category = 0
+    end
+    object dxBarLargeButton26: TdxBarLargeButton
+      Action = actMovimientosPersona
       Category = 0
     end
   end
@@ -716,6 +724,13 @@ inherited frmMain: TfrmMain
       Category = 'Procesos'
       Caption = 'Cuentas por pagar'
       ImageIndex = 40
+      OnExecute = actCatalogoExecute
+    end
+    object actMovimientosPersona: TAction
+      Tag = 51
+      Category = 'Reportes'
+      Caption = 'Movimientos Persona'
+      ImageIndex = 17
       OnExecute = actCatalogoExecute
     end
   end
