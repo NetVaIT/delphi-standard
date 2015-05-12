@@ -17,6 +17,7 @@ type
     edtAnio: TEdit;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,6 +33,12 @@ uses PeriodosDM;
 procedure TfrmPeriodosCalculo.Button1Click(Sender: TObject);
 begin
   PeriodosDM.TdmPeriodos(Sender).AnioPeriodo := StrToInt(edtAnio.Text);
+  ModalResult := mrOk;
+end;
+
+procedure TfrmPeriodosCalculo.Button2Click(Sender: TObject);
+begin
+  ModalResult := mrCancel;
 end;
 
 procedure TfrmPeriodosCalculo.FormShow(Sender: TObject);
@@ -40,8 +47,7 @@ var
 begin
   DecodeDate(Now(), aa, mm, dd);
   edtAnio.Text := IntToStr(aa);
-  //PeriodosDM.TdmPeriodos
-  cbxPeriodos.AddItem('SEMANAL',self);
+  cbxPeriodos.ItemIndex := 0;
 end;
 
 end.

@@ -50,12 +50,15 @@ uses PeriodosForm;
 {$R *.dfm}
 
 procedure TdmPeriodos.actCalculaPeriodoExecute(Sender: TObject);
+var
+  Resultado : integer;
 begin
   inherited;
   FgPCalculoForm := TfrmPeriodosCalculo.Create(Self);
-  FgPCalculoForm.ShowModal;
-  SetAnioP(2015);
-  Execute;
+  Resultado := FgPCalculoForm.ShowModal;
+//  SetAnioP(2015);
+  if Resultado = 1 then
+    Execute;
 end;
 
 procedure TdmPeriodos.CrearPeriodo(Inicio, Fin: TDate; Orden, TipoPeriodo: Integer;
@@ -69,15 +72,15 @@ begin
   dsMaster.DataSet.FieldByName('FechaFin').AsDateTime    := Fin;
   dsMaster.DataSet.FieldByName('Descripcion').Value      := Describe;
   dsMaster.DataSet.FieldByName('Mes').Value              := MonthOf(Fin);
-  dsMaster.DataSet.FieldByName('Anio').Value             := FAnioPeriodo;
+  dsMaster.DataSet.FieldByName('Anio').Value             := YearOf(Fin);
   dsMaster.DataSet.Post;
 end;
 
 procedure TdmPeriodos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm:= TfrmPeriodos.Create(Self);
-  gGridForm.DataSet:= adodsMaster;
+  gGridForm := TfrmPeriodos.Create(Self);
+  gGridForm.DataSet := adodsMaster;
   TfrmPeriodos(gGridForm).CalcPeriodo := actCalculaPeriodo;
 end;
 
