@@ -32,18 +32,20 @@ type
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBCheckBox1: TcxDBCheckBox;
-    Label5: TLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
     cxDBCheckBox2: TcxDBCheckBox;
     cxDBCheckBox3: TcxDBCheckBox;
+    Label5: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
     cxDBCheckBox4: TcxDBCheckBox;
     Label6: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
     cxDBCheckBox5: TcxDBCheckBox;
-    cxDBCheckBox6: TcxDBCheckBox;
     Label7: TLabel;
-    cxDBTextEdit4: TcxDBTextEdit;
+    DBLookupComboBox3: TDBLookupComboBox;
+    cxDBCheckBox6: TcxDBCheckBox;
     cxDBCheckBox7: TcxDBCheckBox;
+    Label8: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
   private
     { Private declarations }
   public

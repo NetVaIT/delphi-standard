@@ -30,26 +30,31 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Size = 300
     end
     object adodsMasterPersonaRelacionada: TStringField
+      DisplayLabel = 'Persona relacionada'
       FieldName = 'PersonaRelacionada'
       Size = 300
     end
     object adodsMasterConceptoGenerico: TStringField
+      DisplayLabel = 'Concepto'
       FieldName = 'ConceptoGenerico'
       Size = 200
     end
     object adodsMasterSumaSubtotal: TFMTBCDField
+      DisplayLabel = 'Subtotal'
       FieldName = 'SumaSubtotal'
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterSumaTotal: TFMTBCDField
+      DisplayLabel = 'Total'
       FieldName = 'SumaTotal'
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterSumaDescuentos: TFMTBCDField
+      DisplayLabel = 'Descuentos'
       FieldName = 'SumaDescuentos'
       currency = True
       Precision = 18
@@ -98,6 +103,7 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Size = 6
     end
     object adodsMasterSaldoPendiente: TFMTBCDField
+      DisplayLabel = 'Saldo pendiente'
       FieldName = 'SaldoPendiente'
       currency = True
       Precision = 18
@@ -106,6 +112,14 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     object adodsMasterEstatus: TStringField
       FieldName = 'Estatus'
       Size = 50
+    end
+  end
+  inherited ActionList: TActionList
+    object actCalcularCXP: TAction
+      Caption = 'Generar CXP'
+      Hint = 'Genera cuentas por pagar del periodo'
+      Visible = False
+      OnExecute = actCalcularCXPExecute
     end
   end
   object dsMaster: TDataSource
@@ -180,5 +194,43 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       FieldName = 'Estatus'
       Size = 100
     end
+  end
+  object adocGetPeriodoActual: TADOCommand
+    CommandText = 
+      'DECLARE @IdPeriodo int;'#13#10'SELECT @IdPeriodo = IdPeriodo FROM Peri' +
+      'odos WHERE IdPeriodoEstatus = 1;'#13#10'SET :IdPeriodo  = @IdPeriodo;'#13 +
+      #10
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'IdPeriodo'
+        DataType = ftInteger
+        Direction = pdOutput
+        Size = -1
+        Value = Null
+      end>
+    Left = 64
+    Top = 179
+  end
+  object adospCentasXPagar: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_GenCuentasXPagar;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 64
+    Top = 235
   end
 end

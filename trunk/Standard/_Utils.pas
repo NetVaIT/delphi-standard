@@ -43,6 +43,7 @@ resourcestring
 //_StandarForm
   strExistChanges   = 'Existen modificacion(es), ¿Desea aplicar los cambios?';
   strAllowDelete    = '¿Desea eliminar este registro?';
+  strOpenFile       = '¿Desea abrir el archivo?';
   strDeleteReferenceError = 'No es posible borrar el registro ya que tiene información asociada';
   strUniqueKeyError       = '';
   strUser           = 'Usuario: ';

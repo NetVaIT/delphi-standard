@@ -8,20 +8,23 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   TextHeight = 13
   inherited splDetail3: TSplitter
     Width = 1519
+    ExplicitWidth = 1519
   end
   inherited splDetail1: TSplitter
     Width = 1519
+    ExplicitWidth = 1519
   end
   inherited splDetail2: TSplitter
     Width = 1519
+    ExplicitWidth = 1519
   end
   inherited pnlMaster: TPanel
     Width = 1519
-    ExplicitWidth = 651
+    ExplicitWidth = 1519
     ExplicitHeight = 253
     inherited cxGrid: TcxGrid
       Width = 1519
-      ExplicitWidth = 651
+      ExplicitWidth = 1519
       ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdMovimientoTipo: TcxGridDBColumn
@@ -44,8 +47,8 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
           DataBinding.FieldName = 'IdPersonaRol'
           Visible = False
         end
-        object tvMasterIdImpuesto: TcxGridDBColumn
-          DataBinding.FieldName = 'IdImpuesto'
+        object tvMasterIdVariable: TcxGridDBColumn
+          DataBinding.FieldName = 'IdVariable'
           Visible = False
         end
         object tvMasterIdentificador: TcxGridDBColumn
@@ -66,11 +69,7 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
         end
         object tvMasterDescuento: TcxGridDBColumn
           DataBinding.FieldName = 'Descuento'
-          Width = 56
-        end
-        object tvMasterValorDefault: TcxGridDBColumn
-          DataBinding.FieldName = 'ValorDefault'
-          Width = 67
+          Width = 103
         end
         object tvMasterProduceCXC: TcxGridDBColumn
           DataBinding.FieldName = 'ProduceCXC'
@@ -80,9 +79,20 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
           DataBinding.FieldName = 'ProduceCXP'
           Width = 66
         end
+        object tvMasterVariable: TcxGridDBColumn
+          DataBinding.FieldName = 'Variable'
+        end
         object tvMasterAgruparTipo: TcxGridDBColumn
           DataBinding.FieldName = 'AgruparTipo'
-          Width = 84
+          Width = 167
+        end
+        object tvMasterPerosnaRol: TcxGridDBColumn
+          DataBinding.FieldName = 'PerosnaRol'
+          Width = 304
+        end
+        object tvMasterAcumularMensualmente: TcxGridDBColumn
+          DataBinding.FieldName = 'AcumularMensualmente'
+          Width = 121
         end
         object tvMasterMovimientoTipo: TcxGridDBColumn
           DataBinding.FieldName = 'MovimientoTipo'
@@ -99,33 +109,30 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
         object tvMasterPorcentajeCalculo: TcxGridDBColumn
           DataBinding.FieldName = 'PorcentajeCalculo'
         end
-        object tvMasterAcumularMensualmente: TcxGridDBColumn
-          DataBinding.FieldName = 'AcumularMensualmente'
-          Width = 132
-        end
       end
     end
   end
   inherited pnlDetail3: TPanel
     Width = 1519
     ExplicitTop = 375
-    ExplicitWidth = 651
+    ExplicitWidth = 1519
   end
   inherited pnlDetail2: TPanel
     Width = 1519
     ExplicitTop = 331
-    ExplicitWidth = 651
+    ExplicitWidth = 1519
   end
   inherited pnlDetail1: TPanel
     Width = 1519
     ExplicitTop = 287
-    ExplicitWidth = 651
+    ExplicitWidth = 1519
   end
   inherited pnlClose: TPanel
     Width = 1519
+    ExplicitWidth = 1519
     inherited btnClose: TButton
       Left = 1434
-      ExplicitLeft = 566
+      ExplicitLeft = 1434
     end
   end
   inherited DataSource: TDataSource
@@ -146,7 +153,6 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

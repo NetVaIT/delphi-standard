@@ -1,4 +1,4 @@
-unit CuentasXPagarForm;
+unit MovimientosDForm;
 
 interface
 
@@ -30,48 +30,27 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmCuentasXPagar = class(T_frmGrid)
-    tvMasterIdCuentaXPagar: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdPeriodo: TcxGridDBColumn;
-    tvMasterIdCuentaXPagarEstatus: TcxGridDBColumn;
+  TfrmMovimientosD = class(T_frmGrid)
+    tvMasterIdMovimientoDetalle: TcxGridDBColumn;
+    tvMasterPeriodo: TcxGridDBColumn;
+    tvMasterFecha: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
     tvMasterPersonaRelacionada: TcxGridDBColumn;
-    tvMasterConceptoGenerico: TcxGridDBColumn;
-    tvMasterSumaSubtotal: TcxGridDBColumn;
-    tvMasterSumaTotal: TcxGridDBColumn;
-    tvMasterSumaDescuentos: TcxGridDBColumn;
-    tvMasterTotalIVATrasladado: TcxGridDBColumn;
-    tvMasterTotalISRTrasladado: TcxGridDBColumn;
-    tvMasterTotalIEPSTrasladado: TcxGridDBColumn;
-    tvMasterTotalLocalesTrasladado: TcxGridDBColumn;
-    tvMasterTotalIVARetenido: TcxGridDBColumn;
-    tvMasterTotalISRRetenido: TcxGridDBColumn;
-    tvMasterTotalLocalesRetenido: TcxGridDBColumn;
-    tvMasterSaldoPendiente: TcxGridDBColumn;
+    tvMasterTipo: TcxGridDBColumn;
+    tvMasterCategoria: TcxGridDBColumn;
+    tvMasterEfecto: TcxGridDBColumn;
+    tvMasterImporte: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
-    dxbbCalcularCXP: TdxBarButton;
   private
     { Private declarations }
-    FCalcularCXP: TBasicAction;
-    procedure SetCalcularCXP(const Value: TBasicAction);
   public
     { Public declarations }
-    property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses CuentasXPagarDM;
-
-{ TfrmCuentasXPagar }
-
-procedure TfrmCuentasXPagar.SetCalcularCXP(const Value: TBasicAction);
-begin
-  FCalcularCXP := Value;
-  dxbbCalcularCXP.Action:= Value;
-end;
+uses MovimientosDDM;
 
 end.

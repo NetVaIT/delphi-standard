@@ -61,6 +61,7 @@ inherited dmMovimientos: TdmMovimientos
       Size = 6
     end
     object adodsMasterNeto: TFMTBCDField
+      DisplayLabel = 'Base'
       FieldName = 'Neto'
       currency = True
       Precision = 18
@@ -105,10 +106,14 @@ inherited dmMovimientos: TdmMovimientos
   end
   inherited ActionList: TActionList
     object actMovimientosCalculados: TAction
-      Caption = 'Movimientos calculados'
-      Hint = 'Movimientos calculados'
-      ImageIndex = 13
+      Caption = 'Generar movimientos'
+      Hint = 'Genera movimientos del periodo actual'
       OnExecute = actMovimientosCalculadosExecute
+    end
+    object actCalcularCXP: TAction
+      Caption = 'Generar CXP'
+      Hint = 'Genera cuentas por pagar del periodo'
+      OnExecute = actCalcularCXPExecute
     end
   end
   object adodsPersona: TADODataSet
@@ -215,44 +220,6 @@ inherited dmMovimientos: TdmMovimientos
       Lookup = True
     end
   end
-  object adocGetPeriodoActual: TADOCommand
-    CommandText = 
-      'DECLARE @IdPeriodo int;'#13#10'SELECT @IdPeriodo = IdPeriodo FROM Peri' +
-      'odos WHERE IdPeriodoEstatus = 1;'#13#10'SET :IdPeriodo  = @IdPeriodo;'#13 +
-      #10
-    Connection = _dmConection.ADOConnection
-    Parameters = <
-      item
-        Name = 'IdPeriodo'
-        DataType = ftInteger
-        Direction = pdOutput
-        Size = -1
-        Value = Null
-      end>
-    Left = 48
-    Top = 344
-  end
-  object adospMovimientosCalculados: TADOStoredProc
-    Connection = _dmConection.ADOConnection
-    ProcedureName = 'p_GenMovimientosCalculados;1'
-    Parameters = <
-      item
-        Name = '@RETURN_VALUE'
-        DataType = ftInteger
-        Direction = pdReturnValue
-        Precision = 10
-        Value = Null
-      end
-      item
-        Name = '@IdPeriodo'
-        Attributes = [paNullable]
-        DataType = ftInteger
-        Precision = 10
-        Value = Null
-      end>
-    Left = 48
-    Top = 400
-  end
   object adodsPersonaRol: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
@@ -291,5 +258,64 @@ inherited dmMovimientos: TdmMovimientos
     Parameters = <>
     Left = 176
     Top = 320
+  end
+  object adocGetPeriodoActual: TADOCommand
+    CommandText = 
+      'DECLARE @IdPeriodo int;'#13#10'SELECT @IdPeriodo = IdPeriodo FROM Peri' +
+      'odos WHERE IdPeriodoEstatus = 1;'#13#10'SET :IdPeriodo  = @IdPeriodo;'#13 +
+      #10
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'IdPeriodo'
+        DataType = ftInteger
+        Direction = pdOutput
+        Size = -1
+        Value = Null
+      end>
+    Left = 48
+    Top = 344
+  end
+  object adospMovimientosCalculados: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_GenMovimientosCalculados;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 48
+    Top = 400
+  end
+  object adospCentasXPagar: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_GenCuentasXPagar;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 192
+    Top = 403
   end
 end

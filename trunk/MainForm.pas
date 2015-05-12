@@ -107,6 +107,8 @@ type
     dxBarLargeButton26: TdxBarLargeButton;
     actCXCConceptos: TAction;
     dxBarLargeButton27: TdxBarLargeButton;
+    actDetMovimientos: TAction;
+    dxBarButton10: TdxBarButton;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -132,7 +134,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
-  CuentasXCobrarConceptosDM;
+  CuentasXCobrarConceptosDM, MovimientosDDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -199,6 +201,7 @@ begin
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);
    33: gModulo := TdmCuentasXPagar.Create(Self);
+   34: gModulo := TdmMovimientosD.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
    50: begin
          gReport := TdmRptMovimientos.Create(Self);

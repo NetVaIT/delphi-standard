@@ -1,9 +1,8 @@
 inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
-  ExplicitLeft = -361
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -14,7 +13,6 @@ inherited frmMain: TfrmMain
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
-      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -35,6 +33,7 @@ inherited frmMain: TfrmMain
       Index = 1
     end
     object dxRibbon1Tab3: TdxRibbonTab
+      Active = True
       Caption = 'Procesos'
       Groups = <
         item
@@ -269,6 +268,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarButton9'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton10'
         end>
       OneOnRow = True
       Row = 0
@@ -304,7 +307,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 115
-      FloatClientHeight = 108
+      FloatClientHeight = 162
       ItemLinks = <
         item
           Visible = True
@@ -502,6 +505,10 @@ inherited frmMain: TfrmMain
     end
     object dxBarLargeButton27: TdxBarLargeButton
       Action = actCXCConceptos
+      Category = 0
+    end
+    object dxBarButton10: TdxBarButton
+      Action = actDetMovimientos
       Category = 0
     end
   end
@@ -747,6 +754,13 @@ inherited frmMain: TfrmMain
       Category = 'Catalogos'
       Caption = 'Conceptos CXC'
       ImageIndex = 34
+      OnExecute = actCatalogoExecute
+    end
+    object actDetMovimientos: TAction
+      Tag = 34
+      Category = 'Procesos'
+      Caption = 'Detalle de movimientos'
+      ImageIndex = 9
       OnExecute = actCatalogoExecute
     end
   end

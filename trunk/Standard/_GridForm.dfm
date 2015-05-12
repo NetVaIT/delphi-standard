@@ -58,8 +58,6 @@ object _frmGrid: T_frmGrid
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 645
-    ExplicitHeight = 224
     object cxGrid: TcxGrid
       Left = 0
       Top = 0
@@ -69,8 +67,6 @@ object _frmGrid: T_frmGrid
       PopupMenu = PopupMenu
       TabOrder = 0
       LookAndFeel.Kind = lfStandard
-      ExplicitWidth = 645
-      ExplicitHeight = 224
       object tvMaster: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = tvMasterCellDblClick
@@ -100,8 +96,6 @@ object _frmGrid: T_frmGrid
     BevelOuter = bvNone
     TabOrder = 3
     Visible = False
-    ExplicitTop = 346
-    ExplicitWidth = 645
   end
   object pnlDetail2: TPanel
     Left = 0
@@ -112,8 +106,6 @@ object _frmGrid: T_frmGrid
     BevelOuter = bvNone
     TabOrder = 2
     Visible = False
-    ExplicitTop = 302
-    ExplicitWidth = 645
   end
   object pnlDetail1: TPanel
     Left = 0
@@ -124,8 +116,6 @@ object _frmGrid: T_frmGrid
     BevelOuter = bvNone
     TabOrder = 1
     Visible = False
-    ExplicitTop = 258
-    ExplicitWidth = 645
   end
   object pnlClose: TPanel
     Left = 0
@@ -135,8 +125,6 @@ object _frmGrid: T_frmGrid
     Align = alBottom
     TabOrder = 8
     Visible = False
-    ExplicitTop = 387
-    ExplicitWidth = 645
     DesignSize = (
       651
       41)
@@ -150,7 +138,6 @@ object _frmGrid: T_frmGrid
       Caption = 'Cerrar'
       TabOrder = 0
       OnClick = btnCloseClick
-      ExplicitLeft = 560
     end
   end
   object ActionList: TActionList
@@ -1196,7 +1183,6 @@ object _frmGrid: T_frmGrid
     Top = 127
     object dxcplGrid: TdxGridReportLink
       Component = cxGrid
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1208,7 +1194,6 @@ object _frmGrid: T_frmGrid
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

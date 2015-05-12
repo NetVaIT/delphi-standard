@@ -149,6 +149,26 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
       0
       31
       0)
+    inherited dxbTools: TdxBar
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarButton6'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbPreview'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbCalcularCXP'
+        end>
+    end
+    object dxbbCalcularCXP: TdxBarButton
+      Category = 0
+      Visible = ivAlways
+      ImageIndex = 13
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
@@ -158,6 +178,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
