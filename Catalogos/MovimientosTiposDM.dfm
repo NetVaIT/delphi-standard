@@ -7,10 +7,10 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'select IdMovimientoTipo, IdMovimientoTipoCategoria, IdMovimiento' +
-      'TipoEfecto, IdMovimientoTipoAcumular, IdPersonaRol, IdImpuesto, ' +
-      'Identificador, Descripcion, ValorDefault, ProduceCXC, ProduceCXP' +
-      ', AgruparTipo, AplicarISR, BaseCalculo, PorcentajeCalculo, Acumu' +
-      'larMensualmente, Descuento from MovimientosTipos'
+      'TipoEfecto, IdMovimientoTipoAcumular, IdPersonaRol, IdVariable, ' +
+      'Identificador, Descripcion, ProduceCXC, ProduceCXP, AgruparTipo,' +
+      ' AplicarISR, BaseCalculo, PorcentajeCalculo, AcumularMensualment' +
+      'e, Descuento from MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -34,7 +34,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Visible = False
     end
     object adodsMasterIdImpuesto: TIntegerField
-      FieldName = 'IdImpuesto'
+      FieldName = 'IdVariable'
       Visible = False
     end
     object adodsMasterIdentificador: TStringField
@@ -75,12 +75,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       DisplayLabel = 'Descontar al ingreso'
       FieldName = 'Descuento'
     end
-    object adodsMasterValorDefault: TFMTBCDField
-      DisplayLabel = 'Valor omisi'#243'n'
-      FieldName = 'ValorDefault'
-      Precision = 18
-      Size = 6
-    end
     object adodsMasterProduceCXC: TBooleanField
       DisplayLabel = 'Produce CXC'
       FieldName = 'ProduceCXC'
@@ -89,9 +83,34 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       DisplayLabel = 'Produce CXP'
       FieldName = 'ProduceCXP'
     end
+    object adodsMasterVariable: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Variable'
+      LookupDataSet = adodsVariables
+      LookupKeyFields = 'IdVariable'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdVariable'
+      Size = 50
+      Lookup = True
+    end
     object adodsMasterAgruparTipo: TBooleanField
       DisplayLabel = 'Agrupar por tipo de movimiento'
       FieldName = 'AgruparTipo'
+    end
+    object adodsMasterPerosnaRol: TStringField
+      DisplayLabel = 'Persona a la que se aplica'
+      FieldKind = fkLookup
+      FieldName = 'PerosnaRol'
+      LookupDataSet = adodsPersonaRol
+      LookupKeyFields = 'IdPersonaRol'
+      LookupResultField = 'Persona'
+      KeyFields = 'IdPersonaRol'
+      Size = 500
+      Lookup = True
+    end
+    object adodsMasterAcumularMensualmente: TBooleanField
+      DisplayLabel = 'Acumular mensualmente'
+      FieldName = 'AcumularMensualmente'
     end
     object adodsMasterMovimientoTipo: TStringField
       DisplayLabel = 'Acumular a movimiento'
@@ -117,10 +136,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       FieldName = 'PorcentajeCalculo'
       Precision = 18
       Size = 6
-    end
-    object adodsMasterAcumularMensualmente: TBooleanField
-      DisplayLabel = 'Acumular mensualmente'
-      FieldName = 'AcumularMensualmente'
     end
   end
   inherited adodsUpdate: TADODataSet
@@ -243,6 +258,32 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
     Left = 120
-    Top = 248
+    Top = 184
+  end
+  object adodsPersonaRol: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT        PersonasRoles.IdPersonaRol, Personas.RazonSocial A' +
+      'S Persona, Personas_1.RazonSocial AS PersonaRelacionada'#13#10'FROM   ' +
+      '         PersonasRoles INNER JOIN'#13#10'                         Pers' +
+      'onas ON PersonasRoles.IdPersona = Personas.IdPersona INNER JOIN'#13 +
+      #10'                         Personas AS Personas_1 ON PersonasRole' +
+      's.IdPersonaRelacionada = Personas_1.IdPersona INNER JOIN'#13#10'      ' +
+      '                   Roles ON PersonasRoles.IdRol = Roles.IdRol IN' +
+      'NER JOIN'#13#10'                         RolesTipos ON Roles.IdRolTipo' +
+      ' = RolesTipos.IdRolTipo'#13#10'WHERE        (RolesTipos.IdRolTipo = 2)' +
+      #13#10
+    Parameters = <>
+    Left = 120
+    Top = 240
+  end
+  object adodsVariables: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdVariable, Descripcion from Variables'
+    Parameters = <>
+    Left = 120
+    Top = 304
   end
 end

@@ -138,12 +138,23 @@ inherited frmMovimientos: TfrmMovimientos
         item
           Visible = True
           ItemName = 'dxbbCalcular'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbCalcularCXP'
         end>
     end
     object dxbbCalcular: TdxBarButton
+      Caption = 'New Button'
       Category = 0
+      Hint = 'New Button'
       Visible = ivAlways
-      ImageIndex = 13
+    end
+    object dxbbCalcularCXP: TdxBarButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
     end
   end
   inherited cxStyleRepository: TcxStyleRepository
@@ -154,6 +165,7 @@ inherited frmMovimientos: TfrmMovimientos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

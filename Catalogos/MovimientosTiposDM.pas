@@ -13,7 +13,6 @@ type
     adodsMasterIdMovimientoTipoEfecto: TIntegerField;
     adodsMasterIdentificador: TStringField;
     adodsMasterDescripcion: TStringField;
-    adodsMasterValorDefault: TFMTBCDField;
     adodsMasterProduceCXC: TBooleanField;
     adodsMasterProduceCXP: TBooleanField;
     adodsMovimientoTipoCategoria: TADODataSet;
@@ -47,6 +46,10 @@ type
     adodsMasterIdImpuesto: TIntegerField;
     adodsMasterAcumularMensualmente: TBooleanField;
     adodsMasterDescuento: TBooleanField;
+    adodsPersonaRol: TADODataSet;
+    adodsVariables: TADODataSet;
+    adodsMasterPerosnaRol: TStringField;
+    adodsMasterVariable: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
   private

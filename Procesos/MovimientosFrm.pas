@@ -38,7 +38,6 @@ type
     tvMasterPeriodo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
-    dxbbCalcular: TdxBarButton;
     tvMasterIngresos: TcxGridDBColumn;
     tvMasterDescuentos: TcxGridDBColumn;
     tvMasterNeto: TcxGridDBColumn;
@@ -48,13 +47,18 @@ type
     tvMasterObligaciones: TcxGridDBColumn;
     tvMasterOperaciones: TcxGridDBColumn;
     tvMasterCosto: TcxGridDBColumn;
+    dxbbCalcular: TdxBarButton;
+    dxbbCalcularCXP: TdxBarButton;
   private
     FMovimientosCalculados: TBasicAction;
+    FCalcularCXP: TBasicAction;
     procedure SetMovimientosCalculados(const Value: TBasicAction);
+    procedure SetCalcularCXP(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
     property MovimientosCalculados: TBasicAction read FMovimientosCalculados write SetMovimientosCalculados;
+    property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
   end;
 
 implementation
@@ -65,7 +69,11 @@ uses MovimientosDM;
 
 { TfrmMovimientos }
 
-{ TfrmMovimientos }
+procedure TfrmMovimientos.SetCalcularCXP(const Value: TBasicAction);
+begin
+  FCalcularCXP := Value;
+  dxbbCalcularCXP.Action:= Value;
+end;
 
 procedure TfrmMovimientos.SetMovimientosCalculados(const Value: TBasicAction);
 begin

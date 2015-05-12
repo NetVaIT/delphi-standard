@@ -35,7 +35,8 @@ uses
   dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxPageControlProducer,
   dxPScxGridLnk, dxPScxGridLayoutViewLnk, dxPScxEditorProducers,
   dxPScxExtEditorProducers, dxSkinsdxRibbonPainter, dxPSCore, dxPScxCommon,
-  dxPrnDlg;
+  dxPrnDlg,
+  Winapi.ShellAPI;
 
 type
   T_frmGrid = class(TForm)
@@ -180,13 +181,18 @@ begin
 end;
 
 procedure T_frmGrid.FileSaveAs1Accept(Sender: TObject);
+var
+  FileName: TFileName;
 begin
+  FileName := FileSaveAs1.Dialog.FileName;
   case FileSaveAs1.Dialog.FilterIndex of
-    1: ExportGridToExcel(FileSaveAs1.Dialog.FileName, cxGrid);
-    2: ExportGridToHTML(FileSaveAs1.Dialog.FileName, cxGrid);
-    3: ExportGridToText(FileSaveAs1.Dialog.FileName, cxGrid);
-    4: ExportGridToXML(FileSaveAs1.Dialog.FileName, cxGrid);
+    1: ExportGridToExcel(FileName, cxGrid);
+    2: ExportGridToHTML(FileName, cxGrid);
+    3: ExportGridToText(FileName, cxGrid);
+    4: ExportGridToXML(FileName, cxGrid);
   end;
+  if MessageDlg(strOpenFile, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    ShellExecute(Handle, 'open', PChar(FileName), nil, nil, 0);
 end;
 
 procedure T_frmGrid.FormShow(Sender: TObject);

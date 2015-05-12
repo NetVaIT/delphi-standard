@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
-  Data.DB, Data.Win.ADODB, Dialogs;
+  Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes;
 
 type
   TdmMovimientos = class(T_dmStandar)
@@ -19,9 +19,7 @@ type
     adodsMasterPariodo: TStringField;
     dsMaster: TDataSource;
     adodsMovimientosDet: TADODataSet;
-    adocGetPeriodoActual: TADOCommand;
     actMovimientosCalculados: TAction;
-    adospMovimientosCalculados: TADOStoredProc;
     adodsMasterIngresos: TFMTBCDField;
     adodsMasterDescuentos: TFMTBCDField;
     adodsMasterNeto: TFMTBCDField;
@@ -44,12 +42,18 @@ type
     adodsMovimientosEstatus: TADODataSet;
     adodsMovimientosDetEstatus: TStringField;
     adodsMovimientosDetIdCuentaXPagar: TIntegerField;
+    adocGetPeriodoActual: TADOCommand;
+    adospMovimientosCalculados: TADOStoredProc;
+    actCalcularCXP: TAction;
+    adospCentasXPagar: TADOStoredProc;
     procedure DataModuleCreate(Sender: TObject);
     procedure actMovimientosCalculadosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
+    procedure actCalcularCXPExecute(Sender: TObject);
   private
     { Private declarations }
     function SetMovimientosCalculados: Boolean;
+    function SetCuentaXPagar: Boolean;
   public
     { Public declarations }
   end;
@@ -61,6 +65,12 @@ implementation
 uses MovimientosFrm, MovimientosDetalleFrm;
 
 {$R *.dfm}
+
+procedure TdmMovimientos.actCalcularCXPExecute(Sender: TObject);
+begin
+  inherited;
+  SetCuentaXPagar
+end;
 
 procedure TdmMovimientos.actMovimientosCalculadosExecute(Sender: TObject);
 begin
@@ -84,6 +94,7 @@ begin
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
   TfrmMovimientos(gGridForm).MovimientosCalculados:= actMovimientosCalculados;
+  TfrmMovimientos(gGridForm).CalcularCXP:= actCalcularCXP;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
 //  gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;
@@ -100,8 +111,26 @@ begin
   begin
     adospMovimientosCalculados.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
     adospMovimientosCalculados.ExecProc;
+    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
     Result:= True;
   end;
 end;
+
+function TdmMovimientos.SetCuentaXPagar: Boolean;
+var
+  IdPeriodo: Integer;
+begin
+  Result:= False;
+  adocGetPeriodoActual.Execute;
+  IdPeriodo:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
+  if IdPeriodo <> 0 then
+  begin
+    adospCentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
+    adospCentasXPagar.ExecProc;
+    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+    Result:= True;
+  end;
+end;
+
 
 end.

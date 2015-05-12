@@ -178,7 +178,9 @@ uses
   RptMovimientosPersonaDmod in 'Reportes\RptMovimientosPersonaDmod.pas' {dmMovimientosrpt: TDataModule},
   CuentasXCobrarConceptosDM in 'Catalogos\CuentasXCobrarConceptosDM.pas' {dmCuentasXCobrarConceptos: TDataModule},
   CuentasXCobrarConceptosForm in 'Catalogos\CuentasXCobrarConceptosForm.pas' {frmCuentasXCobrarConceptos},
-  CuentasXCobrarConceptosEdit in 'Catalogos\CuentasXCobrarConceptosEdit.pas' {frmCuentasXCobrarConceptosEdit};
+  CuentasXCobrarConceptosEdit in 'Catalogos\CuentasXCobrarConceptosEdit.pas' {frmCuentasXCobrarConceptosEdit},
+  MovimientosDDM in 'Procesos\MovimientosDDM.pas' {dmMovimientosD: TDataModule},
+  MovimientosDForm in 'Procesos\MovimientosDForm.pas' {frmMovimientosD};
 
 {$R *.res}
 
