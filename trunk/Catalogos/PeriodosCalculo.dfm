@@ -36,6 +36,8 @@ object frmPeriodosCalculo: TfrmPeriodosCalculo
       Width = 209
       Height = 21
       TabOrder = 0
+      Items.Strings = (
+        'Semanal')
     end
     object GroupBox1: TGroupBox
       Left = 39
@@ -72,6 +74,7 @@ object frmPeriodosCalculo: TfrmPeriodosCalculo
       Caption = '&Cancelar'
       ModalResult = 2
       TabOrder = 3
+      OnClick = Button2Click
     end
   end
 end

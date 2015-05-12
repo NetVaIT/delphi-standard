@@ -56,8 +56,8 @@ inherited dmRptMovimientos: TdmRptMovimientos
     object dbpReportppField1: TppField
       FieldAlias = 'Persona'
       FieldName = 'Persona'
-      FieldLength = 0
-      DisplayWidth = 0
+      FieldLength = 300
+      DisplayWidth = 300
       Position = 0
     end
     object dbpReportppField2: TppField
@@ -87,15 +87,28 @@ inherited dmRptMovimientos: TdmRptMovimientos
   inherited ppReport: TppReport
     AutoStop = True
     DataPipeline = nil
+    PrinterSetup.Duplex = dpDefault
     PrinterSetup.Orientation = poLandscape
-    PrinterSetup.PaperName = 'Letter'
-    PrinterSetup.mmPaperHeight = 215900
-    PrinterSetup.mmPaperWidth = 279400
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.mmPaperHeight = 615900
+    PrinterSetup.mmPaperWidth = 650000
+    PrinterSetup.PaperSize = 256
+    AllowPrintToFile = True
+    DefaultFileDeviceType = 'XLSReport'
+    TextFileName = '($MyDocuments)\Report.xls'
+    XLSSettings.AppName = 'IntervaRH'
+    XLSSettings.Author = 'IntervaRH'
+    XLSSettings.ExportComponents = [ecText, ecLine, ecTable]
+    XLSSettings.IncludeSingleFooter = True
+    XLSSettings.IncludeSingleHeader = True
+    XLSSettings.MergeAdjacentCells = False
+    XLSSettings.ScaleToPageWidth = True
+    Left = 248
     DataPipelineName = ''
     inherited ppTitleBand1: TppTitleBand
       inherited pplblTitle: TppLabel
         SaveOrder = -1
-        mmWidth = 272521
+        mmWidth = 643121
         LayerName = Foreground
       end
     end
@@ -108,13 +121,16 @@ inherited dmRptMovimientos: TdmRptMovimientos
         UserName = 'CrossTab1'
         DataPipeline = dbpReport
         ParentDataPipeline = False
+        Pagination = ctptAcrossThenDown
+        Save = True
+        SaveOrder = 0
         Stretch = True
         Style = 'Standard'
         DataPipelineName = 'dbpReport'
         mmHeight = 5027
         mmLeft = 0
         mmTop = 1058
-        mmWidth = 266700
+        mmWidth = 637300
         BandType = 4
         LayerName = Foreground
         mmBottomOffset = 0
@@ -289,7 +305,7 @@ inherited dmRptMovimientos: TdmRptMovimientos
     end
     inherited ppFooterBand1: TppFooterBand
       inherited ppLineFooter: TppLine
-        mmWidth = 264055
+        mmWidth = 634655
         LayerName = Foreground
       end
       inherited pplblPrintDate: TppSystemVariable
@@ -298,7 +314,7 @@ inherited dmRptMovimientos: TdmRptMovimientos
       end
       inherited pplblPageNo: TppSystemVariable
         SaveOrder = -1
-        mmLeft = 254794
+        mmLeft = 625394
         LayerName = Foreground
       end
     end

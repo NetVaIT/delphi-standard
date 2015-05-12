@@ -1,5 +1,5 @@
 inherited frmRptMovimientos: TfrmRptMovimientos
-  Caption = 'frmRptMovimientos'
+  Caption = 'Movimientos'
   ClientHeight = 230
   ClientWidth = 361
   ExplicitWidth = 367
