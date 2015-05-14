@@ -1,14 +1,31 @@
 inherited frmPlazasTurnos: TfrmPlazasTurnos
+  BorderStyle = bsToolWindow
   Caption = 'Turnos'
+  ClientHeight = 433
+  ClientWidth = 645
   OnCreate = FormCreate
+  ExplicitWidth = 651
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
+  inherited splDetail3: TSplitter
+    Top = 348
+    Width = 645
+  end
+  inherited splDetail1: TSplitter
+    Top = 260
+    Width = 645
+  end
+  inherited splDetail2: TSplitter
+    Top = 304
+    Width = 645
+  end
   inherited pnlMaster: TPanel
-    ExplicitWidth = 645
-    ExplicitHeight = 224
+    Width = 645
+    Height = 229
     inherited cxGrid: TcxGrid
-      ExplicitWidth = 645
-      ExplicitHeight = 224
+      Width = 645
+      Height = 229
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPlazaTurno: TcxGridDBColumn
           DataBinding.FieldName = 'IdPlazaTurno'
@@ -36,22 +53,22 @@ inherited frmPlazasTurnos: TfrmPlazasTurnos
     end
   end
   inherited pnlDetail3: TPanel
-    ExplicitTop = 346
-    ExplicitWidth = 645
+    Top = 351
+    Width = 645
   end
   inherited pnlDetail2: TPanel
-    ExplicitTop = 302
-    ExplicitWidth = 645
+    Top = 307
+    Width = 645
   end
   inherited pnlDetail1: TPanel
-    ExplicitTop = 258
-    ExplicitWidth = 645
+    Top = 263
+    Width = 645
   end
   inherited pnlClose: TPanel
-    ExplicitTop = 387
-    ExplicitWidth = 645
+    Top = 392
+    Width = 645
     inherited btnClose: TButton
-      ExplicitLeft = 560
+      Left = 560
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -69,7 +86,7 @@ inherited frmPlazasTurnos: TfrmPlazasTurnos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

@@ -4,8 +4,8 @@ inherited dmCuentasContables: TdmCuentasContables
     CursorType = ctStatic
     CommandText = 
       'SELECT IdCuentaContable, IdPersona, CuentaContable, Descripcion,' +
-      ' Naturaleza, CodigoAgrupaSAT, IdCuentaPadre FROM CuentasContable' +
-      's'
+      ' IdCuentaContableNaturaleza, IdCuentaContableCodigoAgrupaSAT, Id' +
+      'CuentaContablePadre FROM CuentasContables'
     Left = 40
     Top = 32
     object adodsMasterIdCuentaContable: TAutoIncField
@@ -24,7 +24,7 @@ inherited dmCuentasContables: TdmCuentasContables
       LookupKeyFields = 'IdPersona'
       LookupResultField = 'RazonSocial'
       KeyFields = 'IdPersona'
-      Size = 200
+      Size = 50
       Lookup = True
     end
     object adodsMasterCuentaContable: TStringField
@@ -36,28 +36,38 @@ inherited dmCuentasContables: TdmCuentasContables
       FieldName = 'Descripcion'
       Size = 200
     end
-    object adodsMasterNaturaleza: TStringField
-      FieldName = 'Naturaleza'
-      Size = 1
-    end
-    object adodsMasterCodigoAgrupaSAT: TStringField
-      DisplayLabel = 'Codigo Agrupa SAT'
-      FieldName = 'CodigoAgrupaSAT'
-      Size = 100
-    end
-    object adodsMasterIdCuentaPadre: TIntegerField
-      FieldName = 'IdCuentaPadre'
+    object adodsMasterIdCuentaContableNaturaleza: TIntegerField
+      FieldName = 'IdCuentaContableNaturaleza'
       Visible = False
     end
-    object adodsMasterCuentaPadre: TStringField
-      DisplayLabel = 'Cuenta Padre'
+    object adodsMasterCuentaContableNaturaleza: TStringField
+      DisplayLabel = 'Naturaleza Cuenta Contable'
       FieldKind = fkLookup
-      FieldName = 'CuentaPadre'
-      LookupDataSet = adodsCuentaPadre
+      FieldName = 'CuentaContableNaturaleza'
+      LookupDataSet = adodsCuentaContableNaturaleza
+      LookupKeyFields = 'IdCuentaContableNaturaleza'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdCuentaContableNaturaleza'
+      Size = 50
+      Lookup = True
+    end
+    object adodsMasterIdCuentaContableCodigoAgrupaSAT: TIntegerField
+      FieldName = 'IdCuentaContableCodigoAgrupaSAT'
+      Visible = False
+    end
+    object adodsMasterIdCuentaContablePadre: TIntegerField
+      FieldName = 'IdCuentaContablePadre'
+      Visible = False
+    end
+    object adodsMasterCuentaContablePadre: TStringField
+      DisplayLabel = 'Cuenta Contable Padre'
+      FieldKind = fkLookup
+      FieldName = 'CuentaContablePadre'
+      LookupDataSet = adodsCuentaContablePadre
       LookupKeyFields = 'IdCuentaContable'
-      LookupResultField = 'CuentaContable'
-      KeyFields = 'IdCuentaContable'
-      Size = 100
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdCuentaContablePadre'
+      Size = 50
       Lookup = True
     end
   end
@@ -69,12 +79,22 @@ inherited dmCuentasContables: TdmCuentasContables
     Left = 160
     Top = 104
   end
-  object adodsCuentaPadre: TADODataSet
+  object adodsCuentaContablePadre: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
       'SELECT IdCuentaContable, CuentaContable, Descripcion FROM Cuenta' +
       'sContables'
+    Parameters = <>
+    Left = 160
+    Top = 264
+  end
+  object adodsCuentaContableNaturaleza: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT IdCuentaContableNaturaleza, Descripcion FROM CuentasConta' +
+      'blesNaturaleza'
     Parameters = <>
     Left = 160
     Top = 184

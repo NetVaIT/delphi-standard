@@ -1,6 +1,6 @@
-inherited frmUbicaciones: TfrmUbicaciones
+inherited frmCuentasContablesNaturaleza: TfrmCuentasContablesNaturaleza
   BorderStyle = bsToolWindow
-  Caption = 'Ubicaciones'
+  Caption = 'Naturaleza Cuentas Contables'
   ClientHeight = 433
   ClientWidth = 645
   OnCreate = FormCreate
@@ -27,12 +27,8 @@ inherited frmUbicaciones: TfrmUbicaciones
       Width = 645
       Height = 229
       inherited tvMaster: TcxGridDBTableView
-        object tvMasterIdUbicacion: TcxGridDBColumn
-          DataBinding.FieldName = 'IdUbicacion'
-          Visible = False
-        end
-        object tvMasterIdEstablecimiento: TcxGridDBColumn
-          DataBinding.FieldName = 'IdEstablecimiento'
+        object tvMasterIdCuentaContableNaturaleza: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaContableNaturaleza'
           Visible = False
         end
         object tvMasterIdentificador: TcxGridDBColumn
@@ -40,14 +36,6 @@ inherited frmUbicaciones: TfrmUbicaciones
         end
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
-        end
-        object tvMasterIdUbicacionSuperior: TcxGridDBColumn
-          DataBinding.FieldName = 'IdUbicacionSuperior'
-          Visible = False
-        end
-        object tvMasterUbicacionSuperior: TcxGridDBColumn
-          Caption = 'Ubicacion Superior'
-          DataBinding.FieldName = 'UbicacionSuperior'
         end
       end
     end

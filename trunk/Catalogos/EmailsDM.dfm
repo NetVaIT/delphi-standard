@@ -4,7 +4,16 @@ inherited dmEmails: TdmEmails
     CursorType = ctStatic
     CommandText = 
       'SELECT IdEmail, IdPersona, IdEmailTipo, Email, Predeterminado FR' +
-      'OM Emails'
+      'OM Emails WHERE IdPersona = :IdPersona'
+    Parameters = <
+      item
+        Name = 'IdPersona'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     object adodsMasterIdEmail: TIntegerField
       FieldName = 'IdEmail'
       Visible = False

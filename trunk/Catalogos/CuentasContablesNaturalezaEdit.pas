@@ -1,4 +1,4 @@
-unit PeriodosEdit;
+unit CuentasContablesNaturalezaEdit;
 
 interface
 
@@ -18,28 +18,14 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, cxTextEdit, cxDBEdit, Vcl.DBCtrls, cxMaskEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxCalendar,
-  cxSpinEdit;
+  cxContainer, cxEdit, cxTextEdit, cxDBEdit;
 
 type
-  TfrmPeriodosEdit = class(T_frmEdit)
+  TfrmCuentasContablesNaturalezaEdit = class(T_frmEdit)
     Label1: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
-    Label5: TLabel;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
-    cxDBDateEdit1: TcxDBDateEdit;
-    cxDBDateEdit2: TcxDBDateEdit;
-    Label6: TLabel;
-    cxDBSpinEdit1: TcxDBSpinEdit;
-    Label7: TLabel;
-    cxDBSpinEdit2: TcxDBSpinEdit;
-    cxDBLookupComboBox2: TcxDBLookupComboBox;
-    Label8: TLabel;
-    cxDBSpinEdit3: TcxDBSpinEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
   private
     { Private declarations }
   public
@@ -50,6 +36,6 @@ implementation
 
 {$R *.dfm}
 
-uses PeriodosDM;
+uses CuentasContablesNaturalezaDM;
 
 end.

@@ -1,31 +1,35 @@
 inherited frmPersonasContactoEdit: TfrmPersonasContactoEdit
   Caption = 'Contacto'
-  ClientHeight = 201
-  ClientWidth = 421
-  ExplicitWidth = 427
-  ExplicitHeight = 229
+  ClientHeight = 247
+  ClientWidth = 506
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  ExplicitWidth = 512
+  ExplicitHeight = 275
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 421
-    Height = 160
-    ClientRectBottom = 158
-    ClientRectRight = 419
+    Width = 506
+    Height = 206
+    ExplicitWidth = 421
+    ExplicitHeight = 160
+    ClientRectBottom = 204
+    ClientRectRight = 504
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 434
-      ExplicitHeight = 295
+      ExplicitWidth = 417
+      ExplicitHeight = 130
       object Label1: TLabel
-        Left = 8
-        Top = 32
+        Left = 24
+        Top = 16
         Width = 44
         Height = 13
         Caption = 'Contacto'
       end
       object cxDBCheckBox1: TcxDBCheckBox
-        Left = 8
-        Top = 75
+        Left = 24
+        Top = 59
         Caption = 'Principal'
         DataBinding.DataField = 'Principal'
         DataBinding.DataSource = DataSource
@@ -33,8 +37,8 @@ inherited frmPersonasContactoEdit: TfrmPersonasContactoEdit
         Width = 121
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
-        Left = 7
-        Top = 47
+        Left = 23
+        Top = 31
         DataBinding.DataField = 'Contacto'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
@@ -42,18 +46,49 @@ inherited frmPersonasContactoEdit: TfrmPersonasContactoEdit
         Width = 402
       end
     end
+    object tsDomicilio: TcxTabSheet
+      Caption = 'Domicilios'
+      ImageIndex = 1
+      ExplicitWidth = 417
+      ExplicitHeight = 130
+    end
+    object tsTelefono: TcxTabSheet
+      Caption = 'Telefonos'
+      ImageIndex = 2
+      ExplicitWidth = 417
+      ExplicitHeight = 130
+    end
+    object tsCorreo: TcxTabSheet
+      Caption = 'Correos'
+      ImageIndex = 3
+      ExplicitWidth = 417
+      ExplicitHeight = 130
+    end
   end
   inherited pmlMain: TPanel
-    Top = 160
-    Width = 421
+    Top = 206
+    Width = 506
+    ExplicitTop = 160
+    ExplicitWidth = 421
     inherited btnOk: TButton
-      Left = 258
+      Left = 343
+      ExplicitLeft = 258
     end
     inherited btnCancel: TButton
-      Left = 339
+      Left = 424
+      ExplicitLeft = 339
     end
+  end
+  inherited DataSource: TDataSource
+    Left = 320
+    Top = 8
+  end
+  inherited ActionList: TActionList
+    Left = 352
+    Top = 8
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+    DesignInfo = 590208
   end
 end

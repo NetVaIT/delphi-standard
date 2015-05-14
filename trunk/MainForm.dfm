@@ -2,7 +2,7 @@ inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -13,6 +13,7 @@ inherited frmMain: TfrmMain
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
+      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -33,7 +34,6 @@ inherited frmMain: TfrmMain
       Index = 1
     end
     object dxRibbon1Tab3: TdxRibbonTab
-      Active = True
       Caption = 'Procesos'
       Groups = <
         item
@@ -251,7 +251,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 86
-      FloatClientHeight = 76
+      FloatClientHeight = 98
       ItemLinks = <
         item
           Visible = True
