@@ -63,12 +63,20 @@ inherited frmPeriodosEdit: TfrmPeriodosEdit
         FocusControl = cxDBSpinEdit1
       end
       object Label7: TLabel
-        Left = 16
+        Left = 209
         Top = 176
         Width = 19
         Height = 13
         Caption = 'A'#241'o'
         FocusControl = cxDBSpinEdit2
+      end
+      object Label8: TLabel
+        Left = 16
+        Top = 176
+        Width = 19
+        Height = 13
+        Caption = 'Mes'
+        FocusControl = cxDBSpinEdit3
       end
       object cxDBTextEdit3: TcxDBTextEdit
         Left = 16
@@ -112,7 +120,7 @@ inherited frmPeriodosEdit: TfrmPeriodosEdit
         Width = 121
       end
       object cxDBSpinEdit2: TcxDBSpinEdit
-        Left = 16
+        Left = 209
         Top = 192
         DataBinding.DataField = 'Anio'
         DataBinding.DataSource = DataSource
@@ -127,6 +135,14 @@ inherited frmPeriodosEdit: TfrmPeriodosEdit
         Properties.ListColumns = <>
         TabOrder = 6
         Width = 186
+      end
+      object cxDBSpinEdit3: TcxDBSpinEdit
+        Left = 16
+        Top = 192
+        DataBinding.DataField = 'Mes'
+        DataBinding.DataSource = DataSource
+        TabOrder = 7
+        Width = 121
       end
     end
   end

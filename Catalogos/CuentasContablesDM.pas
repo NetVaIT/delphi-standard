@@ -9,16 +9,18 @@ uses
 type
   TdmCuentasContables = class(T_dmStandar)
     adodsPersona: TADODataSet;
+    adodsCuentaContablePadre: TADODataSet;
     adodsMasterIdCuentaContable: TAutoIncField;
     adodsMasterIdPersona: TIntegerField;
     adodsMasterCuentaContable: TStringField;
     adodsMasterDescripcion: TStringField;
-    adodsMasterNaturaleza: TStringField;
-    adodsMasterCodigoAgrupaSAT: TStringField;
-    adodsMasterIdCuentaPadre: TIntegerField;
-    adodsCuentaPadre: TADODataSet;
+    adodsMasterIdCuentaContableNaturaleza: TIntegerField;
+    adodsMasterIdCuentaContableCodigoAgrupaSAT: TIntegerField;
+    adodsMasterIdCuentaContablePadre: TIntegerField;
     adodsMasterPersona: TStringField;
-    adodsMasterCuentaPadre: TStringField;
+    adodsCuentaContableNaturaleza: TADODataSet;
+    adodsMasterCuentaContableNaturaleza: TStringField;
+    adodsMasterCuentaContablePadre: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

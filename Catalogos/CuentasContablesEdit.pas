@@ -28,13 +28,11 @@ type
     cxDBTextEdit1: TcxDBTextEdit;
     Label3: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
-    Label4: TLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
-    Label5: TLabel;
-    cxDBTextEdit4: TcxDBTextEdit;
     Label6: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
+    Label5: TLabel;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
   private
     { Private declarations }
   public

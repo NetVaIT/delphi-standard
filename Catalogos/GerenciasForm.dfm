@@ -9,33 +9,33 @@ inherited frmGerencias: TfrmGerencias
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Top = 389
+    Top = 348
     Width = 645
     ExplicitTop = 389
     ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
-    Top = 301
+    Top = 260
     Width = 645
     ExplicitTop = 301
     ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
-    Top = 345
+    Top = 304
     Width = 645
     ExplicitTop = 345
     ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
     Width = 645
-    Height = 270
+    Height = 229
     ExplicitWidth = 645
-    ExplicitHeight = 270
+    ExplicitHeight = 229
     inherited cxGrid: TcxGrid
       Width = 645
-      Height = 270
+      Height = 229
       ExplicitWidth = 645
-      ExplicitHeight = 270
+      ExplicitHeight = 229
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdGerencia: TcxGridDBColumn
           DataBinding.FieldName = 'IdGerencia'
@@ -55,22 +55,26 @@ inherited frmGerencias: TfrmGerencias
     end
   end
   inherited pnlDetail3: TPanel
-    Top = 392
+    Top = 351
     Width = 645
-    ExplicitTop = 392
+    ExplicitTop = 351
     ExplicitWidth = 645
   end
   inherited pnlDetail2: TPanel
-    Top = 348
+    Top = 307
     Width = 645
-    ExplicitTop = 348
+    ExplicitTop = 307
     ExplicitWidth = 645
   end
   inherited pnlDetail1: TPanel
-    Top = 304
+    Top = 263
     Width = 645
-    ExplicitTop = 304
+    ExplicitTop = 263
     ExplicitWidth = 645
+  end
+  inherited pnlClose: TPanel
+    Top = 392
+    Width = 645
   end
   inherited DataSource: TDataSource
     DataSet = dmPuestos.adodsGerencias
@@ -87,5 +91,11 @@ inherited frmGerencias: TfrmGerencias
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited dxComponentPrinter: TdxComponentPrinter
+    inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
+      BuiltInReportLink = True
+    end
   end
 end

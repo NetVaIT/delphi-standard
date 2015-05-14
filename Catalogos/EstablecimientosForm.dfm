@@ -1,29 +1,36 @@
 inherited frmEstablecimientos: TfrmEstablecimientos
+  BorderStyle = bsToolWindow
   Caption = 'Establecimientos'
+  ClientHeight = 433
+  ClientWidth = 645
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Top = 365
+    Top = 341
+    Width = 645
+    ExplicitTop = 365
   end
   inherited splDetail1: TSplitter
-    Top = 77
+    Top = 53
+    Width = 645
     ExplicitTop = 191
   end
   inherited splDetail2: TSplitter
-    Top = 309
+    Top = 285
+    Width = 645
     ExplicitTop = 264
   end
   inherited pnlMaster: TPanel
-    Height = 46
-    ExplicitWidth = 651
-    ExplicitHeight = 160
+    Width = 645
+    Height = 22
+    ExplicitHeight = 46
     inherited cxGrid: TcxGrid
-      Height = 46
-      ExplicitWidth = 651
-      ExplicitHeight = 160
+      Width = 645
+      Height = 22
+      ExplicitHeight = 46
       inherited tvMaster: TcxGridDBTableView
         Preview.Column = tvMasterDomicilio
         Preview.Visible = True
@@ -48,29 +55,31 @@ inherited frmEstablecimientos: TfrmEstablecimientos
     end
   end
   inherited pnlDetail3: TPanel
-    Top = 368
+    Top = 344
+    Width = 645
     Height = 48
     ExplicitTop = 368
-    ExplicitWidth = 651
     ExplicitHeight = 48
   end
   inherited pnlDetail2: TPanel
-    Top = 312
+    Top = 288
+    Width = 645
     Height = 53
     ExplicitTop = 312
-    ExplicitWidth = 651
     ExplicitHeight = 53
   end
   inherited pnlDetail1: TPanel
-    Top = 80
+    Top = 56
+    Width = 645
     Height = 229
     ExplicitTop = 80
-    ExplicitWidth = 651
     ExplicitHeight = 229
   end
   inherited pnlClose: TPanel
+    Top = 392
+    Width = 645
     inherited btnClose: TButton
-      ExplicitLeft = 566
+      Left = 560
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -88,6 +97,7 @@ inherited frmEstablecimientos: TfrmEstablecimientos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

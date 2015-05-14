@@ -180,7 +180,10 @@ uses
   CuentasXCobrarConceptosForm in 'Catalogos\CuentasXCobrarConceptosForm.pas' {frmCuentasXCobrarConceptos},
   CuentasXCobrarConceptosEdit in 'Catalogos\CuentasXCobrarConceptosEdit.pas' {frmCuentasXCobrarConceptosEdit},
   MovimientosDDM in 'Procesos\MovimientosDDM.pas' {dmMovimientosD: TDataModule},
-  MovimientosDForm in 'Procesos\MovimientosDForm.pas' {frmMovimientosD};
+  MovimientosDForm in 'Procesos\MovimientosDForm.pas' {frmMovimientosD},
+  CuentasContablesNaturalezaDM in 'Catalogos\CuentasContablesNaturalezaDM.pas' {dmCuentasContablesNaturaleza: TDataModule},
+  CuentasContablesNaturalezaForm in 'Catalogos\CuentasContablesNaturalezaForm.pas' {frmCuentasContablesNaturaleza},
+  CuentasContablesNaturalezaEdit in 'Catalogos\CuentasContablesNaturalezaEdit.pas' {frmCuentasContablesNaturalezaEdit};
 
 {$R *.res}
 

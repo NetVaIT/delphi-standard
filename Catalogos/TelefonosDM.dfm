@@ -4,7 +4,16 @@ inherited dmTelefonos: TdmTelefonos
     CursorType = ctStatic
     CommandText = 
       'SELECT IdTelefono, IdPersona, IdTelefonoTipo, Lada, Telefono, Pr' +
-      'edeterminado FROM Telefonos'
+      'edeterminado FROM Telefonos WHERE IdPersona = :IdPersona'
+    Parameters = <
+      item
+        Name = 'IdPersona'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     Left = 32
     Top = 24
     object adodsMasterIdTelefono: TIntegerField

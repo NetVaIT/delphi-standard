@@ -1,16 +1,31 @@
 inherited frmCuentasContables: TfrmCuentasContables
-  Caption = 'frmCuentasContables'
+  BorderStyle = bsToolWindow
+  Caption = 'Cuentas Contables'
+  ClientHeight = 433
+  ClientWidth = 645
   OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
+  inherited splDetail3: TSplitter
+    Top = 348
+    Width = 645
+  end
+  inherited splDetail1: TSplitter
+    Top = 260
+    Width = 645
+  end
+  inherited splDetail2: TSplitter
+    Top = 304
+    Width = 645
+  end
   inherited pnlMaster: TPanel
-    ExplicitWidth = 651
-    ExplicitHeight = 253
+    Width = 645
+    Height = 229
     inherited cxGrid: TcxGrid
-      ExplicitWidth = 651
-      ExplicitHeight = 253
+      Width = 645
+      Height = 229
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdCuentaContable: TcxGridDBColumn
           DataBinding.FieldName = 'IdCuentaContable'
@@ -29,37 +44,44 @@ inherited frmCuentasContables: TfrmCuentasContables
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
         end
-        object tvMasterNaturaleza: TcxGridDBColumn
-          DataBinding.FieldName = 'Naturaleza'
-        end
-        object tvMasterCodigoAgrupaSAT: TcxGridDBColumn
-          DataBinding.FieldName = 'CodigoAgrupaSAT'
-        end
-        object tvMasterIdCuentaPadre: TcxGridDBColumn
-          DataBinding.FieldName = 'IdCuentaPadre'
+        object tvMasterIdCuentaContableNaturaleza: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaContableNaturaleza'
           Visible = False
         end
-        object tvMasterCuentaPadre: TcxGridDBColumn
-          DataBinding.FieldName = 'CuentaPadre'
+        object tvMasterCuentaContableNaturaleza: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaContableNaturaleza'
+        end
+        object tvMasterIdCuentaContableCodigoAgrupaSAT: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaContableCodigoAgrupaSAT'
+          Visible = False
+        end
+        object tvMasterIdCuentaContablePadre: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaContablePadre'
+          Visible = False
+        end
+        object tvMasterCuentaContablePadre: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaContablePadre'
         end
       end
     end
   end
   inherited pnlDetail3: TPanel
-    ExplicitTop = 375
-    ExplicitWidth = 651
+    Top = 351
+    Width = 645
   end
   inherited pnlDetail2: TPanel
-    ExplicitTop = 331
-    ExplicitWidth = 651
+    Top = 307
+    Width = 645
   end
   inherited pnlDetail1: TPanel
-    ExplicitTop = 287
-    ExplicitWidth = 651
+    Top = 263
+    Width = 645
   end
   inherited pnlClose: TPanel
+    Top = 392
+    Width = 645
     inherited btnClose: TButton
-      ExplicitLeft = 566
+      Left = 560
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -77,7 +99,7 @@ inherited frmCuentasContables: TfrmCuentasContables
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

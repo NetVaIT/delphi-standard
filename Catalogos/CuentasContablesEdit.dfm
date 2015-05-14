@@ -1,23 +1,23 @@
 inherited frmCuentasContablesEdit: TfrmCuentasContablesEdit
   Caption = 'Cuenta Contable'
-  ClientHeight = 339
+  ClientHeight = 302
   ClientWidth = 556
   ExplicitWidth = 562
-  ExplicitHeight = 367
+  ExplicitHeight = 330
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 556
-    Height = 298
+    Height = 261
     ExplicitWidth = 556
-    ExplicitHeight = 298
-    ClientRectBottom = 296
+    ExplicitHeight = 261
+    ClientRectBottom = 259
     ClientRectRight = 554
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 552
-      ExplicitHeight = 268
+      ExplicitHeight = 231
       object Label1: TLabel
         Left = 16
         Top = 8
@@ -41,28 +41,19 @@ inherited frmCuentasContablesEdit: TfrmCuentasContablesEdit
         Caption = 'Descripcion'
         FocusControl = cxDBTextEdit2
       end
-      object Label4: TLabel
-        Left = 16
-        Top = 128
-        Width = 52
-        Height = 13
-        Caption = 'Naturaleza'
-        FocusControl = cxDBTextEdit3
-      end
-      object Label5: TLabel
-        Left = 16
-        Top = 168
-        Width = 93
-        Height = 13
-        Caption = 'Codigo Agrupa SAT'
-        FocusControl = cxDBTextEdit4
-      end
       object Label6: TLabel
         Left = 16
-        Top = 208
+        Top = 169
         Width = 66
         Height = 13
         Caption = 'Cuenta Padre'
+      end
+      object Label5: TLabel
+        Left = 16
+        Top = 128
+        Width = 136
+        Height = 13
+        Caption = 'Naturaleza Cuenta Contable'
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16
@@ -80,46 +71,39 @@ inherited frmCuentasContablesEdit: TfrmCuentasContablesEdit
         TabOrder = 1
         Width = 521
       end
-      object cxDBTextEdit3: TcxDBTextEdit
-        Left = 16
-        Top = 144
-        DataBinding.DataField = 'Naturaleza'
-        DataBinding.DataSource = DataSource
-        TabOrder = 2
-        Width = 289
-      end
-      object cxDBTextEdit4: TcxDBTextEdit
-        Left = 16
-        Top = 184
-        DataBinding.DataField = 'CodigoAgrupaSAT'
-        DataBinding.DataSource = DataSource
-        TabOrder = 3
-        Width = 177
-      end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
         Left = 15
         Top = 23
         DataBinding.DataField = 'Persona'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
-        TabOrder = 4
+        TabOrder = 2
         Width = 522
       end
       object cxDBLookupComboBox2: TcxDBLookupComboBox
         Left = 15
-        Top = 223
+        Top = 184
         DataBinding.DataField = 'CuentaPadre'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
-        TabOrder = 5
+        TabOrder = 3
+        Width = 522
+      end
+      object cxDBLookupComboBox3: TcxDBLookupComboBox
+        Left = 15
+        Top = 143
+        DataBinding.DataField = 'CuentaContableNaturaleza'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 4
         Width = 522
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 298
+    Top = 261
     Width = 556
-    ExplicitTop = 298
+    ExplicitTop = 261
     ExplicitWidth = 556
     inherited btnOk: TButton
       Left = 393

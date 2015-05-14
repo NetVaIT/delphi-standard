@@ -1,31 +1,36 @@
 inherited frmMovimientosTipos: TfrmMovimientosTipos
-  Caption = 'Tipos de movimiento'
-  ClientWidth = 1519
+  BorderStyle = bsToolWindow
+  Caption = 'Tipos de Movimiento'
+  ClientHeight = 433
+  ClientWidth = 1513
   OnCreate = FormCreate
   ExplicitWidth = 1519
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Width = 1519
+    Top = 348
+    Width = 1513
     ExplicitWidth = 1519
   end
   inherited splDetail1: TSplitter
-    Width = 1519
+    Top = 260
+    Width = 1513
     ExplicitWidth = 1519
   end
   inherited splDetail2: TSplitter
-    Width = 1519
+    Top = 304
+    Width = 1513
     ExplicitWidth = 1519
   end
   inherited pnlMaster: TPanel
-    Width = 1519
+    Width = 1513
+    Height = 229
     ExplicitWidth = 1519
-    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
-      Width = 1519
+      Width = 1513
+      Height = 229
       ExplicitWidth = 1519
-      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdMovimientoTipo: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimientoTipo'
@@ -113,25 +118,26 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
     end
   end
   inherited pnlDetail3: TPanel
-    Width = 1519
-    ExplicitTop = 375
+    Top = 351
+    Width = 1513
     ExplicitWidth = 1519
   end
   inherited pnlDetail2: TPanel
-    Width = 1519
-    ExplicitTop = 331
+    Top = 307
+    Width = 1513
     ExplicitWidth = 1519
   end
   inherited pnlDetail1: TPanel
-    Width = 1519
-    ExplicitTop = 287
+    Top = 263
+    Width = 1513
     ExplicitWidth = 1519
   end
   inherited pnlClose: TPanel
-    Width = 1519
+    Top = 392
+    Width = 1513
     ExplicitWidth = 1519
     inherited btnClose: TButton
-      Left = 1434
+      Left = 1428
       ExplicitLeft = 1434
     end
   end
@@ -153,6 +159,7 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

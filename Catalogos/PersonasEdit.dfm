@@ -209,9 +209,9 @@ inherited frmPersonaEdit: TfrmPersonaEdit
         object Label13: TLabel
           Left = 16
           Top = 207
-          Width = 58
+          Width = 55
           Height = 13
-          Caption = 'Asociado de'
+          Caption = 'Solidario de'
         end
         object Label14: TLabel
           Left = 16

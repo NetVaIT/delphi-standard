@@ -1,4 +1,4 @@
-unit CuentasContablesForm;
+unit CuentasContablesNaturalezaForm;
 
 interface
 
@@ -30,17 +30,10 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmCuentasContables = class(T_frmGrid)
-    tvMasterIdCuentaContable: TcxGridDBColumn;
-    tvMasterIdPersona: TcxGridDBColumn;
-    tvMasterPersona: TcxGridDBColumn;
-    tvMasterCuentaContable: TcxGridDBColumn;
-    tvMasterDescripcion: TcxGridDBColumn;
+  TfrmCuentasContablesNaturaleza = class(T_frmGrid)
     tvMasterIdCuentaContableNaturaleza: TcxGridDBColumn;
-    tvMasterCuentaContableNaturaleza: TcxGridDBColumn;
-    tvMasterIdCuentaContableCodigoAgrupaSAT: TcxGridDBColumn;
-    tvMasterIdCuentaContablePadre: TcxGridDBColumn;
-    tvMasterCuentaContablePadre: TcxGridDBColumn;
+    tvMasterIdentificador: TcxGridDBColumn;
+    tvMasterDescripcion: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -52,12 +45,12 @@ implementation
 
 {$R *.dfm}
 
-uses CuentasContablesDM, CuentasContablesEdit;
+uses CuentasContablesNaturalezaDM, CuentasContablesNaturalezaEdit;
 
-procedure TfrmCuentasContables.FormCreate(Sender: TObject);
+procedure TfrmCuentasContablesNaturaleza.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmCuentasContablesEdit.Create(Self);
+  gEditForm := TfrmCuentasContablesNaturalezaEdit.Create(Self);
 end;
 
 end.
