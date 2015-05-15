@@ -27,7 +27,7 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, cxDBLookupComboBox, cxBarEditItem;
 
 type
   TfrmCuentasXPagar = class(T_frmGrid)
@@ -51,13 +51,21 @@ type
     tvMasterSaldoPendiente: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
     dxbbCalcularCXP: TdxBarButton;
+    cxedtPeriodo: TcxBarEditItem;
+    dsPeriodos: TDataSource;
   private
     { Private declarations }
     FCalcularCXP: TBasicAction;
+    FDataSetPeriodo: TDataSet;
     procedure SetCalcularCXP(const Value: TBasicAction);
+    function GetIdPeriodo: Integer;
+    procedure SetDataSetPeriodo(const Value: TDataSet);
+    procedure SetIdPeriodo(const Value: Integer);
   public
     { Public declarations }
     property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
+    property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
+    property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
 
 implementation
@@ -68,10 +76,30 @@ uses CuentasXPagarDM;
 
 { TfrmCuentasXPagar }
 
+function TfrmCuentasXPagar.GetIdPeriodo: Integer;
+begin
+  if VarIsNull(cxedtPeriodo.EditValue) then
+    Result:= 0
+  else
+    Result:= cxedtPeriodo.EditValue;
+end;
+
 procedure TfrmCuentasXPagar.SetCalcularCXP(const Value: TBasicAction);
 begin
   FCalcularCXP := Value;
   dxbbCalcularCXP.Action:= Value;
 end;
+
+procedure TfrmCuentasXPagar.SetDataSetPeriodo(const Value: TDataSet);
+begin
+  FDataSetPeriodo := Value;
+  dsPeriodos.DataSet:= Value;
+end;
+
+procedure TfrmCuentasXPagar.SetIdPeriodo(const Value: Integer);
+begin
+  cxedtPeriodo.EditValue:= Value;
+end;
+
 
 end.

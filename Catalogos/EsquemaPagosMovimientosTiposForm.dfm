@@ -10,7 +10,6 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
     end
     inherited pnlAviable: TPanel
       inherited cxGridAvailable: TcxGrid
-        ExplicitHeight = 293
         inherited tvAvailable: TcxGridDBTableView
           object tvAvailableIdMovimientoTipo: TcxGridDBColumn
             DataBinding.FieldName = 'IdMovimientoTipo'
@@ -32,9 +31,6 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
             DataBinding.FieldName = 'Efecto'
             Width = 184
           end
-          object tvAvailableValorDefault: TcxGridDBColumn
-            DataBinding.FieldName = 'ValorDefault'
-          end
           object tvAvailableProduceCXC: TcxGridDBColumn
             DataBinding.FieldName = 'ProduceCXC'
             Width = 67
@@ -47,11 +43,7 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
       end
     end
     inherited pnlAssigned: TPanel
-      ExplicitWidth = 449
-      ExplicitHeight = 295
       inherited cxGridAssigned: TcxGrid
-        ExplicitWidth = 447
-        ExplicitHeight = 293
         inherited tvAssigned: TcxGridDBTableView
           object tvAssignedIdMovimientoTipo: TcxGridDBColumn
             DataBinding.FieldName = 'IdMovimientoTipo'
@@ -72,9 +64,6 @@ inherited frmEsquemaPagosMovimientosTipos: TfrmEsquemaPagosMovimientosTipos
           object tvAssignedEfecto: TcxGridDBColumn
             DataBinding.FieldName = 'Efecto'
             Width = 184
-          end
-          object tvAssignedValorDefault: TcxGridDBColumn
-            DataBinding.FieldName = 'ValorDefault'
           end
           object tvAssignedProduceCXC: TcxGridDBColumn
             DataBinding.FieldName = 'ProduceCXC'

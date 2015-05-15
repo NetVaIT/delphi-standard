@@ -2,20 +2,20 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   BorderStyle = bsToolWindow
   Caption = 'Cuentas por pagar'
   ClientHeight = 428
-  ClientWidth = 645
-  ExplicitWidth = 651
+  ClientWidth = 720
+  ExplicitWidth = 726
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
     Top = 343
-    Width = 645
+    Width = 720
     ExplicitTop = 343
     ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
     Top = 255
-    Width = 645
+    Width = 720
     Align = alTop
     Visible = True
     ExplicitTop = 255
@@ -23,17 +23,21 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited splDetail2: TSplitter
     Top = 299
-    Width = 645
+    Width = 720
     ExplicitTop = 299
     ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
-    Width = 645
+    Width = 720
     Height = 224
     Align = alTop
+    ExplicitWidth = 720
+    ExplicitHeight = 224
     inherited cxGrid: TcxGrid
-      Width = 645
+      Width = 720
       Height = 224
+      ExplicitWidth = 720
+      ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
         DataController.KeyFieldNames = 'IdCuentaXPagar'
         DataController.Summary.SummaryGroups = <
@@ -120,24 +124,31 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited pnlDetail3: TPanel
     Top = 346
-    Width = 645
+    Width = 720
+    ExplicitTop = 346
+    ExplicitWidth = 720
   end
   inherited pnlDetail2: TPanel
     Top = 302
-    Width = 645
+    Width = 720
+    ExplicitTop = 302
+    ExplicitWidth = 720
   end
   inherited pnlDetail1: TPanel
     Top = 258
-    Width = 645
+    Width = 720
     Align = alClient
+    ExplicitTop = 258
+    ExplicitWidth = 720
   end
   inherited pnlClose: TPanel
     Top = 387
-    Width = 645
+    Width = 720
     ExplicitTop = 387
-    ExplicitWidth = 645
+    ExplicitWidth = 720
     inherited btnClose: TButton
-      Left = 560
+      Left = 635
+      ExplicitLeft = 635
     end
   end
   inherited DataSource: TDataSource
@@ -164,10 +175,38 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
           ItemName = 'dxbbCalcularCXP'
         end>
     end
+    inherited dxbFilter: TdxBar
+      DockedLeft = 315
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'cxedtPeriodo'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnSearch'
+        end>
+      Visible = True
+    end
     object dxbbCalcularCXP: TdxBarButton
       Category = 0
       Visible = ivAlways
       ImageIndex = 13
+    end
+    object cxedtPeriodo: TcxBarEditItem
+      Caption = 'Periodo'
+      Category = 0
+      Hint = 'Periodo'
+      Visible = ivAlways
+      ShowCaption = True
+      Width = 304
+      PropertiesClassName = 'TcxLookupComboBoxProperties'
+      Properties.KeyFieldNames = 'IdPeriodo'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Descripcion'
+        end>
+      Properties.ListSource = dsPeriodos
     end
   end
   inherited cxStyleRepository: TcxStyleRepository
@@ -181,5 +220,11 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
       AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
+  end
+  object dsPeriodos: TDataSource
+    AutoEdit = False
+    DataSet = dmCuentasXPagar.adodsPeriodo
+    Left = 296
+    Top = 95
   end
 end

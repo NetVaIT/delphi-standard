@@ -19,5 +19,12 @@ object _dmStandar: T_dmStandar
   object ActionList: TActionList
     Left = 320
     Top = 88
+    object actSearch: TAction
+      Caption = 'Buscar'
+      HelpKeyword = 'Buscar'
+      ImageIndex = 16
+      ShortCut = 16450
+      OnExecute = actSearchExecute
+    end
   end
 end

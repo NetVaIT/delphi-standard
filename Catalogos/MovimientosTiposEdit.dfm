@@ -10,14 +10,14 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
     Width = 542
     Height = 622
     ExplicitWidth = 542
-    ExplicitHeight = 520
+    ExplicitHeight = 622
     ClientRectBottom = 620
     ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 538
-      ExplicitHeight = 490
+      ExplicitHeight = 592
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -103,6 +103,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Top = 112
         DataBinding.DataField = 'MovimientoTipoCategoria'
         DataBinding.DataSource = DataSource
+        Properties.ClearKey = 16460
         Properties.KeyFieldNames = 'IdMovimientoTipoCategoria'
         Properties.ListColumns = <
           item
@@ -116,6 +117,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Top = 152
         DataBinding.DataField = 'MovimientoTipoEfecto'
         DataBinding.DataSource = DataSource
+        Properties.ClearKey = 16460
         Properties.KeyFieldNames = 'IdMovimientoTipoEfecto'
         Properties.ListColumns = <
           item
@@ -227,7 +229,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   inherited pmlMain: TPanel
     Top = 622
     Width = 542
-    ExplicitTop = 520
+    ExplicitTop = 622
     ExplicitWidth = 542
     inherited btnOk: TButton
       Left = 379

@@ -16,6 +16,7 @@ type
     ADOConnection: TADOConnection;
     adoqUsuarios: TADOQuery;
     adoqUsuariosIdUsuario: TAutoIncField;
+    adoqUsuariosIdPersona: TIntegerField;
     adoqUsuariosRazonSocial: TStringField;
     adoqUsuariosLogin: TStringField;
     adoqUsuariosPassword: TStringField;
@@ -25,12 +26,16 @@ type
       var EventStatus: TEventStatus);
   private
     { Private declarations }
-    FNombreOperador: String;
-    FOperador: String;
+//    FNombreOperador: String;
+//    FOperador: String;
     FConectionCaption: String;
-    FIndiceOperador: Integer;
+//    FIndiceOperador: Integer;
     FExePath: string;
     FADMIN_PROD: String;
+    FNombrePersona: string;
+    FIdUsuario: Integer;
+    FIdPersona: Integer;
+    FUsuario: string;
     procedure SetExePath(const Value: string);
   public
     { Public declarations }
@@ -40,9 +45,13 @@ type
     function EnabledAction(pTag: Integer): Boolean;
     property ExePath: string read FExePath write SetExePath;
     property ConectionCaption: String read FConectionCaption;
-    property IndiceOperador: Integer read FIndiceOperador;
-    property Operador: String read FOperador;
-    property NombreOperador: String read FNombreOperador;
+    property IdUsuario: Integer read FIdUsuario;
+    property Usuario: string read FUsuario;
+    property IdPersona: Integer read FIdPersona;
+    property NombrePersona: string read FNombrePersona;
+//    property IndiceOperador: Integer read FIndiceOperador;
+//    property Operador: String read FOperador;
+//    property NombreOperador: String read FNombreOperador;
     property ADMIN_PROD: String read FADMIN_PROD;
   end;
 
@@ -118,9 +127,10 @@ var
       if (frmLogin.Password = Trim(adoqusuariosPassword.AsString)) then
       begin
         Result:= True;
-        FIndiceOperador:= adoqUsuariosIdUsuario.Value;
-        FOperador:= adoqUsuariosLogin.AsString;
-        FNombreOperador:= adoqUsuariosRazonSocial.AsString;
+        FIdUsuario:= adoqUsuariosIdUsuario.Value;
+        FUsuario:= adoqUsuariosLogin.AsString;
+        FIdPersona:= adoqUsuariosIdPersona.Value;
+        FNombrePersona:= adoqUsuariosRazonSocial.AsString;
 //        FADMIN_PROD:= adoqOperadoresADMIN_PROD.Value;
       end
       else
@@ -168,8 +178,8 @@ end;
 
 procedure T_dmConection.Logout;
 begin
-  FOperador:= '';
-  FNombreOperador:= '';
+  FUsuario:= '';
+  FNombrePersona:= '';
   ADOConnection.Close;
 end;
 

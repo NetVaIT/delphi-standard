@@ -27,7 +27,7 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, cxDBLookupComboBox, cxBarEditItem;
 
 type
   TfrmMovimientos = class(T_frmGrid)
@@ -38,27 +38,39 @@ type
     tvMasterPeriodo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
+    dxbbCalcular: TdxBarButton;
+    dxbbCalcularCXP: TdxBarButton;
+    dsPeriodos: TDataSource;
+    cxedtPeriodo: TcxBarEditItem;
     tvMasterIngresos: TcxGridDBColumn;
     tvMasterDescuentos: TcxGridDBColumn;
-    tvMasterNeto: TcxGridDBColumn;
+    tvMasterBase: TcxGridDBColumn;
+    tvMasterEntregas: TcxGridDBColumn;
     tvMasterPercepciones: TcxGridDBColumn;
     tvMasterDeducciones: TcxGridDBColumn;
     tvMasterPrestaciones: TcxGridDBColumn;
     tvMasterObligaciones: TcxGridDBColumn;
     tvMasterOperaciones: TcxGridDBColumn;
+    tvMasterImpuestoTrasladado: TcxGridDBColumn;
+    tvMasterImpuestoRetenido: TcxGridDBColumn;
     tvMasterCosto: TcxGridDBColumn;
-    dxbbCalcular: TdxBarButton;
-    dxbbCalcularCXP: TdxBarButton;
+    tvMasterCarga: TcxGridDBColumn;
   private
     FMovimientosCalculados: TBasicAction;
     FCalcularCXP: TBasicAction;
+    FDataSetPeriodo: TDataSet;
     procedure SetMovimientosCalculados(const Value: TBasicAction);
     procedure SetCalcularCXP(const Value: TBasicAction);
+    function GetIdPeriodo: Integer;
+    procedure SetDataSetPeriodo(const Value: TDataSet);
+    procedure SetIdPeriodo(const Value: Integer);
     { Private declarations }
   public
     { Public declarations }
     property MovimientosCalculados: TBasicAction read FMovimientosCalculados write SetMovimientosCalculados;
     property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
+    property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
+    property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
 
 implementation
@@ -69,10 +81,29 @@ uses MovimientosDM;
 
 { TfrmMovimientos }
 
+function TfrmMovimientos.GetIdPeriodo: Integer;
+begin
+  if VarIsNull(cxedtPeriodo.EditValue) then
+    Result:= 0
+  else
+    Result:= cxedtPeriodo.EditValue;
+end;
+
 procedure TfrmMovimientos.SetCalcularCXP(const Value: TBasicAction);
 begin
   FCalcularCXP := Value;
   dxbbCalcularCXP.Action:= Value;
+end;
+
+procedure TfrmMovimientos.SetDataSetPeriodo(const Value: TDataSet);
+begin
+  FDataSetPeriodo := Value;
+  dsPeriodos.DataSet:= Value;
+end;
+
+procedure TfrmMovimientos.SetIdPeriodo(const Value: Integer);
+begin
+  cxedtPeriodo.EditValue:= Value;
 end;
 
 procedure TfrmMovimientos.SetMovimientosCalculados(const Value: TBasicAction);

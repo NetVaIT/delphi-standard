@@ -233,4 +233,12 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     Left = 64
     Top = 235
   end
+  object adodsPeriodo: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdPeriodo, Descripcion from Periodos'
+    Parameters = <>
+    Left = 168
+    Top = 104
+  end
 end

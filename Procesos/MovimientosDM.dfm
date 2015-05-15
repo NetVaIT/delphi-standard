@@ -5,9 +5,10 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     AfterScroll = adodsMasterAfterScroll
     CommandText = 
-      'select IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha,' +
-      ' Ingresos, Descuentos, Neto, Percepciones, Deducciones, Prestaci' +
-      'ones, Obligaciones, Operaciones, Costo from Movimientos'
+      'SELECT IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha,' +
+      ' Ingresos, Descuentos, Base, Entregas, '#13#10'Percepciones, Deduccion' +
+      'es, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado,' +
+      ' ImpuestoRetenido, Costo, Carga FROM Movimientos'
     object adodsMasterIdMovimiento: TAutoIncField
       FieldName = 'IdMovimiento'
       ReadOnly = True
@@ -60,9 +61,14 @@ inherited dmMovimientos: TdmMovimientos
       Precision = 18
       Size = 6
     end
-    object adodsMasterNeto: TFMTBCDField
-      DisplayLabel = 'Base'
-      FieldName = 'Neto'
+    object adodsMasterBase: TFMTBCDField
+      FieldName = 'Base'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterEntregas: TFMTBCDField
+      FieldName = 'Entregas'
       currency = True
       Precision = 18
       Size = 6
@@ -97,8 +103,28 @@ inherited dmMovimientos: TdmMovimientos
       Precision = 18
       Size = 6
     end
+    object adodsMasterImpuestoTrasladado: TFMTBCDField
+      DisplayLabel = 'Impuesto trasladado'
+      FieldName = 'ImpuestoTrasladado'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterImpuestoRetenido: TFMTBCDField
+      DisplayLabel = 'Impuesto retenido'
+      FieldName = 'ImpuestoRetenido'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
     object adodsMasterCosto: TFMTBCDField
       FieldName = 'Costo'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterCarga: TFMTBCDField
+      FieldName = 'Carga'
       currency = True
       Precision = 18
       Size = 6
@@ -310,6 +336,13 @@ inherited dmMovimientos: TdmMovimientos
       end
       item
         Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdUsuarioRegistro'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
