@@ -94,6 +94,8 @@ type
     dxcplGrid: TdxGridReportLink;
     dxbbPreview: TdxBarButton;
     actPreview: TAction;
+    dxbFilter: TdxBar;
+    dxbtnSearch: TdxBarButton;
     procedure FormShow(Sender: TObject);
     procedure FileSaveAs1Accept(Sender: TObject);
     procedure DatasetInsertExecute(Sender: TObject);
@@ -112,9 +114,11 @@ type
     FDataSet: TDataSet;
     FgEditForm: T_frmEdit;
     FView: Boolean;
+    FactSearch: TBasicAction;
     procedure SetReadOnlyGrid(const Value: Boolean);
     procedure SetDataSet(const Value: TDataSet);
     procedure SetView(const Value: Boolean);
+    procedure SetactSearch(const Value: TBasicAction);
   protected
     tvStatus: TcxGridDBColumn;
     property gEditForm: T_frmEdit read FgEditForm write FgEditForm;
@@ -123,6 +127,7 @@ type
     property DataSet: TDataSet read FDataSet write SetDataSet;
     property ReadOnlyGrid: Boolean read FReadOnlyGrid write SetReadOnlyGrid default False;
     property View: Boolean read FView write SetView default False;
+    property actSearch: TBasicAction read FactSearch write SetactSearch;
   end;
 
 implementation
@@ -203,6 +208,12 @@ begin
   tvMaster.ViewData.Expand(True);
   dxbNavigator.DockedLeft:= 82;
   dxbTools.DockedLeft:= 210;
+end;
+
+procedure T_frmGrid.SetactSearch(const Value: TBasicAction);
+begin
+  FactSearch := Value;
+  dxbtnSearch.Action:= Value;
 end;
 
 procedure T_frmGrid.SetDataSet(const Value: TDataSet);

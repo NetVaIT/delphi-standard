@@ -43,13 +43,19 @@ type
     actCalcularCXP: TAction;
     adocGetPeriodoActual: TADOCommand;
     adospCentasXPagar: TADOStoredProc;
+    adodsPeriodo: TADODataSet;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularCXPExecute(Sender: TObject);
   private
     { Private declarations }
+    FIdPeriodoActual: Integer;
     function SetCuentaXPagar: Boolean;
+    function GetPeriodoActual: Integer;
+  protected
+    procedure SetFilter; override;
   public
     { Public declarations }
+    property IdPeriodoActual: Integer read FIdPeriodoActual;
   end;
 
 implementation
@@ -69,6 +75,7 @@ end;
 procedure TdmCuentasXPagar.DataModuleCreate(Sender: TObject);
 begin
   inherited;
+  FIdPeriodoActual := GetPeriodoActual;
   adodsMovimientosDetalle.Open;
   gGridForm:= TfrmCuentasXPagar.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
@@ -77,6 +84,23 @@ begin
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
   gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDetalle;
+  // Filtrado
+  SQLSelect:= 'select IdCuentaXPagar, IdPersonaRol, IdPeriodo, IdCuentaXPagarEstatus, ' +
+  'Persona, PersonaRelacionada, ConceptoGenerico, SumaSubtotal, SumaTotal, SumaDescuentos, ' +
+  'TotalIVATrasladado, TotalISRTrasladado, TotalIEPSTrasladado, TotalLocalesTrasladado, ' +
+  'TotalIVARetenido, TotalISRRetenido, TotalLocalesRetenido, SaldoPendiente, Estatus from vCuentasXPagar';
+  gGridForm.actSearch:= actSearch;
+  adodsPeriodo.Open;
+  TfrmCuentasXPagar(gGridForm).DataSetPeriodo:= adodsPeriodo;
+  // Ejecuta filtrado
+  TfrmCuentasXPagar(gGridForm).IdPeriodo:= IdPeriodoActual;
+  actSearch.Execute;
+end;
+
+function TdmCuentasXPagar.GetPeriodoActual: Integer;
+begin
+  adocGetPeriodoActual.Execute;
+  Result:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
 end;
 
 function TdmCuentasXPagar.SetCuentaXPagar: Boolean;
@@ -84,8 +108,7 @@ var
   IdPeriodo: Integer;
 begin
   Result:= False;
-  adocGetPeriodoActual.Execute;
-  IdPeriodo:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
+  IdPeriodo:= IdPeriodoActual;
   if IdPeriodo <> 0 then
   begin
     adospCentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
@@ -95,5 +118,13 @@ begin
   end;
 end;
 
+procedure TdmCuentasXPagar.SetFilter;
+var
+  IdPeriodo: Integer;
+begin
+  inherited;
+  IdPeriodo:= TfrmCuentasXPagar(gGridForm).IdPeriodo;
+  SQLWhere:= Format('WHERE IdPeriodo = %d', [IdPeriodo]);
+end;
 
 end.

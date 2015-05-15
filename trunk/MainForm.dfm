@@ -9,7 +9,6 @@ inherited frmMain: TfrmMain
     Width = 1099
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
-      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
@@ -41,20 +40,20 @@ inherited frmMain: TfrmMain
         end>
       Index = 2
     end
-    object dxRibbon1Tab4: TdxRibbonTab
-      Caption = 'Configuraci'#243'n'
-      Groups = <
-        item
-          ToolbarName = 'dxbUsuarios'
-        end>
-      Index = 3
-    end
     object dxRibbon1Tab5: TdxRibbonTab
       Caption = 'Reportes'
       Groups = <
         item
           Caption = ''
           ToolbarName = 'dxBarManagerBar2'
+        end>
+      Index = 3
+    end
+    object dxRibbon1Tab4: TdxRibbonTab
+      Caption = 'Configuraci'#243'n'
+      Groups = <
+        item
+          ToolbarName = 'dxbUsuarios'
         end>
       Index = 4
     end
@@ -87,8 +86,6 @@ inherited frmMain: TfrmMain
       FloatClientHeight = 22
     end
     inherited dxbArchivo: TdxBar
-      DockedDockControl = nil
-      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end

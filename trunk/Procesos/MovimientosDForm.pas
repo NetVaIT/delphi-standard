@@ -27,7 +27,8 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, cxCalendar, cxDBLookupComboBox, cxBarEditItem, Data.Win.ADODB,
+  cxTextEdit;
 
 type
   TfrmMovimientosD = class(T_frmGrid)
@@ -41,10 +42,18 @@ type
     tvMasterEfecto: TcxGridDBColumn;
     tvMasterImporte: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
+    dsPeriodos: TDataSource;
+    cxedtPeriodo: TcxBarEditItem;
   private
+    FDataSetPeriodo: TDataSet;
     { Private declarations }
+    function GetIdPeriodo: Integer;
+    procedure SetIdPeriodo(const Value: Integer);
+    procedure SetDataSetPeriodo(const Value: TDataSet);
   public
     { Public declarations }
+    property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
+    property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
 
 implementation
@@ -52,5 +61,24 @@ implementation
 {$R *.dfm}
 
 uses MovimientosDDM;
+
+function TfrmMovimientosD.GetIdPeriodo: Integer;
+begin
+  if VarIsNull(cxedtPeriodo.EditValue) then
+    Result:= 0
+  else
+    Result:= cxedtPeriodo.EditValue;
+end;
+
+procedure TfrmMovimientosD.SetDataSetPeriodo(const Value: TDataSet);
+begin
+  FDataSetPeriodo := Value;
+  dsPeriodos.DataSet:= Value;
+end;
+
+procedure TfrmMovimientosD.SetIdPeriodo(const Value: Integer);
+begin
+  cxedtPeriodo.EditValue:= Value;
+end;
 
 end.

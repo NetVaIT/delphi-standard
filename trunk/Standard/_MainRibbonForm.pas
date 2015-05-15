@@ -116,7 +116,7 @@ procedure T_frmMainRibbon.ConfigControls;
 begin
   Caption := strProductName + strSeparador + strFileDescription;
   dxRibbonStatusBar1.Panels[0].Text:= _dmConection.ConectionCaption;
-  dxRibbonStatusBar1.Panels[1].Text:= strUser + _dmConection.Operador;
+  dxRibbonStatusBar1.Panels[1].Text:= strUser + _dmConection.Usuario;
 end;
 
 procedure T_frmMainRibbon.cxTranslate;

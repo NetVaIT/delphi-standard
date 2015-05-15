@@ -16,8 +16,8 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
         'ategorias.Descripcion AS Categoria, MovimientosTiposEfectos.Desc' +
         'ripcion AS Efecto,'
       
-        '                         MovimientosTipos.ValorDefault, Movimien' +
-        'tosTipos.ProduceCXC, MovimientosTipos.ProduceCXP'
+        '                         MovimientosTipos.ProduceCXC, Movimiento' +
+        'sTipos.ProduceCXP'
       'FROM            MovimientosTipos INNER JOIN'
       
         '                         MovimientosTiposCategorias ON Movimient' +
@@ -55,12 +55,6 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
       FieldName = 'Efecto'
       Size = 100
     end
-    object adoqAvailableValorDefault: TFMTBCDField
-      DisplayLabel = 'Omisi'#243'n'
-      FieldName = 'ValorDefault'
-      Precision = 18
-      Size = 6
-    end
     object adoqAvailableProduceCXC: TBooleanField
       DisplayLabel = 'Produce CXC'
       FieldName = 'ProduceCXC'
@@ -86,8 +80,8 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
         'ategorias.Descripcion AS Categoria, MovimientosTiposEfectos.Desc' +
         'ripcion AS Efecto,'
       
-        '                         MovimientosTipos.ValorDefault, Movimien' +
-        'tosTipos.ProduceCXC, MovimientosTipos.ProduceCXP'
+        '                         MovimientosTipos.ProduceCXC, Movimiento' +
+        'sTipos.ProduceCXP'
       'FROM            MovimientosTipos INNER JOIN'
       
         '                         MovimientosTiposCategorias ON Movimient' +
@@ -124,12 +118,6 @@ inherited dmEsquemaPagosMovimientosTipos: TdmEsquemaPagosMovimientosTipos
     object adoqAssignedEfecto: TStringField
       FieldName = 'Efecto'
       Size = 100
-    end
-    object adoqAssignedValorDefault: TFMTBCDField
-      DisplayLabel = 'Omisi'#243'n'
-      FieldName = 'ValorDefault'
-      Precision = 18
-      Size = 6
     end
     object adoqAssignedProduceCXC: TBooleanField
       DisplayLabel = 'Produce CXC'

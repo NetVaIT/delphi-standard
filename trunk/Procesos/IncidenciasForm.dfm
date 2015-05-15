@@ -1,20 +1,30 @@
 inherited frmIncidencias: TfrmIncidencias
+  BorderStyle = bsToolWindow
   Caption = 'Incidencias'
+  ClientHeight = 428
+  ClientWidth = 645
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
+  inherited splDetail3: TSplitter
+    Top = 343
+    Width = 645
+  end
   inherited splDetail1: TSplitter
+    Width = 645
     Align = alTop
     Visible = True
   end
+  inherited splDetail2: TSplitter
+    Top = 299
+    Width = 645
+  end
   inherited pnlMaster: TPanel
+    Width = 645
     Align = alTop
-    ExplicitWidth = 651
-    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
-      ExplicitWidth = 651
-      ExplicitHeight = 253
+      Width = 645
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdIncidencia: TcxGridDBColumn
           DataBinding.FieldName = 'IdIncidencia'
@@ -44,22 +54,24 @@ inherited frmIncidencias: TfrmIncidencias
     end
   end
   inherited pnlDetail3: TPanel
-    ExplicitTop = 375
-    ExplicitWidth = 651
+    Top = 346
+    Width = 645
   end
   inherited pnlDetail2: TPanel
-    ExplicitTop = 331
-    ExplicitWidth = 651
+    Top = 302
+    Width = 645
   end
   inherited pnlDetail1: TPanel
+    Width = 645
+    Height = 12
     Align = alClient
     Visible = True
-    ExplicitTop = 287
-    ExplicitWidth = 651
   end
   inherited pnlClose: TPanel
+    Top = 387
+    Width = 645
     inherited btnClose: TButton
-      ExplicitLeft = 566
+      Left = 560
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -77,7 +89,6 @@ inherited frmIncidencias: TfrmIncidencias
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

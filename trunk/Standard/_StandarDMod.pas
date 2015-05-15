@@ -17,8 +17,10 @@ type
     adodsMaster: TADODataSet;
     adodsUpdate: TADODataSet;
     ActionList: TActionList;
+    actSearch: TAction;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure actSearchExecute(Sender: TObject);
   private
     { Private declarations }
     FMasterFields: string;
@@ -31,6 +33,10 @@ type
     gFormDeatil2: T_frmGrid;
     gFormDeatil3: T_frmGrid;
     frmEdit: T_frmEdit;
+    SQLSelect: string;
+    SQLWhere: string;
+    procedure OpenDataSet; virtual;
+    procedure SetFilter; virtual;
   public
     { Public declarations }
     procedure ShowModule(pConteiner: TWinControl; pCation: TCaption);
@@ -46,6 +52,12 @@ implementation
 uses _ConectionDmod;
 
 {$R *.dfm}
+
+procedure T_dmStandar.actSearchExecute(Sender: TObject);
+begin
+  SetFilter;
+  OpenDataSet;
+end;
 
 function T_dmStandar.Add: Integer;
 begin
@@ -64,7 +76,8 @@ end;
 
 procedure T_dmStandar.DataModuleCreate(Sender: TObject);
 begin
-//
+  // Asigancion para cuando se utilice filtrado no se muestra ningun registro
+  SQLWhere := 'WHERE 1=0';
 end;
 
 procedure T_dmStandar.DataModuleDestroy(Sender: TObject);
@@ -84,6 +97,24 @@ begin
   finally
     adodsUpdate.Close;
   end;
+end;
+
+procedure T_dmStandar.OpenDataSet;
+
+  procedure PrepareDataSet;
+  begin
+    adodsMaster.Close;
+    if SQLSelect <> EmptyStr then
+      adodsMaster.CommandText:= SQLSelect + ' ' + SQLWhere;
+  end;
+begin
+  PrepareDataSet;
+  if adodsMaster.CommandText <> EmptyStr then adodsMaster.Open;
+end;
+
+procedure T_dmStandar.SetFilter;
+begin
+  SQLWhere:= '1=0';
 end;
 
 procedure T_dmStandar.SetMasterFields(const Value: string);
@@ -115,7 +146,7 @@ procedure T_dmStandar.ShowModule(pConteiner: TWinControl; pCation: TCaption);
 begin
   if Assigned(gGridForm) then
   begin
-    if adodsMaster.CommandText <> EmptyStr then adodsMaster.Open;
+    OpenDataSet;
     if Assigned(pConteiner) then
     begin
       gGridForm.Parent:= pConteiner;

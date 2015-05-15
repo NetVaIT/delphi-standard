@@ -30,7 +30,6 @@ type
     tvAvailableDescripcion: TcxGridDBColumn;
     tvAvailableCategoria: TcxGridDBColumn;
     tvAvailableEfecto: TcxGridDBColumn;
-    tvAvailableValorDefault: TcxGridDBColumn;
     tvAvailableProduceCXC: TcxGridDBColumn;
     tvAvailableProduceCXP: TcxGridDBColumn;
     tvAssignedIdMovimientoTipo: TcxGridDBColumn;
@@ -38,7 +37,6 @@ type
     tvAssignedDescripcion: TcxGridDBColumn;
     tvAssignedCategoria: TcxGridDBColumn;
     tvAssignedEfecto: TcxGridDBColumn;
-    tvAssignedValorDefault: TcxGridDBColumn;
     tvAssignedProduceCXC: TcxGridDBColumn;
     tvAssignedProduceCXP: TcxGridDBColumn;
   private
