@@ -9,10 +9,10 @@ inherited frmMain: TfrmMain
     Width = 1099
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
+      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
-      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -41,6 +41,7 @@ inherited frmMain: TfrmMain
       Index = 2
     end
     object dxRibbon1Tab5: TdxRibbonTab
+      Active = True
       Caption = 'Reportes'
       Groups = <
         item
@@ -86,6 +87,8 @@ inherited frmMain: TfrmMain
       FloatClientHeight = 22
     end
     inherited dxbArchivo: TdxBar
+      DockedDockControl = nil
+      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end
@@ -303,8 +306,8 @@ inherited frmMain: TfrmMain
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
-      FloatClientWidth = 115
-      FloatClientHeight = 162
+      FloatClientWidth = 174
+      FloatClientHeight = 216
       ItemLinks = <
         item
           Visible = True
@@ -317,6 +320,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton27'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton28'
         end>
       OneOnRow = False
       Row = 0
@@ -341,6 +348,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton26'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton29'
         end>
       OneOnRow = True
       Row = 0
@@ -506,6 +517,14 @@ inherited frmMain: TfrmMain
     end
     object dxBarButton10: TdxBarButton
       Action = actDetMovimientos
+      Category = 0
+    end
+    object dxBarLargeButton28: TdxBarLargeButton
+      Action = actCuentasContablesNaturaleza
+      Category = 0
+    end
+    object dxBarLargeButton29: TdxBarLargeButton
+      Action = actCrossTab
       Category = 0
     end
   end
@@ -758,6 +777,20 @@ inherited frmMain: TfrmMain
       Category = 'Procesos'
       Caption = 'Detalle de movimientos'
       ImageIndex = 9
+      OnExecute = actCatalogoExecute
+    end
+    object actCuentasContablesNaturaleza: TAction
+      Tag = 18
+      Category = 'Catalogos'
+      Caption = 'Naturaleza Cuentas Contables'
+      ImageIndex = 13
+      OnExecute = actCatalogoExecute
+    end
+    object actCrossTab: TAction
+      Tag = 52
+      Category = 'Reportes'
+      Caption = 'CrossTab'
+      ImageIndex = 10
       OnExecute = actCatalogoExecute
     end
   end

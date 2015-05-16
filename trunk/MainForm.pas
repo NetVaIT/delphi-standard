@@ -109,6 +109,10 @@ type
     dxBarLargeButton27: TdxBarLargeButton;
     actDetMovimientos: TAction;
     dxBarButton10: TdxBarButton;
+    actCuentasContablesNaturaleza: TAction;
+    dxBarLargeButton28: TdxBarLargeButton;
+    dxBarLargeButton29: TdxBarLargeButton;
+    actCrossTab: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -134,7 +138,8 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
-  CuentasXCobrarConceptosDM, MovimientosDDM;
+  CuentasXCobrarConceptosDM, MovimientosDDM, CuentasContablesNaturalezaDM,
+  RptReporteCrossTabDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -165,6 +170,7 @@ begin
    15: gModulo := TdmCuentasContables.Create(Self);
    16: gModulo := TdmCuentasInternas.Create(Self);
    17: gModulo := TdmCuentasXCobrarConceptos.Create(Self);
+   18: gModulo := TdmCuentasContablesNaturaleza.Create(Self);
    20: begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rNone;
@@ -213,6 +219,7 @@ begin
          gReport.Title := pCaption;
          gReport.Execute;
        end;
+   52: gModulo := TdmReporteCrossTab.Create(Self);
   end;
   if Assigned(gModulo) then
   begin
@@ -256,6 +263,7 @@ begin
   actCXCConceptos.Enabled       := Conected;
   actReporteMovimientos.Enabled := Conected;
   actMovimientosPersona.Enabled := Conected;
+  actCuentasContablesNaturaleza.Enabled := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

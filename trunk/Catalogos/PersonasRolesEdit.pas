@@ -29,7 +29,6 @@ type
     tsCuentas: TcxTabSheet;
     tsEsquemaPago: TcxTabSheet;
     tsArchivosFacturar: TcxTabSheet;
-    tsEmpleado: TcxTabSheet;
     pnlRol: TPanel;
     pnlProveedor: TPanel;
     pnlEmpleado: TPanel;
@@ -126,7 +125,6 @@ begin
        end;
     3: begin
         tsCuentas.TabVisible          := True;
-//        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
         dmClientes.MasterSource       := DataSource;
         dmClientes.MasterFields       := 'IdPersonaRol';
@@ -134,7 +132,6 @@ begin
        end;
     4: begin
         tsCuentas.TabVisible          := True;
-//        tsEmpleado.TabVisible         := False;
         tsEsquemaPago.TabVisible      := False;
         dmProveedores.MasterSource    := DataSource;
         dmProveedores.MasterFields    := 'IdPersonaRol';
@@ -144,34 +141,26 @@ begin
        end;
     5: begin
         pnlEmpleado.Visible           := True;
-//        tsEmpleado.TabVisible         := True;
         tsEsquemaPago.TabVisible      := False; //TMP
         tsCuentas.TabVisible          := False;
        end;
     6: begin
         tsCuentas.TabVisible     := True;
-//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
     7: begin
         tsCuentas.TabVisible     := True;
-//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
     8: begin
         tsCuentas.TabVisible     := True;
-//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
     9: begin
         tsCuentas.TabVisible     := True;
-//        tsEmpleado.TabVisible    := False;
         tsEsquemaPago.TabVisible := False;
        end;
   end;
-//  dmEmpleados.MasterSource := DataSource;
-//  dmEmpleados.MasterFields := 'IdPersonaRol';
-//  dmEmpleados.ShowModule(tsEmpleado,'');
   dmPersonasRolesCuentasBancarias.MasterSource := DataSource;
   dmPersonasRolesCuentasBancarias.MasterFields := 'IdPersonaRol';
   dmPersonasRolesCuentasBancarias.PersonaAct := DataSet.FieldByName('IdPersona').Value;

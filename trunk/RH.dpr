@@ -183,7 +183,9 @@ uses
   MovimientosDForm in 'Procesos\MovimientosDForm.pas' {frmMovimientosD},
   CuentasContablesNaturalezaDM in 'Catalogos\CuentasContablesNaturalezaDM.pas' {dmCuentasContablesNaturaleza: TDataModule},
   CuentasContablesNaturalezaForm in 'Catalogos\CuentasContablesNaturalezaForm.pas' {frmCuentasContablesNaturaleza},
-  CuentasContablesNaturalezaEdit in 'Catalogos\CuentasContablesNaturalezaEdit.pas' {frmCuentasContablesNaturalezaEdit};
+  CuentasContablesNaturalezaEdit in 'Catalogos\CuentasContablesNaturalezaEdit.pas' {frmCuentasContablesNaturalezaEdit},
+  RptReporteCrossTabDM in 'Reportes\RptReporteCrossTabDM.pas' {dmReporteCrossTab: TDataModule},
+  RptReporteCrossTabForm in 'Reportes\RptReporteCrossTabForm.pas' {frmReporteCrossTab};
 
 {$R *.res}
 

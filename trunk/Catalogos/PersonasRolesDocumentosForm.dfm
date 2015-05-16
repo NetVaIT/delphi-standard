@@ -42,6 +42,7 @@ inherited frmPersonasRolesDocumentos: TfrmPersonasRolesDocumentos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
