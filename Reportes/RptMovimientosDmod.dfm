@@ -92,7 +92,7 @@ inherited dmRptMovimientos: TdmRptMovimientos
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.mmPaperHeight = 615900
     PrinterSetup.mmPaperWidth = 650000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 198
     AllowPrintToFile = True
     DefaultFileDeviceType = 'XLSReport'
     TextFileName = '($MyDocuments)\Report.xls'
@@ -123,7 +123,6 @@ inherited dmRptMovimientos: TdmRptMovimientos
         ParentDataPipeline = False
         Pagination = ctptAcrossThenDown
         Save = True
-        SaveOrder = 0
         Stretch = True
         Style = 'Standard'
         DataPipelineName = 'dbpReport'
@@ -180,38 +179,6 @@ inherited dmRptMovimientos: TdmRptMovimientos
             Font.Height = -13
             Font.Name = 'Arial'
             Font.Style = []
-          end
-        end
-        object TppColumnDef
-          FieldAlias = 'Catagoria'
-          FieldName = 'Catagoria'
-          Color = clWhite
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          object TppSubTotal
-            ChildType = 5
-            object TppTotalCaptionDef
-              ChildType = 4
-              Color = clWhite
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Arial'
-              Font.Style = []
-            end
-            object TppTotalDef
-              ChildType = 3
-              Color = clWhite
-              DisplayFormat = '$#,0.00;-$#,0.00'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Arial'
-              Font.Style = []
-            end
           end
         end
         object TppColumnDef

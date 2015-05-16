@@ -48,7 +48,7 @@ type
     procedure SetUpdateFile(const Value: TBasicAction);
   public
     { Public declarations }
-    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
+    property UpdateFile: TBasicAction read FUpdateFile write SetUpdateFile;
   end;
 
 implementation
