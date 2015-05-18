@@ -31,12 +31,12 @@ inherited frmMovimientos: TfrmMovimientos
     Width = 1085
     Height = 224
     Align = alTop
-    ExplicitWidth = 645
+    ExplicitWidth = 1085
     ExplicitHeight = 224
     inherited cxGrid: TcxGrid
       Width = 1085
       Height = 224
-      ExplicitWidth = 645
+      ExplicitWidth = 1085
       ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdMovimiento: TcxGridDBColumn
@@ -112,12 +112,28 @@ inherited frmMovimientos: TfrmMovimientos
           DataBinding.FieldName = 'ImpuestoRetenido'
           Width = 104
         end
+        object tvMasterEgresos: TcxGridDBColumn
+          DataBinding.FieldName = 'Egresos'
+          Width = 104
+        end
         object tvMasterCosto: TcxGridDBColumn
           DataBinding.FieldName = 'Costo'
           Width = 104
         end
         object tvMasterCarga: TcxGridDBColumn
           DataBinding.FieldName = 'Carga'
+          Width = 104
+        end
+        object tvMasterSaldoAnterior: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoAnterior'
+          Width = 104
+        end
+        object tvMasterSaldoPeriodo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoPeriodo'
+          Width = 104
+        end
+        object tvMasterSaldo: TcxGridDBColumn
+          DataBinding.FieldName = 'Saldo'
           Width = 104
         end
       end
@@ -127,13 +143,13 @@ inherited frmMovimientos: TfrmMovimientos
     Top = 346
     Width = 1085
     ExplicitTop = 346
-    ExplicitWidth = 645
+    ExplicitWidth = 1085
   end
   inherited pnlDetail2: TPanel
     Top = 302
     Width = 1085
     ExplicitTop = 302
-    ExplicitWidth = 645
+    ExplicitWidth = 1085
   end
   inherited pnlDetail1: TPanel
     Top = 258
@@ -141,16 +157,16 @@ inherited frmMovimientos: TfrmMovimientos
     Align = alClient
     Visible = True
     ExplicitTop = 258
-    ExplicitWidth = 645
+    ExplicitWidth = 1085
   end
   inherited pnlClose: TPanel
     Top = 387
     Width = 1085
     ExplicitTop = 387
-    ExplicitWidth = 645
+    ExplicitWidth = 1085
     inherited btnClose: TButton
       Left = 1000
-      ExplicitLeft = 560
+      ExplicitLeft = 1000
     end
   end
   inherited DataSource: TDataSource
@@ -174,15 +190,23 @@ inherited frmMovimientos: TfrmMovimientos
         end
         item
           Visible = True
-          ItemName = 'dxbbCalcular'
+          ItemName = 'dxbtnCalcularMovimientos'
         end
         item
           Visible = True
-          ItemName = 'dxbbCalcularCXP'
+          ItemName = 'dxbtnEliminarMovimientos'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnCalcularCXP'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnEliminarCuentasXPagar'
         end>
     end
     inherited dxbFilter: TdxBar
-      DockedLeft = 434
+      DockedLeft = 384
       ItemLinks = <
         item
           Visible = True
@@ -194,19 +218,35 @@ inherited frmMovimientos: TfrmMovimientos
         end>
       Visible = True
     end
-    object dxbbCalcular: TdxBarButton
-      Caption = 'New Button'
+    object dxbtnCalcularMovimientos: TdxBarButton [16]
+      Caption = 'Generar movimientos'
       Category = 0
-      Hint = 'New Button'
+      Hint = 'Genera movimientos del periodo actual'
       Visible = ivAlways
+      ImageIndex = 10
     end
-    object dxbbCalcularCXP: TdxBarButton
-      Caption = 'New Button'
+    object dxbtnCalcularCXP: TdxBarButton [17]
+      Caption = 'Generar cuentas por pagar'
       Category = 0
-      Hint = 'New Button'
+      Hint = 'Genera cuentas por pagar del periodo'
       Visible = ivAlways
+      ImageIndex = 10
     end
-    object cxedtPeriodo: TcxBarEditItem
+    object dxbtnEliminarMovimientos: TdxBarButton [18]
+      Caption = 'Eliminar movimientos calulados'
+      Category = 0
+      Hint = 'Elimina movimientos calculados del periodo actual'
+      Visible = ivAlways
+      ImageIndex = 12
+    end
+    object dxbtnEliminarCuentasXPagar: TdxBarButton [19]
+      Caption = 'Eliminar cuentas por pagar'
+      Category = 0
+      Hint = 'Eliminar cuentas por pagar del periodo'
+      Visible = ivAlways
+      ImageIndex = 12
+    end
+    object cxedtPeriodo: TcxBarEditItem [20]
       Caption = 'Periodo'
       Category = 0
       Hint = 'Periodo'
@@ -230,6 +270,7 @@ inherited frmMovimientos: TfrmMovimientos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

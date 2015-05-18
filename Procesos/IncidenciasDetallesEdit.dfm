@@ -9,15 +9,15 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
   inherited pcMain: TcxPageControl
     Width = 528
     Height = 224
-    ExplicitWidth = 338
-    ExplicitHeight = 187
+    ExplicitWidth = 528
+    ExplicitHeight = 224
     ClientRectBottom = 222
     ClientRectRight = 526
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 334
-      ExplicitHeight = 157
+      ExplicitWidth = 524
+      ExplicitHeight = 194
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -39,6 +39,7 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
         Width = 36
         Height = 13
         Caption = 'Estatus'
+        Visible = False
       end
       object Label4: TLabel
         Left = 16
@@ -72,6 +73,7 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
         TabOrder = 3
+        Visible = False
         Width = 300
       end
       object cxDBLookupComboBox3: TcxDBLookupComboBox
@@ -88,15 +90,15 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
   inherited pmlMain: TPanel
     Top = 224
     Width = 528
-    ExplicitTop = 187
-    ExplicitWidth = 338
+    ExplicitTop = 224
+    ExplicitWidth = 528
     inherited btnOk: TButton
       Left = 365
-      ExplicitLeft = 175
+      ExplicitLeft = 365
     end
     inherited btnCancel: TButton
       Left = 446
-      ExplicitLeft = 256
+      ExplicitLeft = 446
     end
   end
   inherited cxImageList: TcxImageList

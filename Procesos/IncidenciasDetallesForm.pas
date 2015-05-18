@@ -40,6 +40,10 @@ type
     tvMasterIncidenciaEstatus: TcxGridDBColumn;
     tvMasterIdMoneda: TcxGridDBColumn;
     tvMasterMoneda: TcxGridDBColumn;
+    tvMasterIdIncidenciaTipo: TcxGridDBColumn;
+    tvMasterIncidenciaTipo: TcxGridDBColumn;
+    tvMasterIdUsuarioRegistro: TcxGridDBColumn;
+    tvMasterFechaRegistro: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

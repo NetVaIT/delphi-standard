@@ -38,8 +38,8 @@ type
     tvMasterPeriodo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
-    dxbbCalcular: TdxBarButton;
-    dxbbCalcularCXP: TdxBarButton;
+    dxbtnCalcularMovimientos: TdxBarButton;
+    dxbtnCalcularCXP: TdxBarButton;
     dsPeriodos: TDataSource;
     cxedtPeriodo: TcxBarEditItem;
     tvMasterIngresos: TcxGridDBColumn;
@@ -55,20 +55,32 @@ type
     tvMasterImpuestoRetenido: TcxGridDBColumn;
     tvMasterCosto: TcxGridDBColumn;
     tvMasterCarga: TcxGridDBColumn;
+    dxbtnEliminarMovimientos: TdxBarButton;
+    dxbtnEliminarCuentasXPagar: TdxBarButton;
+    tvMasterEgresos: TcxGridDBColumn;
+    tvMasterSaldoAnterior: TcxGridDBColumn;
+    tvMasterSaldoPeriodo: TcxGridDBColumn;
+    tvMasterSaldo: TcxGridDBColumn;
   private
-    FMovimientosCalculados: TBasicAction;
     FCalcularCXP: TBasicAction;
     FDataSetPeriodo: TDataSet;
-    procedure SetMovimientosCalculados(const Value: TBasicAction);
+    FCalcularMovimientos: TBasicAction;
+    FEliminarCuentasXPagar: TBasicAction;
+    FEliminarMovimientos: TBasicAction;
     procedure SetCalcularCXP(const Value: TBasicAction);
     function GetIdPeriodo: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
     procedure SetIdPeriodo(const Value: Integer);
+    procedure SetCalcularMovimientos(const Value: TBasicAction);
+    procedure SetEliminarCuentasXPagar(const Value: TBasicAction);
+    procedure SetEliminarMovimientos(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
-    property MovimientosCalculados: TBasicAction read FMovimientosCalculados write SetMovimientosCalculados;
+    property CalcularMovimientos: TBasicAction read FCalcularMovimientos write SetCalcularMovimientos;
     property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
+    property EliminarMovimientos: TBasicAction read FEliminarMovimientos write SetEliminarMovimientos;
+    property EliminarCuentasXPagar: TBasicAction read FEliminarCuentasXPagar write SetEliminarCuentasXPagar;
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
@@ -92,7 +104,13 @@ end;
 procedure TfrmMovimientos.SetCalcularCXP(const Value: TBasicAction);
 begin
   FCalcularCXP := Value;
-  dxbbCalcularCXP.Action:= Value;
+  dxbtnCalcularCXP.Action:= Value;
+end;
+
+procedure TfrmMovimientos.SetCalcularMovimientos(const Value: TBasicAction);
+begin
+  FCalcularMovimientos := Value;
+  dxbtnCalcularMovimientos.Action:= Value;
 end;
 
 procedure TfrmMovimientos.SetDataSetPeriodo(const Value: TDataSet);
@@ -101,15 +119,21 @@ begin
   dsPeriodos.DataSet:= Value;
 end;
 
+procedure TfrmMovimientos.SetEliminarCuentasXPagar(const Value: TBasicAction);
+begin
+  FEliminarCuentasXPagar := Value;
+  dxbtnEliminarCuentasXPagar.Action:= Value;
+end;
+
+procedure TfrmMovimientos.SetEliminarMovimientos(const Value: TBasicAction);
+begin
+  FEliminarMovimientos := Value;
+  dxbtnEliminarMovimientos.Action:= Value;
+end;
+
 procedure TfrmMovimientos.SetIdPeriodo(const Value: Integer);
 begin
   cxedtPeriodo.EditValue:= Value;
-end;
-
-procedure TfrmMovimientos.SetMovimientosCalculados(const Value: TBasicAction);
-begin
-  FMovimientosCalculados := Value;
-  dxbbCalcular.Action:= Value;
 end;
 
 end.

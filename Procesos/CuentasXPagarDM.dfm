@@ -1,5 +1,6 @@
 inherited dmCuentasXPagar: TdmCuentasXPagar
   OldCreateOrder = True
+  Height = 405
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -145,8 +146,8 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         Precision = 10
         Value = 195
       end>
-    Left = 56
-    Top = 104
+    Left = 64
+    Top = 176
     object adodsMovimientosDetalleIdMovimientoDetalle: TIntegerField
       FieldName = 'IdMovimientoDetalle'
       Visible = False
@@ -209,10 +210,10 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         Size = -1
         Value = Null
       end>
-    Left = 64
-    Top = 179
+    Left = 56
+    Top = 251
   end
-  object adospCentasXPagar: TADOStoredProc
+  object adospCuentasXPagar: TADOStoredProc
     Connection = _dmConection.ADOConnection
     ProcedureName = 'p_GenCuentasXPagar;1'
     Parameters = <
@@ -230,8 +231,8 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         Precision = 10
         Value = Null
       end>
-    Left = 64
-    Top = 235
+    Left = 56
+    Top = 307
   end
   object adodsPeriodo: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -239,6 +240,68 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
     Parameters = <>
     Left = 168
-    Top = 104
+    Top = 256
+  end
+  object adodsCuentasXPagarPagos: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT CuentasXPagarPagos.IdCuentaXPagarPago, CuentasXPagarPagos' +
+      '.IdCuentaXPagar, CuentasXPagarEstatus.Descripcion AS Estatus, Pe' +
+      'rsonas.RazonSocial AS Receptora, Personas_1.RazonSocial AS Pagad' +
+      'ora, '#13#10'CuentasXPagarPagos.FechaProgramada, CuentasXPagarPagos.Mo' +
+      'ntoProgramado'#13#10'FROM CuentasXPagarPagos '#13#10'INNER JOIN CuentasXPaga' +
+      'rEstatus ON CuentasXPagarPagos.IdCuentaXPagarEstatus = CuentasXP' +
+      'agarEstatus.IdCuentaXPagarEstatus'#13#10'INNER JOIN PersonasRoles ON C' +
+      'uentasXPagarPagos.IdPersonaRol = PersonasRoles.IdPersonaRol'#13#10'INN' +
+      'ER JOIN Personas ON PersonasRoles.IdPersona = Personas.IdPersona' +
+      #13#10'INNER JOIN Personas AS Personas_1 ON PersonasRoles.IdPersonaRe' +
+      'lacionada = Personas_1.IdPersona'#13#10'WHERE CuentasXPagarPagos.IdCue' +
+      'ntaXPagar = :IdCuentaXPagar'#13#10
+    DataSource = dsMaster
+    MasterFields = 'IdCuentaXPagar'
+    Parameters = <
+      item
+        Name = 'IdCuentaXPagar'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    Left = 240
+    Top = 176
+    object adodsCuentasXPagarPagosIdCuentaXPagarPago: TAutoIncField
+      FieldName = 'IdCuentaXPagarPago'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsCuentasXPagarPagosIdCuentaXPagar: TIntegerField
+      FieldName = 'IdCuentaXPagar'
+      Visible = False
+    end
+    object adodsCuentasXPagarPagosEstatus: TStringField
+      FieldName = 'Estatus'
+      Size = 50
+    end
+    object adodsCuentasXPagarPagosReceptora: TStringField
+      FieldName = 'Receptora'
+      Size = 300
+    end
+    object adodsCuentasXPagarPagosPagadora: TStringField
+      FieldName = 'Pagadora'
+      Size = 300
+    end
+    object adodsCuentasXPagarPagosFechaProgramada: TDateTimeField
+      DisplayLabel = 'Fecha programada'
+      FieldName = 'FechaProgramada'
+    end
+    object adodsCuentasXPagarPagosMontoProgramado: TFMTBCDField
+      DisplayLabel = 'Importe programado'
+      FieldName = 'MontoProgramado'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
   end
 end

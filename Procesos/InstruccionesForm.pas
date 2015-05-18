@@ -49,6 +49,7 @@ type
     tvMasterRepetirHasta: TcxGridDBColumn;
     tvMasterRepetirFin: TcxGridDBColumn;
     dxbbCreateMov: TdxBarButton;
+    dxBarLargeButton1: TdxBarLargeButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

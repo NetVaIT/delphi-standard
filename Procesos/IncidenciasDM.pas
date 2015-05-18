@@ -29,7 +29,13 @@ type
     adodsIncidenciaDetalleIdMoneda: TIntegerField;
     adodsMoneda: TADODataSet;
     adodsIncidenciaDetalleMoneda: TStringField;
+    adodsIncidenciaDetalleIdIncidenciaTipo: TIntegerField;
+    adodsIncidenciaDetalleIdUsuarioRegistro: TIntegerField;
+    adodsIncidenciaDetalleFechaRegistro: TDateTimeField;
+    adodsIncidenciasTipo: TADODataSet;
+    adodsIncidenciaDetalleIncidenciaTipo: TStringField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure adodsIncidenciaDetalleNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -43,6 +49,13 @@ implementation
 uses IncidenciasForm, IncidenciasDetallesForm;
 
 {$R *.dfm}
+
+procedure TdmIncidencias.adodsIncidenciaDetalleNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  adodsIncidenciaDetalleIdIncidenciaTipo.Value:= 2;
+  adodsIncidenciaDetalleIdMoneda.Value:= 106;
+end;
 
 procedure TdmIncidencias.DataModuleCreate(Sender: TObject);
 begin

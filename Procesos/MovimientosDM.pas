@@ -19,7 +19,7 @@ type
     adodsMasterPariodo: TStringField;
     dsMaster: TDataSource;
     adodsMovimientosDet: TADODataSet;
-    actMovimientosCalculados: TAction;
+    actCalcularmovimientos: TAction;
     adodsPersonaRol: TADODataSet;
     adodsMovimientosTipo: TADODataSet;
     adodsMovimientosDetIdMovimientoDetalle: TAutoIncField;
@@ -36,7 +36,7 @@ type
     adocGetPeriodoActual: TADOCommand;
     adospMovimientosCalculados: TADOStoredProc;
     actCalcularCXP: TAction;
-    adospCentasXPagar: TADOStoredProc;
+    adospCuentasXPagar: TADOStoredProc;
     adodsMasterIngresos: TFMTBCDField;
     adodsMasterDescuentos: TFMTBCDField;
     adodsMasterBase: TFMTBCDField;
@@ -50,10 +50,22 @@ type
     adodsMasterImpuestoRetenido: TFMTBCDField;
     adodsMasterCosto: TFMTBCDField;
     adodsMasterCarga: TFMTBCDField;
+    actEliminarMovimientos: TAction;
+    actEliminarCuentasXPagar: TAction;
+    adopDelMovimientos: TADOStoredProc;
+    adopDelCuentasXPagar: TADOStoredProc;
+    adopUptMovimientosTotales: TADOStoredProc;
+    adodsMasterEgresos: TFMTBCDField;
+    adodsMasterSaldoAnterior: TFMTBCDField;
+    adodsMasterSaldoPeriodo: TFMTBCDField;
+    adodsMasterSaldo: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
-    procedure actMovimientosCalculadosExecute(Sender: TObject);
+    procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
     procedure actCalcularCXPExecute(Sender: TObject);
+    procedure actEliminarCuentasXPagarExecute(Sender: TObject);
+    procedure actEliminarMovimientosExecute(Sender: TObject);
+    procedure adodsMovimientosDetAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
@@ -81,10 +93,32 @@ begin
   SetCuentaXPagar
 end;
 
-procedure TdmMovimientos.actMovimientosCalculadosExecute(Sender: TObject);
+procedure TdmMovimientos.actCalcularmovimientosExecute(Sender: TObject);
 begin
   inherited;
   SetMovimientosCalculados;
+end;
+
+procedure TdmMovimientos.actEliminarCuentasXPagarExecute(Sender: TObject);
+begin
+  inherited;
+  if IdPeriodoActual <> 0 then
+  begin
+    adopDelCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+    adopDelCuentasXPagar.ExecProc;
+    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+  end;
+end;
+
+procedure TdmMovimientos.actEliminarMovimientosExecute(Sender: TObject);
+begin
+  inherited;
+  if IdPeriodoActual <> 0 then
+  begin
+    adopDelMovimientos.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+    adopDelMovimientos.ExecProc;
+    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+  end;
 end;
 
 procedure TdmMovimientos.adodsMasterAfterScroll(DataSet: TDataSet);
@@ -98,6 +132,14 @@ begin
   end;
 end;
 
+procedure TdmMovimientos.adodsMovimientosDetAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  adopUptMovimientosTotales.Parameters.ParamByName('@IdMovimiento').Value:= adodsMovimientosDetIdMovimiento.Value;
+  adopUptMovimientosTotales.ExecProc;
+  adodsMaster.Refresh;
+end;
+
 procedure TdmMovimientos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
@@ -106,14 +148,17 @@ begin
   gGridForm:= TfrmMovimientos.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
-  TfrmMovimientos(gGridForm).MovimientosCalculados:= actMovimientosCalculados;
+  TfrmMovimientos(gGridForm).CalcularMovimientos:= actCalcularmovimientos;
   TfrmMovimientos(gGridForm).CalcularCXP:= actCalcularCXP;
+  TfrmMovimientos(gGridForm).EliminarMovimientos:= actEliminarMovimientos;
+  TfrmMovimientos(gGridForm).EliminarCuentasXPagar:= actEliminarCuentasXPagar;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
 //  gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;
   // Busqueda
   SQLSelect:= 'SELECT IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha, Ingresos, Descuentos, Base, Entregas, ' +
-  'Percepciones, Deducciones, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido, Costo, Carga FROM Movimientos';
+  'Percepciones, Deducciones, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido, ' +
+  'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo FROM Movimientos';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;
   TfrmMovimientos(gGridForm).DataSetPeriodo:= adodsPeriodo;
@@ -145,9 +190,9 @@ begin
   Result:= False;
   if IdPeriodoActual <> 0 then
   begin
-    adospCentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-    adospCentasXPagar.Parameters.ParamByName('@IdUsuarioRegistro').Value:= _dmConection.IdUsuario;
-    adospCentasXPagar.ExecProc;
+    adospCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+    adospCuentasXPagar.Parameters.ParamByName('@IdUsuarioRegistro').Value:= _dmConection.IdUsuario;
+    adospCuentasXPagar.ExecProc;
     MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
     Result:= True;
   end;

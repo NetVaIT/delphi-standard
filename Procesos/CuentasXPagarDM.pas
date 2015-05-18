@@ -42,8 +42,16 @@ type
     adodsMovimientosDetalleEstatus: TStringField;
     actCalcularCXP: TAction;
     adocGetPeriodoActual: TADOCommand;
-    adospCentasXPagar: TADOStoredProc;
+    adospCuentasXPagar: TADOStoredProc;
     adodsPeriodo: TADODataSet;
+    adodsCuentasXPagarPagos: TADODataSet;
+    adodsCuentasXPagarPagosIdCuentaXPagarPago: TAutoIncField;
+    adodsCuentasXPagarPagosIdCuentaXPagar: TIntegerField;
+    adodsCuentasXPagarPagosEstatus: TStringField;
+    adodsCuentasXPagarPagosReceptora: TStringField;
+    adodsCuentasXPagarPagosPagadora: TStringField;
+    adodsCuentasXPagarPagosFechaProgramada: TDateTimeField;
+    adodsCuentasXPagarPagosMontoProgramado: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularCXPExecute(Sender: TObject);
   private
@@ -62,7 +70,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses CuentasXPagarForm, MovimientosDetalleFrm;
+uses CuentasXPagarForm, MovimientosDetalleFrm, CuentasXPagarPagosForm;
 
 {$R *.dfm}
 
@@ -77,6 +85,7 @@ begin
   inherited;
   FIdPeriodoActual := GetPeriodoActual;
   adodsMovimientosDetalle.Open;
+  adodsCuentasXPagarPagos.Open;
   gGridForm:= TfrmCuentasXPagar.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
@@ -84,6 +93,9 @@ begin
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
   gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDetalle;
+  gFormDeatil2:= TfrmCuentasXPagarPagos.Create(Self);
+  gFormDeatil2.ReadOnlyGrid:= True;
+  gFormDeatil2.DataSet:= adodsCuentasXPagarPagos;
   // Filtrado
   SQLSelect:= 'select IdCuentaXPagar, IdPersonaRol, IdPeriodo, IdCuentaXPagarEstatus, ' +
   'Persona, PersonaRelacionada, ConceptoGenerico, SumaSubtotal, SumaTotal, SumaDescuentos, ' +
@@ -111,8 +123,8 @@ begin
   IdPeriodo:= IdPeriodoActual;
   if IdPeriodo <> 0 then
   begin
-    adospCentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
-    adospCentasXPagar.ExecProc;
+    adospCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
+    adospCuentasXPagar.ExecProc;
     MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
     Result:= True;
   end;
