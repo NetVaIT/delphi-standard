@@ -1,4 +1,4 @@
-unit RptMovimientosPersonaDmod;
+unit RptDetalleMovimientosPersonaDmod;
 
 interface
 
@@ -9,17 +9,14 @@ uses
   raCodMod;
 
 type
-  TdmMovimientosrpt = class(T_dmReport)
+  TdmDetalleMovimientosPersona = class(T_dmReport)
     adodsReportPersona: TStringField;
     adodsReportCatagoria: TStringField;
     adodsReportTipo: TStringField;
     adodsReportImporte: TFMTBCDField;
     ppDBText1: TppDBText;
-    ppLabel1: TppLabel;
     ppDBText2: TppDBText;
-    ppLabel2: TppLabel;
     ppDBText3: TppDBText;
-    ppLabel3: TppLabel;
     ppDBText4: TppDBText;
     ppGroup1: TppGroup;
     ppGroupHeaderBand1: TppGroupHeaderBand;
@@ -35,16 +32,17 @@ type
     raCodeModule1: TraCodeModule;
     ppLine1: TppLine;
     ppLabel4: TppLabel;
+    ppLine2: TppLine;
+    pplblEncabezado: TppLabel;
+    ppLine3: TppLine;
     procedure DataModuleCreate(Sender: TObject);
+    procedure ppReportStartPage(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure AssignParam; override;
   end;
-
-var
-  dmMovimientosrpt: TdmMovimientosrpt;
 
 implementation
 
@@ -54,18 +52,24 @@ uses RptMovimientosForm;
 
 {$R *.dfm}
 
-procedure TdmMovimientosrpt.AssignParam;
+procedure TdmDetalleMovimientosPersona.AssignParam;
 begin
   inherited;
   adodsReport.Parameters.ParamByName('IdPeriodo').Value:= mdParamsIdPeriodo.Value;
 end;
 
-procedure TdmMovimientosrpt.DataModuleCreate(Sender: TObject);
+procedure TdmDetalleMovimientosPersona.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   gReportForm := TfrmRptMovimientos.Create(Self);
   adodsPeriodos.Open;
   TfrmRptMovimientos(gReportForm).DataSetPeriodo:= adodsPeriodos;
+end;
+
+procedure TdmDetalleMovimientosPersona.ppReportStartPage(Sender: TObject);
+begin
+  inherited;
+  pplblEncabezado.Caption := pplblTitle.Caption;
 end;
 
 end.

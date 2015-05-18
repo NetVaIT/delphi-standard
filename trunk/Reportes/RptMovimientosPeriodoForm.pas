@@ -1,4 +1,4 @@
-unit RptReporteCrossTabForm;
+unit RptMovimientosPeriodoForm;
 
 interface
 
@@ -31,7 +31,7 @@ uses
   cxGridDBBandedTableView, cxGridServerModeBandedTableView;
 
 type
-  TfrmReporteCrossTab = class(T_frmGrid)
+  TfrmMovimientosPeriodo = class(T_frmGrid)
     dxbtnReporte: TdxBarButton;
     dxBarButton8: TdxBarButton;
     tvBandasGrupo: TcxGridDBBandedTableView;
@@ -48,11 +48,11 @@ implementation
 
 {$R *.dfm}
 
-uses RptReporteCrossTabDM;
+uses RptMovimientosPeriodoDM;
 
 { TfrmReporteCrossTab }
 
-procedure TfrmReporteCrossTab.SetGeneraReporte(const Value: TBasicAction);
+procedure TfrmMovimientosPeriodo.SetGeneraReporte(const Value: TBasicAction);
 begin
   FGeneraReporte := Value;
   dxbtnReporte.Action := Value;

@@ -649,10 +649,6 @@
         <DCCReference Include="Catalogos\CuentasInternasForm.pas">
             <Form>frmCuentasInternas</Form>
         </DCCReference>
-        <DCCReference Include="Reportes\RptMovimientosDmod.pas">
-            <Form>dmRptMovimientos</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Procesos\CuentasXPagarDM.pas">
             <Form>dmCuentasXPagar</Form>
             <DesignClass>TDataModule</DesignClass>
@@ -664,8 +660,8 @@
             <Form>frmRptMovimientos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Reportes\RptMovimientosPersonaDmod.pas">
-            <Form>dmMovimientosrpt</Form>
+        <DCCReference Include="Reportes\RptDetalleMovimientosPersonaDmod.pas">
+            <Form>dmDetalleMovimientosPersona</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -704,13 +700,13 @@
             <Form>frmCuentasContablesNaturalezaEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Reportes\RptReporteCrossTabDM.pas">
+        <DCCReference Include="Reportes\RptMovimientosPeriodoDM.pas">
             <Form>dmReporteCrossTab</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Reportes\RptReporteCrossTabForm.pas">
-            <Form>frmReporteCrossTab</Form>
+        <DCCReference Include="Reportes\RptMovimientosPeriodoForm.pas">
+            <Form>frmMovimientosPeriodo</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -32,7 +32,6 @@ uses
 type
   TfrmReglasNegocio = class(T_frmGrid)
     tvMasterIdReglaNegocio: TcxGridDBColumn;
-    tvMasterIdOutSourcingPersonal: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterIdReglaNegocioTipo: TcxGridDBColumn;

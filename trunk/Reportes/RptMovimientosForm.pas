@@ -42,7 +42,7 @@ implementation
 
 {$R *.dfm}
 
-uses RptMovimientosDmod, RptMovimientosPersonaDmod;
+uses RptDetalleMovimientosPersonaDmod;
 
 { TfrmRptMovimientos }
 

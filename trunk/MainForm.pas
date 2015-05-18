@@ -22,7 +22,7 @@ uses
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
   cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod, _ReportDMod,
-  RptMovimientosDmod, RptMovimientosPersonaDmod;
+  RptDetalleMovimientosPersonaDmod;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -100,10 +100,9 @@ type
     dxRibbon1Tab5: TdxRibbonTab;
     dxBarManagerBar2: TdxBar;
     dxBarLargeButton25: TdxBarLargeButton;
-    actReporteMovimientos: TAction;
     dxBarButton9: TdxBarButton;
     actCuentasXPagar: TAction;
-    actMovimientosPersona: TAction;
+    actDetalleMovimientosPersona: TAction;
     dxBarLargeButton26: TdxBarLargeButton;
     actCXCConceptos: TAction;
     dxBarLargeButton27: TdxBarLargeButton;
@@ -112,7 +111,7 @@ type
     actCuentasContablesNaturaleza: TAction;
     dxBarLargeButton28: TdxBarLargeButton;
     dxBarLargeButton29: TdxBarLargeButton;
-    actCrossTab: TAction;
+    actMovimientosPeriodo: TAction;
     procedure actCatalogoExecute(Sender: TObject);
   private
     { Private declarations }
@@ -139,7 +138,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasContablesNaturalezaDM,
-  RptReporteCrossTabDM;
+  RptMovimientosPeriodoDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -209,13 +208,8 @@ begin
    33: gModulo := TdmCuentasXPagar.Create(Self);
    34: gModulo := TdmMovimientosD.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
-   50: begin
-         gReport := TdmRptMovimientos.Create(Self);
-         gReport.Title:=  pCaption;
-         gReport.Execute;
-       end;
    51: begin
-         gReport := TdmMovimientosrpt.Create(Self);
+         gReport := TdmDetalleMovimientosPersona.Create(Self);
          gReport.Title := pCaption;
          gReport.Execute;
        end;
@@ -261,8 +255,8 @@ begin
   actCuentasContables.Enabled   := Conected;
   actCuentasInternas.Enabled    := Conected;
   actCXCConceptos.Enabled       := Conected;
-  actReporteMovimientos.Enabled := Conected;
-  actMovimientosPersona.Enabled := Conected;
+  actMovimientosPeriodo.Enabled := Conected;
+  actDetalleMovimientosPersona.Enabled := Conected;
   actCuentasContablesNaturaleza.Enabled := Conected;
 end;
 

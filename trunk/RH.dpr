@@ -171,11 +171,10 @@ uses
   CuentasInternasDM in 'Catalogos\CuentasInternasDM.pas' {dmCuentasInternas: TDataModule},
   CuentasInternasEdit in 'Catalogos\CuentasInternasEdit.pas' {frmCuentasInternasEdit},
   CuentasInternasForm in 'Catalogos\CuentasInternasForm.pas' {frmCuentasInternas},
-  RptMovimientosDmod in 'Reportes\RptMovimientosDmod.pas' {dmRptMovimientos: TDataModule},
   CuentasXPagarDM in 'Procesos\CuentasXPagarDM.pas' {dmCuentasXPagar: TDataModule},
   CuentasXPagarForm in 'Procesos\CuentasXPagarForm.pas' {frmCuentasXPagar},
   RptMovimientosForm in 'Reportes\RptMovimientosForm.pas' {frmRptMovimientos},
-  RptMovimientosPersonaDmod in 'Reportes\RptMovimientosPersonaDmod.pas' {dmMovimientosrpt: TDataModule},
+  RptDetalleMovimientosPersonaDmod in 'Reportes\RptDetalleMovimientosPersonaDmod.pas' {dmDetalleMovimientosPersona: TDataModule},
   CuentasXCobrarConceptosDM in 'Catalogos\CuentasXCobrarConceptosDM.pas' {dmCuentasXCobrarConceptos: TDataModule},
   CuentasXCobrarConceptosForm in 'Catalogos\CuentasXCobrarConceptosForm.pas' {frmCuentasXCobrarConceptos},
   CuentasXCobrarConceptosEdit in 'Catalogos\CuentasXCobrarConceptosEdit.pas' {frmCuentasXCobrarConceptosEdit},
@@ -184,8 +183,8 @@ uses
   CuentasContablesNaturalezaDM in 'Catalogos\CuentasContablesNaturalezaDM.pas' {dmCuentasContablesNaturaleza: TDataModule},
   CuentasContablesNaturalezaForm in 'Catalogos\CuentasContablesNaturalezaForm.pas' {frmCuentasContablesNaturaleza},
   CuentasContablesNaturalezaEdit in 'Catalogos\CuentasContablesNaturalezaEdit.pas' {frmCuentasContablesNaturalezaEdit},
-  RptReporteCrossTabDM in 'Reportes\RptReporteCrossTabDM.pas' {dmReporteCrossTab: TDataModule},
-  RptReporteCrossTabForm in 'Reportes\RptReporteCrossTabForm.pas' {frmReporteCrossTab};
+  RptMovimientosPeriodoDM in 'Reportes\RptMovimientosPeriodoDM.pas' {dmReporteCrossTab: TDataModule},
+  RptMovimientosPeriodoForm in 'Reportes\RptMovimientosPeriodoForm.pas' {frmMovimientosPeriodo};
 
 {$R *.res}
 
@@ -211,7 +210,6 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
-  Application.CreateForm(TdmMovimientosrpt, dmMovimientosrpt);
   Application.Run;
   end;
 end.

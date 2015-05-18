@@ -1,9 +1,8 @@
-inherited dmMovimientosrpt: TdmMovimientosrpt
+inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
   OldCreateOrder = True
   OnCreate = DataModuleCreate
   Height = 273
   inherited adodsReport: TADODataSet
-    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +
@@ -19,7 +18,8 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
       'fecto = MovimientosTiposEfectos.IdMovimientoTipoEfecto INNER JOI' +
       'N'#13#10'                         Personas ON Movimientos.IdPersona = ' +
       'Personas.IdPersona'#13#10'WHERE        (Movimientos.IdPeriodo = :IdPer' +
-      'iodo)'#13#10
+      'iodo)'#13#10'ORDER BY Persona, MovimientosTiposCategorias.OrdenImpresi' +
+      'on'
     Parameters = <
       item
         Name = 'IdPeriodo'
@@ -47,49 +47,39 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
       Size = 6
     end
   end
-  inherited dbpReport: TppDBPipeline
-    object dbpReportppField1: TppField
-      FieldAlias = 'Persona'
-      FieldName = 'Persona'
-      FieldLength = 300
-      DisplayWidth = 300
-      Position = 0
-    end
-    object dbpReportppField2: TppField
-      FieldAlias = 'Catagoria'
-      FieldName = 'Catagoria'
-      FieldLength = 100
-      DisplayWidth = 100
-      Position = 1
-    end
-    object dbpReportppField3: TppField
-      FieldAlias = 'Tipo'
-      FieldName = 'Tipo'
-      FieldLength = 100
-      DisplayWidth = 100
-      Position = 2
-    end
-    object dbpReportppField4: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'Importe'
-      FieldName = 'Importe'
-      FieldLength = 6
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 3
-    end
-  end
   inherited ppReport: TppReport
-    PrinterSetup.PaperName = 'Letter'
+    OnStartPage = ppReportStartPage
     DataPipelineName = 'dbpReport'
     inherited ppTitleBand1: TppTitleBand
+      mmHeight = 2117
       inherited pplblTitle: TppLabel
         SaveOrder = -1
+        Visible = False
+        mmHeight = -1058
+        mmTop = 1852
         LayerName = Foreground
       end
     end
     inherited ppHeaderBand1: TppHeaderBand
-      mmHeight = 6879
+      mmHeight = 10848
+      object pplblEncabezado: TppLabel
+        UserName = 'lblEncabezado'
+        AutoSize = False
+        Caption = 'lblEncabezado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Name = 'TIMES NEW ROMAN'
+        Font.Size = 20
+        Font.Style = [fsBold, fsItalic]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 8202
+        mmLeft = 1323
+        mmTop = 1323
+        mmWidth = 200025
+        BandType = 0
+        LayerName = Foreground
+      end
     end
     inherited ppDetailBand1: TppDetailBand
       mmHeight = 8467
@@ -162,7 +152,7 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
       object ppGroupHeaderBand1: TppGroupHeaderBand
         Background.Brush.Style = bsClear
         mmBottomOffset = 0
-        mmHeight = 16140
+        mmHeight = 14288
         mmPrintPosition = 0
         object ppDBText1: TppDBText
           UserName = 'DBText1'
@@ -183,56 +173,15 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
           GroupNo = 0
           LayerName = Foreground
         end
-        object ppLabel1: TppLabel
-          UserName = 'Label1'
-          AutoSize = False
-          Caption = 'Catagoria'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Name = 'Arial'
-          Font.Size = 11
-          Font.Style = [fsBold]
-          Transparent = True
-          mmHeight = 4763
-          mmLeft = 5029
-          mmTop = 10585
-          mmWidth = 19579
-          BandType = 3
-          GroupNo = 0
-          LayerName = Foreground
-        end
-        object ppLabel2: TppLabel
-          UserName = 'Label2'
-          AutoSize = False
-          Caption = 'Tipo'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Name = 'Arial'
-          Font.Size = 11
-          Font.Style = []
-          Transparent = True
-          mmHeight = 4763
-          mmLeft = 61912
-          mmTop = 10584
-          mmWidth = 9260
-          BandType = 3
-          GroupNo = 0
-          LayerName = Foreground
-        end
-        object ppLabel3: TppLabel
-          UserName = 'Label3'
-          AutoSize = False
-          Caption = 'Importe'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Name = 'Arial'
-          Font.Size = 11
-          Font.Style = []
-          Transparent = True
-          mmHeight = 4763
-          mmLeft = 183624
-          mmTop = 10584
-          mmWidth = 14817
+        object ppLine3: TppLine
+          UserName = 'Line3'
+          Pen.Color = clBlue
+          Pen.Width = 2
+          Weight = 1.500000000000000000
+          mmHeight = 3969
+          mmLeft = 2117
+          mmTop = 8996
+          mmWidth = 199232
           BandType = 3
           GroupNo = 0
           LayerName = Foreground
@@ -341,6 +290,17 @@ inherited dmMovimientosrpt: TdmMovimientosrpt
           mmLeft = 142346
           mmTop = 3969
           mmWidth = 16669
+          BandType = 5
+          GroupNo = 1
+          LayerName = Foreground
+        end
+        object ppLine2: TppLine
+          UserName = 'Line2'
+          Weight = 0.750000000000000000
+          mmHeight = 1323
+          mmLeft = 2117
+          mmTop = 1323
+          mmWidth = 159015
           BandType = 5
           GroupNo = 1
           LayerName = Foreground
