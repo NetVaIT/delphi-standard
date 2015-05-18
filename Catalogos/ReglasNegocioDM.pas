@@ -3,14 +3,14 @@ unit ReglasNegocioDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
 type
   TdmReglasNegocio = class(T_dmStandar)
     ADODataSet1: TADODataSet;
     adodsReglaNegocioTipo: TADODataSet;
     adodsMasterIdReglaNegocio: TIntegerField;
-    adodsMasterIdOutSourcingPersonal: TIntegerField;
     adodsMasterIdentificador: TStringField;
     adodsMasterDescripcion: TStringField;
     adodsMasterIdReglaNegocioTipo: TIntegerField;

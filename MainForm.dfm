@@ -339,12 +339,8 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 159
-      FloatClientHeight = 108
+      FloatClientHeight = 162
       ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton25'
-        end
         item
           Visible = True
           ItemName = 'dxBarLargeButton26'
@@ -500,15 +496,18 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton25: TdxBarLargeButton
-      Action = actReporteMovimientos
+      Caption = 'Movimientos por categor'#237'a'
       Category = 0
+      Visible = ivAlways
+      LargeImageIndex = 5
+      OnClick = actCatalogoExecute
     end
     object dxBarButton9: TdxBarButton
       Action = actCuentasXPagar
       Category = 0
     end
     object dxBarLargeButton26: TdxBarLargeButton
-      Action = actMovimientosPersona
+      Action = actDetalleMovimientosPersona
       Category = 0
     end
     object dxBarLargeButton27: TdxBarLargeButton
@@ -524,7 +523,7 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton29: TdxBarLargeButton
-      Action = actCrossTab
+      Action = actMovimientosPeriodo
       Category = 0
     end
   end
@@ -744,13 +743,6 @@ inherited frmMain: TfrmMain
       ImageIndex = 19
       OnExecute = actCatalogoExecute
     end
-    object actReporteMovimientos: TAction
-      Tag = 50
-      Category = 'Reportes'
-      Caption = 'Movimientos por categor'#237'a'
-      ImageIndex = 5
-      OnExecute = actCatalogoExecute
-    end
     object actCuentasXPagar: TAction
       Tag = 33
       Category = 'Procesos'
@@ -758,10 +750,10 @@ inherited frmMain: TfrmMain
       ImageIndex = 40
       OnExecute = actCatalogoExecute
     end
-    object actMovimientosPersona: TAction
+    object actDetalleMovimientosPersona: TAction
       Tag = 51
       Category = 'Reportes'
-      Caption = 'Movimientos Persona'
+      Caption = 'Detalle de Movimientos por Persona'
       ImageIndex = 17
       OnExecute = actCatalogoExecute
     end
@@ -786,11 +778,11 @@ inherited frmMain: TfrmMain
       ImageIndex = 13
       OnExecute = actCatalogoExecute
     end
-    object actCrossTab: TAction
+    object actMovimientosPeriodo: TAction
       Tag = 52
       Category = 'Reportes'
-      Caption = 'CrossTab'
-      ImageIndex = 10
+      Caption = 'Movimientos del Periodo'
+      ImageIndex = 18
       OnExecute = actCatalogoExecute
     end
   end

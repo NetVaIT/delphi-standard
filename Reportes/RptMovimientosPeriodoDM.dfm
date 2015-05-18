@@ -1,4 +1,5 @@
 inherited dmReporteCrossTab: TdmReporteCrossTab
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CommandText = 'SELECT IdMovimientoTipo, Descripcion FROM MovimientosTipos'
   end

@@ -49,9 +49,6 @@ inherited frmRptMovimientos: TfrmRptMovimientos
     Properties.KeyFieldNames = 'IdPeriodo'
     Properties.ListColumns = <
       item
-        FieldName = 'IdPeriodo'
-      end
-      item
         FieldName = 'Descripcion'
       end>
     Properties.ListSource = dsPeriodo

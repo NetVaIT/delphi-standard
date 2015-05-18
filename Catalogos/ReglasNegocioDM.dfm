@@ -1,16 +1,13 @@
 inherited dmReglasNegocio: TdmReglasNegocio
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdReglaNegocio, IdOutSourcingPersonal, Identificador, Des' +
-      'cripcion, IdReglaNegocioTipo FROM ReglasNegocio'
+      'SELECT IdReglaNegocio, Identificador, Descripcion, IdReglaNegoci' +
+      'oTipo FROM ReglasNegocio'
     Left = 32
     object adodsMasterIdReglaNegocio: TIntegerField
       FieldName = 'IdReglaNegocio'
-      Visible = False
-    end
-    object adodsMasterIdOutSourcingPersonal: TIntegerField
-      FieldName = 'IdOutSourcingPersonal'
       Visible = False
     end
     object adodsMasterIdentificador: TStringField
@@ -36,6 +33,9 @@ inherited dmReglasNegocio: TdmReglasNegocio
       Lookup = True
     end
   end
+  inherited ActionList: TActionList
+    Top = 80
+  end
   object ADODataSet1: TADODataSet
     Connection = _dmConection.ADOConnection
     Parameters = <>
@@ -47,7 +47,7 @@ inherited dmReglasNegocio: TdmReglasNegocio
     CursorType = ctStatic
     CommandText = 'SELECT IdReglaNegocioTipo, Descripcion FROM ReglasNegocioTipos'
     Parameters = <>
-    Left = 184
+    Left = 176
     Top = 80
   end
 end
