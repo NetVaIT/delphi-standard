@@ -73,6 +73,8 @@ procedure VersionInformation(pApplicationName: String; ListInfo: TStringList);
 procedure RefreshADODS(pADODataSet: TCustomADODataSet; ID: TField);
 procedure ShowProgress(pPosition, pTotal: Double); overload;
 procedure ShowProgress(pPosition, pTotal: Double; pText: string); overload;
+procedure ExecuteUntilFinish(ExecuteFile : string);
+function EjecutarYEsperar( sPrograma: String; Visibilidad: Integer ): Integer;
 
 implementation
 
@@ -227,6 +229,74 @@ begin
     _frmProgress.Close;
     Raise;
   end;
+end;
+
+// Execute the Windows Calculator and pop up
+// a message when the Calc is terminated.
+// uses ShellApi;
+procedure ExecuteUntilFinish(ExecuteFile : string);
+var
+  SEInfo: TShellExecuteInfo;
+  ExitCode: DWORD;
+  ParamString, StartInString: string;
+begin
+//	ExecuteFile:='c:\Windows\Calc.exe';
+  FillChar(SEInfo, SizeOf(SEInfo), 0) ;
+  SEInfo.cbSize := SizeOf(TShellExecuteInfo) ;
+  with SEInfo do
+  begin
+    fMask := SEE_MASK_NOCLOSEPROCESS;
+    Wnd := Application.Handle;
+    lpFile := PChar(ExecuteFile) ;
+{ ParamString can contain the application parameters. }
+ // lpParameters := PChar(ParamString) ;
+{StartInString specifies the name of the working directory. If ommited, the current directory is used. }
+// lpDirectory := PChar(StartInString) ;
+      nShow := SW_SHOWNORMAL;
+  end;
+  if ShellExecuteEx(@SEInfo) then
+  begin
+    repeat
+      Application.ProcessMessages;
+      GetExitCodeProcess(SEInfo.hProcess, ExitCode) ;
+    until (ExitCode <> STILL_ACTIVE) or Application.Terminated;
+//    ShowMessage('Calculator terminated') ;
+  end
+  else
+//    ShowMessage('Error starting Calc!') ;
+end;
+
+function EjecutarYEsperar( sPrograma: String; Visibilidad: Integer ): Integer;
+var
+  sAplicacion: array[0..512] of char;
+  DirectorioActual: array[0..255] of char;
+  DirectorioTrabajo: String;
+  InformacionInicial: TStartupInfo;
+  InformacionProceso: TProcessInformation;
+  iResultado, iCodigoSalida: DWord;
+begin
+  StrPCopy( sAplicacion, sPrograma );
+  GetDir( 0, DirectorioTrabajo );
+  StrPCopy( DirectorioActual, DirectorioTrabajo );
+  FillChar( InformacionInicial, Sizeof( InformacionInicial ), #0 );
+  InformacionInicial.cb := Sizeof( InformacionInicial );
+
+  InformacionInicial.dwFlags := STARTF_USESHOWWINDOW;
+  InformacionInicial.wShowWindow := Visibilidad;
+  CreateProcess( nil, sAplicacion, nil, nil, False,
+                 CREATE_NEW_CONSOLE or NORMAL_PRIORITY_CLASS,
+                 nil, nil, InformacionInicial, InformacionProceso );
+
+  // Espera hasta que termina la ejecución
+  repeat
+    iCodigoSalida := WaitForSingleObject( InformacionProceso.hProcess, 1000 );
+    Application.ProcessMessages;
+  until ( iCodigoSalida <> WAIT_TIMEOUT );
+
+  GetExitCodeProcess( InformacionProceso.hProcess, iResultado );
+  MessageBeep( 0 );
+  CloseHandle( InformacionProceso.hProcess );
+  Result := iResultado;
 end;
 
 

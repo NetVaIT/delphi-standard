@@ -149,12 +149,12 @@ inherited dmImportXLS: TdmImportXLS
       'dIncidencia int;'#13#10'SET @IdInstruccion = :IdInstruccion;'#13#10'SET @IdP' +
       'ersona = :IdPersona;'#13#10'IF NOT EXISTS (SELECT * FROM Incidencias W' +
       'HERE IdInstruccion = @IdInstruccion AND IdPersona = @IdPersona) ' +
-      #13#10'BEGIN'#13#10'  INSERT INTO Incidencias (IdInstruccion, IdPersona, Id' +
-      'PersonaRelacionada) VALUES (@IdInstruccion, @IdPersona, 1);'#13#10'  S' +
-      'ELECT  @IdIncidencia = @@identity;'#13#10'END'#13#10'ELSE'#13#10'BEGIN'#13#10'  SELECT @' +
-      'IdIncidencia = IdIncidencia FROM Incidencias WHERE IdInstruccion' +
-      ' = @IdInstruccion AND IdPersona = @IdPersona;'#13#10'END;'#13#10'SET :IdInci' +
-      'dencia  = @IdIncidencia;'#13#10
+      #13#10'BEGIN'#13#10'  INSERT INTO Incidencias (IdInstruccion, IdPersona) VA' +
+      'LUES (@IdInstruccion, @IdPersona);'#13#10'  SELECT  @IdIncidencia = @@' +
+      'identity;'#13#10'END'#13#10'ELSE'#13#10'BEGIN'#13#10'  SELECT @IdIncidencia = IdIncidenc' +
+      'ia FROM Incidencias WHERE IdInstruccion = @IdInstruccion AND IdP' +
+      'ersona = @IdPersona;'#13#10'END;'#13#10'SET :IdIncidencia  = @IdIncidencia;'#13 +
+      #10
     Connection = _dmConection.ADOConnection
     Parameters = <
       item
@@ -209,12 +209,13 @@ inherited dmImportXLS: TdmImportXLS
       'po;'#13#10'SET @IdMoneda = :IdMoneda ;'#13#10'SET @Importe = :Importe;'#13#10'IF N' +
       'OT EXISTS (SELECT * FROM IncidenciasDetalle WHERE IdIncidencia =' +
       ' @IdIncidencia AND IdMovimientoTipo = @IdMovimientoTipo) '#13#10'BEGIN' +
-      #13#10'  INSERT INTO IncidenciasDetalle (IdIncidencia, IdMovimientoTi' +
-      'po, IdMoneda, Importe, IdIncidenciaEstatus) VALUES (@IdIncidenci' +
-      'a, @IdMovimientoTipo, @IdMoneda, @Importe, 1);'#13#10'END'#13#10'ELSE'#13#10'BEGIN' +
-      #13#10'  UPDATE IncidenciasDetalle SET IdMoneda = @IdMoneda, Importe ' +
-      '= @Importe, IdIncidenciaEstatus = 1 WHERE IdIncidencia = @IdInci' +
-      'dencia AND IdMovimientoTipo = @IdMovimientoTipo;'#13#10'END;'#13#10
+      #13#10'  INSERT INTO IncidenciasDetalle (IdIncidencia, IdIncidenciaTi' +
+      'po, IdMovimientoTipo, IdMoneda, Importe, IdIncidenciaEstatus) VA' +
+      'LUES (@IdIncidencia, 1, @IdMovimientoTipo, @IdMoneda, @Importe, ' +
+      '1);'#13#10'END'#13#10'ELSE'#13#10'BEGIN'#13#10'  UPDATE IncidenciasDetalle SET IdMoneda ' +
+      '= @IdMoneda, Importe = @Importe, IdIncidenciaEstatus = 1 WHERE I' +
+      'dIncidencia = @IdIncidencia AND IdMovimientoTipo = @IdMovimiento' +
+      'Tipo;'#13#10'END;'#13#10
     Connection = _dmConection.ADOConnection
     Parameters = <
       item

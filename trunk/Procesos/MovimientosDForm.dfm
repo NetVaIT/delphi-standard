@@ -73,6 +73,8 @@ inherited frmMovimientosD: TfrmMovimientosD
         end
         object tvMasterTipo: TcxGridDBColumn
           DataBinding.FieldName = 'Tipo'
+          Visible = False
+          GroupIndex = 2
           Width = 232
         end
         object tvMasterCategoria: TcxGridDBColumn
@@ -124,14 +126,7 @@ inherited frmMovimientosD: TfrmMovimientosD
       ExplicitLeft = 619
     end
   end
-  inherited cxStyleRepository: TcxStyleRepository [8]
-    PixelsPerInch = 96
-  end
-  inherited ActionList: TActionList [9]
-  end
-  inherited DataSource: TDataSource [10]
-  end
-  inherited dxBarManager: TdxBarManager [11]
+  inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
       0
@@ -166,12 +161,14 @@ inherited frmMovimientosD: TfrmMovimientosD
       Properties.ListSource = dsPeriodos
     end
   end
+  inherited cxStyleRepository: TcxStyleRepository
+    PixelsPerInch = 96
+  end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

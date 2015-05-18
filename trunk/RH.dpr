@@ -184,7 +184,8 @@ uses
   CuentasContablesNaturalezaForm in 'Catalogos\CuentasContablesNaturalezaForm.pas' {frmCuentasContablesNaturaleza},
   CuentasContablesNaturalezaEdit in 'Catalogos\CuentasContablesNaturalezaEdit.pas' {frmCuentasContablesNaturalezaEdit},
   RptMovimientosPeriodoDM in 'Reportes\RptMovimientosPeriodoDM.pas' {dmReporteCrossTab: TDataModule},
-  RptMovimientosPeriodoForm in 'Reportes\RptMovimientosPeriodoForm.pas' {frmMovimientosPeriodo};
+  RptMovimientosPeriodoForm in 'Reportes\RptMovimientosPeriodoForm.pas' {frmMovimientosPeriodo},
+  CuentasXPagarPagosForm in 'Procesos\CuentasXPagarPagosForm.pas' {frmCuentasXPagarPagos};
 
 {$R *.res}
 

@@ -1,6 +1,7 @@
 inherited dmMovimientos: TdmMovimientos
   OldCreateOrder = True
-  Height = 484
+  Height = 562
+  Width = 559
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     AfterScroll = adodsMasterAfterScroll
@@ -8,7 +9,8 @@ inherited dmMovimientos: TdmMovimientos
       'SELECT IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha,' +
       ' Ingresos, Descuentos, Base, Entregas, '#13#10'Percepciones, Deduccion' +
       'es, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado,' +
-      ' ImpuestoRetenido, Costo, Carga FROM Movimientos'
+      ' ImpuestoRetenido,'#13#10'Egresos, Costo, Carga, SaldoAnterior, SaldoP' +
+      'eriodo, Saldo FROM Movimientos'
     object adodsMasterIdMovimiento: TAutoIncField
       FieldName = 'IdMovimiento'
       ReadOnly = True
@@ -117,6 +119,12 @@ inherited dmMovimientos: TdmMovimientos
       Precision = 18
       Size = 6
     end
+    object adodsMasterEgresos: TFMTBCDField
+      FieldName = 'Egresos'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
     object adodsMasterCosto: TFMTBCDField
       FieldName = 'Costo'
       currency = True
@@ -124,25 +132,61 @@ inherited dmMovimientos: TdmMovimientos
       Size = 6
     end
     object adodsMasterCarga: TFMTBCDField
+      DisplayLabel = 'Carga laboral'
       FieldName = 'Carga'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterSaldoAnterior: TFMTBCDField
+      DisplayLabel = 'Saldo anterior'
+      FieldName = 'SaldoAnterior'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterSaldoPeriodo: TFMTBCDField
+      DisplayLabel = 'Saldo del periodo'
+      FieldName = 'SaldoPeriodo'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterSaldo: TFMTBCDField
+      FieldName = 'Saldo'
       currency = True
       Precision = 18
       Size = 6
     end
   end
   inherited ActionList: TActionList
-    object actMovimientosCalculados: TAction
-      Caption = 'Generar movimientos'
-      Hint = 'Genera movimientos del periodo actual'
-      OnExecute = actMovimientosCalculadosExecute
+    object actCalcularmovimientos: TAction
+      Caption = 'Generar movimientos calculados'
+      Hint = 'Genera movimientos calculados del periodo actual'
+      ImageIndex = 10
+      OnExecute = actCalcularmovimientosExecute
     end
     object actCalcularCXP: TAction
-      Caption = 'Generar CXP'
+      Caption = 'Generar cuentas por pagar'
       Hint = 'Genera cuentas por pagar del periodo'
+      ImageIndex = 10
       OnExecute = actCalcularCXPExecute
+    end
+    object actEliminarMovimientos: TAction
+      Caption = 'Eliminar movimientos'
+      Hint = 'Elimina movimientos del periodo actual'
+      ImageIndex = 12
+      OnExecute = actEliminarMovimientosExecute
+    end
+    object actEliminarCuentasXPagar: TAction
+      Caption = 'Eliminar cuentas por pagar'
+      Hint = 'Eliminar cuentas por pagar del periodo'
+      ImageIndex = 12
+      OnExecute = actEliminarCuentasXPagarExecute
     end
   end
   object adodsPersona: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
@@ -151,6 +195,7 @@ inherited dmMovimientos: TdmMovimientos
     Top = 24
   end
   object adodsPeriodo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
@@ -166,6 +211,7 @@ inherited dmMovimientos: TdmMovimientos
   object adodsMovimientosDet: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
+    AfterPost = adodsMovimientosDetAfterPost
     CommandText = 
       'select IdMovimientoDetalle, IdMovimiento, IdPersonaRol, IdMovimi' +
       'entoTipo, IdMovimientoEstatus, IdCuentaXPagar, Importe from Movi' +
@@ -299,8 +345,8 @@ inherited dmMovimientos: TdmMovimientos
         Size = -1
         Value = Null
       end>
-    Left = 48
-    Top = 344
+    Left = 64
+    Top = 392
   end
   object adospMovimientosCalculados: TADOStoredProc
     Connection = _dmConection.ADOConnection
@@ -320,10 +366,10 @@ inherited dmMovimientos: TdmMovimientos
         Precision = 10
         Value = Null
       end>
-    Left = 48
-    Top = 400
+    Left = 64
+    Top = 448
   end
-  object adospCentasXPagar: TADOStoredProc
+  object adospCuentasXPagar: TADOStoredProc
     Connection = _dmConection.ADOConnection
     ProcedureName = 'p_GenCuentasXPagar;1'
     Parameters = <
@@ -348,7 +394,70 @@ inherited dmMovimientos: TdmMovimientos
         Precision = 10
         Value = Null
       end>
-    Left = 192
-    Top = 403
+    Left = 208
+    Top = 443
+  end
+  object adopDelMovimientos: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_DelMovimientos;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 64
+    Top = 504
+  end
+  object adopDelCuentasXPagar: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_DelCuentasXPagar;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 208
+    Top = 504
+  end
+  object adopUptMovimientosTotales: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_UpdMovimientosTotales;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdMovimiento'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 56
+    Top = 272
   end
 end

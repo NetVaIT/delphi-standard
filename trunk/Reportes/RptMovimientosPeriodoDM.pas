@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
-  Data.DB, Data.Win.ADODB, frxClass, Dialogs;
+  Data.DB, Data.Win.ADODB, Dialogs;
 
 type
   TdmReporteCrossTab = class(T_dmStandar)

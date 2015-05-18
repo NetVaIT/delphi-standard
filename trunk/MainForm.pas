@@ -112,7 +112,11 @@ type
     dxBarLargeButton28: TdxBarLargeButton;
     dxBarLargeButton29: TdxBarLargeButton;
     actMovimientosPeriodo: TAction;
+    dxBarManagerBar3: TdxBar;
+    dxBarLargeButton30: TdxBarLargeButton;
+    actIntervaCXP: TAction;
     procedure actCatalogoExecute(Sender: TObject);
+    procedure actIntervaCXPExecute(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -220,6 +224,12 @@ begin
     gModulo.ShowModule(pnlMain, pCaption);
     Caption := pCaption + strSeparador + strProductName + strSeparador + strFileDescription;
   end;
+end;
+
+procedure TfrmMain.actIntervaCXPExecute(Sender: TObject);
+begin
+  inherited;
+  ExecuteUntilFinish('IntervaCXP.exe');
 end;
 
 procedure TfrmMain.ConfigControls;

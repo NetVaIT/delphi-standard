@@ -67,10 +67,12 @@ inherited dmIncidencias: TdmIncidencias
   object adodsIncidenciaDetalle: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
+    OnNewRecord = adodsIncidenciaDetalleNewRecord
     CommandText = 
-      'SELECT IdIncidenciaDetalle, IdIncidencia, IdMovimientoTipo, IdMo' +
-      'neda, Importe, IdIncidenciaEstatus FROM IncidenciasDetalle WHERE' +
-      ' IdIncidencia = :IdIncidencia'
+      'SELECT IdIncidenciaDetalle, IdIncidencia, IdIncidenciaTipo, IdMo' +
+      'vimientoTipo, IdMoneda, Importe, IdIncidenciaEstatus, IdUsuarioR' +
+      'egistro, FechaRegistro FROM IncidenciasDetalle WHERE IdIncidenci' +
+      'a = :IdIncidencia'
     DataSource = dsMaster
     IndexFieldNames = 'IdIncidencia'
     MasterFields = 'IdIncidencia'
@@ -80,6 +82,7 @@ inherited dmIncidencias: TdmIncidencias
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
+        Size = 4
         Value = 61
       end>
     Left = 48
@@ -91,6 +94,10 @@ inherited dmIncidencias: TdmIncidencias
     end
     object adodsIncidenciaDetalleIdIncidencia: TIntegerField
       FieldName = 'IdIncidencia'
+      Visible = False
+    end
+    object adodsIncidenciaDetalleIdIncidenciaTipo: TIntegerField
+      FieldName = 'IdIncidenciaTipo'
       Visible = False
     end
     object adodsIncidenciaDetalleIdMovimientoTipo: TIntegerField
@@ -119,6 +126,7 @@ inherited dmIncidencias: TdmIncidencias
     end
     object adodsIncidenciaDetalleImporte: TFMTBCDField
       FieldName = 'Importe'
+      currency = True
       Precision = 18
       Size = 6
     end
@@ -132,6 +140,17 @@ inherited dmIncidencias: TdmIncidencias
       Size = 80
       Lookup = True
     end
+    object adodsIncidenciaDetalleIncidenciaTipo: TStringField
+      DisplayLabel = 'Tipo'
+      FieldKind = fkLookup
+      FieldName = 'IncidenciaTipo'
+      LookupDataSet = adodsIncidenciasTipo
+      LookupKeyFields = 'IdIncidenciaTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdIncidenciaTipo'
+      Size = 50
+      Lookup = True
+    end
     object adodsIncidenciaDetalleIncidenciaEstatus: TStringField
       DisplayLabel = 'Estatus'
       FieldKind = fkLookup
@@ -142,6 +161,14 @@ inherited dmIncidencias: TdmIncidencias
       KeyFields = 'IdIncidenciaEstatus'
       Size = 50
       Lookup = True
+    end
+    object adodsIncidenciaDetalleIdUsuarioRegistro: TIntegerField
+      FieldName = 'IdUsuarioRegistro'
+      Visible = False
+    end
+    object adodsIncidenciaDetalleFechaRegistro: TDateTimeField
+      FieldName = 'FechaRegistro'
+      Visible = False
     end
   end
   object adodsIncidenciaEstatus: TADODataSet
@@ -164,5 +191,13 @@ inherited dmIncidencias: TdmIncidencias
     Parameters = <>
     Left = 184
     Top = 336
+  end
+  object adodsIncidenciasTipo: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdIncidenciaTipo, Descripcion from IncidenciasTipos'
+    Parameters = <>
+    Left = 184
+    Top = 392
   end
 end

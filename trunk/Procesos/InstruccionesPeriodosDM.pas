@@ -4,9 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
-  Data.DB, Data.Win.ADODB,
-  System.UITypes
-  ;
+  Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes;
 
 resourcestring
   StrSelectInfo = 'Todas estas instruciones se encontraron en el periodo actual ¿Desea procesarlas?';
@@ -87,6 +85,7 @@ end;
 procedure TdmInstruccionesPeriodos.SetMovimientos;
 begin
   adospGenMovimientos.ExecProc;
+  MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
 end;
 
 end.

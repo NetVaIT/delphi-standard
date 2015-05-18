@@ -1,14 +1,14 @@
 inherited frmCuentasXPagar: TfrmCuentasXPagar
   BorderStyle = bsToolWindow
   Caption = 'Cuentas por pagar'
-  ClientHeight = 428
+  ClientHeight = 634
   ClientWidth = 720
   ExplicitWidth = 726
-  ExplicitHeight = 457
+  ExplicitHeight = 663
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Top = 343
+    Top = 549
     Width = 720
     ExplicitTop = 343
     ExplicitWidth = 645
@@ -22,8 +22,10 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
-    Top = 299
+    Top = 483
     Width = 720
+    Align = alTop
+    Visible = True
     ExplicitTop = 299
     ExplicitWidth = 645
   end
@@ -123,36 +125,37 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     end
   end
   inherited pnlDetail3: TPanel
-    Top = 346
+    Top = 552
     Width = 720
-    ExplicitTop = 346
+    ExplicitTop = 424
     ExplicitWidth = 720
   end
   inherited pnlDetail2: TPanel
-    Top = 302
+    Top = 486
     Width = 720
-    ExplicitTop = 302
+    Height = 63
+    Align = alClient
+    ExplicitTop = 380
     ExplicitWidth = 720
   end
   inherited pnlDetail1: TPanel
     Top = 258
     Width = 720
-    Align = alClient
+    Height = 225
+    Align = alTop
     ExplicitTop = 258
     ExplicitWidth = 720
+    ExplicitHeight = 225
   end
   inherited pnlClose: TPanel
-    Top = 387
+    Top = 593
     Width = 720
-    ExplicitTop = 387
+    ExplicitTop = 465
     ExplicitWidth = 720
     inherited btnClose: TButton
       Left = 635
       ExplicitLeft = 635
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmCuentasXPagar.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -201,6 +204,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
       ShowCaption = True
       Width = 304
       PropertiesClassName = 'TcxLookupComboBoxProperties'
+      Properties.ClearKey = 16460
       Properties.KeyFieldNames = 'IdPeriodo'
       Properties.ListColumns = <
         item
