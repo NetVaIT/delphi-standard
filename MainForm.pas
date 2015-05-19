@@ -22,7 +22,7 @@ uses
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
   cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod, _ReportDMod,
-  RptDetalleMovimientosPersonaDmod;
+  RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -144,7 +144,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasContablesNaturalezaDM,
-  RptMovimientosPeriodoDM;
+  CuentasXCobrarDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -212,13 +212,17 @@ begin
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);
    33: gModulo := TdmCuentasXPagar.Create(Self);
+   34: gModulo := TdmCuentasXCobrar.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
    51: begin
          gReport := TdmDetalleMovimientosPersona.Create(Self);
          gReport.Title := pCaption;
          gReport.Execute;
        end;
-   52: gModulo := TdmReporteCrossTab.Create(Self);
+   52: begin
+         gModulo := TdmMovimientosPeriodorpt.Create(Self);
+         TdmMovimientosPeriodorpt(gModulo).Execute;
+       end;
    53: gModulo := TdmMovimientosD.Create(Self);
   end;
   if Assigned(gModulo) then
@@ -270,6 +274,7 @@ begin
   actMovimientosPeriodo.Enabled := Conected;
   actDetalleMovimientosPersona.Enabled := Conected;
   actCuentasContablesNaturaleza.Enabled := Conected;
+  actCuentasXCobrar.Enabled     := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

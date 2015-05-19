@@ -188,7 +188,9 @@ uses
   CuentasXPagarPagosForm in 'Procesos\CuentasXPagarPagosForm.pas' {frmCuentasXPagarPagos},
   EsquemaPagosPersonasDM in 'Catalogos\EsquemaPagosPersonasDM.pas' {dmEsquemaPagosPersonas: TDataModule},
   EsquemaPagosPersonasForm in 'Catalogos\EsquemaPagosPersonasForm.pas' {frmEsquemaPagosPersonas},
-  EsquemaPagosPersonasEdit in 'Catalogos\EsquemaPagosPersonasEdit.pas' {frmEsquemaPagosPersonasEdit};
+  EsquemaPagosPersonasEdit in 'Catalogos\EsquemaPagosPersonasEdit.pas' {frmEsquemaPagosPersonasEdit},
+  CuentasXCobrarDM in 'Procesos\CuentasXCobrarDM.pas' {dmCuentasXCobrar: TDataModule},
+  CuentasXCobrarForm in 'Procesos\CuentasXCobrarForm.pas' {frmCuentasXCobrarForm};
 
 {$R *.res}
 

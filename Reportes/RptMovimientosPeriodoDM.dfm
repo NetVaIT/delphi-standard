@@ -1,6 +1,7 @@
-inherited dmReporteCrossTab: TdmReporteCrossTab
+inherited dmMovimientosPeriodorpt: TdmMovimientosPeriodorpt
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
+    CursorType = ctStatic
     CommandText = 'SELECT IdMovimientoTipo, Descripcion FROM MovimientosTipos'
   end
   inherited ActionList: TActionList
@@ -8,6 +9,10 @@ inherited dmReporteCrossTab: TdmReporteCrossTab
       Caption = 'Reporte'
       ImageIndex = 13
       OnExecute = actReporteExecute
+    end
+    object actPedirPeriodo: TAction
+      Caption = 'actPedirPeriodo'
+      OnExecute = actPedirPeriodoExecute
     end
   end
   object adostReporte: TADOStoredProc
@@ -60,5 +65,30 @@ inherited dmReporteCrossTab: TdmReporteCrossTab
       'WHERE (IdMovimientoTipo = :IdMovimientoTipo)')
     Left = 136
     Top = 224
+  end
+  object adodsPeriodos: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdPeriodo, Descripcion FROM Periodos'
+    Parameters = <>
+    Left = 32
+    Top = 112
+    object adodsPeriodosIdPeriodo: TAutoIncField
+      FieldName = 'IdPeriodo'
+      ReadOnly = True
+    end
+    object adodsPeriodosDescripcion: TStringField
+      FieldName = 'Descripcion'
+      Size = 100
+    end
+  end
+  object mdParams: TdxMemData
+    Indexes = <>
+    SortOptions = []
+    Left = 200
+    Top = 88
+    object mdParamsIdPeriodo: TIntegerField
+      FieldName = 'IdPeriodo'
+    end
   end
 end

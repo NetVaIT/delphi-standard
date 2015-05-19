@@ -51,33 +51,43 @@ inherited frmMovimientosPeriodo: TfrmMovimientosPeriodo
           end
           item
             Caption = 'Percepcion'
+            Visible = False
           end
           item
             Caption = 'Deduccion'
+            Visible = False
           end
           item
             Caption = 'Obligacion'
+            Visible = False
           end
           item
             Caption = 'Prestacion'
+            Visible = False
           end
           item
             Caption = 'Operacion'
+            Visible = False
           end
           item
             Caption = 'Ingresos'
+            Visible = False
           end
           item
             Caption = 'Entregas'
+            Visible = False
           end
           item
             Caption = 'Descuentos'
+            Visible = False
           end
           item
             Caption = 'Impuestos Retenidos'
+            Visible = False
           end
           item
             Caption = 'Impuestos Trasladados'
+            Visible = False
           end>
       end
       inherited cxGridLevel1: TcxGridLevel

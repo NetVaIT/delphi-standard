@@ -49,7 +49,7 @@ uses RptDetalleMovimientosPersonaDmod;
 procedure TfrmRptMovimientos.SetDataSetPeriodo(const Value: TDataSet);
 begin
   FDataSetPeriodo := Value;
-  dsPeriodo.DataSet:= Value;
+  dsPeriodo.DataSet := Value;
 end;
 
 end.
