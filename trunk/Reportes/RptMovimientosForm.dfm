@@ -1,5 +1,5 @@
 inherited frmRptMovimientos: TfrmRptMovimientos
-  Caption = 'Movimientos'
+  Caption = 'Seleccione un Periodo'
   ClientHeight = 230
   ClientWidth = 361
   ExplicitWidth = 367
@@ -54,6 +54,9 @@ inherited frmRptMovimientos: TfrmRptMovimientos
     Properties.ListSource = dsPeriodo
     TabOrder = 2
     Width = 304
+  end
+  inherited dsParams: TDataSource
+    Left = 160
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

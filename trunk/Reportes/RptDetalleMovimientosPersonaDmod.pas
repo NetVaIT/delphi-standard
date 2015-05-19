@@ -35,6 +35,15 @@ type
     ppLine2: TppLine;
     pplblEncabezado: TppLabel;
     ppLine3: TppLine;
+    adodsReportSaldoAnterior: TFMTBCDField;
+    adodsReportSaldoPeriodo: TFMTBCDField;
+    adodsReportSaldo: TFMTBCDField;
+    ppDBText5: TppDBText;
+    ppDBText6: TppDBText;
+    ppDBText7: TppDBText;
+    ppLabel1: TppLabel;
+    ppLabel2: TppLabel;
+    ppLabel3: TppLabel;
     procedure DataModuleCreate(Sender: TObject);
     procedure ppReportStartPage(Sender: TObject);
   private
@@ -55,7 +64,7 @@ uses RptMovimientosForm;
 procedure TdmDetalleMovimientosPersona.AssignParam;
 begin
   inherited;
-  adodsReport.Parameters.ParamByName('IdPeriodo').Value:= mdParamsIdPeriodo.Value;
+  adodsReport.Parameters.ParamByName('IdPeriodo').Value := mdParamsIdPeriodo.Value;
 end;
 
 procedure TdmDetalleMovimientosPersona.DataModuleCreate(Sender: TObject);
@@ -63,7 +72,7 @@ begin
   inherited;
   gReportForm := TfrmRptMovimientos.Create(Self);
   adodsPeriodos.Open;
-  TfrmRptMovimientos(gReportForm).DataSetPeriodo:= adodsPeriodos;
+  TfrmRptMovimientos(gReportForm).DataSetPeriodo := adodsPeriodos;
 end;
 
 procedure TdmDetalleMovimientosPersona.ppReportStartPage(Sender: TObject);

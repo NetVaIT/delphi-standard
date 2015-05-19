@@ -3,23 +3,25 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
   OnCreate = DataModuleCreate
   Height = 273
   inherited adodsReport: TADODataSet
+    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +
-      ' AS Tipo, MovimientosDetalle.Importe'#13#10'FROM            Movimiento' +
-      'sDetalle INNER JOIN'#13#10'                         Movimientos ON Mov' +
-      'imientosDetalle.IdMovimiento = Movimientos.IdMovimiento INNER JO' +
-      'IN'#13#10'                         MovimientosTipos ON MovimientosDeta' +
-      'lle.IdMovimientoTipo = MovimientosTipos.IdMovimientoTipo INNER J' +
-      'OIN'#13#10'                         MovimientosTiposCategorias ON Movi' +
-      'mientosTipos.IdMovimientoTipoCategoria = MovimientosTiposCategor' +
-      'ias.IdMovimientoTipoCategoria INNER JOIN'#13#10'                      ' +
-      '   MovimientosTiposEfectos ON MovimientosTipos.IdMovimientoTipoE' +
-      'fecto = MovimientosTiposEfectos.IdMovimientoTipoEfecto INNER JOI' +
-      'N'#13#10'                         Personas ON Movimientos.IdPersona = ' +
-      'Personas.IdPersona'#13#10'WHERE        (Movimientos.IdPeriodo = :IdPer' +
-      'iodo)'#13#10'ORDER BY Persona, MovimientosTiposCategorias.OrdenImpresi' +
-      'on'
+      ' AS Tipo, MovimientosDetalle.Importe,'#13#10'                    Movim' +
+      'ientos.SaldoAnterior, Movimientos.SaldoPeriodo, Movimientos.Sald' +
+      'o'#13#10'FROM            MovimientosDetalle INNER JOIN'#13#10'              ' +
+      '           Movimientos ON MovimientosDetalle.IdMovimiento = Movi' +
+      'mientos.IdMovimiento INNER JOIN'#13#10'                         Movimi' +
+      'entosTipos ON MovimientosDetalle.IdMovimientoTipo = MovimientosT' +
+      'ipos.IdMovimientoTipo INNER JOIN'#13#10'                         Movim' +
+      'ientosTiposCategorias ON MovimientosTipos.IdMovimientoTipoCatego' +
+      'ria = MovimientosTiposCategorias.IdMovimientoTipoCategoria INNER' +
+      ' JOIN'#13#10'                         MovimientosTiposEfectos ON Movim' +
+      'ientosTipos.IdMovimientoTipoEfecto = MovimientosTiposEfectos.IdM' +
+      'ovimientoTipoEfecto INNER JOIN'#13#10'                         Persona' +
+      's ON Movimientos.IdPersona = Personas.IdPersona'#13#10'WHERE        (M' +
+      'ovimientos.IdPeriodo = :IdPeriodo)'#13#10'ORDER BY Persona, Movimiento' +
+      'sTiposCategorias.OrdenImpresion'
     Parameters = <
       item
         Name = 'IdPeriodo'
@@ -43,8 +45,86 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
     end
     object adodsReportImporte: TFMTBCDField
       FieldName = 'Importe'
+      currency = True
       Precision = 18
       Size = 6
+    end
+    object adodsReportSaldoAnterior: TFMTBCDField
+      FieldName = 'SaldoAnterior'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsReportSaldoPeriodo: TFMTBCDField
+      FieldName = 'SaldoPeriodo'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsReportSaldo: TFMTBCDField
+      FieldName = 'Saldo'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+  end
+  inherited dbpReport: TppDBPipeline
+    object dbpReportppField1: TppField
+      FieldAlias = 'Persona'
+      FieldName = 'Persona'
+      FieldLength = 300
+      DisplayWidth = 300
+      Position = 0
+    end
+    object dbpReportppField2: TppField
+      FieldAlias = 'Catagoria'
+      FieldName = 'Catagoria'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 1
+    end
+    object dbpReportppField3: TppField
+      FieldAlias = 'Tipo'
+      FieldName = 'Tipo'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 2
+    end
+    object dbpReportppField4: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'Importe'
+      FieldName = 'Importe'
+      FieldLength = 6
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 3
+    end
+    object dbpReportppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SaldoAnterior'
+      FieldName = 'SaldoAnterior'
+      FieldLength = 6
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 4
+    end
+    object dbpReportppField6: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SaldoPeriodo'
+      FieldName = 'SaldoPeriodo'
+      FieldLength = 6
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 5
+    end
+    object dbpReportppField7: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'Saldo'
+      FieldName = 'Saldo'
+      FieldLength = 6
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 6
     end
   end
   inherited ppReport: TppReport
@@ -191,8 +271,125 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
         Background.Brush.Style = bsClear
         HideWhenOneDetail = False
         mmBottomOffset = 0
-        mmHeight = 0
+        mmHeight = 27781
         mmPrintPosition = 0
+        object ppDBText5: TppDBText
+          UserName = 'DBText5'
+          DataField = 'SaldoAnterior'
+          DataPipeline = dbpReport
+          DisplayFormat = '$#,0.00;-$#,0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 11
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpReport'
+          mmHeight = 4498
+          mmLeft = 177271
+          mmTop = 4233
+          mmWidth = 24342
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground
+        end
+        object ppDBText6: TppDBText
+          UserName = 'DBText6'
+          DataField = 'SaldoPeriodo'
+          DataPipeline = dbpReport
+          DisplayFormat = '$#,0.00;-$#,0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 11
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpReport'
+          mmHeight = 4498
+          mmLeft = 177271
+          mmTop = 11906
+          mmWidth = 24342
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground
+        end
+        object ppDBText7: TppDBText
+          UserName = 'DBText7'
+          DataField = 'Saldo'
+          DataPipeline = dbpReport
+          DisplayFormat = '$#,0.00;-$#,0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 11
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpReport'
+          mmHeight = 4498
+          mmLeft = 177271
+          mmTop = 19844
+          mmWidth = 24342
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground
+        end
+        object ppLabel1: TppLabel
+          UserName = 'Label1'
+          Caption = 'Saldo Anterior'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 11
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 4498
+          mmLeft = 150019
+          mmTop = 4233
+          mmWidth = 24077
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground
+        end
+        object ppLabel2: TppLabel
+          UserName = 'Label2'
+          Caption = 'Saldo en el Periodo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 11
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 4498
+          mmLeft = 140759
+          mmTop = 11906
+          mmWidth = 33338
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground
+        end
+        object ppLabel3: TppLabel
+          UserName = 'Label3'
+          Caption = 'Saldo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 11
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 4498
+          mmLeft = 164307
+          mmTop = 19844
+          mmWidth = 9790
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground
+        end
       end
     end
     object ppGroup2: TppGroup [5]

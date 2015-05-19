@@ -726,6 +726,15 @@
             <Form>frmEsquemaPagosPersonasEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Procesos\CuentasXCobrarDM.pas">
+            <Form>dmCuentasXCobrar</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\CuentasXCobrarForm.pas">
+            <Form>frmCuentasXCobrarForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
