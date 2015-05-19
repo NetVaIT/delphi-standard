@@ -2,6 +2,8 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   Caption = 'Esquema de Pago'
   ClientHeight = 248
   ClientWidth = 529
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   ExplicitWidth = 535
   ExplicitHeight = 277
   PixelsPerInch = 96
@@ -9,6 +11,7 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   inherited pcMain: TcxPageControl
     Width = 529
     Height = 207
+    Properties.ActivePage = tsPersonas
     ExplicitWidth = 529
     ExplicitHeight = 207
     ClientRectBottom = 205
@@ -75,6 +78,10 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
         TabOrder = 2
         Width = 193
       end
+    end
+    object tsPersonas: TcxTabSheet
+      Caption = 'OutSourcing'
+      ImageIndex = 1
     end
   end
   inherited pmlMain: TPanel

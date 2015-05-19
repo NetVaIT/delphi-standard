@@ -52,6 +52,7 @@ type
     adodsCuentasXPagarPagosPagadora: TStringField;
     adodsCuentasXPagarPagosFechaProgramada: TDateTimeField;
     adodsCuentasXPagarPagosMontoProgramado: TFMTBCDField;
+    adodsMovimientosDetalleFecha: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularCXPExecute(Sender: TObject);
   private

@@ -1,4 +1,4 @@
-unit MovimientosDetalleEdit;
+unit EsquemaPagosPersonasEdit;
 
 interface
 
@@ -18,31 +18,38 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, cxTextEdit, cxDBEdit, Vcl.DBCtrls, cxMaskEdit,
-  cxDropDownEdit, cxCalendar;
+  Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
-  TfrmMovimientosDetalleEdit = class(T_frmEdit)
+  TfrmEsquemaPagosPersonasEdit = class(T_frmEdit)
     Label1: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
-    Label2: TLabel;
-    DBLookupComboBox2: TDBLookupComboBox;
     Label3: TLabel;
-    cxDBTextEdit1: TcxDBTextEdit;
-    Label4: TLabel;
-    DBLookupComboBox3: TDBLookupComboBox;
-    Label5: TLabel;
-    cxDBDateEdit1: TcxDBDateEdit;
+    dsCuentaBancarias: TDataSource;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
   private
+    FDataSetCuentasBancarias: TDataSet;
+    procedure SetDataSetCuentasBancarias(const Value: TDataSet);
     { Private declarations }
   public
     { Public declarations }
+    property DataSetCuentasBancarias: TDataSet read FDataSetCuentasBancarias write SetDataSetCuentasBancarias;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses MovimientosDM;
+uses EsquemaPagosPersonasDM;
+
+{ TfrmEsquemaPagosPersonasEdit }
+
+procedure TfrmEsquemaPagosPersonasEdit.SetDataSetCuentasBancarias(
+  const Value: TDataSet);
+begin
+  FDataSetCuentasBancarias := Value;
+  dsCuentaBancarias.DataSet := Value;
+end;
 
 end.

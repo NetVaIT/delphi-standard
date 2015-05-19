@@ -32,11 +32,9 @@ uses
 type
   TfrmMovimientos = class(T_frmGrid)
     tvMasterIdMovimiento: TcxGridDBColumn;
-    tvMasterIdInstruccion: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdPeriodo: TcxGridDBColumn;
     tvMasterPeriodo: TcxGridDBColumn;
-    tvMasterFecha: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
     dxbtnCalcularMovimientos: TdxBarButton;
     dxbtnCalcularCXP: TdxBarButton;

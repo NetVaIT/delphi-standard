@@ -46,7 +46,7 @@ inherited frmMain: TfrmMain
       Caption = 'Reportes'
       Groups = <
         item
-          Caption = ''
+          Caption = 'Movimientos'
           ToolbarName = 'dxBarManagerBar2'
         end>
       Index = 3
@@ -76,8 +76,8 @@ inherited frmMain: TfrmMain
     ExplicitWidth = 1099
   end
   inherited dxBarManager: TdxBarManager
-    Left = 696
-    Top = 16
+    Left = 64
+    Top = 296
     DockControlHeights = (
       0
       0
@@ -331,15 +331,19 @@ inherited frmMain: TfrmMain
       WholeRow = False
     end
     object dxBarManagerBar2: TdxBar [9]
-      Caption = 'Custom 1'
+      Caption = 'Movimientos'
       CaptionButtons = <>
       DockedLeft = 0
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 207
-      FloatClientHeight = 108
+      FloatClientHeight = 162
       ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton31'
+        end
         item
           Visible = True
           ItemName = 'dxBarLargeButton26'
@@ -357,7 +361,7 @@ inherited frmMain: TfrmMain
     object dxBarManagerBar3: TdxBar [10]
       Caption = 'Externo'
       CaptionButtons = <>
-      DockedLeft = 370
+      DockedLeft = 346
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
@@ -533,10 +537,6 @@ inherited frmMain: TfrmMain
       Action = actCXCConceptos
       Category = 0
     end
-    object dxBarButton10: TdxBarButton
-      Action = actDetMovimientos
-      Category = 0
-    end
     object dxBarLargeButton28: TdxBarLargeButton
       Action = actCuentasContablesNaturaleza
       Category = 0
@@ -549,14 +549,22 @@ inherited frmMain: TfrmMain
       Action = actIntervaCXP
       Category = 0
     end
+    object dxBarButton10: TdxBarButton
+      Action = actCuentasXCobrar
+      Category = 0
+    end
+    object dxBarLargeButton31: TdxBarLargeButton
+      Action = actDetMovimientos
+      Category = 0
+    end
   end
   inherited dxSkinController: TdxSkinController
-    Left = 608
-    Top = 16
+    Left = 64
+    Top = 240
   end
   inherited cxSmallImages: TcxImageList
     FormatVersion = 1
-    DesignInfo = 11534924
+    DesignInfo = 19923164
     ImageInfo = <
       item
         Image.Data = {
@@ -2577,7 +2585,7 @@ inherited frmMain: TfrmMain
   end
   inherited cxLargeImages: TcxImageList
     FormatVersion = 1
-    DesignInfo = 12059116
+    DesignInfo = 15728860
     ImageInfo = <
       item
         Image.Data = {
@@ -9201,8 +9209,8 @@ inherited frmMain: TfrmMain
       end>
   end
   inherited ActionList: TActionList
-    Left = 528
-    Top = 16
+    Left = 216
+    Top = 192
     object actCatalogo: TAction
       Category = 'Catalogos'
       Caption = 'actCatalogo'
@@ -9411,6 +9419,13 @@ inherited frmMain: TfrmMain
       ImageIndex = 40
       OnExecute = actCatalogoExecute
     end
+    object actDetMovimientos: TAction
+      Tag = 53
+      Category = 'Reportes'
+      Caption = 'Detalle de movimientos'
+      ImageIndex = 9
+      OnExecute = actCatalogoExecute
+    end
     object actDetalleMovimientosPersona: TAction
       Tag = 51
       Category = 'Reportes'
@@ -9425,11 +9440,11 @@ inherited frmMain: TfrmMain
       ImageIndex = 34
       OnExecute = actCatalogoExecute
     end
-    object actDetMovimientos: TAction
+    object actCuentasXCobrar: TAction
       Tag = 34
       Category = 'Procesos'
-      Caption = 'Detalle de movimientos'
-      ImageIndex = 9
+      Caption = 'Cuentas por cobrar'
+      ImageIndex = 40
       OnExecute = actCatalogoExecute
     end
     object actCuentasContablesNaturaleza: TAction
@@ -9454,7 +9469,7 @@ inherited frmMain: TfrmMain
     end
   end
   inherited dxBarScreenTipRepository: TdxBarScreenTipRepository
-    Left = 536
-    Top = 67
+    Left = 64
+    Top = 187
   end
 end

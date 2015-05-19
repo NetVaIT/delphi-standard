@@ -47,7 +47,7 @@ begin
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
   // Filtrado
-  SQLSelect:= 'SELECT vMovimientosDetalle.IdMovimientoDetalle, Movimientos.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.Tipo, ' +
+  SQLSelect:= 'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDetalle.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.Tipo, ' +
   'vMovimientosDetalle.Categoria, vMovimientosDetalle.Efecto, (vMovimientosDetalle.Importe*MovimientosTiposCategorias.Signo) AS Importe, vMovimientosDetalle.Estatus ' +
   'FROM vMovimientosDetalle ' +
   'INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento ' +
