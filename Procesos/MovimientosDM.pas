@@ -9,10 +9,8 @@ uses
 type
   TdmMovimientos = class(T_dmStandar)
     adodsMasterIdMovimiento: TAutoIncField;
-    adodsMasterIdInstruccion: TIntegerField;
     adodsMasterIdPersona: TIntegerField;
     adodsMasterIdPeriodo: TIntegerField;
-    adodsMasterFecha: TDateTimeField;
     adodsPersona: TADODataSet;
     adodsPeriodo: TADODataSet;
     adodsMasterPersona: TStringField;
@@ -59,6 +57,8 @@ type
     adodsMasterSaldoAnterior: TFMTBCDField;
     adodsMasterSaldoPeriodo: TFMTBCDField;
     adodsMasterSaldo: TFMTBCDField;
+    adodsMovimientosDetFecha: TDateTimeField;
+    adodsMovimientosDetCategoria: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
@@ -156,7 +156,7 @@ begin
 //  gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;
   // Busqueda
-  SQLSelect:= 'SELECT IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha, Ingresos, Descuentos, Base, Entregas, ' +
+  SQLSelect:= 'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Descuentos, Base, Entregas, ' +
   'Percepciones, Deducciones, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido, ' +
   'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo FROM Movimientos';
   gGridForm.actSearch:= actSearch;

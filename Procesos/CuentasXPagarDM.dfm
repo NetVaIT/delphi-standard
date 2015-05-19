@@ -134,8 +134,8 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     CommandText = 
       'select IdMovimientoDetalle, IdCuentaXPagar, IdPersonaRol, IdMovi' +
       'mientoTipo, IdMovimientoEstatus, PersonaRelacionada, Tipo, Categ' +
-      'oria, Efecto, Importe, Estatus from vMovimientosDetalle'#13#10'WHERE I' +
-      'dCuentaXPagar = :IdCuentaXPagar'
+      'oria, Efecto, Fecha, Importe, Estatus from vMovimientosDetalle'#13#10 +
+      'WHERE IdCuentaXPagar = :IdCuentaXPagar'
     DataSource = dsMaster
     MasterFields = 'IdCuentaXPagar'
     Parameters = <
@@ -144,6 +144,7 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         Attributes = [paSigned, paNullable]
         DataType = ftInteger
         Precision = 10
+        Size = 4
         Value = 195
       end>
     Left = 64
@@ -184,6 +185,9 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     object adodsMovimientosDetalleEfecto: TStringField
       FieldName = 'Efecto'
       Size = 100
+    end
+    object adodsMovimientosDetalleFecha: TDateTimeField
+      FieldName = 'Fecha'
     end
     object adodsMovimientosDetalleImporte: TFMTBCDField
       FieldName = 'Importe'

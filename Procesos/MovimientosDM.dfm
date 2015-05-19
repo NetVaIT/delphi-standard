@@ -6,18 +6,14 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     AfterScroll = adodsMasterAfterScroll
     CommandText = 
-      'SELECT IdMovimiento, IdInstruccion, IdPersona, IdPeriodo, Fecha,' +
-      ' Ingresos, Descuentos, Base, Entregas, '#13#10'Percepciones, Deduccion' +
-      'es, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado,' +
-      ' ImpuestoRetenido,'#13#10'Egresos, Costo, Carga, SaldoAnterior, SaldoP' +
-      'eriodo, Saldo FROM Movimientos'
+      'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Descuentos,' +
+      ' Base, Entregas, '#13#10'Percepciones, Deducciones, Prestaciones, Obli' +
+      'gaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido,'#13#10'Eg' +
+      'resos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo FROM Mov' +
+      'imientos'
     object adodsMasterIdMovimiento: TAutoIncField
       FieldName = 'IdMovimiento'
       ReadOnly = True
-      Visible = False
-    end
-    object adodsMasterIdInstruccion: TIntegerField
-      FieldName = 'IdInstruccion'
       Visible = False
     end
     object adodsMasterIdPersona: TIntegerField
@@ -37,9 +33,6 @@ inherited dmMovimientos: TdmMovimientos
       KeyFields = 'IdPeriodo'
       Size = 100
       Lookup = True
-    end
-    object adodsMasterFecha: TDateTimeField
-      FieldName = 'Fecha'
     end
     object adodsMasterPersona: TStringField
       FieldKind = fkLookup
@@ -186,7 +179,6 @@ inherited dmMovimientos: TdmMovimientos
     end
   end
   object adodsPersona: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
@@ -195,7 +187,6 @@ inherited dmMovimientos: TdmMovimientos
     Top = 24
   end
   object adodsPeriodo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
@@ -214,8 +205,8 @@ inherited dmMovimientos: TdmMovimientos
     AfterPost = adodsMovimientosDetAfterPost
     CommandText = 
       'select IdMovimientoDetalle, IdMovimiento, IdPersonaRol, IdMovimi' +
-      'entoTipo, IdMovimientoEstatus, IdCuentaXPagar, Importe from Movi' +
-      'mientosDetalle'#13#10'WHERE IdMovimiento = :IdMovimiento'
+      'entoTipo, IdMovimientoEstatus, IdCuentaXPagar, Fecha, Importe fr' +
+      'om MovimientosDetalle'#13#10'WHERE IdMovimiento = :IdMovimiento'
     DataSource = dsMaster
     MasterFields = 'IdMovimiento'
     Parameters = <
@@ -274,6 +265,19 @@ inherited dmMovimientos: TdmMovimientos
       KeyFields = 'IdMovimientoTipo'
       Size = 100
       Lookup = True
+    end
+    object adodsMovimientosDetCategoria: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Categoria'
+      LookupDataSet = adodsMovimientosTipo
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'Categoria'
+      KeyFields = 'IdMovimientoTipo'
+      Size = 100
+      Lookup = True
+    end
+    object adodsMovimientosDetFecha: TDateTimeField
+      FieldName = 'Fecha'
     end
     object adodsMovimientosDetImporte: TFMTBCDField
       FieldName = 'Importe'

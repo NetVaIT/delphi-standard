@@ -1,17 +1,17 @@
 inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancariasEdit
-  Caption = 'Cuentas Bancarias para este Rol'
-  ClientHeight = 298
+  Caption = 'Cuentas bancarias para este rol'
+  ClientHeight = 222
   ClientWidth = 552
   ExplicitWidth = 558
-  ExplicitHeight = 326
+  ExplicitHeight = 251
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 552
-    Height = 257
+    Height = 181
     ExplicitWidth = 552
     ExplicitHeight = 257
-    ClientRectBottom = 255
+    ClientRectBottom = 179
     ClientRectRight = 550
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
@@ -47,6 +47,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         Height = 13
         Caption = 'Limite Inferior'
         FocusControl = cxDBCurrencyEdit2
+        Visible = False
       end
       object Label5: TLabel
         Left = 24
@@ -55,6 +56,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         Height = 13
         Caption = 'Limite Superior'
         FocusControl = cxDBCurrencyEdit3
+        Visible = False
       end
       object cxDBCurrencyEdit1: TcxDBCurrencyEdit
         Left = 24
@@ -70,6 +72,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         DataBinding.DataField = 'LimiteInferior'
         DataBinding.DataSource = DataSource
         TabOrder = 1
+        Visible = False
         Width = 121
       end
       object cxDBCurrencyEdit3: TcxDBCurrencyEdit
@@ -78,6 +81,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         DataBinding.DataField = 'LimiteSuperior'
         DataBinding.DataSource = DataSource
         TabOrder = 2
+        Visible = False
         Width = 121
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
@@ -116,7 +120,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
     end
   end
   inherited pmlMain: TPanel
-    Top = 257
+    Top = 181
     Width = 552
     ExplicitTop = 257
     ExplicitWidth = 552

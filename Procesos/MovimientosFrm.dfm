@@ -43,10 +43,6 @@ inherited frmMovimientos: TfrmMovimientos
           DataBinding.FieldName = 'IdMovimiento'
           Visible = False
         end
-        object tvMasterIdInstruccion: TcxGridDBColumn
-          DataBinding.FieldName = 'IdInstruccion'
-          Visible = False
-        end
         object tvMasterIdPersona: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersona'
           Visible = False
@@ -59,10 +55,6 @@ inherited frmMovimientos: TfrmMovimientos
           DataBinding.FieldName = 'Periodo'
           Visible = False
           Width = 300
-        end
-        object tvMasterFecha: TcxGridDBColumn
-          DataBinding.FieldName = 'Fecha'
-          Width = 70
         end
         object tvMasterPersona: TcxGridDBColumn
           DataBinding.FieldName = 'Persona'
@@ -270,7 +262,6 @@ inherited frmMovimientos: TfrmMovimientos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

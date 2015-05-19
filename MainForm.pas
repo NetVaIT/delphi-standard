@@ -107,7 +107,6 @@ type
     actCXCConceptos: TAction;
     dxBarLargeButton27: TdxBarLargeButton;
     actDetMovimientos: TAction;
-    dxBarButton10: TdxBarButton;
     actCuentasContablesNaturaleza: TAction;
     dxBarLargeButton28: TdxBarLargeButton;
     dxBarLargeButton29: TdxBarLargeButton;
@@ -115,6 +114,9 @@ type
     dxBarManagerBar3: TdxBar;
     dxBarLargeButton30: TdxBarLargeButton;
     actIntervaCXP: TAction;
+    dxBarButton10: TdxBarButton;
+    dxBarLargeButton31: TdxBarLargeButton;
+    actCuentasXCobrar: TAction;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
   private
@@ -210,7 +212,6 @@ begin
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);
    33: gModulo := TdmCuentasXPagar.Create(Self);
-   34: gModulo := TdmMovimientosD.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
    51: begin
          gReport := TdmDetalleMovimientosPersona.Create(Self);
@@ -218,6 +219,7 @@ begin
          gReport.Execute;
        end;
    52: gModulo := TdmReporteCrossTab.Create(Self);
+   53: gModulo := TdmMovimientosD.Create(Self);
   end;
   if Assigned(gModulo) then
   begin

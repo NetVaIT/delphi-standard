@@ -104,26 +104,14 @@ inherited frmPuestosEdit: TfrmPuestosEdit
     object tsPerfil: TcxTabSheet
       Caption = 'Perfil del Puesto'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 701
-      ExplicitHeight = 0
     end
     object tsPlazas: TcxTabSheet
       Caption = 'Plazas'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 701
-      ExplicitHeight = 0
     end
     object tsBateriaCapacitacion: TcxTabSheet
       Caption = 'Bateria de Capacitacion'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 701
-      ExplicitHeight = 0
     end
   end
   inherited pmlMain: TPanel
@@ -139,6 +127,9 @@ inherited frmPuestosEdit: TfrmPuestosEdit
       Left = 712
       ExplicitLeft = 712
     end
+  end
+  inherited DataSource: TDataSource
+    Top = 32
   end
   inherited ActionList: TActionList
     Left = 336

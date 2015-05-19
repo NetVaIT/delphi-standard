@@ -1,4 +1,4 @@
-unit MovimientosDetalleFrm;
+unit EsquemaPagosPersonasForm;
 
 interface
 
@@ -30,36 +30,39 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmMovimientosDetalle = class(T_frmGrid)
-    tvMasterIdMovimientoDetalle: TcxGridDBColumn;
-    tvMasterIdMovimiento: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoEstatus: TcxGridDBColumn;
-    tvMasterImporte: TcxGridDBColumn;
-    tvMasterPersonaRelacionada: TcxGridDBColumn;
-    tvMasterTipo: TcxGridDBColumn;
-    tvMasterEstatus: TcxGridDBColumn;
-    tvMasterIdCuentaXPagar: TcxGridDBColumn;
-    tvMasterFecha: TcxGridDBColumn;
-    tvMasterCategoria: TcxGridDBColumn;
+  TfrmEsquemaPagosPersonas = class(T_frmGrid)
+    tvMasterIdEsquemaPagoPersona: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterIdEsquemaPago: TcxGridDBColumn;
+    tvMasterIdCuentaBancaria: TcxGridDBColumn;
+    tvMasterPersona: TcxGridDBColumn;
+    tvMasterCuentaBancaria: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FDataSetCuentasBancarias: TDataSet;
   public
     { Public declarations }
+    property DataSetCuentasBancarias: TDataSet read FDataSetCuentasBancarias write FDataSetCuentasBancarias;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses MovimientosDM, MovimientosDetalleEdit;
+uses EsquemaPagosPersonasDM, EsquemaPagosPersonasEdit;
 
-procedure TfrmMovimientosDetalle.FormCreate(Sender: TObject);
+procedure TfrmEsquemaPagosPersonas.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmMovimientosDetalleEdit.Create(Self);
+  gEditForm:= TfrmEsquemaPagosPersonasEdit.Create(Self);
+end;
+
+procedure TfrmEsquemaPagosPersonas.FormShow(Sender: TObject);
+begin
+  inherited;
+  TfrmEsquemaPagosPersonasEdit(gEditForm).DataSetCuentasBancarias:= DataSetCuentasBancarias;
 end;
 
 end.

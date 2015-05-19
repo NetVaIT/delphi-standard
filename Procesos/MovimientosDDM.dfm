@@ -3,17 +3,17 @@ inherited dmMovimientosD: TdmMovimientosD
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT vMovimientosDetalle.IdMovimientoDetalle, Movimientos.Fech' +
-      'a, vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelac' +
-      'ionada, vMovimientosDetalle.Tipo, '#13#10'vMovimientosDetalle.Categori' +
-      'a, vMovimientosDetalle.Efecto, (vMovimientosDetalle.Importe*Movi' +
-      'mientosTiposCategorias.Signo) AS Importe, vMovimientosDetalle.Es' +
-      'tatus'#13#10'FROM vMovimientosDetalle '#13#10'INNER JOIN Movimientos ON vMov' +
-      'imientosDetalle.IdMovimiento = Movimientos.IdMovimiento'#13#10'INNER J' +
-      'OIN MovimientosTipos ON vMovimientosDetalle.IdMovimientoTipo = M' +
-      'ovimientosTipos.IdMovimientoTipo'#13#10'INNER JOIN MovimientosTiposCat' +
-      'egorias ON MovimientosTipos.IdMovimientoTipoCategoria = Movimien' +
-      'tosTiposCategorias.IdMovimientoTipoCategoria'
+      'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDeta' +
+      'lle.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.Pers' +
+      'onaRelacionada, vMovimientosDetalle.Tipo, '#13#10'vMovimientosDetalle.' +
+      'Categoria, vMovimientosDetalle.Efecto, (vMovimientosDetalle.Impo' +
+      'rte*MovimientosTiposCategorias.Signo) AS Importe, vMovimientosDe' +
+      'talle.Estatus'#13#10'FROM vMovimientosDetalle '#13#10'INNER JOIN Movimientos' +
+      ' ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento'#13 +
+      #10'INNER JOIN MovimientosTipos ON vMovimientosDetalle.IdMovimiento' +
+      'Tipo = MovimientosTipos.IdMovimientoTipo'#13#10'INNER JOIN Movimientos' +
+      'TiposCategorias ON MovimientosTipos.IdMovimientoTipoCategoria = ' +
+      'MovimientosTiposCategorias.IdMovimientoTipoCategoria'
     object adodsMasterIdMovimientoDetalle: TIntegerField
       FieldName = 'IdMovimientoDetalle'
       Visible = False
