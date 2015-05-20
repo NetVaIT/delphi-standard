@@ -165,7 +165,6 @@ inherited frmMovimientosPeriodo: TfrmMovimientosPeriodo
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

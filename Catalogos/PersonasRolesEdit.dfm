@@ -11,7 +11,6 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 719
     Height = 373
-    Properties.ActivePage = tsCuentas
     ExplicitWidth = 719
     ExplicitHeight = 373
     ClientRectBottom = 371
@@ -252,6 +251,10 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       Caption = 'Cuentas Contables'
       ImageIndex = 2
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsEsquemaPago: TcxTabSheet
       Caption = 'Esquema de Pago'

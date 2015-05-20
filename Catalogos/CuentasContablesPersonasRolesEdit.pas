@@ -1,4 +1,4 @@
-unit ProveedoresEdit;
+unit CuentasContablesPersonasRolesEdit;
 
 interface
 
@@ -22,7 +22,7 @@ uses
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
-  TfrmProveedoresEdit = class(T_frmEdit)
+  TfrmCuentasContablesPersonasRolesEdit = class(T_frmEdit)
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -47,6 +47,6 @@ implementation
 
 {$R *.dfm}
 
-uses ProveedoresDM;
+uses CuentasContablesPersonasRolesDM;
 
 end.

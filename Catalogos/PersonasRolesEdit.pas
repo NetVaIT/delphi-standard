@@ -20,7 +20,7 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
-  ClientesDM, ProveedoresDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
+  CuentasContablesPersonasRolesDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
   PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar;
 
 type
@@ -64,8 +64,7 @@ type
   private
     { Private declarations }
     FRol: TPRol;
-    dmClientes: TdmClientes;
-    dmProveedores: TdmProveedores;
+    dmCtasCtablesPersonasRoles: TdmCuentasContablesPersonasRoles;
     dmArchivosGenerarFacturas: TdmArchivosGenerarFacturas;
     dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
     dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos;
@@ -88,8 +87,7 @@ end;
 procedure TfrmPersonaRolesEdit.FormCreate(Sender: TObject);
 begin
   inherited;
-  dmClientes := TdmClientes.Create(nil);
-  dmProveedores := TdmProveedores.Create(nil);
+  dmCtasCtablesPersonasRoles := TdmCuentasContablesPersonasRoles.Create(nil);
   dmArchivosGenerarFacturas := TdmArchivosGenerarFacturas.Create(nil);
   dmPersonasRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
   dmPersonasRolesDocumentos := TdmPersonasRolesDocumentos.Create(nil);
@@ -98,8 +96,7 @@ end;
 procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
 begin
   inherited;
-  FreeAndNil(dmClientes);
-  FreeAndNil(dmProveedores);
+  FreeAndNil(dmCtasCtablesPersonasRoles);
   FreeAndNil(dmArchivosGenerarFacturas);
   FreeAndNil(dmPersonasRolesCuentasBancarias);
   FreeAndNil(dmPersonasRolesDocumentos);
@@ -126,16 +123,16 @@ begin
     3: begin
         tsCuentas.TabVisible          := True;
         tsEsquemaPago.TabVisible      := False;
-        dmClientes.MasterSource       := DataSource;
-        dmClientes.MasterFields       := 'IdPersonaRol';
-        dmClientes.ShowModule(tsCuentas,'');
+        dmCtasCtablesPersonasRoles.MasterSource    := DataSource;
+        dmCtasCtablesPersonasRoles.MasterFields    := 'IdPersonaRol';
+        dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
        end;
     4: begin
         tsCuentas.TabVisible          := True;
         tsEsquemaPago.TabVisible      := False;
-        dmProveedores.MasterSource    := DataSource;
-        dmProveedores.MasterFields    := 'IdPersonaRol';
-        dmProveedores.ShowModule(tsCuentas,'');
+        dmCtasCtablesPersonasRoles.MasterSource    := DataSource;
+        dmCtasCtablesPersonasRoles.MasterFields    := 'IdPersonaRol';
+        dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
         pnlProveedor.Visible          := True;
         tsArchivosFacturar.TabVisible := True;
        end;

@@ -11,15 +11,16 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
   inherited pcMain: TcxPageControl
     Width = 542
     Height = 317
+    Properties.ActivePage = tsExpedienteDigital
     ExplicitWidth = 542
-    ExplicitHeight = 290
+    ExplicitHeight = 317
     ClientRectBottom = 315
     ClientRectRight = 540
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 538
-      ExplicitHeight = 260
+      ExplicitHeight = 287
       object Label2: TLabel
         Left = 24
         Top = 103
@@ -141,13 +142,12 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
     object tsExpedienteDigital: TcxTabSheet
       Caption = 'Expediente Digital'
       ImageIndex = 1
-      ExplicitHeight = 260
     end
   end
   inherited pmlMain: TPanel
     Top = 317
     Width = 542
-    ExplicitTop = 290
+    ExplicitTop = 317
     ExplicitWidth = 542
     inherited btnOk: TButton
       Left = 379
