@@ -11,15 +11,15 @@ inherited frmPersonasContactoEdit: TfrmPersonasContactoEdit
   inherited pcMain: TcxPageControl
     Width = 506
     Height = 206
-    ExplicitWidth = 421
-    ExplicitHeight = 160
+    ExplicitWidth = 506
+    ExplicitHeight = 206
     ClientRectBottom = 204
     ClientRectRight = 504
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 417
-      ExplicitHeight = 130
+      ExplicitWidth = 502
+      ExplicitHeight = 176
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -49,18 +49,24 @@ inherited frmPersonasContactoEdit: TfrmPersonasContactoEdit
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilios'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 417
       ExplicitHeight = 130
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefonos'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 417
       ExplicitHeight = 130
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correos'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 417
       ExplicitHeight = 130
     end
@@ -68,15 +74,15 @@ inherited frmPersonasContactoEdit: TfrmPersonasContactoEdit
   inherited pmlMain: TPanel
     Top = 206
     Width = 506
-    ExplicitTop = 160
-    ExplicitWidth = 421
+    ExplicitTop = 206
+    ExplicitWidth = 506
     inherited btnOk: TButton
       Left = 343
-      ExplicitLeft = 258
+      ExplicitLeft = 343
     end
     inherited btnCancel: TButton
       Left = 424
-      ExplicitLeft = 339
+      ExplicitLeft = 424
     end
   end
   inherited DataSource: TDataSource

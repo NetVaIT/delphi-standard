@@ -92,7 +92,7 @@ procedure TdmPersona.AsignarConsulta;
 var
   ConsultaP, ConsultaPR : String;
 begin
-  ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' +  #10#13 +
+  ConsultaP := 'SELECT DISTINCT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' +  #10#13 +
                'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' +  #10#13 +
                'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' +  #10#13 +
                'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' +  #10#13 +

@@ -1,4 +1,4 @@
-inherited frmProveedoresEdit: TfrmProveedoresEdit
+inherited frmCuentasContablesPersonasRolesEdit: TfrmCuentasContablesPersonasRolesEdit
   Caption = 'Proveedor'
   ClientHeight = 382
   ClientWidth = 636
@@ -9,13 +9,15 @@ inherited frmProveedoresEdit: TfrmProveedoresEdit
   inherited pcMain: TcxPageControl
     Width = 636
     Height = 341
+    ExplicitWidth = 636
+    ExplicitHeight = 341
     ClientRectBottom = 339
     ClientRectRight = 634
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 1
-      ExplicitTop = 30
+      ExplicitLeft = 2
+      ExplicitTop = 28
       ExplicitWidth = 632
-      ExplicitHeight = 463
+      ExplicitHeight = 311
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -133,11 +135,15 @@ inherited frmProveedoresEdit: TfrmProveedoresEdit
   inherited pmlMain: TPanel
     Top = 341
     Width = 636
+    ExplicitTop = 341
+    ExplicitWidth = 636
     inherited btnOk: TButton
       Left = 473
+      ExplicitLeft = 473
     end
     inherited btnCancel: TButton
       Left = 554
+      ExplicitLeft = 554
     end
   end
   inherited cxImageList: TcxImageList

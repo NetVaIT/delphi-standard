@@ -1,4 +1,5 @@
-inherited dmProveedores: TdmProveedores
+inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 

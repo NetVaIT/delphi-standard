@@ -29,10 +29,12 @@ inherited frmPersonas: TfrmPersonas
   inherited pnlMaster: TPanel
     Width = 645
     Height = 36
+    ExplicitWidth = 645
     ExplicitHeight = 36
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 36
+      ExplicitWidth = 645
       ExplicitHeight = 36
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPersona: TcxGridDBColumn
@@ -129,12 +131,14 @@ inherited frmPersonas: TfrmPersonas
     Top = 351
     Width = 645
     ExplicitTop = 351
+    ExplicitWidth = 645
   end
   inherited pnlDetail2: TPanel
     Top = 304
     Width = 645
     Height = 44
     ExplicitTop = 304
+    ExplicitWidth = 645
     ExplicitHeight = 44
   end
   inherited pnlDetail1: TPanel
@@ -142,6 +146,7 @@ inherited frmPersonas: TfrmPersonas
     Width = 645
     Height = 231
     ExplicitTop = 70
+    ExplicitWidth = 645
     ExplicitHeight = 231
   end
   inherited pnlClose: TPanel
@@ -149,9 +154,6 @@ inherited frmPersonas: TfrmPersonas
     Width = 645
     ExplicitTop = 392
     ExplicitWidth = 645
-    inherited btnClose: TButton
-      ExplicitLeft = 566
-    end
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -168,6 +170,7 @@ inherited frmPersonas: TfrmPersonas
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

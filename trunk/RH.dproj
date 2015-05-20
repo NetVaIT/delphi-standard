@@ -517,25 +517,15 @@
         <DCCReference Include="Catalogos\UsuariosXCuentaBancariaEdit.pas">
             <Form>frmUsuariosXCuentaBancariaEdit</Form>
         </DCCReference>
-        <DCCReference Include="Catalogos\ClientesDM.pas">
-            <Form>dmClientes</Form>
+        <DCCReference Include="Catalogos\CuentasContablesPersonasRolesDM.pas">
+            <Form>dmCuentasContablesPersonasRoles</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Catalogos\ClientesEdit.pas">
-            <Form>frmClientesEdit</Form>
+        <DCCReference Include="Catalogos\CuentasContablesPersonasRolesEdit.pas">
+            <Form>frmCuentasContablesPersonasRolesEdit</Form>
         </DCCReference>
-        <DCCReference Include="Catalogos\ClientesForm.pas">
-            <Form>frmClientes</Form>
-        </DCCReference>
-        <DCCReference Include="Catalogos\ProveedoresDM.pas">
-            <Form>dmProveedores</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\ProveedoresEdit.pas">
-            <Form>frmProveedoresEdit</Form>
-        </DCCReference>
-        <DCCReference Include="Catalogos\ProveedoresForm.pas">
-            <Form>frmProveedores</Form>
+        <DCCReference Include="Catalogos\CuentasContablesPersonasRolesForm.pas">
+            <Form>frmCuentasContablesPersonasRoles</Form>
         </DCCReference>
         <DCCReference Include="Catalogos\PersonasContactoEdit.pas">
             <Form>frmPersonasContactoEdit</Form>

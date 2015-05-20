@@ -80,14 +80,38 @@ procedure TfrmPersonas.FormShow(Sender: TObject);
 begin
   inherited;
   case Rol of
-    rNone: Self.Caption         := 'Personas';
-    rDuenoProceso: Self.Caption := 'Dueños de Proceso';
-    rOutSourcing: Self.Caption  := 'OutSourcing';
-    rCliente: Self.Caption      := 'Clientes';
-    rProveedor: Self.Caption    := 'Proveedores';
-    rEmpleado: Self.Caption     := 'Empleados';
-    rSocio: Self.Caption        := 'Socios';
-    rComisionista:Self.Caption  := 'Comisionistas';
+    rNone: begin
+      Self.Caption := 'Personas';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := true;
+    end;
+    rDuenoProceso: begin
+      Self.Caption := 'Dueños de Proceso';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := false;
+    end;
+    rOutSourcing: begin
+      Self.Caption := 'OutSourcing';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := false;
+    end;
+    rCliente: begin
+      Self.Caption := 'Clientes';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := false;
+    end;
+    rProveedor: begin
+      Self.Caption := 'Proveedores';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := false;
+    end;
+    rEmpleado: begin
+      Self.Caption := 'Empleados';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := true;
+    end;
+    rSocio: begin
+      Self.Caption := 'Socios';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := false;
+    end;
+    rComisionista: begin
+      Self.Caption := 'Comisionistas';
+      tvMaster.Columns[tvMasterTitular.Index].Visible := true;
+    end;
   end;
 end;
 

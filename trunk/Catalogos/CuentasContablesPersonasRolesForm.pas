@@ -1,4 +1,4 @@
-unit ProveedoresForm;
+unit CuentasContablesPersonasRolesForm;
 
 interface
 
@@ -30,7 +30,7 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmProveedores = class(T_frmGrid)
+  TfrmCuentasContablesPersonasRoles = class(T_frmGrid)
     tvMasterIdPersonaRol: TcxGridDBColumn;
     tvMasterIdCuentaContable: TcxGridDBColumn;
     tvMasterIdCuentaContableNCA: TcxGridDBColumn;
@@ -54,12 +54,12 @@ implementation
 
 {$R *.dfm}
 
-uses ProveedoresDM, ProveedoresEdit;
+uses CuentasContablesPersonasRolesDM, CuentasContablesPersonasRolesEdit;
 
-procedure TfrmProveedores.FormCreate(Sender: TObject);
+procedure TfrmCuentasContablesPersonasRoles.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmProveedoresEdit.Create(Self);
+  gEditForm:= TfrmCuentasContablesPersonasRolesEdit.Create(Self);
 end;
 
 end.

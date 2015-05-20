@@ -1,4 +1,4 @@
-unit ProveedoresDM;
+unit CuentasContablesPersonasRolesDM;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   Data.DB, Data.Win.ADODB;
 
 type
-  TdmProveedores = class(T_dmStandar)
+  TdmCuentasContablesPersonasRoles = class(T_dmStandar)
     adodsCuentaContable: TADODataSet;
     adodsMasterIdPersonaRol: TIntegerField;
     adodsMasterIdCuentaContable: TIntegerField;
@@ -35,14 +35,14 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses ProveedoresForm;
+uses CuentasContablesPersonasRolesForm;
 
 {$R *.dfm}
 
-procedure TdmProveedores.DataModuleCreate(Sender: TObject);
+procedure TdmCuentasContablesPersonasRoles.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  gGridForm:= TfrmProveedores.Create(Self);
+  gGridForm:= TfrmCuentasContablesPersonasRoles.Create(Self);
   gGridForm.DataSet:= adodsMaster;
 end;
 
