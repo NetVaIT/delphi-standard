@@ -2,6 +2,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
   ClientHeight = 663
   ClientWidth = 542
+  ExplicitTop = -142
   ExplicitWidth = 548
   ExplicitHeight = 692
   PixelsPerInch = 96
@@ -133,7 +134,8 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'Descuento'
         DataBinding.DataSource = DataSource
         TabOrder = 4
-        Width = 200
+        Visible = False
+        Width = 300
       end
       object cxDBCheckBox2: TcxDBCheckBox
         Left = 24
@@ -142,7 +144,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'ProduceCXC'
         DataBinding.DataSource = DataSource
         TabOrder = 5
-        Width = 200
+        Width = 300
       end
       object cxDBCheckBox3: TcxDBCheckBox
         Left = 24
@@ -151,7 +153,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'ProduceCXP'
         DataBinding.DataSource = DataSource
         TabOrder = 6
-        Width = 200
+        Width = 300
       end
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 24
@@ -169,7 +171,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'AgruparTipo'
         DataBinding.DataSource = DataSource
         TabOrder = 8
-        Width = 121
+        Width = 300
       end
       object DBLookupComboBox2: TDBLookupComboBox
         Left = 24
@@ -187,7 +189,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'AcumularMensualmente'
         DataBinding.DataSource = DataSource
         TabOrder = 10
-        Width = 121
+        Width = 300
       end
       object DBLookupComboBox3: TDBLookupComboBox
         Left = 24
@@ -205,7 +207,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'AplicarISR'
         DataBinding.DataSource = DataSource
         TabOrder = 12
-        Width = 121
+        Width = 300
       end
       object cxDBCheckBox7: TcxDBCheckBox
         Left = 24
@@ -214,7 +216,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataField = 'BaseCalculo'
         DataBinding.DataSource = DataSource
         TabOrder = 13
-        Width = 121
+        Width = 300
       end
       object cxDBTextEdit3: TcxDBTextEdit
         Left = 24

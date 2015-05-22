@@ -192,9 +192,10 @@ begin
   FileName := FileSaveAs1.Dialog.FileName;
   case FileSaveAs1.Dialog.FilterIndex of
     1: ExportGridToExcel(FileName, cxGrid);
-    2: ExportGridToHTML(FileName, cxGrid);
-    3: ExportGridToText(FileName, cxGrid);
-    4: ExportGridToXML(FileName, cxGrid);
+    2: ExportGridToXLSX(FileName, cxGrid);
+    3: ExportGridToHTML(FileName, cxGrid);
+    4: ExportGridToText(FileName, cxGrid);
+    5: ExportGridToXML(FileName, cxGrid);
   end;
   if MessageDlg(strOpenFile, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     ShellExecute(Handle, 'open', PChar(FileName), nil, nil, 0);

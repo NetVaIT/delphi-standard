@@ -84,8 +84,14 @@ end;
 
 procedure TdmInstruccionesPeriodos.SetMovimientos;
 begin
-  adospGenMovimientos.ExecProc;
+  ScreenCursorProc(crSQLWait);
+  try
+    adospGenMovimientos.ExecProc;
+  finally
+    ScreenCursorProc(crDefault);
+  end;
   MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
 end;
 
 end.
+

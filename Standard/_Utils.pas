@@ -238,7 +238,7 @@ procedure ExecuteUntilFinish(ExecuteFile : string);
 var
   SEInfo: TShellExecuteInfo;
   ExitCode: DWORD;
-  ParamString, StartInString: string;
+//  ParamString, StartInString: string;
 begin
 //	ExecuteFile:='c:\Windows\Calc.exe';
   FillChar(SEInfo, SizeOf(SEInfo), 0) ;
