@@ -31,12 +31,10 @@ inherited dmDomicilios: TdmDomicilios
     end
     object adodsMasterNoExterior: TStringField
       FieldName = 'NoExterior'
-      Required = True
       Size = 10
     end
     object adodsMasterNoInterior: TStringField
       FieldName = 'NoInterior'
-      Required = True
       Size = 10
     end
     object adodsMasterColonia: TStringField
@@ -134,12 +132,10 @@ inherited dmDomicilios: TdmDomicilios
     end
     object adodsUpdateNoExterior: TStringField
       FieldName = 'NoExterior'
-      Required = True
       Size = 10
     end
     object adodsUpdateNoInterior: TStringField
       FieldName = 'NoInterior'
-      Required = True
       Size = 10
     end
     object adodsUpdateColonia: TStringField

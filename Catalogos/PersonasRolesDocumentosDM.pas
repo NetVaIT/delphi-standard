@@ -16,9 +16,12 @@ type
     adodsMasterIdDocumento: TIntegerField;
     adodsMasterDocumento: TStringField;
     dsMaster: TDataSource;
-    actExpedienteDigital: TAction;
+    actNuevoDocumento: TAction;
+    actEditaDocumento: TAction;
     procedure DataModuleCreate(Sender: TObject);
-    procedure actExpedienteDigitalExecute(Sender: TObject);
+//    procedure actExpedienteDigitalExecute(Sender: TObject);
+    procedure actNuevoDocumentoExecute(Sender: TObject);
+    procedure actEditaDocumentoExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +38,25 @@ uses PersonasRolesDocumentosForm, DocumentosDM;
 
 { TdmPersonasRolesDocumentos }
 
-procedure TdmPersonasRolesDocumentos.actExpedienteDigitalExecute(Sender: TObject);
+procedure TdmPersonasRolesDocumentos.actEditaDocumentoExecute(Sender: TObject);
+var
+  dmDocumentos : TdmDocumentos;
+  Id : Integer;
+begin
+  inherited;
+  dmDocumentos := TdmDocumentos.Create(nil);
+  dmDocumentos.FileAllowed := faAll;
+  Id := adodsMasterIdDocumento.AsInteger;
+  if Id  <> 0 then
+  begin
+    dmDocumentos.Edit(Id);
+    adodsDocumento.Requery();
+  end;
+  dmDocumentos.Free;
+end;
+
+{procedure TdmPersonasRolesDocumentos.actExpedienteDigitalExecute(
+  Sender: TObject);
 var
   dmDocumentos: TdmDocumentos;
   Id: Integer;
@@ -59,6 +80,25 @@ begin
     end;
   end;
   dmDocumentos.Free;
+end;}
+
+procedure TdmPersonasRolesDocumentos.actNuevoDocumentoExecute(Sender: TObject);
+var
+  dmDocumentos : TdmDocumentos;
+  Id : Integer;
+begin
+  inherited;
+  dmDocumentos := TdmDocumentos.Create(nil);
+  dmDocumentos.FileAllowed := faAll;
+  Id := dmDocumentos.Add;
+  if  Id <> 0 then
+  begin
+    adodsDocumento.Requery();
+    adodsMaster.Insert;
+    adodsMasterIdDocumento.AsInteger := Id;
+    adodsMaster.Post;
+  end;
+  dmDocumentos.Free;
 end;
 
 procedure TdmPersonasRolesDocumentos.DataModuleCreate(Sender: TObject);
@@ -66,7 +106,9 @@ begin
   inherited;
   gGridForm := TfrmPersonasRolesDocumentos.Create(Self);
   gGridForm.DataSet := adodsMaster;
-  TfrmPersonasRolesDocumentos(gGridForm).UpdateFile := actExpedienteDigital;
+//  TfrmPersonasRolesDocumentos(gGridForm).UpdateFile := actExpedienteDigital;
+  TfrmPersonasRolesDocumentos(gGridForm).InsertFile := actNuevoDocumento;
+  TfrmPersonasRolesDocumentos(gGridForm).EditFile := actEditaDocumento;
 end;
 
 end.

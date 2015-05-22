@@ -82,12 +82,10 @@ inherited frmCuentasBancarias: TfrmCuentasBancarias
   end
   inherited pnlDetail3: TPanel
     Width = 856
-    ExplicitTop = 375
     ExplicitWidth = 856
   end
   inherited pnlDetail2: TPanel
     Width = 856
-    ExplicitTop = 331
     ExplicitWidth = 856
   end
   inherited pnlDetail1: TPanel
@@ -101,9 +99,6 @@ inherited frmCuentasBancarias: TfrmCuentasBancarias
   inherited pnlClose: TPanel
     Width = 856
     ExplicitWidth = 856
-    inherited btnClose: TButton
-      ExplicitLeft = 566
-    end
   end
   inherited DataSource: TDataSource
     DataSet = dmCuentasBancarias.adodsMaster
@@ -123,7 +118,7 @@ inherited frmCuentasBancarias: TfrmCuentasBancarias
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

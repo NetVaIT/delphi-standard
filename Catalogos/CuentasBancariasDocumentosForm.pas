@@ -35,19 +35,21 @@ type
     tvMasterIdCuentaBancaria: TcxGridDBColumn;
     tvMasterIdDocumento: TcxGridDBColumn;
     tvMasterDocumento: TcxGridDBColumn;
+    procedure DatasetInsertExecute(Sender: TObject);
+    procedure DatasetEditExecute(Sender: TObject);
+    procedure tvMasterCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
-    FUpdateFile: TBasicAction;
-    FNuevoFile : TBasicAction;
-    FEditaFile : TBasicAction;
-    procedure SetUpdateFile(const Value: TBasicAction);
-    procedure SetNuevoFile(const Value: TBasicAction);
-    procedure SetEditaFile(const Value: TBasicAction);
+    FInsertFile : TBasicAction;
+    FEditFile : TBasicAction;
+    procedure SetInsertFile(const Value: TBasicAction);
+    procedure SetEditFile(const Value: TBasicAction);
   public
     { Public declarations }
-    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
-    property NuevoFile : TBasicAction read FNuevoFile write FNuevoFile;
-    property EditaFile : TBasicAction read FEditaFile write FEditaFile;
+    property InsertFile : TBasicAction read FInsertFile write SetInsertFile;
+    property EditFile : TBasicAction read FEditFile write SetEditFile;
   end;
 
 implementation
@@ -58,24 +60,37 @@ uses CuentasBancariasDocumentosDM;
 
 { TfrmCuentasBancariasDocumentos }
 
-procedure TfrmCuentasBancariasDocumentos.SetEditaFile(
-  const Value: TBasicAction);
+procedure TfrmCuentasBancariasDocumentos.DatasetEditExecute(Sender: TObject);
 begin
-  FEditaFile := Value;
-  Edit1.Action := FEditaFile;
+  EditFile.Execute;
 end;
 
-procedure TfrmCuentasBancariasDocumentos.SetNuevoFile(
-  const Value: TBasicAction);
+procedure TfrmCuentasBancariasDocumentos.DatasetInsertExecute(Sender: TObject);
 begin
-  FNuevoFile := Value;
-  Insert1.Action := FNuevoFile;
+//  DataSource.DataSet.Insert;
+  InsertFile.Execute;
 end;
 
-procedure TfrmCuentasBancariasDocumentos.SetUpdateFile(
+procedure TfrmCuentasBancariasDocumentos.SetEditFile(
   const Value: TBasicAction);
 begin
-  FUpdateFile := Value;
+  FEditFile := Value;
+end;
+
+procedure TfrmCuentasBancariasDocumentos.SetInsertFile(
+  const Value: TBasicAction);
+begin
+  FInsertFile := Value;
+end;
+
+procedure TfrmCuentasBancariasDocumentos.tvMasterCellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  if ReadOnlyGrid then
+    actShow.Execute
+  else
+    EditFile.Execute;
 end;
 
 end.

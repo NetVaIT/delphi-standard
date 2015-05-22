@@ -11,6 +11,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 719
     Height = 373
+    Properties.ActivePage = tsDocumentosFacturar
     ExplicitWidth = 719
     ExplicitHeight = 373
     ClientRectBottom = 371
@@ -265,7 +266,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       ExplicitWidth = 0
       ExplicitHeight = 0
     end
-    object tsArchivosFacturar: TcxTabSheet
+    object tsDocumentosFacturar: TcxTabSheet
       Caption = 'Archivos para Facturar'
       ImageIndex = 1
       TabVisible = False

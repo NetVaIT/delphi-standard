@@ -11,7 +11,6 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
   inherited pcMain: TcxPageControl
     Width = 542
     Height = 317
-    Properties.ActivePage = tsExpedienteDigital
     ExplicitWidth = 542
     ExplicitHeight = 317
     ClientRectBottom = 315

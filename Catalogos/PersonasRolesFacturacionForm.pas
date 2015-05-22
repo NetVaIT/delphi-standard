@@ -1,4 +1,4 @@
-unit CuentasContablesPersonasRolesForm;
+unit PersonasRolesFacturacionForm;
 
 interface
 
@@ -30,37 +30,39 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmCuentasContablesPersonasRoles = class(T_frmGrid)
+  TfrmPersonasRolesFacturacion = class(T_frmGrid)
+    tvMasterIdPersonaRolFacturacion: TcxGridDBColumn;
     tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdCuentaContable: TcxGridDBColumn;
-    tvMasterIdCuentaContableNCA: TcxGridDBColumn;
-    tvMasterIdCuentaContableNCR: TcxGridDBColumn;
-    tvMasterIdCuentaContableAnticipo: TcxGridDBColumn;
-    tvMasterCuentaContable: TcxGridDBColumn;
-    tvMasterCuentaContableNCA: TcxGridDBColumn;
-    tvMasterCuentaContableNCR: TcxGridDBColumn;
-    tvMasterCuentaContableAnticipo: TcxGridDBColumn;
-    tvMasterTotalFacturado: TcxGridDBColumn;
-    tvMasterSaldoPendiente: TcxGridDBColumn;
-    tvMasterCalificacion: TcxGridDBColumn;
-    tvMasterIdCuentaContablePersonaRol: TcxGridDBColumn;
+    tvMasterIdDocumento: TcxGridDBColumn;
+    tvMasterArchivo: TcxGridDBColumn;
+    tvMasterClave: TcxGridDBColumn;
+    tvMasterVencimientoDocumento: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FUpdateFile: TBasicAction;
   public
     { Public declarations }
+    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses CuentasContablesPersonasRolesDM, CuentasContablesPersonasRolesEdit;
+uses PersonasRolesFacturacionDM, PersonasRolesFacturacionEdit;
 
-procedure TfrmCuentasContablesPersonasRoles.FormCreate(Sender: TObject);
+procedure TfrmPersonasRolesFacturacion.FormCreate(Sender: TObject);
 begin
   inherited;
-  gEditForm:= TfrmCuentasContablesPersonasRolesEdit.Create(Self);
+  gEditForm:= TfrmPersonasRolesFacturacionEdit.Create(Self);
+end;
+
+procedure TfrmPersonasRolesFacturacion.FormShow(Sender: TObject);
+begin
+  inherited;
+  TfrmPersonasRolesFacturacionEdit(gEditForm).UpdateFile := FUpdateFile;
 end;
 
 end.

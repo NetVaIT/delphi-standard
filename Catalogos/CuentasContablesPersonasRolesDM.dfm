@@ -3,9 +3,15 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdPersonaRol, IdCuentaContable, IdCuentaContableNCA, IdCu' +
-      'entaContableNCR, IdCuentaContableAnticipo, TotalFacturado, Saldo' +
-      'Pendiente, Calificacion FROM Proveedores'
+      'SELECT IdCuentaContablePersonaRol, IdPersonaRol, IdCuentaContabl' +
+      'e, IdCuentaContableNCA, IdCuentaContableNCR, IdCuentaContableAnt' +
+      'icipo, TotalFacturado, SaldoPendiente, Calificacion FROM Cuentas' +
+      'ContablesPersonasRoles'
+    object adodsMasterIdCuentaContablePersonaRol: TAutoIncField
+      FieldName = 'IdCuentaContablePersonaRol'
+      ReadOnly = True
+      Visible = False
+    end
     object adodsMasterIdPersonaRol: TIntegerField
       FieldName = 'IdPersonaRol'
       Visible = False
@@ -81,6 +87,7 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     end
   end
   object adodsCuentaContable: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'
@@ -89,6 +96,7 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     Top = 48
   end
   object adodsCuentaContableNCA: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'
@@ -97,6 +105,7 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     Top = 112
   end
   object adodsCuentaContableNCR: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'
@@ -105,6 +114,7 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     Top = 176
   end
   object adodsCuentaContableAnticipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'
