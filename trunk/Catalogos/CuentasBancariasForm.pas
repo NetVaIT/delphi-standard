@@ -68,7 +68,7 @@ end;
 procedure TfrmCuentasBancarias.FormShow(Sender: TObject);
 begin
   inherited;
-  TfrmCuentasBancariasEdit(gEditForm).UpdateFile := UpdateFile;
+  TfrmCuentasBancariasEdit(gEditForm).UpdateFile := FUpdateFile;
 end;
 
 end.

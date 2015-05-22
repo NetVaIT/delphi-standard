@@ -42,11 +42,6 @@ inherited dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos
     end
   end
   inherited ActionList: TActionList
-    object actExpedienteDigital: TAction
-      Caption = '...'
-      Hint = 'Asigna archivo'
-      OnExecute = actExpedienteDigitalExecute
-    end
     object actNuevoDocumento: TAction
       Caption = 'actNuevoDocumento'
       OnExecute = actNuevoDocumentoExecute

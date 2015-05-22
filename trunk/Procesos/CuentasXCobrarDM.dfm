@@ -123,4 +123,29 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
       Size = 50
     end
   end
+  object adodsPeriodo: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdPeriodo, Descripcion FROM Periodos'
+    Parameters = <>
+    Left = 184
+    Top = 168
+  end
+  object adocGetPeriodoActual: TADOCommand
+    CommandText = 
+      'DECLARE @IdPeriodo int;'#13#10'SELECT @IdPeriodo = IdPeriodo FROM Peri' +
+      'odos WHERE IdPeriodoEstatus = 1;'#13#10'SET :IdPeriodo  = @IdPeriodo;'#13 +
+      #10
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'IdPeriodo'
+        DataType = ftInteger
+        Direction = pdOutput
+        Size = -1
+        Value = Null
+      end>
+    Left = 48
+    Top = 219
+  end
 end

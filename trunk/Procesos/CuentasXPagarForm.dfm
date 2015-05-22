@@ -4,7 +4,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   ClientHeight = 634
   ClientWidth = 720
   ExplicitWidth = 726
-  ExplicitHeight = 663
+  ExplicitHeight = 658
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -127,7 +127,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   inherited pnlDetail3: TPanel
     Top = 552
     Width = 720
-    ExplicitTop = 424
+    ExplicitTop = 552
     ExplicitWidth = 720
   end
   inherited pnlDetail2: TPanel
@@ -135,8 +135,9 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Width = 720
     Height = 63
     Align = alClient
-    ExplicitTop = 380
+    ExplicitTop = 486
     ExplicitWidth = 720
+    ExplicitHeight = 63
   end
   inherited pnlDetail1: TPanel
     Top = 258
@@ -150,7 +151,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   inherited pnlClose: TPanel
     Top = 593
     Width = 720
-    ExplicitTop = 465
+    ExplicitTop = 593
     ExplicitWidth = 720
     inherited btnClose: TButton
       Left = 635
@@ -221,7 +222,6 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

@@ -8,6 +8,10 @@ inherited frmCuentasContablesPersonasRoles: TfrmCuentasContablesPersonasRoles
   inherited pnlMaster: TPanel
     inherited cxGrid: TcxGrid
       inherited tvMaster: TcxGridDBTableView
+        object tvMasterIdCuentaContablePersonaRol: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaContablePersonaRol'
+          Visible = False
+        end
         object tvMasterIdPersonaRol: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersonaRol'
           Visible = False
@@ -73,7 +77,6 @@ inherited frmCuentasContablesPersonasRoles: TfrmCuentasContablesPersonasRoles
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

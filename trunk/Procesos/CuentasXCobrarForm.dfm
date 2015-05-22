@@ -1,40 +1,40 @@
 inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
   BorderStyle = bsToolWindow
-  Caption = 'Cuentas X Cobrar'
-  ClientHeight = 433
-  ClientWidth = 645
-  ExplicitWidth = 651
-  ExplicitHeight = 457
+  Caption = 'Cuentas por cobrar'
+  ClientHeight = 474
+  ClientWidth = 719
+  ExplicitWidth = 725
+  ExplicitHeight = 498
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
-    Top = 348
-    Width = 645
+    Top = 389
+    Width = 719
     ExplicitTop = 348
     ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
-    Top = 260
-    Width = 645
+    Top = 301
+    Width = 719
     ExplicitTop = 260
     ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
-    Top = 304
-    Width = 645
+    Top = 345
+    Width = 719
     ExplicitTop = 304
     ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
-    Width = 645
-    Height = 229
-    ExplicitWidth = 645
-    ExplicitHeight = 229
+    Width = 719
+    Height = 270
+    ExplicitWidth = 719
+    ExplicitHeight = 270
     inherited cxGrid: TcxGrid
-      Width = 645
-      Height = 229
-      ExplicitWidth = 645
-      ExplicitHeight = 229
+      Width = 719
+      Height = 270
+      ExplicitWidth = 719
+      ExplicitHeight = 270
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdCuentaXCobrar: TcxGridDBColumn
           DataBinding.FieldName = 'IdCuentaXCobrar'
@@ -116,31 +116,31 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
     end
   end
   inherited pnlDetail3: TPanel
-    Top = 351
-    Width = 645
-    ExplicitTop = 351
-    ExplicitWidth = 645
+    Top = 392
+    Width = 719
+    ExplicitTop = 392
+    ExplicitWidth = 719
   end
   inherited pnlDetail2: TPanel
-    Top = 307
-    Width = 645
-    ExplicitTop = 307
-    ExplicitWidth = 645
+    Top = 348
+    Width = 719
+    ExplicitTop = 348
+    ExplicitWidth = 719
   end
   inherited pnlDetail1: TPanel
-    Top = 263
-    Width = 645
-    ExplicitTop = 263
-    ExplicitWidth = 645
+    Top = 304
+    Width = 719
+    ExplicitTop = 304
+    ExplicitWidth = 719
   end
   inherited pnlClose: TPanel
-    Top = 392
-    Width = 645
-    ExplicitTop = 392
-    ExplicitWidth = 645
+    Top = 433
+    Width = 719
+    ExplicitTop = 433
+    ExplicitWidth = 719
     inherited btnClose: TButton
-      Left = 560
-      ExplicitLeft = 560
+      Left = 634
+      ExplicitLeft = 634
     end
   end
   inherited DataSource: TDataSource
@@ -152,6 +152,64 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
       0
       31
       0)
+    inherited dxbFilter: TdxBar
+      ItemLinks = <
+        item
+          UserDefine = [udWidth]
+          UserWidth = 298
+          Visible = True
+          ItemName = 'cxedtPeriodo'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnSearch'
+        end>
+      Visible = True
+    end
+    object dxBarSubItem1: TdxBarSubItem
+      Caption = 'New SubItem'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarLookupCombo1: TdxBarLookupCombo
+      Caption = 'New Item'
+      Category = 0
+      Hint = 'New Item'
+      Visible = ivAlways
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        0400000000008000000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00DDDDDDDDDDDD
+        DDDD000000000000000D0FFFF0FFFFFFFF0D0F77F0F777777F0D0CCCC0CCCCCC
+        CC0D0C77C0C777777C0D0CCCC0CCCCCCCC0D0F77F0F777777F0D0FFFF0FFFFFF
+        FF0D0F77F0F777777F0D0FFFF0FFFFFFFF0D000000000000000D0FFFCCCCFFF0
+        DDDD0F777777FFF0DDDD0FFFCCCCFFF0DDDD000000000000DDDD}
+      RowCount = 7
+    end
+    object dxBarContainerItem1: TdxBarContainerItem
+      Caption = 'New Item'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object cxedtPeriodo: TcxBarEditItem
+      Caption = 'Periodo'
+      Category = 0
+      Hint = 'Periodo'
+      Visible = ivAlways
+      ShowCaption = True
+      Width = 304
+      PropertiesClassName = 'TcxLookupComboBoxProperties'
+      Properties.ClearKey = 16460
+      Properties.KeyFieldNames = 'IdPeriodo'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Descripcion'
+        end>
+      Properties.ListSource = dsPeriodos
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
@@ -161,8 +219,13 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
+  end
+  object dsPeriodos: TDataSource
+    AutoEdit = False
+    DataSet = dmCuentasXCobrar.adodsPeriodo
+    Left = 288
+    Top = 87
   end
 end

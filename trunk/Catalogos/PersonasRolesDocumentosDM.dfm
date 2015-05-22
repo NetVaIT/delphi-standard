@@ -42,10 +42,13 @@ inherited dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos
     end
   end
   inherited ActionList: TActionList
-    object actExpedienteDigital: TAction
-      Caption = '...'
-      Hint = 'Asigna archivo'
-      OnExecute = actExpedienteDigitalExecute
+    object actNuevoDocumento: TAction
+      Caption = 'actNuevoDocumento'
+      OnExecute = actNuevoDocumentoExecute
+    end
+    object actEditaDocumento: TAction
+      Caption = 'actEditaDocumento'
+      OnExecute = actEditaDocumentoExecute
     end
   end
   object adodsDocumento: TADODataSet

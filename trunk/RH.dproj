@@ -566,16 +566,6 @@
         <DCCReference Include="Procesos\InstruccionesPeriodosForm.pas">
             <Form>frmInstruccionesPeriodos</Form>
         </DCCReference>
-        <DCCReference Include="Catalogos\ArchivosGenerarFacturasDM.pas">
-            <Form>dmArchivosGenerarFacturas</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\ArchivosGenerarFacturasEdit.pas">
-            <Form>frmArchivosGenerarFacturasEdit</Form>
-        </DCCReference>
-        <DCCReference Include="Catalogos\ArchivosGenerarFacturasForm.pas">
-            <Form>frmArchivosGenerarFacturas</Form>
-        </DCCReference>
         <DCCReference Include="Catalogos\UbicacionesForm.pas">
             <Form>frmUbicaciones</Form>
         </DCCReference>
@@ -598,9 +588,6 @@
         </DCCReference>
         <DCCReference Include="Catalogos\PersonasRolesCuentasBancariasEdit.pas">
             <Form>frmPersonasRolesCuentasBancariasEdit</Form>
-        </DCCReference>
-        <DCCReference Include="Catalogos\PersonasRolesDocumentosEdit.pas">
-            <Form>frmPersonasRolesDocumentosEdit</Form>
         </DCCReference>
         <DCCReference Include="Catalogos\UsuariosDM.pas">
             <Form>dmUsuarios</Form>
@@ -723,6 +710,34 @@
         </DCCReference>
         <DCCReference Include="Procesos\CuentasXCobrarForm.pas">
             <Form>frmCuentasXCobrarForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\FacturacionDM.pas">
+            <Form>dmFacturacion</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Facturar\VirtualXML.pas"/>
+        <DCCReference Include="Facturar\cfdv32.pas"/>
+        <DCCReference Include="Facturar\DocComprobanteFiscal.pas"/>
+        <DCCReference Include="Facturar\FacturaReglamentacion.pas"/>
+        <DCCReference Include="Facturar\FacturaTipos.pas"/>
+        <DCCReference Include="Facturar\XMLtoPDFDmod.pas">
+            <Form>dmodXMLtoPDF</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonasRolesFacturacionDM.pas">
+            <Form>dmPersonasRolesFacturacion</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonasRolesFacturacionForm.pas">
+            <Form>frmPersonasRolesFacturacion</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonasRolesFacturacionEdit.pas">
+            <Form>frmPersonasRolesFacturacionEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

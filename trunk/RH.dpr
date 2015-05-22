@@ -146,9 +146,6 @@ uses
   InstruccionesTiposDetalleEdit in 'Catalogos\InstruccionesTiposDetalleEdit.pas' {frmInstruccionesTiposDetalleEdit},
   InstruccionesPeriodosDM in 'Procesos\InstruccionesPeriodosDM.pas' {dmInstruccionesPeriodos: TDataModule},
   InstruccionesPeriodosForm in 'Procesos\InstruccionesPeriodosForm.pas' {frmInstruccionesPeriodos},
-  ArchivosGenerarFacturasDM in 'Catalogos\ArchivosGenerarFacturasDM.pas' {dmArchivosGenerarFacturas: TDataModule},
-  ArchivosGenerarFacturasEdit in 'Catalogos\ArchivosGenerarFacturasEdit.pas' {frmArchivosGenerarFacturasEdit},
-  ArchivosGenerarFacturasForm in 'Catalogos\ArchivosGenerarFacturasForm.pas' {frmArchivosGenerarFacturas},
   UbicacionesForm in 'Catalogos\UbicacionesForm.pas' {frmUbicaciones},
   UbicacionesEdit in 'Catalogos\UbicacionesEdit.pas' {frmUbicacionesEdit},
   PersonasRolesDocumentosDM in 'Catalogos\PersonasRolesDocumentosDM.pas' {dmPersonasRolesDocumentos: TDataModule},
@@ -156,7 +153,6 @@ uses
   PersonasRolesCuentasBancariasDM in 'Catalogos\PersonasRolesCuentasBancariasDM.pas' {dmPersonasRolesCuentasBancarias: TDataModule},
   PersonasRolesCuentasBancariasForm in 'Catalogos\PersonasRolesCuentasBancariasForm.pas' {frmPersonasRolesCuentasBancarias},
   PersonasRolesCuentasBancariasEdit in 'Catalogos\PersonasRolesCuentasBancariasEdit.pas' {frmPersonasRolesCuentasBancariasEdit},
-  PersonasRolesDocumentosEdit in 'Catalogos\PersonasRolesDocumentosEdit.pas' {frmPersonasRolesDocumentosEdit},
   UsuariosDM in 'Catalogos\UsuariosDM.pas' {dmUsuarios: TDataModule},
   UsuariosEdit in 'Catalogos\UsuariosEdit.pas' {frmUsuariosEdit},
   UsuariosForm in 'Catalogos\UsuariosForm.pas' {frmUsuarios},
@@ -187,7 +183,17 @@ uses
   EsquemaPagosPersonasForm in 'Catalogos\EsquemaPagosPersonasForm.pas' {frmEsquemaPagosPersonas},
   EsquemaPagosPersonasEdit in 'Catalogos\EsquemaPagosPersonasEdit.pas' {frmEsquemaPagosPersonasEdit},
   CuentasXCobrarDM in 'Procesos\CuentasXCobrarDM.pas' {dmCuentasXCobrar: TDataModule},
-  CuentasXCobrarForm in 'Procesos\CuentasXCobrarForm.pas' {frmCuentasXCobrarForm};
+  CuentasXCobrarForm in 'Procesos\CuentasXCobrarForm.pas' {frmCuentasXCobrarForm},
+  FacturacionDM in 'Procesos\FacturacionDM.pas' {dmFacturacion: TDataModule},
+  VirtualXML in 'Facturar\VirtualXML.pas',
+  cfdv32 in 'Facturar\cfdv32.pas',
+  DocComprobanteFiscal in 'Facturar\DocComprobanteFiscal.pas',
+  FacturaReglamentacion in 'Facturar\FacturaReglamentacion.pas',
+  FacturaTipos in 'Facturar\FacturaTipos.pas',
+  XMLtoPDFDmod in 'Facturar\XMLtoPDFDmod.pas' {dmodXMLtoPDF: TDataModule},
+  PersonasRolesFacturacionDM in 'Catalogos\PersonasRolesFacturacionDM.pas' {dmPersonasRolesFacturacion: TDataModule},
+  PersonasRolesFacturacionForm in 'Catalogos\PersonasRolesFacturacionForm.pas' {frmPersonasRolesFacturacion},
+  PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit};
 
 {$R *.res}
 

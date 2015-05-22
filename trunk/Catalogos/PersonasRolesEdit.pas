@@ -20,7 +20,7 @@ uses
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
-  CuentasContablesPersonasRolesDM, cxCheckBox, cxDBEdit, ArchivosGenerarFacturasDM,
+  CuentasContablesPersonasRolesDM, cxCheckBox, cxDBEdit, PersonasRolesFacturacionDM,
   PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar;
 
 type
@@ -28,7 +28,7 @@ type
     tsKardex: TcxTabSheet;
     tsCuentas: TcxTabSheet;
     tsEsquemaPago: TcxTabSheet;
-    tsArchivosFacturar: TcxTabSheet;
+    tsDocumentosFacturar: TcxTabSheet;
     pnlRol: TPanel;
     pnlProveedor: TPanel;
     pnlEmpleado: TPanel;
@@ -65,7 +65,7 @@ type
     { Private declarations }
     FRol: TPRol;
     dmCtasCtablesPersonasRoles: TdmCuentasContablesPersonasRoles;
-    dmArchivosGenerarFacturas: TdmArchivosGenerarFacturas;
+    dmPersonasRolesFacturacion: TdmPersonasRolesFacturacion;
     dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
     dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos;
     procedure SetRol(const Value: TPRol);
@@ -88,7 +88,7 @@ procedure TfrmPersonaRolesEdit.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCtasCtablesPersonasRoles := TdmCuentasContablesPersonasRoles.Create(nil);
-  dmArchivosGenerarFacturas := TdmArchivosGenerarFacturas.Create(nil);
+  dmPersonasRolesFacturacion := TdmPersonasRolesFacturacion.Create(nil);
   dmPersonasRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
   dmPersonasRolesDocumentos := TdmPersonasRolesDocumentos.Create(nil);
 end;
@@ -97,7 +97,7 @@ procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
 begin
   inherited;
   FreeAndNil(dmCtasCtablesPersonasRoles);
-  FreeAndNil(dmArchivosGenerarFacturas);
+  FreeAndNil(dmPersonasRolesFacturacion);
   FreeAndNil(dmPersonasRolesCuentasBancarias);
   FreeAndNil(dmPersonasRolesDocumentos);
 end;
@@ -109,7 +109,7 @@ begin
     cxDBLookupComboBox1.EditValue := Rol;
     pnlProveedor.Visible := False;
     pnlOutsourcing.Visible := False;
-    tsArchivosFacturar.TabVisible := False;
+    tsDocumentosFacturar.TabVisible := False;
     pnlEmpleado.Visible := False;
   case DataSource.DataSet.FieldByName('IdRol').AsInteger of
     1: begin
@@ -134,7 +134,7 @@ begin
         dmCtasCtablesPersonasRoles.MasterFields    := 'IdPersonaRol';
         dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
         pnlProveedor.Visible          := True;
-        tsArchivosFacturar.TabVisible := True;
+        tsDocumentosFacturar.TabVisible := True;
        end;
     5: begin
         pnlEmpleado.Visible           := True;
@@ -167,11 +167,11 @@ begin
   dmPersonasRolesDocumentos.ShowModule(tsExpedienteDigital,'');
   tsCuentasBancarias.TabVisible := True;
   tsExpedienteDigital.TabVisible := True;
-  if tsArchivosFacturar.TabVisible = True then
+  if tsDocumentosFacturar.TabVisible = True then
   begin
-    dmArchivosGenerarFacturas.MasterSource := DataSource;
-    dmArchivosGenerarFacturas.MasterFields := 'IdPersonaRol';
-    dmArchivosGenerarFacturas.ShowModule(tsArchivosFacturar,'');
+    dmPersonasRolesFacturacion.MasterSource := DataSource;
+    dmPersonasRolesFacturacion.MasterFields := 'IdPersonaRol';
+    dmPersonasRolesFacturacion.ShowModule(tsDocumentosFacturar,'');
   end;
 end;
 

@@ -24,6 +24,7 @@ type
     adodsMasterCuentaContableNCA: TStringField;
     adodsMasterCuentaContableNCR: TStringField;
     adodsMasterCuentaContableAnticipo: TStringField;
+    adodsMasterIdCuentaContablePersonaRol: TAutoIncField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

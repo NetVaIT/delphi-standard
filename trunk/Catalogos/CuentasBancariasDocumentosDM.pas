@@ -16,10 +16,8 @@ type
     adodsDocumentoTipo: TADODataSet;
     adodsDocumentoClase: TADODataSet;
     adodsMasterDocumento: TStringField;
-    actExpedienteDigital: TAction;
     actNuevoDocumento: TAction;
     actEditaDocumento: TAction;
-    procedure actExpedienteDigitalExecute(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
     procedure actNuevoDocumentoExecute(Sender: TObject);
     procedure actEditaDocumentoExecute(Sender: TObject);
@@ -55,8 +53,7 @@ begin
   dmDocumentos.Free;
 end;
 
-procedure TdmCuentasBancariasDocumentos.actExpedienteDigitalExecute(
-  Sender: TObject);
+procedure TdmCuentasBancariasDocumentos.actNuevoDocumentoExecute(Sender: TObject);
 var
   dmDocumentos : TdmDocumentos;
   Id : Integer;
@@ -64,42 +61,13 @@ begin
   inherited;
   dmDocumentos := TdmDocumentos.Create(nil);
   dmDocumentos.FileAllowed := faAll;
-  Id := adodsMasterIdDocumento.AsInteger;
-  if Id  <> 0 then
+  Id := dmDocumentos.Add;
+  if  Id <> 0 then
   begin
-    dmDocumentos.Edit(Id);
     adodsDocumento.Requery();
-  end
-  else
-  begin
-    Id:= dmDocumentos.Add;
-    if  Id <> 0 then
-    begin
-      adodsDocumento.Requery();
-      adodsMasterIdDocumento.AsInteger := Id;
-    end;
-  end;
-  dmDocumentos.Free;
-end;
-
-procedure TdmCuentasBancariasDocumentos.actNuevoDocumentoExecute(
-  Sender: TObject);
-var
-  dmDocumentos: TdmDocumentos;
-  Id: Integer;
-begin
-  inherited;
-  dmDocumentos := TdmDocumentos.Create(nil);
-  dmDocumentos.FileAllowed := faAll;
-  Id := adodsMasterIdDocumento.AsInteger;
-  if Id = 0 then
-  begin
-    Id := dmDocumentos.Add;
-    if  Id <> 0 then
-    begin
-      adodsDocumento.Requery();
-      adodsMasterIdDocumento.AsInteger := Id;
-    end;
+    adodsMaster.Insert;
+    adodsMasterIdDocumento.AsInteger := Id;
+    adodsMaster.Post;
   end;
   dmDocumentos.Free;
 end;
@@ -109,9 +77,8 @@ begin
   inherited;
   gGridForm := TfrmCuentasBancariasDocumentos.Create(Self);
   gGridForm.DataSet := adodsMaster;
-  TfrmCuentasBancariasDocumentos(gGridForm).UpdateFile := actExpedienteDigital;
-  TfrmCuentasBancariasDocumentos(gGridForm).NuevoFile := actNuevoDocumento;
-  TfrmCuentasBancariasDocumentos(gGridForm).EditaFile := actEditaDocumento;
+  TfrmCuentasBancariasDocumentos(gGridForm).InsertFile := actNuevoDocumento;
+  TfrmCuentasBancariasDocumentos(gGridForm).EditFile := actEditaDocumento;
 end;
 
 end.
