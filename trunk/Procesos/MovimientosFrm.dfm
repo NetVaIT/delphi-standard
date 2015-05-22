@@ -4,7 +4,6 @@ inherited frmMovimientos: TfrmMovimientos
   ClientHeight = 428
   ClientWidth = 1085
   ExplicitWidth = 1091
-  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -39,6 +38,7 @@ inherited frmMovimientos: TfrmMovimientos
       ExplicitWidth = 1085
       ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
+        Styles.OnGetContentStyle = tvMasterStylesGetContentStyle
         object tvMasterIdMovimiento: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimiento'
           Visible = False
@@ -126,6 +126,7 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterSaldo: TcxGridDBColumn
           DataBinding.FieldName = 'Saldo'
+          Styles.Content = cxsInactive
           Width = 104
         end
       end
@@ -194,11 +195,19 @@ inherited frmMovimientos: TfrmMovimientos
         end
         item
           Visible = True
-          ItemName = 'dxbtnEliminarCuentasXPagar'
+          ItemName = 'dxbtnEliminarCXP'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnCalcularCXC'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnEliminarCXC'
         end>
     end
     inherited dxbFilter: TdxBar
-      DockedLeft = 384
+      DockedLeft = 430
       ItemLinks = <
         item
           Visible = True
@@ -231,7 +240,7 @@ inherited frmMovimientos: TfrmMovimientos
       Visible = ivAlways
       ImageIndex = 12
     end
-    object dxbtnEliminarCuentasXPagar: TdxBarButton [19]
+    object dxbtnEliminarCXP: TdxBarButton [19]
       Caption = 'Eliminar cuentas por pagar'
       Category = 0
       Hint = 'Eliminar cuentas por pagar del periodo'
@@ -253,6 +262,20 @@ inherited frmMovimientos: TfrmMovimientos
         end>
       Properties.ListSource = dsPeriodos
     end
+    object dxbtnCalcularCXC: TdxBarButton
+      Caption = 'Generar cuentas por cobrar'
+      Category = 0
+      Hint = 'Genera cuentas por cobrar del periodo'
+      Visible = ivAlways
+      ImageIndex = 10
+    end
+    object dxbtnEliminarCXC: TdxBarButton
+      Caption = 'Eliminar cuentas por cobrar'
+      Category = 0
+      Hint = 'Eliminar cuentas por cobrar del periodo'
+      Visible = ivAlways
+      ImageIndex = 12
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
@@ -262,6 +285,7 @@ inherited frmMovimientos: TfrmMovimientos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

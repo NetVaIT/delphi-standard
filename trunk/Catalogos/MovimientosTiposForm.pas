@@ -40,7 +40,6 @@ type
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterMovimientoTipoCategoria: TcxGridDBColumn;
     tvMasterMovimientoTipoEfecto: TcxGridDBColumn;
-    tvMasterDescuento: TcxGridDBColumn;
     tvMasterProduceCXC: TcxGridDBColumn;
     tvMasterProduceCXP: TcxGridDBColumn;
     tvMasterIdVariable: TcxGridDBColumn;

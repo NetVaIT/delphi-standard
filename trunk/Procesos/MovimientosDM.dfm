@@ -159,23 +159,35 @@ inherited dmMovimientos: TdmMovimientos
       ImageIndex = 10
       OnExecute = actCalcularmovimientosExecute
     end
-    object actCalcularCXP: TAction
-      Caption = 'Generar cuentas por pagar'
-      Hint = 'Genera cuentas por pagar del periodo'
-      ImageIndex = 10
-      OnExecute = actCalcularCXPExecute
-    end
     object actEliminarMovimientos: TAction
       Caption = 'Eliminar movimientos'
       Hint = 'Elimina movimientos del periodo actual'
       ImageIndex = 12
       OnExecute = actEliminarMovimientosExecute
     end
-    object actEliminarCuentasXPagar: TAction
+    object actCalcularCXP: TAction
+      Caption = 'Generar cuentas por pagar'
+      Hint = 'Genera cuentas por pagar del periodo'
+      ImageIndex = 10
+      OnExecute = actCalcularCXPExecute
+    end
+    object actEliminarCXP: TAction
       Caption = 'Eliminar cuentas por pagar'
       Hint = 'Eliminar cuentas por pagar del periodo'
       ImageIndex = 12
-      OnExecute = actEliminarCuentasXPagarExecute
+      OnExecute = actEliminarCXPExecute
+    end
+    object actCalcularCXC: TAction
+      Caption = 'Generar cuentas por cobrar'
+      Hint = 'Genera cuentas por cobrar del periodo'
+      ImageIndex = 10
+      OnExecute = actCalcularCXCExecute
+    end
+    object actEliminarCXC: TAction
+      Caption = 'Eliminar cuentas por cobrar'
+      Hint = 'Eliminar cuentas por cobrar del periodo'
+      ImageIndex = 12
+      OnExecute = actEliminarCXCExecute
     end
   end
   object adodsPersona: TADODataSet
@@ -463,5 +475,54 @@ inherited dmMovimientos: TdmMovimientos
       end>
     Left = 56
     Top = 272
+  end
+  object adospCuentasXCobrar: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_GenCuentasXCobrar;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdUsuarioRegistro'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 336
+    Top = 448
+  end
+  object adopDelCuentasXCobrar: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_DelCuentasXCobrar;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 336
+    Top = 504
   end
 end

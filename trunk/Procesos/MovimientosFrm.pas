@@ -54,31 +54,42 @@ type
     tvMasterCosto: TcxGridDBColumn;
     tvMasterCarga: TcxGridDBColumn;
     dxbtnEliminarMovimientos: TdxBarButton;
-    dxbtnEliminarCuentasXPagar: TdxBarButton;
+    dxbtnEliminarCXP: TdxBarButton;
     tvMasterEgresos: TcxGridDBColumn;
     tvMasterSaldoAnterior: TcxGridDBColumn;
     tvMasterSaldoPeriodo: TcxGridDBColumn;
     tvMasterSaldo: TcxGridDBColumn;
+    dxbtnCalcularCXC: TdxBarButton;
+    dxbtnEliminarCXC: TdxBarButton;
+    procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
+      ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
+      var AStyle: TcxStyle);
   private
+    { Private declarations }
     FCalcularCXP: TBasicAction;
     FDataSetPeriodo: TDataSet;
     FCalcularMovimientos: TBasicAction;
-    FEliminarCuentasXPagar: TBasicAction;
     FEliminarMovimientos: TBasicAction;
+    FEliminarCXC: TBasicAction;
+    FCalcularCXC: TBasicAction;
+    FEliminarCXP: TBasicAction;
     procedure SetCalcularCXP(const Value: TBasicAction);
     function GetIdPeriodo: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
     procedure SetIdPeriodo(const Value: Integer);
     procedure SetCalcularMovimientos(const Value: TBasicAction);
-    procedure SetEliminarCuentasXPagar(const Value: TBasicAction);
     procedure SetEliminarMovimientos(const Value: TBasicAction);
-    { Private declarations }
+    procedure SetCalcularCXC(const Value: TBasicAction);
+    procedure SetEliminarCXC(const Value: TBasicAction);
+    procedure SetEliminarCXP(const Value: TBasicAction);
   public
     { Public declarations }
     property CalcularMovimientos: TBasicAction read FCalcularMovimientos write SetCalcularMovimientos;
-    property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
     property EliminarMovimientos: TBasicAction read FEliminarMovimientos write SetEliminarMovimientos;
-    property EliminarCuentasXPagar: TBasicAction read FEliminarCuentasXPagar write SetEliminarCuentasXPagar;
+    property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
+    property EliminarCXP: TBasicAction read FEliminarCXP write SetEliminarCXP;
+    property CalcularCXC: TBasicAction read FCalcularCXC write SetCalcularCXC;
+    property EliminarCXC: TBasicAction read FEliminarCXC write SetEliminarCXC;
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
@@ -99,6 +110,12 @@ begin
     Result:= cxedtPeriodo.EditValue;
 end;
 
+procedure TfrmMovimientos.SetCalcularCXC(const Value: TBasicAction);
+begin
+  FCalcularCXC := Value;
+  dxbtnCalcularCXC.Action:= Value;
+end;
+
 procedure TfrmMovimientos.SetCalcularCXP(const Value: TBasicAction);
 begin
   FCalcularCXP := Value;
@@ -117,10 +134,16 @@ begin
   dsPeriodos.DataSet:= Value;
 end;
 
-procedure TfrmMovimientos.SetEliminarCuentasXPagar(const Value: TBasicAction);
+procedure TfrmMovimientos.SetEliminarCXC(const Value: TBasicAction);
 begin
-  FEliminarCuentasXPagar := Value;
-  dxbtnEliminarCuentasXPagar.Action:= Value;
+  FEliminarCXC := Value;
+  dxbtnEliminarCXC.Action:= Value;
+end;
+
+procedure TfrmMovimientos.SetEliminarCXP(const Value: TBasicAction);
+begin
+  FEliminarCXP := Value;
+  dxbtnEliminarCXP.Action:= Value;
 end;
 
 procedure TfrmMovimientos.SetEliminarMovimientos(const Value: TBasicAction);
@@ -132,6 +155,15 @@ end;
 procedure TfrmMovimientos.SetIdPeriodo(const Value: Integer);
 begin
   cxedtPeriodo.EditValue:= Value;
+end;
+
+procedure TfrmMovimientos.tvMasterStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+begin
+  inherited;
+  if ARecord.Values[tvMasterBase.Index] < 0 then
+      AStyle := cxsDelete;
 end;
 
 end.

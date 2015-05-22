@@ -1,14 +1,16 @@
 inherited frmMain: TfrmMain
   Caption = 'frmMain'
   ClientWidth = 1099
+  OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
     Width = 1099
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
+      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
@@ -32,6 +34,7 @@ inherited frmMain: TfrmMain
       Index = 1
     end
     object dxRibbon1Tab3: TdxRibbonTab
+      Active = True
       Caption = 'Procesos'
       Groups = <
         item
@@ -51,20 +54,25 @@ inherited frmMain: TfrmMain
         end>
       Index = 3
     end
-    object dxRibbon1Tab4: TdxRibbonTab
-      Caption = 'Configuraci'#243'n'
-      Groups = <
-        item
-          ToolbarName = 'dxbUsuarios'
-        end>
-      Index = 4
-    end
   end
   inherited dxRibbonBackstageView1: TdxRibbonBackstageView
     inherited dxRibbonBackstageViewTabSheet1: TdxRibbonBackstageViewTabSheet
+      Active = False
+      TabVisible = False
       inherited cxLabel1: TcxLabel
         Style.IsFontAssigned = True
       end
+    end
+    object dxtshConfiguracion: TdxRibbonBackstageViewTabSheet
+      Left = 132
+      Top = 0
+      Active = True
+      Caption = 'Configuraci'#243'n'
+    end
+    object dxtshUsuarios: TdxRibbonBackstageViewTabSheet
+      Left = 132
+      Top = 0
+      Caption = 'Usuario'
     end
   end
   inherited dxRibbonStatusBar1: TdxRibbonStatusBar
@@ -73,6 +81,8 @@ inherited frmMain: TfrmMain
   end
   inherited pnlMain: TPanel
     Width = 1099
+    ExplicitLeft = 536
+    ExplicitTop = 130
     ExplicitWidth = 1099
   end
   inherited dxBarManager: TdxBarManager
@@ -86,6 +96,23 @@ inherited frmMain: TfrmMain
     inherited dxBarManager1Bar1: TdxBar
       FloatClientWidth = 51
       FloatClientHeight = 22
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton30'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton7'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton9'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton10'
+        end>
     end
     inherited dxbArchivo: TdxBar
       DockedDockControl = nil
@@ -280,27 +307,7 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
-    object dxbUsuarios: TdxBar [7]
-      Caption = 'Usuarios'
-      CaptionButtons = <>
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 1133
-      FloatTop = 8
-      FloatClientWidth = 61
-      FloatClientHeight = 54
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton22'
-        end>
-      OneOnRow = True
-      Row = 0
-      UseOwnFont = False
-      Visible = True
-      WholeRow = False
-    end
-    object dxBarManagerBar1: TdxBar [8]
+    object dxBarManagerBar1: TdxBar [7]
       Caption = 'Cuentas Contables'
       CaptionButtons = <>
       DockedLeft = 914
@@ -332,7 +339,7 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
-    object dxBarManagerBar2: TdxBar [9]
+    object dxBarManagerBar2: TdxBar [8]
       Caption = 'Movimientos'
       CaptionButtons = <>
       DockedLeft = 0
@@ -360,7 +367,7 @@ inherited frmMain: TfrmMain
       Visible = True
       WholeRow = False
     end
-    object dxBarManagerBar3: TdxBar [10]
+    object dxBarManagerBar3: TdxBar [9]
       Caption = 'Externo'
       CaptionButtons = <>
       DockedLeft = 346

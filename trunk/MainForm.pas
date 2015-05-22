@@ -22,7 +22,7 @@ uses
   Vcl.ExtCtrls, dxStatusBar, dxRibbonStatusBar, cxLabel, dxGallery,
   dxGalleryControl, dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView,
   cxClasses, dxRibbon, dxScreenTip, _Utils, _StandarDMod, _ReportDMod,
-  RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM;
+  UsuariosDM;
 
 type
   TfrmMain = class(T_frmMainRibbon)
@@ -88,8 +88,6 @@ type
     actInstruccionesTipos: TAction;
     actPeriodos: TAction;
     dxBarLargeButton21: TdxBarLargeButton;
-    dxRibbon1Tab4: TdxRibbonTab;
-    dxbUsuarios: TdxBar;
     dxBarLargeButton22: TdxBarLargeButton;
     actUsuarios: TAction;
     dxBarManagerBar1: TdxBar;
@@ -117,13 +115,19 @@ type
     dxBarButton10: TdxBarButton;
     dxBarLargeButton31: TdxBarLargeButton;
     actCuentasXCobrar: TAction;
+    dxtshConfiguracion: TdxRibbonBackstageViewTabSheet;
+    dxtshUsuarios: TdxRibbonBackstageViewTabSheet;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   protected
     gModulo: T_dmStandar;
     gReport: T_dmReport;
+    dmUsuarios: TdmUsuarios;
     procedure CreateModule(pModulo: Integer; pCaption: String); override;
     procedure ConfigControls; override;
     procedure DestroyModule; override;
@@ -141,10 +145,10 @@ implementation
 uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   EsquemaPagosDM, FormulasDM, ReglasNegocioDM, EstablecimientosDM,
   CapacitacionDM, PersonasDM, MovimientosTiposDM, RolesDM, InstruccionesDM,
-  IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM, UsuariosDM,
+  IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasContablesNaturalezaDM,
-  CuentasXCobrarDM;
+  CuentasXCobrarDM, RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -272,14 +276,34 @@ begin
   actCuentasInternas.Enabled    := Conected;
   actCXCConceptos.Enabled       := Conected;
   actMovimientosPeriodo.Enabled := Conected;
+  actDetMovimientos.Enabled := Conected;
   actDetalleMovimientosPersona.Enabled := Conected;
   actCuentasContablesNaturaleza.Enabled := Conected;
+  actCuentasXPagar.Enabled     := Conected;
   actCuentasXCobrar.Enabled     := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;
 begin
   if Assigned(gModulo) then FreeAndNil(gModulo);
+end;
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dmUsuarios:= TdmUsuarios.Create(nil);
+end;
+
+procedure TfrmMain.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(dmUsuarios);
+end;
+
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+  inherited;
+  dmUsuarios.ShowModule(dxtshUsuarios, '');
 end;
 
 end.

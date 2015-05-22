@@ -49,7 +49,7 @@ type
     adodsMasterCosto: TFMTBCDField;
     adodsMasterCarga: TFMTBCDField;
     actEliminarMovimientos: TAction;
-    actEliminarCuentasXPagar: TAction;
+    actEliminarCXP: TAction;
     adopDelMovimientos: TADOStoredProc;
     adopDelCuentasXPagar: TADOStoredProc;
     adopUptMovimientosTotales: TADOStoredProc;
@@ -59,13 +59,19 @@ type
     adodsMasterSaldo: TFMTBCDField;
     adodsMovimientosDetFecha: TDateTimeField;
     adodsMovimientosDetCategoria: TStringField;
+    actCalcularCXC: TAction;
+    actEliminarCXC: TAction;
+    adospCuentasXCobrar: TADOStoredProc;
+    adopDelCuentasXCobrar: TADOStoredProc;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
     procedure actCalcularCXPExecute(Sender: TObject);
-    procedure actEliminarCuentasXPagarExecute(Sender: TObject);
+    procedure actEliminarCXPExecute(Sender: TObject);
     procedure actEliminarMovimientosExecute(Sender: TObject);
     procedure adodsMovimientosDetAfterPost(DataSet: TDataSet);
+    procedure actCalcularCXCExecute(Sender: TObject);
+    procedure actEliminarCXCExecute(Sender: TObject);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
@@ -87,6 +93,23 @@ uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod;
 
 {$R *.dfm}
 
+procedure TdmMovimientos.actCalcularCXCExecute(Sender: TObject);
+begin
+  inherited;
+  if IdPeriodoActual <> 0 then
+  begin
+    ScreenCursorProc(crSQLWait);
+    try
+      adospCuentasXCobrar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+      adospCuentasXCobrar.Parameters.ParamByName('@IdUsuarioRegistro').Value:= _dmConection.IdUsuario;
+      adospCuentasXCobrar.ExecProc;
+    finally
+      ScreenCursorProc(crDefault);
+    end;
+    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+  end;
+end;
+
 procedure TdmMovimientos.actCalcularCXPExecute(Sender: TObject);
 begin
   inherited;
@@ -99,13 +122,34 @@ begin
   SetMovimientosCalculados;
 end;
 
-procedure TdmMovimientos.actEliminarCuentasXPagarExecute(Sender: TObject);
+procedure TdmMovimientos.actEliminarCXCExecute(Sender: TObject);
 begin
   inherited;
   if IdPeriodoActual <> 0 then
   begin
-    adopDelCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-    adopDelCuentasXPagar.ExecProc;
+    ScreenCursorProc(crSQLWait);
+    try
+      adopDelCuentasXCobrar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+      adopDelCuentasXCobrar.ExecProc;
+    finally
+      ScreenCursorProc(crDefault);
+    end;
+    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+  end;
+end;
+
+procedure TdmMovimientos.actEliminarCXPExecute(Sender: TObject);
+begin
+  inherited;
+  if IdPeriodoActual <> 0 then
+  begin
+    ScreenCursorProc(crSQLWait);
+    try
+      adopDelCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+      adopDelCuentasXPagar.ExecProc;
+    finally
+      ScreenCursorProc(crDefault);
+    end;
     MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
   end;
 end;
@@ -115,8 +159,13 @@ begin
   inherited;
   if IdPeriodoActual <> 0 then
   begin
-    adopDelMovimientos.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-    adopDelMovimientos.ExecProc;
+    ScreenCursorProc(crSQLWait);
+    try
+      adopDelMovimientos.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+      adopDelMovimientos.ExecProc;
+    finally
+      ScreenCursorProc(crDefault);
+    end;
     MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
   end;
 end;
@@ -149,9 +198,11 @@ begin
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
   TfrmMovimientos(gGridForm).CalcularMovimientos:= actCalcularmovimientos;
-  TfrmMovimientos(gGridForm).CalcularCXP:= actCalcularCXP;
   TfrmMovimientos(gGridForm).EliminarMovimientos:= actEliminarMovimientos;
-  TfrmMovimientos(gGridForm).EliminarCuentasXPagar:= actEliminarCuentasXPagar;
+  TfrmMovimientos(gGridForm).CalcularCXP:= actCalcularCXP;
+  TfrmMovimientos(gGridForm).EliminarCXP:= actEliminarCXP;
+  TfrmMovimientos(gGridForm).CalcularCXC:= actCalcularCXC;
+  TfrmMovimientos(gGridForm).EliminarCXC:= actEliminarCXC;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
 //  gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;
@@ -178,8 +229,13 @@ begin
   Result:= False;
   if IdPeriodoActual <> 0 then
   begin
-    adospMovimientosCalculados.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-    adospMovimientosCalculados.ExecProc;
+    ScreenCursorProc(crSQLWait);
+    try
+      adospMovimientosCalculados.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+      adospMovimientosCalculados.ExecProc;
+    finally
+      ScreenCursorProc(crDefault);
+    end;
     MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
     Result:= True;
   end;
@@ -190,9 +246,14 @@ begin
   Result:= False;
   if IdPeriodoActual <> 0 then
   begin
-    adospCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-    adospCuentasXPagar.Parameters.ParamByName('@IdUsuarioRegistro').Value:= _dmConection.IdUsuario;
-    adospCuentasXPagar.ExecProc;
+    ScreenCursorProc(crSQLWait);
+    try
+      adospCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+      adospCuentasXPagar.Parameters.ParamByName('@IdUsuarioRegistro').Value:= _dmConection.IdUsuario;
+      adospCuentasXPagar.ExecProc;
+    finally
+      ScreenCursorProc(crDefault);
+    end;
     MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
     Result:= True;
   end;
