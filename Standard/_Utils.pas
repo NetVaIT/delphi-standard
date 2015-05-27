@@ -73,6 +73,8 @@ procedure VersionInformation(pApplicationName: String; ListInfo: TStringList);
 procedure RefreshADODS(pADODataSet: TCustomADODataSet; ID: TField);
 procedure ShowProgress(pPosition, pTotal: Double); overload;
 procedure ShowProgress(pPosition, pTotal: Double; pText: string); overload;
+function GetFileSize(FileName: TFileName): Integer;
+function GetTotalRecords(FileName: TFileName; RecorSize: Double): Integer;
 procedure ExecuteUntilFinish(ExecuteFile : string);
 function EjecutarYEsperar( sPrograma: String; Visibilidad: Integer ): Integer;
 
@@ -229,6 +231,32 @@ begin
     _frmProgress.Close;
     Raise;
   end;
+end;
+
+function GetFileSize(FileName: TFileName): Integer;
+var
+   f: file of Byte;
+begin
+  Result:= -1;
+  if FileExists(FileName) then
+  begin
+    AssignFile(f, FileName);
+    Reset(f);
+    try
+      Result := FileSize(f);
+    finally
+      CloseFile(f);
+    end;
+  end;
+end;
+
+function GetTotalRecords(FileName: TFileName;
+  RecorSize: Double): Integer;
+var
+  FileSize: Integer;
+begin
+  FileSize:= GetFileSize(FileName);
+  Result:= Round(FileSize / RecorSize);
 end;
 
 // Execute the Windows Calculator and pop up
