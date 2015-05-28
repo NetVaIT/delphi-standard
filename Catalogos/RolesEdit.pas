@@ -35,6 +35,8 @@ type
     Label5: TLabel;
     cxDBLabel1: TcxDBLabel;
     btnUpdateFile: TSpeedButton;
+    Label6: TLabel;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
   private
     { Private declarations }
     FUpdateFile: TBasicAction;

@@ -270,10 +270,6 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       Caption = 'Archivos para Facturar'
       ImageIndex = 1
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'

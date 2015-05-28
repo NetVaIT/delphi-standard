@@ -2,38 +2,38 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
   BorderStyle = bsToolWindow
   Caption = 'Cuentas por cobrar'
   ClientHeight = 474
-  ClientWidth = 719
-  ExplicitWidth = 725
+  ClientWidth = 713
+  ExplicitWidth = 719
   ExplicitHeight = 498
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
     Top = 389
-    Width = 719
+    Width = 713
     ExplicitTop = 348
     ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
     Top = 301
-    Width = 719
+    Width = 713
     ExplicitTop = 260
     ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
     Top = 345
-    Width = 719
+    Width = 713
     ExplicitTop = 304
     ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
-    Width = 719
+    Width = 713
     Height = 270
-    ExplicitWidth = 719
+    ExplicitWidth = 713
     ExplicitHeight = 270
     inherited cxGrid: TcxGrid
-      Width = 719
+      Width = 713
       Height = 270
-      ExplicitWidth = 719
+      ExplicitWidth = 713
       ExplicitHeight = 270
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdCuentaXCobrar: TcxGridDBColumn
@@ -117,30 +117,39 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
   end
   inherited pnlDetail3: TPanel
     Top = 392
-    Width = 719
+    Width = 713
     ExplicitTop = 392
-    ExplicitWidth = 719
+    ExplicitWidth = 713
   end
   inherited pnlDetail2: TPanel
     Top = 348
-    Width = 719
+    Width = 713
     ExplicitTop = 348
-    ExplicitWidth = 719
+    ExplicitWidth = 713
   end
   inherited pnlDetail1: TPanel
     Top = 304
-    Width = 719
+    Width = 713
     ExplicitTop = 304
-    ExplicitWidth = 719
+    ExplicitWidth = 713
   end
   inherited pnlClose: TPanel
     Top = 433
-    Width = 719
+    Width = 713
     ExplicitTop = 433
-    ExplicitWidth = 719
+    ExplicitWidth = 713
     inherited btnClose: TButton
-      Left = 634
-      ExplicitLeft = 634
+      Left = 628
+      ExplicitLeft = 628
+    end
+  end
+  inherited ActionList: TActionList
+    object actListaFacturar: TAction
+      Category = 'File'
+      Caption = 'actListaFacturar'
+      Hint = 'Facturar'
+      ImageIndex = 13
+      OnExecute = actListaFacturarExecute
     end
   end
   inherited DataSource: TDataSource
@@ -152,7 +161,23 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
       0
       31
       0)
+    inherited dxbTools: TdxBar
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarButton6'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbPreview'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton8'
+        end>
+    end
     inherited dxbFilter: TdxBar
+      DockedLeft = 315
       ItemLinks = <
         item
           UserDefine = [udWidth]
@@ -210,6 +235,16 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
         end>
       Properties.ListSource = dsPeriodos
     end
+    object dxBarLargeButton1: TdxBarLargeButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+    end
+    object dxBarButton8: TdxBarButton
+      Action = actListaFacturar
+      Category = 0
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
@@ -219,6 +254,7 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

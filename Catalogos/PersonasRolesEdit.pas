@@ -116,45 +116,45 @@ begin
 
        end;
     2: begin
-        pnlProveedor.Visible   := True;
+        pnlProveedor.Visible := True;
         pnlOutsourcing.Visible := True;
-        tsCuentas.TabVisible   := False;
+        tsCuentas.TabVisible := False;
        end;
     3: begin
-        tsCuentas.TabVisible          := True;
-        tsEsquemaPago.TabVisible      := False;
-        dmCtasCtablesPersonasRoles.MasterSource    := DataSource;
-        dmCtasCtablesPersonasRoles.MasterFields    := 'IdPersonaRol';
+        tsCuentas.TabVisible := True;
+        tsEsquemaPago.TabVisible := False;
+        dmCtasCtablesPersonasRoles.MasterSource := DataSource;
+        dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
         dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
        end;
     4: begin
-        tsCuentas.TabVisible          := True;
-        tsEsquemaPago.TabVisible      := False;
-        dmCtasCtablesPersonasRoles.MasterSource    := DataSource;
-        dmCtasCtablesPersonasRoles.MasterFields    := 'IdPersonaRol';
+        tsCuentas.TabVisible := True;
+        tsEsquemaPago.TabVisible := False;
+        dmCtasCtablesPersonasRoles.MasterSource := DataSource;
+        dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
         dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
-        pnlProveedor.Visible          := True;
+        pnlProveedor.Visible := True;
         tsDocumentosFacturar.TabVisible := True;
        end;
     5: begin
-        pnlEmpleado.Visible           := True;
-        tsEsquemaPago.TabVisible      := False; //TMP
-        tsCuentas.TabVisible          := False;
+        pnlEmpleado.Visible := True;
+        tsEsquemaPago.TabVisible := False; //TMP
+        tsCuentas.TabVisible := False;
        end;
     6: begin
-        tsCuentas.TabVisible     := True;
+        tsCuentas.TabVisible := True;
         tsEsquemaPago.TabVisible := False;
        end;
     7: begin
-        tsCuentas.TabVisible     := True;
+        tsCuentas.TabVisible := True;
         tsEsquemaPago.TabVisible := False;
        end;
     8: begin
-        tsCuentas.TabVisible     := True;
+        tsCuentas.TabVisible := True;
         tsEsquemaPago.TabVisible := False;
        end;
     9: begin
-        tsCuentas.TabVisible     := True;
+        tsCuentas.TabVisible := True;
         tsEsquemaPago.TabVisible := False;
        end;
   end;
@@ -167,6 +167,7 @@ begin
   dmPersonasRolesDocumentos.ShowModule(tsExpedienteDigital,'');
   tsCuentasBancarias.TabVisible := True;
   tsExpedienteDigital.TabVisible := True;
+  tsDocumentosFacturar.TabVisible := True;
   if tsDocumentosFacturar.TabVisible = True then
   begin
     dmPersonasRolesFacturacion.MasterSource := DataSource;

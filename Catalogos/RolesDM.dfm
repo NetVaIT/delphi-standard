@@ -3,8 +3,8 @@ inherited dmRoles: TdmRoles
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdRol, IdRolTipo, IdEsquemaPago, Identificador, Descripci' +
-      'on, IdDocumento FROM Roles'
+      'SELECT IdRol, IdRolTipo, IdEsquemaPago, IdRegimenFiscal, Identif' +
+      'icador, Descripcion, IdDocumento FROM Roles'
     object adodsMasterIdRol: TAutoIncField
       FieldName = 'IdRol'
       ReadOnly = True
@@ -19,6 +19,20 @@ inherited dmRoles: TdmRoles
       FieldName = 'IdEsquemaPago'
       Required = True
       Visible = False
+    end
+    object adodsMasterIdRegimenFiscal: TIntegerField
+      FieldName = 'IdRegimenFiscal'
+      Visible = False
+    end
+    object adodsMasterRegimenFiscal: TStringField
+      FieldKind = fkLookup
+      FieldName = 'RegimenFiscal'
+      LookupDataSet = adodsRegimenFiscal
+      LookupKeyFields = 'IdRegimenFiscal'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdRegimenFiscal'
+      Size = 50
+      Lookup = True
     end
     object adodsMasterIdentificador: TStringField
       FieldName = 'Identificador'
@@ -93,11 +107,20 @@ inherited dmRoles: TdmRoles
     Top = 120
   end
   object adodsDocumento: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
     Parameters = <>
     Left = 112
     Top = 176
+  end
+  object adodsRegimenFiscal: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdRegimenFiscal, Descripcion FROM RegimenesFiscales'
+    Parameters = <>
+    Left = 112
+    Top = 232
   end
 end

@@ -21,6 +21,9 @@ type
     adodsMasterDocumento: TStringField;
     actUpdateFile: TAction;
     adodsMasterIdDocumento: TIntegerField;
+    adodsMasterIdRegimenFiscal: TIntegerField;
+    adodsRegimenFiscal: TADODataSet;
+    adodsMasterRegimenFiscal: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actUpdateFileExecute(Sender: TObject);
   private
