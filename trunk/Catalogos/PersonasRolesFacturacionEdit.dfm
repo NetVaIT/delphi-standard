@@ -57,12 +57,16 @@ inherited frmPersonasRolesFacturacionEdit: TfrmPersonasRolesFacturacionEdit
       object cxDBLabel1: TcxDBLabel
         Left = 14
         Top = 30
+        DataBinding.DataField = 'Archivo'
+        DataBinding.DataSource = DataSource
         Height = 45
         Width = 355
       end
       object cxDBDateEdit1: TcxDBDateEdit
         Left = 16
         Top = 135
+        DataBinding.DataField = 'VencimientoDocumento'
+        DataBinding.DataSource = DataSource
         TabOrder = 2
         Width = 145
       end

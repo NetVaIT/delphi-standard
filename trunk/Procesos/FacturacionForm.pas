@@ -1,4 +1,4 @@
-unit CuentasXCobrarForm;
+unit FacturacionForm;
 
 interface
 
@@ -27,16 +27,13 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls, dxBarExtDBItems, cxDBLookupComboBox, cxBarEditItem, FacturacionDM;
+  Vcl.ExtCtrls;
 
 type
-  TfrmCuentasXCobrarForm = class(T_frmGrid)
-    tvMasterIdCuentaXCobrar: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdPeriodo: TcxGridDBColumn;
+  TfrmFacturacion = class(T_frmGrid)
+    dxbbProcesar: TdxBarButton;
     tvMasterIdCuentaXCobrarEstatus: TcxGridDBColumn;
-    tvMasterPersona: TcxGridDBColumn;
-    tvMasterPersonaRelacionada: TcxGridDBColumn;
+    tvMasterEstatus: TcxGridDBColumn;
     tvMasterConceptoGenerico: TcxGridDBColumn;
     tvMasterSumaSubtotal: TcxGridDBColumn;
     tvMasterSumaTotal: TcxGridDBColumn;
@@ -48,63 +45,29 @@ type
     tvMasterTotalIVARetenido: TcxGridDBColumn;
     tvMasterTotalISRRetenido: TcxGridDBColumn;
     tvMasterTotalLocalesRetenido: TcxGridDBColumn;
-    tvMasterSaldoPendiente: TcxGridDBColumn;
-    tvMasterEstatus: TcxGridDBColumn;
-    dxBarSubItem1: TdxBarSubItem;
-    dxBarLookupCombo1: TdxBarLookupCombo;
-    dxBarContainerItem1: TdxBarContainerItem;
-    cxedtPeriodo: TcxBarEditItem;
-    dsPeriodos: TDataSource;
-    dxBarLargeButton1: TdxBarLargeButton;
-    dxBarButton8: TdxBarButton;
-    actListaFacturar: TAction;
-    procedure actListaFacturarExecute(Sender: TObject);
+    tvMasterFacturar: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
   private
-    FDataSetPeriodo: TDataSet;
-    dmFacturacion: TdmFacturacion;
     { Private declarations }
-    function GetIdPeriodo: Integer;
-    procedure SetDataSetPeriodo(const Value: TDataSet);
-    procedure SetIdPeriodo(const Value: Integer);
+    FacturaCta : TBasicAction;
+    procedure SetFacturaCta(const Value: TBasicAction);
   public
     { Public declarations }
-    property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
-    property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
+    property FacturarCtas : TBasicAction read FacturaCta write SetFacturaCta;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses CuentasXCobrarDM;
+uses FacturacionDM;
 
-{ TfrmCuentasXCobrarForm }
+{ TfrmFacturacion }
 
-procedure TfrmCuentasXCobrarForm.actListaFacturarExecute(Sender: TObject);
+procedure TfrmFacturacion.SetFacturaCta(const Value: TBasicAction);
 begin
-  inherited;
-  dmFacturacion := TdmFacturacion.Create(nil);
-  dmFacturacion.actListaFacturar.Execute;
-  FreeAndNil(dmFacturacion);
-end;
-
-function TfrmCuentasXCobrarForm.GetIdPeriodo: Integer;
-begin
-  if VarIsNull(cxedtPeriodo.EditValue) then
-    Result := 0
-  else
-    Result := cxedtPeriodo.EditValue;
-end;
-
-procedure TfrmCuentasXCobrarForm.SetDataSetPeriodo(const Value: TDataSet);
-begin
-  FDataSetPeriodo := Value;
-  dsPeriodos.DataSet := Value;
-end;
-
-procedure TfrmCuentasXCobrarForm.SetIdPeriodo(const Value: Integer);
-begin
-  cxedtPeriodo.EditValue := Value;
+  FacturaCta := Value;
+  dxbbProcesar.Action := Value;
 end;
 
 end.

@@ -28,7 +28,6 @@ type
     ppGroup2: TppGroup;
     ppGroupHeaderBand2: TppGroupHeaderBand;
     ppGroupFooterBand2: TppGroupFooterBand;
-    ppVariable1: TppVariable;
     raCodeModule1: TraCodeModule;
     ppLine1: TppLine;
     ppLabel4: TppLabel;
@@ -44,6 +43,7 @@ type
     ppLabel1: TppLabel;
     ppLabel2: TppLabel;
     ppLabel3: TppLabel;
+    ppDBCalc1: TppDBCalc;
     procedure DataModuleCreate(Sender: TObject);
     procedure ppReportStartPage(Sender: TObject);
   private

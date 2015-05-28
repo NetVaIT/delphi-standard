@@ -40,6 +40,8 @@ type
     tvMasterEsquemaPago: TcxGridDBColumn;
     tvMasterIdDocumento: TcxGridDBColumn;
     tvMasterDocumento: TcxGridDBColumn;
+    tvMasterIdRegimenFiscal: TcxGridDBColumn;
+    tvMasterRegimenFiscal: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);

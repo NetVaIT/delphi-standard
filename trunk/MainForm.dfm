@@ -3,7 +3,7 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -81,8 +81,6 @@ inherited frmMain: TfrmMain
   end
   inherited pnlMain: TPanel
     Width = 1099
-    ExplicitLeft = 536
-    ExplicitTop = 130
     ExplicitWidth = 1099
   end
   inherited dxBarManager: TdxBarManager

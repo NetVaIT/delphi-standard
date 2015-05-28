@@ -129,21 +129,6 @@ inherited frmMovimientosPeriodo: TfrmMovimientosPeriodo
       0
       31
       0)
-    inherited dxbTools: TdxBar
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarButton6'
-        end
-        item
-          Visible = True
-          ItemName = 'dxbbPreview'
-        end
-        item
-          Visible = True
-          ItemName = 'dxbtnReporte'
-        end>
-    end
     object dxbtnReporte: TdxBarButton
       Caption = 'New Button'
       Category = 0
@@ -165,6 +150,7 @@ inherited frmMovimientosPeriodo: TfrmMovimientosPeriodo
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

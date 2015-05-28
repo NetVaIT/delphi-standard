@@ -1,23 +1,23 @@
 inherited frmRolesEdit: TfrmRolesEdit
   Caption = 'Rol'
-  ClientHeight = 313
+  ClientHeight = 371
   ClientWidth = 505
   ExplicitWidth = 511
-  ExplicitHeight = 341
+  ExplicitHeight = 399
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 505
-    Height = 272
+    Height = 330
     ExplicitWidth = 505
     ExplicitHeight = 272
-    ClientRectBottom = 270
+    ClientRectBottom = 328
     ClientRectRight = 503
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
+      ExplicitLeft = -206
+      ExplicitTop = 27
       ExplicitWidth = 501
-      ExplicitHeight = 242
+      ExplicitHeight = 376
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -52,16 +52,23 @@ inherited frmRolesEdit: TfrmRolesEdit
       end
       object Label5: TLabel
         Left = 16
-        Top = 175
+        Top = 223
         Width = 107
         Height = 13
         Caption = 'Contrato - Documento'
       end
       object btnUpdateFile: TSpeedButton
         Left = 464
-        Top = 189
+        Top = 237
         Width = 23
         Height = 22
+      end
+      object Label6: TLabel
+        Left = 16
+        Top = 178
+        Width = 70
+        Height = 13
+        Caption = 'Regimen Fiscal'
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 16
@@ -99,16 +106,25 @@ inherited frmRolesEdit: TfrmRolesEdit
       end
       object cxDBLabel1: TcxDBLabel
         Left = 16
-        Top = 189
+        Top = 237
         DataBinding.DataField = 'Documento'
         DataBinding.DataSource = DataSource
         Height = 41
         Width = 446
       end
+      object cxDBLookupComboBox3: TcxDBLookupComboBox
+        Left = 15
+        Top = 193
+        DataBinding.DataField = 'RegimenFiscal'
+        DataBinding.DataSource = DataSource
+        Properties.ListColumns = <>
+        TabOrder = 5
+        Width = 305
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 272
+    Top = 330
     Width = 505
     ExplicitTop = 272
     ExplicitWidth = 505

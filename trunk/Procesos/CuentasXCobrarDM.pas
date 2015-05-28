@@ -45,7 +45,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses CuentasXCobrarForm;
+uses CuentasXCobrarForm, FacturacionDM;
 
 {$R *.dfm}
 

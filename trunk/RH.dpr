@@ -193,7 +193,9 @@ uses
   XMLtoPDFDmod in 'Facturar\XMLtoPDFDmod.pas' {dmodXMLtoPDF: TDataModule},
   PersonasRolesFacturacionDM in 'Catalogos\PersonasRolesFacturacionDM.pas' {dmPersonasRolesFacturacion: TDataModule},
   PersonasRolesFacturacionForm in 'Catalogos\PersonasRolesFacturacionForm.pas' {frmPersonasRolesFacturacion},
-  PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit};
+  PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit},
+  FacturacionForm in 'Procesos\FacturacionForm.pas' {frmFacturacion},
+  CuentasXPagarPagosBancoDM in 'Procesos\CuentasXPagarPagosBancoDM.pas' {dmCuentasXPagarPagosBancos: TDataModule};
 
 {$R *.res}
 
