@@ -9,7 +9,7 @@ const
   CFDIVersion = '3.2';
   feXML = '.XML';
   fePNG = '.PNG';
-  strDir = 'C:\Temp';
+//  strDir = 'C:\Temp';
   PagoUnaExhibicion = 'Pago en una sola exhibición';
   PagoParcialidades = 'En parcialidades';
   TipoIngreso = 'ingreso';
@@ -37,9 +37,9 @@ type
     NombreArchivo: string;
   end;
 
-  function GenerarCFDI(Documento: TDocumentoComprobanteFiscal; Certificado: TFECertificado;
-  var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean = False): Boolean;
-  function CancelarCFDI(UUID: string; Certificado: TFECertificado;
+  function GenerarCFDI(Documento: TDocumentoComprobanteFiscal; ArchivoXML: TFileName;
+  Certificado: TFECertificado; var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean = False): Boolean;
+  function CancelarCFDI(UUID: string; ArchivoOUT: string; Certificado: TFECertificado;
   var Respuesta: string; Produccion: Boolean = False): Boolean;
 
 var
@@ -244,10 +244,9 @@ begin
   end;
 end;
 
-function GenerarCFDI(Documento: TDocumentoComprobanteFiscal; Certificado: TFECertificado;
-var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean = False): Boolean;
+function GenerarCFDI(Documento: TDocumentoComprobanteFiscal; ArchivoXML: TFileName;
+Certificado: TFECertificado; var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean = False): Boolean;
 var
-  ArchivoXML: TFileName;
   I: Integer;
 begin
   Result:= False;
@@ -323,8 +322,8 @@ begin
     SetImpuestosRetenidos(Documento.ImpuestosRetenidos);
     SetImpuestosTrasladados(Documento.ImpuestosTrasladados);
 
-    // VirtualXML_ProcesaDocumento(hXml, 'aaqm610917qja.cer', 'aaqm610917qja_1011180955s.key', '12345678a', pansichar(NomArchi));
-    ArchivoXML:= strDir + PathDelim + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;
+  // VirtualXML_ProcesaDocumento(hXml, 'aaqm610917qja.cer', 'aaqm610917qja_1011180955s.key', '12345678a', pansichar(NomArchi));
+  // ArchivoXML:= strDir + PathDelim + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;
     VirtualXML_ProcesaDocumento(hXML, PWideChar(Certificado.Ruta), PWideChar(Certificado.LlavePrivada.Ruta), PWideChar(Certificado.LlavePrivada.Clave), PWideChar(ArchivoXML));
   // Ejecutamos la función de firmado y sellado, esta función realiza TODAS las labores de generación del CFDI que son:
   //
@@ -377,7 +376,7 @@ begin
   end;
 end;
 
-function CancelarCFDI(UUID: string; Certificado: TFECertificado;
+function CancelarCFDI(UUID: string; ArchivoOUT: string; Certificado: TFECertificado;
 var Respuesta: string; Produccion: Boolean = False): Boolean;
 var
   hXML: LongInt;
@@ -389,7 +388,6 @@ var
   VirtualXML_SetVirtualPACInfo : procedure( p:LongInt; szUser:PChar; servidor:PChar ); cdecl;
   VirtualXML_CancelaUUID : function( szUser:PChar; szEmisor:PChar; szCert:PChar; szKey:PChar; szPwd:PChar; szUuid:PChar; szOut:PChar ): LongInt; cdecl;
   Valor:integer;
-  ArchivoOUT: string;
 //  F:TextFile;
 
   function CargarLibreria: Boolean;
@@ -409,7 +407,7 @@ var
 begin
   Result:= False;
   if not CargarLibreria then Exit;
-  ArchivoOUT:= strDir + PathDelim + UUID + '.TXT';
+//  ArchivoOUT:= strDir + PathDelim + UUID + '.TXT';
   try
     hXML := VirtualXML_New(PChar(CFDIVersion));
     if Produccion then
