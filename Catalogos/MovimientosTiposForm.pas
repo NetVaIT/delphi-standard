@@ -35,7 +35,6 @@ type
     tvMasterIdMovimientoTipoCategoria: TcxGridDBColumn;
     tvMasterIdMovimientoTipoEfecto: TcxGridDBColumn;
     tvMasterIdMovimientoTipoAcumular: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterMovimientoTipoCategoria: TcxGridDBColumn;
@@ -45,17 +44,22 @@ type
     tvMasterIdVariable: TcxGridDBColumn;
     tvMasterVariable: TcxGridDBColumn;
     tvMasterAgruparTipo: TcxGridDBColumn;
-    tvMasterPerosnaRol: TcxGridDBColumn;
-    tvMasterAcumularMensualmente: TcxGridDBColumn;
     tvMasterMovimientoTipo: TcxGridDBColumn;
-    tvMasterAplicarISR: TcxGridDBColumn;
-    tvMasterBaseCalculo: TcxGridDBColumn;
-    tvMasterPorcentajeCalculo: TcxGridDBColumn;
+    tvMasterIdPersonaRolPagadora1: TcxGridDBColumn;
+    tvMasterIdpersonaRolPagadora2: TcxGridDBColumn;
+    tvMasterPagadora1: TcxGridDBColumn;
+    tvMasterPagadora2: TcxGridDBColumn;
+    tvMasterPorcentajePagadora1: TcxGridDBColumn;
+    tvMasterPorcentajePagadora2: TcxGridDBColumn;
+    tvMasterAplicarISRProvisional: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FDataSetMovimientosTipo: TDataSet;
   public
     { Public declarations }
+    property DataSetMovimientosTipo: TDataSet read FDataSetMovimientosTipo write FDataSetMovimientosTipo;
   end;
 
 implementation
@@ -68,6 +72,12 @@ procedure TfrmMovimientosTipos.FormCreate(Sender: TObject);
 begin
   inherited;
   gEditForm:= TfrmMovimientosTipoEdit.Create(Self);
+end;
+
+procedure TfrmMovimientosTipos.FormShow(Sender: TObject);
+begin
+  inherited;
+  TfrmMovimientosTipoEdit(gEditForm).DataSetMovimientosTipo:= DataSetMovimientosTipo;
 end;
 
 end.

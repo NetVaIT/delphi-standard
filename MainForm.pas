@@ -104,7 +104,7 @@ type
     dxBarLargeButton26: TdxBarLargeButton;
     actCXCConceptos: TAction;
     dxBarLargeButton27: TdxBarLargeButton;
-    actDetMovimientos: TAction;
+    actDispersion: TAction;
     actCuentasContablesNaturaleza: TAction;
     dxBarLargeButton28: TdxBarLargeButton;
     dxBarLargeButton29: TdxBarLargeButton;
@@ -117,6 +117,8 @@ type
     actCuentasXCobrar: TAction;
     dxtshConfiguracion: TdxRibbonBackstageViewTabSheet;
     dxtshUsuarios: TdxRibbonBackstageViewTabSheet;
+    actNomina: TAction;
+    dxBarLargeButton32: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -227,7 +229,16 @@ begin
          gModulo := TdmMovimientosPeriodorpt.Create(Self);
          TdmMovimientosPeriodorpt(gModulo).Execute;
        end;
-   53: gModulo := TdmMovimientosD.Create(Self);
+   53: begin
+         gModulo := TdmMovimientosD.Create(Self);
+         TdmMovimientosD(gModulo).TipoReporte:= trDispercion;
+         TdmMovimientosD(gModulo).actSearch.Execute;
+       end;
+   54: begin
+         gModulo := TdmMovimientosD.Create(Self);
+         TdmMovimientosD(gModulo).TipoReporte:= trNomina;
+         TdmMovimientosD(gModulo).actSearch.Execute;
+       end;
   end;
   if Assigned(gModulo) then
   begin
@@ -276,7 +287,8 @@ begin
   actCuentasInternas.Enabled    := Conected;
   actCXCConceptos.Enabled       := Conected;
   actMovimientosPeriodo.Enabled := Conected;
-  actDetMovimientos.Enabled := Conected;
+  actDispersion.Enabled := Conected;
+  actNomina.Enabled := Conected;
   actDetalleMovimientosPersona.Enabled := Conected;
   actCuentasContablesNaturaleza.Enabled := Conected;
   actCuentasXPagar.Enabled     := Conected;

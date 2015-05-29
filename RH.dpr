@@ -184,7 +184,6 @@ uses
   EsquemaPagosPersonasEdit in 'Catalogos\EsquemaPagosPersonasEdit.pas' {frmEsquemaPagosPersonasEdit},
   CuentasXCobrarDM in 'Procesos\CuentasXCobrarDM.pas' {dmCuentasXCobrar: TDataModule},
   CuentasXCobrarForm in 'Procesos\CuentasXCobrarForm.pas' {frmCuentasXCobrarForm},
-  FacturacionDM in 'Procesos\FacturacionDM.pas' {dmFacturacion: TDataModule},
   VirtualXML in 'Facturar\VirtualXML.pas',
   cfdv32 in 'Facturar\cfdv32.pas',
   DocComprobanteFiscal in 'Facturar\DocComprobanteFiscal.pas',
@@ -193,9 +192,12 @@ uses
   XMLtoPDFDmod in 'Facturar\XMLtoPDFDmod.pas' {dmodXMLtoPDF: TDataModule},
   PersonasRolesFacturacionDM in 'Catalogos\PersonasRolesFacturacionDM.pas' {dmPersonasRolesFacturacion: TDataModule},
   PersonasRolesFacturacionForm in 'Catalogos\PersonasRolesFacturacionForm.pas' {frmPersonasRolesFacturacion},
-  PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit},
-  FacturacionForm in 'Procesos\FacturacionForm.pas' {frmFacturacion},
   CuentasXPagarPagosBancoDM in 'Procesos\CuentasXPagarPagosBancoDM.pas' {dmCuentasXPagarPagosBancos: TDataModule},
+  FacturacionDM in 'Procesos\FacturacionDM.pas' {dmFacturacion: TDataModule},
+  FacturacionForm in 'Procesos\FacturacionForm.pas' {frmFacturacion},
+  PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit},
+  ISRProvisionalesDM in 'Procesos\ISRProvisionalesDM.pas' {dmISRProvisionales: TDataModule},
+  ISRProvisionalesForm in 'Procesos\ISRProvisionalesForm.pas' {frmISRProvisionales},
   CuentasXCobrarEditConcepto in 'Procesos\CuentasXCobrarEditConcepto.pas' {frmCuentasXCobrarConceptoEdit};
 
 {$R *.res}

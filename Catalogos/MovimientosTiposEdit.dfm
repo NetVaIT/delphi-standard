@@ -1,24 +1,23 @@
 inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   Caption = 'Tipo de Movimiento'
-  ClientHeight = 663
-  ClientWidth = 542
-  ExplicitTop = -142
-  ExplicitWidth = 548
-  ExplicitHeight = 692
+  ClientHeight = 566
+  ClientWidth = 626
+  ExplicitWidth = 632
+  ExplicitHeight = 595
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 542
-    Height = 622
-    ExplicitWidth = 542
-    ExplicitHeight = 622
-    ClientRectBottom = 620
-    ClientRectRight = 540
+    Width = 626
+    Height = 525
+    ExplicitWidth = 626
+    ExplicitHeight = 525
+    ClientRectBottom = 523
+    ClientRectRight = 624
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 538
-      ExplicitHeight = 592
+      ExplicitWidth = 622
+      ExplicitHeight = 495
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -53,35 +52,11 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
       end
       object Label5: TLabel
         Left = 24
-        Top = 300
+        Top = 180
         Width = 38
         Height = 13
         Caption = 'Variable'
-        FocusControl = DBLookupComboBox1
-      end
-      object Label6: TLabel
-        Left = 24
-        Top = 364
-        Width = 124
-        Height = 13
-        Caption = 'Persona a la que se aplica'
-        FocusControl = DBLookupComboBox2
-      end
-      object Label7: TLabel
-        Left = 24
-        Top = 428
-        Width = 110
-        Height = 13
-        Caption = 'Acumular a movimiento'
-        FocusControl = DBLookupComboBox3
-      end
-      object Label8: TLabel
-        Left = 24
-        Top = 516
-        Width = 102
-        Height = 13
-        Caption = 'Porcentaje de c'#225'lculo'
-        FocusControl = cxDBTextEdit3
+        FocusControl = cxDBLookupComboBox3
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
@@ -127,125 +102,177 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         TabOrder = 3
         Width = 304
       end
-      object cxDBCheckBox1: TcxDBCheckBox
-        Left = 24
-        Top = 184
-        Caption = 'Descontar al ingreso'
-        DataBinding.DataField = 'Descuento'
-        DataBinding.DataSource = DataSource
-        TabOrder = 4
-        Visible = False
-        Width = 300
-      end
       object cxDBCheckBox2: TcxDBCheckBox
         Left = 24
-        Top = 251
+        Top = 235
         Caption = 'Produce CXC'
         DataBinding.DataField = 'ProduceCXC'
         DataBinding.DataSource = DataSource
         TabOrder = 5
         Width = 300
       end
+      object GroupBox1: TGroupBox
+        Left = 24
+        Top = 277
+        Width = 500
+        Height = 196
+        TabOrder = 7
+        object Label7: TLabel
+          Left = 16
+          Top = 64
+          Width = 110
+          Height = 13
+          Caption = 'Acumular a movimiento'
+          FocusControl = cxDBLookupComboBox4
+        end
+        object Label6: TLabel
+          Left = 16
+          Top = 104
+          Width = 162
+          Height = 13
+          Caption = 'Persona a la que se aplica el pago'
+          FocusControl = cxDBLookupComboBox5
+        end
+        object Label8: TLabel
+          Left = 326
+          Top = 104
+          Width = 79
+          Height = 13
+          Caption = 'Porcentaje pago'
+          FocusControl = cxDBTextEdit3
+        end
+        object Label9: TLabel
+          Left = 16
+          Top = 144
+          Width = 162
+          Height = 13
+          Caption = 'Persona a la que se aplica el pago'
+          FocusControl = cxDBLookupComboBox6
+        end
+        object Label10: TLabel
+          Left = 326
+          Top = 144
+          Width = 79
+          Height = 13
+          Caption = 'Porcentaje pago'
+          FocusControl = cxDBTextEdit4
+        end
+        object cxDBCheckBox4: TcxDBCheckBox
+          Left = 16
+          Top = 40
+          Caption = 'Agrupar por tipo de movimiento'
+          DataBinding.DataField = 'AgruparTipo'
+          DataBinding.DataSource = DataSource
+          TabOrder = 1
+          Width = 300
+        end
+        object cxDBCheckBox6: TcxDBCheckBox
+          Left = 16
+          Top = 15
+          Caption = 'Aplicar ISR Mensual'
+          DataBinding.DataField = 'AplicarISRProvisional'
+          DataBinding.DataSource = DataSource
+          TabOrder = 0
+          Width = 300
+        end
+        object cxDBLookupComboBox4: TcxDBLookupComboBox
+          Left = 16
+          Top = 77
+          DataBinding.DataField = 'IdMovimientoTipoAcumular'
+          DataBinding.DataSource = DataSource
+          Properties.ClearKey = 16460
+          Properties.KeyFieldNames = 'IdMovimientoTipo'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descripcion'
+            end>
+          Properties.ListSource = dsMovimientosTipo
+          TabOrder = 2
+          Width = 304
+        end
+        object cxDBTextEdit3: TcxDBTextEdit
+          Left = 326
+          Top = 120
+          DataBinding.DataField = 'PorcentajePagadora1'
+          DataBinding.DataSource = DataSource
+          TabOrder = 4
+          Width = 121
+        end
+        object cxDBTextEdit4: TcxDBTextEdit
+          Left = 326
+          Top = 160
+          DataBinding.DataField = 'PorcentajePagadora2'
+          DataBinding.DataSource = DataSource
+          TabOrder = 6
+          Width = 121
+        end
+        object cxDBLookupComboBox5: TcxDBLookupComboBox
+          Left = 16
+          Top = 120
+          DataBinding.DataField = 'Pagadora1'
+          DataBinding.DataSource = DataSource
+          Properties.ClearKey = 16460
+          Properties.DropDownWidth = 600
+          Properties.ListColumns = <
+            item
+              FieldName = 'Pagadora'
+            end
+            item
+              FieldName = 'Receptora'
+            end>
+          TabOrder = 3
+          Width = 304
+        end
+        object cxDBLookupComboBox6: TcxDBLookupComboBox
+          Left = 16
+          Top = 160
+          DataBinding.DataField = 'Pagadora2'
+          DataBinding.DataSource = DataSource
+          Properties.ListColumns = <>
+          TabOrder = 5
+          Width = 304
+        end
+      end
       object cxDBCheckBox3: TcxDBCheckBox
         Left = 24
-        Top = 275
+        Top = 260
         Caption = 'Produce CXP'
         DataBinding.DataField = 'ProduceCXP'
         DataBinding.DataSource = DataSource
         TabOrder = 6
         Width = 300
       end
-      object DBLookupComboBox1: TDBLookupComboBox
+      object cxDBLookupComboBox3: TcxDBLookupComboBox
         Left = 24
-        Top = 316
+        Top = 196
+        DataBinding.DataField = 'Variable'
+        DataBinding.DataSource = DataSource
+        Properties.ClearKey = 16460
+        Properties.ListColumns = <>
+        TabOrder = 4
         Width = 304
-        Height = 21
-        DataField = 'Variable'
-        DataSource = DataSource
-        TabOrder = 7
-      end
-      object cxDBCheckBox4: TcxDBCheckBox
-        Left = 24
-        Top = 340
-        Caption = 'Agrupar por tipo de movimiento'
-        DataBinding.DataField = 'AgruparTipo'
-        DataBinding.DataSource = DataSource
-        TabOrder = 8
-        Width = 300
-      end
-      object DBLookupComboBox2: TDBLookupComboBox
-        Left = 24
-        Top = 380
-        Width = 304
-        Height = 21
-        DataField = 'PerosnaRol'
-        DataSource = DataSource
-        TabOrder = 9
-      end
-      object cxDBCheckBox5: TcxDBCheckBox
-        Left = 24
-        Top = 404
-        Caption = 'Acumular mensualmente'
-        DataBinding.DataField = 'AcumularMensualmente'
-        DataBinding.DataSource = DataSource
-        TabOrder = 10
-        Width = 300
-      end
-      object DBLookupComboBox3: TDBLookupComboBox
-        Left = 24
-        Top = 444
-        Width = 304
-        Height = 21
-        DataField = 'MovimientoTipo'
-        DataSource = DataSource
-        TabOrder = 11
-      end
-      object cxDBCheckBox6: TcxDBCheckBox
-        Left = 24
-        Top = 468
-        Caption = 'Aplicar ISR Mensual'
-        DataBinding.DataField = 'AplicarISR'
-        DataBinding.DataSource = DataSource
-        TabOrder = 12
-        Width = 300
-      end
-      object cxDBCheckBox7: TcxDBCheckBox
-        Left = 24
-        Top = 492
-        Caption = 'Base para c'#225'lculo'
-        DataBinding.DataField = 'BaseCalculo'
-        DataBinding.DataSource = DataSource
-        TabOrder = 13
-        Width = 300
-      end
-      object cxDBTextEdit3: TcxDBTextEdit
-        Left = 24
-        Top = 532
-        DataBinding.DataField = 'PorcentajeCalculo'
-        DataBinding.DataSource = DataSource
-        TabOrder = 14
-        Width = 121
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 622
-    Width = 542
-    ExplicitTop = 622
-    ExplicitWidth = 542
-    inherited btnOk: TButton
-      Left = 379
-      ExplicitLeft = 379
-    end
+    Top = 525
+    Width = 626
+    ExplicitTop = 525
+    ExplicitWidth = 626
     inherited btnCancel: TButton
-      Left = 460
-      ExplicitLeft = 460
+      Left = 544
+      ExplicitLeft = 544
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmMovimientosTipo.adodsMaster
+    inherited btnOk: TButton
+      Left = 463
+      ExplicitLeft = 463
+    end
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  object dsMovimientosTipo: TDataSource
+    Left = 338
+    Top = 4
   end
 end

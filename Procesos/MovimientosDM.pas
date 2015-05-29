@@ -63,6 +63,10 @@ type
     actEliminarCXC: TAction;
     adospCuentasXCobrar: TADOStoredProc;
     adopDelCuentasXCobrar: TADOStoredProc;
+    actMostrarISR: TAction;
+    adodsMovimientosDetIdIncidenciaDetalle: TIntegerField;
+    adodsMovimientosDetIdMoneda: TIntegerField;
+    adodsMovimientosDetIdCuentaXCobrar: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
@@ -72,6 +76,7 @@ type
     procedure adodsMovimientosDetAfterPost(DataSet: TDataSet);
     procedure actCalcularCXCExecute(Sender: TObject);
     procedure actEliminarCXCExecute(Sender: TObject);
+    procedure actMostrarISRExecute(Sender: TObject);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
@@ -89,7 +94,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod;
+uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod, ISRProvisionalesDM;
 
 {$R *.dfm}
 
@@ -170,6 +175,20 @@ begin
   end;
 end;
 
+procedure TdmMovimientos.actMostrarISRExecute(Sender: TObject);
+var
+  dmISRProvisionales: TdmISRProvisionales;
+begin
+  inherited;
+  dmISRProvisionales := TdmISRProvisionales.Create(Self);
+  try
+    dmISRProvisionales.IdPersona:= adodsMasterIdPersona.Value;
+    dmISRProvisionales.ShowModule(nil, '');
+  finally
+    dmISRProvisionales.Free;
+  end;
+end;
+
 procedure TdmMovimientos.adodsMasterAfterScroll(DataSet: TDataSet);
 begin
   inherited;
@@ -203,6 +222,7 @@ begin
   TfrmMovimientos(gGridForm).EliminarCXP:= actEliminarCXP;
   TfrmMovimientos(gGridForm).CalcularCXC:= actCalcularCXC;
   TfrmMovimientos(gGridForm).EliminarCXC:= actEliminarCXC;
+  TfrmMovimientos(gGridForm).MostrarISR:= actMostrarISR;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
 //  gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;

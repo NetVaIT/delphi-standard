@@ -1,4 +1,4 @@
-unit MovimientosDetalleFrm;
+unit ISRProvisionalesForm;
 
 interface
 
@@ -30,23 +30,22 @@ uses
   Vcl.ExtCtrls;
 
 type
-  TfrmMovimientosDetalle = class(T_frmGrid)
-    tvMasterIdMovimientoDetalle: TcxGridDBColumn;
+  TfrmISRProvisionales = class(T_frmGrid)
+    tvMasterIdISRProvisional: TcxGridDBColumn;
     tvMasterIdMovimiento: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
     tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoEstatus: TcxGridDBColumn;
-    tvMasterImporte: TcxGridDBColumn;
-    tvMasterPersonaRelacionada: TcxGridDBColumn;
-    tvMasterTipo: TcxGridDBColumn;
-    tvMasterEstatus: TcxGridDBColumn;
-    tvMasterIdCuentaXPagar: TcxGridDBColumn;
-    tvMasterFecha: TcxGridDBColumn;
-    tvMasterCategoria: TcxGridDBColumn;
-    tvMasterIdIncidenciaDetalle: TcxGridDBColumn;
-    tvMasterIdMoneda: TcxGridDBColumn;
-    tvMasterIdCuentaXCobrar: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterIdPeriodo: TcxGridDBColumn;
+    tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterAnio: TcxGridDBColumn;
+    tvMasterMes: TcxGridDBColumn;
+    tvMasterNumero: TcxGridDBColumn;
+    tvMasterBruto: TcxGridDBColumn;
+    tvMasterBrutoAcumulado: TcxGridDBColumn;
+    tvMasterISR: TcxGridDBColumn;
+    tvMasterISRPeriodo: TcxGridDBColumn;
+    tvMasterISRAcumulado: TcxGridDBColumn;
+    tvMasterNeto: TcxGridDBColumn;
   private
     { Private declarations }
   public
@@ -57,12 +56,6 @@ implementation
 
 {$R *.dfm}
 
-uses MovimientosDM, MovimientosDetalleEdit;
-
-procedure TfrmMovimientosDetalle.FormCreate(Sender: TObject);
-begin
-  inherited;
-  gEditForm:= TfrmMovimientosDetalleEdit.Create(Self);
-end;
+uses ISRProvisionalesDM;
 
 end.

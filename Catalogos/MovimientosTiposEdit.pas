@@ -31,25 +31,31 @@ type
     Label4: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
-    cxDBCheckBox1: TcxDBCheckBox;
     cxDBCheckBox2: TcxDBCheckBox;
-    cxDBCheckBox3: TcxDBCheckBox;
     Label5: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
-    cxDBCheckBox4: TcxDBCheckBox;
-    Label6: TLabel;
-    DBLookupComboBox2: TDBLookupComboBox;
-    cxDBCheckBox5: TcxDBCheckBox;
+    GroupBox1: TGroupBox;
     Label7: TLabel;
-    DBLookupComboBox3: TDBLookupComboBox;
+    cxDBCheckBox4: TcxDBCheckBox;
     cxDBCheckBox6: TcxDBCheckBox;
-    cxDBCheckBox7: TcxDBCheckBox;
+    cxDBCheckBox3: TcxDBCheckBox;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
+    cxDBLookupComboBox4: TcxDBLookupComboBox;
+    Label6: TLabel;
     Label8: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBLookupComboBox5: TcxDBLookupComboBox;
+    cxDBLookupComboBox6: TcxDBLookupComboBox;
+    dsMovimientosTipo: TDataSource;
   private
+    FDataSetMovimientosTipo: TDataSet;
+    procedure SetDataSetMovimientosTipo(const Value: TDataSet);
     { Private declarations }
   public
     { Public declarations }
+    property DataSetMovimientosTipo: TDataSet read FDataSetMovimientosTipo write SetDataSetMovimientosTipo;
   end;
 
 implementation
@@ -57,5 +63,14 @@ implementation
 {$R *.dfm}
 
 uses MovimientosTiposDM;
+
+{ TfrmMovimientosTipoEdit }
+
+procedure TfrmMovimientosTipoEdit.SetDataSetMovimientosTipo(
+  const Value: TDataSet);
+begin
+  FDataSetMovimientosTipo := Value;
+  dsMovimientosTipo.DataSet:= Value
+end;
 
 end.

@@ -189,6 +189,11 @@ inherited dmMovimientos: TdmMovimientos
       ImageIndex = 12
       OnExecute = actEliminarCXCExecute
     end
+    object actMostrarISR: TAction
+      Caption = 'Mostrar ISR'
+      ImageIndex = 11
+      OnExecute = actMostrarISRExecute
+    end
   end
   object adodsPersona: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -216,9 +221,10 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     AfterPost = adodsMovimientosDetAfterPost
     CommandText = 
-      'select IdMovimientoDetalle, IdMovimiento, IdPersonaRol, IdMovimi' +
-      'entoTipo, IdMovimientoEstatus, IdCuentaXPagar, Fecha, Importe fr' +
-      'om MovimientosDetalle'#13#10'WHERE IdMovimiento = :IdMovimiento'
+      'SELECT IdMovimientoDetalle, IdMovimiento, IdPersonaRol, IdIncide' +
+      'nciaDetalle, IdMovimientoTipo, IdMoneda, IdMovimientoEstatus, Id' +
+      'CuentaXPagar, IdCuentaXCobrar, Fecha, Importe FROM MovimientosDe' +
+      'talle'#13#10'WHERE IdMovimiento = :IdMovimiento'
     DataSource = dsMaster
     MasterFields = 'IdMovimiento'
     Parameters = <
@@ -245,8 +251,16 @@ inherited dmMovimientos: TdmMovimientos
       FieldName = 'IdPersonaRol'
       Visible = False
     end
+    object adodsMovimientosDetIdIncidenciaDetalle: TIntegerField
+      FieldName = 'IdIncidenciaDetalle'
+      Visible = False
+    end
     object adodsMovimientosDetIdMovimientoTipo: TIntegerField
       FieldName = 'IdMovimientoTipo'
+      Visible = False
+    end
+    object adodsMovimientosDetIdMoneda: TIntegerField
+      FieldName = 'IdMoneda'
       Visible = False
     end
     object adodsMovimientosDetIdMovimientoEstatus: TIntegerField
@@ -255,6 +269,10 @@ inherited dmMovimientos: TdmMovimientos
     end
     object adodsMovimientosDetIdCuentaXPagar: TIntegerField
       FieldName = 'IdCuentaXPagar'
+      Visible = False
+    end
+    object adodsMovimientosDetIdCuentaXCobrar: TIntegerField
+      FieldName = 'IdCuentaXCobrar'
       Visible = False
     end
     object adodsMovimientosDetPersonaRelacionada: TStringField
@@ -309,6 +327,7 @@ inherited dmMovimientos: TdmMovimientos
     end
   end
   object adodsPersonaRol: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -323,6 +342,7 @@ inherited dmMovimientos: TdmMovimientos
     Top = 200
   end
   object adodsMovimientosTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -340,6 +360,7 @@ inherited dmMovimientos: TdmMovimientos
     Top = 256
   end
   object adodsMovimientosEstatus: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoEstatus, Descripcion from MovimientosEstatus'

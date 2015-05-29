@@ -2,37 +2,37 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   BorderStyle = bsToolWindow
   Caption = 'Tipos de Movimiento'
   ClientHeight = 433
-  ClientWidth = 1513
+  ClientWidth = 782
   OnCreate = FormCreate
-  ExplicitWidth = 1519
+  ExplicitWidth = 788
   ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
     Top = 348
-    Width = 1513
+    Width = 782
     ExplicitTop = 348
     ExplicitWidth = 1519
   end
   inherited splDetail1: TSplitter
     Top = 260
-    Width = 1513
+    Width = 782
     ExplicitTop = 260
     ExplicitWidth = 1519
   end
   inherited splDetail2: TSplitter
     Top = 304
-    Width = 1513
+    Width = 782
     ExplicitTop = 304
     ExplicitWidth = 1519
   end
   inherited pnlMaster: TPanel
-    Width = 1513
+    Width = 782
     Height = 229
     ExplicitWidth = 1513
     ExplicitHeight = 229
     inherited cxGrid: TcxGrid
-      Width = 1513
+      Width = 782
       Height = 229
       ExplicitWidth = 1513
       ExplicitHeight = 229
@@ -51,10 +51,6 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
         end
         object tvMasterIdMovimientoTipoAcumular: TcxGridDBColumn
           DataBinding.FieldName = 'IdMovimientoTipoAcumular'
-          Visible = False
-        end
-        object tvMasterIdPersonaRol: TcxGridDBColumn
-          DataBinding.FieldName = 'IdPersonaRol'
           Visible = False
         end
         object tvMasterIdVariable: TcxGridDBColumn
@@ -85,69 +81,73 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
           DataBinding.FieldName = 'ProduceCXP'
           Width = 66
         end
+        object tvMasterIdPersonaRolPagadora1: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersonaRolPagadora1'
+          Visible = False
+        end
+        object tvMasterIdpersonaRolPagadora2: TcxGridDBColumn
+          DataBinding.FieldName = 'IdpersonaRolPagadora2'
+          Visible = False
+        end
         object tvMasterVariable: TcxGridDBColumn
           DataBinding.FieldName = 'Variable'
+        end
+        object tvMasterAplicarISRProvisional: TcxGridDBColumn
+          DataBinding.FieldName = 'AplicarISRProvisional'
+          Width = 99
         end
         object tvMasterAgruparTipo: TcxGridDBColumn
           DataBinding.FieldName = 'AgruparTipo'
           Width = 167
         end
-        object tvMasterPerosnaRol: TcxGridDBColumn
-          DataBinding.FieldName = 'PerosnaRol'
-          Width = 304
-        end
-        object tvMasterAcumularMensualmente: TcxGridDBColumn
-          DataBinding.FieldName = 'AcumularMensualmente'
-          Width = 121
-        end
         object tvMasterMovimientoTipo: TcxGridDBColumn
           DataBinding.FieldName = 'MovimientoTipo'
           Width = 304
         end
-        object tvMasterAplicarISR: TcxGridDBColumn
-          DataBinding.FieldName = 'AplicarISR'
-          Width = 99
+        object tvMasterPagadora1: TcxGridDBColumn
+          DataBinding.FieldName = 'Pagadora1'
+          Width = 304
         end
-        object tvMasterBaseCalculo: TcxGridDBColumn
-          DataBinding.FieldName = 'BaseCalculo'
-          Width = 88
+        object tvMasterPorcentajePagadora1: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajePagadora1'
         end
-        object tvMasterPorcentajeCalculo: TcxGridDBColumn
-          DataBinding.FieldName = 'PorcentajeCalculo'
+        object tvMasterPagadora2: TcxGridDBColumn
+          DataBinding.FieldName = 'Pagadora2'
+          Width = 304
+        end
+        object tvMasterPorcentajePagadora2: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajePagadora2'
         end
       end
     end
   end
   inherited pnlDetail3: TPanel
     Top = 351
-    Width = 1513
+    Width = 782
     ExplicitTop = 351
     ExplicitWidth = 1513
   end
   inherited pnlDetail2: TPanel
     Top = 307
-    Width = 1513
+    Width = 782
     ExplicitTop = 307
     ExplicitWidth = 1513
   end
   inherited pnlDetail1: TPanel
     Top = 263
-    Width = 1513
+    Width = 782
     ExplicitTop = 263
     ExplicitWidth = 1513
   end
   inherited pnlClose: TPanel
     Top = 392
-    Width = 1513
+    Width = 782
     ExplicitTop = 392
     ExplicitWidth = 1513
     inherited btnClose: TButton
-      Left = 1428
+      Left = 697
       ExplicitLeft = 1428
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmMovimientosTipo.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

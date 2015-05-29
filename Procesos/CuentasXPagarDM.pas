@@ -102,6 +102,7 @@ begin
   'Persona, PersonaRelacionada, ConceptoGenerico, SumaSubtotal, SumaTotal, SumaDescuentos, ' +
   'TotalIVATrasladado, TotalISRTrasladado, TotalIEPSTrasladado, TotalLocalesTrasladado, ' +
   'TotalIVARetenido, TotalISRRetenido, TotalLocalesRetenido, SaldoPendiente, Estatus from vCuentasXPagar';
+  SQLOrderBy:= 'order by Persona';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;
   TfrmCuentasXPagar(gGridForm).DataSetPeriodo:= adodsPeriodo;

@@ -1268,6 +1268,7 @@ object _frmGrid: T_frmGrid
     Top = 215
     object dxcplGrid: TdxGridReportLink
       Component = cxGrid
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1279,6 +1280,7 @@ object _frmGrid: T_frmGrid
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

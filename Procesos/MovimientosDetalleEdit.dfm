@@ -10,14 +10,14 @@ inherited frmMovimientosDetalleEdit: TfrmMovimientosDetalleEdit
     Width = 558
     Height = 233
     ExplicitWidth = 558
-    ExplicitHeight = 240
+    ExplicitHeight = 233
     ClientRectBottom = 231
     ClientRectRight = 556
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 554
-      ExplicitHeight = 210
+      ExplicitHeight = 203
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -115,7 +115,7 @@ inherited frmMovimientosDetalleEdit: TfrmMovimientosDetalleEdit
   inherited pmlMain: TPanel
     Top = 233
     Width = 558
-    ExplicitTop = 240
+    ExplicitTop = 233
     ExplicitWidth = 558
     inherited btnOk: TButton
       Left = 395
@@ -125,9 +125,6 @@ inherited frmMovimientosDetalleEdit: TfrmMovimientosDetalleEdit
       Left = 476
       ExplicitLeft = 476
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmMovimientos.adodsMovimientosDet
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

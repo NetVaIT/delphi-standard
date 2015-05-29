@@ -48,16 +48,6 @@ object _frmEdit: T_frmEdit
     DesignSize = (
       438
       41)
-    object btnOk: TButton
-      Left = 275
-      Top = 6
-      Width = 75
-      Height = 25
-      Action = actPost
-      Anchors = [akTop, akRight]
-      Default = True
-      TabOrder = 0
-    end
     object btnCancel: TButton
       Left = 356
       Top = 6
@@ -67,6 +57,16 @@ object _frmEdit: T_frmEdit
       Anchors = [akTop, akRight]
       Cancel = True
       TabOrder = 1
+    end
+    object btnOk: TButton
+      Left = 275
+      Top = 6
+      Width = 75
+      Height = 25
+      Action = actPost
+      Anchors = [akTop, akRight]
+      Default = True
+      TabOrder = 0
     end
   end
   object DataSource: TDataSource
