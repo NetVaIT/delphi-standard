@@ -4,7 +4,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   ClientHeight = 634
   ClientWidth = 720
   ExplicitWidth = 726
-  ExplicitHeight = 658
+  ExplicitHeight = 663
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -78,6 +78,8 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
         end
         object tvMasterPersona: TcxGridDBColumn
           DataBinding.FieldName = 'Persona'
+          SortIndex = 0
+          SortOrder = soAscending
           Width = 304
         end
         object tvMasterPersonaRelacionada: TcxGridDBColumn
@@ -222,6 +224,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

@@ -4,6 +4,7 @@ inherited frmMovimientos: TfrmMovimientos
   ClientHeight = 428
   ClientWidth = 1085
   ExplicitWidth = 1091
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -58,10 +59,37 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterPersona: TcxGridDBColumn
           DataBinding.FieldName = 'Persona'
+          SortIndex = 0
+          SortOrder = soAscending
           Width = 259
+        end
+        object tvMasterSaldoAnterior: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoAnterior'
+          Width = 104
         end
         object tvMasterIngresos: TcxGridDBColumn
           DataBinding.FieldName = 'Ingresos'
+          Width = 104
+        end
+        object tvMasterEgresos: TcxGridDBColumn
+          DataBinding.FieldName = 'Egresos'
+          Width = 104
+        end
+        object tvMasterCosto: TcxGridDBColumn
+          DataBinding.FieldName = 'Costo'
+          Width = 104
+        end
+        object tvMasterCarga: TcxGridDBColumn
+          DataBinding.FieldName = 'Carga'
+          Width = 104
+        end
+        object tvMasterSaldoPeriodo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoPeriodo'
+          Width = 104
+        end
+        object tvMasterSaldo: TcxGridDBColumn
+          DataBinding.FieldName = 'Saldo'
+          Styles.Content = cxsGray
           Width = 104
         end
         object tvMasterDescuentos: TcxGridDBColumn
@@ -70,6 +98,7 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterBase: TcxGridDBColumn
           DataBinding.FieldName = 'Base'
+          Styles.Content = cxsSilver
           Width = 104
         end
         object tvMasterEntregas: TcxGridDBColumn
@@ -102,31 +131,6 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterImpuestoRetenido: TcxGridDBColumn
           DataBinding.FieldName = 'ImpuestoRetenido'
-          Width = 104
-        end
-        object tvMasterEgresos: TcxGridDBColumn
-          DataBinding.FieldName = 'Egresos'
-          Width = 104
-        end
-        object tvMasterCosto: TcxGridDBColumn
-          DataBinding.FieldName = 'Costo'
-          Width = 104
-        end
-        object tvMasterCarga: TcxGridDBColumn
-          DataBinding.FieldName = 'Carga'
-          Width = 104
-        end
-        object tvMasterSaldoAnterior: TcxGridDBColumn
-          DataBinding.FieldName = 'SaldoAnterior'
-          Width = 104
-        end
-        object tvMasterSaldoPeriodo: TcxGridDBColumn
-          DataBinding.FieldName = 'SaldoPeriodo'
-          Width = 104
-        end
-        object tvMasterSaldo: TcxGridDBColumn
-          DataBinding.FieldName = 'Saldo'
-          Styles.Content = cxsInactive
           Width = 104
         end
       end
@@ -204,10 +208,14 @@ inherited frmMovimientos: TfrmMovimientos
         item
           Visible = True
           ItemName = 'dxbtnEliminarCXC'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnMostrarISR'
         end>
     end
     inherited dxbFilter: TdxBar
-      DockedLeft = 430
+      DockedLeft = 453
       ItemLinks = <
         item
           Visible = True
@@ -276,9 +284,35 @@ inherited frmMovimientos: TfrmMovimientos
       Visible = ivAlways
       ImageIndex = 12
     end
+    object dxbtnMostrarISR: TdxBarButton
+      Caption = 'Mostrar ISR'
+      Category = 0
+      Visible = ivAlways
+      ImageIndex = 11
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
+    object cxsIntial: TcxStyle
+      AssignedValues = [svColor]
+      Color = clYellow
+    end
+    object cxsRed: TcxStyle
+      AssignedValues = [svColor]
+      Color = 8421631
+    end
+    object cxsGreen: TcxStyle
+      AssignedValues = [svColor]
+      Color = clMoneyGreen
+    end
+    object cxsGray: TcxStyle
+      AssignedValues = [svColor]
+      Color = clGray
+    end
+    object cxsSilver: TcxStyle
+      AssignedValues = [svColor]
+      Color = clMedGray
+    end
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

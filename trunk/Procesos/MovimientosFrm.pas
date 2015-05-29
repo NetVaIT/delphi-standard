@@ -61,6 +61,12 @@ type
     tvMasterSaldo: TcxGridDBColumn;
     dxbtnCalcularCXC: TdxBarButton;
     dxbtnEliminarCXC: TdxBarButton;
+    cxsIntial: TcxStyle;
+    cxsRed: TcxStyle;
+    cxsGreen: TcxStyle;
+    cxsGray: TcxStyle;
+    cxsSilver: TcxStyle;
+    dxbtnMostrarISR: TdxBarButton;
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       var AStyle: TcxStyle);
@@ -73,6 +79,7 @@ type
     FEliminarCXC: TBasicAction;
     FCalcularCXC: TBasicAction;
     FEliminarCXP: TBasicAction;
+    FMostrarISR: TBasicAction;
     procedure SetCalcularCXP(const Value: TBasicAction);
     function GetIdPeriodo: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
@@ -82,6 +89,7 @@ type
     procedure SetCalcularCXC(const Value: TBasicAction);
     procedure SetEliminarCXC(const Value: TBasicAction);
     procedure SetEliminarCXP(const Value: TBasicAction);
+    procedure SetMostrarISR(const Value: TBasicAction);
   public
     { Public declarations }
     property CalcularMovimientos: TBasicAction read FCalcularMovimientos write SetCalcularMovimientos;
@@ -90,6 +98,7 @@ type
     property EliminarCXP: TBasicAction read FEliminarCXP write SetEliminarCXP;
     property CalcularCXC: TBasicAction read FCalcularCXC write SetCalcularCXC;
     property EliminarCXC: TBasicAction read FEliminarCXC write SetEliminarCXC;
+    property MostrarISR: TBasicAction read FMostrarISR write SetMostrarISR;
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
@@ -157,13 +166,23 @@ begin
   cxedtPeriodo.EditValue:= Value;
 end;
 
+procedure TfrmMovimientos.SetMostrarISR(const Value: TBasicAction);
+begin
+  FMostrarISR := Value;
+  dxbtnMostrarISR.Action:= Value;
+end;
+
 procedure TfrmMovimientos.tvMasterStylesGetContentStyle(
   Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
   AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
 begin
   inherited;
+  if ARecord.Values[tvMasterSaldo.Index] = 0 then
+      AStyle := cxsGreen;
+  if ARecord.Values[tvMasterSaldo.Index] > 0 then
+      AStyle := cxsIntial;
   if ARecord.Values[tvMasterBase.Index] < 0 then
-      AStyle := cxsDelete;
+      AStyle := cxsRed;
 end;
 
 end.

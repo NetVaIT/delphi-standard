@@ -27,11 +27,12 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Visible = False
     end
     object adodsMasterPersona: TStringField
+      DisplayLabel = 'Receptora'
       FieldName = 'Persona'
       Size = 300
     end
     object adodsMasterPersonaRelacionada: TStringField
-      DisplayLabel = 'Persona relacionada'
+      DisplayLabel = 'Pagadora'
       FieldName = 'PersonaRelacionada'
       Size = 300
     end

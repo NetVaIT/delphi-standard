@@ -39,10 +39,13 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FDataSet: TDataSet;
+    FView: Boolean;
     procedure SetDataSet(const Value: TDataSet);
+    procedure SetView(const Value: Boolean);
     { Private declarations }
   public
     { Public declarations }
+    property View: Boolean read FView write SetView default False;
     property DataSet: TDataSet read FDataSet write SetDataSet;
   end;
 
@@ -97,6 +100,16 @@ procedure T_frmEdit.SetDataSet(const Value: TDataSet);
 begin
   FDataSet := Value;
   DataSource.DataSet:= Value;
+end;
+
+procedure T_frmEdit.SetView(const Value: Boolean);
+begin
+  FView := Value;
+  btnOk.Visible:= not Value;
+  if Value then
+    btnCancel.Caption:= 'Cerrar'
+  else
+    btnCancel.Caption:= '&Cancelar'
 end;
 
 end.

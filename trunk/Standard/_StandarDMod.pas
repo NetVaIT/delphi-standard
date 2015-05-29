@@ -35,6 +35,8 @@ type
     frmEdit: T_frmEdit;
     SQLSelect: string;
     SQLWhere: string;
+    SQLGroupBy: string;
+    SQLOrderBy: string;
     procedure OpenDataSet; virtual;
     procedure SetFilter; virtual;
   public
@@ -105,7 +107,7 @@ procedure T_dmStandar.OpenDataSet;
   begin
     adodsMaster.Close;
     if SQLSelect <> EmptyStr then
-      adodsMaster.CommandText:= SQLSelect + ' ' + SQLWhere;
+      adodsMaster.CommandText:= SQLSelect + ' ' + SQLWhere + ' ' + SQLGroupBy + ' ' + SQLOrderBy;
   end;
 begin
   PrepareDataSet;
@@ -135,6 +137,7 @@ begin
   adodsUpdate.Parameters[0].Value:= Id;
   adodsUpdate.Open;
   try
+    frmEdit.View:= True;
     frmEdit.DataSet:= adodsUpdate;
     frmEdit.ShowModal;
   finally

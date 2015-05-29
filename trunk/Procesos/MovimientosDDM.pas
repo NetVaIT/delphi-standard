@@ -7,6 +7,7 @@ uses
   Data.DB, Data.Win.ADODB;
 
 type
+  TTipoReporte = (trDispercion, trNomina);
   TdmMovimientosD = class(T_dmStandar)
     adodsMasterIdMovimientoDetalle: TIntegerField;
     adodsMasterFecha: TDateTimeField;
@@ -21,14 +22,17 @@ type
     adocGetPeriodoActual: TADOCommand;
     procedure DataModuleCreate(Sender: TObject);
   private
-    FIdPeriodoActual: Integer;
     { Private declarations }
+    FIdPeriodoActual: Integer;
+    FTipoReporte: TTipoReporte;
     function GetPeriodoActual: Integer;
+    procedure SetTipoReporte(const Value: TTipoReporte);
   protected
     procedure SetFilter; override;
   public
     { Public declarations }
     property IdPeriodoActual: Integer read FIdPeriodoActual;
+    property TipoReporte: TTipoReporte read FTipoReporte write SetTipoReporte;
   end;
 
 implementation
@@ -47,18 +51,15 @@ begin
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
   // Filtrado
-  SQLSelect:= 'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDetalle.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.Tipo, ' +
-  'vMovimientosDetalle.Categoria, vMovimientosDetalle.Efecto, (vMovimientosDetalle.Importe*MovimientosTiposCategorias.Signo) AS Importe, vMovimientosDetalle.Estatus ' +
-  'FROM vMovimientosDetalle ' +
-  'INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento ' +
-  'INNER JOIN MovimientosTipos ON vMovimientosDetalle.IdMovimientoTipo = MovimientosTipos.IdMovimientoTipo ' +
-  'INNER JOIN MovimientosTiposCategorias ON MovimientosTipos.IdMovimientoTipoCategoria = MovimientosTiposCategorias.IdMovimientoTipoCategoria ';
+  SQLSelect:= 'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDetalle.Fecha, ' +
+  'vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.Tipo, vMovimientosDetalle.Categoria, ' +
+  'vMovimientosDetalle.Efecto, vMovimientosDetalle.Importe * vMovimientosDetalle.Signo AS Importe, vMovimientosDetalle.Estatus '+
+  'FROM vMovimientosDetalle INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento';
+  SQLOrderBy:= 'ORDER BY vMovimientosDetalle.Persona, vMovimientosDetalle.OrdenImpresion';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;
   TfrmMovimientosD(gGridForm).DataSetPeriodo:= adodsPeriodo;
-  // Ejecuta filtrado
   TfrmMovimientosD(gGridForm).IdPeriodo:= IdPeriodoActual;
-  actSearch.Execute;
 end;
 
 function TdmMovimientosD.GetPeriodoActual: Integer;
@@ -73,7 +74,18 @@ var
 begin
   inherited;
   IdPeriodo:= TfrmMovimientosD(gGridForm).IdPeriodo;
-  SQLWhere:= Format('WHERE Movimientos.IdPeriodo = %d', [IdPeriodo]);
+  case FTipoReporte of
+    trDispercion: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria NOT IN (1,2) AND Movimientos.IdPeriodo = %d';
+    trNomina: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria IN (1,2) AND Movimientos.IdPeriodo = %d';
+  else
+    SQLWhere:= 'WHERE Movimientos.IdPeriodo = %d';
+  end;
+  SQLWhere:= Format(SQLWhere, [IdPeriodo]);
+end;
+
+procedure TdmMovimientosD.SetTipoReporte(const Value: TTipoReporte);
+begin
+  FTipoReporte := Value;
 end;
 
 end.

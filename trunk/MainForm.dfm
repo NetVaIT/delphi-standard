@@ -3,14 +3,13 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
     Width = 1099
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
-      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
@@ -34,7 +33,6 @@ inherited frmMain: TfrmMain
       Index = 1
     end
     object dxRibbon1Tab3: TdxRibbonTab
-      Active = True
       Caption = 'Procesos'
       Groups = <
         item
@@ -353,6 +351,10 @@ inherited frmMain: TfrmMain
         end
         item
           Visible = True
+          ItemName = 'dxBarLargeButton32'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarLargeButton26'
         end
         item
@@ -561,7 +563,11 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton31: TdxBarLargeButton
-      Action = actDetMovimientos
+      Action = actDispersion
+      Category = 0
+    end
+    object dxBarLargeButton32: TdxBarLargeButton
+      Action = actNomina
       Category = 0
     end
   end
@@ -9426,10 +9432,17 @@ inherited frmMain: TfrmMain
       ImageIndex = 40
       OnExecute = actCatalogoExecute
     end
-    object actDetMovimientos: TAction
+    object actDispersion: TAction
       Tag = 53
       Category = 'Reportes'
-      Caption = 'Detalle de movimientos'
+      Caption = 'Dispersi'#243'n'
+      ImageIndex = 9
+      OnExecute = actCatalogoExecute
+    end
+    object actNomina: TAction
+      Tag = 54
+      Category = 'Reportes'
+      Caption = 'Nomina'
       ImageIndex = 9
       OnExecute = actCatalogoExecute
     end

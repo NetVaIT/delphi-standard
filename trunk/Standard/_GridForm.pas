@@ -145,7 +145,10 @@ end;
 procedure T_frmGrid.actShowExecute(Sender: TObject);
 begin
   if Assigned(gEditForm) then
+  begin
+    gEditForm.View:= True;
     gEditForm.ShowModal;
+  end;
 end;
 
 procedure T_frmGrid.btnCloseClick(Sender: TObject);

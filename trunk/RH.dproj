@@ -92,8 +92,8 @@
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_PreRelease>true</VerInfo_PreRelease>
-        <VerInfo_Build>283</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=0.6.1.283;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>286</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=0.6.1.286;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -712,11 +712,6 @@
             <Form>frmCuentasXCobrarForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Procesos\FacturacionDM.pas">
-            <Form>dmFacturacion</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Facturar\VirtualXML.pas"/>
         <DCCReference Include="Facturar\cfdv32.pas"/>
         <DCCReference Include="Facturar\DocComprobanteFiscal.pas"/>
@@ -736,18 +731,32 @@
             <Form>frmPersonasRolesFacturacion</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\PersonasRolesFacturacionEdit.pas">
-            <Form>frmPersonasRolesFacturacionEdit</Form>
+        <DCCReference Include="Procesos\CuentasXPagarPagosBancoDM.pas">
+            <Form>dmCuentasXPagarPagosBancos</Form>
             <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\FacturacionDM.pas">
+            <Form>dmFacturacion</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Procesos\FacturacionForm.pas">
             <Form>frmFacturacion</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Procesos\CuentasXPagarPagosBancoDM.pas">
-            <Form>dmCuentasXPagarPagosBancos</Form>
+        <DCCReference Include="Catalogos\PersonasRolesFacturacionEdit.pas">
+            <Form>frmPersonasRolesFacturacionEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\ISRProvisionalesDM.pas">
+            <Form>dmISRProvisionales</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\ISRProvisionalesForm.pas">
+            <Form>frmISRProvisionales</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Procesos\CuentasXCobrarEditConcepto.pas">
             <Form>frmCuentasXCobrarConceptoEdit</Form>

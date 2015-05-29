@@ -5,15 +5,13 @@ inherited dmMovimientosD: TdmMovimientosD
     CommandText = 
       'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDeta' +
       'lle.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.Pers' +
-      'onaRelacionada, vMovimientosDetalle.Tipo, '#13#10'vMovimientosDetalle.' +
-      'Categoria, vMovimientosDetalle.Efecto, (vMovimientosDetalle.Impo' +
-      'rte*MovimientosTiposCategorias.Signo) AS Importe, vMovimientosDe' +
-      'talle.Estatus'#13#10'FROM vMovimientosDetalle '#13#10'INNER JOIN Movimientos' +
-      ' ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento'#13 +
-      #10'INNER JOIN MovimientosTipos ON vMovimientosDetalle.IdMovimiento' +
-      'Tipo = MovimientosTipos.IdMovimientoTipo'#13#10'INNER JOIN Movimientos' +
-      'TiposCategorias ON MovimientosTipos.IdMovimientoTipoCategoria = ' +
-      'MovimientosTiposCategorias.IdMovimientoTipoCategoria'
+      'onaRelacionada, vMovimientosDetalle.Tipo, vMovimientosDetalle.Ca' +
+      'tegoria, '#13#10'vMovimientosDetalle.Efecto, vMovimientosDetalle.Impor' +
+      'te * vMovimientosDetalle.Signo AS Importe, vMovimientosDetalle.E' +
+      'status'#13#10'FROM vMovimientosDetalle '#13#10'INNER JOIN Movimientos ON vMo' +
+      'vimientosDetalle.IdMovimiento = Movimientos.IdMovimiento'#13#10'ORDER ' +
+      'BY vMovimientosDetalle.Persona, vMovimientosDetalle.OrdenImpresi' +
+      'on'
     object adodsMasterIdMovimientoDetalle: TIntegerField
       FieldName = 'IdMovimientoDetalle'
       Visible = False
