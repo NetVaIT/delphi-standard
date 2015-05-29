@@ -195,7 +195,8 @@ uses
   PersonasRolesFacturacionForm in 'Catalogos\PersonasRolesFacturacionForm.pas' {frmPersonasRolesFacturacion},
   PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit},
   FacturacionForm in 'Procesos\FacturacionForm.pas' {frmFacturacion},
-  CuentasXPagarPagosBancoDM in 'Procesos\CuentasXPagarPagosBancoDM.pas' {dmCuentasXPagarPagosBancos: TDataModule};
+  CuentasXPagarPagosBancoDM in 'Procesos\CuentasXPagarPagosBancoDM.pas' {dmCuentasXPagarPagosBancos: TDataModule},
+  CuentasXCobrarEditConcepto in 'Procesos\CuentasXCobrarEditConcepto.pas' {frmCuentasXCobrarConceptoEdit};
 
 {$R *.res}
 

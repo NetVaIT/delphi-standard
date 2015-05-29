@@ -9,7 +9,7 @@ const
   CFDIVersion = '3.2';
   feXML = '.XML';
   fePNG = '.PNG';
-//  strDir = 'C:\Temp';
+  strDir = 'C:\Temp';
   PagoUnaExhibicion = 'Pago en una sola exhibición';
   PagoParcialidades = 'En parcialidades';
   TipoIngreso = 'ingreso';
@@ -37,7 +37,7 @@ type
     NombreArchivo: string;
   end;
 
-  function GenerarCFDI(Documento: TDocumentoComprobanteFiscal; ArchivoXML: TFileName;
+  function GenerarCFDI(Documento: TDocumentoComprobanteFiscal;
   Certificado: TFECertificado; var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean = False): Boolean;
   function CancelarCFDI(UUID: string; ArchivoOUT: string; Certificado: TFECertificado;
   var Respuesta: string; Produccion: Boolean = False): Boolean;
@@ -244,9 +244,10 @@ begin
   end;
 end;
 
-function GenerarCFDI(Documento: TDocumentoComprobanteFiscal; ArchivoXML: TFileName;
+function GenerarCFDI(Documento: TDocumentoComprobanteFiscal;
 Certificado: TFECertificado; var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean = False): Boolean;
 var
+  ArchivoXML: TFileName;
   I: Integer;
 begin
   Result:= False;
@@ -323,7 +324,7 @@ begin
     SetImpuestosTrasladados(Documento.ImpuestosTrasladados);
 
   // VirtualXML_ProcesaDocumento(hXml, 'aaqm610917qja.cer', 'aaqm610917qja_1011180955s.key', '12345678a', pansichar(NomArchi));
-  // ArchivoXML:= strDir + PathDelim + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;
+   ArchivoXML:= strDir + PathDelim + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;
     VirtualXML_ProcesaDocumento(hXML, PWideChar(Certificado.Ruta), PWideChar(Certificado.LlavePrivada.Ruta), PWideChar(Certificado.LlavePrivada.Clave), PWideChar(ArchivoXML));
   // Ejecutamos la función de firmado y sellado, esta función realiza TODAS las labores de generación del CFDI que son:
   //

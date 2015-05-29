@@ -128,8 +128,8 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
     CursorType = ctStatic
     CommandText = 'SELECT IdPeriodo, Descripcion FROM Periodos'
     Parameters = <>
-    Left = 184
-    Top = 168
+    Left = 168
+    Top = 88
   end
   object adocGetPeriodoActual: TADOCommand
     CommandText = 
@@ -147,5 +147,23 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
       end>
     Left = 48
     Top = 219
+  end
+  object adodsCXCConceptos: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT IdCuentaXCobrarConcepto, Descripcion FROM CuentasXCobrarC' +
+      'onceptos'
+    Parameters = <>
+    Left = 280
+    Top = 224
+    object adodsCXCConceptosIdCuentaXCobrarConcepto: TAutoIncField
+      FieldName = 'IdCuentaXCobrarConcepto'
+      ReadOnly = True
+    end
+    object adodsCXCConceptosDescripcion: TStringField
+      FieldName = 'Descripcion'
+      Size = 200
+    end
   end
 end

@@ -59,6 +59,8 @@ type
     dxBarButton8: TdxBarButton;
     actListaFacturar: TAction;
     procedure actListaFacturarExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     FDataSetPeriodo: TDataSet;
     dmFacturacion: TdmFacturacion;
@@ -76,7 +78,7 @@ implementation
 
 {$R *.dfm}
 
-uses CuentasXCobrarDM;
+uses CuentasXCobrarDM, CuentasXCobrarEditConcepto;
 
 { TfrmCuentasXCobrarForm }
 
@@ -86,6 +88,18 @@ begin
   dmFacturacion := TdmFacturacion.Create(nil);
   dmFacturacion.actListaFacturar.Execute;
   FreeAndNil(dmFacturacion);
+end;
+
+procedure TfrmCuentasXCobrarForm.FormCreate(Sender: TObject);
+begin
+  inherited;
+  gEditForm := TfrmCuentasXCobrarConceptoEdit.Create(Self);
+end;
+
+procedure TfrmCuentasXCobrarForm.FormShow(Sender: TObject);
+begin
+  inherited;
+  gEditForm.DataSource.DataSet := CuentasXCobrarDM.TdmCuentasXCobrar(Self).adodsCXCConceptos;
 end;
 
 function TfrmCuentasXCobrarForm.GetIdPeriodo: Integer;
