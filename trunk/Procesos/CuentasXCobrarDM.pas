@@ -29,6 +29,9 @@ type
     adodsMasterEstatus: TStringField;
     adodsPeriodo: TADODataSet;
     adocGetPeriodoActual: TADOCommand;
+    adodsCXCConceptos: TADODataSet;
+    adodsCXCConceptosIdCuentaXCobrarConcepto: TAutoIncField;
+    adodsCXCConceptosDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -54,32 +57,32 @@ begin
   inherited;
   FIdPeriodoActual := GetPeriodoActual;
   gGridForm := TfrmCuentasXCobrarForm.Create(Self);
-  gGridForm.ReadOnlyGrid:= True;
+  gGridForm.ReadOnlyGrid := True;
   gGridForm.DataSet := adodsMaster;
   // Filtrado
   SQLSelect:= 'SELECT IdCuentaXCobrar, IdPersonaRol, IdPeriodo, IdCuentaXCobrarEstatus, ' +
   'Persona, PersonaRelacionada, ConceptoGenerico, SumaSubtotal, SumaTotal, SumaDescuentos, ' +
   'TotalIVATrasladado, TotalISRTrasladado, TotalIEPSTrasladado, TotalLocalesTrasladado, ' +
   'TotalIVARetenido, TotalISRRetenido, TotalLocalesRetenido, SaldoPendiente, Estatus FROM vCuentasXCobrar';
-  gGridForm.actSearch:= actSearch;
+  gGridForm.actSearch := actSearch;
   adodsPeriodo.Open;
-  TfrmCuentasXCobrarForm(gGridForm).DataSetPeriodo:= adodsPeriodo;
-  TfrmCuentasXCobrarForm(gGridForm).IdPeriodo:= IdPeriodoActual;
+  TfrmCuentasXCobrarForm(gGridForm).DataSetPeriodo := adodsPeriodo;
+  TfrmCuentasXCobrarForm(gGridForm).IdPeriodo := IdPeriodoActual;
   actSearch.Execute;
 end;
 
 function TdmCuentasXCobrar.GetPeriodoActual: Integer;
 begin
   adocGetPeriodoActual.Execute;
-  Result:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
+  Result := adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
 end;
 
 procedure TdmCuentasXCobrar.SetFilter;
 var
-  IdPeriodo: Integer;
+  IdPeriodo : Integer;
 begin
   inherited;
-  IdPeriodo:= TfrmCuentasXCobrarForm(gGridForm).IdPeriodo;
-  SQLWhere:= Format('WHERE IdPeriodo = %d', [IdPeriodo]);
+  IdPeriodo := TfrmCuentasXCobrarForm(gGridForm).IdPeriodo;
+  SQLWhere := Format('WHERE IdPeriodo = %d', [IdPeriodo]);
 end;
 end.

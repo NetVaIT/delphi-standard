@@ -68,20 +68,14 @@ type
     adodsKeyVencimientoDocumento: TWideStringField;
     adodsKeyNombreArchivo: TStringField;
     adodsKeyArchivo: TBlobField;
-    adodsUpdateIdDocumento: TAutoIncField;
-    adodsUpdateIdDocumentoTipo: TIntegerField;
-    adodsUpdateIdDocumentoClase: TIntegerField;
-    adodsUpdateDescripcion: TStringField;
-    adodsUpdateNombreArchivo: TStringField;
-    adodsUpdateIdArchivo: TGuidField;
-    adodsUpdateArchivo: TBlobField;
     adodsMasterRegimenFiscal: TStringField;
     procedure actListaFacturarExecute(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcesarFacturasExecute(Sender: TObject);
   private
     { Private declarations }
-    procedure ReadFile(FileName: TFileName);
+    procedure ReadFileCER(FileName: TFileName);
+    procedure ReadFileKEY(FileName: TFileName);
   public
     { Public declarations }
   end;
@@ -115,20 +109,22 @@ var
   Concepto1, Concepto2 : TFEConcepto;
   TimbreCFDI: TTimbreCFDI;
   FileCertificado, FileKey : TFileName;
+  NombreFactura : String;
+  Clave : String;
 begin
   inherited;
-    ShowMessage('Inicia la facturacion...');
-    adodsMaster.Open;
-//    adodsMaster.DataSource.DataSet.First;
+//    adodsMaster.Open;
+    adodsMaster.First;
     while not adodsMaster.eof do
     begin
-      adodsEmisor.Close;
-      adodsReceptor.Close;
       adodsCer.Close;
       adodsKey.Close;
+      adodsEmisor.Close;
+      adodsReceptor.Close;
       adodsEmisor.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersona').Value;
       adodsReceptor.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersonaRelacionada').Value;
-
+      adodsCer.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersona').Value;
+      adodsKey.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersona').Value;
       adodsEmisor.Open;
       adodsReceptor.Open;
       adodsCer.Open;
@@ -136,20 +132,20 @@ begin
 
       DocumentoComprobanteFiscal:= TDocumentoComprobanteFiscal.Create;
       try
-        Emisor.RFC                    := adodsEmisorRFC.Value;
-        Emisor.Nombre                 := adodsEmisorRazonSocial.Value;
-        Emisor.Direccion.Calle        := adodsEmisorCalle.Value;
-        Emisor.Direccion.NoExterior   := adodsEmisorNoExterior.Value;
-        Emisor.Direccion.NoInterior   := adodsEmisorNoInterior.Value;
-        Emisor.Direccion.CodigoPostal := adodsEmisorCodigoPostal.Value;
-        Emisor.Direccion.Colonia      := adodsEmisorColonia.Value;
-        Emisor.Direccion.Municipio    := adodsEmisorMunicipio.Value;
-        Emisor.Direccion.Estado       := adodsEmisorEstado.Value;
-        Emisor.Direccion.Pais         := adodsEmisorPais.Value;
-        Emisor.Direccion.Localidad    := adodsEmisorPoblacion.Value;
+        Emisor.RFC                    := adodsEmisorRFC.AsString;
+        Emisor.Nombre                 := adodsEmisorRazonSocial.AsString;
+        Emisor.Direccion.Calle        := adodsEmisorCalle.AsString;
+        Emisor.Direccion.NoExterior   := adodsEmisorNoExterior.AsString;
+        Emisor.Direccion.NoInterior   := adodsEmisorNoInterior.AsString;
+        Emisor.Direccion.CodigoPostal := adodsEmisorCodigoPostal.AsString;
+        Emisor.Direccion.Colonia      := adodsEmisorColonia.AsString;
+        Emisor.Direccion.Municipio    := adodsEmisorMunicipio.AsString;
+        Emisor.Direccion.Estado       := adodsEmisorEstado.AsString;
+        Emisor.Direccion.Pais         := adodsEmisorPais.AsString;
+        Emisor.Direccion.Localidad    := adodsEmisorPoblacion.AsString;
          // 2. Agregamos los régimenes fiscales (requerido en CFD >= 2.2)
         SetLength(Emisor.Regimenes, 1);
-        Emisor.Regimenes[0] := adodsMasterRegimenFiscal.Value;
+        Emisor.Regimenes[0] := adodsMasterRegimenFiscal.AsString;
         // Asignamos los valores iguales a la direcion del emisor suponiendo que se genera en el mismo lugar que se emitio
         Emisor.ExpedidoEn.Calle        := Emisor.Direccion.Calle;
         Emisor.ExpedidoEn.NoExterior   := Emisor.Direccion.NoExterior;
@@ -162,8 +158,8 @@ begin
         Emisor.ExpedidoEn.Localidad    := Emisor.Direccion.Localidad;
         Emisor.ExpedidoEn.Referencia   := Emisor.Direccion.Referencia;
 
-        Receptor.RFC := adodsReceptorRFC.Value;
-        Receptor.Nombre := adodsReceptorRazonSocial.Value;
+        Receptor.RFC := adodsReceptorRFC.AsString;
+        Receptor.Nombre := adodsReceptorRazonSocial.AsString;
     //    Receptor.Direccion.Calle:='Patriotismo';
     //    Receptor.Direccion.NoExterior:='4579';
     //    Receptor.Direccion.NoInterior:='94';
@@ -171,19 +167,19 @@ begin
     //    Receptor.Direccion.Colonia:='La Añoranza';
     //    Receptor.Direccion.Municipio:='Coyoacán';
     //    Receptor.Direccion.Estado:='Veracruz';
-        Receptor.Direccion.Pais := adodsReceptorPais.Value;
+        Receptor.Direccion.Pais := adodsReceptorPais.AsString;
     //    Receptor.Direccion.Localidad:='Boca del Rio';
 
         // 4. Definimos el certificado junto con su llave privada
 
         FileCertificado := TPath.GetTempPath + adodsCerNombreArchivo.AsString;
-        ReadFile(FileCertificado);
-        FileCertificado := TPath.GetTempPath + adodsKeyNombreArchivo.AsString;
-        ReadFile(FileCertificado);
-
+        ReadFileCER(FileCertificado);
+        FileKey := TPath.GetTempPath + adodsKeyNombreArchivo.AsString;
+        ReadFileKEY(FileKey);
+        Clave := adodsKeyClave.AsString;
         Certificado.Ruta := FileCertificado;
         Certificado.LlavePrivada.Ruta := FileKey;
-        Certificado.LlavePrivada.Clave := adodsKeyClave.AsString;
+        Certificado.LlavePrivada.Clave := Clave;
 
     //      // 5. Creamos la clase Factura con los parametros minimos.
     //      WriteLn('Generando factura CFD ...');
@@ -198,11 +194,11 @@ begin
         DocumentoComprobanteFiscal.MetodoDePago := 'Transferencia Electronica de Fondos';
         //DocumentoComprobanteFiscal..NumeroDeCuenta:='1234';
         // Asignamos el lugar de expedición (requerido en  CFD >= 2.2)
-        DocumentoComprobanteFiscal.LugarDeExpedicion := adodsEmisorPoblacion.Value + ', ' + adodsEmisorMunicipio.Value;
+        DocumentoComprobanteFiscal.LugarDeExpedicion := adodsEmisorPoblacion.AsString + ', ' + adodsEmisorMunicipio.AsString;
         // Definimos todos los conceptos que incluyo la factura
         Concepto1.Cantidad := 1;
         Concepto1.Unidad := 'Servicio';
-        Concepto1.Descripcion := adodsMasterConceptoGenerico.Value;
+        Concepto1.Descripcion := adodsMasterConceptoGenerico.AsString;
         Concepto1.ValorUnitario := adodsMasterSumaSubtotal.AsCurrency;
 //        Concepto1.NoIdentificacion := ADOdsConceptocdsNoidentifica.Value;
 //        Concepto1.CuentaPredial := ADOdsConceptocdsCuentaPredial.Value;
@@ -213,7 +209,7 @@ begin
     //    Impuesto1.Importe:=(Concepto2.ValorUnitario * Concepto2.Cantidad);
     //    DocumentoComprobanteFiscal.AgregarImpuestoRetenido(Impuesto1);
 
-        Impuesto2.Nombre := 'I.V.A.';
+        Impuesto2.Nombre := 'IVA';
         Impuesto2.Tasa := 16;
         Impuesto2.Importe := adodsMasterTotalIVATrasladado.AsCurrency;
         DocumentoComprobanteFiscal.AgregarImpuestoTrasladado(Impuesto2);
@@ -228,7 +224,7 @@ begin
         // Le damos un descuento
         //DocumentoComprobanteFiscal.AsignarDescuento(5, 'Por pronto pago');
 
-        TimbreCFDI.NombreArchivo := adodsEmisorRFC.Value;
+        NombreFactura := 'C:\Temp\' + adodsEmisorRFC.AsString + '.xml';
 
         if GenerarCFDI(DocumentoComprobanteFiscal, Certificado, TimbreCFDI, False) then
           ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
@@ -237,7 +233,7 @@ begin
       finally
         DocumentoComprobanteFiscal.Free
       end;
-      adodsMaster.DataSource.DataSet.Next;
+      adodsMaster.Next;
     end;
 
 end;
@@ -250,12 +246,31 @@ begin
   TfrmFacturacion(gGridForm).FacturarCtas := actProcesarFacturas;
 end;
 
-procedure TdmFacturacion.ReadFile(FileName: TFileName);
+procedure TdmFacturacion.ReadFileCER(FileName: TFileName);
 var
   Blob : TStream;
   Fs: TFileStream;
 begin
-  Blob:= adodsUpdate.CreateBlobStream(adodsUpdateArchivo, bmRead);
+  Blob:= adodsCer.CreateBlobStream(adodsCerArchivo, bmRead);
+  try
+    Blob.Seek(0, soFromBeginning);
+    Fs:= TFileStream.Create(FileName, fmCreate);
+    try
+      Fs.CopyFrom(Blob, Blob.Size);
+    finally
+      Fs.Free;
+    end;
+  finally
+    Blob.Free
+  end;
+end;
+
+procedure TdmFacturacion.ReadFileKEY(FileName: TFileName);
+var
+  Blob : TStream;
+  Fs: TFileStream;
+begin
+  Blob:= adodsKey.CreateBlobStream(adodsKeyArchivo, bmRead);
   try
     Blob.Seek(0, soFromBeginning);
     Fs:= TFileStream.Create(FileName, fmCreate);

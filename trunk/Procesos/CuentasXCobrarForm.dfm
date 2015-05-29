@@ -3,6 +3,7 @@ inherited frmCuentasXCobrarForm: TfrmCuentasXCobrarForm
   Caption = 'Cuentas por cobrar'
   ClientHeight = 474
   ClientWidth = 713
+  OnCreate = FormCreate
   ExplicitWidth = 719
   ExplicitHeight = 498
   PixelsPerInch = 96

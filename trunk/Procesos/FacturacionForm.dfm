@@ -136,10 +136,10 @@ inherited frmFacturacion: TfrmFacturacion
         end>
     end
     object dxbbProcesar: TdxBarButton
-      Caption = 'New Button'
       Category = 0
-      Hint = 'New Button'
+      Hint = 'Procesar Facturas'
       Visible = ivAlways
+      ImageIndex = 13
     end
   end
   inherited cxStyleRepository: TcxStyleRepository

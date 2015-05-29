@@ -88,35 +88,6 @@ inherited dmFacturacion: TdmFacturacion
   end
   inherited adodsUpdate: TADODataSet
     CursorType = ctStatic
-    CommandText = 
-      'SELECT IdDocumento, IdDocumentoTipo, IdDocumentoClase, Descripci' +
-      'on, NombreArchivo, IdArchivo, Archivo FROM Documentos'
-    object adodsUpdateIdDocumento: TAutoIncField
-      FieldName = 'IdDocumento'
-      ReadOnly = True
-    end
-    object adodsUpdateIdDocumentoTipo: TIntegerField
-      FieldName = 'IdDocumentoTipo'
-    end
-    object adodsUpdateIdDocumentoClase: TIntegerField
-      FieldName = 'IdDocumentoClase'
-    end
-    object adodsUpdateDescripcion: TStringField
-      FieldName = 'Descripcion'
-      Size = 200
-    end
-    object adodsUpdateNombreArchivo: TStringField
-      FieldName = 'NombreArchivo'
-      Size = 200
-    end
-    object adodsUpdateIdArchivo: TGuidField
-      FieldName = 'IdArchivo'
-      FixedChar = True
-      Size = 38
-    end
-    object adodsUpdateArchivo: TBlobField
-      FieldName = 'Archivo'
-    end
   end
   inherited ActionList: TActionList
     object actListaFacturar: TAction
@@ -124,6 +95,7 @@ inherited dmFacturacion: TdmFacturacion
     end
     object actProcesarFacturas: TAction
       Hint = 'Procesar Facturas'
+      ImageIndex = 13
       OnExecute = actProcesarFacturasExecute
     end
   end
@@ -264,8 +236,17 @@ inherited dmFacturacion: TdmFacturacion
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPersona, IdRol, IdPersonaRol, Clave, VencimientoDocumen' +
-      'to, NombreArchivo, Archivo FROM vCertificadosFacturacion'
-    Parameters = <>
+      'to, NombreArchivo, Archivo FROM vCertificadosFacturacion WHERE (' +
+      'Clave = '#39#39' OR Clave IS NULL) AND IdPersona = :IdPersona'
+    Parameters = <
+      item
+        Name = 'IdPersona'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     Left = 216
     Top = 120
     object adodsCerIdPersona: TIntegerField
@@ -298,8 +279,17 @@ inherited dmFacturacion: TdmFacturacion
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPersona, IdRol, IdPersonaRol, Clave, VencimientoDocumen' +
-      'to, NombreArchivo, Archivo FROM vCertificadosFacturacion'
-    Parameters = <>
+      'to, NombreArchivo, Archivo FROM vCertificadosFacturacion WHERE C' +
+      'lave <> '#39#39' AND IdPersona = :IdPersona'
+    Parameters = <
+      item
+        Name = 'IdPersona'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     Left = 216
     Top = 216
     object adodsKeyIdPersona: TIntegerField

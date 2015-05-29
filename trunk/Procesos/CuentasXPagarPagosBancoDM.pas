@@ -53,7 +53,6 @@ var
   Registro : String;
 begin
 {
-
   Assign(Archivo, NombreArchivo);
   Rewrite(Archivo);
   TablaE.First;
