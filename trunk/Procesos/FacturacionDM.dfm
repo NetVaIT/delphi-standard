@@ -7,8 +7,8 @@ inherited dmFacturacion: TdmFacturacion
       'btotal, SumaTotal, SumaDescuentos, TotalIVATrasladado, TotalISRT' +
       'rasladado, TotalIEPSTrasladado, TotalLocalesTrasladado, TotalIVA' +
       'Retenido, TotalISRRetenido, TotalLocalesRetenido, Facturar, IdPe' +
-      'rsona, IdPersonaRelacionada, RegimenFiscal FROM vCuentasXCobrarF' +
-      'acturacion WHERE IdCuentaXCobrarEstatus = 2'
+      'rsona, IdPersonaRelacionada, RegimenFiscal, IdCuentaXCobrar FROM' +
+      ' vCuentasXCobrarFacturacion WHERE IdCuentaXCobrarEstatus = 2'
     Left = 40
     Top = 32
     object adodsMasterIdCuentaXCobrarEstatus: TIntegerField
@@ -84,6 +84,9 @@ inherited dmFacturacion: TdmFacturacion
     object adodsMasterRegimenFiscal: TStringField
       FieldName = 'RegimenFiscal'
       Size = 50
+    end
+    object adodsMasterIdCuentaXCobrar: TIntegerField
+      FieldName = 'IdCuentaXCobrar'
     end
   end
   inherited adodsUpdate: TADODataSet
@@ -316,5 +319,22 @@ inherited dmFacturacion: TdmFacturacion
     object adodsKeyArchivo: TBlobField
       FieldName = 'Archivo'
     end
+  end
+  object adocFacturaCuenta: TADOCommand
+    CommandText = 
+      'UPDATE CuentasXCobrar'#13#10'SET IdCuentaXCobrarEstatus = 3 '#13#10'WHERE Id' +
+      'CuentaXCobrar = :IdCuentaXCobrar'
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'IdCuentaXCobrar'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    Left = 112
+    Top = 280
   end
 end

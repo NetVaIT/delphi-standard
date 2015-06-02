@@ -123,6 +123,12 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
       Size = 50
     end
   end
+  inherited ActionList: TActionList
+    object actCambiarConcepto: TAction
+      Caption = 'actCambiarConcepto'
+      OnExecute = actCambiarConceptoExecute
+    end
+  end
   object adodsPeriodo: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
@@ -155,15 +161,38 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
       'SELECT IdCuentaXCobrarConcepto, Descripcion FROM CuentasXCobrarC' +
       'onceptos'
     Parameters = <>
-    Left = 280
-    Top = 224
-    object adodsCXCConceptosIdCuentaXCobrarConcepto: TAutoIncField
-      FieldName = 'IdCuentaXCobrarConcepto'
-      ReadOnly = True
-    end
+    Left = 320
+    Top = 176
     object adodsCXCConceptosDescripcion: TStringField
+      DisplayLabel = 'Conceptos'
       FieldName = 'Descripcion'
       Size = 200
     end
+  end
+  object adocAutorizaCuenta: TADOCommand
+    CommandText = 
+      'UPDATE CuentasXCobrar'#13#10'SET IdCuentaXCobrarEstatus = 2, ConceptoG' +
+      'enerico = :Concepto '#13#10'WHERE IdCuentaXCobrar = :IdCuentaXCobrar'
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'Concepto'
+        Attributes = [paNullable]
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 200
+        Value = Null
+      end
+      item
+        Name = 'IdCuentaXCobrar'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    Left = 168
+    Top = 216
   end
 end

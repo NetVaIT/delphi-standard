@@ -759,7 +759,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Procesos\CuentasXCobrarEditConcepto.pas">
-            <Form>frmCuentasXCobrarConceptoEdit</Form>
+            <Form>frmCuentasXCobrarEditConcepto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

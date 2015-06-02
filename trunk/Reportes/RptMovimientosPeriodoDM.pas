@@ -141,9 +141,7 @@ begin
 //    showmessage(inttostr(adostReporte.Fields[i].DataType));
 //    adostReporte.Fields[i].FieldKind(4);
 //    adostReporte.Fields[i].DataType.ftBCD.ftCurrency = true;
-
 //    adostReporte.DataSetField.Fields[i].SetFieldType(self).Currency;
-
   end;
 end;
 
