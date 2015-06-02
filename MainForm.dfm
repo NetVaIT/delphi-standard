@@ -3,7 +3,7 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -111,8 +111,6 @@ inherited frmMain: TfrmMain
         end>
     end
     inherited dxbArchivo: TdxBar
-      DockedDockControl = nil
-      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end

@@ -59,19 +59,23 @@ type
     dxBarButton8: TdxBarButton;
     actListaFacturar: TAction;
     procedure actListaFacturarExecute(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    procedure tvMasterCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     FDataSetPeriodo: TDataSet;
     dmFacturacion: TdmFacturacion;
+    FCambiaConcepto: TBasicAction;
     { Private declarations }
     function GetIdPeriodo: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
     procedure SetIdPeriodo(const Value: Integer);
+    procedure SetAsignaConcepto(const Value: TBasicAction);
   public
     { Public declarations }
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
+    property CambiarConcepto: TBasicAction read FCambiaConcepto write SetAsignaConcepto;
   end;
 
 implementation
@@ -90,24 +94,17 @@ begin
   FreeAndNil(dmFacturacion);
 end;
 
-procedure TfrmCuentasXCobrarForm.FormCreate(Sender: TObject);
-begin
-  inherited;
-  gEditForm := TfrmCuentasXCobrarConceptoEdit.Create(Self);
-end;
-
-procedure TfrmCuentasXCobrarForm.FormShow(Sender: TObject);
-begin
-  inherited;
-  gEditForm.DataSource.DataSet := CuentasXCobrarDM.TdmCuentasXCobrar(Self).adodsCXCConceptos;
-end;
-
 function TfrmCuentasXCobrarForm.GetIdPeriodo: Integer;
 begin
   if VarIsNull(cxedtPeriodo.EditValue) then
     Result := 0
   else
     Result := cxedtPeriodo.EditValue;
+end;
+
+procedure TfrmCuentasXCobrarForm.SetAsignaConcepto(const Value: TBasicAction);
+begin
+  FCambiaConcepto := Value;
 end;
 
 procedure TfrmCuentasXCobrarForm.SetDataSetPeriodo(const Value: TDataSet);
@@ -119,6 +116,14 @@ end;
 procedure TfrmCuentasXCobrarForm.SetIdPeriodo(const Value: Integer);
 begin
   cxedtPeriodo.EditValue := Value;
+end;
+
+procedure TfrmCuentasXCobrarForm.tvMasterCellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  inherited;
+  FCambiaConcepto.Execute;
 end;
 
 end.

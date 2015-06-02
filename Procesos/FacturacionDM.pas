@@ -69,6 +69,8 @@ type
     adodsKeyNombreArchivo: TStringField;
     adodsKeyArchivo: TBlobField;
     adodsMasterRegimenFiscal: TStringField;
+    adocFacturaCuenta: TADOCommand;
+    adodsMasterIdCuentaXCobrar: TIntegerField;
     procedure actListaFacturarExecute(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcesarFacturasExecute(Sender: TObject);
@@ -111,8 +113,13 @@ var
   FileCertificado, FileKey : TFileName;
   NombreFactura : String;
   Clave : String;
+  Emision : String;
+  Anio, Mes, Dia : Word;
 begin
   inherited;
+    ScreenCursorProc(-11);
+    DecodeDate(Now, Anio, Mes, Dia);
+    Emision := IntToStr(Anio) + IntToStr(Mes);
 //    adodsMaster.Open;
     adodsMaster.First;
     while not adodsMaster.eof do
@@ -224,18 +231,23 @@ begin
         // Le damos un descuento
         //DocumentoComprobanteFiscal.AsignarDescuento(5, 'Por pronto pago');
 
-        NombreFactura := 'C:\Temp\' + adodsEmisorRFC.AsString + '.xml';
+        NombreFactura := 'C:\Temp\' + adodsEmisorRFC.AsString + Emision + '\' + adodsEmisorRFC.AsString + '.xml';
 
         if GenerarCFDI(DocumentoComprobanteFiscal, Certificado, TimbreCFDI, False) then
-          ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
+        begin
+          //ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
+          adocFacturaCuenta.Parameters.ParamByName('IdCuentaXCobrar').Value := adodsMasterIdCuentaXCobrar.Value;
+          adocFacturaCuenta.Execute;
+        end
         else
-          ShowMessage('Error: ' + TimbreCFDI.MensajeError);
+          //ShowMessage('Error: ' + TimbreCFDI.MensajeError);
       finally
-        DocumentoComprobanteFiscal.Free
+        DocumentoComprobanteFiscal.Free;
+        ScreenCursorProc(0);
       end;
       adodsMaster.Next;
     end;
-
+    ShowMessage('Facturas Generadas');
 end;
 
 procedure TdmFacturacion.DataModuleCreate(Sender: TObject);

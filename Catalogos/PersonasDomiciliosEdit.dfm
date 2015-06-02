@@ -3,21 +3,21 @@ inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
   ClientHeight = 303
   ClientWidth = 545
   ExplicitWidth = 551
-  ExplicitHeight = 332
+  ExplicitHeight = 331
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 545
     Height = 262
     ExplicitWidth = 545
-    ExplicitHeight = 230
+    ExplicitHeight = 262
     ClientRectBottom = 260
     ClientRectRight = 543
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 541
-      ExplicitHeight = 200
+      ExplicitHeight = 232
       object Label1: TLabel
         Left = 16
         Top = 24
@@ -47,7 +47,7 @@ inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
         Height = 21
         DataField = 'Tipo'
         DataSource = DataSource
-        TabOrder = 2
+        TabOrder = 1
       end
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 16
@@ -80,15 +80,15 @@ inherited frmPersonasDomiciliosEdit: TfrmPersonasDomiciliosEdit
   inherited pmlMain: TPanel
     Top = 262
     Width = 545
-    ExplicitTop = 230
+    ExplicitTop = 262
     ExplicitWidth = 545
-    inherited btnOk: TButton
-      Left = 382
-      ExplicitLeft = 382
-    end
     inherited btnCancel: TButton
       Left = 463
       ExplicitLeft = 463
+    end
+    inherited btnOk: TButton
+      Left = 382
+      ExplicitLeft = 382
     end
   end
   inherited DataSource: TDataSource

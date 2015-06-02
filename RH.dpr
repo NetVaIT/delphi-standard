@@ -198,7 +198,7 @@ uses
   PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit},
   ISRProvisionalesDM in 'Procesos\ISRProvisionalesDM.pas' {dmISRProvisionales: TDataModule},
   ISRProvisionalesForm in 'Procesos\ISRProvisionalesForm.pas' {frmISRProvisionales},
-  CuentasXCobrarEditConcepto in 'Procesos\CuentasXCobrarEditConcepto.pas' {frmCuentasXCobrarConceptoEdit};
+  CuentasXCobrarEditConcepto in 'Procesos\CuentasXCobrarEditConcepto.pas' {frmCuentasXCobrarEditConcepto};
 
 {$R *.res}
 
