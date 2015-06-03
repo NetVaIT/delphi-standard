@@ -31,8 +31,7 @@ type
     adodsMovimientosEstatus: TADODataSet;
     adodsMovimientosDetEstatus: TStringField;
     adodsMovimientosDetIdCuentaXPagar: TIntegerField;
-    adocGetPeriodoActual: TADOCommand;
-    adospMovimientosCalculados: TADOStoredProc;
+    adospMovimientosDiversificados: TADOStoredProc;
     actCalcularCXP: TAction;
     adospCuentasXPagar: TADOStoredProc;
     adodsMasterIngresos: TFMTBCDField;
@@ -82,7 +81,7 @@ type
     FIdPeriodoActual: Integer;
     function SetMovimientosCalculados: Boolean;
     function SetCuentaXPagar: Boolean;
-    function GetPeriodoActual: Integer;
+    procedure SetPrestamos;
   protected
     procedure SetFilter; override;
   public
@@ -94,7 +93,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod, ISRProvisionalesDM;
+uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod, ISRProvisionalesDM,
+  PrestamosPagoDM, ConfiguracionDM;
 
 {$R *.dfm}
 
@@ -211,7 +211,7 @@ end;
 procedure TdmMovimientos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  FIdPeriodoActual := GetPeriodoActual;
+  FIdPeriodoActual := dmConfiguracion.IdPeridoActual;
   adodsMovimientosDet.Open;
   gGridForm:= TfrmMovimientos.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
@@ -238,12 +238,6 @@ begin
   actSearch.Execute;
 end;
 
-function TdmMovimientos.GetPeriodoActual: Integer;
-begin
-  adocGetPeriodoActual.Execute;
-  Result:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
-end;
-
 function TdmMovimientos.SetMovimientosCalculados: Boolean;
 begin
   Result:= False;
@@ -251,12 +245,13 @@ begin
   begin
     ScreenCursorProc(crSQLWait);
     try
-      adospMovimientosCalculados.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-      adospMovimientosCalculados.ExecProc;
+      adospMovimientosDiversificados.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+      adospMovimientosDiversificados.ExecProc;
     finally
       ScreenCursorProc(crDefault);
     end;
-    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+    MessageDlg('Proceso de diversificación terminado.', mtInformation, [mbOk], 0);
+    SetPrestamos;
     Result:= True;
   end;
 end;
@@ -287,5 +282,18 @@ begin
   IdPeriodo:= TfrmMovimientos(gGridForm).IdPeriodo;
   SQLWhere:= Format('WHERE IdPeriodo = %d', [IdPeriodo]);
 end;
+
+procedure TdmMovimientos.SetPrestamos;
+var
+  dmPrestamosPago: TdmPrestamosPago;
+begin
+  dmPrestamosPago := TdmPrestamosPago.Create(Self);
+  try
+    dmPrestamosPago.Execute;
+  finally
+    dmPrestamosPago.Free;
+  end;
+end;
+
 
 end.

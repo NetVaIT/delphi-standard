@@ -64,7 +64,7 @@ type
     cxsIntial: TcxStyle;
     cxsRed: TcxStyle;
     cxsGreen: TcxStyle;
-    cxsGray: TcxStyle;
+    cxsMedGray: TcxStyle;
     cxsSilver: TcxStyle;
     dxbtnMostrarISR: TdxBarButton;
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;

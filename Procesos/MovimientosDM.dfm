@@ -154,7 +154,7 @@ inherited dmMovimientos: TdmMovimientos
   end
   inherited ActionList: TActionList
     object actCalcularmovimientos: TAction
-      Caption = 'Generar movimientos calculados'
+      Caption = 'Deversificar importes'
       Hint = 'Genera movimientos calculados del periodo actual'
       ImageIndex = 10
       OnExecute = actCalcularmovimientosExecute
@@ -368,26 +368,9 @@ inherited dmMovimientos: TdmMovimientos
     Left = 176
     Top = 320
   end
-  object adocGetPeriodoActual: TADOCommand
-    CommandText = 
-      'DECLARE @IdPeriodo int;'#13#10'SELECT @IdPeriodo = IdPeriodo FROM Peri' +
-      'odos WHERE IdPeriodoEstatus = 1;'#13#10'SET :IdPeriodo  = @IdPeriodo;'#13 +
-      #10
+  object adospMovimientosDiversificados: TADOStoredProc
     Connection = _dmConection.ADOConnection
-    Parameters = <
-      item
-        Name = 'IdPeriodo'
-        DataType = ftInteger
-        Direction = pdOutput
-        Size = -1
-        Value = Null
-      end>
-    Left = 64
-    Top = 392
-  end
-  object adospMovimientosCalculados: TADOStoredProc
-    Connection = _dmConection.ADOConnection
-    ProcedureName = 'p_GenMovimientosCalculados;1'
+    ProcedureName = 'p_GenMovimientosDiversificados;1'
     Parameters = <
       item
         Name = '@RETURN_VALUE'

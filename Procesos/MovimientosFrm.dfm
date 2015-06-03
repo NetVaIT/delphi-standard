@@ -89,7 +89,7 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterSaldo: TcxGridDBColumn
           DataBinding.FieldName = 'Saldo'
-          Styles.Content = cxsGray
+          Styles.Content = cxsMedGray
           Width = 104
         end
         object tvMasterDescuentos: TcxGridDBColumn
@@ -305,13 +305,13 @@ inherited frmMovimientos: TfrmMovimientos
       AssignedValues = [svColor]
       Color = clMoneyGreen
     end
-    object cxsGray: TcxStyle
+    object cxsMedGray: TcxStyle
       AssignedValues = [svColor]
-      Color = clGray
+      Color = clMedGray
     end
     object cxsSilver: TcxStyle
       AssignedValues = [svColor]
-      Color = clMedGray
+      Color = clSilver
     end
   end
   inherited cxImageList: TcxImageList
@@ -319,7 +319,6 @@ inherited frmMovimientos: TfrmMovimientos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

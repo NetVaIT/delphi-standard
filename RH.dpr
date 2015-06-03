@@ -198,7 +198,14 @@ uses
   PersonasRolesFacturacionEdit in 'Catalogos\PersonasRolesFacturacionEdit.pas' {frmPersonasRolesFacturacionEdit},
   ISRProvisionalesDM in 'Procesos\ISRProvisionalesDM.pas' {dmISRProvisionales: TDataModule},
   ISRProvisionalesForm in 'Procesos\ISRProvisionalesForm.pas' {frmISRProvisionales},
-  CuentasXCobrarEditConcepto in 'Procesos\CuentasXCobrarEditConcepto.pas' {frmCuentasXCobrarEditConcepto};
+  CuentasXCobrarEditConcepto in 'Procesos\CuentasXCobrarEditConcepto.pas' {frmCuentasXCobrarEditConcepto},
+  PrestamosDM in 'Catalogos\PrestamosDM.pas' {dmPrestamos: TDataModule},
+  PrestamosForm in 'Catalogos\PrestamosForm.pas' {frmPrestamos},
+  PrestamosEdit in 'Catalogos\PrestamosEdit.pas' {frmPrestamosEdit},
+  PrestamosPagoDM in 'Procesos\PrestamosPagoDM.pas' {dmPrestamosPago: TDataModule},
+  PrestamosPagoForm in 'Procesos\PrestamosPagoForm.pas' {frmPrestamosPago},
+  PrestamosPagoEdit in 'Procesos\PrestamosPagoEdit.pas' {frmPrestamosPagoEdit},
+  ConfiguracionDM in 'Catalogos\ConfiguracionDM.pas' {dmConfiguracion: TDataModule};
 
 {$R *.res}
 
@@ -224,6 +231,7 @@ begin
   Application.CreateForm(T_dmConection, _dmConection);
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
+  Application.CreateForm(TdmConfiguracion, dmConfiguracion);
   Application.Run;
   end;
 end.

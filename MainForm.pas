@@ -119,6 +119,10 @@ type
     dxtshUsuarios: TdxRibbonBackstageViewTabSheet;
     actNomina: TAction;
     dxBarLargeButton32: TdxBarLargeButton;
+    actRptPrestamos: TAction;
+    dxBarLargeButton33: TdxBarLargeButton;
+    actPrestamos: TAction;
+    dxBarLargeButton34: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -150,7 +154,8 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   IncidenciasDM, InstruccionesTiposDM, PeriodosDM, MovimientosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasContablesNaturalezaDM,
-  CuentasXCobrarDM, RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM;
+  CuentasXCobrarDM, RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM,
+  PrestamosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -182,6 +187,7 @@ begin
    16: gModulo := TdmCuentasInternas.Create(Self);
    17: gModulo := TdmCuentasXCobrarConceptos.Create(Self);
    18: gModulo := TdmCuentasContablesNaturaleza.Create(Self);
+   19: gModulo := TdmPrestamos.Create(Self);
    20: begin
         gModulo := TdmPersona.Create(Self);
         TdmPersona(gModulo).Rol := rNone;
@@ -237,6 +243,11 @@ begin
    54: begin
          gModulo := TdmMovimientosD.Create(Self);
          TdmMovimientosD(gModulo).TipoReporte:= trNomina;
+         TdmMovimientosD(gModulo).actSearch.Execute;
+       end;
+   55: begin
+         gModulo := TdmMovimientosD.Create(Self);
+         TdmMovimientosD(gModulo).TipoReporte:= trPrestamos;
          TdmMovimientosD(gModulo).actSearch.Execute;
        end;
   end;
