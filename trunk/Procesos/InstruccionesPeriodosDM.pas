@@ -19,14 +19,15 @@ type
     adodsMasterPariodo: TStringField;
     adospSetInstruccionesPeriodos: TADOStoredProc;
     adospGenMovimientos: TADOStoredProc;
-    adocGetPeriodoActual: TADOCommand;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
+    FIdPeriodoActual: Integer;
     procedure SetMovimientos;
     function SetInstruccionesPeriodos: Boolean;
   public
     { Public declarations }
+    property IdPeriodoActual: Integer read FIdPeriodoActual;
     procedure Execute;
   end;
 
@@ -34,7 +35,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses InstruccionesPeriodosForm, VerificarForm;
+uses InstruccionesPeriodosForm, VerificarForm, ConfiguracionDM;
 
 
 {$R *.dfm}
@@ -44,6 +45,7 @@ uses InstruccionesPeriodosForm, VerificarForm;
 procedure TdmInstruccionesPeriodos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
+  FIdPeriodoActual := dmConfiguracion.IdPeridoActual;
   gGridForm:= TfrmInstruccionesPeriodos.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
@@ -68,15 +70,11 @@ begin
 end;
 
 function TdmInstruccionesPeriodos.SetInstruccionesPeriodos: Boolean;
-var
-  IdPeriodo: Integer;
 begin
   Result:= False;
-  adocGetPeriodoActual.Execute;
-  IdPeriodo:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
-  if IdPeriodo <> 0 then
+  if IdPeriodoActual <> 0 then
   begin
-    adospSetInstruccionesPeriodos.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
+    adospSetInstruccionesPeriodos.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
     adospSetInstruccionesPeriodos.ExecProc;
     Result:= True;
   end;

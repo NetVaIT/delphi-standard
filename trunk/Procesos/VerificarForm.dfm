@@ -60,6 +60,13 @@ object frmVerificar: TfrmVerificar
       Left = 16
       Top = 9
       Caption = 'lblInfo'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = [fsBold]
+      Style.IsFontAssigned = True
     end
   end
 end

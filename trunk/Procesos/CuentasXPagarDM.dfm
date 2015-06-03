@@ -201,23 +201,6 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Size = 100
     end
   end
-  object adocGetPeriodoActual: TADOCommand
-    CommandText = 
-      'DECLARE @IdPeriodo int;'#13#10'SELECT @IdPeriodo = IdPeriodo FROM Peri' +
-      'odos WHERE IdPeriodoEstatus = 1;'#13#10'SET :IdPeriodo  = @IdPeriodo;'#13 +
-      #10
-    Connection = _dmConection.ADOConnection
-    Parameters = <
-      item
-        Name = 'IdPeriodo'
-        DataType = ftInteger
-        Direction = pdOutput
-        Size = -1
-        Value = Null
-      end>
-    Left = 56
-    Top = 251
-  end
   object adospCuentasXPagar: TADOStoredProc
     Connection = _dmConection.ADOConnection
     ProcedureName = 'p_GenCuentasXPagar;1'

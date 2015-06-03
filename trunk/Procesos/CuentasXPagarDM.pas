@@ -41,7 +41,6 @@ type
     adodsMovimientosDetalleImporte: TFMTBCDField;
     adodsMovimientosDetalleEstatus: TStringField;
     actCalcularCXP: TAction;
-    adocGetPeriodoActual: TADOCommand;
     adospCuentasXPagar: TADOStoredProc;
     adodsPeriodo: TADODataSet;
     adodsCuentasXPagarPagos: TADODataSet;
@@ -59,7 +58,6 @@ type
     { Private declarations }
     FIdPeriodoActual: Integer;
     function SetCuentaXPagar: Boolean;
-    function GetPeriodoActual: Integer;
   protected
     procedure SetFilter; override;
   public
@@ -71,7 +69,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses CuentasXPagarForm, MovimientosDetalleFrm, CuentasXPagarPagosForm;
+uses CuentasXPagarForm, MovimientosDetalleFrm, CuentasXPagarPagosForm,
+  ConfiguracionDM;
 
 {$R *.dfm}
 
@@ -84,7 +83,7 @@ end;
 procedure TdmCuentasXPagar.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  FIdPeriodoActual := GetPeriodoActual;
+  FIdPeriodoActual := dmConfiguracion.IdPeridoActual;
   adodsMovimientosDetalle.Open;
   adodsCuentasXPagarPagos.Open;
   gGridForm:= TfrmCuentasXPagar.Create(Self);
@@ -109,12 +108,6 @@ begin
   // Ejecuta filtrado
   TfrmCuentasXPagar(gGridForm).IdPeriodo:= IdPeriodoActual;
   actSearch.Execute;
-end;
-
-function TdmCuentasXPagar.GetPeriodoActual: Integer;
-begin
-  adocGetPeriodoActual.Execute;
-  Result:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
 end;
 
 function TdmCuentasXPagar.SetCuentaXPagar: Boolean;

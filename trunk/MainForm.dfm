@@ -3,19 +3,22 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
     Width = 1099
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
+      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
+      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
+          Caption = 'Principal'
           ToolbarName = 'dxbEjemplo'
         end
         item
@@ -111,6 +114,8 @@ inherited frmMain: TfrmMain
         end>
     end
     inherited dxbArchivo: TdxBar
+      DockedDockControl = nil
+      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end
@@ -193,8 +198,12 @@ inherited frmMain: TfrmMain
       FloatLeft = 764
       FloatTop = 8
       FloatClientWidth = 112
-      FloatClientHeight = 432
+      FloatClientHeight = 486
       ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton34'
+        end
         item
           Visible = True
           ItemName = 'dxBarLargeButton12'
@@ -304,7 +313,7 @@ inherited frmMain: TfrmMain
     object dxBarManagerBar1: TdxBar [7]
       Caption = 'Cuentas Contables'
       CaptionButtons = <>
-      DockedLeft = 914
+      DockedLeft = 906
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
@@ -350,6 +359,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton32'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton33'
         end
         item
           Visible = True
@@ -566,6 +579,14 @@ inherited frmMain: TfrmMain
     end
     object dxBarLargeButton32: TdxBarLargeButton
       Action = actNomina
+      Category = 0
+    end
+    object dxBarLargeButton33: TdxBarLargeButton
+      Action = actRptPrestamos
+      Category = 0
+    end
+    object dxBarLargeButton34: TdxBarLargeButton
+      Action = actPrestamos
       Category = 0
     end
   end
@@ -9455,7 +9476,7 @@ inherited frmMain: TfrmMain
       Tag = 17
       Category = 'Catalogos'
       Caption = 'Conceptos CXC'
-      ImageIndex = 34
+      ImageIndex = 31
       OnExecute = actCatalogoExecute
     end
     object actCuentasXCobrar: TAction
@@ -9484,6 +9505,20 @@ inherited frmMain: TfrmMain
       Caption = 'Interva Cuentas por Pagar'
       ImageIndex = 46
       OnExecute = actIntervaCXPExecute
+    end
+    object actRptPrestamos: TAction
+      Tag = 55
+      Category = 'Reportes'
+      Caption = 'Prestamos'
+      ImageIndex = 9
+      OnExecute = actCatalogoExecute
+    end
+    object actPrestamos: TAction
+      Tag = 19
+      Category = 'Catalogos'
+      Caption = 'Prestamos'
+      ImageIndex = 34
+      OnExecute = actCatalogoExecute
     end
   end
   inherited dxBarScreenTipRepository: TdxBarScreenTipRepository

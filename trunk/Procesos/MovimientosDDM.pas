@@ -7,7 +7,7 @@ uses
   Data.DB, Data.Win.ADODB;
 
 type
-  TTipoReporte = (trDispercion, trNomina);
+  TTipoReporte = (trDispercion, trNomina, trPrestamos);
   TdmMovimientosD = class(T_dmStandar)
     adodsMasterIdMovimientoDetalle: TIntegerField;
     adodsMasterFecha: TDateTimeField;
@@ -19,13 +19,11 @@ type
     adodsMasterImporte: TFMTBCDField;
     adodsMasterEstatus: TStringField;
     adodsPeriodo: TADODataSet;
-    adocGetPeriodoActual: TADOCommand;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
     FTipoReporte: TTipoReporte;
-    function GetPeriodoActual: Integer;
     procedure SetTipoReporte(const Value: TTipoReporte);
   protected
     procedure SetFilter; override;
@@ -39,14 +37,14 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses MovimientosDForm;
+uses MovimientosDForm, ConfiguracionDM;
 
 {$R *.dfm}
 
 procedure TdmMovimientosD.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  FIdPeriodoActual := GetPeriodoActual;
+  FIdPeriodoActual := dmConfiguracion.IdPeridoActual;
   gGridForm:= TfrmMovimientosD.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
@@ -62,12 +60,6 @@ begin
   TfrmMovimientosD(gGridForm).IdPeriodo:= IdPeriodoActual;
 end;
 
-function TdmMovimientosD.GetPeriodoActual: Integer;
-begin
-  adocGetPeriodoActual.Execute;
-  Result:= adocGetPeriodoActual.Parameters.ParamByName('IdPeriodo').Value;
-end;
-
 procedure TdmMovimientosD.SetFilter;
 var
   IdPeriodo: Integer;
@@ -75,8 +67,9 @@ begin
   inherited;
   IdPeriodo:= TfrmMovimientosD(gGridForm).IdPeriodo;
   case FTipoReporte of
-    trDispercion: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria NOT IN (1,2) AND Movimientos.IdPeriodo = %d';
+    trDispercion: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria NOT IN (1,2,11) AND Movimientos.IdPeriodo = %d';
     trNomina: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria IN (1,2) AND Movimientos.IdPeriodo = %d';
+    trPrestamos: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria IN (11) AND Movimientos.IdPeriodo = %d';
   else
     SQLWhere:= 'WHERE Movimientos.IdPeriodo = %d';
   end;

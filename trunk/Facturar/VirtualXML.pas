@@ -409,8 +409,8 @@ begin
   Result:= False;
   if not CargarLibreria then Exit;
 //  ArchivoOUT:= strDir + PathDelim + UUID + '.TXT';
+  hXML := VirtualXML_New(PChar(CFDIVersion));
   try
-    hXML := VirtualXML_New(PChar(CFDIVersion));
     if Produccion then
     begin
       VirtualXML_SetVirtualPACInfo(hXML, 'RMunguia', 'vpac-sef');
@@ -433,7 +433,7 @@ begin
       PWideChar(UUID),
       PWideChar(ArchivoOUT));
     end;
-    Result:= True;
+    Result:= (Valor=0);
   finally
     VirtualXML_Free(hXML);
     FreeLibrary(Hbar);
