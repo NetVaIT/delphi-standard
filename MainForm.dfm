@@ -3,7 +3,7 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -317,8 +317,8 @@ inherited frmMain: TfrmMain
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
-      FloatClientWidth = 174
-      FloatClientHeight = 216
+      FloatClientWidth = 115
+      FloatClientHeight = 162
       ItemLinks = <
         item
           Visible = True
@@ -331,10 +331,6 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton27'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton28'
         end>
       OneOnRow = False
       Row = 0
@@ -558,8 +554,11 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton28: TdxBarLargeButton
-      Action = actCuentasContablesNaturaleza
+      Caption = 'Naturaleza Cuentas Contables'
       Category = 0
+      Visible = ivAlways
+      LargeImageIndex = 13
+      OnClick = actCatalogoExecute
     end
     object dxBarLargeButton29: TdxBarLargeButton
       Action = actMovimientosPeriodo
@@ -9484,13 +9483,6 @@ inherited frmMain: TfrmMain
       Category = 'Procesos'
       Caption = 'Cuentas por cobrar'
       ImageIndex = 40
-      OnExecute = actCatalogoExecute
-    end
-    object actCuentasContablesNaturaleza: TAction
-      Tag = 18
-      Category = 'Catalogos'
-      Caption = 'Naturaleza Cuentas Contables'
-      ImageIndex = 13
       OnExecute = actCatalogoExecute
     end
     object actMovimientosPeriodo: TAction

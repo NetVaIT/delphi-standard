@@ -53,7 +53,7 @@ end;
 procedure TdmMovimientosPeriodorpt.actReporteExecute(Sender: TObject);
 begin
   inherited;
-  adostReporte.Parameters.ParamByName('@IdPeriodo').Value := 70;
+  adostReporte.Parameters.ParamByName('@IdPeriodo').Value := mdParamsIdPeriodo.Value;
   adostReporte.Parameters.ParamByName('@Columna').Value := 'Tipo';
   adostReporte.Open;
 //  AjustarCampos;

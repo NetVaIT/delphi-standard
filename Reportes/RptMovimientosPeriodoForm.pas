@@ -52,6 +52,9 @@ uses RptMovimientosPeriodoDM;
 
 { TfrmReporteCrossTab }
 
+//Por cada vez que se agregue una nueva categoria en [MovimientosTiposCategorias],
+//Es necesario agregar al GRID una nueva BANDA de GRUPO, JCRC 03/JUN/2015
+
 procedure TfrmMovimientosPeriodo.SetGeneraReporte(const Value: TBasicAction);
 begin
   FGeneraReporte := Value;

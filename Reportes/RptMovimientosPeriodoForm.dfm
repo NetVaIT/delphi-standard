@@ -88,6 +88,10 @@ inherited frmMovimientosPeriodo: TfrmMovimientosPeriodo
           item
             Caption = 'Impuestos Trasladados'
             Visible = False
+          end
+          item
+            Caption = 'Prestamos'
+            Visible = False
           end>
       end
       inherited cxGridLevel1: TcxGridLevel
@@ -150,7 +154,6 @@ inherited frmMovimientosPeriodo: TfrmMovimientosPeriodo
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

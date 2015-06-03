@@ -152,7 +152,7 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
         Value = Null
       end>
     Left = 48
-    Top = 219
+    Top = 203
   end
   object adodsCXCConceptos: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -172,7 +172,8 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
   object adocAutorizaCuenta: TADOCommand
     CommandText = 
       'UPDATE CuentasXCobrar'#13#10'SET IdCuentaXCobrarEstatus = 2, ConceptoG' +
-      'enerico = :Concepto '#13#10'WHERE IdCuentaXCobrar = :IdCuentaXCobrar'
+      'enerico = :Concepto '#13#10'WHERE IdCuentaXCobrar = :IdCuentaXCobrar A' +
+      'ND IdCuentaXCobrarEstatus = 1'
     Connection = _dmConection.ADOConnection
     Parameters = <
       item
@@ -192,7 +193,7 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
         Size = 4
         Value = Null
       end>
-    Left = 168
-    Top = 216
+    Left = 192
+    Top = 248
   end
 end
