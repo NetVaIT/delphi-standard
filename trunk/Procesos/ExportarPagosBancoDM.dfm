@@ -1,4 +1,4 @@
-inherited dmCuentasXPagarPagosBancos: TdmCuentasXPagarPagosBancos
+inherited dmExportarPagosBancos: TdmExportarPagosBancos
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
@@ -8,8 +8,9 @@ inherited dmCuentasXPagarPagosBancos: TdmCuentasXPagarPagosBancos
       'aPago, MontoAutorizado, FechaProgramada, MontoProgramado, FechaP' +
       'ago, MontoPagado, FechaConcilia, IdCuentaBancariaPagador, IdCuen' +
       'taBancariaCobrador, IdEstadoCuenta, TotalMonedaNacional, Cobra, ' +
-      'Paga, CtaBanCobrador, CtaBancariaPagador, CClabeCobrador, ClabeP' +
-      'agador FROM vCuentasXPagarArchivosBancos'
+      'RFCCobra, Paga, RFCPaga, BancoCobrador, BancoPagador, CtaBanCobr' +
+      'ador, CtaBancariaPagador, CClabeCobrador, ClabePagador FROM vExp' +
+      'ortaPagosBanco'
     Left = 56
     Top = 32
     object adodsMasterIdCuentaXPagarPago: TIntegerField
@@ -81,9 +82,23 @@ inherited dmCuentasXPagarPagosBancos: TdmCuentasXPagarPagosBancos
       FieldName = 'Cobra'
       Size = 300
     end
+    object adodsMasterRFCCobra: TStringField
+      FieldName = 'RFCCobra'
+      Size = 13
+    end
     object adodsMasterPaga: TStringField
       FieldName = 'Paga'
       Size = 300
+    end
+    object adodsMasterRFCPaga: TStringField
+      FieldName = 'RFCPaga'
+      Size = 13
+    end
+    object adodsMasterBancoCobrador: TIntegerField
+      FieldName = 'BancoCobrador'
+    end
+    object adodsMasterBancoPagador: TIntegerField
+      FieldName = 'BancoPagador'
     end
     object adodsMasterCtaBanCobrador: TStringField
       FieldName = 'CtaBanCobrador'
@@ -101,5 +116,15 @@ inherited dmCuentasXPagarPagosBancos: TdmCuentasXPagarPagosBancos
       FieldName = 'ClabePagador'
       Size = 18
     end
+  end
+  inherited ActionList: TActionList
+    object actExportaBanorte: TAction
+      Caption = 'actExportaBanorte'
+      OnExecute = actExportaBanorteExecute
+    end
+  end
+  object stdBancos: TSaveTextFileDialog
+    Left = 320
+    Top = 168
   end
 end
