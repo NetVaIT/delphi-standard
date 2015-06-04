@@ -62,6 +62,7 @@ begin
   if (Pos('.txt',stdBancos.FileName) = 0) And (Pos('.TXT',stdBancos.FileName) = 0) then
      stdBancos.FileName := stdBancos.FileName + '.txt';
   CreaArchivoBanorte(stdBancos.FileName);
+  ShowMessage('Pagos Exportados');
 end;
 
 function TdmExportarPagosBancos.CortarCadena(COrigen: string;
@@ -78,6 +79,7 @@ var
   Operacion, Dinero : String;
   Registro : String;
 begin
+  adodsMaster.Open;
   System.Assign(Archivo, NombreArchivo);
   Rewrite(Archivo);
   adodsMaster.First;
@@ -95,7 +97,7 @@ begin
       Registro := Registro + '''' + PreparaCadena(adodsMasterCtaBanCobrador.AsString,'D','0',18) + Chr(9) // CuentaDestinoCUENTA
     else
       Registro := Registro + '''' + PreparaCadena(adodsMasterCClabeCobrador.AsString,'D','0',18) + Chr(9); // CuentaDestinoCLABE
-    Dinero := adodsMasterMontoProgramado.AsString;
+    Dinero := QuitarCaracter(FormatFloat('0.00',adodsMasterMontoProgramado.AsFloat),'.');
     Registro := Registro + PreparaCadena(Dinero,'D','0',13) + Chr(9); // Importe
     Registro := Registro + '0123456789ABC' + Chr(9); // Referencia
     Registro := Registro + CortarCadena(adodsMasterDescripcion.AsString,29) + Chr(9); // Descripcion
@@ -113,6 +115,7 @@ begin
     adodsMaster.Next;
   end;
   CloseFile(Archivo);
+  adodsMaster.Close;
 //    Registro := Registro + '0123456789ABC' + Chr(9); //
 end;
 
@@ -150,7 +153,7 @@ begin
     if Aux <> CCaracter then
       Cadena := Cadena + Aux;
   end;
-  Result := Aux;
+  Result := Cadena;
 end;
 
 end.

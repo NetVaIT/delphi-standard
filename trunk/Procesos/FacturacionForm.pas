@@ -47,6 +47,7 @@ type
     tvMasterTotalLocalesRetenido: TcxGridDBColumn;
     tvMasterFacturar: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterRegimenFiscal: TcxGridDBColumn;
   private
     { Private declarations }
     FacturaCta : TBasicAction;

@@ -2,20 +2,21 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   BorderStyle = bsToolWindow
   Caption = 'Cuentas por pagar'
   ClientHeight = 634
-  ClientWidth = 720
-  ExplicitWidth = 726
-  ExplicitHeight = 663
+  ClientWidth = 746
+  ExplicitLeft = 0
+  ExplicitWidth = 752
+  ExplicitHeight = 658
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
     Top = 549
-    Width = 720
+    Width = 746
     ExplicitTop = 343
     ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
     Top = 255
-    Width = 720
+    Width = 746
     Align = alTop
     Visible = True
     ExplicitTop = 255
@@ -23,20 +24,20 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited splDetail2: TSplitter
     Top = 483
-    Width = 720
+    Width = 746
     Align = alTop
     Visible = True
     ExplicitTop = 299
     ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
-    Width = 720
+    Width = 746
     Height = 224
     Align = alTop
     ExplicitWidth = 720
     ExplicitHeight = 224
     inherited cxGrid: TcxGrid
-      Width = 720
+      Width = 746
       Height = 224
       ExplicitWidth = 720
       ExplicitHeight = 224
@@ -128,13 +129,13 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited pnlDetail3: TPanel
     Top = 552
-    Width = 720
+    Width = 746
     ExplicitTop = 552
     ExplicitWidth = 720
   end
   inherited pnlDetail2: TPanel
     Top = 486
-    Width = 720
+    Width = 746
     Height = 63
     Align = alClient
     ExplicitTop = 486
@@ -143,7 +144,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited pnlDetail1: TPanel
     Top = 258
-    Width = 720
+    Width = 746
     Height = 225
     Align = alTop
     ExplicitTop = 258
@@ -152,12 +153,19 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited pnlClose: TPanel
     Top = 593
-    Width = 720
+    Width = 746
     ExplicitTop = 593
     ExplicitWidth = 720
     inherited btnClose: TButton
-      Left = 635
+      Left = 661
       ExplicitLeft = 635
+    end
+  end
+  inherited ActionList: TActionList
+    object actExportarPagos: TAction
+      Hint = 'Exportar Pagos'
+      ImageIndex = 13
+      OnExecute = actExportarPagosExecute
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -179,10 +187,14 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
         item
           Visible = True
           ItemName = 'dxbbCalcularCXP'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton8'
         end>
     end
     inherited dxbFilter: TdxBar
-      DockedLeft = 315
+      DockedLeft = 338
       ItemLinks = <
         item
           Visible = True
@@ -215,6 +227,10 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
         end>
       Properties.ListSource = dsPeriodos
     end
+    object dxBarButton8: TdxBarButton
+      Action = actExportarPagos
+      Category = 0
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
@@ -224,7 +240,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

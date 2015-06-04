@@ -27,7 +27,7 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls, cxDBLookupComboBox, cxBarEditItem;
+  Vcl.ExtCtrls, cxDBLookupComboBox, cxBarEditItem, ExportarPagosBancoDM;
 
 type
   TfrmCuentasXPagar = class(T_frmGrid)
@@ -53,8 +53,12 @@ type
     dxbbCalcularCXP: TdxBarButton;
     cxedtPeriodo: TcxBarEditItem;
     dsPeriodos: TDataSource;
+    dxBarButton8: TdxBarButton;
+    actExportarPagos: TAction;
+    procedure actExportarPagosExecute(Sender: TObject);
   private
     { Private declarations }
+    dmExportaPagos : TdmExportarPagosBancos;
     FCalcularCXP: TBasicAction;
     FDataSetPeriodo: TDataSet;
     procedure SetCalcularCXP(const Value: TBasicAction);
@@ -76,6 +80,14 @@ uses CuentasXPagarDM;
 
 { TfrmCuentasXPagar }
 
+procedure TfrmCuentasXPagar.actExportarPagosExecute(Sender: TObject);
+begin
+  inherited;
+  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
+  dmExportaPagos.actExportaBanorte.Execute;
+  FreeAndNil(dmExportaPagos);
+end;
+
 function TfrmCuentasXPagar.GetIdPeriodo: Integer;
 begin
   if VarIsNull(cxedtPeriodo.EditValue) then
@@ -87,18 +99,18 @@ end;
 procedure TfrmCuentasXPagar.SetCalcularCXP(const Value: TBasicAction);
 begin
   FCalcularCXP := Value;
-  dxbbCalcularCXP.Action:= Value;
+  dxbbCalcularCXP.Action := Value;
 end;
 
 procedure TfrmCuentasXPagar.SetDataSetPeriodo(const Value: TDataSet);
 begin
   FDataSetPeriodo := Value;
-  dsPeriodos.DataSet:= Value;
+  dsPeriodos.DataSet := Value;
 end;
 
 procedure TfrmCuentasXPagar.SetIdPeriodo(const Value: Integer);
 begin
-  cxedtPeriodo.EditValue:= Value;
+  cxedtPeriodo.EditValue := Value;
 end;
 
 

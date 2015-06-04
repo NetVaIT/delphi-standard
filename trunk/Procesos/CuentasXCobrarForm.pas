@@ -92,6 +92,8 @@ begin
   dmFacturacion := TdmFacturacion.Create(nil);
   dmFacturacion.actListaFacturar.Execute;
   FreeAndNil(dmFacturacion);
+  DataSource.DataSet.Close;
+  DataSource.DataSet.Open;
 end;
 
 function TfrmCuentasXCobrarForm.GetIdPeriodo: Integer;

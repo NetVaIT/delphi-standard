@@ -13,6 +13,7 @@ inherited dmFacturacion: TdmFacturacion
     Top = 32
     object adodsMasterIdCuentaXCobrarEstatus: TIntegerField
       FieldName = 'IdCuentaXCobrarEstatus'
+      Visible = False
     end
     object adodsMasterEstatus: TStringField
       FieldName = 'Estatus'
@@ -77,9 +78,11 @@ inherited dmFacturacion: TdmFacturacion
     end
     object adodsMasterIdPersona: TIntegerField
       FieldName = 'IdPersona'
+      Visible = False
     end
     object adodsMasterIdPersonaRelacionada: TIntegerField
       FieldName = 'IdPersonaRelacionada'
+      Visible = False
     end
     object adodsMasterRegimenFiscal: TStringField
       FieldName = 'RegimenFiscal'
@@ -87,6 +90,7 @@ inherited dmFacturacion: TdmFacturacion
     end
     object adodsMasterIdCuentaXCobrar: TIntegerField
       FieldName = 'IdCuentaXCobrar'
+      Visible = False
     end
   end
   inherited adodsUpdate: TADODataSet

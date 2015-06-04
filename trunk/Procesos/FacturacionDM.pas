@@ -96,6 +96,7 @@ begin
   inherited;
   adodsMaster.Open;
   gGridForm.ShowModal;
+
 end;
 
 procedure TdmFacturacion.actProcesarFacturasExecute(Sender: TObject);
@@ -124,6 +125,7 @@ begin
     adodsMaster.First;
     while not adodsMaster.eof do
     begin
+//      adodsMaster.First;
       adodsCer.Close;
       adodsKey.Close;
       adodsEmisor.Close;
@@ -247,6 +249,8 @@ begin
       end;
       adodsMaster.Next;
     end;
+    adodsMaster.Close;
+    adodsMaster.Open;
     ShowMessage('Facturas Generadas');
 end;
 
