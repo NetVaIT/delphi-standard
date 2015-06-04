@@ -3,47 +3,49 @@ inherited frmFacturacion: TfrmFacturacion
   BorderStyle = bsDialog
   Caption = 'Facturacion'
   ClientHeight = 472
-  ClientWidth = 645
-  ExplicitWidth = 651
+  ClientWidth = 747
+  ExplicitWidth = 753
   ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
     Top = 387
-    Width = 645
+    Width = 747
     ExplicitTop = 348
     ExplicitWidth = 645
   end
   inherited splDetail1: TSplitter
     Top = 299
-    Width = 645
+    Width = 747
     ExplicitTop = 260
     ExplicitWidth = 645
   end
   inherited splDetail2: TSplitter
     Top = 343
-    Width = 645
+    Width = 747
     ExplicitTop = 304
     ExplicitWidth = 645
   end
   inherited pnlMaster: TPanel
-    Width = 645
+    Width = 747
     Height = 268
     ExplicitWidth = 645
     ExplicitHeight = 268
     inherited cxGrid: TcxGrid
-      Width = 645
+      Width = 747
       Height = 268
       ExplicitWidth = 645
       ExplicitHeight = 268
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdCuentaXCobrarEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'IdCuentaXCobrarEstatus'
+          Visible = False
         end
         object tvMasterEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'Estatus'
         end
         object tvMasterConceptoGenerico: TcxGridDBColumn
+          Caption = 'Concepto'
           DataBinding.FieldName = 'ConceptoGenerico'
         end
         object tvMasterSumaSubtotal: TcxGridDBColumn
@@ -81,36 +83,40 @@ inherited frmFacturacion: TfrmFacturacion
         end
         object tvMasterIdPersona: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersona'
+          Visible = False
+        end
+        object tvMasterRegimenFiscal: TcxGridDBColumn
+          DataBinding.FieldName = 'RegimenFiscal'
         end
       end
     end
   end
   inherited pnlDetail3: TPanel
     Top = 390
-    Width = 645
+    Width = 747
     ExplicitTop = 390
     ExplicitWidth = 645
   end
   inherited pnlDetail2: TPanel
     Top = 346
-    Width = 645
+    Width = 747
     ExplicitTop = 346
     ExplicitWidth = 645
   end
   inherited pnlDetail1: TPanel
     Top = 302
-    Width = 645
+    Width = 747
     ExplicitTop = 302
     ExplicitWidth = 645
   end
   inherited pnlClose: TPanel
     Top = 431
-    Width = 645
+    Width = 747
     Visible = True
     ExplicitTop = 431
     ExplicitWidth = 645
     inherited btnClose: TButton
-      Left = 560
+      Left = 662
       ExplicitLeft = 560
     end
   end
@@ -150,7 +156,7 @@ inherited frmFacturacion: TfrmFacturacion
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
