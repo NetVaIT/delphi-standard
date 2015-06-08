@@ -2,6 +2,7 @@ inherited frmRptMovimientos: TfrmRptMovimientos
   Caption = 'Seleccione un Periodo'
   ClientHeight = 230
   ClientWidth = 361
+  OnShow = FormShow
   ExplicitWidth = 367
   ExplicitHeight = 258
   PixelsPerInch = 96
@@ -14,8 +15,6 @@ inherited frmRptMovimientos: TfrmRptMovimientos
     ClientRectBottom = 187
     ClientRectRight = 359
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
       ExplicitWidth = 357
       ExplicitHeight = 159
       object Label1: TLabel

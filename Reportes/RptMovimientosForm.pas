@@ -29,27 +29,46 @@ type
     Label1: TLabel;
     lcbPeriodo: TcxDBLookupComboBox;
     dsPeriodo: TDataSource;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     FDataSetPeriodo: TDataSet;
+//    FIdPeriodoActual: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
+//    procedure SetIdPeriodoActual(const Value: Integer);
   public
     { Public declarations }
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
+//    property IdPeriodoActual : Integer read FIdPeriodoActual write SetIdPeriodoActual;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses RptDetalleMovimientosPersonaDmod;
+uses RptDetalleMovimientosPersonaDmod, ConfiguracionDM;
 
 { TfrmRptMovimientos }
+
+procedure TfrmRptMovimientos.FormShow(Sender: TObject);
+begin
+  inherited;
+//  FIdPeriodoActual := dmConfiguracion.IdPeridoActual;
+//  lcbPeriodo.EditValue := IdPeriodoActual;
+//  lcbPeriodo.SetValidatableEditValue(IdPeriodoActual);
+//  RptDetalleMovimientosPersonaDmod.TdmDetalleMovimientosPersona(Sender).mdParamsIdPeriodo.Value := IdPeriodoActual;
+//  dsParams.DataSet.DataSetField.Fields.FieldByName('IdPeriodo').Value := IdPeriodoActual;
+end;
 
 procedure TfrmRptMovimientos.SetDataSetPeriodo(const Value: TDataSet);
 begin
   FDataSetPeriodo := Value;
   dsPeriodo.DataSet := Value;
 end;
+
+//procedure TfrmRptMovimientos.SetIdPeriodoActual(const Value: Integer);
+//begin
+//  FIdPeriodoActual := Value;
+//end;
 
 end.

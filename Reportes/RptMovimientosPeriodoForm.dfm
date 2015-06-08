@@ -45,6 +45,7 @@ inherited frmMovimientosPeriodo: TfrmMovimientosPeriodo
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
         OptionsView.GroupByBox = False
+        OptionsView.HeaderAutoHeight = True
         Bands = <
           item
             Caption = 'General'
