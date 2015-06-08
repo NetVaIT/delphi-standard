@@ -3,7 +3,6 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
   OnCreate = DataModuleCreate
   Height = 273
   inherited adodsReport: TADODataSet
-    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +

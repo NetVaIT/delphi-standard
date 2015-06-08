@@ -4,7 +4,6 @@ inherited dmRptMovimientos: TdmRptMovimientos
   Height = 242
   Width = 356
   inherited adodsReport: TADODataSet
-    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +

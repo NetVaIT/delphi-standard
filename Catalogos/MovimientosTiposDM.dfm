@@ -352,7 +352,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 304
   end
   object adodsPersonaRol2: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

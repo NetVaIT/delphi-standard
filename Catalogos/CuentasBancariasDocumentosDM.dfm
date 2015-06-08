@@ -57,7 +57,6 @@ inherited dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos
     Top = 24
   end
   object adodsDocumento: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -71,7 +70,6 @@ inherited dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos
     Top = 96
   end
   object adodsDocumentoTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumentoTipo, Descripcion FROM DocumentosTipos'
@@ -80,7 +78,6 @@ inherited dmCuentasBancariasDocumentos: TdmCuentasBancariasDocumentos
     Top = 152
   end
   object adodsDocumentoClase: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumentoClase, Descripcion FROM DocumentosClases'

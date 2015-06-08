@@ -68,7 +68,6 @@ inherited dmPeriodos: TdmPeriodos
     end
   end
   object adodsPeriodoTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPeriodoTipo, Descripcion FROM PeriodosTipos'
@@ -77,7 +76,6 @@ inherited dmPeriodos: TdmPeriodos
     Top = 96
   end
   object adodsPeriodoEstatus: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPeriodoEstatus, Descripcion FROM PeriodosEstatus'

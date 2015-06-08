@@ -42,7 +42,6 @@ inherited dmEsquemaPagos: TdmEsquemaPagos
     end
   end
   object adodsEsquemaPagoEstatus: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

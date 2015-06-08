@@ -89,7 +89,6 @@ inherited dmRoles: TdmRoles
     end
   end
   object adodsRolesTipos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdRolTipo, Descripcion from RolesTipos'
@@ -98,7 +97,6 @@ inherited dmRoles: TdmRoles
     Top = 64
   end
   object adodsEsquemaPagos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdEsquemaPago, Descripcion from EsquemaPagos'
@@ -107,7 +105,6 @@ inherited dmRoles: TdmRoles
     Top = 120
   end
   object adodsDocumento: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'

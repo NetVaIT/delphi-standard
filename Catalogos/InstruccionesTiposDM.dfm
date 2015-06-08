@@ -99,7 +99,6 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
     end
   end
   object adodsMovimientosTipos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -108,7 +107,6 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
     Top = 88
   end
   object adodsMoneda: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMoneda, Descripcion from Monedas'
