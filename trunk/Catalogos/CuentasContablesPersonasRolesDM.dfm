@@ -87,7 +87,6 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     end
   end
   object adodsCuentaContable: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'
@@ -96,7 +95,6 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     Top = 48
   end
   object adodsCuentaContableNCA: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'
@@ -105,7 +103,6 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     Top = 112
   end
   object adodsCuentaContableNCR: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'
@@ -114,7 +111,6 @@ inherited dmCuentasContablesPersonasRoles: TdmCuentasContablesPersonasRoles
     Top = 176
   end
   object adodsCuentaContableAnticipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdCuentaContable, Descripcion FROM CuentasContables'

@@ -44,7 +44,6 @@ inherited dmEstablecimientos: TdmEstablecimientos
     end
   end
   object adodsDomicilios: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

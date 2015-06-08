@@ -121,7 +121,6 @@ inherited dmPlazas: TdmPlazas
     end
   end
   object adodsPlazaTemporalidadTipos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -132,7 +131,6 @@ inherited dmPlazas: TdmPlazas
     Top = 192
   end
   object adodsUbicacion: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdUbicacion, Descripcion FROM Ubicaciones'
@@ -141,7 +139,6 @@ inherited dmPlazas: TdmPlazas
     Top = 128
   end
   object adodsPlazaTurnos: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdPlazaTurno, Descripcion FROM PlazasTurnos'
@@ -150,7 +147,6 @@ inherited dmPlazas: TdmPlazas
     Top = 72
   end
   object adodsEmpleado: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial as Nombre from Personas'

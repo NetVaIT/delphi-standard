@@ -207,7 +207,6 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     end
   end
   object adodsCuentaBancariaTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -218,7 +217,6 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     Top = 80
   end
   object adodsBanco: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdBanco, Nombre from Bancos'
@@ -235,7 +233,6 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     end
   end
   object adodsMoneda: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMoneda, Descripcion from Monedas'
