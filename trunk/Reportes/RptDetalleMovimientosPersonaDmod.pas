@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, _ReportDMod, ppParameter, ppDesignLayer,
   ppVar, ppCtrls, ppBands, ppPrnabl, ppClass, ppCache, ppProd, ppReport, ppComm,
   ppRelatv, ppDB, ppDBPipe, Data.DB, Data.Win.ADODB, dxmdaset, ppModule,
-  raCodMod;
+  raCodMod,System.UITypes;
 
 type
   TdmDetalleMovimientosPersona = class(T_dmReport)
@@ -51,13 +51,15 @@ type
   public
     { Public declarations }
     procedure AssignParam; override;
+    procedure Execute; override;
+
   end;
 
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses RptMovimientosForm;
+uses RptMovimientosForm, ConfiguracionDM;
 
 {$R *.dfm}
 
@@ -73,6 +75,34 @@ begin
   gReportForm := TfrmRptMovimientos.Create(Self);
   adodsPeriodos.Open;
   TfrmRptMovimientos(gReportForm).DataSetPeriodo := adodsPeriodos;
+end;
+
+procedure TdmDetalleMovimientosPersona.Execute;
+var
+  ShowReport: Boolean;
+begin
+  mdParams.Open;
+  mdParams.Insert;
+  mdParamsIdPeriodo.Value:= dmConfiguracion.IdPeridoActual;
+
+  if Assigned(gReportForm) then
+  begin
+    gReportForm.DataSetParams:= mdParams;
+    ShowReport:= (gReportForm.ShowModal = mrOk);
+  end
+  else
+    ShowReport:= True;
+  if ShowReport then
+  begin
+    adodsReport.Close;
+    AssignParam;
+    adodsReport.Open;
+    try
+      ppReport.Print;
+    finally
+      adodsReport.Close;
+    end;
+  end;
 end;
 
 procedure TdmDetalleMovimientosPersona.ppReportStartPage(Sender: TObject);

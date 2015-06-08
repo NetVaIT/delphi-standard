@@ -106,7 +106,7 @@ begin
   begin
     ISemana := StartOfAWeek(FAnioPeriodo,I,1);
     FSemana := StartOfAWeek(FAnioPeriodo,I,7);
-    Descripcion := DescripcionPeriodo('Semanal',ISemana,FSemana);
+    Descripcion := DescripcionPeriodo('Semana',ISemana,FSemana);
     CrearPeriodo(ISemana,FSemana,I,2,Descripcion);
   end;
 end;

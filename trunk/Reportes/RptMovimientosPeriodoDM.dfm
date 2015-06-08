@@ -19,28 +19,25 @@ inherited dmMovimientosPeriodorpt: TdmMovimientosPeriodorpt
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     LockType = ltBatchOptimistic
-    ProcedureName = 'MuestraTabla;1'
+    ProcedureName = 'p_GenReporteMovimientos;1'
     Parameters = <
       item
         Name = '@RETURN_VALUE'
         DataType = ftInteger
         Direction = pdReturnValue
         Precision = 10
-        Value = 0
       end
       item
         Name = '@IdPeriodo'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
-        Value = 70
       end
       item
         Name = '@Columna'
         Attributes = [paNullable]
         DataType = ftWideString
         Size = 128
-        Value = 'Tipo'
       end>
     Left = 272
     Top = 224
