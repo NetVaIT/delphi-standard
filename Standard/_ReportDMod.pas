@@ -34,7 +34,7 @@ type
   public
     { Public declarations }
     procedure AssignParam; virtual; abstract;
-    procedure Execute;
+    procedure Execute; virtual;
     property Title: string read FTitle write SetTitle;
   end;
 
