@@ -777,6 +777,14 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Catalogos\ConfiguracionesForm.pas">
+            <Form>frmConfiguraciones</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\ConfiguracionesEdit.pas">
+            <Form>frmConfiguracionesEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

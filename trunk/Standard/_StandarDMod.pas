@@ -37,10 +37,11 @@ type
     SQLWhere: string;
     SQLGroupBy: string;
     SQLOrderBy: string;
-    procedure OpenDataSet; virtual;
     procedure SetFilter; virtual;
   public
     { Public declarations }
+    procedure OpenDataSet; virtual;
+    procedure CloseDataSet; virtual;
     procedure ShowModule(pConteiner: TWinControl; pCation: TCaption);
     function Add: Integer;
     procedure Edit(Id: Integer);
@@ -76,6 +77,11 @@ begin
   end;
 end;
 
+procedure T_dmStandar.CloseDataSet;
+begin
+  if adodsMaster.CommandText <> EmptyStr then adodsMaster.Close;
+end;
+
 procedure T_dmStandar.DataModuleCreate(Sender: TObject);
 begin
   // Asigancion para cuando se utilice filtrado no se muestra ningun registro
@@ -84,7 +90,7 @@ end;
 
 procedure T_dmStandar.DataModuleDestroy(Sender: TObject);
 begin
-  if adodsMaster.CommandText <> EmptyStr then adodsMaster.Close;
+  CloseDataSet;
 end;
 
 procedure T_dmStandar.Edit(Id: Integer);

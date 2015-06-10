@@ -127,6 +127,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure dxRibbon1ApplicationMenuClick(Sender: TdxCustomRibbon;
+      var AHandled: Boolean);
   private
     { Private declarations }
   protected
@@ -154,7 +156,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasXCobrarDM,
   RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM,
-  PrestamosDM;
+  PrestamosDM, ConfiguracionDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -296,16 +298,32 @@ begin
   actCuentasInternas.Enabled    := Conected;
   actCXCConceptos.Enabled       := Conected;
   actMovimientosPeriodo.Enabled := Conected;
-  actDispersion.Enabled := Conected;
-  actNomina.Enabled := Conected;
+  actDispersion.Enabled         := Conected;
+  actNomina.Enabled             := Conected;
+  actRptPrestamos.Enabled       := Conected;
   actDetalleMovimientosPersona.Enabled := Conected;
-  actCuentasXPagar.Enabled     := Conected;
+  actCuentasXPagar.Enabled      := Conected;
   actCuentasXCobrar.Enabled     := Conected;
+  actPrestamos.Enabled          := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;
 begin
   if Assigned(gModulo) then FreeAndNil(gModulo);
+end;
+
+procedure TfrmMain.dxRibbon1ApplicationMenuClick(Sender: TdxCustomRibbon;
+  var AHandled: Boolean);
+begin
+  inherited;
+  if Conected then
+    dmConfiguracion.OpenDataSet
+  else
+    dmConfiguracion.CloseDataSet;
+  if Conected then
+    dmUsuarios.OpenDataSet
+  else
+    dmUsuarios.CloseDataSet;
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
@@ -323,6 +341,7 @@ end;
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
   inherited;
+  dmConfiguracion.ShowModule(dxtshConfiguracion, '');
   dmUsuarios.ShowModule(dxtshUsuarios, '');
 end;
 

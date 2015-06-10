@@ -202,7 +202,9 @@ uses
   PrestamosPagoDM in 'Procesos\PrestamosPagoDM.pas' {dmPrestamosPago: TDataModule},
   PrestamosPagoForm in 'Procesos\PrestamosPagoForm.pas' {frmPrestamosPago},
   PrestamosPagoEdit in 'Procesos\PrestamosPagoEdit.pas' {frmPrestamosPagoEdit},
-  ConfiguracionDM in 'Catalogos\ConfiguracionDM.pas' {dmConfiguracion: TDataModule};
+  ConfiguracionDM in 'Catalogos\ConfiguracionDM.pas' {dmConfiguracion: TDataModule},
+  ConfiguracionesForm in 'Catalogos\ConfiguracionesForm.pas' {frmConfiguraciones},
+  ConfiguracionesEdit in 'Catalogos\ConfiguracionesEdit.pas' {frmConfiguracionesEdit};
 
 {$R *.res}
 
