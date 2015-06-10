@@ -8,11 +8,14 @@ inherited frmMain: TfrmMain
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
     Width = 1099
+    OnApplicationMenuClick = dxRibbon1ApplicationMenuClick
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
+      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
+      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -80,6 +83,8 @@ inherited frmMain: TfrmMain
   end
   inherited pnlMain: TPanel
     Width = 1099
+    ExplicitLeft = 384
+    ExplicitTop = 210
     ExplicitWidth = 1099
   end
   inherited dxBarManager: TdxBarManager
@@ -112,6 +117,8 @@ inherited frmMain: TfrmMain
         end>
     end
     inherited dxbArchivo: TdxBar
+      DockedDockControl = nil
+      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end
@@ -9460,6 +9467,13 @@ inherited frmMain: TfrmMain
       ImageIndex = 9
       OnExecute = actCatalogoExecute
     end
+    object actRptPrestamos: TAction
+      Tag = 55
+      Category = 'Reportes'
+      Caption = 'Prestamos'
+      ImageIndex = 9
+      OnExecute = actCatalogoExecute
+    end
     object actDetalleMovimientosPersona: TAction
       Tag = 51
       Category = 'Reportes'
@@ -9493,13 +9507,6 @@ inherited frmMain: TfrmMain
       Caption = 'Interva Cuentas por Pagar'
       ImageIndex = 46
       OnExecute = actIntervaCXPExecute
-    end
-    object actRptPrestamos: TAction
-      Tag = 55
-      Category = 'Reportes'
-      Caption = 'Prestamos'
-      ImageIndex = 9
-      OnExecute = actCatalogoExecute
     end
     object actPrestamos: TAction
       Tag = 19

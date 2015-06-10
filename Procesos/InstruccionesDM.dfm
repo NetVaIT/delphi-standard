@@ -137,8 +137,8 @@ inherited dmInstrucciones: TdmInstrucciones
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'select IdPeriodoTipo, Descripcion from PeriodosTipos'#13#10'WHERE Iden' +
-      'tificador IN ('#39'S'#39','#39'M'#39')'
+      'select IdPeriodoTipo, Descripcion from PeriodosTipos'#13#10'WHERE IdPe' +
+      'riodoTipo IN (2,3,4)'
     Parameters = <>
     Left = 104
     Top = 184
