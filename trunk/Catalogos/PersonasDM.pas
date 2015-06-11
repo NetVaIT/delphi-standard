@@ -69,6 +69,7 @@ type
     adodsPersonaTitular: TADODataSet;
     adodsMasterIdPersonaTitular: TIntegerField;
     adodsMasterTitular: TStringField;
+    adodsMasterVigenciaFM34: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -92,11 +93,12 @@ procedure TdmPersona.AsignarConsulta;
 var
   ConsultaP, ConsultaPR : String;
 begin
-  ConsultaP := 'SELECT DISTINCT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' +  #10#13 +
-               'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' +  #10#13 +
+  ConsultaP := 'SELECT DISTINCT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' + #10#13 +
+               'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' + #10#13 +
                'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' +  #10#13 +
-               'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' +  #10#13 +
-               'Personas.FechaNacimiento, Personas.LugarNacimiento, Personas.IdPersonaTitular, PersonasRoles.IdRol, PersonasRoles.IdPersona ' +  #10#13 +
+               'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' + #10#13 +
+               'Personas.FechaNacimiento, Personas.LugarNacimiento, Personas.IdPersonaTitular, Personas.VigenciaFM34, ' + #10#13 +
+               'PersonasRoles.IdRol, PersonasRoles.IdPersona ' +  #10#13 +
                'FROM Personas ' +  #10#13 +
                'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ' + #10#13 +
                'INNER JOIN Roles ON PersonasRoles.IdRol = Roles.IdRol ';
@@ -110,7 +112,7 @@ begin
                          'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' + #10#13 +
                          'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' + #10#13 +
                          'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' + #10#13 +
-                         'Personas.FechaNacimiento, Personas.LugarNacimiento, Personas.IdPersonaTitular FROM Personas';
+                         'Personas.FechaNacimiento, Personas.LugarNacimiento, Personas.IdPersonaTitular, Personas.VigenciaFM34 FROM Personas';
              ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
                           'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
                           'FROM Personas ' + #10#13 +

@@ -53,6 +53,7 @@ type
     tvMasterLugarNacimiento: TcxGridDBColumn;
     tvMasterIdPersonaTitular: TcxGridDBColumn;
     tvMasterTitular: TcxGridDBColumn;
+    tvMasterVigenciaFM34: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

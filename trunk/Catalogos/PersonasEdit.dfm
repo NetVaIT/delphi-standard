@@ -221,6 +221,14 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           Caption = 'Nombre Completo'
           FocusControl = cxDBTextEdit3
         end
+        object Label15: TLabel
+          Left = 480
+          Top = 165
+          Width = 72
+          Height = 13
+          Caption = 'Vigencia FM3/4'
+          FocusControl = cxDBDateEdit2
+        end
         object edtNombre: TcxDBTextEdit
           Left = 16
           Top = 18
@@ -299,6 +307,14 @@ inherited frmPersonaEdit: TfrmPersonaEdit
           TabOrder = 8
           Width = 586
         end
+        object cxDBDateEdit2: TcxDBDateEdit
+          Left = 480
+          Top = 181
+          DataBinding.DataField = 'VigenciaFM34'
+          DataBinding.DataSource = DataSource
+          TabOrder = 9
+          Width = 121
+        end
       end
       object pnlOrigen: TPanel
         Left = 0
@@ -337,13 +353,13 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     Width = 624
     ExplicitTop = 437
     ExplicitWidth = 624
-    inherited btnOk: TButton
-      Left = 461
-      ExplicitLeft = 461
-    end
     inherited btnCancel: TButton
       Left = 542
       ExplicitLeft = 542
+    end
+    inherited btnOk: TButton
+      Left = 461
+      ExplicitLeft = 461
     end
     object btnNext: TButton
       Left = 372

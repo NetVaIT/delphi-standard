@@ -64,6 +64,10 @@ inherited frmConfiguraciones: TfrmConfiguraciones
           DataBinding.FieldName = 'MetodoPagoFactura'
           Width = 250
         end
+        object tvMasterRutaBaseFacturas: TcxGridDBColumn
+          Caption = 'Ruta Base para Facturas'
+          DataBinding.FieldName = 'RutaBaseFacturas'
+        end
       end
     end
   end
@@ -90,7 +94,6 @@ inherited frmConfiguraciones: TfrmConfiguraciones
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

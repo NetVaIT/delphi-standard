@@ -1,12 +1,12 @@
 inherited dmConfiguracion: TdmConfiguracion
   OldCreateOrder = True
-  Height = 420
+  Height = 468
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
       'select IdPais, IdMoneda, IdMovimientoTipoNomina, IdMovimientoTip' +
       'oRetencion, IdMovimientoTipoPrestamo, IdMetodoPagoCuentasXPagar,' +
-      ' IdMetodoPagoFactura from Configuraciones'
+      ' IdMetodoPagoFactura, RutaBaseFacturas from Configuraciones'
     object adodsMasterIdPais: TIntegerField
       FieldName = 'IdPais'
       Visible = False
@@ -111,6 +111,11 @@ inherited dmConfiguracion: TdmConfiguracion
       Size = 100
       Lookup = True
     end
+    object adodsMasterRutaBaseFacturas: TStringField
+      DisplayLabel = 'Ruta Base para Facturas'
+      FieldName = 'RutaBaseFacturas'
+      Size = 250
+    end
   end
   object adoqGetIdPeriodoActual: TADOQuery
     Connection = _dmConection.ADOConnection
@@ -118,14 +123,29 @@ inherited dmConfiguracion: TdmConfiguracion
     Parameters = <>
     SQL.Strings = (
       'SELECT dbo.GetIdPeriodoActual() AS Valor')
-    Left = 320
-    Top = 160
+    Left = 312
+    Top = 176
     object adoqGetIdPeriodoActualValor: TIntegerField
       FieldName = 'Valor'
       ReadOnly = True
     end
   end
+  object adoqGetRutaBaseFacturas: TADOQuery
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT dbo.GetRutaBaseFacturas() AS Valor')
+    Left = 312
+    Top = 264
+    object adoqGetRutaBaseFacturasValor: TStringField
+      FieldName = 'Valor'
+      ReadOnly = True
+      Size = 250
+    end
+  end
   object adodsPaises: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPais, Descripcion from Paises'
@@ -134,6 +154,7 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 16
   end
   object adodsMonedas: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMoneda, Descripcion from Monedas'
@@ -142,6 +163,7 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 64
   end
   object adodsMovimientosTipo1: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -150,6 +172,7 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 112
   end
   object adodsMovimientosTipo2: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -158,6 +181,7 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 168
   end
   object adodsMovimientosTipo3: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -166,6 +190,7 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 224
   end
   object adodsMetodosPago1: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMetodoPago, Descripcion from MetodosPago'
@@ -174,6 +199,7 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 272
   end
   object adodsMetodosPago2: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMetodoPago, Descripcion from MetodosPago'

@@ -124,6 +124,10 @@ inherited frmPersonas: TfrmPersonas
         object tvMasterTitular: TcxGridDBColumn
           DataBinding.FieldName = 'Titular'
         end
+        object tvMasterVigenciaFM34: TcxGridDBColumn
+          DataBinding.FieldName = 'VigenciaFM34'
+          Visible = False
+        end
       end
     end
   end

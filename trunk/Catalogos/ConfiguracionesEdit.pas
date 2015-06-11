@@ -18,7 +18,7 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  Vcl.DBCtrls;
+  Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxDBEdit;
 
 type
   TfrmConfiguracionesEdit = class(T_frmEdit)
@@ -36,6 +36,8 @@ type
     DBLookupComboBox6: TDBLookupComboBox;
     Label7: TLabel;
     DBLookupComboBox7: TDBLookupComboBox;
+    Label8: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
   private
     { Private declarations }
   public

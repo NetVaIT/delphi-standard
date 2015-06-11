@@ -1,5 +1,7 @@
 inherited dmFacturacion: TdmFacturacion
   OldCreateOrder = True
+  Height = 367
+  Width = 524
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -340,5 +342,64 @@ inherited dmFacturacion: TdmFacturacion
       end>
     Left = 112
     Top = 280
+  end
+  object adodsCXCFacturasEmitidas: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT IdCuentaXCobrarFacturaEmitida, IdDocumentoXML, IdDocument' +
+      'oPDF, Emision, Serie, Folio FROM CuentasXCobrarFacturasEmitidas'
+    Parameters = <>
+    Left = 384
+    Top = 168
+    object adodsCXCFacturasEmitidasIdCuentaXCobrarFacturaEmitida: TAutoIncField
+      FieldName = 'IdCuentaXCobrarFacturaEmitida'
+      ReadOnly = True
+    end
+    object adodsCXCFacturasEmitidasIdDocumentoXML: TIntegerField
+      FieldName = 'IdDocumentoXML'
+    end
+    object adodsCXCFacturasEmitidasIdDocumentoPDF: TIntegerField
+      FieldName = 'IdDocumentoPDF'
+    end
+    object adodsCXCFacturasEmitidasArchivoXML: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ArchivoXML'
+      LookupDataSet = adodsDocumento
+      LookupKeyFields = 'IdDocumento'
+      LookupResultField = 'NombreArchivo'
+      KeyFields = 'IdDocumentoXML'
+      Size = 200
+      Lookup = True
+    end
+    object adodsCXCFacturasEmitidasArchivoPDF: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ArchivoPDF'
+      LookupDataSet = adodsDocumento
+      LookupKeyFields = 'IdDocumento'
+      LookupResultField = 'NombreArchivo'
+      KeyFields = 'IdDocumentoPDF'
+      Size = 200
+      Lookup = True
+    end
+    object adodsCXCFacturasEmitidasEmision: TDateTimeField
+      FieldName = 'Emision'
+    end
+    object adodsCXCFacturasEmitidasSerie: TStringField
+      FieldName = 'Serie'
+      Size = 10
+    end
+    object adodsCXCFacturasEmitidasFolio: TStringField
+      FieldName = 'Folio'
+      Size = 10
+    end
+  end
+  object adodsDocumento: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
+    Parameters = <>
+    Left = 384
+    Top = 232
   end
 end
