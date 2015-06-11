@@ -3,6 +3,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
   OnCreate = DataModuleCreate
   Height = 273
   inherited adodsReport: TADODataSet
+    Active = True
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +
@@ -71,8 +72,8 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
     object dbpReportppField1: TppField
       FieldAlias = 'Persona'
       FieldName = 'Persona'
-      FieldLength = 300
-      DisplayWidth = 300
+      FieldLength = 0
+      DisplayWidth = 0
       Position = 0
     end
     object dbpReportppField2: TppField
@@ -140,7 +141,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
       end
     end
     inherited ppHeaderBand1: TppHeaderBand
-      mmHeight = 10848
+      mmHeight = 7144
       object pplblEncabezado: TppLabel
         UserName = 'lblEncabezado'
         AutoSize = False
@@ -148,20 +149,20 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Name = 'TIMES NEW ROMAN'
-        Font.Size = 20
+        Font.Size = 16
         Font.Style = [fsBold, fsItalic]
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 8202
+        mmHeight = 6612
         mmLeft = 1323
-        mmTop = 1323
+        mmTop = 528
         mmWidth = 200025
         BandType = 0
         LayerName = Foreground
       end
     end
     inherited ppDetailBand1: TppDetailBand
-      mmHeight = 8467
+      mmHeight = 5027
       object ppDBText3: TppDBText
         UserName = 'DBText3'
         DataField = 'Tipo'
@@ -169,13 +170,13 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 12
+        Font.Size = 10
         Font.Style = []
         Transparent = True
         DataPipelineName = 'dbpReport'
-        mmHeight = 5292
+        mmHeight = 4232
         mmLeft = 13758
-        mmTop = 1323
+        mmTop = 528
         mmWidth = 147373
         BandType = 4
         LayerName = Foreground
@@ -188,15 +189,15 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 12
+        Font.Size = 10
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         VerticalAlignment = avCenter
         DataPipelineName = 'dbpReport'
-        mmHeight = 5292
+        mmHeight = 4232
         mmLeft = 164836
-        mmTop = 1323
+        mmTop = 528
         mmWidth = 34660
         BandType = 4
         LayerName = Foreground
@@ -231,7 +232,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
       object ppGroupHeaderBand1: TppGroupHeaderBand
         Background.Brush.Style = bsClear
         mmBottomOffset = 0
-        mmHeight = 14288
+        mmHeight = 7938
         mmPrintPosition = 0
         object ppDBText1: TppDBText
           UserName = 'DBText1'
@@ -244,9 +245,9 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Style = [fsBold]
           Transparent = True
           DataPipelineName = 'dbpReport'
-          mmHeight = 5293
+          mmHeight = 4498
           mmLeft = 2118
-          mmTop = 1588
+          mmTop = 793
           mmWidth = 199232
           BandType = 3
           GroupNo = 0
@@ -257,9 +258,9 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Pen.Color = clBlue
           Pen.Width = 2
           Weight = 1.500000000000000000
-          mmHeight = 3969
+          mmHeight = 1319
           mmLeft = 2117
-          mmTop = 8996
+          mmTop = 6081
           mmWidth = 199232
           BandType = 3
           GroupNo = 0
@@ -270,7 +271,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
         Background.Brush.Style = bsClear
         HideWhenOneDetail = False
         mmBottomOffset = 0
-        mmHeight = 27781
+        mmHeight = 16140
         mmPrintPosition = 0
         object ppDBText5: TppDBText
           UserName = 'DBText5'
@@ -280,14 +281,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 11
+          Font.Size = 10
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'dbpReport'
           mmHeight = 4498
           mmLeft = 164832
-          mmTop = 4233
+          mmTop = 788
           mmWidth = 34677
           BandType = 5
           GroupNo = 0
@@ -301,14 +302,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 11
+          Font.Size = 10
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'dbpReport'
           mmHeight = 4498
           mmLeft = 164832
-          mmTop = 11906
+          mmTop = 6341
           mmWidth = 34677
           BandType = 5
           GroupNo = 0
@@ -322,14 +323,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 11
+          Font.Size = 10
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'dbpReport'
           mmHeight = 4498
           mmLeft = 164832
-          mmTop = 19844
+          mmTop = 11364
           mmWidth = 34677
           BandType = 5
           GroupNo = 0
@@ -341,14 +342,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 11
+          Font.Size = 10
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
-          mmHeight = 4498
-          mmLeft = 134914
-          mmTop = 4233
-          mmWidth = 24077
+          mmHeight = 4234
+          mmLeft = 137319
+          mmTop = 788
+          mmWidth = 21696
           BandType = 5
           GroupNo = 0
           LayerName = Foreground
@@ -359,14 +360,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 11
+          Font.Size = 10
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
-          mmHeight = 4498
-          mmLeft = 125654
-          mmTop = 11906
-          mmWidth = 33338
+          mmHeight = 4234
+          mmLeft = 129117
+          mmTop = 6341
+          mmWidth = 29898
           BandType = 5
           GroupNo = 0
           LayerName = Foreground
@@ -377,14 +378,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 11
+          Font.Size = 10
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
-          mmHeight = 4498
-          mmLeft = 149202
-          mmTop = 19844
-          mmWidth = 9790
+          mmHeight = 4233
+          mmLeft = 150284
+          mmTop = 11364
+          mmWidth = 8731
           BandType = 5
           GroupNo = 0
           LayerName = Foreground
@@ -407,7 +408,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
       object ppGroupHeaderBand2: TppGroupHeaderBand
         Background.Brush.Style = bsClear
         mmBottomOffset = 0
-        mmHeight = 6615
+        mmHeight = 5027
         mmPrintPosition = 0
         object ppDBText2: TppDBText
           UserName = 'DBText2'
@@ -416,13 +417,13 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 12
+          Font.Size = 10
           Font.Style = [fsBold]
           Transparent = True
           DataPipelineName = 'dbpReport'
-          mmHeight = 4763
+          mmHeight = 3968
           mmLeft = 2117
-          mmTop = 794
+          mmTop = 264
           mmWidth = 136261
           BandType = 3
           GroupNo = 1
@@ -433,14 +434,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
         Background.Brush.Style = bsClear
         HideWhenOneDetail = False
         mmBottomOffset = 0
-        mmHeight = 10054
+        mmHeight = 6879
         mmPrintPosition = 0
         object ppLine1: TppLine
           UserName = 'Line1'
           Weight = 0.750000000000000000
           mmHeight = 1323
           mmLeft = 164836
-          mmTop = 1323
+          mmTop = 263
           mmWidth = 34662
           BandType = 5
           GroupNo = 1
@@ -452,14 +453,14 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 11
+          Font.Size = 10
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
-          mmHeight = 4498
-          mmLeft = 142346
-          mmTop = 3969
-          mmWidth = 16669
+          mmHeight = 4233
+          mmLeft = 144463
+          mmTop = 2114
+          mmWidth = 14552
           BandType = 5
           GroupNo = 1
           LayerName = Foreground
@@ -469,7 +470,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Weight = 0.750000000000000000
           mmHeight = 1323
           mmLeft = 2117
-          mmTop = 1323
+          mmTop = 263
           mmWidth = 159015
           BandType = 5
           GroupNo = 1
@@ -483,7 +484,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 12
+          Font.Size = 10
           Font.Style = []
           ResetGroup = ppGroup2
           TextAlignment = taRightJustified
@@ -491,7 +492,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
           DataPipelineName = 'dbpReport'
           mmHeight = 4498
           mmLeft = 164836
-          mmTop = 3969
+          mmTop = 2114
           mmWidth = 34660
           BandType = 5
           GroupNo = 1

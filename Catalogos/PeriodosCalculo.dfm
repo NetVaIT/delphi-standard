@@ -47,8 +47,8 @@ object frmPeriodosCalculo: TfrmPeriodosCalculo
       Caption = 'Calcular Periodos para el a'#241'o'
       TabOrder = 1
       object edtAnio: TEdit
-        Left = 40
-        Top = 32
+        Left = 39
+        Top = 34
         Width = 121
         Height = 21
         TabOrder = 0

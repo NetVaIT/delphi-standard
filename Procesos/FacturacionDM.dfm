@@ -397,9 +397,37 @@ inherited dmFacturacion: TdmFacturacion
   object adodsDocumento: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
+    CommandText = 
+      'SELECT IdDocumento, IdDocumentoTipo, IdDocumentoClase, Descripci' +
+      'on, NombreArchivo, IdArchivo, Archivo FROM Documentos'
     Parameters = <>
     Left = 384
     Top = 232
+    object adodsDocumentoIdDocumento: TAutoIncField
+      FieldName = 'IdDocumento'
+      ReadOnly = True
+    end
+    object adodsDocumentoIdDocumentoTipo: TIntegerField
+      FieldName = 'IdDocumentoTipo'
+    end
+    object adodsDocumentoIdDocumentoClase: TIntegerField
+      FieldName = 'IdDocumentoClase'
+    end
+    object adodsDocumentoDescripcion: TStringField
+      FieldName = 'Descripcion'
+      Size = 200
+    end
+    object adodsDocumentoNombreArchivo: TStringField
+      FieldName = 'NombreArchivo'
+      Size = 200
+    end
+    object adodsDocumentoIdArchivo: TGuidField
+      FieldName = 'IdArchivo'
+      FixedChar = True
+      Size = 38
+    end
+    object adodsDocumentoArchivo: TBlobField
+      FieldName = 'Archivo'
+    end
   end
 end

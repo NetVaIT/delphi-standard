@@ -56,7 +56,7 @@ begin
   inherited;
   FgPCalculoForm := TfrmPeriodosCalculo.Create(Self);
   Resultado := FgPCalculoForm.ShowModal;
-//  SetAnioP(2015);
+  AnioPeriodo := FgPCalculoForm.AnioP;
   if Resultado = 1 then
     Execute;
 end;

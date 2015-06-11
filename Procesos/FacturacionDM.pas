@@ -81,6 +81,13 @@ type
     adodsCXCFacturasEmitidasFolio: TStringField;
     adodsCXCFacturasEmitidasArchivoXML: TStringField;
     adodsCXCFacturasEmitidasArchivoPDF: TStringField;
+    adodsDocumentoIdDocumento: TAutoIncField;
+    adodsDocumentoIdDocumentoTipo: TIntegerField;
+    adodsDocumentoIdDocumentoClase: TIntegerField;
+    adodsDocumentoDescripcion: TStringField;
+    adodsDocumentoNombreArchivo: TStringField;
+    adodsDocumentoIdArchivo: TGuidField;
+    adodsDocumentoArchivo: TBlobField;
     procedure actListaFacturarExecute(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcesarFacturasExecute(Sender: TObject);
@@ -89,7 +96,7 @@ type
     procedure ReadFileCER(FileName: TFileName);
     procedure ReadFileKEY(FileName: TFileName);
     procedure SubirXMLaFS(FileName: TFileName);
-    Procedure CargaXMLaFS(Archivo : string);
+    Procedure CargaXMLaFS(Archivo : string; Describe : string);
   public
     { Public declarations }
   end;
@@ -256,7 +263,7 @@ begin
             //ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
             adocFacturaCuenta.Parameters.ParamByName('IdCuentaXCobrar').Value := adodsMasterIdCuentaXCobrar.Value;
             adocFacturaCuenta.Execute;
-            CargaXMLaFS(RutaFactura);
+            //CargaXMLaFS(RutaFactura,'');
           end
           else
             ShowMessage('Error: ' + TimbreCFDI.MensajeError);
@@ -275,9 +282,18 @@ begin
       MessageDlg('No hay Cuentas Autorizadas para Facturar',mtInformation,[mbOK],0);
 end;
 
-procedure TdmFacturacion.CargaXMLaFS(Archivo: string);
+procedure TdmFacturacion.CargaXMLaFS(Archivo: string; Describe : string);
+var
+  FacturaXML : TFileName;
 begin
-//
+  FacturaXML := Archivo;
+  adodsDocumento.Insert;
+  adodsDocumentoIdDocumentoTipo.Value := 2;
+  adodsDocumentoIdDocumentoClase.Value := 1;
+  adodsDocumentoDescripcion.Value;
+  adodsDocumentoNombreArchivo.Value := Archivo;
+  SubirXMLaFS(FacturaXML);
+  adodsDocumento.Post;
 end;
 
 procedure TdmFacturacion.DataModuleCreate(Sender: TObject);
@@ -331,7 +347,7 @@ var
   Blob: TStream;
   Fs: TFileStream;
 begin
-//  Blob:= adodsUpdate.CreateBlobStream(adodsUpdateArchivo, bmWrite);
+  Blob:= adodsUpdate.CreateBlobStream(adodsDocumentoArchivo, bmWrite);
   try
     Blob.Seek(0, soFromBeginning);
     Fs := TFileStream.Create(FileName, fmOpenRead or fmShareDenyWrite);
