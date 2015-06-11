@@ -3,7 +3,7 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -83,8 +83,6 @@ inherited frmMain: TfrmMain
   end
   inherited pnlMain: TPanel
     Width = 1099
-    ExplicitLeft = 384
-    ExplicitTop = 210
     ExplicitWidth = 1099
   end
   inherited dxBarManager: TdxBarManager
@@ -9415,7 +9413,9 @@ inherited frmMain: TfrmMain
       Tag = 27
       Category = 'Catalogos'
       Caption = 'Socios'
+      Enabled = False
       ImageIndex = 33
+      Visible = False
       OnExecute = actCatalogoExecute
     end
     object actPeriodos: TAction
