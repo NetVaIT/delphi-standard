@@ -128,7 +128,6 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
   end
   inherited ppReport: TppReport
     OnStartPage = ppReportStartPage
-    PrinterSetup.PaperName = 'Letter'
     DataPipelineName = 'dbpReport'
     inherited ppTitleBand1: TppTitleBand
       mmHeight = 2117

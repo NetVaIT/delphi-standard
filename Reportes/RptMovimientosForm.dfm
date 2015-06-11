@@ -2,7 +2,6 @@ inherited frmRptMovimientos: TfrmRptMovimientos
   Caption = 'Seleccione un Periodo'
   ClientHeight = 230
   ClientWidth = 361
-  OnShow = FormShow
   ExplicitWidth = 367
   ExplicitHeight = 258
   PixelsPerInch = 96

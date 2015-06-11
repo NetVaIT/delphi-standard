@@ -1,4 +1,6 @@
 inherited dmPersonasRolesFacturacion: TdmPersonasRolesFacturacion
+  OldCreateOrder = True
+  Height = 278
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 

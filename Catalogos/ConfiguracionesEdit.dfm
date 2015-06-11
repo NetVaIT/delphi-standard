@@ -1,21 +1,23 @@
 inherited frmConfiguracionesEdit: TfrmConfiguracionesEdit
   Caption = 'Configuraci'#243'n'
-  ClientHeight = 403
+  ClientHeight = 435
   ClientWidth = 391
   ExplicitWidth = 397
-  ExplicitHeight = 432
+  ExplicitHeight = 463
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 391
-    Height = 362
-    ClientRectBottom = 360
+    Height = 394
+    ExplicitWidth = 391
+    ExplicitHeight = 362
+    ClientRectBottom = 392
     ClientRectRight = 389
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 434
-      ExplicitHeight = 295
+      ExplicitWidth = 387
+      ExplicitHeight = 332
       object Label1: TLabel
         Left = 32
         Top = 24
@@ -71,6 +73,14 @@ inherited frmConfiguracionesEdit: TfrmConfiguracionesEdit
         Height = 13
         Caption = 'Metodo de pago para facturar'
         FocusControl = DBLookupComboBox7
+      end
+      object Label8: TLabel
+        Left = 32
+        Top = 304
+        Width = 119
+        Height = 13
+        Caption = 'Ruta Base para Facturas'
+        FocusControl = cxDBTextEdit1
       end
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 32
@@ -135,16 +145,28 @@ inherited frmConfiguracionesEdit: TfrmConfiguracionesEdit
         DataSource = DataSource
         TabOrder = 6
       end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 32
+        Top = 320
+        DataBinding.DataField = 'RutaBaseFacturas'
+        DataBinding.DataSource = DataSource
+        TabOrder = 7
+        Width = 304
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 362
+    Top = 394
     Width = 391
+    ExplicitTop = 362
+    ExplicitWidth = 391
     inherited btnCancel: TButton
       Left = 309
+      ExplicitLeft = 309
     end
     inherited btnOk: TButton
       Left = 228
+      ExplicitLeft = 228
     end
   end
   inherited cxImageList: TcxImageList

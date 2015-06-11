@@ -10,6 +10,8 @@ type
   TdmConfiguracion = class(T_dmStandar)
     adoqGetIdPeriodoActual: TADOQuery;
     adoqGetIdPeriodoActualValor: TIntegerField;
+    adoqGetRutaBaseFacturas: TADOQuery;
+    adoqGetRutaBaseFacturasValor: TStringField;
     adodsMasterIdPais: TIntegerField;
     adodsMasterIdMoneda: TIntegerField;
     adodsMasterIdMovimientoTipoNomina: TIntegerField;
@@ -31,13 +33,16 @@ type
     adodsMasterMovimientoTipoPrestamo: TStringField;
     adodsMasterMetodoPagoCuentasXPagar: TStringField;
     adodsMasterMetodoPagoFactura: TStringField;
+    adodsMasterRutaBaseFacturas: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     function GetIdPeridoActual: Integer;
+    function GetRutaFactura: string;
     { Private declarations }
   public
     { Public declarations }
     property IdPeridoActual: Integer read GetIdPeridoActual;
+    property RutaFacturas: string read GetRutaFactura;
   end;
 
 var
@@ -70,6 +75,17 @@ begin
     Result := adoqGetIdPeriodoActualValor.Value;
   finally
     adoqGetIdPeriodoActual.Close;
+  end;
+end;
+
+function TdmConfiguracion.GetRutaFactura: string;
+begin
+  adoqGetRutaBaseFacturas.Close;
+  try
+    adoqGetRutaBaseFacturas.Open;
+    Result := adoqGetRutaBaseFacturasValor.Value;
+  finally
+    adoqGetRutaBaseFacturas.Close;
   end;
 end;
 

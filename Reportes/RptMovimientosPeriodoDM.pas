@@ -28,6 +28,9 @@ type
     function GetCategoria(IdMovimientoTipo: Integer; var Descripcion: string): Integer;
   public
     { Public declarations }
+    procedure AssignParam;
+//    procedure Execute; override;
+
     procedure Execute;
   end;
 
@@ -35,7 +38,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses RptMovimientosPeriodoForm;
+uses RptMovimientosPeriodoForm, ConfiguracionDM;
 
 {$R *.dfm}
 
@@ -87,6 +90,12 @@ begin
   end;
 end;
 
+procedure TdmMovimientosPeriodorpt.AssignParam;
+begin
+  inherited;
+//  adodsReporte.Parameters.ParamByName('IdPeriodo').Value := mdParamsIdPeriodo.Value;
+end;
+
 procedure TdmMovimientosPeriodorpt.DataModuleCreate(Sender: TObject);
 begin
   inherited;
@@ -104,6 +113,8 @@ begin
   gReportForm := TfrmRptMovimientos.Create(Self);
   mdParams.Open;
   mdParams.Insert;
+  mdParamsIdPeriodo.Value := dmConfiguracion.IdPeridoActual;
+
   if Assigned(gReportForm) then
     gReportForm.DataSetParams := mdParams;
   TfrmRptMovimientos(gReportForm).DataSetPeriodo := adodsPeriodos;
