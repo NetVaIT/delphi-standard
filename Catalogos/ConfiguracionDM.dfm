@@ -145,7 +145,6 @@ inherited dmConfiguracion: TdmConfiguracion
     end
   end
   object adodsPaises: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPais, Descripcion from Paises'
@@ -154,7 +153,6 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 16
   end
   object adodsMonedas: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMoneda, Descripcion from Monedas'
@@ -163,7 +161,6 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 64
   end
   object adodsMovimientosTipo1: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -172,7 +169,6 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 112
   end
   object adodsMovimientosTipo2: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -181,7 +177,6 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 168
   end
   object adodsMovimientosTipo3: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
@@ -190,7 +185,6 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 224
   end
   object adodsMetodosPago1: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMetodoPago, Descripcion from MetodosPago'
@@ -199,7 +193,6 @@ inherited dmConfiguracion: TdmConfiguracion
     Top = 272
   end
   object adodsMetodosPago2: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMetodoPago, Descripcion from MetodosPago'
