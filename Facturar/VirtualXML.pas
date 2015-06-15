@@ -249,6 +249,7 @@ Certificado: TFECertificado; var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean 
 var
   ArchivoXML: TFileName;
   I: Integer;
+  RutaCompleta : String;
 begin
   Result:= False;
   if not CargarLibreria then Exit;
@@ -324,8 +325,9 @@ begin
     SetImpuestosTrasladados(Documento.ImpuestosTrasladados);
 
   // VirtualXML_ProcesaDocumento(hXml, 'aaqm610917qja.cer', 'aaqm610917qja_1011180955s.key', '12345678a', pansichar(NomArchi));
-
-   ArchivoXML := Ruta + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;
+   RutaCompleta := Ruta + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;
+   ArchivoXML := RutaCompleta;
+   Ruta := RutaCompleta;
   // ArchivoXML:= strDir + PathDelim + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;
     VirtualXML_ProcesaDocumento(hXML, PWideChar(Certificado.Ruta), PWideChar(Certificado.LlavePrivada.Ruta), PWideChar(Certificado.LlavePrivada.Clave), PWideChar(ArchivoXML));
   // Ejecutamos la función de firmado y sellado, esta función realiza TODAS las labores de generación del CFDI que son:

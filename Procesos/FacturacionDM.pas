@@ -105,7 +105,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses FacturacionForm, DocComprobanteFiscal, FacturaTipos, ConfiguracionDM;
+uses FacturacionForm, DocComprobanteFiscal, FacturaTipos, ConfiguracionDM,
+  CFDIXMLDM;
 
 
 {$R *.dfm}
@@ -264,7 +265,7 @@ begin
             //ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
             adocFacturaCuenta.Parameters.ParamByName('IdCuentaXCobrar').Value := adodsMasterIdCuentaXCobrar.Value;
             adocFacturaCuenta.Execute;
-            //CargaXMLaFS(RutaFactura,'');
+            CargaXMLaFS(RutaFactura,'Factura');
           end
           else
             ShowMessage('Error: ' + TimbreCFDI.MensajeError);
@@ -287,13 +288,15 @@ var
   FacturaXML : TFileName;
 begin
   FacturaXML := Archivo;
+  adodsDocumento.Open;
   adodsDocumento.Insert;
   adodsDocumentoIdDocumentoTipo.Value := 2;
   adodsDocumentoIdDocumentoClase.Value := 1;
-  adodsDocumentoDescripcion.Value;
+  adodsDocumentoDescripcion.Value := Describe;
   adodsDocumentoNombreArchivo.AsString := Archivo;
   SubirXMLaFS(FacturaXML);
   adodsDocumento.Post;
+  adodsDocumento.Close;
 end;
 
 procedure TdmFacturacion.DataModuleCreate(Sender: TObject);

@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>RH.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -793,6 +793,11 @@
         <DCCReference Include="Reportes\RptPlazasForm.pas">
             <Form>frmRptPlazas</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\CFDIXMLDM.pas">
+            <Form>DMXMLCFDI</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
