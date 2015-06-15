@@ -79,16 +79,17 @@ inherited dmPersonasDomicilios: TdmPersonasDomicilios
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT Domicilios.IdDomicilio,'#13#10'Domicilios.Calle + '#39' '#39' + Domicil' +
-      'ios.NoExterior + '#39' '#39' + Domicilios.NoInterior + CHAR(13)+CHAR(10)' +
-      ' +'#13#10'Domicilios.Colonia + '#39', '#39' + Municipios.Descripcion + '#39', '#39' + ' +
-      'Poblaciones.Descripcion + '#39', '#39' + Estados.Descripcion + '#39' '#39' + Dom' +
-      'icilios.CodigoPostal + CHAR(13)+CHAR(10) +'#13#10'Paises.Descripcion A' +
-      'S Domicilio'#13#10'FROM Domicilios '#13#10'INNER JOIN Paises ON Domicilios.I' +
-      'dPais = Paises.IdPais'#13#10'INNER JOIN Estados ON Domicilios.IdEstado' +
-      ' = Estados.IdEstado'#13#10'INNER JOIN Municipios ON Domicilios.IdMunic' +
-      'ipio = Municipios.IdMunicipio'#13#10'INNER JOIN Poblaciones ON Domicil' +
-      'ios.IdPoblacion = Poblaciones.IdPoblacion'#13#10
+      'SELECT Domicilios.IdDomicilio,'#13#10'Domicilios.Calle + '#39' '#39' + ISNULL(' +
+      'Domicilios.NoExterior,'#39#39') + '#39' '#39' + ISNULL(Domicilios.NoInterior,'#39 +
+      #39') + CHAR(13)+CHAR(10) +'#13#10'ISNULL(Domicilios.Colonia,'#39#39') + '#39', '#39' +' +
+      ' Municipios.Descripcion + '#39', '#39' + Poblaciones.Descripcion + '#39', '#39' ' +
+      '+ Estados.Descripcion + '#39' '#39' + Domicilios.CodigoPostal + CHAR(13)' +
+      '+CHAR(10) +'#13#10'Paises.Descripcion AS Domicilio'#13#10'FROM Domicilios '#13#10 +
+      'INNER JOIN Paises ON Domicilios.IdPais = Paises.IdPais'#13#10'INNER JO' +
+      'IN Estados ON Domicilios.IdEstado = Estados.IdEstado'#13#10'INNER JOIN' +
+      ' Municipios ON Domicilios.IdMunicipio = Municipios.IdMunicipio'#13#10 +
+      'INNER JOIN Poblaciones ON Domicilios.IdPoblacion = Poblaciones.I' +
+      'dPoblacion'#13#10
     Parameters = <>
     Left = 120
     Top = 48
