@@ -83,7 +83,7 @@ begin
   adoqGetRutaBaseFacturas.Close;
   try
     adoqGetRutaBaseFacturas.Open;
-    Result := adoqGetRutaBaseFacturasValor.Value;
+    Result := adoqGetRutaBaseFacturasValor.AsString;
   finally
     adoqGetRutaBaseFacturas.Close;
   end;

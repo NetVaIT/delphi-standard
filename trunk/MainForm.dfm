@@ -15,7 +15,6 @@ inherited frmMain: TfrmMain
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
-      Active = True
       Caption = 'Catalogos'
       Groups = <
         item
@@ -48,6 +47,7 @@ inherited frmMain: TfrmMain
       Index = 2
     end
     object dxRibbon1Tab5: TdxRibbonTab
+      Active = True
       Caption = 'Reportes'
       Groups = <
         item
@@ -368,6 +368,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton29'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton35'
         end>
       OneOnRow = True
       Row = 0
@@ -587,6 +591,10 @@ inherited frmMain: TfrmMain
     end
     object dxBarLargeButton34: TdxBarLargeButton
       Action = actPrestamos
+      Category = 0
+    end
+    object dxBarLargeButton35: TdxBarLargeButton
+      Action = actRptPlaza
       Category = 0
     end
   end
@@ -9513,6 +9521,13 @@ inherited frmMain: TfrmMain
       Category = 'Catalogos'
       Caption = 'Prestamos'
       ImageIndex = 34
+      OnExecute = actCatalogoExecute
+    end
+    object actRptPlaza: TAction
+      Tag = 56
+      Category = 'Reportes'
+      Caption = 'Plazas'
+      ImageIndex = 35
       OnExecute = actCatalogoExecute
     end
   end

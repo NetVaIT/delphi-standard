@@ -38,7 +38,7 @@ type
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
-    PConcepto : String;
+//    PConcepto : String;
     gConcepto : TfrmCuentasXCobrarEditConcepto;
     function GetPeriodoActual: Integer;
   protected

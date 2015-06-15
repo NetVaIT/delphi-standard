@@ -204,7 +204,9 @@ uses
   PrestamosPagoEdit in 'Procesos\PrestamosPagoEdit.pas' {frmPrestamosPagoEdit},
   ConfiguracionDM in 'Catalogos\ConfiguracionDM.pas' {dmConfiguracion: TDataModule},
   ConfiguracionesForm in 'Catalogos\ConfiguracionesForm.pas' {frmConfiguraciones},
-  ConfiguracionesEdit in 'Catalogos\ConfiguracionesEdit.pas' {frmConfiguracionesEdit};
+  ConfiguracionesEdit in 'Catalogos\ConfiguracionesEdit.pas' {frmConfiguracionesEdit},
+  RptPlazasDM in 'Reportes\RptPlazasDM.pas' {dmRptPlazas: TDataModule},
+  RptPlazasForm in 'Reportes\RptPlazasForm.pas' {frmRptPlazas};
 
 {$R *.res}
 

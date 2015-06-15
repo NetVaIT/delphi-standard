@@ -72,8 +72,8 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
     object dbpReportppField1: TppField
       FieldAlias = 'Persona'
       FieldName = 'Persona'
-      FieldLength = 0
-      DisplayWidth = 0
+      FieldLength = 300
+      DisplayWidth = 300
       Position = 0
     end
     object dbpReportppField2: TppField
@@ -129,6 +129,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
   end
   inherited ppReport: TppReport
     OnStartPage = ppReportStartPage
+    PrinterSetup.PaperName = 'Letter'
     DataPipelineName = 'dbpReport'
     inherited ppTitleBand1: TppTitleBand
       mmHeight = 2117
@@ -141,7 +142,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
       end
     end
     inherited ppHeaderBand1: TppHeaderBand
-      mmHeight = 7144
+      mmHeight = 15610
       object pplblEncabezado: TppLabel
         UserName = 'lblEncabezado'
         AutoSize = False

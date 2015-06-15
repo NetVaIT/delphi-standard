@@ -27,7 +27,7 @@ type
     GroupBox1: TGroupBox;
     Button1: TButton;
     Button2: TButton;
-    edtAnio: TEdit;
+    cxSEdtAnio: TcxSpinEdit;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -48,7 +48,7 @@ uses PeriodosDM;
 
 procedure TfrmPeriodosCalculo.Button1Click(Sender: TObject);
 begin
-  AnioP := StrToInt(edtAnio.Text);
+  AnioP := cxSEdtAnio.Value;
   ModalResult := mrOk;
 end;
 
@@ -62,7 +62,7 @@ var
   dd, mm, aa : word;
 begin
   DecodeDate(Now(), aa, mm, dd);
-  edtAnio.Text := IntToStr(aa);
+  cxSEdtAnio.Value := IntToStr(aa);
   cbxPeriodos.ItemIndex := 0;
 end;
 
