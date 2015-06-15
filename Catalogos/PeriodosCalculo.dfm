@@ -46,12 +46,14 @@ object frmPeriodosCalculo: TfrmPeriodosCalculo
       Height = 87
       Caption = 'Calcular Periodos para el a'#241'o'
       TabOrder = 1
-      object edtAnio: TEdit
-        Left = 39
-        Top = 34
-        Width = 121
-        Height = 21
+      object cxSEdtAnio: TcxSpinEdit
+        Left = 60
+        Top = 33
+        Properties.MaxValue = 2099.000000000000000000
+        Properties.MinValue = 2015.000000000000000000
         TabOrder = 0
+        Value = 2015
+        Width = 91
       end
     end
     object Button1: TButton

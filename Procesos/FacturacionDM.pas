@@ -124,10 +124,11 @@ var
   DocumentoComprobanteFiscal: TDocumentoComprobanteFiscal;
   Certificado: TFECertificado;
   Emisor, Receptor: TFEContribuyente;
-  Impuesto1: TFEImpuestoRetenido;
+//  Impuesto1: TFEImpuestoRetenido;
   Impuesto2 : TFEImpuestoTrasladado;
-  ImpuestoLocal: TFEImpuestoLocal;
-  Concepto1, Concepto2 : TFEConcepto;
+//  ImpuestoLocal: TFEImpuestoLocal;
+  Concepto1 : TFEConcepto;
+//  Concepto2 : TFEConcepto;
   TimbreCFDI: TTimbreCFDI;
   FileCertificado, FileKey : TFileName;
   Clave : String;
@@ -275,11 +276,10 @@ begin
       end;
       adodsMaster.Close;
       adodsMaster.Open;
-      MessageDlg('Cuentas Autorizadas Facturas',mtInformation,[mbOK],0);
+      ShowMessage('Cuentas Autorizadas Facturadas');
     end
     else
-//      ShowMessage('No hay Cuentas Autorizadas para Facturar');
-      MessageDlg('No hay Cuentas Autorizadas para Facturar',mtInformation,[mbOK],0);
+      ShowMessage('No hay Cuentas Autorizadas para Facturar');
 end;
 
 procedure TdmFacturacion.CargaXMLaFS(Archivo: string; Describe : string);
@@ -291,7 +291,7 @@ begin
   adodsDocumentoIdDocumentoTipo.Value := 2;
   adodsDocumentoIdDocumentoClase.Value := 1;
   adodsDocumentoDescripcion.Value;
-  adodsDocumentoNombreArchivo.Value := Archivo;
+  adodsDocumentoNombreArchivo.AsString := Archivo;
   SubirXMLaFS(FacturaXML);
   adodsDocumento.Post;
 end;
