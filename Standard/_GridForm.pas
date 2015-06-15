@@ -96,6 +96,8 @@ type
     actPreview: TAction;
     dxbFilter: TdxBar;
     dxbtnSearch: TdxBarButton;
+    actFullExpandGroup: TAction;
+    actFullColapseGroup: TAction;
     procedure FormShow(Sender: TObject);
     procedure FileSaveAs1Accept(Sender: TObject);
     procedure DatasetInsertExecute(Sender: TObject);
@@ -108,8 +110,12 @@ type
     procedure DatasetRefreshExecute(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure actPreviewExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure actFullExpandGroupExecute(Sender: TObject);
+    procedure actFullColapseGroupExecute(Sender: TObject);
   private
     { Private declarations }
+    FMenuItem: TMenuItem;
     FReadOnlyGrid: Boolean;
     FDataSet: TDataSet;
     FgEditForm: T_frmEdit;
@@ -119,6 +125,7 @@ type
     procedure SetDataSet(const Value: TDataSet);
     procedure SetView(const Value: Boolean);
     procedure SetactSearch(const Value: TBasicAction);
+    procedure InsertMenuItem;
   protected
     tvStatus: TcxGridDBColumn;
     property gEditForm: T_frmEdit read FgEditForm write FgEditForm;
@@ -135,6 +142,16 @@ implementation
 {$R *.dfm}
 
 uses _Utils;
+
+procedure T_frmGrid.actFullColapseGroupExecute(Sender: TObject);
+begin
+  tvMaster.DataController.Groups.FullCollapse;
+end;
+
+procedure T_frmGrid.actFullExpandGroupExecute(Sender: TObject);
+begin
+  tvMaster.DataController.Groups.FullExpand;
+end;
 
 procedure T_frmGrid.actPreviewExecute(Sender: TObject);
 begin
@@ -204,6 +221,11 @@ begin
     ShellExecute(Handle, 'open', PChar(FileName), nil, nil, 0);
 end;
 
+procedure T_frmGrid.FormCreate(Sender: TObject);
+begin
+  InsertMenuItem;
+end;
+
 procedure T_frmGrid.FormShow(Sender: TObject);
 begin
   if Assigned(gEditForm) then
@@ -263,6 +285,38 @@ begin
     actShow.Execute
   else
     DatasetEdit.Execute;
+end;
+
+procedure T_frmGrid.InsertMenuItem;
+var
+  I: Integer;
+  AMenu: TComponent;
+  ABuiltInMenus: TcxGridDefaultPopupMenu;
+begin
+  AMenu := nil;
+  ABuiltInMenus := cxGridPopupMenu.BuiltInPopupMenus;
+  for I := 0 to ABuiltInMenus.Count - 1 do
+    if ([gvhtColumnHeader] * ABuiltInMenus[I].HitTypes) <> [] then
+    begin
+      AMenu := ABuiltInMenus[I].PopupMenu;
+    end;
+  if Assigned(AMenu) and AMenu.InheritsFrom(TPopupMenu) then
+  begin
+    FMenuItem := TMenuItem.Create(Self);
+    FMenuItem.Caption := '-';
+    TPopupMenu(AMenu).Items.Add(FMenuItem);
+
+    FMenuItem:= TMenuItem.Create(Self);
+    FMenuItem.Action:= actFullExpandGroup;
+    TPopupMenu(AMenu).Items.Add(FMenuItem);
+
+    FMenuItem := TMenuItem.Create(Self);
+    FMenuItem.Action:= actFullColapseGroup;
+//    FMenuItem.Caption := 'Contraer';
+//    FMenuItem.Hint := '';
+//    FMenuItem.OnClick := GroupFullCollapse;
+    TPopupMenu(AMenu).Items.Add(FMenuItem);
+  end;
 end;
 
 end.

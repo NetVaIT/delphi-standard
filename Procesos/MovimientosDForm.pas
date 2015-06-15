@@ -44,6 +44,7 @@ type
     tvMasterEstatus: TcxGridDBColumn;
     dsPeriodos: TDataSource;
     cxedtPeriodo: TcxBarEditItem;
+    procedure FormShow(Sender: TObject);
   private
     FDataSetPeriodo: TDataSet;
     { Private declarations }
@@ -61,6 +62,12 @@ implementation
 {$R *.dfm}
 
 uses MovimientosDDM;
+
+procedure TfrmMovimientosD.FormShow(Sender: TObject);
+begin
+  inherited;
+  actFullColapseGroup.Execute;
+end;
 
 function TfrmMovimientosD.GetIdPeriodo: Integer;
 begin

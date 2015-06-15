@@ -15,6 +15,7 @@ object _frmGrid: T_frmGrid
   OldCreateOrder = False
   Position = poScreenCenter
   ShowHint = True
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -246,6 +247,16 @@ object _frmGrid: T_frmGrid
       Hint = 'Vista previa'
       ImageIndex = 15
       OnExecute = actPreviewExecute
+    end
+    object actFullExpandGroup: TAction
+      Caption = 'Expandir'
+      Hint = 'Expande todos los grupos'
+      OnExecute = actFullExpandGroupExecute
+    end
+    object actFullColapseGroup: TAction
+      Caption = 'Contraer'
+      Hint = 'Colapsa todos los grupos'
+      OnExecute = actFullColapseGroupExecute
     end
   end
   object DataSource: TDataSource
@@ -1268,7 +1279,6 @@ object _frmGrid: T_frmGrid
     Top = 215
     object dxcplGrid: TdxGridReportLink
       Component = cxGrid
-      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1280,7 +1290,6 @@ object _frmGrid: T_frmGrid
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end
