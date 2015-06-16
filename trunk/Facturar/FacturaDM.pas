@@ -79,7 +79,7 @@ begin
     Certificado.LlavePrivada.Ruta:=ExtractFilePath(Application.ExeName) + PathDelim + 'AAA010101AAA.key';
     Certificado.LlavePrivada.Clave:='12345678a';
     Certificado.RFCAlQuePertenece:='AAA010101AAA';
-    CancelarCFDI(UUID, Certificado, Respuesta);
+//    CancelarCFDI(UUID, Certificado, Respuesta);
 end;
 
 procedure TdmFactura.CreaFactura;
@@ -193,10 +193,10 @@ begin
     // Le damos un descuento
     //DocumentoComprobanteFiscal.AsignarDescuento(5, 'Por pronto pago');
 
-    if GenerarCFDI(DocumentoComprobanteFiscal, Certificado, TimbreCFDI, False) then
-      ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
-    else
-      ShowMessage('Error: ' + TimbreCFDI.MensajeError);
+//    if GenerarCFDI(DocumentoComprobanteFiscal, Certificado, TimbreCFDI, False) then
+//      ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
+//    else
+//      ShowMessage('Error: ' + TimbreCFDI.MensajeError);
   finally
     DocumentoComprobanteFiscal.Free
   end;
@@ -303,10 +303,10 @@ begin
     // Le damos un descuento
     //DocumentoComprobanteFiscal.AsignarDescuento(5, 'Por pronto pago');
 
-    if GenerarCFDI(DocumentoComprobanteFiscal, Certificado, TimbreCFDI, False) then
-      ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
-    else
-      ShowMessage('Error: ' + TimbreCFDI.MensajeError);
+//    if GenerarCFDI(DocumentoComprobanteFiscal, Certificado, TimbreCFDI, False) then
+//      ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
+//    else
+//      ShowMessage('Error: ' + TimbreCFDI.MensajeError);
   finally
     DocumentoComprobanteFiscal.Free
   end;

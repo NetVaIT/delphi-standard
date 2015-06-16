@@ -71,6 +71,7 @@ type
     adodsMasterTitular: TStringField;
     adodsMasterVigenciaFM34: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure adodsPersonaRolesNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     FRol: TPRol;
@@ -89,6 +90,12 @@ uses PersonasForm, PersonasRolesForm;
 
 {$R *.dfm}
 
+procedure TdmPersona.adodsPersonaRolesNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  adodsPersonaRolesCalcular.Value:= False;
+end;
+
 procedure TdmPersona.AsignarConsulta;
 var
   ConsultaP, ConsultaPR : String;
@@ -105,7 +112,7 @@ begin
   ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
                 'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
                 'FROM Personas ' + #10#13 +
-                'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
+                'LEFT JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
   case Rol of
     rNone: begin
              ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' + #10#13 +
@@ -116,7 +123,7 @@ begin
              ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
                           'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
                           'FROM Personas ' + #10#13 +
-                          'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
+                          'LEFT JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
            end;
     rDuenoProceso: begin
                      ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 1)';

@@ -71,7 +71,7 @@ var
 begin
   XMLpdf := TdmodXMLtoPDF.Create(Self);
   try
-//    XMLpdf.FileRTM:= ExtractFilePath(Application.ExeName) + 'FacturaCFDI.rtm';
+    XMLpdf.FileRTM:= ExtractFilePath(Application.ExeName) + 'CFDIInterva.rtm';
     XMLpdf.FileXTR:= ExtractFilePath(Application.ExeName) + 'Transfor32.xtr';
     XMLpdf.ModifyDocument;
   finally

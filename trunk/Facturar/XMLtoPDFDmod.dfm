@@ -30,7 +30,7 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
       Calculated = True
     end
     object cdsXMLversion: TStringField
-      FieldName = 'version'
+      FieldName = 'version1'
       Required = True
       Size = 31
     end
@@ -342,7 +342,7 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     TransformRead.TransformationFile = 
       'C:\Users\hucj1e3\Documents\RAD Studio\Projects\Pruebas\Facturar\' +
       'Win32\Debug\Transfor32.xtr'
-    XMLDataFile = 'C:\Temp\AAA010101AAA0.XML'
+    XMLDataFile = 'C:\Temp\XML\F00028727.xml'
     Left = 64
     Top = 200
   end
