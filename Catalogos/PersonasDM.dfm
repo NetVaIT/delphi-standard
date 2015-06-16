@@ -218,6 +218,7 @@ inherited dmPersona: TdmPersona
   object adodsPersonaRoles: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
+    OnNewRecord = adodsPersonaRolesNewRecord
     CommandText = 
       'SELECT IdPersonaRol, IdPersona, IdPersonaRelacionada, IdRol, IdR' +
       'olEsquemaPago, IdRolEstatus, IdRolClase, Calcular, PorcentajeCal' +
