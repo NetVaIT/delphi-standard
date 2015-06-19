@@ -174,82 +174,87 @@ begin
   Result:= True;
 end;
 
-function GetFormaDePago(FormaDePago: TFEFormaDePago): string;
-begin
-  case FormaDePago of
-    fpUnaSolaExhibicion: Result:= PagoUnaExhibicion;
-    fpParcialidades: Result:= PagoParcialidades;
-  end;
-end;
-
-function GetTipoComprobante(TipoComprobante: TFETipoComprobante): string;
-begin
-  case TipoComprobante of
-    tcIngreso: Result:= TipoIngreso;
-    tcEgreso: Result:= TipoEgreso;
-    tcTraslado: Result:= TipoTraslado;
-  end;
-end;
-
-procedure SetConceptos(Conceptos: TFEConceptos);
-var
-  I: Integer;
-begin
-  for I := 0 to Length(Conceptos) - 1 do
-  begin
-    // VirtualXML_AddConcepto(hXml, '1', 'Pza', 'Producto', '200.00', '200.00', '');
-    VirtualXML_AddConcepto(hXML,
-    PWideChar(TFEReglamentacion.ComoCantidad(Conceptos[I].Cantidad)),
-    PWideChar(Conceptos[I].Unidad),
-    PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].Descripcion)),
-    PWideChar(TFEReglamentacion.ComoMoneda(Conceptos[I].ValorUnitario)),
-    PWideChar(TFEReglamentacion.ComoMoneda(Conceptos[I].ValorUnitario * Conceptos[I].Cantidad)),
-    PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].NoIdentificacion)));
-    //  VirtualXML_AddInformacionAduanera(hXml, '2012-04-02', '1234', 'mexico');
-    if (Conceptos[I].DatosAduana.NumeroDocumento <> EmptyStr) then
-      VirtualXML_AddInformacionAduanera(hXML,
-      PWideChar(TFEReglamentacion.ComoFechaAduanera(Conceptos[I].DatosAduana.FechaExpedicion)),
-      PWideChar(Conceptos[I].DatosAduana.NumeroDocumento),
-      PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].DatosAduana.Aduana)));
-    if Trim(Conceptos[I].CuentaPredial) <> '' then
-      VirtualXML_AddCuentaPredial(hXML,
-      PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].CuentaPredial)));
-  end;
-end;
-
-procedure SetImpuestosRetenidos(ImpuestosRetenidos: TFEImpuestosRetenidos);
-var
-  I: Integer;
-begin
-  // VirtualXML_AddRetencion : procedure( p:LongInt; impuesto:PChar; importe:PChar ); cdecl;
-  for I := 0 to Length(ImpuestosRetenidos) - 1 do
-  begin
-    VirtualXML_AddRetencion(hXMl,
-    PWideChar(TFEReglamentacion.ComoCadena(ImpuestosRetenidos[I].Nombre)),
-    PWideChar(TFEReglamentacion.ComoMoneda(ImpuestosRetenidos[I].Importe)));
-  end;
-end;
-
-procedure SetImpuestosTrasladados(ImpuestosTrasladados: TFEImpuestosTrasladados);
-var
-  I: Integer;
-begin
-  // VirtualXML_AddTraslado : procedure( p:LongInt; impuesto:PChar; tasa:PChar; importe:PChar ); cdecl;
-  for I := 0 to Length(ImpuestosTrasladados) - 1 do
-  begin
-    VirtualXML_AddTraslado(hXML,
-    PWideChar(TFEReglamentacion.ComoCadena(ImpuestosTrasladados[I].Nombre)),
-    PWideChar(TFEReglamentacion.ComoTasaImpuesto(ImpuestosTrasladados[I].Tasa)),
-    PWideChar(TFEReglamentacion.ComoMoneda(ImpuestosTrasladados[I].Importe)));
-  end;
-end;
-
 function GenerarCFDI(var Ruta : String; Documento: TDocumentoComprobanteFiscal;
 Certificado: TFECertificado; var TimbradoCFDI: TTimbreCFDI; Produccion: Boolean = False): Boolean;
 var
   ArchivoXML: TFileName;
   I: Integer;
   RutaCompleta : String;
+  TotalImpuestosTrasladados: Currency;
+  TotalImpuestosRetenidos: Currency;
+
+  function GetFormaDePago(FormaDePago: TFEFormaDePago): string;
+  begin
+    case FormaDePago of
+      fpUnaSolaExhibicion: Result:= PagoUnaExhibicion;
+      fpParcialidades: Result:= PagoParcialidades;
+    end;
+  end;
+
+  function GetTipoComprobante(TipoComprobante: TFETipoComprobante): string;
+  begin
+    case TipoComprobante of
+      tcIngreso: Result:= TipoIngreso;
+      tcEgreso: Result:= TipoEgreso;
+      tcTraslado: Result:= TipoTraslado;
+    end;
+  end;
+
+  procedure SetConceptos(Conceptos: TFEConceptos);
+  var
+    I: Integer;
+  begin
+    for I := 0 to Length(Conceptos) - 1 do
+    begin
+      // VirtualXML_AddConcepto(hXml, '1', 'Pza', 'Producto', '200.00', '200.00', '');
+      VirtualXML_AddConcepto(hXML,
+      PWideChar(TFEReglamentacion.ComoCantidad(Conceptos[I].Cantidad)),
+      PWideChar(Conceptos[I].Unidad),
+      PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].Descripcion)),
+      PWideChar(TFEReglamentacion.ComoMoneda(Conceptos[I].ValorUnitario)),
+      PWideChar(TFEReglamentacion.ComoMoneda(Conceptos[I].ValorUnitario * Conceptos[I].Cantidad)),
+      PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].NoIdentificacion)));
+      //  VirtualXML_AddInformacionAduanera(hXml, '2012-04-02', '1234', 'mexico');
+      if (Conceptos[I].DatosAduana.NumeroDocumento <> EmptyStr) then
+        VirtualXML_AddInformacionAduanera(hXML,
+        PWideChar(TFEReglamentacion.ComoFechaAduanera(Conceptos[I].DatosAduana.FechaExpedicion)),
+        PWideChar(Conceptos[I].DatosAduana.NumeroDocumento),
+        PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].DatosAduana.Aduana)));
+      if Trim(Conceptos[I].CuentaPredial) <> '' then
+        VirtualXML_AddCuentaPredial(hXML,
+        PWideChar(TFEReglamentacion.ComoCadena(Conceptos[I].CuentaPredial)));
+    end;
+  end;
+
+  procedure SetImpuestosRetenidos(ImpuestosRetenidos: TFEImpuestosRetenidos);
+  var
+    I: Integer;
+  begin
+    // VirtualXML_AddRetencion : procedure( p:LongInt; impuesto:PChar; importe:PChar ); cdecl;
+    for I := 0 to Length(ImpuestosRetenidos) - 1 do
+    begin
+      VirtualXML_AddRetencion(hXMl,
+      PWideChar(TFEReglamentacion.ComoCadena(ImpuestosRetenidos[I].Nombre)),
+      PWideChar(TFEReglamentacion.ComoMoneda(ImpuestosRetenidos[I].Importe)));
+      TotalImpuestosRetenidos:= TotalImpuestosRetenidos + ImpuestosRetenidos[I].Importe;
+    end;
+  end;
+
+  procedure SetImpuestosTrasladados(ImpuestosTrasladados: TFEImpuestosTrasladados);
+  var
+    I: Integer;
+  begin
+    // VirtualXML_AddTraslado : procedure( p:LongInt; impuesto:PChar; tasa:PChar; importe:PChar ); cdecl;
+    for I := 0 to Length(ImpuestosTrasladados) - 1 do
+    begin
+      VirtualXML_AddTraslado(hXML,
+      PWideChar(TFEReglamentacion.ComoCadena(ImpuestosTrasladados[I].Nombre)),
+      PWideChar(TFEReglamentacion.ComoTasaImpuesto(ImpuestosTrasladados[I].Tasa)),
+      PWideChar(TFEReglamentacion.ComoMoneda(ImpuestosTrasladados[I].Importe)));
+      TotalImpuestosTrasladados:= TotalImpuestosTrasladados + ImpuestosTrasladados[I].Importe;
+    end;
+  end;
+
 begin
   Result:= False;
   if not CargarLibreria then Exit;
@@ -319,10 +324,13 @@ begin
     PWideChar(Documento.Receptor.Direccion.Estado),
     PWideChar(Documento.Receptor.Direccion.Pais),
     PWideChar(Documento.Receptor.Direccion.CodigoPostal));
-
     SetConceptos(Documento.Conceptos);
+    TotalImpuestosTrasladados:= 0;
+    TotalImpuestosRetenidos:= 0;
     SetImpuestosRetenidos(Documento.ImpuestosRetenidos);
     SetImpuestosTrasladados(Documento.ImpuestosTrasladados);
+    VirtualXML_SetImpuestosInfo(hXML, PWideChar(TFEReglamentacion.ComoMoneda(TotalImpuestosTrasladados)),
+    PWideChar(TFEReglamentacion.ComoMoneda(TotalImpuestosRetenidos)));
 
   // VirtualXML_ProcesaDocumento(hXml, 'aaqm610917qja.cer', 'aaqm610917qja_1011180955s.key', '12345678a', pansichar(NomArchi));
    RutaCompleta := Ruta + string(Documento.Emisor.RFC) + string(Documento.Serie) + IntToStr(Documento.Folio) + feXML;

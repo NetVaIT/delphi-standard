@@ -108,7 +108,7 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses FacturacionForm, DocComprobanteFiscal, FacturaTipos, ConfiguracionDM,
-  CFDIXMLDM, XMLtoPDFDmod, _Utils;
+  XMLtoPDFDmod, _Utils;
 
 
 {$R *.dfm}
