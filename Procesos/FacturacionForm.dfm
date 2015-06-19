@@ -139,10 +139,6 @@ inherited frmFacturacion: TfrmFacturacion
         item
           Visible = True
           ItemName = 'dxbbProcesar'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton8'
         end>
     end
     object dxbbProcesar: TdxBarButton
@@ -150,10 +146,6 @@ inherited frmFacturacion: TfrmFacturacion
       Hint = 'Procesar Facturas'
       Visible = ivAlways
       ImageIndex = 13
-    end
-    object dxBarButton8: TdxBarButton
-      Action = dmFacturacion.actXMLaPDF
-      Category = 0
     end
   end
   inherited cxStyleRepository: TcxStyleRepository
