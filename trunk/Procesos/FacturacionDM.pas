@@ -160,7 +160,7 @@ begin
     while not adodsMaster.eof do
     begin
 //      adodsMaster.First;
-      ShowProgress(Avance,Max,'Facturando... ' + IntToStr(Avance));
+      ShowProgress(Avance,100.1,'Facturando... ' + IntToStr(Avance) + '%');
       adodsCer.Close;
       adodsKey.Close;
       adodsEmisor.Close;
@@ -272,17 +272,17 @@ begin
         RutaFactura := RutaBase + adodsEmisorRFC.AsString + SubCarpeta;
         if not TDirectory.Exists(RutaFactura) then
           TDirectory.CreateDirectory(RutaFactura);
-        ShowProgress(Avance,Max,'Facturando... Generando XML ' + IntToStr(Avance));
+        ShowProgress(Avance,100.1,'Facturando... Generando XML ' + IntToStr(Avance) + '%');
         if GenerarCFDI(RutaFactura, DocumentoComprobanteFiscal, Certificado, TimbreCFDI, False) then
         begin
           //ShowMessage('Archivo creado: ' + TimbreCFDI.NombreArchivo)
           adocFacturaCuenta.Parameters.ParamByName('IdCuentaXCobrar').Value := adodsMasterIdCuentaXCobrar.Value;
           adocFacturaCuenta.Execute;
-          ShowProgress(Avance,Max,'Facturando... Generando PDF a partir de XML' + IntToStr(Avance));
+          ShowProgress(Avance,100.1,'Facturando... Generando PDF a partir de XML ' + IntToStr(Avance) + '%');
           XMLpdf.FileIMG := RutaFactura + fePNG;
           RutaPDF := XMLpdf.GeneratePDFFile(RutaFactura);
           adodsCXCFacturasEmitidas.Open;
-          ShowProgress(Avance,Max,'Facturando... Guardando Factura' + IntToStr(Avance));
+          ShowProgress(Avance,100.1,'Facturando... Guardando Factura ' + IntToStr(Avance) + '%');
           adodsCXCFacturasEmitidas.Insert;
           adodsCXCFacturasEmitidasIdDocumentoXML.Value := CargaXMLPDFaFS(RutaFactura,'Factura ' + String(DocumentoComprobanteFiscal.Serie) + IntToStr(DocumentoComprobanteFiscal.Folio));
           adodsCXCFacturasEmitidasIdDocumentoPDF.Value := CargaXMLPDFaFS(RutaPDF,'Factura ' + String(DocumentoComprobanteFiscal.Serie) + IntToStr(DocumentoComprobanteFiscal.Folio));
