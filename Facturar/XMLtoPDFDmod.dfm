@@ -1,17 +1,17 @@
 object dmodXMLtoPDF: TdmodXMLtoPDF
   OldCreateOrder = False
-  Height = 393
-  Width = 598
+  Height = 475
+  Width = 742
   object XMLTransform: TXMLTransform
-    Left = 64
-    Top = 144
+    Left = 48
+    Top = 24
   end
   object cdsXML: TClientDataSet
     Aggregates = <>
     Params = <>
     OnCalcFields = cdsXMLCalcFields
-    Left = 176
-    Top = 296
+    Left = 64
+    Top = 312
     object cdsXMLImporteConLetra: TStringField
       FieldKind = fkCalculated
       FieldName = 'ImporteConLetra'
@@ -343,26 +343,28 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
       'C:\Users\hucj1e3\Documents\RAD Studio\Projects\Pruebas\Facturar\' +
       'Win32\Debug\Transfor32.xtr'
     XMLDataFile = 'C:\Temp\XML\F00028727.xml'
-    Left = 64
-    Top = 200
+    Left = 48
+    Top = 80
   end
   object ppReport: TppReport
+    OnFileDeviceCreate = ppReportFileDeviceCreate
     AutoStop = False
-    DataPipeline = ppDBPipelineDatosFactura
-    PassSetting = psTwoPass
+    DataPipeline = ppDBPipelineDatosDetalleFactura
     PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Factura DAI'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
-    PrinterSetup.mmMarginBottom = 6350
-    PrinterSetup.mmMarginLeft = 6350
-    PrinterSetup.mmMarginRight = 6350
-    PrinterSetup.mmMarginTop = 6350
-    PrinterSetup.mmPaperHeight = 279000
-    PrinterSetup.mmPaperWidth = 216000
-    PrinterSetup.PaperSize = 1
-    Units = utMillimeters
+    PrinterSetup.mmMarginBottom = 3810
+    PrinterSetup.mmMarginLeft = 3810
+    PrinterSetup.mmMarginRight = 3810
+    PrinterSetup.mmMarginTop = 3810
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 122
+    Template.FileName = 'C:\Netvait\RRHH\Facturar\CFDIInterva.rtm'
+    Units = utScreenPixels
+    AllowPrintToFile = True
     ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
@@ -385,6 +387,7 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PreviewFormSettings.WindowState = wsMaximized
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
@@ -398,34 +401,2162 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
     Left = 296
-    Top = 128
+    Top = 136
     Version = '15.0'
-    mmColumnWidth = 203300
-    DataPipelineName = 'ppDBPipelineDatosFactura'
+    mmColumnWidth = 0
+    DataPipelineName = 'ppDBPipelineDatosDetalleFactura'
     object ppHeaderBand1: TppHeaderBand
       Background.Brush.Style = bsClear
       mmBottomOffset = 0
-      mmHeight = 13229
+      mmHeight = 82286
       mmPrintPosition = 0
+      object ppShape2: TppShape
+        UserName = 'Shape2'
+        Brush.Style = bsClear
+        Shape = stRoundRect
+        mmHeight = 10848
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 39423
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppShape3: TppShape
+        UserName = 'Shape3'
+        Brush.Style = bsClear
+        Shape = stRoundRect
+        mmHeight = 10848
+        mmLeft = 168275
+        mmTop = 0
+        mmWidth = 39423
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppShape13: TppShape
+        UserName = 'Shape11'
+        Shape = stRoundRect
+        mmHeight = 20108
+        mmLeft = 265
+        mmTop = 53995
+        mmWidth = 206375
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppShape8: TppShape
+        UserName = 'Shape8'
+        Brush.Color = clBtnFace
+        Shape = stRoundRect
+        mmHeight = 7673
+        mmLeft = 0
+        mmTop = 74613
+        mmWidth = 205052
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel8: TppLabel
+        UserName = 'Label8'
+        Caption = 'Cantidad'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4191
+        mmLeft = 2646
+        mmTop = 77013
+        mmWidth = 15071
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel11: TppLabel
+        UserName = 'Label11'
+        Caption = 'Descripci'#243'n'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 35436
+        mmTop = 77010
+        mmWidth = 20108
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel12: TppLabel
+        UserName = 'Label12'
+        Caption = 'Precio Unitario'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4191
+        mmLeft = 157957
+        mmTop = 77013
+        mmWidth = 24977
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel13: TppLabel
+        UserName = 'Label13'
+        Caption = 'Importe'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4191
+        mmLeft = 186267
+        mmTop = 77013
+        mmWidth = 12912
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText3: TppDBText
+        UserName = 'DBText3'
+        AutoSize = True
+        DataField = 'Serie'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 15346
+        mmTop = 5292
+        mmWidth = 794
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText4: TppDBText
+        UserName = 'DBText4'
+        DataField = 'Folio'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 19050
+        mmTop = 5292
+        mmWidth = 17198
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine1: TppLine
+        UserName = 'Line1'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 265
+        mmTop = 59022
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel22: TppLabel
+        UserName = 'Label22'
+        Caption = 'Serie y Folio internos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 2381
+        mmTop = 0
+        mmWidth = 32279
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine3: TppLine
+        UserName = 'Line3'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 265
+        mmTop = 63784
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel25: TppLabel
+        UserName = 'Label25'
+        Caption = 'Fecha hora Expedici'#243'n'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 169598
+        mmTop = 1058
+        mmWidth = 34925
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText36: TppDBText
+        UserName = 'DBText36'
+        DataField = 'FECHA'
+        DataPipeline = ppDBPipelineDatosFactura
+        DisplayFormat = 'dd/mm/yyyy   hh:nn:ss'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 170657
+        mmTop = 5821
+        mmWidth = 37042
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine4: TppLine
+        UserName = 'Line4'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 53446
+        mmTop = 53995
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel23: TppLabel
+        UserName = 'Label23'
+        Caption = 'Metodo de Pago'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 55298
+        mmTop = 54524
+        mmWidth = 24871
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText12: TppDBText
+        UserName = 'DBText12'
+        DataField = 'METODODEPAGO'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3598
+        mmLeft = 55298
+        mmTop = 59816
+        mmWidth = 26723
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine5: TppLine
+        UserName = 'Line5'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 83608
+        mmTop = 54259
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel29: TppLabel
+        UserName = 'Label29'
+        Caption = 'LUGAR DE EXPEDICION'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 84931
+        mmTop = 54524
+        mmWidth = 40555
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel30: TppLabel
+        UserName = 'Label27'
+        Caption = 'Guadalajara, Jalisco, M'#233'xico'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 84667
+        mmTop = 59812
+        mmWidth = 44185
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel31: TppLabel
+        UserName = 'Label31'
+        Caption = 'FORMA DE PAGO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 132292
+        mmTop = 54524
+        mmWidth = 29633
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine6: TppLine
+        UserName = 'Line6'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 130969
+        mmTop = 53995
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText13: TppDBText
+        UserName = 'DBText13'
+        AutoSize = True
+        DataField = 'FORMADEPAGO'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 132292
+        mmTop = 59812
+        mmWidth = 41010
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine8: TppLine
+        UserName = 'Line8'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 265
+        mmTop = 69076
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel36: TppLabel
+        UserName = 'Label36'
+        Caption = 'CONDICIONES DE PAGO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 1003
+        mmTop = 64843
+        mmWidth = 41783
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText14: TppDBText
+        UserName = 'DBText14'
+        DataField = 'CONDICIONESDEPAGO'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 1003
+        mmTop = 69341
+        mmWidth = 41804
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine12: TppLine
+        UserName = 'Line12'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 48363
+        mmTop = 63784
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel37: TppLabel
+        UserName = 'Label37'
+        Caption = 'TIPO DE COMPROBANTE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 49422
+        mmTop = 64843
+        mmWidth = 42503
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText15: TppDBText
+        UserName = 'DBText15'
+        DataField = 'TIPODECOMPROBANTE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4191
+        mmLeft = 49422
+        mmTop = 69341
+        mmWidth = 43127
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine13: TppLine
+        UserName = 'Line13'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 95724
+        mmTop = 63784
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel38: TppLabel
+        UserName = 'Label38'
+        Caption = 'REGIMEN FISCAL DEL EMISOR'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 97047
+        mmTop = 64843
+        mmWidth = 52155
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel39: TppLabel
+        UserName = 'Label30'
+        Caption = 
+          'Regimen de Personas Fisicas con Actividades Empresariales y Prof' +
+          'esionales.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 97102
+        mmTop = 69870
+        mmWidth = 99219
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText16: TppDBText
+        UserName = 'DBText16'
+        Angle = 45
+        AutoSize = True
+        BlankWhenZero = True
+        DataField = 'CANCELADO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Name = 'Arial'
+        Font.Size = 48
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 19455
+        mmLeft = 91608
+        mmTop = 54189
+        mmWidth = 19455
+        BandType = 0
+        LayerName = Foreground
+        RotatedOriginLeft = -71643
+        RotatedOriginTop = 2994
+      end
+      object ppLabel10: TppLabel
+        UserName = 'Label10'
+        Caption = 'FECHA CERTIFICACION'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 11642
+        mmTop = 54520
+        mmWidth = 39423
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText8: TppDBText
+        UserName = 'DBText8'
+        DataField = 'FECHATIMBRADO'
+        DataPipeline = ppDBPipelineDatosFactura
+        DisplayFormat = 'DD/MM/YYYY hh:nn:ss'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 2646
+        mmTop = 59812
+        mmWidth = 48154
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel18: TppLabel
+        UserName = 'Label18'
+        Caption = 'Unidad'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 20632
+        mmTop = 77010
+        mmWidth = 11906
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppShape1: TppShape
+        UserName = 'Shape1'
+        Shape = stRoundRect
+        mmHeight = 20108
+        mmLeft = 265
+        mmTop = 32560
+        mmWidth = 206375
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine2: TppLine
+        UserName = 'Line2'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 529
+        mmTop = 37587
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine7: TppLine
+        UserName = 'Line7'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 529
+        mmTop = 42349
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine9: TppLine
+        UserName = 'Line9'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 53711
+        mmTop = 32560
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel1: TppLabel
+        UserName = 'Label1'
+        Caption = 'RFC Receptor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 55563
+        mmTop = 33089
+        mmWidth = 21695
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText1: TppDBText
+        UserName = 'DBText1'
+        DataField = 'Receptor_rfc'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 55563
+        mmTop = 38380
+        mmWidth = 26723
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine10: TppLine
+        UserName = 'Line10'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 83873
+        mmTop = 32824
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel3: TppLabel
+        UserName = 'Label3'
+        Caption = 'Calle'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 85196
+        mmTop = 33089
+        mmWidth = 7673
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel5: TppLabel
+        UserName = 'Label5'
+        Caption = 'Num. Ext.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 132557
+        mmTop = 33089
+        mmWidth = 15345
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine11: TppLine
+        UserName = 'Line14'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 131234
+        mmTop = 32560
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText2: TppDBText
+        UserName = 'DBText2'
+        DataField = 'Domicilio_noExterior'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 132557
+        mmTop = 38380
+        mmWidth = 15346
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine15: TppLine
+        UserName = 'Line15'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 529
+        mmTop = 47641
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel6: TppLabel
+        UserName = 'Label6'
+        Caption = 'Colonia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 1323
+        mmTop = 43408
+        mmWidth = 11377
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText5: TppDBText
+        UserName = 'DBText5'
+        DataField = 'Domicilio_colonia'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 1323
+        mmTop = 47905
+        mmWidth = 41804
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine16: TppLine
+        UserName = 'Line16'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 48683
+        mmTop = 42349
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel7: TppLabel
+        UserName = 'Label7'
+        Caption = 'Municipio'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 49742
+        mmTop = 43408
+        mmWidth = 14287
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText6: TppDBText
+        UserName = 'DBText6'
+        DataField = 'Domicilio_municipio'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 49742
+        mmTop = 47905
+        mmWidth = 43127
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine17: TppLine
+        UserName = 'Line17'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 96044
+        mmTop = 42349
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel24: TppLabel
+        UserName = 'Label24'
+        Caption = 'Estado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 97367
+        mmTop = 43408
+        mmWidth = 10848
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel35: TppLabel
+        UserName = 'Label101'
+        Caption = 'Receptor Nombre'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 16933
+        mmTop = 33089
+        mmWidth = 26988
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText19: TppDBText
+        UserName = 'DBText19'
+        AutoSize = True
+        DataField = 'Receptor_nombre'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 7
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3175
+        mmLeft = 1058
+        mmTop = 38365
+        mmWidth = 19580
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText20: TppDBText
+        UserName = 'DBText20'
+        DataField = 'Domicilio_calle'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 86784
+        mmTop = 38380
+        mmWidth = 42069
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel4: TppLabel
+        UserName = 'Label4'
+        Caption = 'Num. Int.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 151342
+        mmTop = 33089
+        mmWidth = 14287
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText21: TppDBText
+        UserName = 'DBText21'
+        DataField = 'Domicilio_noInterior'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 151342
+        mmTop = 38380
+        mmWidth = 15346
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel40: TppLabel
+        UserName = 'Label40'
+        Caption = 'C. P.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 170657
+        mmTop = 33089
+        mmWidth = 7937
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText22: TppDBText
+        UserName = 'DBText22'
+        DataField = 'Domicilio_codigoPostal'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 170657
+        mmTop = 38380
+        mmWidth = 15346
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText23: TppDBText
+        UserName = 'DBText23'
+        DataField = 'Domicilio_estado'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 97367
+        mmTop = 47905
+        mmWidth = 43127
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel26: TppLabel
+        UserName = 'Label26'
+        Caption = 'Pa'#237's'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 144463
+        mmTop = 43408
+        mmWidth = 7144
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText25: TppDBText
+        UserName = 'DBText25'
+        DataField = 'Domicilio_pais'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 144463
+        mmTop = 47905
+        mmWidth = 43127
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppShape4: TppShape
+        UserName = 'Shape4'
+        Shape = stRoundRect
+        mmHeight = 20108
+        mmLeft = 265
+        mmTop = 11907
+        mmWidth = 206375
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine18: TppLine
+        UserName = 'Line18'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 529
+        mmTop = 16934
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine19: TppLine
+        UserName = 'Line19'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 529
+        mmTop = 21697
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine20: TppLine
+        UserName = 'Line20'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 53975
+        mmTop = 11907
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel41: TppLabel
+        UserName = 'Label41'
+        Caption = 'RFC Emisor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4234
+        mmLeft = 55827
+        mmTop = 12435
+        mmWidth = 18786
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText26: TppDBText
+        UserName = 'DBText26'
+        DataField = 'Emisor_rfc'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 55827
+        mmTop = 17728
+        mmWidth = 26723
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine21: TppLine
+        UserName = 'Line101'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 84138
+        mmTop = 12172
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel42: TppLabel
+        UserName = 'Label42'
+        Caption = 'Calle'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 85461
+        mmTop = 12436
+        mmWidth = 7673
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel43: TppLabel
+        UserName = 'Label43'
+        Caption = 'Num. Ext.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 132821
+        mmTop = 12436
+        mmWidth = 15346
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine22: TppLine
+        UserName = 'Line22'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 131498
+        mmTop = 11907
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText27: TppDBText
+        UserName = 'DBText27'
+        DataField = 'DomicilioFiscal_noExterior'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 132821
+        mmTop = 17728
+        mmWidth = 15346
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine23: TppLine
+        UserName = 'Line23'
+        Weight = 0.750000000000000000
+        mmHeight = 1588
+        mmLeft = 529
+        mmTop = 26988
+        mmWidth = 206111
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel44: TppLabel
+        UserName = 'Label44'
+        Caption = 'Colonia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 1588
+        mmTop = 22755
+        mmWidth = 11377
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText34: TppDBText
+        UserName = 'DBText34'
+        DataField = 'DomicilioFiscal_colonia'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 1588
+        mmTop = 27253
+        mmWidth = 41804
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine24: TppLine
+        UserName = 'Line24'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 48948
+        mmTop = 21697
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel45: TppLabel
+        UserName = 'Label45'
+        Caption = 'Municipio'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 50006
+        mmTop = 22755
+        mmWidth = 14288
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText35: TppDBText
+        UserName = 'DBText35'
+        DataField = 'DomicilioFiscal_municipio'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 50006
+        mmTop = 27253
+        mmWidth = 43127
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine25: TppLine
+        UserName = 'Line25'
+        Position = lpLeft
+        Weight = 0.750000000000000000
+        mmHeight = 9790
+        mmLeft = 96309
+        mmTop = 21697
+        mmWidth = 2381
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel46: TppLabel
+        UserName = 'Label46'
+        Caption = 'Estado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 97631
+        mmTop = 22755
+        mmWidth = 10848
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel47: TppLabel
+        UserName = 'Label47'
+        Caption = 'Emisor Nombre'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4234
+        mmLeft = 17727
+        mmTop = 12435
+        mmWidth = 24077
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText37: TppDBText
+        UserName = 'DBText37'
+        AutoSize = True
+        DataField = 'Emisor_nombre'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 7
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3175
+        mmLeft = 1058
+        mmTop = 17727
+        mmWidth = 17198
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText39: TppDBText
+        UserName = 'DBText201'
+        DataField = 'DomicilioFiscal_calle'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3704
+        mmLeft = 87048
+        mmTop = 17728
+        mmWidth = 42069
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel48: TppLabel
+        UserName = 'Label48'
+        Caption = 'Num. Int.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 151607
+        mmTop = 12436
+        mmWidth = 14288
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText40: TppDBText
+        UserName = 'DBText40'
+        DataField = 'DomicilioFiscal_noInterior'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 151607
+        mmTop = 17728
+        mmWidth = 15346
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel49: TppLabel
+        UserName = 'Label401'
+        Caption = 'C. P.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 170921
+        mmTop = 12436
+        mmWidth = 7938
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText41: TppDBText
+        UserName = 'DBText41'
+        DataField = 'DomicilioFiscal_codigoPostal'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 170921
+        mmTop = 17728
+        mmWidth = 15346
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText42: TppDBText
+        UserName = 'DBText42'
+        DataField = 'DomicilioFiscal_estado'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 97631
+        mmTop = 27253
+        mmWidth = 43127
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel50: TppLabel
+        UserName = 'Label50'
+        Caption = 'Pa'#237's'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsItalic]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 144727
+        mmTop = 22755
+        mmWidth = 7144
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppDBText43: TppDBText
+        UserName = 'DBText43'
+        DataField = 'DomicilioFiscal_pais'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 144727
+        mmTop = 27253
+        mmWidth = 43127
+        BandType = 0
+        LayerName = Foreground
+      end
     end
     object ppDetailBand1: TppDetailBand
       Background1.Brush.Style = bsClear
       Background2.Brush.Style = bsClear
+      ColumnBalancing = True
       mmBottomOffset = 0
-      mmHeight = 13229
+      mmHeight = 4233
       mmPrintPosition = 0
+      object ppDBText24: TppDBText
+        UserName = 'DBText24'
+        AutoSize = True
+        DataField = 'Cantidad'
+        DataPipeline = ppDBPipelineDatosDetalleFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosDetalleFactura'
+        mmHeight = 4233
+        mmLeft = 8996
+        mmTop = 0
+        mmWidth = 1852
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText28: TppDBText
+        UserName = 'DBText28'
+        DataField = 'ValorUnitario'
+        DataPipeline = ppDBPipelineDatosDetalleFactura
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosDetalleFactura'
+        mmHeight = 4233
+        mmLeft = 154517
+        mmTop = 0
+        mmWidth = 22754
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText29: TppDBText
+        UserName = 'DBText29'
+        DataField = 'Importe'
+        DataPipeline = ppDBPipelineDatosDetalleFactura
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosDetalleFactura'
+        mmHeight = 4233
+        mmLeft = 181240
+        mmTop = 0
+        mmWidth = 22754
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBMemo2: TppDBMemo
+        UserName = 'DBMemo2'
+        CharWrap = False
+        DataField = 'DESCRIPCION'
+        DataPipeline = ppDBPipelineDatosDetalleFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        RemoveEmptyLines = False
+        Stretch = True
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosDetalleFactura'
+        mmHeight = 4233
+        mmLeft = 35454
+        mmTop = 0
+        mmWidth = 117475
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        mmLeading = 0
+      end
+      object ppDBText9: TppDBText
+        UserName = 'DBText9'
+        AutoSize = True
+        DataField = 'UNIDAD'
+        DataPipeline = ppDBPipelineDatosDetalleFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosDetalleFactura'
+        mmHeight = 4233
+        mmLeft = 18251
+        mmTop = 0
+        mmWidth = 16139
+        BandType = 4
+        LayerName = Foreground
+      end
     end
-    object ppFooterBand1: TppFooterBand
+    object ppSummaryBand1: TppSummaryBand
       Background.Brush.Style = bsClear
+      PrintHeight = phDynamic
+      AlignToBottom = True
       mmBottomOffset = 0
-      mmHeight = 13229
+      mmHeight = 98161
+      mmPrintPosition = 0
+      object ppShape9: TppShape
+        UserName = 'Shape9'
+        Shape = stRoundRect
+        mmHeight = 7673
+        mmLeft = 0
+        mmTop = 529
+        mmWidth = 205052
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel14: TppLabel
+        UserName = 'Label14'
+        Caption = 'SUBTOTAL'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 153194
+        mmTop = 9790
+        mmWidth = 17727
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel15: TppLabel
+        UserName = 'Label15'
+        Caption = 'IVA TASA 0%'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4234
+        mmLeft = 153194
+        mmTop = 15081
+        mmWidth = 21696
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText30: TppDBText
+        UserName = 'DBText30'
+        DataField = 'SubTotal'
+        DataPipeline = ppDBPipelineDatosFactura
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4191
+        mmLeft = 175684
+        mmTop = 9525
+        mmWidth = 28310
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel16: TppLabel
+        UserName = 'Label16'
+        Caption = 'TOTAL'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 153194
+        mmTop = 20373
+        mmWidth = 11377
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel17: TppLabel
+        UserName = 'Label17'
+        Caption = 'Importe con Letra :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 1058
+        mmTop = 529
+        mmWidth = 29633
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText33: TppDBText
+        UserName = 'DBText33'
+        DataField = 'ImporteConLetra'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4233
+        mmLeft = 30956
+        mmTop = 2117
+        mmWidth = 144992
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel20: TppLabel
+        UserName = 'Label20'
+        Caption = 
+          'La Reproducci'#243'n ap'#243'crifa de este comprobante constituye un delit' +
+          'o en los t'#233'rminos de las disposiciones fiscales.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 8213
+        mmLeft = 0
+        mmTop = 8731
+        mmWidth = 99314
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBImage1: TppDBImage
+        UserName = 'DBImage1'
+        AlignHorizontal = ahLeft
+        AlignVertical = avTop
+        MaintainAspectRatio = False
+        Stretch = True
+        DataField = 'CBB'
+        DataPipeline = ppDBPipelineDatosFactura
+        GraphicType = 'AutoDetect'
+        ParentDataPipeline = False
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 27517
+        mmLeft = 125413
+        mmTop = 12435
+        mmWidth = 27517
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText31: TppDBText
+        UserName = 'DBText31'
+        DataField = 'totalImpuestosTrasladados'
+        DataPipeline = ppDBPipelineDatosFactura
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4191
+        mmLeft = 175684
+        mmTop = 15081
+        mmWidth = 28310
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText32: TppDBText
+        UserName = 'DBText32'
+        DataField = 'Total'
+        DataPipeline = ppDBPipelineDatosFactura
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 4191
+        mmLeft = 175684
+        mmTop = 20373
+        mmWidth = 28310
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel2: TppLabel
+        UserName = 'Label201'
+        Caption = 'Efectos fiscales al pago.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 4233
+        mmLeft = 0
+        mmTop = 17990
+        mmWidth = 82815
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLine14: TppLine
+        UserName = 'Line11'
+        Weight = 0.750000000000000000
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 43663
+        mmWidth = 206375
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBMemo1: TppDBMemo
+        UserName = 'DBMemo1'
+        CharWrap = True
+        DataField = 'SELLO'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        RemoveEmptyLines = False
+        Stretch = True
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 8996
+        mmLeft = 265
+        mmTop = 49749
+        mmWidth = 202671
+        BandType = 7
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        mmLeading = 0
+      end
+      object ppLabel9: TppLabel
+        UserName = 'Label9'
+        Caption = 'Folio SAT'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 4233
+        mmLeft = 0
+        mmTop = 23548
+        mmWidth = 17727
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText7: TppDBText
+        UserName = 'DBText7'
+        AutoSize = True
+        DataField = 'UUID'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 19579
+        mmTop = 23548
+        mmWidth = 66675
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText10: TppDBText
+        UserName = 'DBText10'
+        AutoSize = True
+        DataField = 'NOCERTIFICADOSAT'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3969
+        mmLeft = 50536
+        mmTop = 29104
+        mmWidth = 37041
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel19: TppLabel
+        UserName = 'Label19'
+        Caption = 'Num. Serie Certificado SAT'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 29104
+        mmWidth = 47625
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel21: TppLabel
+        UserName = 'Label21'
+        Caption = 'Num. Serie Certificado CSD'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 4233
+        mmLeft = 265
+        mmTop = 33338
+        mmWidth = 47625
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText11: TppDBText
+        UserName = 'DBText101'
+        AutoSize = True
+        DataField = 'NOCERTIFICADO'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3968
+        mmLeft = 50536
+        mmTop = 33338
+        mmWidth = 37041
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel27: TppLabel
+        UserName = 'Label2'
+        Caption = 'Sello Digital del CFDI'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 4498
+        mmLeft = 265
+        mmTop = 45515
+        mmWidth = 37835
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel28: TppLabel
+        UserName = 'Label28'
+        Caption = 'Sello del SAT'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 4233
+        mmLeft = 0
+        mmTop = 59274
+        mmWidth = 37835
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBMemo3: TppDBMemo
+        UserName = 'DBMemo3'
+        CharWrap = True
+        DataField = 'SELLOSAT'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        RemoveEmptyLines = False
+        Stretch = True
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 8996
+        mmLeft = 0
+        mmTop = 64036
+        mmWidth = 202671
+        BandType = 7
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        mmLeading = 0
+      end
+      object ppDBMemo4: TppDBMemo
+        UserName = 'DBMemo4'
+        CharWrap = True
+        DataField = 'CADENAORIGINAL'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        RemoveEmptyLines = False
+        Stretch = True
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 13494
+        mmLeft = 0
+        mmTop = 77001
+        mmWidth = 202671
+        BandType = 7
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        mmLeading = 0
+      end
+      object ppLabel32: TppLabel
+        UserName = 'Label32'
+        Caption = 'Cadena Original'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 4234
+        mmLeft = 0
+        mmTop = 73032
+        mmWidth = 37835
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel33: TppLabel
+        UserName = 'Label202'
+        Caption = 'Este documento es una representaci'#243'n impresa de un CFDI'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 8467
+        mmLeft = 133879
+        mmTop = 29104
+        mmWidth = 72496
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppLabel34: TppLabel
+        UserName = 'Label34'
+        Caption = 'Fecha y hora de Certificaci'#243'n:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        mmHeight = 4498
+        mmLeft = 265
+        mmTop = 38365
+        mmWidth = 50536
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppDBText17: TppDBText
+        UserName = 'DBText17'
+        AutoSize = True
+        DataField = 'FECHATIMBRADO'
+        DataPipeline = ppDBPipelineDatosFactura
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipelineDatosFactura'
+        mmHeight = 3968
+        mmLeft = 50536
+        mmTop = 38365
+        mmWidth = 37835
+        BandType = 7
+        LayerName = Foreground
+      end
+      object ppImageCBB: TppImage
+        UserName = 'ImageCBB'
+        AlignHorizontal = ahCenter
+        AlignVertical = avCenter
+        MaintainAspectRatio = False
+        Stretch = True
+        mmHeight = 30427
+        mmLeft = 101071
+        mmTop = 10845
+        mmWidth = 30427
+        BandType = 7
+        LayerName = Foreground
+      end
+    end
+    object ppPageStyle1: TppPageStyle
+      Background.Brush.Style = bsClear
+      EndPage = 0
+      SinglePage = 0
+      StartPage = 0
+      mmBottomOffset = 0
+      mmHeight = 271781
       mmPrintPosition = 0
     end
     object ppDesignLayers1: TppDesignLayers
+      object ppDesignLayer2: TppDesignLayer
+        UserName = 'PageLayer1'
+        LayerType = ltPage
+        Index = 0
+      end
       object ppDesignLayer1: TppDesignLayer
         UserName = 'Foreground'
         LayerType = ltBanded
-        Index = 0
+        Index = 1
       end
     end
     object ppParameterList1: TppParameterList
@@ -434,46 +2565,906 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
   object ppDBPipelineDatosFactura: TppDBPipeline
     DataSource = dsXML
     UserName = 'Comprobante'
-    Left = 256
-    Top = 176
+    Left = 64
+    Top = 200
+    object ppDBPipelineDatosFacturappField1: TppField
+      FieldAlias = 'ImporteConLetra'
+      FieldName = 'ImporteConLetra'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField2: TppField
+      FieldAlias = 'CadenaOriginal'
+      FieldName = 'CadenaOriginal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField3: TppField
+      FieldAlias = 'fechahora'
+      FieldName = 'fechahora'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField4: TppField
+      FieldAlias = 'version1'
+      FieldName = 'version1'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField5: TppField
+      FieldAlias = 'serie'
+      FieldName = 'serie'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField6: TppField
+      FieldAlias = 'folio'
+      FieldName = 'folio'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField7: TppField
+      FieldAlias = 'fecha'
+      FieldName = 'fecha'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 6
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField8: TppField
+      FieldAlias = 'sello'
+      FieldName = 'sello'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 7
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField9: TppField
+      FieldAlias = 'formaDePago'
+      FieldName = 'formaDePago'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField10: TppField
+      FieldAlias = 'noCertificado'
+      FieldName = 'noCertificado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 9
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField11: TppField
+      FieldAlias = 'certificado'
+      FieldName = 'certificado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 10
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField12: TppField
+      FieldAlias = 'condicionesDePago'
+      FieldName = 'condicionesDePago'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 11
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField13: TppField
+      FieldAlias = 'subTotal'
+      FieldName = 'subTotal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 12
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField14: TppField
+      FieldAlias = 'descuento'
+      FieldName = 'descuento'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 13
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField15: TppField
+      FieldAlias = 'motivoDescuento'
+      FieldName = 'motivoDescuento'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 14
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField16: TppField
+      FieldAlias = 'TipoCambio'
+      FieldName = 'TipoCambio'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 15
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField17: TppField
+      FieldAlias = 'Moneda'
+      FieldName = 'Moneda'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 16
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField18: TppField
+      FieldAlias = 'total'
+      FieldName = 'total'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 17
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField19: TppField
+      FieldAlias = 'tipoDeComprobante'
+      FieldName = 'tipoDeComprobante'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 18
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField20: TppField
+      FieldAlias = 'metodoDePago'
+      FieldName = 'metodoDePago'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 19
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField21: TppField
+      FieldAlias = 'LugarExpedicion'
+      FieldName = 'LugarExpedicion'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 20
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField22: TppField
+      FieldAlias = 'NumCtaPago'
+      FieldName = 'NumCtaPago'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 21
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField23: TppField
+      FieldAlias = 'FolioFiscalOrig'
+      FieldName = 'FolioFiscalOrig'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 22
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField24: TppField
+      FieldAlias = 'SerieFolioFiscalOrig'
+      FieldName = 'SerieFolioFiscalOrig'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 23
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField25: TppField
+      FieldAlias = 'FechaFolioFiscalOrig'
+      FieldName = 'FechaFolioFiscalOrig'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 24
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField26: TppField
+      FieldAlias = 'MontoFolioFiscalOrig'
+      FieldName = 'MontoFolioFiscalOrig'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 25
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField27: TppField
+      FieldAlias = 'Emisor_rfc'
+      FieldName = 'Emisor_rfc'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 26
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField28: TppField
+      FieldAlias = 'Emisor_nombre'
+      FieldName = 'Emisor_nombre'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 27
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField29: TppField
+      FieldAlias = 'DomicilioFiscal_calle'
+      FieldName = 'DomicilioFiscal_calle'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 28
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField30: TppField
+      FieldAlias = 'DomicilioFiscal_noExterior'
+      FieldName = 'DomicilioFiscal_noExterior'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 29
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField31: TppField
+      FieldAlias = 'DomicilioFiscal_noInterior'
+      FieldName = 'DomicilioFiscal_noInterior'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 30
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField32: TppField
+      FieldAlias = 'DomicilioFiscal_colonia'
+      FieldName = 'DomicilioFiscal_colonia'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 31
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField33: TppField
+      FieldAlias = 'DomicilioFiscal_localidad'
+      FieldName = 'DomicilioFiscal_localidad'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 32
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField34: TppField
+      FieldAlias = 'DomicilioFiscal_referencia'
+      FieldName = 'DomicilioFiscal_referencia'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 33
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField35: TppField
+      FieldAlias = 'DomicilioFiscal_municipio'
+      FieldName = 'DomicilioFiscal_municipio'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 34
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField36: TppField
+      FieldAlias = 'DomicilioFiscal_estado'
+      FieldName = 'DomicilioFiscal_estado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 35
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField37: TppField
+      FieldAlias = 'DomicilioFiscal_pais'
+      FieldName = 'DomicilioFiscal_pais'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 36
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField38: TppField
+      FieldAlias = 'DomicilioFiscal_codigoPostal'
+      FieldName = 'DomicilioFiscal_codigoPostal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 37
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField39: TppField
+      FieldAlias = 'ExpedidoEn_calle'
+      FieldName = 'ExpedidoEn_calle'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 38
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField40: TppField
+      FieldAlias = 'ExpedidoEn_noExterior'
+      FieldName = 'ExpedidoEn_noExterior'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 39
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField41: TppField
+      FieldAlias = 'ExpedidoEn_noInterior'
+      FieldName = 'ExpedidoEn_noInterior'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 40
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField42: TppField
+      FieldAlias = 'ExpedidoEn_colonia'
+      FieldName = 'ExpedidoEn_colonia'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 41
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField43: TppField
+      FieldAlias = 'ExpedidoEn_localidad'
+      FieldName = 'ExpedidoEn_localidad'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 42
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField44: TppField
+      FieldAlias = 'ExpedidoEn_referencia'
+      FieldName = 'ExpedidoEn_referencia'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 43
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField45: TppField
+      FieldAlias = 'ExpedidoEn_municipio'
+      FieldName = 'ExpedidoEn_municipio'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 44
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField46: TppField
+      FieldAlias = 'ExpedidoEn_estado'
+      FieldName = 'ExpedidoEn_estado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 45
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField47: TppField
+      FieldAlias = 'ExpedidoEn_pais'
+      FieldName = 'ExpedidoEn_pais'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 46
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField48: TppField
+      FieldAlias = 'ExpedidoEn_codigoPostal'
+      FieldName = 'ExpedidoEn_codigoPostal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 47
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField49: TppField
+      FieldAlias = 'Receptor_rfc'
+      FieldName = 'Receptor_rfc'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 48
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField50: TppField
+      FieldAlias = 'Receptor_nombre'
+      FieldName = 'Receptor_nombre'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 49
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField51: TppField
+      FieldAlias = 'Domicilio_calle'
+      FieldName = 'Domicilio_calle'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 50
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField52: TppField
+      FieldAlias = 'Domicilio_noExterior'
+      FieldName = 'Domicilio_noExterior'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 51
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField53: TppField
+      FieldAlias = 'Domicilio_noInterior'
+      FieldName = 'Domicilio_noInterior'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 52
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField54: TppField
+      FieldAlias = 'Domicilio_colonia'
+      FieldName = 'Domicilio_colonia'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 53
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField55: TppField
+      FieldAlias = 'Domicilio_localidad'
+      FieldName = 'Domicilio_localidad'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 54
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField56: TppField
+      FieldAlias = 'Domicilio_referencia'
+      FieldName = 'Domicilio_referencia'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 55
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField57: TppField
+      FieldAlias = 'Domicilio_municipio'
+      FieldName = 'Domicilio_municipio'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 56
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField58: TppField
+      FieldAlias = 'Domicilio_estado'
+      FieldName = 'Domicilio_estado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 57
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField59: TppField
+      FieldAlias = 'Domicilio_pais'
+      FieldName = 'Domicilio_pais'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 58
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField60: TppField
+      FieldAlias = 'Domicilio_codigoPostal'
+      FieldName = 'Domicilio_codigoPostal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 59
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField61: TppField
+      FieldAlias = 'totalImpuestosRetenidos'
+      FieldName = 'totalImpuestosRetenidos'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 60
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField62: TppField
+      FieldAlias = 'totalImpuestosTrasladados'
+      FieldName = 'totalImpuestosTrasladados'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 61
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField63: TppField
+      FieldAlias = 'version2'
+      FieldName = 'version2'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 62
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField64: TppField
+      FieldAlias = 'UUID'
+      FieldName = 'UUID'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 63
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField65: TppField
+      FieldAlias = 'FechaTimbrado'
+      FieldName = 'FechaTimbrado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 64
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField66: TppField
+      FieldAlias = 'selloCFD'
+      FieldName = 'selloCFD'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 65
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField67: TppField
+      FieldAlias = 'noCertificadoSAT'
+      FieldName = 'noCertificadoSAT'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 66
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField68: TppField
+      FieldAlias = 'selloSAT'
+      FieldName = 'selloSAT'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 67
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField69: TppField
+      FieldAlias = 'RegimenFiscal'
+      FieldName = 'RegimenFiscal'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 68
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField70: TppField
+      FieldAlias = 'Concepto'
+      FieldName = 'Concepto'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 69
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField71: TppField
+      FieldAlias = 'Retencion'
+      FieldName = 'Retencion'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 70
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosFacturappField72: TppField
+      FieldAlias = 'Traslado'
+      FieldName = 'Traslado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 71
+      Searchable = False
+      Sortable = False
+    end
   end
   object dsXML: TDataSource
     DataSet = cdsXML
-    Left = 256
-    Top = 232
+    Left = 64
+    Top = 256
   end
   object ppDBPipelineDatosDetalleFactura: TppDBPipeline
     DataSource = dsConcepto
     UserName = 'Concepto'
-    Left = 288
+    Left = 184
     Top = 176
+    object ppDBPipelineDatosDetalleFacturappField1: TppField
+      FieldAlias = 'cantidad'
+      FieldName = 'cantidad'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField2: TppField
+      FieldAlias = 'unidad'
+      FieldName = 'unidad'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField3: TppField
+      FieldAlias = 'noIdentificacion'
+      FieldName = 'noIdentificacion'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField4: TppField
+      FieldAlias = 'descripcion'
+      FieldName = 'descripcion'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField5: TppField
+      FieldAlias = 'valorUnitario'
+      FieldName = 'valorUnitario'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField6: TppField
+      FieldAlias = 'importe'
+      FieldName = 'importe'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField7: TppField
+      FieldAlias = 'numero'
+      FieldName = 'numero'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 6
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField8: TppField
+      FieldAlias = 'InformacionAduanera'
+      FieldName = 'InformacionAduanera'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 7
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosDetalleFacturappField9: TppField
+      FieldAlias = 'Parte'
+      FieldName = 'Parte'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
   end
   object dsConcepto: TDataSource
     DataSet = cdsConcepto
-    Left = 288
-    Top = 232
+    Left = 184
+    Top = 256
   end
   object ppDBPipelineDatosRetencion: TppDBPipeline
     DataSource = dsRetencion
     UserName = 'Retencion'
-    Left = 320
-    Top = 176
+    Left = 296
+    Top = 200
+    object ppDBPipelineDatosRetencionppField1: TppField
+      FieldAlias = 'impuesto'
+      FieldName = 'impuesto'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosRetencionppField2: TppField
+      FieldAlias = 'importe'
+      FieldName = 'importe'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
   end
   object dsRetencion: TDataSource
     DataSet = cdsRetencion
-    Left = 320
-    Top = 232
+    Left = 296
+    Top = 256
   end
   object ppDBPipelineDatosTraslado: TppDBPipeline
     DataSource = dsTraslado
     UserName = 'Traslado'
-    Left = 352
+    Left = 408
     Top = 176
+    object ppDBPipelineDatosTrasladoppField1: TppField
+      FieldAlias = 'impuesto'
+      FieldName = 'impuesto'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosTrasladoppField2: TppField
+      FieldAlias = 'tasa'
+      FieldName = 'tasa'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineDatosTrasladoppField3: TppField
+      FieldAlias = 'importe'
+      FieldName = 'importe'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
   end
   object dsTraslado: TDataSource
     DataSet = cdsTraslado
-    Left = 352
-    Top = 232
+    Left = 408
+    Top = 256
   end
   object ppDesigner: TppDesigner
     Caption = 'Dise'#241'o'
@@ -1393,8 +4384,8 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     Aggregates = <>
     DataSetField = cdsXMLConcepto
     Params = <>
-    Left = 232
-    Top = 296
+    Left = 184
+    Top = 312
     object cdsConceptocantidad: TBCDField
       FieldName = 'cantidad'
       Required = True
@@ -1409,9 +4400,10 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
       Size = 31
     end
     object cdsConceptodescripcion: TStringField
+      DisplayWidth = 255
       FieldName = 'descripcion'
       Required = True
-      Size = 31
+      Size = 255
     end
     object cdsConceptovalorUnitario: TBCDField
       FieldName = 'valorUnitario'
@@ -1437,21 +4429,51 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
   end
   object dsInfoAduanera: TDataSource
     DataSet = cdsInfoAduanera
-    Left = 392
-    Top = 232
+    Left = 512
+    Top = 256
   end
   object ppDBPipelineInfoAduanera: TppDBPipeline
     DataSource = dsInfoAduanera
     UserName = 'InformacionAduanera'
-    Left = 400
-    Top = 176
+    Left = 504
+    Top = 200
+    object ppDBPipelineInfoAduanerappField1: TppField
+      FieldAlias = 'numero'
+      FieldName = 'numero'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineInfoAduanerappField2: TppField
+      FieldAlias = 'fecha'
+      FieldName = 'fecha'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBPipelineInfoAduanerappField3: TppField
+      FieldAlias = 'aduana'
+      FieldName = 'aduana'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
   end
   object cdsRetencion: TClientDataSet
     Aggregates = <>
     DataSetField = cdsXMLRetencion
     Params = <>
-    Left = 304
-    Top = 296
+    Left = 296
+    Top = 312
     object cdsRetencionimpuesto: TStringField
       FieldName = 'impuesto'
       Required = True
@@ -1466,8 +4488,8 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     Aggregates = <>
     DataSetField = cdsXMLTraslado
     Params = <>
-    Left = 368
-    Top = 296
+    Left = 408
+    Top = 312
     object cdsTrasladoimpuesto: TStringField
       FieldName = 'impuesto'
       Required = True
@@ -1487,8 +4509,8 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     Aggregates = <>
     DataSetField = cdsConceptoInformacionAduanera
     Params = <>
-    Left = 440
-    Top = 296
+    Left = 512
+    Top = 312
     object cdsInfoAduaneranumero: TStringField
       FieldName = 'numero'
       Required = True
@@ -1500,7 +4522,7 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     end
     object cdsInfoAduaneraaduana: TStringField
       FieldName = 'aduana'
-      Size = 31
+      Size = 255
     end
   end
   object OpenDialogXML: TOpenDialog
@@ -1512,8 +4534,8 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     Aggregates = <>
     DataSetField = cdsXMLRegimenFiscal
     Params = <>
-    Left = 528
-    Top = 296
+    Left = 608
+    Top = 312
     object cdsRegimenFiscalRegimen: TStringField
       FieldName = 'Regimen'
       Required = True
@@ -1522,13 +4544,23 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
   end
   object dsRegimenFiscal: TDataSource
     DataSet = cdsRegimenFiscal
-    Left = 464
-    Top = 232
+    Left = 608
+    Top = 256
   end
   object ppDBPipelineRegimenFiscal: TppDBPipeline
     DataSource = dsRegimenFiscal
     UserName = 'RegimenFiscal'
-    Left = 464
+    Left = 608
     Top = 176
+    object ppDBPipelineRegimenFiscalppField1: TppField
+      FieldAlias = 'Regimen'
+      FieldName = 'Regimen'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
   end
 end

@@ -206,8 +206,7 @@ uses
   ConfiguracionesForm in 'Catalogos\ConfiguracionesForm.pas' {frmConfiguraciones},
   ConfiguracionesEdit in 'Catalogos\ConfiguracionesEdit.pas' {frmConfiguracionesEdit},
   RptPlazasDM in 'Reportes\RptPlazasDM.pas' {dmRptPlazas: TDataModule},
-  RptPlazasForm in 'Reportes\RptPlazasForm.pas' {frmRptPlazas},
-  CFDIXMLDM in 'Procesos\CFDIXMLDM.pas' {DMXMLCFDI: TDataModule};
+  RptPlazasForm in 'Reportes\RptPlazasForm.pas' {frmRptPlazas};
 
 {$R *.res}
 
@@ -234,7 +233,6 @@ begin
   Application.CreateForm(T_frmProgress, _frmProgress);
   Application.CreateForm(T_frmMainRibbon, _frmMainRibbon);
   Application.CreateForm(TdmConfiguracion, dmConfiguracion);
-  Application.CreateForm(TDMXMLCFDI, DMXMLCFDI);
   Application.Run;
   end;
 end.

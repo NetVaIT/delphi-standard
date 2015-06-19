@@ -466,8 +466,6 @@ type
   end;
   function DateTimeToXSDDateTime( xFecha : TDateTime):String;
 
-var
-  DMXMLCFDI: TDMXMLCFDI;
 
 implementation
 
@@ -475,7 +473,7 @@ implementation
 
 {$R *.dfm}
 
- function xIntToLletras(Numero:LongInt):String;
+function xIntToLletras(Numero:LongInt):String;
 
    function xxIntToLletras(Valor:LongInt):String;
    const
@@ -519,10 +517,10 @@ implementation
     Result := Linea;
    end;
 
- var
+var
     Millones,Miles,Unidades: Longint;
     Linea : String;
- begin
+begin
    {Inicializamos el string que contendrá las letras según el valor
    numérico}
    if numero=0 then Linea := 'CERO'
@@ -555,7 +553,7 @@ implementation
    if Unidades >0 then Linea := Linea + xxIntToLletras(Unidades);
 
    xIntToLletras := Linea;
- end;
+end;
 
 function XSDDateTimeToTDateTime( xDateTime : String ):TDateTime;
 var

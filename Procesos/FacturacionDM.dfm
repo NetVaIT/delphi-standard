@@ -107,6 +107,10 @@ inherited dmFacturacion: TdmFacturacion
       ImageIndex = 13
       OnExecute = actProcesarFacturasExecute
     end
+    object actXMLaPDF: TAction
+      Caption = 'actXMLaPDF'
+      OnExecute = actXMLaPDFExecute
+    end
   end
   object adodsEmisor: TADODataSet
     Connection = _dmConection.ADOConnection

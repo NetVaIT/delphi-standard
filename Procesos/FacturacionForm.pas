@@ -48,6 +48,7 @@ type
     tvMasterFacturar: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
     tvMasterRegimenFiscal: TcxGridDBColumn;
+    dxBarButton8: TdxBarButton;
   private
     { Private declarations }
     FacturaCta : TBasicAction;
