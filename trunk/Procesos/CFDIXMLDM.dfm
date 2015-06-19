@@ -523,7 +523,7 @@ object DMXMLCFDI: TDMXMLCFDI
     DataPipeline = ppDBPipelineConceptos
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Letter (8,5" x 11")'
+    PrinterSetup.PaperName = 'Letter'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 3810
@@ -2326,8 +2326,8 @@ object DMXMLCFDI: TDMXMLCFDI
         ParentDataPipeline = False
         DataPipelineName = 'ppDBPipelineCFD'
         mmHeight = 27517
-        mmLeft = 103981
-        mmTop = 9790
+        mmLeft = 102923
+        mmTop = 12435
         mmWidth = 27517
         BandType = 7
         LayerName = Foreground

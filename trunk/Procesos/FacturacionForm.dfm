@@ -29,12 +29,12 @@ inherited frmFacturacion: TfrmFacturacion
   inherited pnlMaster: TPanel
     Width = 747
     Height = 268
-    ExplicitWidth = 645
+    ExplicitWidth = 747
     ExplicitHeight = 268
     inherited cxGrid: TcxGrid
       Width = 747
       Height = 268
-      ExplicitWidth = 645
+      ExplicitWidth = 747
       ExplicitHeight = 268
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdCuentaXCobrarEstatus: TcxGridDBColumn
@@ -95,29 +95,29 @@ inherited frmFacturacion: TfrmFacturacion
     Top = 390
     Width = 747
     ExplicitTop = 390
-    ExplicitWidth = 645
+    ExplicitWidth = 747
   end
   inherited pnlDetail2: TPanel
     Top = 346
     Width = 747
     ExplicitTop = 346
-    ExplicitWidth = 645
+    ExplicitWidth = 747
   end
   inherited pnlDetail1: TPanel
     Top = 302
     Width = 747
     ExplicitTop = 302
-    ExplicitWidth = 645
+    ExplicitWidth = 747
   end
   inherited pnlClose: TPanel
     Top = 431
     Width = 747
     Visible = True
     ExplicitTop = 431
-    ExplicitWidth = 645
+    ExplicitWidth = 747
     inherited btnClose: TButton
       Left = 662
-      ExplicitLeft = 560
+      ExplicitLeft = 662
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -139,6 +139,10 @@ inherited frmFacturacion: TfrmFacturacion
         item
           Visible = True
           ItemName = 'dxbbProcesar'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton8'
         end>
     end
     object dxbbProcesar: TdxBarButton
@@ -146,6 +150,10 @@ inherited frmFacturacion: TfrmFacturacion
       Hint = 'Procesar Facturas'
       Visible = ivAlways
       ImageIndex = 13
+    end
+    object dxBarButton8: TdxBarButton
+      Action = dmFacturacion.actXMLaPDF
+      Category = 0
     end
   end
   inherited cxStyleRepository: TcxStyleRepository
@@ -156,7 +164,7 @@ inherited frmFacturacion: TfrmFacturacion
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end
