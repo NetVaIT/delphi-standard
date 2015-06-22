@@ -143,7 +143,8 @@ end;
 
 
 procedure TdmCuentasBancarias.SetRFC(const Value: string);
-var ParamRFC:Tparameter;
+//var
+// ParamRFC:Tparameter;
 begin
   FRFC := Value;
   if FiltroPersona<>'' then
