@@ -407,20 +407,14 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     object ppHeaderBand1: TppHeaderBand
       Background.Brush.Style = bsClear
       mmBottomOffset = 0
-      mmHeight = 18256
+      mmHeight = 13229
       mmPrintPosition = 0
     end
     object ppDetailBand1: TppDetailBand
       Background1.Brush.Style = bsClear
       Background2.Brush.Style = bsClear
       mmBottomOffset = 0
-      mmHeight = 24077
-      mmPrintPosition = 0
-    end
-    object ppFooterBand1: TppFooterBand
-      Background.Brush.Style = bsClear
-      mmBottomOffset = 0
-      mmHeight = 27252
+      mmHeight = 13229
       mmPrintPosition = 0
       object ppImageCBB: TppImage
         UserName = 'ImageCBB'
@@ -428,12 +422,18 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
         AlignVertical = avCenter
         MaintainAspectRatio = False
         mmHeight = 13229
-        mmLeft = 75671
-        mmTop = 6615
-        mmWidth = 57150
-        BandType = 8
+        mmLeft = 79640
+        mmTop = 3175
+        mmWidth = 13229
+        BandType = 4
         LayerName = Foreground
       end
+    end
+    object ppFooterBand1: TppFooterBand
+      Background.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 13229
+      mmPrintPosition = 0
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer

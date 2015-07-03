@@ -162,11 +162,15 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
       'onceptos'
     Parameters = <>
     Left = 320
-    Top = 176
+    Top = 248
     object adodsCXCConceptosDescripcion: TStringField
       DisplayLabel = 'Conceptos'
       FieldName = 'Descripcion'
       Size = 200
+    end
+    object adodsCXCConceptosIdCuentaXCobrarConcepto: TAutoIncField
+      FieldName = 'IdCuentaXCobrarConcepto'
+      ReadOnly = True
     end
   end
   object adocAutorizaCuenta: TADOCommand
@@ -193,7 +197,40 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
         Size = 4
         Value = Null
       end>
-    Left = 192
-    Top = 248
+    Left = 168
+    Top = 272
+  end
+  object adodsPersonaRolCXCConcepto: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT IdPersonaRolCXCConcepto, IdPersonaRol, IdCuentaXCobrarCon' +
+      'cepto FROM PersonasRolesCXCConceptos'
+    Parameters = <>
+    Left = 288
+    Top = 168
+    object adodsPersonaRolCXCConceptoIdPersonaRolCXCConcepto: TAutoIncField
+      FieldName = 'IdPersonaRolCXCConcepto'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsPersonaRolCXCConceptoIdPersonaRol: TIntegerField
+      FieldName = 'IdPersonaRol'
+      Visible = False
+    end
+    object adodsPersonaRolCXCConceptoIdCuentaXCobrarConcepto: TIntegerField
+      FieldName = 'IdCuentaXCobrarConcepto'
+      Visible = False
+    end
+    object adodsPersonaRolCXCConceptoDescripcion: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Descripcion'
+      LookupDataSet = adodsCXCConceptos
+      LookupKeyFields = 'IdCuentaXCobrarConcepto'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdCuentaXCobrarConcepto'
+      Size = 200
+      Lookup = True
+    end
   end
 end

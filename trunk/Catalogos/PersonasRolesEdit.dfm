@@ -11,7 +11,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 719
     Height = 373
-    Properties.ActivePage = tsDocumentosFacturar
+    Properties.ActivePage = nil
     ExplicitWidth = 719
     ExplicitHeight = 373
     ClientRectBottom = 371
@@ -270,6 +270,10 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       Caption = 'Archivos para Facturar'
       ImageIndex = 1
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
@@ -289,19 +293,28 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       ExplicitWidth = 0
       ExplicitHeight = 0
     end
+    object tsCXCConceptos: TcxTabSheet
+      Caption = 'Conceptos CXC'
+      ImageIndex = 1
+      TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+    end
   end
   inherited pmlMain: TPanel
     Top = 373
     Width = 719
     ExplicitTop = 373
     ExplicitWidth = 719
-    inherited btnOk: TButton
-      Left = 556
-      ExplicitLeft = 556
-    end
     inherited btnCancel: TButton
       Left = 637
       ExplicitLeft = 637
+    end
+    inherited btnOk: TButton
+      Left = 556
+      ExplicitLeft = 556
     end
   end
   inherited DataSource: TDataSource

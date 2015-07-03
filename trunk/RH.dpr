@@ -206,7 +206,9 @@ uses
   ConfiguracionesForm in 'Catalogos\ConfiguracionesForm.pas' {frmConfiguraciones},
   ConfiguracionesEdit in 'Catalogos\ConfiguracionesEdit.pas' {frmConfiguracionesEdit},
   RptPlazasDM in 'Reportes\RptPlazasDM.pas' {dmRptPlazas: TDataModule},
-  RptPlazasForm in 'Reportes\RptPlazasForm.pas' {frmRptPlazas};
+  RptPlazasForm in 'Reportes\RptPlazasForm.pas' {frmRptPlazas},
+  PersonasRolesCXCConceptosDM in 'Catalogos\PersonasRolesCXCConceptosDM.pas' {dmPersonaRolesCXCConceptos: TDataModule},
+  PersonasRolesCXCConceptosForm in 'Catalogos\PersonasRolesCXCConceptosForm.pas' {frmPersonasRolesCXCConceptos};
 
 {$R *.res}
 
