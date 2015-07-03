@@ -3,7 +3,7 @@ unit VirtualXML;
 interface
 
 uses Winapi.Windows, System.SysUtils,
-  FacturaTipos, DocComprobanteFiscal, FacturaReglamentacion;
+  FacturaTipos, DocComprobanteFiscal, FacturaReglamentacion, Dialogs;
 
 const
   CFDIVersion = '3.2';
@@ -111,7 +111,11 @@ function CargarLibreria: Boolean;
 begin
   Result:= False;
   Hbar := LoadLibrary('VirtualXML.dll');
-  if Hbar = 0 then exit;
+  if Hbar = 0 then
+  begin
+   ShowMessage('Error: No se encontro la libreria VirtualXML.dll');
+   exit;
+  end;
   VirtualXML_New := GetProcAddress( Hbar, 'VirtualXML_NewW' );
   VirtualXML_ProcesaDocumento := GetProcAddress( Hbar, 'VirtualXML_ProcesaDocumentoW' );
   VirtualXML_GetValue := GetProcAddress( Hbar, 'VirtualXML_GetValueW' );

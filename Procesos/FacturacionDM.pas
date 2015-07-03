@@ -268,7 +268,6 @@ begin
         // Le damos un descuento
         //DocumentoComprobanteFiscal.AsignarDescuento(5, 'Por pronto pago');
 
-
         RutaFactura := RutaBase + adodsEmisorRFC.AsString + SubCarpeta;
         if not TDirectory.Exists(RutaFactura) then
           TDirectory.CreateDirectory(RutaFactura);

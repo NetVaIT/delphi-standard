@@ -33,6 +33,12 @@ type
     adodsCXCConceptosDescripcion: TStringField;
     actCambiarConcepto: TAction;
     adocAutorizaCuenta: TADOCommand;
+    adodsPersonaRolCXCConcepto: TADODataSet;
+    adodsPersonaRolCXCConceptoIdPersonaRolCXCConcepto: TAutoIncField;
+    adodsPersonaRolCXCConceptoIdPersonaRol: TIntegerField;
+    adodsPersonaRolCXCConceptoIdCuentaXCobrarConcepto: TIntegerField;
+    adodsCXCConceptosIdCuentaXCobrarConcepto: TAutoIncField;
+    adodsPersonaRolCXCConceptoDescripcion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCambiarConceptoExecute(Sender: TObject);
   private

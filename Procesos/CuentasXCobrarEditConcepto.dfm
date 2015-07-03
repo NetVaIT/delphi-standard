@@ -26,8 +26,6 @@ object frmCuentasXCobrarEditConcepto: TfrmCuentasXCobrarEditConcepto
     BevelEdges = []
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 586
-    ExplicitHeight = 135
     object Label1: TLabel
       Left = 16
       Top = 16
@@ -43,8 +41,6 @@ object frmCuentasXCobrarEditConcepto: TfrmCuentasXCobrarEditConcepto
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitTop = 94
-      ExplicitWidth = 586
       DesignSize = (
         513
         41)
@@ -61,7 +57,6 @@ object frmCuentasXCobrarEditConcepto: TfrmCuentasXCobrarEditConcepto
         ModalResult = 1
         TabOrder = 0
         OnClick = btnOkClick
-        ExplicitLeft = 401
       end
       object btnCancel: TButton
         Left = 421
@@ -76,7 +71,6 @@ object frmCuentasXCobrarEditConcepto: TfrmCuentasXCobrarEditConcepto
         ModalResult = 2
         TabOrder = 1
         OnClick = btnCancelClick
-        ExplicitLeft = 494
       end
     end
     object cxCBxConceptos: TcxComboBox
@@ -95,7 +89,7 @@ object frmCuentasXCobrarEditConcepto: TfrmCuentasXCobrarEditConcepto
     end
   end
   object DataSource: TDataSource
-    DataSet = dmCuentasXCobrar.adodsCXCConceptos
+    DataSet = dmCuentasXCobrar.adodsPersonaRolCXCConcepto
     Left = 24
     Top = 89
   end

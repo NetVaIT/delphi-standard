@@ -21,7 +21,8 @@ uses
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
   CuentasContablesPersonasRolesDM, cxCheckBox, cxDBEdit, PersonasRolesFacturacionDM,
-  PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar;
+  PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar,
+  PersonasRolesCXCConceptosDM;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
@@ -57,6 +58,7 @@ type
     pnlOutsourcing: TPanel;
     Label10: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
+    tsCXCConceptos: TcxTabSheet;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -68,6 +70,7 @@ type
     dmPersonasRolesFacturacion: TdmPersonasRolesFacturacion;
     dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
     dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos;
+    dmPersonaRolesCXCConceptos : TdmPersonaRolesCXCConceptos;
     procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
@@ -91,6 +94,7 @@ begin
   dmPersonasRolesFacturacion := TdmPersonasRolesFacturacion.Create(nil);
   dmPersonasRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
   dmPersonasRolesDocumentos := TdmPersonasRolesDocumentos.Create(nil);
+  dmPersonaRolesCXCConceptos := TdmPersonaRolesCXCConceptos.Create(nil);
 end;
 
 procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
@@ -100,6 +104,7 @@ begin
   FreeAndNil(dmPersonasRolesFacturacion);
   FreeAndNil(dmPersonasRolesCuentasBancarias);
   FreeAndNil(dmPersonasRolesDocumentos);
+  FreeAndNil(dmPersonaRolesCXCConceptos);
 end;
 
 procedure TfrmPersonaRolesEdit.FormShow(Sender: TObject);
@@ -110,6 +115,7 @@ begin
     pnlProveedor.Visible := False;
     pnlOutsourcing.Visible := False;
     tsDocumentosFacturar.TabVisible := False;
+    tsCXCConceptos.TabVisible := False;
     pnlEmpleado.Visible := False;
   case DataSource.DataSet.FieldByName('IdRol').AsInteger of
     1: begin
@@ -135,6 +141,7 @@ begin
         dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
         pnlProveedor.Visible := True;
         tsDocumentosFacturar.TabVisible := True;
+        tsCXCConceptos.TabVisible := True;
        end;
     5: begin
         pnlEmpleado.Visible := True;
@@ -168,11 +175,14 @@ begin
   tsCuentasBancarias.TabVisible := True;
   tsExpedienteDigital.TabVisible := True;
   tsDocumentosFacturar.TabVisible := True;
+  tsCXCConceptos.TabVisible := True;
   if tsDocumentosFacturar.TabVisible = True then
   begin
     dmPersonasRolesFacturacion.MasterSource := DataSource;
     dmPersonasRolesFacturacion.MasterFields := 'IdPersonaRol';
     dmPersonasRolesFacturacion.ShowModule(tsDocumentosFacturar,'');
+    dmPersonaRolesCXCConceptos.MasterSource:= DataSource;
+    dmPersonaRolesCXCConceptos.ShowModule(tsCXCConceptos);
   end;
 end;
 
