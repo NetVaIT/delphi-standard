@@ -28,12 +28,11 @@ uses
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   Vcl.ExtCtrls, cxCalendar, cxDBLookupComboBox, cxBarEditItem, Data.Win.ADODB,
-  cxTextEdit;
+  cxTextEdit, cxDropDownEdit, MovimientosDDM;
 
 type
   TfrmMovimientosD = class(T_frmGrid)
     tvMasterIdMovimientoDetalle: TcxGridDBColumn;
-    tvMasterPeriodo: TcxGridDBColumn;
     tvMasterFecha: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
     tvMasterPersonaRelacionada: TcxGridDBColumn;
@@ -44,6 +43,8 @@ type
     tvMasterEstatus: TcxGridDBColumn;
     dsPeriodos: TDataSource;
     cxedtPeriodo: TcxBarEditItem;
+    cxedtClase: TcxBarEditItem;
+    tvMasterRolClase: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
   private
     FDataSetPeriodo: TDataSet;
@@ -51,9 +52,12 @@ type
     function GetIdPeriodo: Integer;
     procedure SetIdPeriodo(const Value: Integer);
     procedure SetDataSetPeriodo(const Value: TDataSet);
+    function GetIdClase: TRolClase;
+    procedure SetIdClase(const Value: TRolClase);
   public
     { Public declarations }
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
+    property IdClase: TRolClase read GetIdClase write SetIdClase;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
 
@@ -61,12 +65,17 @@ implementation
 
 {$R *.dfm}
 
-uses MovimientosDDM;
-
 procedure TfrmMovimientosD.FormShow(Sender: TObject);
 begin
   inherited;
   actFullColapseGroup.Execute;
+end;
+
+function TfrmMovimientosD.GetIdClase: TRolClase;
+begin
+  if cxedtClase.EditValue = 'Ambos' then Result:= rcAmbos;
+  if cxedtClase.EditValue = 'Real' then Result:= rcReal;
+  if cxedtClase.EditValue = 'Virtual' then Result:= rcVirtual;
 end;
 
 function TfrmMovimientosD.GetIdPeriodo: Integer;
@@ -81,6 +90,15 @@ procedure TfrmMovimientosD.SetDataSetPeriodo(const Value: TDataSet);
 begin
   FDataSetPeriodo := Value;
   dsPeriodos.DataSet:= Value;
+end;
+
+procedure TfrmMovimientosD.SetIdClase(const Value: TRolClase);
+begin
+  case Value of
+    rcAmbos: cxedtClase.EditValue := 'Ambos';
+    rcReal: cxedtClase.EditValue := 'Real';
+    rcVirtual: cxedtClase.EditValue := 'Virtual';
+  end;
 end;
 
 procedure TfrmMovimientosD.SetIdPeriodo(const Value: Integer);

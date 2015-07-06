@@ -5,13 +5,13 @@ inherited dmMovimientosD: TdmMovimientosD
     CommandText = 
       'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDeta' +
       'lle.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.Pers' +
-      'onaRelacionada, vMovimientosDetalle.Tipo, vMovimientosDetalle.Ca' +
-      'tegoria, '#13#10'vMovimientosDetalle.Efecto, vMovimientosDetalle.Impor' +
-      'te * vMovimientosDetalle.Signo AS Importe, vMovimientosDetalle.E' +
-      'status'#13#10'FROM vMovimientosDetalle '#13#10'INNER JOIN Movimientos ON vMo' +
-      'vimientosDetalle.IdMovimiento = Movimientos.IdMovimiento'#13#10'ORDER ' +
-      'BY vMovimientosDetalle.Persona, vMovimientosDetalle.OrdenImpresi' +
-      'on'
+      'onaRelacionada, vMovimientosDetalle.RolClase, vMovimientosDetall' +
+      'e.Tipo, vMovimientosDetalle.Categoria, '#13#10'vMovimientosDetalle.Efe' +
+      'cto, vMovimientosDetalle.Importe * vMovimientosDetalle.Signo AS ' +
+      'Importe, vMovimientosDetalle.Estatus'#13#10'FROM vMovimientosDetalle '#13 +
+      #10'INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Mo' +
+      'vimientos.IdMovimiento'#13#10'ORDER BY vMovimientosDetalle.Persona, vM' +
+      'ovimientosDetalle.OrdenImpresion'
     object adodsMasterIdMovimientoDetalle: TIntegerField
       FieldName = 'IdMovimientoDetalle'
       Visible = False
@@ -27,6 +27,11 @@ inherited dmMovimientosD: TdmMovimientosD
       DisplayLabel = 'Persona relacionada'
       FieldName = 'PersonaRelacionada'
       Size = 300
+    end
+    object adodsMasterRolClase: TStringField
+      DisplayLabel = 'Clase'
+      FieldName = 'RolClase'
+      Size = 50
     end
     object adodsMasterTipo: TStringField
       FieldName = 'Tipo'

@@ -14,7 +14,6 @@ type
     adodsPersona: TADODataSet;
     adodsPeriodo: TADODataSet;
     adodsMasterPersona: TStringField;
-    adodsMasterPariodo: TStringField;
     dsMaster: TDataSource;
     adodsMovimientosDet: TADODataSet;
     actCalcularmovimientos: TAction;
@@ -66,6 +65,14 @@ type
     adodsMovimientosDetIdIncidenciaDetalle: TIntegerField;
     adodsMovimientosDetIdMoneda: TIntegerField;
     adodsMovimientosDetIdCuentaXCobrar: TIntegerField;
+    adodsPersonaTitular: TADODataSet;
+    adodsMasterBaseGrupo: TFMTBCDField;
+    adodsMasterCostoGrupo: TFMTBCDField;
+    adodsMasterCargaGrupo: TFMTBCDField;
+    adodsMasterSaldoAnteriorGrupo: TFMTBCDField;
+    adodsMasterSaldoPeriodoGrupo: TFMTBCDField;
+    adodsMasterSaldoGrupo: TFMTBCDField;
+    adodsMasterPersonaTitular: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
@@ -224,12 +231,13 @@ begin
   TfrmMovimientos(gGridForm).EliminarCXC:= actEliminarCXC;
   TfrmMovimientos(gGridForm).MostrarISR:= actMostrarISR;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
-//  gFormDeatil1.ReadOnlyGrid:= True;
+  gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;
   // Busqueda
   SQLSelect:= 'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Descuentos, Base, Entregas, ' +
   'Percepciones, Deducciones, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido, ' +
-  'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo FROM Movimientos';
+  'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo, ' +
+  'BaseGrupo, CostoGrupo, CargaGrupo, SaldoAnteriorGrupo, SaldoPeriodoGrupo, SaldoGrupo FROM Movimientos';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;
   TfrmMovimientos(gGridForm).DataSetPeriodo:= adodsPeriodo;

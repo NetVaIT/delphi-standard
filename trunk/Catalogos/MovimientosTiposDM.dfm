@@ -1,6 +1,6 @@
 inherited dmMovimientosTipo: TdmMovimientosTipo
   OldCreateOrder = True
-  Height = 370
+  Height = 479
   Width = 399
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
@@ -8,10 +8,11 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'select IdMovimientoTipo, IdMovimientoTipoCategoria, IdMovimiento' +
-      'TipoEfecto, IdMovimientoTipoAcumular, IdPersonaRolPagadora1, Idp' +
-      'ersonaRolPagadora2, IdVariable, Identificador, Descripcion, Prod' +
-      'uceCXC, ProduceCXP, AgruparTipo, AplicarISRProvisional, Porcenta' +
-      'jePagadora1, PorcentajePagadora2 from MovimientosTipos'
+      'TipoEfecto, IdMovimientoTipoAcumular, IdPersonaRolPagadora1, IdP' +
+      'ersonaRolPagadora2, IdPersonaRolCXCPagadora1, IdPersonaRolCXCPag' +
+      'adora2, IdVariable, Identificador, Descripcion, ProduceCXC, Prod' +
+      'uceCXP, AgruparTipo, AplicarISRProvisional, PorcentajePagadora1,' +
+      ' PorcentajePagadora2, AplicarUltimoPeriodo from MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -33,9 +34,19 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
     object adodsMasterIdPersonaRolPagadora1: TIntegerField
       FieldName = 'IdPersonaRolPagadora1'
+      Visible = False
     end
     object adodsMasterIdpersonaRolPagadora2: TIntegerField
       FieldName = 'IdpersonaRolPagadora2'
+      Visible = False
+    end
+    object adodsMasterIdPersonaRolCXCPagadora1: TIntegerField
+      FieldName = 'IdPersonaRolCXCPagadora1'
+      Visible = False
+    end
+    object adodsMasterIdPersonaRolCXCPagadora2: TIntegerField
+      FieldName = 'IdPersonaRolCXCPagadora2'
+      Visible = False
     end
     object adodsMasterIdImpuesto: TIntegerField
       FieldName = 'IdVariable'
@@ -75,14 +86,6 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Size = 100
       Lookup = True
     end
-    object adodsMasterProduceCXC: TBooleanField
-      DisplayLabel = 'Produce CXC'
-      FieldName = 'ProduceCXC'
-    end
-    object adodsMasterProduceCXP: TBooleanField
-      DisplayLabel = 'Produce CXP'
-      FieldName = 'ProduceCXP'
-    end
     object adodsMasterVariable: TStringField
       FieldKind = fkLookup
       FieldName = 'Variable'
@@ -93,9 +96,21 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Size = 50
       Lookup = True
     end
+    object adodsMasterProduceCXP: TBooleanField
+      DisplayLabel = 'Produce CXP'
+      FieldName = 'ProduceCXP'
+    end
+    object adodsMasterProduceCXC: TBooleanField
+      DisplayLabel = 'Produce CXC'
+      FieldName = 'ProduceCXC'
+    end
     object adodsMasterAgruparTipo: TBooleanField
       DisplayLabel = 'Agrupar por tipo de movimiento'
       FieldName = 'AgruparTipo'
+    end
+    object adodsMasterAplicarUltimoPeriodo: TBooleanField
+      DisplayLabel = 'Aplicar '#250'ltimo periodo'
+      FieldName = 'AplicarUltimoPeriodo'
     end
     object adodsMasterMovimientoTipo: TStringField
       DisplayLabel = 'Acumular a movimiento'
@@ -109,38 +124,66 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Lookup = True
     end
     object adodsMasterAplicarISRProvisional: TBooleanField
-      DisplayLabel = 'Aplicar ISR Mensual'
+      DisplayLabel = 'Aplicar ISR mensual'
       FieldName = 'AplicarISRProvisional'
     end
-    object adodsMasterPagadora1: TStringField
+    object adodsMasterCXPRelacion1: TStringField
+      DisplayLabel = 'CXP Relaci'#243'n de pago pago 1'
       FieldKind = fkLookup
-      FieldName = 'Pagadora1'
-      LookupDataSet = adodsPersonaRol1
+      FieldName = 'CXPRelacion1'
+      LookupDataSet = adodsPersonaRolCXP1
       LookupKeyFields = 'IdPersonaRol'
-      LookupResultField = 'Pagadora'
+      LookupResultField = 'Relacion'
       KeyFields = 'IdPersonaRolPagadora1'
       Size = 500
       Lookup = True
     end
-    object adodsMasterPorcentajePagador1: TFMTBCDField
-      DisplayLabel = 'Porcentaje pago 1'
-      FieldName = 'PorcentajePagadora1'
-      Precision = 18
-      Size = 6
-    end
-    object adodsMasterPagadora2: TStringField
+    object adodsMasterCXPRelacion2: TStringField
+      DisplayLabel = 'CXP Relaci'#243'n de pago pago 2'
       FieldKind = fkLookup
-      FieldName = 'Pagadora2'
-      LookupDataSet = adodsPersonaRol2
+      FieldName = 'CXPRelacion2'
+      LookupDataSet = adodsPersonaRolCXP2
       LookupKeyFields = 'IdPersonaRol'
-      LookupResultField = 'Pagadora'
+      LookupResultField = 'Relacion'
       KeyFields = 'IdpersonaRolPagadora2'
+      Size = 500
+      Lookup = True
+    end
+    object adodsMasterCXCPagadora1: TStringField
+      DisplayLabel = 'CXC Relaci'#243'n de pago pago 1'
+      FieldKind = fkLookup
+      FieldName = 'CXCRelacion1'
+      LookupDataSet = adodsPersonaRolCXC1
+      LookupKeyFields = 'IdPersonaRol'
+      LookupResultField = 'Relacion'
+      KeyFields = 'IdPersonaRolCXCPagadora1'
+      Size = 50
+      Lookup = True
+    end
+    object adodsMasterCXCRelacion2: TStringField
+      DisplayLabel = 'CXC Relaci'#243'n de pago pago 2'
+      FieldKind = fkLookup
+      FieldName = 'CXCRelacion2'
+      LookupDataSet = adodsPersonaRolCXC2
+      LookupKeyFields = 'IdPersonaRol'
+      LookupResultField = 'Relacion'
+      KeyFields = 'IdPersonaRolCXCPagadora2'
       Size = 500
       Lookup = True
     end
     object adodsMasterPorcentajePagadora2: TFMTBCDField
       DisplayLabel = 'Porcentaje pago 2'
       FieldName = 'PorcentajePagadora2'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterPorcentajePagador1: TFMTBCDField
+      DisplayLabel = 'Porcentaje pago 1'
+      FieldName = 'PorcentajePagadora1'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
       Precision = 18
       Size = 6
     end
@@ -264,7 +307,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     object adodsUpdatePagadora1: TStringField
       FieldKind = fkLookup
       FieldName = 'Pagadora1'
-      LookupDataSet = adodsPersonaRol1
+      LookupDataSet = adodsPersonaRolCXP1
       LookupKeyFields = 'IdPersonaRol'
       LookupResultField = 'Pagadora'
       KeyFields = 'IdPersonaRolPagadora1'
@@ -280,7 +323,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     object adodsUpdatePagadora2: TStringField
       FieldKind = fkLookup
       FieldName = 'Pagadora2'
-      LookupDataSet = adodsPersonaRol2
+      LookupDataSet = adodsPersonaRolCXP2
       LookupKeyFields = 'IdPersonaRol'
       LookupResultField = 'Pagadora'
       KeyFields = 'IdpersonaRolPagadora2'
@@ -324,22 +367,23 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Left = 120
     Top = 184
   end
-  object adodsPersonaRol1: TADODataSet
+  object adodsPersonaRolCXP1: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT        PersonasRoles.IdPersonaRol, Personas.RazonSocial A' +
-      'S Receptora, Personas_1.RazonSocial AS Pagadora'#13#10'FROM           ' +
-      ' PersonasRoles INNER JOIN'#13#10'                         Personas ON ' +
-      'PersonasRoles.IdPersona = Personas.IdPersona INNER JOIN'#13#10'       ' +
-      '                  Personas AS Personas_1 ON PersonasRoles.IdPers' +
-      'onaRelacionada = Personas_1.IdPersona INNER JOIN'#13#10'              ' +
-      '           Roles ON PersonasRoles.IdRol = Roles.IdRol INNER JOIN' +
-      #13#10'                         RolesTipos ON Roles.IdRolTipo = Roles' +
-      'Tipos.IdRolTipo'#13#10'WHERE        (RolesTipos.IdRolTipo = 2)'#13#10
+      'SELECT        PersonasRoles.IdPersonaRol, Personas_1.RazonSocial' +
+      ' + '#39'=>'#39' + Personas.RazonSocial AS Relacion, Personas.RazonSocial' +
+      ' AS Receptora, Personas_1.RazonSocial AS Pagadora'#13#10'FROM         ' +
+      '   PersonasRoles INNER JOIN'#13#10'                         Personas O' +
+      'N PersonasRoles.IdPersona = Personas.IdPersona INNER JOIN'#13#10'     ' +
+      '                    Personas AS Personas_1 ON PersonasRoles.IdPe' +
+      'rsonaRelacionada = Personas_1.IdPersona INNER JOIN'#13#10'            ' +
+      '             Roles ON PersonasRoles.IdRol = Roles.IdRol INNER JO' +
+      'IN'#13#10'                         RolesTipos ON Roles.IdRolTipo = Rol' +
+      'esTipos.IdRolTipo'#13#10'WHERE        (RolesTipos.IdRolTipo = 2)'
     Parameters = <>
-    Left = 120
-    Top = 240
+    Left = 112
+    Top = 304
   end
   object adodsVariables: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -349,24 +393,25 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       'ion'
     Parameters = <>
     Left = 120
-    Top = 304
+    Top = 240
   end
-  object adodsPersonaRol2: TADODataSet
+  object adodsPersonaRolCXP2: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT        PersonasRoles.IdPersonaRol, Personas.RazonSocial A' +
-      'S Receptora, Personas_1.RazonSocial AS Pagadora'#13#10'FROM           ' +
-      ' PersonasRoles INNER JOIN'#13#10'                         Personas ON ' +
-      'PersonasRoles.IdPersona = Personas.IdPersona INNER JOIN'#13#10'       ' +
-      '                  Personas AS Personas_1 ON PersonasRoles.IdPers' +
-      'onaRelacionada = Personas_1.IdPersona INNER JOIN'#13#10'              ' +
-      '           Roles ON PersonasRoles.IdRol = Roles.IdRol INNER JOIN' +
-      #13#10'                         RolesTipos ON Roles.IdRolTipo = Roles' +
-      'Tipos.IdRolTipo'#13#10'WHERE        (RolesTipos.IdRolTipo = 2)'#13#10
+      'SELECT        PersonasRoles.IdPersonaRol, Personas_1.RazonSocial' +
+      ' + '#39'=>'#39' + Personas.RazonSocial AS Relacion, Personas.RazonSocial' +
+      ' AS Receptora, Personas_1.RazonSocial AS Pagadora'#13#10'FROM         ' +
+      '   PersonasRoles INNER JOIN'#13#10'                         Personas O' +
+      'N PersonasRoles.IdPersona = Personas.IdPersona INNER JOIN'#13#10'     ' +
+      '                    Personas AS Personas_1 ON PersonasRoles.IdPe' +
+      'rsonaRelacionada = Personas_1.IdPersona INNER JOIN'#13#10'            ' +
+      '             Roles ON PersonasRoles.IdRol = Roles.IdRol INNER JO' +
+      'IN'#13#10'                         RolesTipos ON Roles.IdRolTipo = Rol' +
+      'esTipos.IdRolTipo'#13#10'WHERE        (RolesTipos.IdRolTipo = 2)'
     Parameters = <>
-    Left = 240
-    Top = 240
+    Left = 232
+    Top = 304
   end
   object adodsMovimientoTipoLkp: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -386,5 +431,41 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       end>
     Left = 248
     Top = 184
+  end
+  object adodsPersonaRolCXC1: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT        PersonasRoles.IdPersonaRol, Personas_1.RazonSocial' +
+      ' + '#39'=>'#39' + Personas.RazonSocial AS Relacion, Personas.RazonSocial' +
+      ' AS Receptora, Personas_1.RazonSocial AS Pagadora'#13#10'FROM         ' +
+      '   PersonasRoles INNER JOIN'#13#10'                         Personas O' +
+      'N PersonasRoles.IdPersona = Personas.IdPersona INNER JOIN'#13#10'     ' +
+      '                    Personas AS Personas_1 ON PersonasRoles.IdPe' +
+      'rsonaRelacionada = Personas_1.IdPersona INNER JOIN'#13#10'            ' +
+      '             Roles ON PersonasRoles.IdRol = Roles.IdRol INNER JO' +
+      'IN'#13#10'                         RolesTipos ON Roles.IdRolTipo = Rol' +
+      'esTipos.IdRolTipo'#13#10'WHERE        (RolesTipos.IdRolTipo = 2)'
+    Parameters = <>
+    Left = 112
+    Top = 360
+  end
+  object adodsPersonaRolCXC2: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT        PersonasRoles.IdPersonaRol, Personas_1.RazonSocial' +
+      ' + '#39'=>'#39' + Personas.RazonSocial AS Relacion, Personas.RazonSocial' +
+      ' AS Receptora, Personas_1.RazonSocial AS Pagadora'#13#10'FROM         ' +
+      '   PersonasRoles INNER JOIN'#13#10'                         Personas O' +
+      'N PersonasRoles.IdPersona = Personas.IdPersona INNER JOIN'#13#10'     ' +
+      '                    Personas AS Personas_1 ON PersonasRoles.IdPe' +
+      'rsonaRelacionada = Personas_1.IdPersona INNER JOIN'#13#10'            ' +
+      '             Roles ON PersonasRoles.IdRol = Roles.IdRol INNER JO' +
+      'IN'#13#10'                         RolesTipos ON Roles.IdRolTipo = Rol' +
+      'esTipos.IdRolTipo'#13#10'WHERE        (RolesTipos.IdRolTipo = 2)'
+    Parameters = <>
+    Left = 232
+    Top = 360
   end
 end

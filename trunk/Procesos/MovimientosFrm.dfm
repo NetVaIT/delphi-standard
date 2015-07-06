@@ -52,19 +52,24 @@ inherited frmMovimientos: TfrmMovimientos
           DataBinding.FieldName = 'IdPeriodo'
           Visible = False
         end
-        object tvMasterPeriodo: TcxGridDBColumn
-          DataBinding.FieldName = 'Periodo'
-          Visible = False
-          Width = 300
-        end
         object tvMasterPersona: TcxGridDBColumn
           DataBinding.FieldName = 'Persona'
           SortIndex = 0
           SortOrder = soAscending
-          Width = 259
+          Width = 260
+        end
+        object tvMasterPersonaTitular: TcxGridDBColumn
+          DataBinding.FieldName = 'PersonaTitular'
+          Visible = False
+          Width = 260
         end
         object tvMasterSaldoAnterior: TcxGridDBColumn
           DataBinding.FieldName = 'SaldoAnterior'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterSaldoAnteriorGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoAnteriorGrupo'
           Width = 104
         end
         object tvMasterIngresos: TcxGridDBColumn
@@ -77,18 +82,38 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterCosto: TcxGridDBColumn
           DataBinding.FieldName = 'Costo'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterCostoGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'CostoGrupo'
           Width = 104
         end
         object tvMasterCarga: TcxGridDBColumn
           DataBinding.FieldName = 'Carga'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterCargaGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'CargaGrupo'
           Width = 104
         end
         object tvMasterSaldoPeriodo: TcxGridDBColumn
           DataBinding.FieldName = 'SaldoPeriodo'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterSaldoPeriodoGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoPeriodoGrupo'
           Width = 104
         end
         object tvMasterSaldo: TcxGridDBColumn
           DataBinding.FieldName = 'Saldo'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterSaldoGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoGrupo'
           Styles.Content = cxsMedGray
           Width = 104
         end
@@ -98,6 +123,11 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterBase: TcxGridDBColumn
           DataBinding.FieldName = 'Base'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterBaseGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'BaseGrupo'
           Styles.Content = cxsSilver
           Width = 104
         end
@@ -165,9 +195,6 @@ inherited frmMovimientos: TfrmMovimientos
       Left = 1000
       ExplicitLeft = 1000
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmMovimientos.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -319,6 +346,7 @@ inherited frmMovimientos: TfrmMovimientos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

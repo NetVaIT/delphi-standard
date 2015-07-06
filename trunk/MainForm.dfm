@@ -199,10 +199,6 @@ inherited frmMain: TfrmMain
       ItemLinks = <
         item
           Visible = True
-          ItemName = 'dxBarLargeButton34'
-        end
-        item
-          Visible = True
           ItemName = 'dxBarLargeButton12'
         end
         item
@@ -300,6 +296,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarButton10'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton34'
         end>
       OneOnRow = False
       Row = 0
@@ -310,7 +310,7 @@ inherited frmMain: TfrmMain
     object dxBarManagerBar1: TdxBar [7]
       Caption = 'Cuentas Contables'
       CaptionButtons = <>
-      DockedLeft = 906
+      DockedLeft = 914
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8
@@ -378,7 +378,7 @@ inherited frmMain: TfrmMain
     object dxBarManagerBar3: TdxBar [9]
       Caption = 'Externo'
       CaptionButtons = <>
-      DockedLeft = 346
+      DockedLeft = 417
       DockedTop = 0
       FloatLeft = 1133
       FloatTop = 8

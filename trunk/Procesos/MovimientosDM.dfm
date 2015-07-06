@@ -9,8 +9,9 @@ inherited dmMovimientos: TdmMovimientos
       'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Descuentos,' +
       ' Base, Entregas, '#13#10'Percepciones, Deducciones, Prestaciones, Obli' +
       'gaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido,'#13#10'Eg' +
-      'resos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo FROM Mov' +
-      'imientos'
+      'resos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo, '#13#10'BaseG' +
+      'rupo, CostoGrupo, CargaGrupo, SaldoAnteriorGrupo, SaldoPeriodoGr' +
+      'upo, SaldoGrupo FROM Movimientos'
     object adodsMasterIdMovimiento: TAutoIncField
       FieldName = 'IdMovimiento'
       ReadOnly = True
@@ -24,16 +25,6 @@ inherited dmMovimientos: TdmMovimientos
       FieldName = 'IdPeriodo'
       Visible = False
     end
-    object adodsMasterPariodo: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Periodo'
-      LookupDataSet = adodsPeriodo
-      LookupKeyFields = 'IdPeriodo'
-      LookupResultField = 'Descripcion'
-      KeyFields = 'IdPeriodo'
-      Size = 100
-      Lookup = True
-    end
     object adodsMasterPersona: TStringField
       FieldKind = fkLookup
       FieldName = 'Persona'
@@ -41,6 +32,18 @@ inherited dmMovimientos: TdmMovimientos
       LookupKeyFields = 'IdPersona'
       LookupResultField = 'RazonSocial'
       KeyFields = 'IdPersona'
+      Size = 500
+      Lookup = True
+    end
+    object adodsMasterPersonaTitular: TStringField
+      DisplayLabel = 'Titular'
+      FieldKind = fkLookup
+      FieldName = 'PersonaTitular'
+      LookupDataSet = adodsPersonaTitular
+      LookupKeyFields = 'IdPersona'
+      LookupResultField = 'Titular'
+      KeyFields = 'IdPersona'
+      Visible = False
       Size = 500
       Lookup = True
     end
@@ -57,7 +60,16 @@ inherited dmMovimientos: TdmMovimientos
       Size = 6
     end
     object adodsMasterBase: TFMTBCDField
+      DisplayLabel = 'Base individual'
       FieldName = 'Base'
+      Visible = False
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterBaseGrupo: TFMTBCDField
+      DisplayLabel = 'Base'
+      FieldName = 'BaseGrupo'
       currency = True
       Precision = 18
       Size = 6
@@ -119,34 +131,76 @@ inherited dmMovimientos: TdmMovimientos
       Size = 6
     end
     object adodsMasterCosto: TFMTBCDField
+      DisplayLabel = 'Costo individual'
       FieldName = 'Costo'
+      Visible = False
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterCostoGrupo: TFMTBCDField
+      DisplayLabel = 'Costo'
+      FieldName = 'CostoGrupo'
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterCarga: TFMTBCDField
-      DisplayLabel = 'Carga laboral'
+      DisplayLabel = 'Carga laboral individual'
       FieldName = 'Carga'
+      Visible = False
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterCargaGrupo: TFMTBCDField
+      DisplayLabel = 'Carga laboral'
+      FieldName = 'CargaGrupo'
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterSaldoAnterior: TFMTBCDField
-      DisplayLabel = 'Saldo anterior'
+      DisplayLabel = 'Saldo anterior individual'
       FieldName = 'SaldoAnterior'
+      Visible = False
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterSaldoAnteriorGrupo: TFMTBCDField
+      DisplayLabel = 'Saldo anterior'
+      FieldName = 'SaldoAnteriorGrupo'
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterSaldoPeriodo: TFMTBCDField
-      DisplayLabel = 'Saldo del periodo'
+      DisplayLabel = 'Saldo del periodo individual'
       FieldName = 'SaldoPeriodo'
+      Visible = False
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterSaldoPeriodoGrupo: TFMTBCDField
+      DisplayLabel = 'Saldo del periodo'
+      FieldName = 'SaldoPeriodoGrupo'
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterSaldo: TFMTBCDField
+      DisplayLabel = 'Saldo individual'
       FieldName = 'Saldo'
+      Visible = False
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterSaldoGrupo: TFMTBCDField
+      DisplayLabel = 'Saldo'
+      FieldName = 'SaldoGrupo'
       currency = True
       Precision = 18
       Size = 6
@@ -191,6 +245,7 @@ inherited dmMovimientos: TdmMovimientos
     end
     object actMostrarISR: TAction
       Caption = 'Mostrar ISR'
+      Hint = 'Mostrar ISR de la persona'
       ImageIndex = 11
       OnExecute = actMostrarISRExecute
     end
@@ -200,16 +255,16 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
     Parameters = <>
-    Left = 192
-    Top = 24
+    Left = 184
+    Top = 16
   end
   object adodsPeriodo: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
     Parameters = <>
-    Left = 192
-    Top = 88
+    Left = 184
+    Top = 72
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
@@ -525,5 +580,17 @@ inherited dmMovimientos: TdmMovimientos
       end>
     Left = 336
     Top = 504
+  end
+  object adodsPersonaTitular: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT        Personas.IdPersona, ISNULL(Personas_1.RazonSocial,' +
+      ' '#39#39') AS Titular'#13#10'FROM            Personas LEFT JOIN'#13#10'           ' +
+      '              Personas AS Personas_1 ON Personas.IdPersonaTitula' +
+      'r = Personas_1.IdPersona'
+    Parameters = <>
+    Left = 184
+    Top = 128
   end
 end

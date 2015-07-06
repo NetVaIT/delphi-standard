@@ -34,7 +34,6 @@ type
     tvMasterIdMovimiento: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdPeriodo: TcxGridDBColumn;
-    tvMasterPeriodo: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
     dxbtnCalcularMovimientos: TdxBarButton;
     dxbtnCalcularCXP: TdxBarButton;
@@ -67,6 +66,13 @@ type
     cxsMedGray: TcxStyle;
     cxsSilver: TcxStyle;
     dxbtnMostrarISR: TdxBarButton;
+    tvMasterBaseGrupo: TcxGridDBColumn;
+    tvMasterCostoGrupo: TcxGridDBColumn;
+    tvMasterCargaGrupo: TcxGridDBColumn;
+    tvMasterSaldoAnteriorGrupo: TcxGridDBColumn;
+    tvMasterSaldoPeriodoGrupo: TcxGridDBColumn;
+    tvMasterSaldoGrupo: TcxGridDBColumn;
+    tvMasterPersonaTitular: TcxGridDBColumn;
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       var AStyle: TcxStyle);
@@ -177,12 +183,15 @@ procedure TfrmMovimientos.tvMasterStylesGetContentStyle(
   AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
 begin
   inherited;
-  if ARecord.Values[tvMasterSaldo.Index] = 0 then
+  if (ARecord <> nil) and (AItem <> nil) then
+  begin
+    if ARecord.Values[tvMasterSaldoGrupo.Index] = 0 then
       AStyle := cxsGreen;
-  if ARecord.Values[tvMasterSaldo.Index] > 0 then
+    if ARecord.Values[tvMasterSaldoGrupo.Index] > 0 then
       AStyle := cxsIntial;
-  if ARecord.Values[tvMasterBase.Index] < 0 then
+    if ARecord.Values[tvMasterBaseGrupo.Index] < 0 then
       AStyle := cxsRed;
+  end;
 end;
 
 end.
