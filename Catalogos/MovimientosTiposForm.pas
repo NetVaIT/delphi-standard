@@ -47,11 +47,16 @@ type
     tvMasterMovimientoTipo: TcxGridDBColumn;
     tvMasterIdPersonaRolPagadora1: TcxGridDBColumn;
     tvMasterIdpersonaRolPagadora2: TcxGridDBColumn;
-    tvMasterPagadora1: TcxGridDBColumn;
-    tvMasterPagadora2: TcxGridDBColumn;
     tvMasterPorcentajePagadora1: TcxGridDBColumn;
     tvMasterPorcentajePagadora2: TcxGridDBColumn;
     tvMasterAplicarISRProvisional: TcxGridDBColumn;
+    tvMasterIdPersonaRolCXCPagadora1: TcxGridDBColumn;
+    tvMasterIdPersonaRolCXCPagadora2: TcxGridDBColumn;
+    tvMasterAplicarUltimoPeriodo: TcxGridDBColumn;
+    tvMasterCXPRelacion1: TcxGridDBColumn;
+    tvMasterCXPRelacion2: TcxGridDBColumn;
+    tvMasterCXCRelacion1: TcxGridDBColumn;
+    tvMasterCXCRelacion2: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

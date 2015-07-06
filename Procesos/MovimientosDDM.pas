@@ -6,8 +6,12 @@ uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
   Data.DB, Data.Win.ADODB;
 
+//const
+//  RolesClase: array[0..2] of PChar = ('Ambos', 'Real', 'Virtual');
+
 type
   TTipoReporte = (trDispercion, trNomina, trPrestamos);
+  TRolClase = (rcAmbos, rcReal, rcVirtual);
   TdmMovimientosD = class(T_dmStandar)
     adodsMasterIdMovimientoDetalle: TIntegerField;
     adodsMasterFecha: TDateTimeField;
@@ -19,6 +23,7 @@ type
     adodsMasterImporte: TFMTBCDField;
     adodsMasterEstatus: TStringField;
     adodsPeriodo: TADODataSet;
+    adodsMasterRolClase: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -50,7 +55,7 @@ begin
   gGridForm.DataSet:= adodsMaster;
   // Filtrado
   SQLSelect:= 'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDetalle.Fecha, ' +
-  'vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.Tipo, vMovimientosDetalle.Categoria, ' +
+  'vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.RolClase, vMovimientosDetalle.Tipo, vMovimientosDetalle.Categoria, ' +
   'vMovimientosDetalle.Efecto, vMovimientosDetalle.Importe * vMovimientosDetalle.Signo AS Importe, vMovimientosDetalle.Estatus '+
   'FROM vMovimientosDetalle INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento';
   SQLOrderBy:= 'ORDER BY vMovimientosDetalle.Persona, vMovimientosDetalle.OrdenImpresion';
@@ -58,14 +63,17 @@ begin
   adodsPeriodo.Open;
   TfrmMovimientosD(gGridForm).DataSetPeriodo:= adodsPeriodo;
   TfrmMovimientosD(gGridForm).IdPeriodo:= IdPeriodoActual;
+  TfrmMovimientosD(gGridForm).IdClase:= rcAmbos;
 end;
 
 procedure TdmMovimientosD.SetFilter;
 var
   IdPeriodo: Integer;
+  IdClase: Integer;
 begin
   inherited;
   IdPeriodo:= TfrmMovimientosD(gGridForm).IdPeriodo;
+  IdClase:= Ord(TfrmMovimientosD(gGridForm).IdClase);
   case FTipoReporte of
     trDispercion: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria NOT IN (1,2,11) AND Movimientos.IdPeriodo = %d';
     trNomina: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria IN (1,2) AND Movimientos.IdPeriodo = %d';
@@ -74,6 +82,8 @@ begin
     SQLWhere:= 'WHERE Movimientos.IdPeriodo = %d';
   end;
   SQLWhere:= Format(SQLWhere, [IdPeriodo]);
+  if (TfrmMovimientosD(gGridForm).IdClase <> rcAmbos) then
+    SQLWhere:= SQLWhere + Format(' AND vMovimientosDetalle.IdRolClase = %d', [IdClase]);
 end;
 
 procedure TdmMovimientosD.SetTipoReporte(const Value: TTipoReporte);

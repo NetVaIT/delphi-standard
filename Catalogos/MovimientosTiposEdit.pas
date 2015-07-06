@@ -19,7 +19,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   cxContainer, cxEdit, Vcl.DBCtrls, cxCheckBox, cxDBEdit, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  cxGroupBox;
 
 type
   TfrmMovimientosTipoEdit = class(T_frmEdit)
@@ -31,28 +32,43 @@ type
     Label4: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
-    cxDBCheckBox2: TcxDBCheckBox;
+    cbCXC: TcxDBCheckBox;
     Label5: TLabel;
-    GroupBox1: TGroupBox;
-    Label7: TLabel;
-    cxDBCheckBox4: TcxDBCheckBox;
-    cxDBCheckBox6: TcxDBCheckBox;
-    cxDBCheckBox3: TcxDBCheckBox;
+    cbCXP: TcxDBCheckBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
-    cxDBLookupComboBox4: TcxDBLookupComboBox;
+    dsMovimientosTipo: TDataSource;
+    cxGroupBox1: TcxGroupBox;
     Label6: TLabel;
     Label8: TLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
     Label9: TLabel;
     Label10: TLabel;
-    cxDBTextEdit4: TcxDBTextEdit;
-    cxDBLookupComboBox5: TcxDBLookupComboBox;
-    cxDBLookupComboBox6: TcxDBLookupComboBox;
-    dsMovimientosTipo: TDataSource;
+    cbAplicaISR: TcxDBCheckBox;
+    lcbCXPPorcentaje1: TcxDBTextEdit;
+    lcbCXPPorcentaje2: TcxDBTextEdit;
+    lcbCXPPagadora1: TcxDBLookupComboBox;
+    lcbCXPPagadora2: TcxDBLookupComboBox;
+    cxGroupBox2: TcxGroupBox;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    lcbCXCPorcentaje1: TcxDBTextEdit;
+    lcbCXCPorcentaje2: TcxDBTextEdit;
+    lcbCXCPagadora1: TcxDBLookupComboBox;
+    lcbCXCPagadora2: TcxDBLookupComboBox;
+    cbAgruparTipo: TcxDBCheckBox;
+    Label7: TLabel;
+    lcbMovimientoAcumular: TcxDBLookupComboBox;
+    cbAplicarUltimoPeriodo: TcxDBCheckBox;
+    procedure cbCXPClick(Sender: TObject);
+    procedure cbAgruparTipoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
+    { Private declarations }
     FDataSetMovimientosTipo: TDataSet;
     procedure SetDataSetMovimientosTipo(const Value: TDataSet);
-    { Private declarations }
+    procedure SetCXPCXC;
+    procedure SetAgruparTipo;
   public
     { Public declarations }
     property DataSetMovimientosTipo: TDataSet read FDataSetMovimientosTipo write SetDataSetMovimientosTipo;
@@ -65,6 +81,45 @@ implementation
 uses MovimientosTiposDM;
 
 { TfrmMovimientosTipoEdit }
+
+procedure TfrmMovimientosTipoEdit.cbAgruparTipoClick(Sender: TObject);
+begin
+  inherited;
+  SetAgruparTipo;
+end;
+
+procedure TfrmMovimientosTipoEdit.cbCXPClick(Sender: TObject);
+begin
+  inherited;
+  SetCXPCXC;
+  SetAgruparTipo;
+end;
+
+procedure TfrmMovimientosTipoEdit.FormShow(Sender: TObject);
+begin
+  inherited;
+  SetCXPCXC;
+  SetAgruparTipo;
+end;
+
+procedure TfrmMovimientosTipoEdit.SetAgruparTipo;
+begin
+  lcbMovimientoAcumular.Enabled:= (cbAgruparTipo.EditingValue = True);
+  lcbCXPPagadora1.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXP.EditValue = True);
+  lcbCXPPagadora2.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXP.EditValue = True);
+  lcbCXCPagadora1.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXC.EditValue = True);
+  lcbCXCPagadora2.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXC.EditValue = True);
+  lcbCXPPorcentaje1.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXP.EditValue = True);
+  lcbCXPPorcentaje2.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXP.EditValue = True);
+  lcbCXCPorcentaje1.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXC.EditValue = True);
+  lcbCXCPorcentaje2.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXC.EditValue = True);
+end;
+
+procedure TfrmMovimientosTipoEdit.SetCXPCXC;
+begin
+  cbAgruparTipo.Enabled:= (cbCXC.EditValue = True) or (cbCXP.EditValue = True);
+  cbAplicaISR.Enabled:= (cbCXP.EditValue = True);
+end;
 
 procedure TfrmMovimientosTipoEdit.SetDataSetMovimientosTipo(
   const Value: TDataSet);
