@@ -68,7 +68,16 @@ var
   Resultado : integer;
 begin
   inherited;
-  adodsCXCConceptos.Open;
+//  adodsCXCConceptos.Open;
+  adodsPersonaRolCXCConcepto.Parameters.ParamByName('IdPersonaRol').Value := adodsMasterIdPersonaRol.Value;
+  adodsPersonaRolCXCConcepto.Open;
+  gConcepto.cxCBxConceptos.Properties.Items.Clear;
+  while not adodsPersonaRolCXCConcepto.eof do
+  begin
+    gConcepto.cxCBxConceptos.Properties.Items.Add(adodsPersonaRolCXCConceptoDescripcion.AsString);
+    adodsPersonaRolCXCConcepto.Next;
+  end;
+  adodsPersonaRolCXCConcepto.Close;
   Resultado := gConcepto.ShowModal;
 //  showmessage(gConcepto.Descripcion);
   if Resultado = 1 then
@@ -102,14 +111,14 @@ begin
   TfrmCuentasXCobrarForm(gGridForm).IdPeriodo := IdPeriodoActual;
   TfrmCuentasXCobrarForm(gGridForm).CambiarConcepto := actCambiarConcepto;
   gConcepto := TfrmCuentasXCobrarEditConcepto.Create(Self);
-  adodsCXCConceptos.Open;
-  gConcepto.cxCBxConceptos.Properties.Items.Clear;
-  while not adodsCXCConceptos.eof do
-  begin
-    gConcepto.cxCBxConceptos.Properties.Items.Add(adodsCXCConceptosDescripcion.AsString);
-    adodsCXCConceptos.Next;
-  end;
-  adodsCXCConceptos.Close;
+//  adodsCXCConceptos.Open;
+//  gConcepto.cxCBxConceptos.Properties.Items.Clear;
+//  while not adodsCXCConceptos.eof do
+//  begin
+//    gConcepto.cxCBxConceptos.Properties.Items.Add(adodsCXCConceptosDescripcion.AsString);
+//    adodsCXCConceptos.Next;
+//  end;
+//  adodsCXCConceptos.Close;
   actSearch.Execute;
 end;
 

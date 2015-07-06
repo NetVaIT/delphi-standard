@@ -89,7 +89,7 @@ object frmCuentasXCobrarEditConcepto: TfrmCuentasXCobrarEditConcepto
     end
   end
   object DataSource: TDataSource
-    DataSet = dmCuentasXCobrar.adodsPersonaRolCXCConcepto
+    DataSet = dmCuentasXCobrar.adodsCXCConceptos
     Left = 24
     Top = 89
   end

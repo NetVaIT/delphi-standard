@@ -205,8 +205,17 @@ inherited dmCuentasXCobrar: TdmCuentasXCobrar
     CursorType = ctStatic
     CommandText = 
       'SELECT IdPersonaRolCXCConcepto, IdPersonaRol, IdCuentaXCobrarCon' +
-      'cepto FROM PersonasRolesCXCConceptos'
-    Parameters = <>
+      'cepto FROM PersonasRolesCXCConceptos WHERE IdPersonaRol = :IdPer' +
+      'sonaRol'
+    Parameters = <
+      item
+        Name = 'IdPersonaRol'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
     Left = 288
     Top = 168
     object adodsPersonaRolCXCConceptoIdPersonaRolCXCConcepto: TAutoIncField
