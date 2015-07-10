@@ -27,51 +27,61 @@ inherited dmFacturacion: TdmFacturacion
     end
     object adodsMasterSumaSubtotal: TFMTBCDField
       FieldName = 'SumaSubtotal'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterSumaTotal: TFMTBCDField
       FieldName = 'SumaTotal'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterSumaDescuentos: TFMTBCDField
       FieldName = 'SumaDescuentos'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalIVATrasladado: TFMTBCDField
       FieldName = 'TotalIVATrasladado'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalISRTrasladado: TFMTBCDField
       FieldName = 'TotalISRTrasladado'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalIEPSTrasladado: TFMTBCDField
       FieldName = 'TotalIEPSTrasladado'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalLocalesTrasladado: TFMTBCDField
       FieldName = 'TotalLocalesTrasladado'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalIVARetenido: TFMTBCDField
       FieldName = 'TotalIVARetenido'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalISRRetenido: TFMTBCDField
       FieldName = 'TotalISRRetenido'
+      currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalLocalesRetenido: TFMTBCDField
       FieldName = 'TotalLocalesRetenido'
+      currency = True
       Precision = 18
       Size = 6
     end

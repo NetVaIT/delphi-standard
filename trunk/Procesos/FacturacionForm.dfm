@@ -126,7 +126,14 @@ inherited frmFacturacion: TfrmFacturacion
       0
       31
       0)
+    inherited dxbNavigator: TdxBar
+      DockedLeft = 0
+    end
+    inherited dxbEdit: TdxBar
+      Visible = False
+    end
     inherited dxbTools: TdxBar
+      DockedLeft = 128
       ItemLinks = <
         item
           Visible = True
