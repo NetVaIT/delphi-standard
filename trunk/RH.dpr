@@ -208,7 +208,9 @@ uses
   RptPlazasDM in 'Reportes\RptPlazasDM.pas' {dmRptPlazas: TDataModule},
   RptPlazasForm in 'Reportes\RptPlazasForm.pas' {frmRptPlazas},
   PersonasRolesCXCConceptosDM in 'Catalogos\PersonasRolesCXCConceptosDM.pas' {dmPersonaRolesCXCConceptos: TDataModule},
-  PersonasRolesCXCConceptosForm in 'Catalogos\PersonasRolesCXCConceptosForm.pas' {frmPersonasRolesCXCConceptos};
+  PersonasRolesCXCConceptosForm in 'Catalogos\PersonasRolesCXCConceptosForm.pas' {frmPersonasRolesCXCConceptos},
+  ExportarPagosBancoEdit in 'Procesos\ExportarPagosBancoEdit.pas' {frmExportaPagosBancos},
+  ExportarPagosBancoForm in 'Procesos\ExportarPagosBancoForm.pas' {frmExportarPagosBanco};
 
 {$R *.res}
 

@@ -87,7 +87,7 @@ end;
 function TdmPeriodos.DescripcionPeriodo(Periodo: String; Inicio,
   Fin: TDate): String;
 begin
-  Result := 'Periodo ' + Periodo + ' del ' + DateToStr(Inicio) + ' al ' + DateToStr(Fin) ;
+  Result := 'Semana del ' + DateToStr(Inicio) + ' al ' + DateToStr(Fin) ;
 end;
 
 procedure TdmPeriodos.Execute;

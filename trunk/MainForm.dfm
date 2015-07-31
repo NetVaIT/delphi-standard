@@ -3,7 +3,7 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 519
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -195,7 +195,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 764
       FloatTop = 8
       FloatClientWidth = 112
-      FloatClientHeight = 486
+      FloatClientHeight = 432
       ItemLinks = <
         item
           Visible = True
@@ -275,7 +275,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 86
-      FloatClientHeight = 98
+      FloatClientHeight = 152
       ItemLinks = <
         item
           Visible = True

@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>RH.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -800,6 +800,14 @@
         </DCCReference>
         <DCCReference Include="Catalogos\PersonasRolesCXCConceptosForm.pas">
             <Form>frmPersonasRolesCXCConceptos</Form>
+        </DCCReference>
+        <DCCReference Include="Procesos\ExportarPagosBancoEdit.pas">
+            <Form>frmExportaPagosBancos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Procesos\ExportarPagosBancoForm.pas">
+            <Form>frmExportarPagosBanco</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

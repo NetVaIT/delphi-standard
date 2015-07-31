@@ -34,15 +34,19 @@ type
     adodsMasterMetodoPagoCuentasXPagar: TStringField;
     adodsMasterMetodoPagoFactura: TStringField;
     adodsMasterRutaBaseFacturas: TStringField;
+    adoqGetRutaBasePagos: TADOQuery;
+    adoqGetRutaBasePagosValor: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     function GetIdPeridoActual: Integer;
     function GetRutaFactura: string;
+    function GetRutaPago: string;
     { Private declarations }
   public
     { Public declarations }
     property IdPeridoActual: Integer read GetIdPeridoActual;
     property RutaFacturas: string read GetRutaFactura;
+    property RutaPagos: string read GetRutaPago;
   end;
 
 var
@@ -86,6 +90,17 @@ begin
     Result := adoqGetRutaBaseFacturasValor.AsString;
   finally
     adoqGetRutaBaseFacturas.Close;
+  end;
+end;
+
+function TdmConfiguracion.GetRutaPago: string;
+begin
+  adoqGetRutaBasePagos.Close;
+  try
+    adoqGetRutaBasePagos.Open;
+    Result := adoqGetRutaBasePagosValor.AsString;
+  finally
+    adoqGetRutaBasePagos.Close;
   end;
 end;
 
