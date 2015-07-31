@@ -55,7 +55,10 @@ type
     dsPeriodos: TDataSource;
     dxBarButton8: TdxBarButton;
     actExportarPagos: TAction;
+    actBajarPagos: TAction;
+    dxBarButton9: TdxBarButton;
     procedure actExportarPagosExecute(Sender: TObject);
+    procedure actBajarPagosExecute(Sender: TObject);
   private
     { Private declarations }
     dmExportaPagos : TdmExportarPagosBancos;
@@ -79,6 +82,14 @@ implementation
 uses CuentasXPagarDM;
 
 { TfrmCuentasXPagar }
+
+procedure TfrmCuentasXPagar.actBajarPagosExecute(Sender: TObject);
+begin
+  inherited;
+  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
+  dmExportaPagos.actBajarArchivoPagos.Execute;
+  FreeAndNil(dmExportaPagos);
+end;
 
 procedure TfrmCuentasXPagar.actExportarPagosExecute(Sender: TObject);
 begin

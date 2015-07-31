@@ -137,7 +137,7 @@ inherited dmConfiguracion: TdmConfiguracion
     SQL.Strings = (
       'SELECT dbo.GetRutaBaseFacturas() AS Valor')
     Left = 312
-    Top = 264
+    Top = 240
     object adoqGetRutaBaseFacturasValor: TStringField
       FieldName = 'Valor'
       ReadOnly = True
@@ -199,5 +199,19 @@ inherited dmConfiguracion: TdmConfiguracion
     Parameters = <>
     Left = 104
     Top = 328
+  end
+  object adoqGetRutaBasePagos: TADOQuery
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT dbo.GetRutaBasePagos() AS Valor')
+    Left = 312
+    Top = 304
+    object adoqGetRutaBasePagosValor: TStringField
+      FieldName = 'Valor'
+      ReadOnly = True
+      Size = 250
+    end
   end
 end
