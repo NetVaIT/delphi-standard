@@ -1,0 +1,1 @@
+Proyecto de inicio, que permite utilizar herencia
