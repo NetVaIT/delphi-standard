@@ -1,16 +1,11 @@
 inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
   Caption = 'frmPersonasRolesCuentasBancarias'
-  OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlMaster: TPanel
-    ExplicitWidth = 651
-    ExplicitHeight = 253
     inherited cxGrid: TcxGrid
-      ExplicitWidth = 651
-      ExplicitHeight = 253
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdPersonaRolCuentaBancaria: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersonaRolCuentaBancaria'
@@ -24,6 +19,14 @@ inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
           DataBinding.FieldName = 'IdCuentaBancaria'
           Visible = False
         end
+        object tvMasterIdCuentaBancariaEstatus: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaBancariaEstatus'
+          Visible = False
+        end
+        object tvMasterEstatus: TcxGridDBColumn
+          DataBinding.FieldName = 'Estatus'
+          Width = 77
+        end
         object tvMasterCuentaBancaria: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancaria'
         end
@@ -33,6 +36,7 @@ inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
         end
         object tvMasterCuentaBancariaPerfil: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancariaPerfil'
+          Width = 158
         end
         object tvMasterPorcentaje: TcxGridDBColumn
           DataBinding.FieldName = 'Porcentaje'
@@ -44,23 +48,6 @@ inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
           DataBinding.FieldName = 'LimiteSuperior'
         end
       end
-    end
-  end
-  inherited pnlDetail3: TPanel
-    ExplicitTop = 375
-    ExplicitWidth = 651
-  end
-  inherited pnlDetail2: TPanel
-    ExplicitTop = 331
-    ExplicitWidth = 651
-  end
-  inherited pnlDetail1: TPanel
-    ExplicitTop = 287
-    ExplicitWidth = 651
-  end
-  inherited pnlClose: TPanel
-    inherited btnClose: TButton
-      ExplicitLeft = 566
     end
   end
   inherited DataSource: TDataSource
@@ -81,7 +68,7 @@ inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

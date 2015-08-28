@@ -1,12 +1,11 @@
 inherited frmPersonasRoles: TfrmPersonasRoles
   BorderStyle = bsToolWindow
-  Caption = 'Roles Asociados'
+  Caption = 'Roles'
   ClientHeight = 433
   ClientWidth = 645
   Visible = True
-  OnCreate = FormCreate
   ExplicitWidth = 651
-  ExplicitHeight = 457
+  ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -30,12 +29,15 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   inherited pnlMaster: TPanel
     Width = 645
     Height = 229
+    ExplicitWidth = 645
     ExplicitHeight = 229
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 229
+      ExplicitWidth = 645
       ExplicitHeight = 229
       inherited tvMaster: TcxGridDBTableView
+        Styles.OnGetContentStyle = tvMasterStylesGetContentStyle
         object tvMasterIdPersonaRol: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersonaRol'
           Visible = False
@@ -64,6 +66,10 @@ inherited frmPersonasRoles: TfrmPersonasRoles
           DataBinding.FieldName = 'IdRolClase'
           Visible = False
         end
+        object tvMasterIdRolTipo: TcxGridDBColumn
+          DataBinding.FieldName = 'IdRolTipo'
+          Visible = False
+        end
         object tvMasterRol: TcxGridDBColumn
           DataBinding.FieldName = 'Rol'
         end
@@ -85,6 +91,30 @@ inherited frmPersonasRoles: TfrmPersonasRoles
         object tvMasterFechaBaja: TcxGridDBColumn
           DataBinding.FieldName = 'FechaBaja'
         end
+        object tvMasterFacturar: TcxGridDBColumn
+          DataBinding.FieldName = 'Facturar'
+          Visible = False
+        end
+        object tvMasterCalcular: TcxGridDBColumn
+          DataBinding.FieldName = 'Calcular'
+          Visible = False
+        end
+        object tvMasterPorcentajeCalculo: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajeCalculo'
+          Visible = False
+        end
+        object tvMasterRegistroPatronalIMSS: TcxGridDBColumn
+          DataBinding.FieldName = 'RegistroPatronalIMSS'
+          Visible = False
+        end
+        object tvMasterNSS: TcxGridDBColumn
+          DataBinding.FieldName = 'NSS'
+          Visible = False
+        end
+        object tvMasterFechaAltaIMSS: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaAltaIMSS'
+          Visible = False
+        end
       end
     end
   end
@@ -92,25 +122,25 @@ inherited frmPersonasRoles: TfrmPersonasRoles
     Top = 351
     Width = 645
     ExplicitTop = 351
+    ExplicitWidth = 645
   end
   inherited pnlDetail2: TPanel
     Top = 307
     Width = 645
     ExplicitTop = 307
+    ExplicitWidth = 645
   end
   inherited pnlDetail1: TPanel
     Top = 263
     Width = 645
     ExplicitTop = 263
+    ExplicitWidth = 645
   end
   inherited pnlClose: TPanel
     Top = 392
     Width = 645
     ExplicitTop = 392
     ExplicitWidth = 645
-    inherited btnClose: TButton
-      ExplicitLeft = 566
-    end
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -121,12 +151,17 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
+    object cxsRol: TcxStyle
+      AssignedValues = [svColor]
+      Color = clInfoBk
+    end
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

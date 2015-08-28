@@ -10,7 +10,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
       'IdCuentaBancariaTipo,'#13#10'             IdBanco,'#13#10'             Cuent' +
       'aBancaria,'#13#10'             ClabeInterbancaria,'#13#10'             IdMon' +
       'eda,             '#13#10'             IdDocumento,'#13#10'             Saldo' +
-      'Cuenta'#13#10'  FROM CuentasBancarias'#13#10
+      'Cuenta, IdCuentaBancariaEstatus'#13#10'  FROM CuentasBancarias'#13#10
     Left = 32
     object adodsMasterIdCuentaBancaria: TAutoIncField
       FieldName = 'IdCuentaBancaria'
@@ -89,9 +89,22 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
       Precision = 18
       Size = 0
     end
+    object adodsMasterIdCuentaBancariaEstatus: TIntegerField
+      FieldName = 'IdCuentaBancariaEstatus'
+      Visible = False
+    end
+    object adodsMasterEstatus: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Estatus'
+      LookupDataSet = adodsEstatus
+      LookupKeyFields = 'IdCuentaBancariaEstatus'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdCuentaBancariaEstatus'
+      Size = 50
+      Lookup = True
+    end
   end
   inherited adodsUpdate: TADODataSet
-    OnNewRecord = adodsUpdateNewRecord
     Left = 392
   end
   inherited ActionList: TActionList
@@ -214,7 +227,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
       'pos'
     Parameters = <>
     Left = 232
-    Top = 80
+    Top = 24
   end
   object adodsBanco: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -222,7 +235,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     CommandText = 'select IdBanco, Nombre from Bancos'
     Parameters = <>
     Left = 232
-    Top = 136
+    Top = 80
     object adodsBancoIdBanco: TAutoIncField
       FieldName = 'IdBanco'
       ReadOnly = True
@@ -238,7 +251,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     CommandText = 'select IdMoneda, Descripcion from Monedas'
     Parameters = <>
     Left = 232
-    Top = 192
+    Top = 136
     object adodsMonedaIdMoneda: TAutoIncField
       FieldName = 'IdMoneda'
       ReadOnly = True
@@ -256,7 +269,7 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
       'llidoMaterno '#13#10'from Personas where IDPersonaTipo=1'
     Parameters = <>
     Left = 232
-    Top = 264
+    Top = 208
     object AutoIncField1: TAutoIncField
       FieldName = 'IdPersona'
       ReadOnly = True
@@ -294,6 +307,16 @@ inherited dmCuentasBancarias: TdmCuentasBancarias
     CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
     Parameters = <>
     Left = 232
-    Top = 328
+    Top = 272
+  end
+  object adodsEstatus: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'select IdCuentaBancariaEstatus, Descripcion from CuentasBancaria' +
+      'sEstatus'
+    Parameters = <>
+    Left = 232
+    Top = 344
   end
 end

@@ -34,6 +34,8 @@ type
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     dsCuentaBancaria: TDataSource;
+    Label6: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
   private
     { Private declarations }
   public

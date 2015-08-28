@@ -2,10 +2,12 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'SELECT IdPersonaRolCuentaBancaria, IdPersonaRol, IdCuentaBancari' +
       'a, IdCuentaBancariaPerfil, Porcentaje, LimiteInferior, LimiteSup' +
-      'erior FROM PersonasRolesCuentasBancarias'
+      'erior, IdCuentaBancariaEstatus FROM PersonasRolesCuentasBancaria' +
+      's'
     Left = 40
     Top = 24
     object adodsMasterIdPersonaRolCuentaBancaria: TAutoIncField
@@ -20,6 +22,20 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
     object adodsMasterIdCuentaBancaria: TIntegerField
       FieldName = 'IdCuentaBancaria'
       Visible = False
+    end
+    object adodsMasterIdCuentaBancariaEstatus: TIntegerField
+      FieldName = 'IdCuentaBancariaEstatus'
+      Visible = False
+    end
+    object adodsMasterEstatus: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Estatus'
+      LookupDataSet = adodsEstatus
+      LookupKeyFields = 'IdCuentaBancariaEstatus'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdCuentaBancariaEstatus'
+      Size = 50
+      Lookup = True
     end
     object adodsMasterCuentaBancaria: TStringField
       FieldKind = fkLookup
@@ -94,5 +110,15 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
     Parameters = <>
     Left = 152
     Top = 184
+  end
+  object adodsEstatus: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'select IdCuentaBancariaEstatus, Descripcion from CuentasBancaria' +
+      'sEstatus'
+    Parameters = <>
+    Left = 152
+    Top = 32
   end
 end

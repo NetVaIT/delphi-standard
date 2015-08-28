@@ -43,6 +43,9 @@ type
     tvMasterMoneda: TcxGridDBColumn;
     tvMasterEstructuraEstadoCuenta: TcxGridDBColumn;
     tvMasterSaldoCuenta: TcxGridDBColumn;
+    tvMasterIdDocumento: TcxGridDBColumn;
+    tvMasterIdCuentaBancariaEstatus: TcxGridDBColumn;
+    tvMasterEstatus: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

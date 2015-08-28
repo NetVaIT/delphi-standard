@@ -1,23 +1,23 @@
 inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancariasEdit
   Caption = 'Cuentas bancarias para este rol'
-  ClientHeight = 222
+  ClientHeight = 261
   ClientWidth = 552
   ExplicitWidth = 558
-  ExplicitHeight = 251
+  ExplicitHeight = 290
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 552
-    Height = 181
+    Height = 220
     ExplicitWidth = 552
-    ExplicitHeight = 257
-    ClientRectBottom = 179
+    ExplicitHeight = 181
+    ClientRectBottom = 218
     ClientRectRight = 550
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 548
-      ExplicitHeight = 227
+      ExplicitHeight = 151
       object Label1: TLabel
         Left = 24
         Top = 16
@@ -58,12 +58,20 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         FocusControl = cxDBCurrencyEdit3
         Visible = False
       end
+      object Label6: TLabel
+        Left = 23
+        Top = 135
+        Width = 36
+        Height = 13
+        Caption = 'Estatus'
+        FocusControl = DBLookupComboBox1
+      end
       object cxDBCurrencyEdit1: TcxDBCurrencyEdit
         Left = 24
         Top = 112
         DataBinding.DataField = 'Porcentaje'
         DataBinding.DataSource = DataSource
-        TabOrder = 0
+        TabOrder = 2
         Width = 121
       end
       object cxDBCurrencyEdit2: TcxDBCurrencyEdit
@@ -71,7 +79,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         Top = 152
         DataBinding.DataField = 'LimiteInferior'
         DataBinding.DataSource = DataSource
-        TabOrder = 1
+        TabOrder = 3
         Visible = False
         Width = 121
       end
@@ -80,7 +88,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         Top = 192
         DataBinding.DataField = 'LimiteSuperior'
         DataBinding.DataSource = DataSource
-        TabOrder = 2
+        TabOrder = 4
         Visible = False
         Width = 121
       end
@@ -105,7 +113,7 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
             FieldName = 'CuentaBancaria'
           end>
         Properties.ListSource = dsCuentaBancaria
-        TabOrder = 3
+        TabOrder = 0
         Width = 506
       end
       object cxDBLookupComboBox2: TcxDBLookupComboBox
@@ -114,23 +122,32 @@ inherited frmPersonasRolesCuentasBancariasEdit: TfrmPersonasRolesCuentasBancaria
         DataBinding.DataField = 'CuentaBancariaPerfil'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
-        TabOrder = 4
+        TabOrder = 1
         Width = 258
+      end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 23
+        Top = 151
+        Width = 258
+        Height = 21
+        DataField = 'Estatus'
+        DataSource = DataSource
+        TabOrder = 5
       end
     end
   end
   inherited pmlMain: TPanel
-    Top = 181
+    Top = 220
     Width = 552
-    ExplicitTop = 257
+    ExplicitTop = 181
     ExplicitWidth = 552
-    inherited btnOk: TButton
-      Left = 389
-      ExplicitLeft = 389
-    end
     inherited btnCancel: TButton
       Left = 470
       ExplicitLeft = 470
+    end
+    inherited btnOk: TButton
+      Left = 389
+      ExplicitLeft = 389
     end
   end
   inherited DataSource: TDataSource

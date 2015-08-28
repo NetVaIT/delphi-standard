@@ -8,6 +8,7 @@ uses
 
 const
   IdMoneda_Predeterminado = 106;
+  IdCuentaBancariaEstatus_Predeterminado = 1;
 
 type
   TdmCuentasBancarias = class(T_dmStandar)
@@ -58,9 +59,11 @@ type
     adodsDocumento: TADODataSet;
     adodsMasterEstructuraEstadoCuenta: TStringField;
     actUpdateFile: TAction;
+    adodsMasterIdCuentaBancariaEstatus: TIntegerField;
+    adodsEstatus: TADODataSet;
+    adodsMasterEstatus: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
-    procedure adodsUpdateNewRecord(DataSet: TDataSet);
     procedure actUpdateFileExecute(Sender: TObject);
   private
     { Private declarations }
@@ -111,12 +114,7 @@ procedure TdmCuentasBancarias.adodsMasterNewRecord(DataSet: TDataSet);
 begin
   inherited;
   adodsMasterIdMoneda.Value := IdMoneda_Predeterminado;
-end;
-
-procedure TdmCuentasBancarias.adodsUpdateNewRecord(DataSet: TDataSet);
-begin
-  inherited;
-  adodsMasterIdMoneda.Value := IdMoneda_Predeterminado;
+  adodsMasterIdCuentaBancariaEstatus.Value:= IdCuentaBancariaEstatus_Predeterminado;
 end;
 
 procedure TdmCuentasBancarias.DataModuleCreate(Sender: TObject);

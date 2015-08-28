@@ -231,6 +231,7 @@ begin
   if Assigned(gEditForm) then
     gEditForm.DataSet:= DataSet;
   cxGrid.SetFocus;
+  tvMaster.ApplyBestFit();
   tvMaster.ViewData.Expand(True);
   dxbNavigator.DockedLeft:= 82;
   dxbTools.DockedLeft:= 210;

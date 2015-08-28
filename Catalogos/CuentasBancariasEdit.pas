@@ -41,6 +41,8 @@ type
     tsExpedienteDigital: TcxTabSheet;
     btnUpdateFile: TSpeedButton;
     cxDBLabel1: TcxDBLabel;
+    Label1: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);

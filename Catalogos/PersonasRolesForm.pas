@@ -44,7 +44,18 @@ type
     tvMasterRolClase: TcxGridDBColumn;
     tvMasterFechaIngreso: TcxGridDBColumn;
     tvMasterFechaBaja: TcxGridDBColumn;
+    cxsRol: TcxStyle;
+    tvMasterIdRolTipo: TcxGridDBColumn;
+    tvMasterFacturar: TcxGridDBColumn;
+    tvMasterCalcular: TcxGridDBColumn;
+    tvMasterPorcentajeCalculo: TcxGridDBColumn;
+    tvMasterRegistroPatronalIMSS: TcxGridDBColumn;
+    tvMasterNSS: TcxGridDBColumn;
+    tvMasterFechaAltaIMSS: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
+    procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
+      ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
+      var AStyle: TcxStyle);
   private
     { Private declarations }
     FRol: TPRol;
@@ -70,6 +81,19 @@ procedure TfrmPersonasRoles.SetRol(const Value: TPRol);
 begin
   FRol := Value;
   TfrmPersonaRolesEdit(gEditForm).Rol:= Value;
+end;
+
+procedure TfrmPersonasRoles.tvMasterStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+begin
+  inherited;
+  if (ARecord <> nil) and (AItem <> nil) then
+  begin
+    if ARecord.Values[tvMasterIdRolTipo.Index] = Ord(Rol) then
+      AStyle := cxsRol;
+  end;
+
 end;
 
 end.

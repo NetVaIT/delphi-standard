@@ -6,6 +6,9 @@ uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
   Data.DB, Data.Win.ADODB;
 
+const
+  IdCuentaBancariaEstatus_Predeterminado = 1;
+
 type
   TdmPersonasRolesCuentasBancarias = class(T_dmStandar)
     adodsCuentaBancaria: TADODataSet;
@@ -19,7 +22,11 @@ type
     adodsMasterLimiteSuperior: TBCDField;
     adodsMasterCuentaBancariaPerfil: TStringField;
     adodsMasterCuentaBancaria: TStringField;
+    adodsMasterIdCuentaBancariaEstatus: TIntegerField;
+    adodsEstatus: TADODataSet;
+    adodsMasterEstatus: TStringField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure adodsMasterNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     fPersonaCta: Integer;
@@ -38,6 +45,13 @@ uses PersonasRolesCuentasBancariasForm;
 {$R *.dfm}
 
 { TdmRolesCuentasBancarias }
+
+procedure TdmPersonasRolesCuentasBancarias.adodsMasterNewRecord(
+  DataSet: TDataSet);
+begin
+  inherited;
+  adodsMasterIdCuentaBancariaEstatus.Value:= IdCuentaBancariaEstatus_Predeterminado;
+end;
 
 procedure TdmPersonasRolesCuentasBancarias.DataModuleCreate(Sender: TObject);
 begin

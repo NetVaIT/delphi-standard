@@ -1,7 +1,6 @@
 inherited frmCuentasBancarias: TfrmCuentasBancarias
   Caption = 'Cuentas Bancarias'
   ClientWidth = 856
-  OnCreate = FormCreate
   ExplicitWidth = 856
   ExplicitHeight = 457
   PixelsPerInch = 96
@@ -43,24 +42,40 @@ inherited frmCuentasBancarias: TfrmCuentasBancarias
           DataBinding.FieldName = 'IdCuentaBancariaTipo'
           Visible = False
         end
-        object tvMasterCuentaBancariaTipo: TcxGridDBColumn
-          Caption = 'Tipo Cuenta Bancaria'
-          DataBinding.FieldName = 'CuentaBancariaTipo'
-        end
         object tvMasterIdBanco: TcxGridDBColumn
           DataBinding.FieldName = 'IdBanco'
           Visible = False
         end
+        object tvMasterIdDocumento: TcxGridDBColumn
+          DataBinding.FieldName = 'IdDocumento'
+          Visible = False
+        end
+        object tvMasterIdCuentaBancariaEstatus: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaBancariaEstatus'
+          Visible = False
+        end
+        object tvMasterEstatus: TcxGridDBColumn
+          DataBinding.FieldName = 'Estatus'
+          Width = 64
+        end
+        object tvMasterCuentaBancariaTipo: TcxGridDBColumn
+          Caption = 'Tipo Cuenta Bancaria'
+          DataBinding.FieldName = 'CuentaBancariaTipo'
+          Width = 107
+        end
         object tvMasterBanco: TcxGridDBColumn
           DataBinding.FieldName = 'Banco'
+          Width = 90
         end
         object tvMasterCuentaBancaria: TcxGridDBColumn
           Caption = 'Cuenta Bancaria'
           DataBinding.FieldName = 'CuentaBancaria'
+          Width = 95
         end
         object tvMasterClabeInterbancaria: TcxGridDBColumn
           Caption = 'Clabe Interbancaria'
           DataBinding.FieldName = 'ClabeInterbancaria'
+          Width = 114
         end
         object tvMasterIdMoneda: TcxGridDBColumn
           DataBinding.FieldName = 'IdMoneda'
@@ -68,14 +83,17 @@ inherited frmCuentasBancarias: TfrmCuentasBancarias
         end
         object tvMasterMoneda: TcxGridDBColumn
           DataBinding.FieldName = 'Moneda'
+          Width = 71
         end
         object tvMasterEstructuraEstadoCuenta: TcxGridDBColumn
           Caption = 'Estructur aEstado Cuenta'
           DataBinding.FieldName = 'EstructuraEstadoCuenta'
+          Width = 129
         end
         object tvMasterSaldoCuenta: TcxGridDBColumn
           Caption = 'Saldo de Cuenta'
           DataBinding.FieldName = 'SaldoCuenta'
+          Width = 94
         end
       end
     end

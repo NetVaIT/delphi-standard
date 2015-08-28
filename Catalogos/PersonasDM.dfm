@@ -1,7 +1,7 @@
 inherited dmPersona: TdmPersona
   OldCreateOrder = True
-  Height = 651
-  Width = 731
+  Height = 528
+  Width = 451
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -142,6 +142,10 @@ inherited dmPersona: TdmPersona
   inherited adodsUpdate: TADODataSet
     Left = 216
   end
+  inherited ActionList: TActionList
+    Left = 216
+    Top = 80
+  end
   object adodsPersonaTipo: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
@@ -228,8 +232,8 @@ inherited dmPersona: TdmPersona
     IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
     Parameters = <>
-    Left = 272
-    Top = 293
+    Left = 312
+    Top = 77
     object adodsPersonaRolesIdPersonaRol: TAutoIncField
       FieldName = 'IdPersonaRol'
       ReadOnly = True
@@ -258,6 +262,16 @@ inherited dmPersona: TdmPersona
     object adodsPersonaRolesIdRolClase: TIntegerField
       FieldName = 'IdRolClase'
       Visible = False
+    end
+    object adodsPersonaRolesIdRolTipo: TIntegerField
+      FieldKind = fkLookup
+      FieldName = 'IdRolTipo'
+      LookupDataSet = adodsRol
+      LookupKeyFields = 'IdRol'
+      LookupResultField = 'IdRolTipo'
+      KeyFields = 'IdRol'
+      Visible = False
+      Lookup = True
     end
     object adodsPersonaRolesRol: TStringField
       FieldKind = fkLookup
@@ -340,38 +354,38 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     CommandText = 'SELECT IdPersona, RazonSocial FROM Personas'
     Parameters = <>
-    Left = 272
-    Top = 349
+    Left = 312
+    Top = 133
   end
   object adodsRol: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'SELECT IdRol, Descripcion FROM Roles'
+    CommandText = 'SELECT IdRol, IdRolTipo, Descripcion FROM Roles'
     Parameters = <>
-    Left = 272
-    Top = 405
+    Left = 312
+    Top = 189
   end
   object adodsRolEsquemaPago: TADODataSet
     Connection = _dmConection.ADOConnection
     Parameters = <>
-    Left = 272
-    Top = 461
+    Left = 312
+    Top = 245
   end
   object adodsRolEstatus: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolEstatus, Descripcion FROM RolesEstatus'
     Parameters = <>
-    Left = 272
-    Top = 517
+    Left = 312
+    Top = 301
   end
   object adodsRolClase: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolClase, Descripcion FROM RolesClases'
     Parameters = <>
-    Left = 272
-    Top = 573
+    Left = 312
+    Top = 357
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
@@ -385,7 +399,7 @@ inherited dmPersona: TdmPersona
       'SELECT IdPersona, RazonSocial FROM Personas'#13#10'WHERE IdPersonaTipo' +
       ' = 1'
     Parameters = <>
-    Left = 464
-    Top = 269
+    Left = 48
+    Top = 469
   end
 end

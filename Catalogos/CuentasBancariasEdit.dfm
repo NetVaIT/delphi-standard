@@ -5,7 +5,7 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 548
-  ExplicitHeight = 386
+  ExplicitHeight = 387
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
@@ -78,12 +78,20 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         Width = 23
         Height = 22
       end
+      object Label1: TLabel
+        Left = 362
+        Top = 19
+        Width = 36
+        Height = 13
+        Caption = 'Estatus'
+        FocusControl = DBLookupComboBox1
+      end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 24
         Top = 122
         DataBinding.DataField = 'CuentaBancaria'
         DataBinding.DataSource = DataSource
-        TabOrder = 0
+        TabOrder = 4
         Width = 300
       end
       object cxDBCurrencyEdit1: TcxDBCurrencyEdit
@@ -91,7 +99,7 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         Top = 122
         DataBinding.DataField = 'SaldoCuenta'
         DataBinding.DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 1
+        TabOrder = 5
         Width = 150
       end
       object cxDBTextEdit3: TcxDBTextEdit
@@ -99,7 +107,7 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         Top = 167
         DataBinding.DataField = 'ClabeInterbancaria'
         DataBinding.DataSource = dmCuentasBancarias.dsMaster
-        TabOrder = 2
+        TabOrder = 6
         Width = 488
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
@@ -107,8 +115,12 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         Top = 35
         DataBinding.DataField = 'Banco'
         DataBinding.DataSource = DataSource
-        Properties.ListColumns = <>
-        TabOrder = 3
+        Properties.KeyFieldNames = 'IdBanco'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Nombre'
+          end>
+        TabOrder = 0
         Width = 301
       end
       object cxDBLookupComboBox2: TcxDBLookupComboBox
@@ -116,8 +128,12 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         Top = 78
         DataBinding.DataField = 'CuentaBancariaTipo'
         DataBinding.DataSource = DataSource
-        Properties.ListColumns = <>
-        TabOrder = 4
+        Properties.KeyFieldNames = 'IdCuentaBancariaTipo'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Descripcion'
+          end>
+        TabOrder = 2
         Width = 301
       end
       object cxDBLookupComboBox3: TcxDBLookupComboBox
@@ -125,8 +141,12 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         Top = 78
         DataBinding.DataField = 'Moneda'
         DataBinding.DataSource = DataSource
-        Properties.ListColumns = <>
-        TabOrder = 5
+        Properties.KeyFieldNames = 'IdMoneda'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Descripcion'
+          end>
+        TabOrder = 3
         Width = 150
       end
       object cxDBLabel1: TcxDBLabel
@@ -136,6 +156,15 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
         DataBinding.DataSource = DataSource
         Height = 49
         Width = 465
+      end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 362
+        Top = 35
+        Width = 150
+        Height = 21
+        DataField = 'Estatus'
+        DataSource = DataSource
+        TabOrder = 1
       end
     end
     object tsExpedienteDigital: TcxTabSheet
@@ -148,13 +177,13 @@ inherited frmCuentasBancariasEdit: TfrmCuentasBancariasEdit
     Width = 542
     ExplicitTop = 317
     ExplicitWidth = 542
-    inherited btnOk: TButton
-      Left = 379
-      ExplicitLeft = 379
-    end
     inherited btnCancel: TButton
       Left = 460
       ExplicitLeft = 460
+    end
+    inherited btnOk: TButton
+      Left = 379
+      ExplicitLeft = 379
     end
   end
   inherited DataSource: TDataSource

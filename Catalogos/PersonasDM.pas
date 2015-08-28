@@ -70,6 +70,7 @@ type
     adodsMasterIdPersonaTitular: TIntegerField;
     adodsMasterTitular: TStringField;
     adodsMasterVigenciaFM34: TDateTimeField;
+    adodsPersonaRolesIdRolTipo: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsPersonaRolesNewRecord(DataSet: TDataSet);
   private

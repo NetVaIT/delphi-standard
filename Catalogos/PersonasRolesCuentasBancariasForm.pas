@@ -40,6 +40,8 @@ type
     tvMasterPorcentaje: TcxGridDBColumn;
     tvMasterLimiteInferior: TcxGridDBColumn;
     tvMasterLimiteSuperior: TcxGridDBColumn;
+    tvMasterIdCuentaBancariaEstatus: TcxGridDBColumn;
+    tvMasterEstatus: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
