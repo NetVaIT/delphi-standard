@@ -112,59 +112,71 @@ begin
   inherited;
   if DataSource.DataSet.State in [dsInsert] then
     cxDBLookupComboBox1.EditValue := Rol;
-    pnlProveedor.Visible := False;
-    pnlOutsourcing.Visible := False;
-    tsDocumentosFacturar.TabVisible := False;
-    tsCXCConceptos.TabVisible := False;
-    pnlEmpleado.Visible := False;
-  case DataSource.DataSet.FieldByName('IdRol').AsInteger of
-    1: begin
-
+  pnlEmpleado.Visible := False;
+  pnlOutsourcing.Visible := False;
+  pnlProveedor.Visible := False;
+  tsCuentas.TabVisible := False;
+  tsCuentasBancarias.TabVisible := False;
+  tsCXCConceptos.TabVisible := False;
+  tsDocumentosFacturar.TabVisible := False;
+  tsEsquemaPago.TabVisible := False;
+  tsExpedienteDigital.TabVisible := False;
+  case DataSource.DataSet.FieldByName('IdRolTipo').AsInteger of
+    1: begin // Dueño de proceso
+        tsCuentas.TabVisible := True;
+        tsCuentasBancarias.TabVisible := True;
+        tsDocumentosFacturar.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
        end;
-    2: begin
+    2: begin // Outsourcing
         pnlProveedor.Visible := True;
         pnlOutsourcing.Visible := True;
-        tsCuentas.TabVisible := False;
-       end;
-    3: begin
-        tsCuentas.TabVisible := True;
-        tsEsquemaPago.TabVisible := False;
-        dmCtasCtablesPersonasRoles.MasterSource := DataSource;
-        dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
-        dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
-       end;
-    4: begin
-        tsCuentas.TabVisible := True;
-        tsEsquemaPago.TabVisible := False;
-        dmCtasCtablesPersonasRoles.MasterSource := DataSource;
-        dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
-        dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
-        pnlProveedor.Visible := True;
+        tsCuentasBancarias.TabVisible := True;
         tsDocumentosFacturar.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
+       end;
+    3: begin // Cliente
+        tsCuentas.TabVisible := True;
+        tsCuentasBancarias.TabVisible := True;
         tsCXCConceptos.TabVisible := True;
+        tsDocumentosFacturar.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
        end;
-    5: begin
+    4: begin // Proveedor
+        pnlProveedor.Visible := True;
+        tsCuentas.TabVisible := True;
+        tsCuentasBancarias.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
+       end;
+    5: begin // Empleado
         pnlEmpleado.Visible := True;
-        tsEsquemaPago.TabVisible := False; //TMP
-        tsCuentas.TabVisible := False;
+        tsCuentasBancarias.TabVisible := True;
+        tsDocumentosFacturar.TabVisible := True;
+        tsEsquemaPago.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
        end;
-    6: begin
+    6: begin // Socio
         tsCuentas.TabVisible := True;
-        tsEsquemaPago.TabVisible := False;
+        tsCuentasBancarias.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
        end;
-    7: begin
+    7: begin // Autoridad
         tsCuentas.TabVisible := True;
-        tsEsquemaPago.TabVisible := False;
+        tsCuentasBancarias.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
        end;
-    8: begin
+    8: begin // Comisionista
         tsCuentas.TabVisible := True;
-        tsEsquemaPago.TabVisible := False;
-       end;
-    9: begin
-        tsCuentas.TabVisible := True;
-        tsEsquemaPago.TabVisible := False;
+        tsCuentasBancarias.TabVisible := True;
+        tsExpedienteDigital.TabVisible := True;
        end;
   end;
+  dmCtasCtablesPersonasRoles.MasterSource := DataSource;
+  dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
+  dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
+  dmCtasCtablesPersonasRoles.MasterSource := DataSource;
+  dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
+  dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
   dmPersonasRolesCuentasBancarias.MasterSource := DataSource;
   dmPersonasRolesCuentasBancarias.MasterFields := 'IdPersonaRol';
   dmPersonasRolesCuentasBancarias.PersonaAct := DataSet.FieldByName('IdPersona').Value;
@@ -172,10 +184,6 @@ begin
   dmPersonasRolesDocumentos.MasterSource := DataSource;
   dmPersonasRolesDocumentos.MasterFields := 'IdPersonaRol';
   dmPersonasRolesDocumentos.ShowModule(tsExpedienteDigital,'');
-  tsCuentasBancarias.TabVisible := True;
-  tsExpedienteDigital.TabVisible := True;
-  tsDocumentosFacturar.TabVisible := True;
-  tsCXCConceptos.TabVisible := True;
   if tsDocumentosFacturar.TabVisible = True then
   begin
     dmPersonasRolesFacturacion.MasterSource := DataSource;

@@ -101,61 +101,48 @@ procedure TdmPersona.AsignarConsulta;
 var
   ConsultaP, ConsultaPR : String;
 begin
-  ConsultaP := 'SELECT DISTINCT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' + #10#13 +
-               'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' + #10#13 +
-               'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' +  #10#13 +
-               'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' + #10#13 +
-               'Personas.FechaNacimiento, Personas.LugarNacimiento, Personas.IdPersonaTitular, Personas.VigenciaFM34, ' + #10#13 +
-               'PersonasRoles.IdRol, PersonasRoles.IdPersona ' +  #10#13 +
-               'FROM Personas ' +  #10#13 +
-               'INNER JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ' + #10#13 +
-               'INNER JOIN Roles ON PersonasRoles.IdRol = Roles.IdRol ';
   ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
                 'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
                 'FROM Personas ' + #10#13 +
                 'LEFT JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
   case Rol of
-    rNone: begin
-             ConsultaP := 'SELECT Personas.IdPersona, Personas.RFC, Personas.CURP, Personas.IdPersonaTipo, ' + #10#13 +
-                         'Personas.IdRazonSocialTipo, Personas.IdSexo, Personas.IdEstadoCivil, ' + #10#13 +
-                         'Personas.IdPais, Personas.IdPoblacion, Personas.RazonSocial, ' + #10#13 +
-                         'Personas.Nombre, Personas.ApellidoPaterno, Personas.ApellidoMaterno, ' + #10#13 +
-                         'Personas.FechaNacimiento, Personas.LugarNacimiento, Personas.IdPersonaTitular, Personas.VigenciaFM34 FROM Personas';
-             ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
-                          'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
-                          'FROM Personas ' + #10#13 +
-                          'LEFT JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
-           end;
-    rDuenoProceso: begin
-                     ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 1)';
-                     //ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 0)';
-                   end;
-    rOutSourcing: begin
-                    ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 2)';
-                    //ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 1)';
-                  end;
-    rCliente: begin
-                ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 3)';
-                //ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';//(PersonasRoles.IdRol <> 5 AND PersonasRoles.IdRol <> 0)'
-              end;
-    rProveedor: begin
-                  ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 4)';
-                  //ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
-                end;
-    rEmpleado: begin
-                 ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 5)';
-                 //ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
-               end;
-    rSocio: begin
-              ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 6)';
-              //ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
-            end;
-    rComisionista: begin
-                     ConsultaP := ConsultaP + #10#13 + 'WHERE (Roles.IdRolTipo = 8)';
-                     //ConsultaPR := ConsultaPR + #10#13 + 'WHERE (PersonasRoles.IdRol = 2) OR (PersonasRoles.IdRol = 1)';
-                   end;
+    rNone:
+    begin
+      ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
+                    'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
+                    'FROM Personas ' + #10#13 +
+                    'LEFT JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
+    end;
+    rDuenoProceso:
+    begin
+      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 1)))';
+    end;
+    rOutSourcing:
+    begin
+      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 2)))';
+    end;
+    rCliente:
+    begin
+      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 3)))';
+    end;
+    rProveedor:
+    begin
+      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 4)))';
+    end;
+    rEmpleado:
+    begin
+      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 5)))';
+    end;
+    rSocio:
+    begin
+      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 6)))';
+    end;
+    rComisionista:
+    begin
+      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 8)))';
+    end;
   end;
-  adodsMaster.CommandText := ConsultaP;
+  adodsMaster.CommandText := adodsMaster.CommandText + ConsultaP;
   adodsPersonaRelacionada.CommandText := ConsultaPR;
 end;
 

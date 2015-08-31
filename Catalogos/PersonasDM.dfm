@@ -7,8 +7,8 @@ inherited dmPersona: TdmPersona
     CommandText = 
       'SELECT IdPersona, RFC, CURP, IdPersonaTipo, IdRazonSocialTipo, I' +
       'dSexo, IdEstadoCivil, IdPais, IdPoblacion, RazonSocial, Nombre, ' +
-      'ApellidoPaterno, ApellidoMaterno, LugarNacimiento, FechaNacimien' +
-      'to, IdPersonaTitular, VigenciaFM34 FROM Personas'
+      'ApellidoPaterno, ApellidoMaterno, FechaNacimiento, LugarNacimien' +
+      'to, IdPersonaTitular, VigenciaFM34 FROM Personas'#13#10#13#10
     Left = 56
     object adodsMasterIdPersona: TAutoIncField
       FieldName = 'IdPersona'
@@ -224,10 +224,15 @@ inherited dmPersona: TdmPersona
     CursorType = ctStatic
     OnNewRecord = adodsPersonaRolesNewRecord
     CommandText = 
-      'SELECT IdPersonaRol, IdPersona, IdPersonaRelacionada, IdRol, IdR' +
-      'olEsquemaPago, IdRolEstatus, IdRolClase, Calcular, PorcentajeCal' +
-      'culo, RegistroPatronalIMSS, NSS, FechaAltaIMSS, Facturar, FechaI' +
-      'ngreso, FechaBaja FROM PersonasRoles'
+      'SELECT PersonasRoles.IdPersonaRol, PersonasRoles.IdPersona, Pers' +
+      'onasRoles.IdPersonaRelacionada, PersonasRoles.IdRol, '#13#10'         ' +
+      '    PersonasRoles.IdRolEsquemaPago, PersonasRoles.IdRolEstatus, ' +
+      'PersonasRoles.IdRolClase, PersonasRoles.Calcular, '#13#10'            ' +
+      ' PersonasRoles.PorcentajeCalculo, PersonasRoles.RegistroPatronal' +
+      'IMSS, PersonasRoles.NSS, PersonasRoles.FechaAltaIMSS, '#13#10'        ' +
+      '     PersonasRoles.Facturar, PersonasRoles.FechaIngreso, Persona' +
+      'sRoles.FechaBaja, Roles.IdRolTipo'#13#10'FROM PersonasRoles INNER JOIN' +
+      ' Roles ON PersonasRoles.IdRol = Roles.IdRol'
     DataSource = dsMaster
     IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
