@@ -3,7 +3,7 @@ inherited frmMain: TfrmMain
   ClientWidth = 1099
   OnDestroy = FormDestroy
   ExplicitWidth = 1115
-  ExplicitHeight = 518
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxRibbon1: TdxRibbon
@@ -11,6 +11,7 @@ inherited frmMain: TfrmMain
     OnApplicationMenuClick = dxRibbon1ApplicationMenuClick
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
+      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
@@ -46,6 +47,7 @@ inherited frmMain: TfrmMain
       Index = 2
     end
     object dxRibbon1Tab5: TdxRibbonTab
+      Active = True
       Caption = 'Reportes'
       Groups = <
         item
@@ -113,6 +115,8 @@ inherited frmMain: TfrmMain
         end>
     end
     inherited dxbArchivo: TdxBar
+      DockedDockControl = nil
+      DockedDockingStyle = dsNone
       FloatClientWidth = 51
       FloatClientHeight = 76
     end
@@ -368,6 +372,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton35'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton36'
         end>
       OneOnRow = True
       Row = 0
@@ -591,6 +599,10 @@ inherited frmMain: TfrmMain
     end
     object dxBarLargeButton35: TdxBarLargeButton
       Action = actRptPlaza
+      Category = 0
+    end
+    object dxBarLargeButton36: TdxBarLargeButton
+      Action = actRptpagos
       Category = 0
     end
   end
@@ -9524,6 +9536,13 @@ inherited frmMain: TfrmMain
       Category = 'Reportes'
       Caption = 'Plazas'
       ImageIndex = 35
+      OnExecute = actCatalogoExecute
+    end
+    object actRptpagos: TAction
+      Tag = 57
+      Category = 'Reportes'
+      Caption = 'Detalle de pagos'
+      ImageIndex = 17
       OnExecute = actCatalogoExecute
     end
   end

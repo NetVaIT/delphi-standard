@@ -210,7 +210,9 @@ uses
   PersonasRolesCXCConceptosDM in 'Catalogos\PersonasRolesCXCConceptosDM.pas' {dmPersonaRolesCXCConceptos: TDataModule},
   PersonasRolesCXCConceptosForm in 'Catalogos\PersonasRolesCXCConceptosForm.pas' {frmPersonasRolesCXCConceptos},
   ExportarPagosBancoEdit in 'Procesos\ExportarPagosBancoEdit.pas' {frmExportaPagosBancos},
-  ExportarPagosBancoForm in 'Procesos\ExportarPagosBancoForm.pas' {frmExportarPagosBanco};
+  ExportarPagosBancoForm in 'Procesos\ExportarPagosBancoForm.pas' {frmExportarPagosBanco},
+  RptPagosDmod in 'Reportes\RptPagosDmod.pas' {RptPagosDM: TDataModule},
+  RptPagosForm in 'Reportes\RptPagosForm.pas' {frmRptPagos};
 
 {$R *.res}
 

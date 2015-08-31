@@ -124,6 +124,8 @@ type
     dxBarLargeButton34: TdxBarLargeButton;
     actRptPlaza: TAction;
     dxBarLargeButton35: TdxBarLargeButton;
+    actRptpagos: TAction;
+    dxBarLargeButton36: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -158,7 +160,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasXCobrarDM,
   RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM,
-  PrestamosDM, ConfiguracionDM, RptPlazasDM;
+  PrestamosDM, ConfiguracionDM, RptPlazasDM, RptPagosDmod;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -255,6 +257,12 @@ begin
    56: begin
          gModulo := TdmRptPlazas.Create(Self);
        end;
+   57: begin
+         gReport := TRptPagosDM.Create(Self);
+         gReport.Title := pCaption;
+         gReport.Execute;
+       end;
+
   end;
   if Assigned(gModulo) then
   begin
