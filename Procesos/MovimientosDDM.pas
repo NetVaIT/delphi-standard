@@ -24,6 +24,7 @@ type
     adodsMasterEstatus: TStringField;
     adodsPeriodo: TADODataSet;
     adodsMasterRolClase: TStringField;
+    adodsMasterAcumalarA: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -54,10 +55,9 @@ begin
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
   // Filtrado
-  SQLSelect:= 'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDetalle.Fecha, ' +
-  'vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.RolClase, vMovimientosDetalle.Tipo, vMovimientosDetalle.Categoria, ' +
-  'vMovimientosDetalle.Efecto, vMovimientosDetalle.Importe * vMovimientosDetalle.Signo AS Importe, vMovimientosDetalle.Estatus '+
-  'FROM vMovimientosDetalle INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento';
+  SQLSelect:= 'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDetalle.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.PersonaRelacionada, vMovimientosDetalle.RolClase, vMovimientosDetalle.Tipo, ' +
+  'vMovimientosDetalle.AcumalarA, vMovimientosDetalle.Categoria, vMovimientosDetalle.Efecto, vMovimientosDetalle.Importe * vMovimientosDetalle.Signo AS Importe, vMovimientosDetalle.Estatus ' +
+  'FROM vMovimientosDetalle INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Movimientos.IdMovimiento ';
   SQLOrderBy:= 'ORDER BY vMovimientosDetalle.Persona, vMovimientosDetalle.OrdenImpresion';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;
@@ -75,11 +75,11 @@ begin
   IdPeriodo:= TfrmMovimientosD(gGridForm).IdPeriodo;
   IdClase:= Ord(TfrmMovimientosD(gGridForm).IdClase);
   case FTipoReporte of
-    trDispercion: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria NOT IN (1,2,11) AND Movimientos.IdPeriodo = %d';
-    trNomina: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria IN (1,2) AND Movimientos.IdPeriodo = %d';
-    trPrestamos: SQLWhere:= 'WHERE vMovimientosDetalle.IdMovimientoTipoCategoria IN (11) AND Movimientos.IdPeriodo = %d';
+    trDispercion: SQLWhere:= 'WHERE vMovimientosDetalle.AplicarCategoria = 1 AND vMovimientosDetalle.IdMovimientoTipoCategoria NOT IN (1,2,11) AND Movimientos.IdPeriodo = %d';
+    trNomina: SQLWhere:= 'WHERE vMovimientosDetalle.AplicarCategoria = 1 AND vMovimientosDetalle.IdMovimientoTipoCategoria IN (1,2) AND Movimientos.IdPeriodo = %d';
+    trPrestamos: SQLWhere:= 'WHERE vMovimientosDetalle.AplicarCategoria = 1 AND vMovimientosDetalle.IdMovimientoTipoCategoria IN (11) AND Movimientos.IdPeriodo = %d';
   else
-    SQLWhere:= 'WHERE Movimientos.IdPeriodo = %d';
+    SQLWhere:= 'WHERE vMovimientosDetalle.AplicarCategoria = 1 AND Movimientos.IdPeriodo = %d';
   end;
   SQLWhere:= Format(SQLWhere, [IdPeriodo]);
   if (TfrmMovimientosD(gGridForm).IdClase <> rcAmbos) then

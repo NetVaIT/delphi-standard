@@ -8,8 +8,8 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       'tatus, Persona, PersonaRelacionada, ConceptoGenerico, SumaSubtot' +
       'al, SumaTotal, SumaDescuentos, TotalIVATrasladado, TotalISRTrasl' +
       'adado, TotalIEPSTrasladado, TotalLocalesTrasladado, TotalIVARete' +
-      'nido, TotalISRRetenido, TotalLocalesRetenido, SaldoPendiente, Es' +
-      'tatus from vCuentasXPagar'
+      'nido, TotalISRRetenido, TotalLocalesRetenido, SaldoPendiente, Fl' +
+      'ujoEfectivo, Estatus from vCuentasXPagar'
     object adodsMasterIdCuentaXPagar: TIntegerField
       FieldName = 'IdCuentaXPagar'
       Visible = False
@@ -32,7 +32,7 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Size = 300
     end
     object adodsMasterPersonaRelacionada: TStringField
-      DisplayLabel = 'Pagadora'
+      DisplayLabel = 'Emisora'
       FieldName = 'PersonaRelacionada'
       Size = 300
     end
@@ -58,6 +58,7 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     object adodsMasterSumaDescuentos: TFMTBCDField
       DisplayLabel = 'Descuentos'
       FieldName = 'SumaDescuentos'
+      Visible = False
       currency = True
       Precision = 18
       Size = 6
@@ -70,18 +71,21 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     end
     object adodsMasterTotalISRTrasladado: TFMTBCDField
       FieldName = 'TotalISRTrasladado'
+      Visible = False
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalIEPSTrasladado: TFMTBCDField
       FieldName = 'TotalIEPSTrasladado'
+      Visible = False
       currency = True
       Precision = 18
       Size = 6
     end
     object adodsMasterTotalLocalesTrasladado: TFMTBCDField
       FieldName = 'TotalLocalesTrasladado'
+      Visible = False
       currency = True
       Precision = 18
       Size = 6
@@ -100,6 +104,7 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     end
     object adodsMasterTotalLocalesRetenido: TFMTBCDField
       FieldName = 'TotalLocalesRetenido'
+      Visible = False
       currency = True
       Precision = 18
       Size = 6
@@ -107,6 +112,13 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     object adodsMasterSaldoPendiente: TFMTBCDField
       DisplayLabel = 'Saldo pendiente'
       FieldName = 'SaldoPendiente'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterFlujoEfectivo: TFMTBCDField
+      DisplayLabel = 'Flujo de efectivo'
+      FieldName = 'FlujoEfectivo'
       currency = True
       Precision = 18
       Size = 6
@@ -135,8 +147,8 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     CommandText = 
       'select IdMovimientoDetalle, IdCuentaXPagar, IdPersonaRol, IdMovi' +
       'mientoTipo, IdMovimientoEstatus, PersonaRelacionada, Tipo, Categ' +
-      'oria, Efecto, Fecha, Importe, Estatus from vMovimientosDetalle'#13#10 +
-      'WHERE IdCuentaXPagar = :IdCuentaXPagar'
+      'oria, Efecto, Fecha, Importe, AplicarCategoria, Estatus from vMo' +
+      'vimientosDetalle'#13#10'WHERE IdCuentaXPagar = :IdCuentaXPagar'
     DataSource = dsMaster
     MasterFields = 'IdCuentaXPagar'
     Parameters = <
@@ -195,6 +207,10 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       currency = True
       Precision = 18
       Size = 6
+    end
+    object adodsMovimientosDetalleAplicarCategoria: TBooleanField
+      DisplayLabel = 'Aplicar'
+      FieldName = 'AplicarCategoria'
     end
     object adodsMovimientosDetalleEstatus: TStringField
       FieldName = 'Estatus'
@@ -277,6 +293,7 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Size = 300
     end
     object adodsCuentasXPagarPagosPagadora: TStringField
+      DisplayLabel = 'Emisora'
       FieldName = 'Pagadora'
       Size = 300
     end

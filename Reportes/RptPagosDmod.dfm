@@ -1,4 +1,4 @@
-inherited RptPagosDM: TRptPagosDM
+inherited dmRptPagos: TdmRptPagos
   OldCreateOrder = True
   OnCreate = DataModuleCreate
   Height = 315
@@ -52,7 +52,7 @@ inherited RptPagosDM: TRptPagosDM
       object ppLabel4: TppLabel
         UserName = 'Label4'
         AutoSize = False
-        Caption = 'Cobrador'
+        Caption = 'Receptor'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Name = 'TIMES NEW ROMAN'

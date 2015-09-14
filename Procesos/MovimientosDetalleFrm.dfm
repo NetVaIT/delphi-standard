@@ -3,7 +3,6 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
   Caption = 'Detalle de movimientos'
   ClientHeight = 428
   ClientWidth = 645
-  OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
@@ -73,6 +72,10 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
           DataBinding.FieldName = 'IdCuentaXCobrar'
           Visible = False
         end
+        object tvMasterIdPrestamoPago: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPrestamoPago'
+          Visible = False
+        end
         object tvMasterPersonaRelacionada: TcxGridDBColumn
           DataBinding.FieldName = 'PersonaRelacionada'
           Width = 304
@@ -92,6 +95,12 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
         end
         object tvMasterImporte: TcxGridDBColumn
           DataBinding.FieldName = 'Importe'
+        end
+        object tvMasterAplicarCategoria: TcxGridDBColumn
+          DataBinding.FieldName = 'AplicarCategoria'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Visible = False
+          Width = 40
         end
         object tvMasterEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'Estatus'
@@ -150,7 +159,7 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

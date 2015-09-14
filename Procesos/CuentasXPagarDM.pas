@@ -52,6 +52,8 @@ type
     adodsCuentasXPagarPagosFechaProgramada: TDateTimeField;
     adodsCuentasXPagarPagosMontoProgramado: TFMTBCDField;
     adodsMovimientosDetalleFecha: TDateTimeField;
+    adodsMovimientosDetalleAplicarCategoria: TBooleanField;
+    adodsMasterFlujoEfectivo: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularCXPExecute(Sender: TObject);
   private
@@ -100,7 +102,7 @@ begin
   SQLSelect:= 'select IdCuentaXPagar, IdPersonaRol, IdPeriodo, IdCuentaXPagarEstatus, ' +
   'Persona, PersonaRelacionada, ConceptoGenerico, SumaSubtotal, SumaTotal, SumaDescuentos, ' +
   'TotalIVATrasladado, TotalISRTrasladado, TotalIEPSTrasladado, TotalLocalesTrasladado, ' +
-  'TotalIVARetenido, TotalISRRetenido, TotalLocalesRetenido, SaldoPendiente, Estatus from vCuentasXPagar';
+  'TotalIVARetenido, TotalISRRetenido, TotalLocalesRetenido, SaldoPendiente, FlujoEfectivo, Estatus from vCuentasXPagar';
   SQLOrderBy:= 'order by Persona';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;

@@ -36,7 +36,6 @@ type
     tvMasterDescripcion: TcxGridDBColumn;
     tvMasterIdEsquemaPagoEstatus: TcxGridDBColumn;
     tvMasterEsquemaPagoEstatus: TcxGridDBColumn;
-    tvMasterExisteCuentaControl: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);

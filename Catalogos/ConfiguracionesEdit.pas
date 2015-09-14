@@ -38,6 +38,12 @@ type
     DBLookupComboBox7: TDBLookupComboBox;
     Label8: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
+    Label9: TLabel;
+    DBLookupComboBox8: TDBLookupComboBox;
+    Label10: TLabel;
+    DBLookupComboBox9: TDBLookupComboBox;
+    Label11: TLabel;
+    DBLookupComboBox10: TDBLookupComboBox;
   private
     { Private declarations }
   public

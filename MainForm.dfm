@@ -11,7 +11,6 @@ inherited frmMain: TfrmMain
     OnApplicationMenuClick = dxRibbon1ApplicationMenuClick
     ExplicitWidth = 1099
     inherited dxRibbon1Tab1: TdxRibbonTab
-      Active = False
       Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
@@ -47,7 +46,6 @@ inherited frmMain: TfrmMain
       Index = 2
     end
     object dxRibbon1Tab5: TdxRibbonTab
-      Active = True
       Caption = 'Reportes'
       Groups = <
         item
@@ -347,7 +345,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 207
-      FloatClientHeight = 162
+      FloatClientHeight = 216
       ItemLinks = <
         item
           Visible = True
@@ -363,6 +361,14 @@ inherited frmMain: TfrmMain
         end
         item
           Visible = True
+          ItemName = 'dxBarLargeButton36'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton37'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarLargeButton26'
         end
         item
@@ -372,10 +378,6 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarLargeButton35'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton36'
         end>
       OneOnRow = True
       Row = 0
@@ -602,7 +604,11 @@ inherited frmMain: TfrmMain
       Category = 0
     end
     object dxBarLargeButton36: TdxBarLargeButton
-      Action = actRptpagos
+      Action = actRptCXPPagos
+      Category = 0
+    end
+    object dxBarLargeButton37: TdxBarLargeButton
+      Action = actRptPagos
       Category = 0
     end
   end
@@ -9538,11 +9544,18 @@ inherited frmMain: TfrmMain
       ImageIndex = 35
       OnExecute = actCatalogoExecute
     end
-    object actRptpagos: TAction
+    object actRptPagos: TAction
       Tag = 57
       Category = 'Reportes'
       Caption = 'Detalle de pagos'
       ImageIndex = 17
+      OnExecute = actCatalogoExecute
+    end
+    object actRptCXPPagos: TAction
+      Tag = 58
+      Category = 'Reportes'
+      Caption = 'Pagos'
+      ImageIndex = 40
       OnExecute = actCatalogoExecute
     end
   end

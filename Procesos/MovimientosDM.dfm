@@ -278,8 +278,8 @@ inherited dmMovimientos: TdmMovimientos
     CommandText = 
       'SELECT IdMovimientoDetalle, IdMovimiento, IdPersonaRol, IdIncide' +
       'nciaDetalle, IdMovimientoTipo, IdMoneda, IdMovimientoEstatus, Id' +
-      'CuentaXPagar, IdCuentaXCobrar, Fecha, Importe FROM MovimientosDe' +
-      'talle'#13#10'WHERE IdMovimiento = :IdMovimiento'
+      'CuentaXPagar, IdCuentaXCobrar, IdPrestamoPago, Fecha, Importe FR' +
+      'OM MovimientosDetalle'#13#10'WHERE IdMovimiento = :IdMovimiento'
     DataSource = dsMaster
     MasterFields = 'IdMovimiento'
     Parameters = <
@@ -330,6 +330,10 @@ inherited dmMovimientos: TdmMovimientos
       FieldName = 'IdCuentaXCobrar'
       Visible = False
     end
+    object adodsMovimientosDetIdPrestamoPago: TIntegerField
+      FieldName = 'IdPrestamoPago'
+      Visible = False
+    end
     object adodsMovimientosDetPersonaRelacionada: TStringField
       DisplayLabel = 'Persona relacionada'
       FieldKind = fkLookup
@@ -370,6 +374,16 @@ inherited dmMovimientos: TdmMovimientos
       Precision = 18
       Size = 6
     end
+    object adodsMovimientosDetAplicarCategoria: TBooleanField
+      DisplayLabel = 'Aplicar'
+      FieldKind = fkLookup
+      FieldName = 'AplicarCategoria'
+      LookupDataSet = adodsMovimientosTipo
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'AplicarCategoria'
+      KeyFields = 'IdMovimientoTipo'
+      Lookup = True
+    end
     object adodsMovimientosDetEstatus: TStringField
       FieldKind = fkLookup
       FieldName = 'Estatus'
@@ -401,13 +415,13 @@ inherited dmMovimientos: TdmMovimientos
     CommandText = 
       'SELECT        MovimientosTipos.IdMovimientoTipo, MovimientosTipo' +
       's.Descripcion AS Tipo, MovimientosTiposCategorias.Descripcion AS' +
-      ' Categoria, MovimientosTiposEfectos.Descripcion AS Efecto'#13#10'FROM ' +
-      '           MovimientosTipos INNER JOIN'#13#10'                        ' +
-      ' MovimientosTiposCategorias ON MovimientosTipos.IdMovimientoTipo' +
-      'Categoria = MovimientosTiposCategorias.IdMovimientoTipoCategoria' +
-      ' INNER JOIN'#13#10'                         MovimientosTiposEfectos ON' +
-      ' MovimientosTipos.IdMovimientoTipoEfecto = MovimientosTiposEfect' +
-      'os.IdMovimientoTipoEfecto'
+      ' Categoria, MovimientosTiposEfectos.Descripcion AS Efecto, Movim' +
+      'ientosTipos.AplicarCategoria'#13#10'FROM            MovimientosTipos I' +
+      'NNER JOIN'#13#10'                         MovimientosTiposCategorias O' +
+      'N MovimientosTipos.IdMovimientoTipoCategoria = MovimientosTiposC' +
+      'ategorias.IdMovimientoTipoCategoria INNER JOIN'#13#10'                ' +
+      '         MovimientosTiposEfectos ON MovimientosTipos.IdMovimient' +
+      'oTipoEfecto = MovimientosTiposEfectos.IdMovimientoTipoEfecto'
     Parameters = <>
     Left = 176
     Top = 256

@@ -30,7 +30,6 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label3: TLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
-    cxDBCheckBox1: TcxDBCheckBox;
     tsPersonas: TcxTabSheet;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

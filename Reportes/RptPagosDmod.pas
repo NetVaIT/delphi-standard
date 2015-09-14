@@ -9,7 +9,7 @@ uses
   System.UITypes;
 
 type
-  TRptPagosDM = class(T_dmReport)
+  TdmRptPagos = class(T_dmReport)
     ppGroup1: TppGroup;
     ppGroupHeaderBand1: TppGroupHeaderBand;
     ppGroupFooterBand1: TppGroupFooterBand;
@@ -70,7 +70,7 @@ uses RptPagosForm, ConfiguracionDM;
 
 { TRptPagosDM }
 
-procedure TRptPagosDM.AssignParam;
+procedure TdmRptPagos.AssignParam;
 begin
   inherited;
   adodsReport.Parameters.ParamByName('IdPeriodo').Value := mdParamsIdPeriodo.Value;
@@ -79,7 +79,7 @@ begin
 
 end;
 
-procedure TRptPagosDM.DataModuleCreate(Sender: TObject);
+procedure TdmRptPagos.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   gReportForm := TfrmRptPagos.Create(Self);
@@ -91,7 +91,7 @@ begin
   TfrmRptPagos(gReportForm).DataSetCuentaBancaria := adodsCuentaBancaria;
 end;
 
-procedure TRptPagosDM.Execute;
+procedure TdmRptPagos.Execute;
 var
   ShowReport: Boolean;
 begin

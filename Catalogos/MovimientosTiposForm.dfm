@@ -33,6 +33,7 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
     inherited cxGrid: TcxGrid
       Width = 782
       Height = 229
+      ExplicitTop = -3
       ExplicitWidth = 782
       ExplicitHeight = 229
       inherited tvMaster: TcxGridDBTableView
@@ -91,6 +92,13 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
         object tvMasterVariable: TcxGridDBColumn
           DataBinding.FieldName = 'Variable'
         end
+        object tvMasterAplicarCategoria: TcxGridDBColumn
+          DataBinding.FieldName = 'AplicarCategoria'
+        end
+        object tvMasterEnviarCuentaControl: TcxGridDBColumn
+          DataBinding.FieldName = 'EnviarCuentaControl'
+          Width = 131
+        end
         object tvMasterAplicarUltimoPeriodo: TcxGridDBColumn
           DataBinding.FieldName = 'AplicarUltimoPeriodo'
           Width = 107
@@ -103,10 +111,6 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
           DataBinding.FieldName = 'ProduceCXC'
           Width = 67
         end
-        object tvMasterAplicarISRProvisional: TcxGridDBColumn
-          DataBinding.FieldName = 'AplicarISRProvisional'
-          Width = 99
-        end
         object tvMasterAgruparTipo: TcxGridDBColumn
           DataBinding.FieldName = 'AgruparTipo'
           Width = 167
@@ -114,6 +118,10 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
         object tvMasterMovimientoTipo: TcxGridDBColumn
           DataBinding.FieldName = 'MovimientoTipo'
           Width = 304
+        end
+        object tvMasterAplicarISRProvisional: TcxGridDBColumn
+          DataBinding.FieldName = 'AplicarISRProvisional'
+          Width = 99
         end
         object tvMasterCXPRelacion1: TcxGridDBColumn
           DataBinding.FieldName = 'CXPRelacion1'
@@ -168,6 +176,9 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
       ExplicitLeft = 697
     end
   end
+  inherited DataSource: TDataSource
+    DataSet = dmMovimientosTipo.adodsMaster
+  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -183,7 +194,7 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

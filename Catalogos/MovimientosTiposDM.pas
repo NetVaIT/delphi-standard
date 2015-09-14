@@ -64,6 +64,8 @@ type
     adodsMasterCXPRelacion2: TStringField;
     adodsMasterCXCPagadora1: TStringField;
     adodsMasterCXCRelacion2: TStringField;
+    adodsMasterEnviarCuentaControl: TBooleanField;
+    adodsMasterAplicarCategoria: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure adodsMasterIdMovimientoTipoCategoriaChange(Sender: TField);

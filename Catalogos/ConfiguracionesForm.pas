@@ -46,6 +46,12 @@ type
     tvMasterMetodoPagoCuentasXPagar: TcxGridDBColumn;
     tvMasterMetodoPagoFactura: TcxGridDBColumn;
     tvMasterRutaBaseFacturas: TcxGridDBColumn;
+    tvMasterIdRolDescuento: TcxGridDBColumn;
+    tvMasterIdMovimientoTipoDescuento: TcxGridDBColumn;
+    tvMasterIdMetodoPagoCuentasXPagarSAT: TcxGridDBColumn;
+    tvMasterRolDescuento: TcxGridDBColumn;
+    tvMasterMovimientoTipoDescuento: TcxGridDBColumn;
+    tvMasterMetodoPagoCuentasXPagarSAT: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

@@ -211,8 +211,10 @@ uses
   PersonasRolesCXCConceptosForm in 'Catalogos\PersonasRolesCXCConceptosForm.pas' {frmPersonasRolesCXCConceptos},
   ExportarPagosBancoEdit in 'Procesos\ExportarPagosBancoEdit.pas' {frmExportaPagosBancos},
   ExportarPagosBancoForm in 'Procesos\ExportarPagosBancoForm.pas' {frmExportarPagosBanco},
-  RptPagosDmod in 'Reportes\RptPagosDmod.pas' {RptPagosDM: TDataModule},
-  RptPagosForm in 'Reportes\RptPagosForm.pas' {frmRptPagos};
+  RptPagosDmod in 'Reportes\RptPagosDmod.pas' {dmRptPagos: TDataModule},
+  RptPagosForm in 'Reportes\RptPagosForm.pas' {frmRptPagos},
+  RptCXPPagosDmod in 'Reportes\RptCXPPagosDmod.pas' {dmRptCXPPagos: TDataModule},
+  RptCXPPagosForm in 'Reportes\RptCXPPagosForm.pas' {frmRptCXPPagos};
 
 {$R *.res}
 

@@ -36,6 +36,15 @@ type
     adodsMasterRutaBaseFacturas: TStringField;
     adoqGetRutaBasePagos: TADOQuery;
     adoqGetRutaBasePagosValor: TStringField;
+    adodsMasterIdMovimientoTipoDescuento: TIntegerField;
+    adodsMasterIdRolDescuento: TIntegerField;
+    adodsMasterIdMetodoPagoCuentasXPagarSAT: TIntegerField;
+    adodsMovimientosTipo4: TADODataSet;
+    adodsMetodosPago3: TADODataSet;
+    adodsRol1: TADODataSet;
+    adodsMasterMovimientoTipoDescuento: TStringField;
+    adodsMasterMetodoPagoCuentasXPagarSAT: TStringField;
+    adodsMasterRolDescuento: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     function GetIdPeridoActual: Integer;

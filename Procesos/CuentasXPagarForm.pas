@@ -57,6 +57,7 @@ type
     actExportarPagos: TAction;
     actBajarPagos: TAction;
     dxBarButton9: TdxBarButton;
+    tvMasterFlujoEfectivo: TcxGridDBColumn;
     procedure actExportarPagosExecute(Sender: TObject);
     procedure actBajarPagosExecute(Sender: TObject);
   private

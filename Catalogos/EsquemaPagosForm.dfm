@@ -5,7 +5,7 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
   ClientWidth = 645
   OnDestroy = FormDestroy
   ExplicitWidth = 651
-  ExplicitHeight = 457
+  ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -47,11 +47,6 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
         object tvMasterIdEsquemaPagoEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'IdEsquemaPagoEstatus'
           Visible = False
-        end
-        object tvMasterExisteCuentaControl: TcxGridDBColumn
-          Caption = 'Existe CC'
-          DataBinding.FieldName = 'ExisteCuentaControl'
-          Width = 51
         end
         object tvMasterEsquemaPagoEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'EsquemaPagoEstatus'
@@ -104,7 +99,6 @@ inherited frmEsquemaPagos: TfrmEsquemaPagos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

@@ -1,6 +1,5 @@
 inherited frmConfiguraciones: TfrmConfiguraciones
   Caption = 'frmConfiguraciones'
-  OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
@@ -28,8 +27,20 @@ inherited frmConfiguraciones: TfrmConfiguraciones
           DataBinding.FieldName = 'IdMovimientoTipoPrestamo'
           Visible = False
         end
+        object tvMasterIdRolDescuento: TcxGridDBColumn
+          DataBinding.FieldName = 'IdRolDescuento'
+          Visible = False
+        end
+        object tvMasterIdMovimientoTipoDescuento: TcxGridDBColumn
+          DataBinding.FieldName = 'IdMovimientoTipoDescuento'
+          Visible = False
+        end
         object tvMasterIdMetodoPagoCuentasXPagar: TcxGridDBColumn
           DataBinding.FieldName = 'IdMetodoPagoCuentasXPagar'
+          Visible = False
+        end
+        object tvMasterIdMetodoPagoCuentasXPagarSAT: TcxGridDBColumn
+          DataBinding.FieldName = 'IdMetodoPagoCuentasXPagarSAT'
           Visible = False
         end
         object tvMasterIdMetodoPagoFactura: TcxGridDBColumn
@@ -56,8 +67,20 @@ inherited frmConfiguraciones: TfrmConfiguraciones
           DataBinding.FieldName = 'MovimientoTipoPrestamo'
           Width = 250
         end
+        object tvMasterRolDescuento: TcxGridDBColumn
+          DataBinding.FieldName = 'RolDescuento'
+          Width = 250
+        end
+        object tvMasterMovimientoTipoDescuento: TcxGridDBColumn
+          DataBinding.FieldName = 'MovimientoTipoDescuento'
+          Width = 250
+        end
         object tvMasterMetodoPagoCuentasXPagar: TcxGridDBColumn
           DataBinding.FieldName = 'MetodoPagoCuentasXPagar'
+          Width = 250
+        end
+        object tvMasterMetodoPagoCuentasXPagarSAT: TcxGridDBColumn
+          DataBinding.FieldName = 'MetodoPagoCuentasXPagarSAT'
           Width = 250
         end
         object tvMasterMetodoPagoFactura: TcxGridDBColumn
@@ -65,7 +88,6 @@ inherited frmConfiguraciones: TfrmConfiguraciones
           Width = 250
         end
         object tvMasterRutaBaseFacturas: TcxGridDBColumn
-          Caption = 'Ruta Base para Facturas'
           DataBinding.FieldName = 'RutaBaseFacturas'
         end
       end
@@ -78,6 +100,9 @@ inherited frmConfiguraciones: TfrmConfiguraciones
     inherited DatasetDelete: TDataSetDelete
       Visible = False
     end
+  end
+  inherited DataSource: TDataSource
+    DataSet = dmConfiguracion.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -94,6 +119,7 @@ inherited frmConfiguraciones: TfrmConfiguraciones
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

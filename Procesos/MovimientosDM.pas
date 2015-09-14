@@ -73,6 +73,8 @@ type
     adodsMasterSaldoPeriodoGrupo: TFMTBCDField;
     adodsMasterSaldoGrupo: TFMTBCDField;
     adodsMasterPersonaTitular: TStringField;
+    adodsMovimientosDetIdPrestamoPago: TIntegerField;
+    adodsMovimientosDetAplicarCategoria: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);

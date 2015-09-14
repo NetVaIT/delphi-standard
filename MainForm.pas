@@ -124,8 +124,10 @@ type
     dxBarLargeButton34: TdxBarLargeButton;
     actRptPlaza: TAction;
     dxBarLargeButton35: TdxBarLargeButton;
-    actRptpagos: TAction;
+    actRptPagos: TAction;
+    actRptCXPPagos: TAction;
     dxBarLargeButton36: TdxBarLargeButton;
+    dxBarLargeButton37: TdxBarLargeButton;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -160,7 +162,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasXCobrarDM,
   RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM,
-  PrestamosDM, ConfiguracionDM, RptPlazasDM, RptPagosDmod;
+  PrestamosDM, ConfiguracionDM, RptPlazasDM, RptPagosDmod, RptCXPPagosDmod;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -258,9 +260,13 @@ begin
          gModulo := TdmRptPlazas.Create(Self);
        end;
    57: begin
-         gReport := TRptPagosDM.Create(Self);
+         gReport := TdmRptPagos.Create(Self);
          gReport.Title := pCaption;
          gReport.Execute;
+       end;
+   58: begin
+         gModulo := TdmRptCXPPagos.Create(Self);
+         TdmRptCXPPagos(gModulo).actSearch.Execute;
        end;
 
   end;
@@ -319,6 +325,8 @@ begin
   actCuentasXCobrar.Enabled     := Conected;
   actPrestamos.Enabled          := Conected;
   actRptPlaza.Enabled           := Conected;
+  actRptCXPPagos.Enabled        := Conected;
+  actRptPagos.Enabled           := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

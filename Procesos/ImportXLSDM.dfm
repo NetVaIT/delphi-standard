@@ -180,9 +180,7 @@ inherited dmImportXLS: TdmImportXLS
     Top = 232
   end
   object adocGetPersona: TADOCommand
-    CommandText = 
-      'SELECT :IdPersona = IdPersona FROM Personas WHERE RazonSocial = ' +
-      ':Nombre;'
+    CommandText = 'SELECT :IdPersona = IdPersona FROM Personas WHERE RFC= :Nombre;'
     Connection = _dmConection.ADOConnection
     Parameters = <
       item

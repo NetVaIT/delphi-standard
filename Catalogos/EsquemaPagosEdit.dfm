@@ -11,7 +11,6 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
   inherited pcMain: TcxPageControl
     Width = 529
     Height = 207
-    Properties.ActivePage = tsPersonas
     ExplicitWidth = 529
     ExplicitHeight = 207
     ClientRectBottom = 205
@@ -66,15 +65,6 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
         DataBinding.DataField = 'EsquemaPagoEstatus'
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
-        TabOrder = 3
-        Width = 193
-      end
-      object cxDBCheckBox1: TcxDBCheckBox
-        Left = 16
-        Top = 99
-        Caption = 'Existe cuenta bancaria de control'
-        DataBinding.DataField = 'ExisteCuentaControl'
-        DataBinding.DataSource = DataSource
         TabOrder = 2
         Width = 193
       end
@@ -89,13 +79,13 @@ inherited frmEsquemaPagosEdit: TfrmEsquemaPagosEdit
     Width = 529
     ExplicitTop = 207
     ExplicitWidth = 529
-    inherited btnOk: TButton
-      Left = 366
-      ExplicitLeft = 366
-    end
     inherited btnCancel: TButton
       Left = 447
       ExplicitLeft = 447
+    end
+    inherited btnOk: TButton
+      Left = 366
+      ExplicitLeft = 366
     end
   end
   inherited cxImageList: TcxImageList

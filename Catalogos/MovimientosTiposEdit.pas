@@ -60,6 +60,8 @@ type
     Label7: TLabel;
     lcbMovimientoAcumular: TcxDBLookupComboBox;
     cbAplicarUltimoPeriodo: TcxDBCheckBox;
+    cxDBCheckBox1: TcxDBCheckBox;
+    cxDBCheckBox2: TcxDBCheckBox;
     procedure cbCXPClick(Sender: TObject);
     procedure cbAgruparTipoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -104,7 +106,7 @@ end;
 
 procedure TfrmMovimientosTipoEdit.SetAgruparTipo;
 begin
-  lcbMovimientoAcumular.Enabled:= (cbAgruparTipo.EditingValue = True);
+//  lcbMovimientoAcumular.Enabled:= (cbAgruparTipo.EditingValue = True);
   lcbCXPPagadora1.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXP.EditValue = True);
   lcbCXPPagadora2.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXP.EditValue = True);
   lcbCXCPagadora1.Enabled:= (cbAgruparTipo.EditingValue = True) and (cbCXC.EditValue = True);

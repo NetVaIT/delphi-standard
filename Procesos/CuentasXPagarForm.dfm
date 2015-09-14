@@ -3,9 +3,8 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   Caption = 'Cuentas por pagar'
   ClientHeight = 634
   ClientWidth = 755
-  ExplicitLeft = 0
   ExplicitWidth = 761
-  ExplicitHeight = 658
+  ExplicitHeight = 663
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -34,12 +33,12 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Width = 755
     Height = 224
     Align = alTop
-    ExplicitWidth = 746
+    ExplicitWidth = 755
     ExplicitHeight = 224
     inherited cxGrid: TcxGrid
       Width = 755
       Height = 224
-      ExplicitWidth = 746
+      ExplicitWidth = 755
       ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
         DataController.KeyFieldNames = 'IdCuentaXPagar'
@@ -94,6 +93,9 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
         object tvMasterSaldoPendiente: TcxGridDBColumn
           DataBinding.FieldName = 'SaldoPendiente'
         end
+        object tvMasterFlujoEfectivo: TcxGridDBColumn
+          DataBinding.FieldName = 'FlujoEfectivo'
+        end
         object tvMasterSumaSubtotal: TcxGridDBColumn
           DataBinding.FieldName = 'SumaSubtotal'
         end
@@ -102,18 +104,22 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
         end
         object tvMasterSumaDescuentos: TcxGridDBColumn
           DataBinding.FieldName = 'SumaDescuentos'
+          Visible = False
         end
         object tvMasterTotalIVATrasladado: TcxGridDBColumn
           DataBinding.FieldName = 'TotalIVATrasladado'
         end
         object tvMasterTotalISRTrasladado: TcxGridDBColumn
           DataBinding.FieldName = 'TotalISRTrasladado'
+          Visible = False
         end
         object tvMasterTotalIEPSTrasladado: TcxGridDBColumn
           DataBinding.FieldName = 'TotalIEPSTrasladado'
+          Visible = False
         end
         object tvMasterTotalLocalesTrasladado: TcxGridDBColumn
           DataBinding.FieldName = 'TotalLocalesTrasladado'
+          Visible = False
         end
         object tvMasterTotalIVARetenido: TcxGridDBColumn
           DataBinding.FieldName = 'TotalIVARetenido'
@@ -123,6 +129,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
         end
         object tvMasterTotalLocalesRetenido: TcxGridDBColumn
           DataBinding.FieldName = 'TotalLocalesRetenido'
+          Visible = False
         end
       end
     end
@@ -131,7 +138,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Top = 552
     Width = 755
     ExplicitTop = 552
-    ExplicitWidth = 746
+    ExplicitWidth = 755
   end
   inherited pnlDetail2: TPanel
     Top = 486
@@ -139,7 +146,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Height = 63
     Align = alClient
     ExplicitTop = 486
-    ExplicitWidth = 746
+    ExplicitWidth = 755
     ExplicitHeight = 63
   end
   inherited pnlDetail1: TPanel
@@ -148,17 +155,17 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Height = 225
     Align = alTop
     ExplicitTop = 258
-    ExplicitWidth = 746
+    ExplicitWidth = 755
     ExplicitHeight = 225
   end
   inherited pnlClose: TPanel
     Top = 593
     Width = 755
     ExplicitTop = 593
-    ExplicitWidth = 746
+    ExplicitWidth = 755
     inherited btnClose: TButton
       Left = 670
-      ExplicitLeft = 661
+      ExplicitLeft = 670
     end
   end
   inherited ActionList: TActionList
@@ -172,6 +179,9 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
       ImageIndex = 13
       OnExecute = actBajarPagosExecute
     end
+  end
+  inherited DataSource: TDataSource
+    DataSet = dmCuentasXPagar.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

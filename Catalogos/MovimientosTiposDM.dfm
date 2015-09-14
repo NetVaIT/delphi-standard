@@ -12,7 +12,8 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       'ersonaRolPagadora2, IdPersonaRolCXCPagadora1, IdPersonaRolCXCPag' +
       'adora2, IdVariable, Identificador, Descripcion, ProduceCXC, Prod' +
       'uceCXP, AgruparTipo, AplicarISRProvisional, PorcentajePagadora1,' +
-      ' PorcentajePagadora2, AplicarUltimoPeriodo from MovimientosTipos'
+      ' PorcentajePagadora2, AplicarUltimoPeriodo, EnviarCuentaControl,' +
+      ' AplicarCategoria from MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -104,13 +105,21 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       DisplayLabel = 'Produce CXC'
       FieldName = 'ProduceCXC'
     end
-    object adodsMasterAgruparTipo: TBooleanField
-      DisplayLabel = 'Agrupar por tipo de movimiento'
-      FieldName = 'AgruparTipo'
+    object adodsMasterEnviarCuentaControl: TBooleanField
+      DisplayLabel = 'Enviar a cuenta de control'
+      FieldName = 'EnviarCuentaControl'
+    end
+    object adodsMasterAplicarCategoria: TBooleanField
+      DisplayLabel = 'Aplicar categoria del movimiento'
+      FieldName = 'AplicarCategoria'
     end
     object adodsMasterAplicarUltimoPeriodo: TBooleanField
       DisplayLabel = 'Aplicar '#250'ltimo periodo'
       FieldName = 'AplicarUltimoPeriodo'
+    end
+    object adodsMasterAgruparTipo: TBooleanField
+      DisplayLabel = 'Agrupar por tipo de movimiento'
+      FieldName = 'AgruparTipo'
     end
     object adodsMasterMovimientoTipo: TStringField
       DisplayLabel = 'Acumular a movimiento'

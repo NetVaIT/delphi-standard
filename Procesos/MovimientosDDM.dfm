@@ -6,12 +6,13 @@ inherited dmMovimientosD: TdmMovimientosD
       'SELECT vMovimientosDetalle.IdMovimientoDetalle, vMovimientosDeta' +
       'lle.Fecha, vMovimientosDetalle.Persona, vMovimientosDetalle.Pers' +
       'onaRelacionada, vMovimientosDetalle.RolClase, vMovimientosDetall' +
-      'e.Tipo, vMovimientosDetalle.Categoria, '#13#10'vMovimientosDetalle.Efe' +
-      'cto, vMovimientosDetalle.Importe * vMovimientosDetalle.Signo AS ' +
-      'Importe, vMovimientosDetalle.Estatus'#13#10'FROM vMovimientosDetalle '#13 +
-      #10'INNER JOIN Movimientos ON vMovimientosDetalle.IdMovimiento = Mo' +
-      'vimientos.IdMovimiento'#13#10'ORDER BY vMovimientosDetalle.Persona, vM' +
-      'ovimientosDetalle.OrdenImpresion'
+      'e.Tipo, '#13#10'vMovimientosDetalle.AcumalarA, vMovimientosDetalle.Cat' +
+      'egoria, vMovimientosDetalle.Efecto, vMovimientosDetalle.Importe ' +
+      '* vMovimientosDetalle.Signo AS Importe, vMovimientosDetalle.Esta' +
+      'tus'#13#10'FROM vMovimientosDetalle '#13#10'INNER JOIN Movimientos ON vMovim' +
+      'ientosDetalle.IdMovimiento = Movimientos.IdMovimiento'#13#10'WHERE vMo' +
+      'vimientosDetalle.AplicarCategoria = 1'#13#10'ORDER BY vMovimientosDeta' +
+      'lle.Persona, vMovimientosDetalle.OrdenImpresion'
     object adodsMasterIdMovimientoDetalle: TIntegerField
       FieldName = 'IdMovimientoDetalle'
       Visible = False
@@ -54,6 +55,10 @@ inherited dmMovimientosD: TdmMovimientosD
     end
     object adodsMasterEstatus: TStringField
       FieldName = 'Estatus'
+      Size = 100
+    end
+    object adodsMasterAcumalarA: TStringField
+      FieldName = 'AcumalarA'
       Size = 100
     end
   end

@@ -27,12 +27,12 @@ inherited frmMovimientosD: TfrmMovimientosD
   inherited pnlMaster: TPanel
     Width = 826
     Height = 258
-    ExplicitWidth = 704
+    ExplicitWidth = 826
     ExplicitHeight = 258
     inherited cxGrid: TcxGrid
       Width = 826
       Height = 258
-      ExplicitWidth = 704
+      ExplicitWidth = 826
       ExplicitHeight = 258
       inherited tvMaster: TcxGridDBTableView
         DataController.Summary.DefaultGroupSummaryItems = <
@@ -73,7 +73,7 @@ inherited frmMovimientosD: TfrmMovimientosD
         object tvMasterTipo: TcxGridDBColumn
           DataBinding.FieldName = 'Tipo'
           Visible = False
-          GroupIndex = 2
+          GroupIndex = 3
           Width = 232
         end
         object tvMasterCategoria: TcxGridDBColumn
@@ -94,6 +94,12 @@ inherited frmMovimientosD: TfrmMovimientosD
           DataBinding.FieldName = 'Estatus'
           Width = 52
         end
+        object tvMasterAcumalarA: TcxGridDBColumn
+          DataBinding.FieldName = 'AcumalarA'
+          Visible = False
+          GroupIndex = 2
+          Width = 304
+        end
       end
     end
   end
@@ -101,29 +107,32 @@ inherited frmMovimientosD: TfrmMovimientosD
     Top = 380
     Width = 826
     ExplicitTop = 380
-    ExplicitWidth = 704
+    ExplicitWidth = 826
   end
   inherited pnlDetail2: TPanel
     Top = 336
     Width = 826
     ExplicitTop = 336
-    ExplicitWidth = 704
+    ExplicitWidth = 826
   end
   inherited pnlDetail1: TPanel
     Top = 292
     Width = 826
     ExplicitTop = 292
-    ExplicitWidth = 704
+    ExplicitWidth = 826
   end
   inherited pnlClose: TPanel
     Top = 421
     Width = 826
     ExplicitTop = 421
-    ExplicitWidth = 704
+    ExplicitWidth = 826
     inherited btnClose: TButton
       Left = 741
-      ExplicitLeft = 619
+      ExplicitLeft = 741
     end
+  end
+  inherited DataSource: TDataSource
+    DataSet = dmMovimientosD.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -184,7 +193,7 @@ inherited frmMovimientosD: TfrmMovimientosD
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

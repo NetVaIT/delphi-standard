@@ -1,4 +1,4 @@
-unit MovimientosDetalleFrm;
+unit RptCXPPagosForm;
 
 interface
 
@@ -27,44 +27,64 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls, cxCheckBox;
+  Vcl.ExtCtrls, cxDBLookupComboBox, cxDropDownEdit, cxBarEditItem;
 
 type
-  TfrmMovimientosDetalle = class(T_frmGrid)
-    tvMasterIdMovimientoDetalle: TcxGridDBColumn;
-    tvMasterIdMovimiento: TcxGridDBColumn;
-    tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoEstatus: TcxGridDBColumn;
-    tvMasterImporte: TcxGridDBColumn;
-    tvMasterPersonaRelacionada: TcxGridDBColumn;
-    tvMasterTipo: TcxGridDBColumn;
+  TfrmRptCXPPagos = class(T_frmGrid)
+    tvMasterIdCuentaXPagarPago: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
-    tvMasterIdCuentaXPagar: TcxGridDBColumn;
-    tvMasterFecha: TcxGridDBColumn;
-    tvMasterCategoria: TcxGridDBColumn;
-    tvMasterIdIncidenciaDetalle: TcxGridDBColumn;
-    tvMasterIdMoneda: TcxGridDBColumn;
-    tvMasterIdCuentaXCobrar: TcxGridDBColumn;
-    tvMasterIdPrestamoPago: TcxGridDBColumn;
-    tvMasterAplicarCategoria: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+    tvMasterPeriodo: TcxGridDBColumn;
+    tvMasterPagador: TcxGridDBColumn;
+    tvMasterCuentaBancariaPagador: TcxGridDBColumn;
+    tvMasterCobrador: TcxGridDBColumn;
+    tvMasterCuentaBancariaCobrador: TcxGridDBColumn;
+    tvMasterFechaProgramada: TcxGridDBColumn;
+    tvMasterMontoProgramado: TcxGridDBColumn;
+    tvMasterFechaAutorizacion: TcxGridDBColumn;
+    tvMasterMontoAutorizado: TcxGridDBColumn;
+    tvMasterFechaPago: TcxGridDBColumn;
+    tvMasterMontoPagado: TcxGridDBColumn;
+    tvMasterConceptoCXP: TcxGridDBColumn;
+    tvMasterConceptoPago: TcxGridDBColumn;
+    dsPeriodos: TDataSource;
+    cxedtPeriodo: TcxBarEditItem;
   private
+    FDataSetPeriodo: TDataSet;
+    function GetIdPeriodo: Integer;
+    procedure SetDataSetPeriodo(const Value: TDataSet);
+    procedure SetIdPeriodo(const Value: Integer);
     { Private declarations }
   public
     { Public declarations }
+    property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
+    property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses MovimientosDM, MovimientosDetalleEdit;
+uses RptCXPPagosDmod;
 
-procedure TfrmMovimientosDetalle.FormCreate(Sender: TObject);
+{ TfrmRptCXPPagos }
+
+function TfrmRptCXPPagos.GetIdPeriodo: Integer;
 begin
-  inherited;
-  gEditForm:= TfrmMovimientosDetalleEdit.Create(Self);
+  if VarIsNull(cxedtPeriodo.EditValue) then
+    Result:= 0
+  else
+    Result:= cxedtPeriodo.EditValue;
+end;
+
+procedure TfrmRptCXPPagos.SetDataSetPeriodo(const Value: TDataSet);
+begin
+  FDataSetPeriodo := Value;
+  dsPeriodos.DataSet:= Value;
+end;
+
+procedure TfrmRptCXPPagos.SetIdPeriodo(const Value: Integer);
+begin
+  cxedtPeriodo.EditValue:= Value;
 end;
 
 end.

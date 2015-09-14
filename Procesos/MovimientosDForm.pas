@@ -45,6 +45,7 @@ type
     cxedtPeriodo: TcxBarEditItem;
     cxedtClase: TcxBarEditItem;
     tvMasterRolClase: TcxGridDBColumn;
+    tvMasterAcumalarA: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
   private
     FDataSetPeriodo: TDataSet;
@@ -68,7 +69,7 @@ implementation
 procedure TfrmMovimientosD.FormShow(Sender: TObject);
 begin
   inherited;
-  actFullColapseGroup.Execute;
+//  actFullColapseGroup.Execute;
 end;
 
 function TfrmMovimientosD.GetIdClase: TRolClase;

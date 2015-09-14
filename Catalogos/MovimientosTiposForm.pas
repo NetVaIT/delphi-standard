@@ -57,6 +57,8 @@ type
     tvMasterCXPRelacion2: TcxGridDBColumn;
     tvMasterCXCRelacion1: TcxGridDBColumn;
     tvMasterCXCRelacion2: TcxGridDBColumn;
+    tvMasterEnviarCuentaControl: TcxGridDBColumn;
+    tvMasterAplicarCategoria: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
