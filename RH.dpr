@@ -214,7 +214,16 @@ uses
   RptPagosDmod in 'Reportes\RptPagosDmod.pas' {dmRptPagos: TDataModule},
   RptPagosForm in 'Reportes\RptPagosForm.pas' {frmRptPagos},
   RptCXPPagosDmod in 'Reportes\RptCXPPagosDmod.pas' {dmRptCXPPagos: TDataModule},
-  RptCXPPagosForm in 'Reportes\RptCXPPagosForm.pas' {frmRptCXPPagos};
+  RptCXPPagosForm in 'Reportes\RptCXPPagosForm.pas' {frmRptCXPPagos},
+  PersonasSeleccionRolDmod in 'Catalogos\PersonasSeleccionRolDmod.pas' {dmPersonasSeleccionRol: TDataModule},
+  PersonasSeleccionRolForm in 'Catalogos\PersonasSeleccionRolForm.pas' {frmPersonasSeleccionRol},
+  PersonaSeleccionarRolForm in 'Catalogos\PersonaSeleccionarRolForm.pas' {frmPersonaSeleccionarRol},
+  PersonasRolesEstatusDM in 'Catalogos\PersonasRolesEstatusDM.pas' {dmPersonasRolesEstatus: TDataModule},
+  PersonasRolesEstatusForm in 'Catalogos\PersonasRolesEstatusForm.pas' {frmPersonasRolesEstatus},
+  PersonasRolesEstatusEdit in 'Catalogos\PersonasRolesEstatusEdit.pas' {frmPersonasRolesEstatusEdit},
+  PersonasCSDDM in 'Catalogos\PersonasCSDDM.pas' {dmPersonasCSD: TDataModule},
+  PersonasCSDEdit in 'Catalogos\PersonasCSDEdit.pas' {frmPersonasCSDEdit},
+  PersonasCSDForm in 'Catalogos\PersonasCSDForm.pas' {frmPersonasCSD};
 
 {$R *.res}
 

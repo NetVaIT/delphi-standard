@@ -75,6 +75,9 @@ type
     adodsMasterPersonaTitular: TStringField;
     adodsMovimientosDetIdPrestamoPago: TIntegerField;
     adodsMovimientosDetAplicarCategoria: TBooleanField;
+    adodsMasterRetencion: TFMTBCDField;
+    adodsMasterSaldoCosto: TFMTBCDField;
+    adodsMasterSaldoCostoGrupo: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
@@ -236,10 +239,10 @@ begin
   gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;
   // Busqueda
-  SQLSelect:= 'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Descuentos, Base, Entregas, ' +
+  SQLSelect:= 'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Retencion, Descuentos, Base, Entregas, ' +
   'Percepciones, Deducciones, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido, ' +
-  'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo, ' +
-  'BaseGrupo, CostoGrupo, CargaGrupo, SaldoAnteriorGrupo, SaldoPeriodoGrupo, SaldoGrupo FROM Movimientos';
+  'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo, SaldoCosto, ' +
+  'BaseGrupo, CostoGrupo, CargaGrupo, SaldoAnteriorGrupo, SaldoPeriodoGrupo, SaldoGrupo, SaldoCostoGrupo FROM Movimientos';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;
   TfrmMovimientos(gGridForm).DataSetPeriodo:= adodsPeriodo;

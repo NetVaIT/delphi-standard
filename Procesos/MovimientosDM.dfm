@@ -6,12 +6,13 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     AfterScroll = adodsMasterAfterScroll
     CommandText = 
-      'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Descuentos,' +
-      ' Base, Entregas, '#13#10'Percepciones, Deducciones, Prestaciones, Obli' +
-      'gaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido,'#13#10'Eg' +
-      'resos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo, '#13#10'BaseG' +
-      'rupo, CostoGrupo, CargaGrupo, SaldoAnteriorGrupo, SaldoPeriodoGr' +
-      'upo, SaldoGrupo FROM Movimientos'
+      'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Retencion, ' +
+      'Descuentos, Base, Entregas, '#13#10'Percepciones, Deducciones, Prestac' +
+      'iones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRe' +
+      'tenido,'#13#10'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Sal' +
+      'do, SaldoCosto, '#13#10'BaseGrupo, CostoGrupo, CargaGrupo, SaldoAnteri' +
+      'orGrupo, SaldoPeriodoGrupo, SaldoGrupo, SaldoCostoGrupo FROM Mov' +
+      'imientos'
     object adodsMasterIdMovimiento: TAutoIncField
       FieldName = 'IdMovimiento'
       ReadOnly = True
@@ -49,6 +50,13 @@ inherited dmMovimientos: TdmMovimientos
     end
     object adodsMasterIngresos: TFMTBCDField
       FieldName = 'Ingresos'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterRetencion: TFMTBCDField
+      DisplayLabel = 'Retenci'#243'n'
+      FieldName = 'Retencion'
       currency = True
       Precision = 18
       Size = 6
@@ -205,6 +213,20 @@ inherited dmMovimientos: TdmMovimientos
       Precision = 18
       Size = 6
     end
+    object adodsMasterSaldoCosto: TFMTBCDField
+      DisplayLabel = 'Saldo costo individual'
+      FieldName = 'SaldoCosto'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterSaldoCostoGrupo: TFMTBCDField
+      DisplayLabel = 'Saldo costo'
+      FieldName = 'SaldoCostoGrupo'
+      currency = True
+      Precision = 18
+      Size = 6
+    end
   end
   inherited ActionList: TActionList
     object actCalcularmovimientos: TAction
@@ -251,6 +273,7 @@ inherited dmMovimientos: TdmMovimientos
     end
   end
   object adodsPersona: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
@@ -596,6 +619,7 @@ inherited dmMovimientos: TdmMovimientos
     Top = 504
   end
   object adodsPersonaTitular: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

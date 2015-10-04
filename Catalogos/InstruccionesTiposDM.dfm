@@ -101,7 +101,9 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
   object adodsMovimientosTipos: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
+    CommandText = 
+      'select IdMovimientoTipo, Descripcion from MovimientosTipos'#13#10'WHER' +
+      'E Importar = 1'
     Parameters = <>
     Left = 176
     Top = 88

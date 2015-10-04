@@ -258,9 +258,9 @@ inherited dmFacturacion: TdmFacturacion
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdPersona, IdRol, IdPersonaRol, Clave, VencimientoDocumen' +
-      'to, NombreArchivo, Archivo FROM vCertificadosFacturacion WHERE (' +
-      'Clave = '#39#39' OR Clave IS NULL) AND IdPersona = :IdPersona'
+      'SELECT IdPersona, Clave, Vencimiento, NombreArchivo, Archivo FRO' +
+      'M vCertificadosFacturacion WHERE (Clave = '#39#39' OR Clave IS NULL) A' +
+      'ND IdPersona = :IdPersona'
     Parameters = <
       item
         Name = 'IdPersona'
@@ -275,19 +275,12 @@ inherited dmFacturacion: TdmFacturacion
     object adodsCerIdPersona: TIntegerField
       FieldName = 'IdPersona'
     end
-    object adodsCerIdRol: TIntegerField
-      FieldName = 'IdRol'
-    end
-    object adodsCerIdPersonaRol: TIntegerField
-      FieldName = 'IdPersonaRol'
-    end
     object adodsCerClave: TStringField
       FieldName = 'Clave'
       Size = 100
     end
-    object adodsCerVencimientoDocumento: TWideStringField
-      FieldName = 'VencimientoDocumento'
-      Size = 10
+    object adodsCerVencimiento: TDateTimeField
+      FieldName = 'Vencimiento'
     end
     object adodsCerNombreArchivo: TStringField
       FieldName = 'NombreArchivo'
@@ -301,9 +294,9 @@ inherited dmFacturacion: TdmFacturacion
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
-      'SELECT IdPersona, IdRol, IdPersonaRol, Clave, VencimientoDocumen' +
-      'to, NombreArchivo, Archivo FROM vCertificadosFacturacion WHERE C' +
-      'lave <> '#39#39' AND IdPersona = :IdPersona'
+      'SELECT IdPersona, Clave, Vencimiento, NombreArchivo, Archivo FRO' +
+      'M vCertificadosFacturacion WHERE Clave <> '#39#39' AND IdPersona = :Id' +
+      'Persona'
     Parameters = <
       item
         Name = 'IdPersona'
@@ -318,19 +311,12 @@ inherited dmFacturacion: TdmFacturacion
     object adodsKeyIdPersona: TIntegerField
       FieldName = 'IdPersona'
     end
-    object adodsKeyIdRol: TIntegerField
-      FieldName = 'IdRol'
-    end
-    object adodsKeyIdPersonaRol: TIntegerField
-      FieldName = 'IdPersonaRol'
-    end
     object adodsKeyClave: TStringField
       FieldName = 'Clave'
       Size = 100
     end
-    object adodsKeyVencimientoDocumento: TWideStringField
-      FieldName = 'VencimientoDocumento'
-      Size = 10
+    object adodsKeyVencimiento: TDateTimeField
+      FieldName = 'Vencimiento'
     end
     object adodsKeyNombreArchivo: TStringField
       FieldName = 'NombreArchivo'

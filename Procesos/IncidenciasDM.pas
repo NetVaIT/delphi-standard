@@ -55,6 +55,7 @@ begin
   inherited;
   adodsIncidenciaDetalleIdIncidenciaTipo.Value:= 2;
   adodsIncidenciaDetalleIdMoneda.Value:= 106;
+  adodsIncidenciaDetalleIdIncidenciaEstatus.Value:= 1
 end;
 
 procedure TdmIncidencias.DataModuleCreate(Sender: TObject);

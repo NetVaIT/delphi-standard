@@ -3,9 +3,8 @@ inherited frmPersonas: TfrmPersonas
   Caption = 'frmPersonas'
   ClientHeight = 433
   ClientWidth = 645
-  OnCreate = FormCreate
   ExplicitWidth = 651
-  ExplicitHeight = 457
+  ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
   inherited splDetail3: TSplitter
@@ -165,6 +164,27 @@ inherited frmPersonas: TfrmPersonas
       0
       31
       0)
+    inherited dxbTools: TdxBar
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarButton6'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbPreview'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbSeleccionarRol'
+        end>
+    end
+    object dxbbSeleccionarRol: TdxBarButton
+      Caption = 'Seleccionar rol'
+      Category = 0
+      Visible = ivAlways
+      ImageIndex = 13
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
@@ -174,7 +194,7 @@ inherited frmPersonas: TfrmPersonas
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

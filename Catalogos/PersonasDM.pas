@@ -28,11 +28,6 @@ type
     adodsSexo: TADODataSet;
     adodsEstadoCivil: TADODataSet;
     adodsPais: TADODataSet;
-    adodsEstado: TADODataSet;
-    adodsMunicipio: TADODataSet;
-    dsPais: TDataSource;
-    dsEstado: TDataSource;
-    dsMunicipio: TDataSource;
     adodsMasterPersonaTipo: TStringField;
     adodsMasterRazonSocialTipo: TStringField;
     adodsMasterSexo: TStringField;
@@ -48,7 +43,6 @@ type
     adodsPersonaRolesIdRolClase: TIntegerField;
     adodsPersonaRelacionada: TADODataSet;
     adodsRol: TADODataSet;
-    adodsRolEsquemaPago: TADODataSet;
     adodsRolEstatus: TADODataSet;
     adodsRolClase: TADODataSet;
     adodsPersonaRolesPersonaRelacionada: TStringField;
@@ -71,15 +65,19 @@ type
     adodsMasterTitular: TStringField;
     adodsMasterVigenciaFM34: TDateTimeField;
     adodsPersonaRolesIdRolTipo: TIntegerField;
+    actSelecionarRol: TAction;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsPersonaRolesNewRecord(DataSet: TDataSet);
+    procedure actSelecionarRolExecute(Sender: TObject);
   private
     { Private declarations }
     FRol: TPRol;
     procedure SetRol(const Value: TPRol);
-    procedure AsignarConsulta;
+  protected
+    procedure SetFilter; override;
   public
     { Public declarations }
+    constructor CreateWRol(AOwner: TComponent; Rol: TPRol); virtual;
     property Rol: TPRol read FRol write SetRol;
   end;
 
@@ -87,9 +85,22 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses PersonasForm, PersonasRolesForm;
+uses PersonasForm, PersonasRolesForm, PersonasSeleccionRolDmod;
 
 {$R *.dfm}
+
+procedure TdmPersona.actSelecionarRolExecute(Sender: TObject);
+var
+  dmPersonasSeleccionRol: TdmPersonasSeleccionRol;
+begin
+  inherited;
+  dmPersonasSeleccionRol := TdmPersonasSeleccionRol.Create(Self);
+  try
+    dmPersonasSeleccionRol.ShowModule(nil, '');
+  finally
+    dmPersonasSeleccionRol.Free;
+  end;
+end;
 
 procedure TdmPersona.adodsPersonaRolesNewRecord(DataSet: TDataSet);
 begin
@@ -97,72 +108,56 @@ begin
   adodsPersonaRolesCalcular.Value:= False;
 end;
 
-procedure TdmPersona.AsignarConsulta;
-var
-  ConsultaP, ConsultaPR : String;
+constructor TdmPersona.CreateWRol(AOwner: TComponent; Rol: TPRol);
 begin
-  ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
-                'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
-                'FROM Personas ' + #10#13 +
-                'LEFT JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
-  case Rol of
-    rNone:
-    begin
-      ConsultaPR := 'SELECT Personas.IdPersona, Personas.RazonSocial, ' + #10#13 +
-                    'PersonasRoles.IdRol, PersonasRoles.IdPersona ' + #10#13 +
-                    'FROM Personas ' + #10#13 +
-                    'LEFT JOIN PersonasRoles ON Personas.IdPersona = PersonasRoles.IdPersona ';
-    end;
-    rDuenoProceso:
-    begin
-      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 1)))';
-    end;
-    rOutSourcing:
-    begin
-      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 2)))';
-    end;
-    rCliente:
-    begin
-      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 3)))';
-    end;
-    rProveedor:
-    begin
-      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 4)))';
-    end;
-    rEmpleado:
-    begin
-      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 5)))';
-    end;
-    rSocio:
-    begin
-      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 6)))';
-    end;
-    rComisionista:
-    begin
-      ConsultaP := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 8)))';
-    end;
-  end;
-  adodsMaster.CommandText := adodsMaster.CommandText + ConsultaP;
-  adodsPersonaRelacionada.CommandText := ConsultaPR;
+  FRol:= Rol;
+  inherited Create(AOwner);
 end;
 
 procedure TdmPersona.DataModuleCreate(Sender: TObject);
 begin
-//  inherited;
+  inherited;
   gGridForm := TfrmPersonas.Create(Self);
   gGridForm.DataSet := adodsMaster;
+  TfrmPersonas(gGridForm).actSeleccionarRol:= actSelecionarRol;
+  TfrmPersonas(gGridForm).Rol := Rol;
+  adodsPersonaRoles.Open;
   gFormDeatil1 := TfrmPersonasRoles.Create(Self);
   gFormDeatil1.DataSet := adodsPersonaRoles;
+  TfrmPersonasRoles(gFormDeatil1).Rol := Rol;
+  // Busqueda
+  SQLSelect:= 'SELECT IdPersona, RFC, CURP, IdPersonaTipo, IdRazonSocialTipo, IdSexo, IdEstadoCivil, IdPais, IdPoblacion, ' +
+  'RazonSocial, Nombre, ApellidoPaterno, ApellidoMaterno, FechaNacimiento, LugarNacimiento, IdPersonaTitular, VigenciaFM34 ' +
+  'FROM Personas ';
+  actSearch.Execute;
+end;
+
+procedure TdmPersona.SetFilter;
+begin
+  inherited;
+  case Rol of
+    rNone:
+      SQLWhere := EmptyStr;
+    rDuenoProceso:
+      SQLWhere := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 1)))';
+    rOutSourcing:
+      SQLWhere := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 2)))';
+    rCliente:
+      SQLWhere := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 3)))';
+    rProveedor:
+      SQLWhere := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 4)))';
+    rEmpleado:
+      SQLWhere := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 5)))';
+    rSocio:
+      SQLWhere := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 6)))';
+    rComisionista:
+      SQLWhere := ' WHERE (IdPersona IN (SELECT IdPersona FROM PersonasRoles WHERE IdRol IN (SELECT IdRol FROM Roles WHERE IdRolTipo = 8)))';
+  end;
 end;
 
 procedure TdmPersona.SetRol(const Value: TPRol);
 begin
   FRol := Value;
-  TfrmPersonas(gGridForm).Rol := Value;
-  TfrmPersonasRoles(gFormDeatil1).Rol := Value;
-  AsignarConsulta;
-  adodsMaster.Open;
-  adodsPersonaRoles.Open;
 end;
 
 end.

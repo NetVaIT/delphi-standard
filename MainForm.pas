@@ -194,38 +194,14 @@ begin
    16: gModulo := TdmCuentasInternas.Create(Self);
    17: gModulo := TdmCuentasXCobrarConceptos.Create(Self);
    19: gModulo := TdmPrestamos.Create(Self);
-   20: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rNone;
-       end;
-   21: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rEmpleado;
-       end;
-   22: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rCliente;
-       end;
-   23: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rProveedor;
-       end;
-   24: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rDuenoProceso;
-       end;
-   25: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rOutSourcing;
-       end;
-   26: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rComisionista;
-       end;
-   27: begin
-        gModulo := TdmPersona.Create(Self);
-        TdmPersona(gModulo).Rol := rSocio;
-       end;
+   20: gModulo := TdmPersona.CreateWRol(Self, rNone);
+   21: gModulo := TdmPersona.CreateWRol(Self, rEmpleado);
+   22: gModulo := TdmPersona.CreateWRol(Self, rCliente);
+   23: gModulo := TdmPersona.CreateWRol(Self, rProveedor);
+   24: gModulo := TdmPersona.CreateWRol(Self, rDuenoProceso);
+   25: gModulo := TdmPersona.CreateWRol(Self, rOutSourcing);
+   26: gModulo := TdmPersona.CreateWRol(Self, rComisionista);
+   27: gModulo := TdmPersona.CreateWRol(Self, rSocio);
    30: gModulo := TdmInstrucciones.Create(Self);
    31: gModulo := TdmIncidencias.Create(Self);
    32: gModulo := TdmMovimientos.Create(Self);

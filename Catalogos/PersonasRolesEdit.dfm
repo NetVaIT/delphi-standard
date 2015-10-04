@@ -1,30 +1,30 @@
 inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   Caption = 'Rol Asignado'
   ClientHeight = 414
-  ClientWidth = 719
+  ClientWidth = 789
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ExplicitWidth = 725
-  ExplicitHeight = 442
+  ExplicitWidth = 795
+  ExplicitHeight = 443
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
-    Width = 719
+    Width = 789
     Height = 373
-    Properties.ActivePage = nil
-    ExplicitWidth = 719
+    Properties.ActivePage = tsExpedienteDigital
+    ExplicitWidth = 789
     ExplicitHeight = 373
     ClientRectBottom = 371
-    ClientRectRight = 717
+    ClientRectRight = 787
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
-      ExplicitWidth = 715
+      ExplicitWidth = 785
       ExplicitHeight = 343
       object pnlRol: TPanel
         Left = 0
         Top = 0
-        Width = 715
+        Width = 785
         Height = 177
         Align = alTop
         BevelOuter = bvNone
@@ -86,7 +86,11 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           Top = 23
           DataBinding.DataField = 'Rol'
           DataBinding.DataSource = DataSource
-          Properties.ListColumns = <>
+          Properties.KeyFieldNames = 'IdRol'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descripcion'
+            end>
           TabOrder = 0
           Width = 210
         end
@@ -95,7 +99,11 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           Top = 63
           DataBinding.DataField = 'PersonaRelacionada'
           DataBinding.DataSource = DataSource
-          Properties.ListColumns = <>
+          Properties.KeyFieldNames = 'IdPersona'
+          Properties.ListColumns = <
+            item
+              FieldName = 'RazonSocial'
+            end>
           TabOrder = 1
           Width = 522
         end
@@ -104,7 +112,11 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           Top = 103
           DataBinding.DataField = 'RolEstatus'
           DataBinding.DataSource = DataSource
-          Properties.ListColumns = <>
+          Properties.KeyFieldNames = 'IdRolEstatus'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descripcion'
+            end>
           TabOrder = 2
           Width = 210
         end
@@ -113,7 +125,11 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           Top = 103
           DataBinding.DataField = 'RolClase'
           DataBinding.DataSource = DataSource
-          Properties.ListColumns = <>
+          Properties.KeyFieldNames = 'IdRolClase'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Descripcion'
+            end>
           TabOrder = 3
           Width = 210
         end
@@ -154,7 +170,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       object pnlProveedor: TPanel
         Left = 0
         Top = 177
-        Width = 715
+        Width = 785
         Height = 26
         Align = alTop
         BevelOuter = bvNone
@@ -173,7 +189,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       object pnlEmpleado: TPanel
         Left = 0
         Top = 203
-        Width = 715
+        Width = 785
         Height = 86
         Align = alTop
         BevelOuter = bvNone
@@ -215,7 +231,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       object pnlOutsourcing: TPanel
         Left = 0
         Top = 289
-        Width = 715
+        Width = 785
         Height = 48
         Align = alTop
         BevelOuter = bvNone
@@ -239,82 +255,39 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         end
       end
     end
-    object tsKardex: TcxTabSheet
-      Caption = 'Kardex'
+    object tsCuentasBancarias: TcxTabSheet
+      Caption = 'Cuentas Bancarias'
       ImageIndex = 1
-      TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tsCuentas: TcxTabSheet
       Caption = 'Cuentas Contables'
       ImageIndex = 2
-      TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-    end
-    object tsEsquemaPago: TcxTabSheet
-      Caption = 'Esquema de Pago'
-      ImageIndex = 3
-      TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-    end
-    object tsDocumentosFacturar: TcxTabSheet
-      Caption = 'Archivos para Facturar'
-      ImageIndex = 1
-      TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-    end
-    object tsCuentasBancarias: TcxTabSheet
-      Caption = 'Cuentas Bancarias'
-      ImageIndex = 1
-      TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tsExpedienteDigital: TcxTabSheet
       Caption = 'Expediente Digital'
       ImageIndex = 1
-      TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tsCXCConceptos: TcxTabSheet
       Caption = 'Conceptos CXC'
       ImageIndex = 1
-      TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+    end
+    object tsEstatus: TcxTabSheet
+      Caption = 'Estatus'
+      ImageIndex = 6
     end
   end
   inherited pmlMain: TPanel
     Top = 373
-    Width = 719
+    Width = 789
     ExplicitTop = 373
-    ExplicitWidth = 719
+    ExplicitWidth = 789
     inherited btnCancel: TButton
-      Left = 637
-      ExplicitLeft = 637
+      Left = 707
+      ExplicitLeft = 707
     end
     inherited btnOk: TButton
-      Left = 556
-      ExplicitLeft = 556
+      Left = 626
+      ExplicitLeft = 626
     end
   end
   inherited DataSource: TDataSource

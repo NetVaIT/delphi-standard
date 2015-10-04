@@ -43,7 +43,9 @@ inherited dmIncidencias: TdmIncidencias
   object adodsMovimientoTipo: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'SELECT IdMovimientoTipo, Descripcion FROM MovimientosTipos'
+    CommandText = 
+      'SELECT IdMovimientoTipo, Descripcion FROM MovimientosTipos'#13#10'ORDE' +
+      'R BY Descripcion '
     Parameters = <>
     Left = 184
     Top = 216

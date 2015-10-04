@@ -55,17 +55,11 @@ type
     adodsCer: TADODataSet;
     adodsKey: TADODataSet;
     adodsCerIdPersona: TIntegerField;
-    adodsCerIdRol: TIntegerField;
-    adodsCerIdPersonaRol: TIntegerField;
     adodsCerClave: TStringField;
-    adodsCerVencimientoDocumento: TWideStringField;
     adodsCerNombreArchivo: TStringField;
     adodsCerArchivo: TBlobField;
     adodsKeyIdPersona: TIntegerField;
-    adodsKeyIdRol: TIntegerField;
-    adodsKeyIdPersonaRol: TIntegerField;
     adodsKeyClave: TStringField;
-    adodsKeyVencimientoDocumento: TWideStringField;
     adodsKeyNombreArchivo: TStringField;
     adodsKeyArchivo: TBlobField;
     adodsMasterRegimenFiscal: TStringField;
@@ -89,6 +83,8 @@ type
     adodsDocumentoIdArchivo: TGuidField;
     adodsDocumentoArchivo: TBlobField;
     actXMLaPDF: TAction;
+    adodsCerVencimiento: TDateTimeField;
+    adodsKeyVencimiento: TDateTimeField;
     procedure actListaFacturarExecute(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcesarFacturasExecute(Sender: TObject);

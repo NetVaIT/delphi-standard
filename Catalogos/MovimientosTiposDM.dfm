@@ -13,7 +13,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       'adora2, IdVariable, Identificador, Descripcion, ProduceCXC, Prod' +
       'uceCXP, AgruparTipo, AplicarISRProvisional, PorcentajePagadora1,' +
       ' PorcentajePagadora2, AplicarUltimoPeriodo, EnviarCuentaControl,' +
-      ' AplicarCategoria from MovimientosTipos'
+      ' AplicarCategoria, Importar from MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -97,6 +97,10 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       Size = 50
       Lookup = True
     end
+    object adodsMasterImportar: TBooleanField
+      DisplayLabel = 'Dato b'#225'sico'
+      FieldName = 'Importar'
+    end
     object adodsMasterProduceCXP: TBooleanField
       DisplayLabel = 'Produce CXP'
       FieldName = 'ProduceCXP'
@@ -110,7 +114,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       FieldName = 'EnviarCuentaControl'
     end
     object adodsMasterAplicarCategoria: TBooleanField
-      DisplayLabel = 'Aplicar categoria del movimiento'
+      DisplayLabel = 'Acumular al saldo de la categor'#237'a'
       FieldName = 'AplicarCategoria'
     end
     object adodsMasterAplicarUltimoPeriodo: TBooleanField
@@ -347,6 +351,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     end
   end
   object adodsMovimientoTipoCategoria: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -357,6 +362,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 72
   end
   object adodsMovimientoTipoEfecto: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -367,6 +373,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 128
   end
   object adodsMovimientoTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -377,6 +384,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 184
   end
   object adodsPersonaRolCXP1: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -395,6 +403,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 304
   end
   object adodsVariables: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -405,6 +414,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 240
   end
   object adodsPersonaRolCXP2: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -442,6 +452,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 184
   end
   object adodsPersonaRolCXC1: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -460,6 +471,7 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
     Top = 360
   end
   object adodsPersonaRolCXC2: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

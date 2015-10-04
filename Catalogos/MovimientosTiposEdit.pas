@@ -62,6 +62,7 @@ type
     cbAplicarUltimoPeriodo: TcxDBCheckBox;
     cxDBCheckBox1: TcxDBCheckBox;
     cxDBCheckBox2: TcxDBCheckBox;
+    cxDBCheckBox3: TcxDBCheckBox;
     procedure cbCXPClick(Sender: TObject);
     procedure cbAgruparTipoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

@@ -33,7 +33,6 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
     inherited cxGrid: TcxGrid
       Width = 782
       Height = 229
-      ExplicitTop = -3
       ExplicitWidth = 782
       ExplicitHeight = 229
       inherited tvMaster: TcxGridDBTableView
@@ -92,8 +91,13 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
         object tvMasterVariable: TcxGridDBColumn
           DataBinding.FieldName = 'Variable'
         end
+        object tvMasterImportar: TcxGridDBColumn
+          DataBinding.FieldName = 'Importar'
+          Width = 72
+        end
         object tvMasterAplicarCategoria: TcxGridDBColumn
           DataBinding.FieldName = 'AplicarCategoria'
+          Width = 162
         end
         object tvMasterEnviarCuentaControl: TcxGridDBColumn
           DataBinding.FieldName = 'EnviarCuentaControl'
@@ -176,9 +180,6 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
       ExplicitLeft = 697
     end
   end
-  inherited DataSource: TDataSource
-    DataSet = dmMovimientosTipo.adodsMaster
-  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -194,7 +195,7 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

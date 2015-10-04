@@ -73,6 +73,9 @@ type
     tvMasterSaldoPeriodoGrupo: TcxGridDBColumn;
     tvMasterSaldoGrupo: TcxGridDBColumn;
     tvMasterPersonaTitular: TcxGridDBColumn;
+    tvMasterRetencion: TcxGridDBColumn;
+    tvMasterSaldoCosto: TcxGridDBColumn;
+    tvMasterSaldoCostoGrupo: TcxGridDBColumn;
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       var AStyle: TcxStyle);

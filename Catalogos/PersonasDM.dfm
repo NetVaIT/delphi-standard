@@ -8,7 +8,7 @@ inherited dmPersona: TdmPersona
       'SELECT IdPersona, RFC, CURP, IdPersonaTipo, IdRazonSocialTipo, I' +
       'dSexo, IdEstadoCivil, IdPais, IdPoblacion, RazonSocial, Nombre, ' +
       'ApellidoPaterno, ApellidoMaterno, FechaNacimiento, LugarNacimien' +
-      'to, IdPersonaTitular, VigenciaFM34 FROM Personas'#13#10#13#10
+      'to, IdPersonaTitular, VigenciaFM34 FROM Personas'#13#10
     Left = 56
     object adodsMasterIdPersona: TAutoIncField
       FieldName = 'IdPersona'
@@ -145,6 +145,11 @@ inherited dmPersona: TdmPersona
   inherited ActionList: TActionList
     Left = 216
     Top = 80
+    object actSelecionarRol: TAction
+      Caption = 'Seleccionar rol'
+      ImageIndex = 13
+      OnExecute = actSelecionarRolExecute
+    end
   end
   object adodsPersonaTipo: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -186,39 +191,6 @@ inherited dmPersona: TdmPersona
     Left = 56
     Top = 296
   end
-  object adodsEstado: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'SELECT IdEstado, IdPais, Descripcion FROM Estados'
-    DataSource = dsPais
-    Parameters = <>
-    Left = 56
-    Top = 352
-  end
-  object adodsMunicipio: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'SELECT IdMunicipio, IdEstado, Descripcion FROM Municipios'
-    DataSource = dsEstado
-    Parameters = <>
-    Left = 56
-    Top = 408
-  end
-  object dsPais: TDataSource
-    DataSet = adodsPais
-    Left = 136
-    Top = 296
-  end
-  object dsEstado: TDataSource
-    DataSet = adodsEstado
-    Left = 136
-    Top = 352
-  end
-  object dsMunicipio: TDataSource
-    DataSet = adodsMunicipio
-    Left = 136
-    Top = 408
-  end
   object adodsPersonaRoles: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
@@ -232,11 +204,18 @@ inherited dmPersona: TdmPersona
       'IMSS, PersonasRoles.NSS, PersonasRoles.FechaAltaIMSS, '#13#10'        ' +
       '     PersonasRoles.Facturar, PersonasRoles.FechaIngreso, Persona' +
       'sRoles.FechaBaja, Roles.IdRolTipo'#13#10'FROM PersonasRoles INNER JOIN' +
-      ' Roles ON PersonasRoles.IdRol = Roles.IdRol'
+      ' Roles ON PersonasRoles.IdRol = Roles.IdRol'#13#10'WHERE PersonasRoles' +
+      '.IdPersona = :IdPersona'#13#10
     DataSource = dsMaster
-    IndexFieldNames = 'IdPersona'
     MasterFields = 'IdPersona'
-    Parameters = <>
+    Parameters = <
+      item
+        Name = 'IdPersona'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Value = 1
+      end>
     Left = 312
     Top = 77
     object adodsPersonaRolesIdPersonaRol: TAutoIncField
@@ -357,7 +336,10 @@ inherited dmPersona: TdmPersona
   object adodsPersonaRelacionada: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    CommandText = 'SELECT IdPersona, RazonSocial FROM Personas'
+    CommandText = 
+      'SELECT Personas.IdPersona, Personas.RazonSocial, '#13#10'PersonasRoles' +
+      '.IdRol, PersonasRoles.IdPersona '#13#10'FROM Personas '#13#10'LEFT JOIN Pers' +
+      'onasRoles ON Personas.IdPersona = PersonasRoles.IdPersona'#13#10
     Parameters = <>
     Left = 312
     Top = 133
@@ -369,12 +351,6 @@ inherited dmPersona: TdmPersona
     Parameters = <>
     Left = 312
     Top = 189
-  end
-  object adodsRolEsquemaPago: TADODataSet
-    Connection = _dmConection.ADOConnection
-    Parameters = <>
-    Left = 312
-    Top = 245
   end
   object adodsRolEstatus: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -404,7 +380,7 @@ inherited dmPersona: TdmPersona
       'SELECT IdPersona, RazonSocial FROM Personas'#13#10'WHERE IdPersonaTipo' +
       ' = 1'
     Parameters = <>
-    Left = 48
-    Top = 469
+    Left = 56
+    Top = 365
   end
 end

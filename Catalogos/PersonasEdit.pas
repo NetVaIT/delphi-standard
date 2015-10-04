@@ -21,7 +21,7 @@ uses
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit,
   Vcl.DBCtrls, cxTextEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   PersonasDM, TelefonosDM, EmailsDM, PersonasDomiciliosDM, PersonasContactoDM,
-  CuentasBancariasDM, ShellApi;
+  CuentasBancariasDM, ShellApi, PersonasCSDDM;
 
 type
   TfrmPersonaEdit = class(T_frmEdit)
@@ -68,6 +68,7 @@ type
     cxDBTextEdit3: TcxDBTextEdit;
     Label15: TLabel;
     cxDBDateEdit2: TcxDBDateEdit;
+    tsCSD: TcxTabSheet;
     procedure FormShow(Sender: TObject);
     procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -83,6 +84,7 @@ type
     dmDomicilios: TdmPersonasDomicilios;
     dmPersonasContacto: TdmPersonasContacto;
     dmCuentasBancarias: TdmCuentasBancarias;
+    dmPersonasCSD: TdmPersonasCSD;
     procedure MostrarPanel();
     procedure SetRol(const Value: TPRol);
   public
@@ -132,6 +134,7 @@ begin
   dmDomicilios := TdmPersonasDomicilios.Create(nil);
   dmPersonasContacto := TdmPersonasContacto.Create(nil);
   dmCuentasBancarias := TdmCuentasBancarias.Create(nil);
+  dmPersonasCSD:= TdmPersonasCSD.Create(nil);
 end;
 
 procedure TfrmPersonaEdit.FormDestroy(Sender: TObject);
@@ -142,6 +145,7 @@ begin
   FreeAndNil(dmDomicilios);
   FreeAndNil(dmPersonasContacto);
   FreeAndNil(dmCuentasBancarias);
+  FreeAndNil(dmPersonasCSD);
 end;
 
 procedure TfrmPersonaEdit.FormShow(Sender: TObject);
@@ -166,6 +170,9 @@ begin
   dmCuentasBancarias.MasterSource := DataSource;
   dmCuentasBancarias.MasterFields := 'IdPersona';
   dmCuentasBancarias.ShowModule(tsCuentasBancarias,'');
+  dmPersonasCSD.MasterSource := DataSource;
+  dmPersonasCSD.MasterFields := 'IdPersona';
+  dmPersonasCSD.ShowModule(tsCSD,'');
   case Rol of
     rNone:         Self.Caption := 'Persona';
     rDuenoProceso: Self.Caption := 'Dueño de Proceso';

@@ -117,6 +117,9 @@ inherited frmMovimientos: TfrmMovimientos
           Styles.Content = cxsMedGray
           Width = 104
         end
+        object tvMasterRetencion: TcxGridDBColumn
+          DataBinding.FieldName = 'Retencion'
+        end
         object tvMasterDescuentos: TcxGridDBColumn
           DataBinding.FieldName = 'Descuentos'
           Width = 104
@@ -161,6 +164,15 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterImpuestoRetenido: TcxGridDBColumn
           DataBinding.FieldName = 'ImpuestoRetenido'
+          Width = 104
+        end
+        object tvMasterSaldoCosto: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoCosto'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterSaldoCostoGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoCostoGrupo'
           Width = 104
         end
       end

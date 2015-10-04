@@ -10,12 +10,12 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
     Width = 537
     Height = 738
     ExplicitWidth = 537
-    ExplicitHeight = 684
+    ExplicitHeight = 738
     ClientRectBottom = 736
     ClientRectRight = 535
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 3
-      ExplicitTop = 30
+      ExplicitLeft = 4
+      ExplicitTop = 27
       ExplicitWidth = 533
       ExplicitHeight = 708
       object Label1: TLabel
@@ -69,7 +69,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Left = 24
         Top = 414
         Caption = 'Cuentas por pagar'
-        TabOrder = 12
+        TabOrder = 13
         Height = 134
         Width = 500
         object Label6: TLabel
@@ -155,7 +155,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Left = 24
         Top = 554
         Caption = 'Cuentas por cobrar'
-        TabOrder = 13
+        TabOrder = 14
         Height = 113
         Width = 500
         object Label11: TLabel
@@ -241,7 +241,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Top = 72
         DataBinding.DataField = 'Descripcion'
         DataBinding.DataSource = DataSource
-        TabOrder = 1
+        TabOrder = 2
         Width = 500
       end
       object cxDBLookupComboBox1: TcxDBLookupComboBox
@@ -255,7 +255,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
           item
             FieldName = 'Descripcion'
           end>
-        TabOrder = 2
+        TabOrder = 3
         Width = 304
       end
       object cxDBLookupComboBox2: TcxDBLookupComboBox
@@ -270,7 +270,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
           item
             FieldName = 'Descripcion'
           end>
-        TabOrder = 3
+        TabOrder = 4
         Width = 304
       end
       object cbCXC: TcxDBCheckBox
@@ -279,7 +279,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Caption = 'Produce cuentas por cobrar'
         DataBinding.DataField = 'ProduceCXC'
         DataBinding.DataSource = DataSource
-        TabOrder = 9
+        TabOrder = 10
         OnClick = cbCXPClick
         Width = 300
       end
@@ -289,7 +289,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Caption = 'Produce cuentas por pagar'
         DataBinding.DataField = 'ProduceCXP'
         DataBinding.DataSource = DataSource
-        TabOrder = 8
+        TabOrder = 9
         OnClick = cbCXPClick
         Width = 300
       end
@@ -300,7 +300,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         DataBinding.DataSource = DataSource
         Properties.ClearKey = 16460
         Properties.ListColumns = <>
-        TabOrder = 4
+        TabOrder = 5
         Width = 304
       end
       object cbAgruparTipo: TcxDBCheckBox
@@ -309,7 +309,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Caption = 'Agrupar por tipo de movimiento'
         DataBinding.DataField = 'AgruparTipo'
         DataBinding.DataSource = DataSource
-        TabOrder = 10
+        TabOrder = 11
         OnClick = cbAgruparTipoClick
         Width = 300
       end
@@ -325,7 +325,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
             FieldName = 'Descripcion'
           end>
         Properties.ListSource = dsMovimientosTipo
-        TabOrder = 11
+        TabOrder = 12
         Width = 304
       end
       object cbAplicarUltimoPeriodo: TcxDBCheckBox
@@ -334,7 +334,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Caption = 'Aplicar '#250'ltimo periodo'
         DataBinding.DataField = 'AplicarUltimoPeriodo'
         DataBinding.DataSource = DataSource
-        TabOrder = 7
+        TabOrder = 8
         Width = 300
       end
       object cxDBCheckBox1: TcxDBCheckBox
@@ -343,16 +343,25 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
         Caption = 'Enviar a cuenta de control'
         DataBinding.DataField = 'EnviarCuentaControl'
         DataBinding.DataSource = DataSource
-        TabOrder = 5
+        TabOrder = 6
         Width = 300
       end
       object cxDBCheckBox2: TcxDBCheckBox
         Left = 24
         Top = 249
-        Caption = 'Aplicar categoria del movimiento'
+        Caption = 'Acumular al saldo de la categor'#237'a'
         DataBinding.DataField = 'AplicarCategoria'
         DataBinding.DataSource = DataSource
-        TabOrder = 6
+        TabOrder = 7
+        Width = 300
+      end
+      object cxDBCheckBox3: TcxDBCheckBox
+        Left = 219
+        Top = 32
+        Caption = 'Dato b'#225'sico'
+        DataBinding.DataField = 'Importar'
+        DataBinding.DataSource = DataSource
+        TabOrder = 1
         Width = 300
       end
     end
@@ -360,7 +369,7 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
   inherited pmlMain: TPanel
     Top = 738
     Width = 537
-    ExplicitTop = 684
+    ExplicitTop = 738
     ExplicitWidth = 537
     inherited btnCancel: TButton
       Left = 455
@@ -370,9 +379,6 @@ inherited frmMovimientosTipoEdit: TfrmMovimientosTipoEdit
       Left = 374
       ExplicitLeft = 374
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmMovimientosTipo.adodsMaster
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

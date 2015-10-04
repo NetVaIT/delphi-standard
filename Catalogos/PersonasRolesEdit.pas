@@ -19,17 +19,14 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
   Vcl.DBCtrls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, PersonasDM,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxCalendar, PersonasDM,
   CuentasContablesPersonasRolesDM, cxCheckBox, cxDBEdit, PersonasRolesFacturacionDM,
-  PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM, cxCalendar,
-  PersonasRolesCXCConceptosDM;
+  PersonasRolesCuentasBancariasDM, PersonasRolesDocumentosDM,
+  PersonasRolesCXCConceptosDM, PersonasRolesEstatusDM;
 
 type
   TfrmPersonaRolesEdit = class(T_frmEdit)
-    tsKardex: TcxTabSheet;
     tsCuentas: TcxTabSheet;
-    tsEsquemaPago: TcxTabSheet;
-    tsDocumentosFacturar: TcxTabSheet;
     pnlRol: TPanel;
     pnlProveedor: TPanel;
     pnlEmpleado: TPanel;
@@ -59,6 +56,7 @@ type
     Label10: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
     tsCXCConceptos: TcxTabSheet;
+    tsEstatus: TcxTabSheet;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -67,10 +65,11 @@ type
     { Private declarations }
     FRol: TPRol;
     dmCtasCtablesPersonasRoles: TdmCuentasContablesPersonasRoles;
-    dmPersonasRolesFacturacion: TdmPersonasRolesFacturacion;
+//    dmPersonasRolesFacturacion: TdmPersonasRolesFacturacion;
     dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias;
     dmPersonasRolesDocumentos: TdmPersonasRolesDocumentos;
     dmPersonaRolesCXCConceptos : TdmPersonaRolesCXCConceptos;
+    dmPersonasRolesEstatus: TdmPersonasRolesEstatus;
     procedure SetRol(const Value: TPRol);
   public
     { Public declarations }
@@ -91,20 +90,22 @@ procedure TfrmPersonaRolesEdit.FormCreate(Sender: TObject);
 begin
   inherited;
   dmCtasCtablesPersonasRoles := TdmCuentasContablesPersonasRoles.Create(nil);
-  dmPersonasRolesFacturacion := TdmPersonasRolesFacturacion.Create(nil);
+//  dmPersonasRolesFacturacion := TdmPersonasRolesFacturacion.Create(nil);
   dmPersonasRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);
   dmPersonasRolesDocumentos := TdmPersonasRolesDocumentos.Create(nil);
   dmPersonaRolesCXCConceptos := TdmPersonaRolesCXCConceptos.Create(nil);
+  dmPersonasRolesEstatus:=  TdmPersonasRolesEstatus.Create(nil);
 end;
 
 procedure TfrmPersonaRolesEdit.FormDestroy(Sender: TObject);
 begin
   inherited;
   FreeAndNil(dmCtasCtablesPersonasRoles);
-  FreeAndNil(dmPersonasRolesFacturacion);
+//  FreeAndNil(dmPersonasRolesFacturacion);
   FreeAndNil(dmPersonasRolesCuentasBancarias);
   FreeAndNil(dmPersonasRolesDocumentos);
   FreeAndNil(dmPersonaRolesCXCConceptos);
+  FreeAndNil(dmPersonasRolesEstatus);
 end;
 
 procedure TfrmPersonaRolesEdit.FormShow(Sender: TObject);
@@ -118,41 +119,38 @@ begin
   tsCuentas.TabVisible := False;
   tsCuentasBancarias.TabVisible := False;
   tsCXCConceptos.TabVisible := False;
-  tsDocumentosFacturar.TabVisible := False;
-  tsEsquemaPago.TabVisible := False;
+//  tsDocumentosFacturar.TabVisible := False;
   tsExpedienteDigital.TabVisible := False;
   case DataSource.DataSet.FieldByName('IdRolTipo').AsInteger of
     1: begin // Dueño de proceso
         tsCuentas.TabVisible := True;
         tsCuentasBancarias.TabVisible := True;
-        tsDocumentosFacturar.TabVisible := True;
+//        tsDocumentosFacturar.TabVisible := True;
         tsExpedienteDigital.TabVisible := True;
        end;
     2: begin // Outsourcing
         pnlProveedor.Visible := True;
         pnlOutsourcing.Visible := True;
         tsCuentasBancarias.TabVisible := True;
-        tsDocumentosFacturar.TabVisible := True;
+//        tsDocumentosFacturar.TabVisible := True;
         tsExpedienteDigital.TabVisible := True;
        end;
     3: begin // Cliente
         tsCuentas.TabVisible := True;
         tsCuentasBancarias.TabVisible := True;
         tsCXCConceptos.TabVisible := True;
-        tsDocumentosFacturar.TabVisible := True;
         tsExpedienteDigital.TabVisible := True;
        end;
     4: begin // Proveedor
         pnlProveedor.Visible := True;
         tsCuentas.TabVisible := True;
         tsCuentasBancarias.TabVisible := True;
+//        tsDocumentosFacturar.TabVisible := True;
         tsExpedienteDigital.TabVisible := True;
        end;
     5: begin // Empleado
         pnlEmpleado.Visible := True;
         tsCuentasBancarias.TabVisible := True;
-        tsDocumentosFacturar.TabVisible := True;
-        tsEsquemaPago.TabVisible := True;
         tsExpedienteDigital.TabVisible := True;
        end;
     6: begin // Socio
@@ -174,24 +172,28 @@ begin
   dmCtasCtablesPersonasRoles.MasterSource := DataSource;
   dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
   dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
-  dmCtasCtablesPersonasRoles.MasterSource := DataSource;
-  dmCtasCtablesPersonasRoles.MasterFields := 'IdPersonaRol';
-  dmCtasCtablesPersonasRoles.ShowModule(tsCuentas,'');
+
   dmPersonasRolesCuentasBancarias.MasterSource := DataSource;
   dmPersonasRolesCuentasBancarias.MasterFields := 'IdPersonaRol';
   dmPersonasRolesCuentasBancarias.PersonaAct := DataSet.FieldByName('IdPersona').Value;
   dmPersonasRolesCuentasBancarias.ShowModule(tsCuentasBancarias,'');
+
   dmPersonasRolesDocumentos.MasterSource := DataSource;
   dmPersonasRolesDocumentos.MasterFields := 'IdPersonaRol';
   dmPersonasRolesDocumentos.ShowModule(tsExpedienteDigital,'');
-  if tsDocumentosFacturar.TabVisible = True then
-  begin
-    dmPersonasRolesFacturacion.MasterSource := DataSource;
-    dmPersonasRolesFacturacion.MasterFields := 'IdPersonaRol';
-    dmPersonasRolesFacturacion.ShowModule(tsDocumentosFacturar,'');
-    dmPersonaRolesCXCConceptos.MasterSource:= DataSource;
-    dmPersonaRolesCXCConceptos.ShowModule(tsCXCConceptos);
-  end;
+
+//  if tsDocumentosFacturar.TabVisible = True then
+//  begin
+//    dmPersonasRolesFacturacion.MasterSource := DataSource;
+//    dmPersonasRolesFacturacion.MasterFields := 'IdPersonaRol';
+//    dmPersonasRolesFacturacion.ShowModule(tsDocumentosFacturar,'');
+//  end;
+  dmPersonaRolesCXCConceptos.MasterSource:= DataSource;
+  dmPersonaRolesCXCConceptos.ShowModule(tsCXCConceptos);
+
+  dmPersonasRolesEstatus.MasterSource := DataSource;
+  dmPersonasRolesEstatus.MasterFields := 'IdPersonaRol';
+  dmPersonasRolesEstatus.ShowModule(tsEstatus,'');
 end;
 
 procedure TfrmPersonaRolesEdit.SetRol(const Value: TPRol);

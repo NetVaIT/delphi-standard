@@ -66,6 +66,7 @@ type
     adodsMasterCXCRelacion2: TStringField;
     adodsMasterEnviarCuentaControl: TBooleanField;
     adodsMasterAplicarCategoria: TBooleanField;
+    adodsMasterImportar: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure adodsMasterIdMovimientoTipoCategoriaChange(Sender: TField);
@@ -106,6 +107,10 @@ begin
   adodsMasterProduceCXP.Value:= False;
   adodsMasterAgruparTipo.Value:= False;
   adodsMasterAplicarISRProvisional.Value:= False;
+  adodsMasterEnviarCuentaControl.Value:= False;
+  adodsMasterAplicarUltimoPeriodo.Value:= False;
+  adodsMasterAplicarCategoria.Value:= True;
+  adodsMasterImportar.Value:= False;
 end;
 
 procedure TdmMovimientosTipo.DataModuleCreate(Sender: TObject);

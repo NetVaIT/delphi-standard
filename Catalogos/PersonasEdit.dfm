@@ -5,12 +5,13 @@ inherited frmPersonaEdit: TfrmPersonaEdit
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 630
-  ExplicitHeight = 506
+  ExplicitHeight = 507
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 624
     Height = 437
+    Properties.ActivePage = tsCSD
     ExplicitWidth = 624
     ExplicitHeight = 437
     ClientRectBottom = 435
@@ -346,6 +347,10 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
       ImageIndex = 5
+    end
+    object tsCSD: TcxTabSheet
+      Caption = 'Sello digital'
+      ImageIndex = 6
     end
   end
   inherited pmlMain: TPanel
