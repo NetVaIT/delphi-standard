@@ -3,7 +3,6 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
   Caption = 'Tipo de instrucciones'
   ClientHeight = 450
   ClientWidth = 645
-  OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 479
   PixelsPerInch = 96
@@ -32,10 +31,12 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
     Width = 645
     Height = 258
     Align = alTop
+    ExplicitWidth = 645
     ExplicitHeight = 258
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 258
+      ExplicitWidth = 645
       ExplicitHeight = 258
       inherited tvMaster: TcxGridDBTableView
         object tvMasterIdInstruccionTipo: TcxGridDBColumn
@@ -48,6 +49,29 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
         object tvMasterDescripcion: TcxGridDBColumn
           DataBinding.FieldName = 'Descripcion'
         end
+        object tvMasterTipoNombre: TcxGridDBColumn
+          DataBinding.FieldName = 'TipoNombre'
+          PropertiesClassName = 'TcxRadioGroupProperties'
+          Properties.Columns = 3
+          Properties.Items = <
+            item
+              Caption = 'RFC'
+              Value = '0'
+            end
+            item
+              Caption = 'Nombre'
+              Value = '1'
+            end
+            item
+              Caption = 'Nombre (PMN)'
+              Value = '2'
+            end>
+        end
+        object tvMasterIncluirGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'IncluirGrupo'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Width = 91
+        end
       end
     end
   end
@@ -55,11 +79,13 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
     Top = 368
     Width = 645
     ExplicitTop = 368
+    ExplicitWidth = 645
   end
   inherited pnlDetail2: TPanel
     Top = 324
     Width = 645
     ExplicitTop = 324
+    ExplicitWidth = 645
   end
   inherited pnlDetail1: TPanel
     Top = 292
@@ -68,6 +94,7 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
     Align = alClient
     Visible = True
     ExplicitTop = 292
+    ExplicitWidth = 645
     ExplicitHeight = 29
   end
   inherited pnlClose: TPanel
@@ -77,6 +104,7 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
     ExplicitWidth = 645
     inherited btnClose: TButton
       Left = 560
+      ExplicitLeft = 560
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -94,7 +122,7 @@ inherited frmInstruccionesTipos: TfrmInstruccionesTipos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

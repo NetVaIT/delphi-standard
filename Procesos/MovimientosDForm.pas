@@ -74,6 +74,7 @@ end;
 
 function TfrmMovimientosD.GetIdClase: TRolClase;
 begin
+  Result:= rcAmbos;
   if cxedtClase.EditValue = 'Ambos' then Result:= rcAmbos;
   if cxedtClase.EditValue = 'Real' then Result:= rcReal;
   if cxedtClase.EditValue = 'Virtual' then Result:= rcVirtual;

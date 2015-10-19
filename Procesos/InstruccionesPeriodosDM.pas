@@ -19,6 +19,7 @@ type
     adodsMasterPariodo: TStringField;
     adospSetInstruccionesPeriodos: TADOStoredProc;
     adospGenMovimientos: TADOStoredProc;
+    adodsMasterIncidenciasGeneradas: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

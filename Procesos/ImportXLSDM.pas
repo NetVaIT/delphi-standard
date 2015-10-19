@@ -26,8 +26,9 @@ resourcestring
   StrGetInfo        = 'Obteniendo datos';
   StrVerifInfo      = 'Verificando información';
   StrSetInfo        = 'Procesando información';
-  StrSelectInfo     = 'Las personas no encontradas no podran generar incidencias, ¿Desa continuar?';
-
+  StrSelectInfo     = 'Las personas no encontradas no podran generar incidencias, ¿Desea continuar?';
+  StrDeleteIncidentcia = '¿Desea eliminar las incidencias relacionadas a esta instrucción?';
+  StrExistMovimientos  = 'Existen movimientos asociados a incidencias generada por esta instrucción, para poder eliminarla primero debe eliminarse los movimientos asociados.';
 type
   TdmImportXLS = class(T_dmStandar)
     adoqInstrucciones: TADOQuery;
@@ -55,6 +56,10 @@ type
     QImport3Xlsx: TQImport3Xlsx;
     adoqInstrucionesTiposIdMoneda: TIntegerField;
     dxmdImportarIdMoneda: TIntegerField;
+    adocGetTipoNombre: TADOCommand;
+    adocDeleteIncidencias: TADOCommand;
+    adoqVerificaIncedencias: TADOQuery;
+    adoqVerificaIncedenciasMovimientos: TIntegerField;
     procedure QImport3XLSBeforePost(Sender: TObject; Row: TQImportRow;
       var Accept: Boolean);
     procedure DataModuleCreate(Sender: TObject);
@@ -71,7 +76,7 @@ type
     procedure SetArchivoXLS(const Value: string);
     procedure SetIdInstruccionTipo(const Value: Integer);
     procedure GetInstrucciones;
-    procedure SetIncidencias;
+    function SetIncidencias: Boolean;
     function CorrectInstrucciones: Boolean;
     procedure SetArchivoXLSx(const Value: string);
     property IdInstruccionTipo: Integer read FIdInstruccionTipo write SetIdInstruccionTipo;
@@ -79,7 +84,8 @@ type
     property ArchivoXLSx: string read FArchivoXLSx write SetArchivoXLSx;
   public
     { Public declarations }
-    procedure Execute;
+    function Execute: Boolean;
+    function DeleteIncidencias: Boolean;
     property IdInstruccion: Integer read FIdInstruccion write FIdInstruccion;
   end;
 
@@ -102,13 +108,36 @@ begin
   gGridForm.DataSet:= dxmdImportar;
 end;
 
+function TdmImportXLS.DeleteIncidencias: Boolean;
+begin
+  Result:= False;
+  adoqVerificaIncedencias.Close;
+  adoqVerificaIncedencias.Parameters.ParamByName('IdInstruccion').Value:= IdInstruccion;
+  adoqVerificaIncedencias.Open;
+  try
+    if adoqVerificaIncedenciasMovimientos.Value = 0 then
+    begin
+      if MessageDlg(StrDeleteIncidentcia, mtConfirmation, mbYesNo, 0) = mrYes then
+      begin
+        adocDeleteIncidencias.Parameters.ParamByName('IdInstruccion').Value:= IdInstruccion;
+        adocDeleteIncidencias.Execute;
+        Result:= True;
+      end;
+    end
+    else
+      MessageDlg(StrExistMovimientos, mtInformation, [mbOK], 0);
+  finally
+    adoqVerificaIncedencias.Close;
+  end;
+end;
+
 procedure TdmImportXLS.dxmdImportarNewRecord(DataSet: TDataSet);
 begin
   inherited;
   dxmdImportarGenerada.Value:= False;
 end;
 
-procedure TdmImportXLS.Execute;
+function TdmImportXLS.Execute: Boolean;
 var
   frmSelect: TfrmVerificar;
   Ejecutar: Boolean;
@@ -136,6 +165,7 @@ var
   end;
 
 begin
+  Result:= False;
   Ejecutar:= True;
   // Obtiene parametros
   adoqInstrucciones.Close;
@@ -172,7 +202,7 @@ begin
         frmSelect.Info:= StrSelectInfo;
         ShowModule(frmSelect.pnlMaster,'');
         if frmSelect.ShowModal = mrOk then
-          SetIncidencias;
+          Result:= SetIncidencias;
       finally
         frmSelect.Free;
       end;
@@ -297,12 +327,13 @@ begin
   FIdInstruccionTipo := Value;
 end;
 
-procedure TdmImportXLS.SetIncidencias;
+function TdmImportXLS.SetIncidencias: Boolean;
 var
   IdIncidencia: Integer;
   Total: Integer;
   Position: Integer;
 begin
+  Result:= False;
   dxmdImportar.First;
   Total:= dxmdImportar.RecordCount;
   Position:= 0;
@@ -327,6 +358,7 @@ begin
       dxmdImportar.Edit;
       dxmdImportarGenerada.Value:= True;
       dxmdImportar.Post;
+      Result:= True;
     end;
     Inc(Position);
     ShowProgress(Position, Total, StrSetInfo);
@@ -336,22 +368,49 @@ end;
 
 function TdmImportXLS.CorrectInstrucciones: Boolean;
 
+function GetTipoNombre: Integer;
+begin
+  adocGetTipoNombre.Parameters.ParamByName('IdInstruccionTipo').Value:= IdInstruccionTipo;
+  adocGetTipoNombre.Execute;
+  Result:= adocGetTipoNombre.Parameters.ParamByName('TipoNombre').Value;
+end;
+
 function SetIdPersona: Boolean;
+const
+  SQLRFC = 'SELECT :IdPersona = IdPersona FROM Personas WHERE RFC = :Nombre;';
+  SQLNombreNPM = 'SELECT :IdPersona = IdPersona FROM Personas WHERE RazonSocial = :Nombre;';
+  SQLNombrePMN = 'SELECT :IdPersona = IdPersona FROM Personas WHERE (ApellidoPaterno + '' '' + ApellidoMaterno + '' '' + Nombre) = :Nombre;';
 var
   Total: Integer;
   Position: Integer;
+  IdPersona: Variant;
+  Nombre: String;
+  a: integer;
 begin
   Result:= True;
+  // Seleccciona el tipo de coincidancia
+  a:= GetTipoNombre;
+  case a of
+    0: adocGetPersona.CommandText:= SQLRFC;
+    1: adocGetPersona.CommandText:= SQLNombreNPM;
+    2: adocGetPersona.CommandText:= SQLNombrePMN;
+  end;
   dxmdImportar.First;
   Total:= dxmdImportar.RecordCount;
   Position:= 0;
   ShowProgress(Position, Total, StrVerifInfo);
+  Nombre := EmptyStr;
   while not dxmdImportar.Eof do
   begin
-    adocGetPersona.Parameters.ParamByName('Nombre').Value:=  dxmdImportarNombre.AsString;
-    adocGetPersona.Execute;
+    if dxmdImportarNombre.AsString <> Nombre then
+    begin
+      Nombre := dxmdImportarNombre.AsString;
+      adocGetPersona.Parameters.ParamByName('Nombre').Value:= Nombre;
+      adocGetPersona.Execute;
+      IdPersona:= adocGetPersona.Parameters.ParamByName('IdPersona').Value;
+    end;
     dxmdImportar.Edit;
-    if VarIsNull(adocGetPersona.Parameters.ParamByName('IdPersona').Value) then
+    if VarIsNull(IdPersona) then
     begin
       dxmdImportarEncontrada.Value:= False;
       dxmdImportarIdPersona.Value:= IdPersonaSinAsignar;
@@ -360,7 +419,7 @@ begin
     else
     begin
       dxmdImportarEncontrada.Value:= True;
-      dxmdImportarIdPersona.Value:= adocGetPersona.Parameters.ParamByName('IdPersona').Value;
+      dxmdImportarIdPersona.Value:= VarAsType(IdPersona, varInteger );
     end;
     Inc(Position);
     ShowProgress(Position, Total, StrVerifInfo);

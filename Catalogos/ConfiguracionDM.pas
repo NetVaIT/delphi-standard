@@ -45,15 +45,19 @@ type
     adodsMasterMovimientoTipoDescuento: TStringField;
     adodsMasterMetodoPagoCuentasXPagarSAT: TStringField;
     adodsMasterRolDescuento: TStringField;
+    adoqGetDiaPagoActual: TADOQuery;
+    adoqGetDiaPagoActualValor: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
   private
+    { Private declarations }
     function GetIdPeridoActual: Integer;
     function GetRutaFactura: string;
     function GetRutaPago: string;
-    { Private declarations }
+    function GetDiaPagoActual: TDateTime;
   public
     { Public declarations }
     property IdPeridoActual: Integer read GetIdPeridoActual;
+    property DiaPagoActual: TDateTime read GetDiaPagoActual;
     property RutaFacturas: string read GetRutaFactura;
     property RutaPagos: string read GetRutaPago;
   end;
@@ -71,13 +75,22 @@ uses ConfiguracionesForm;
 
 { TdmConfiguracion }
 
-{ TdmConfiguracion }
-
 procedure TdmConfiguracion.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   gGridForm:= TfrmConfiguraciones.Create(Self);
   gGridForm.DataSet:= adodsMaster;
+end;
+
+function TdmConfiguracion.GetDiaPagoActual: TDateTime;
+begin
+  adoqGetDiaPagoActual.Close;
+  try
+    adoqGetDiaPagoActual.Open;
+    Result := adoqGetDiaPagoActualValor.Value;
+  finally
+    adoqGetDiaPagoActual.Close;
+  end;
 end;
 
 function TdmConfiguracion.GetIdPeridoActual: Integer;

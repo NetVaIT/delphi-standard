@@ -1,5 +1,6 @@
 inherited dmImportXLS: TdmImportXLS
   OldCreateOrder = True
+  Height = 429
   object adoqInstrucciones: TADOQuery
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
@@ -59,6 +60,7 @@ inherited dmImportXLS: TdmImportXLS
       00000600060056616C6F72000400000003000A004964506572736F6E61000400
       00000300110049644D6F76696D69656E746F5469706F00}
     SortOptions = []
+    SortedField = 'Nombre'
     OnNewRecord = dxmdImportarNewRecord
     Left = 320
     Top = 176
@@ -240,7 +242,7 @@ inherited dmImportXLS: TdmImportXLS
         Size = -1
         Value = Null
       end>
-    Left = 160
+    Left = 184
     Top = 296
   end
   object adodsMovimientosTipos: TADODataSet
@@ -274,5 +276,76 @@ inherited dmImportXLS: TdmImportXLS
     OnBeforePost = QImport3XlsxBeforePost
     Left = 64
     Top = 160
+  end
+  object adocGetTipoNombre: TADOCommand
+    CommandText = 
+      'SELECT :TipoNombre = TipoNombre  FROM InstruccionesTipos WHERE I' +
+      'dInstruccionTipo = :IdInstruccionTipo;'
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'TipoNombre'
+        DataType = ftInteger
+        Direction = pdOutput
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'IdInstruccionTipo'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    Left = 56
+    Top = 296
+  end
+  object adocDeleteIncidencias: TADOCommand
+    CommandText = 
+      'DECLARE @IdInstruccion int'#13#10'SET @IdInstruccion = :IdInstruccion ' +
+      ' '#13#10'DELETE IncidenciasDetalle WHERE IdIncidencia IN (SELECT IdInc' +
+      'idencia FROM Incidencias WHERE IdInstruccion = @IdInstruccion );' +
+      #13#10'DELETE Incidencias WHERE IdInstruccion = @IdInstruccion ;'#13#10
+    Connection = _dmConection.ADOConnection
+    Parameters = <
+      item
+        Name = 'IdInstruccion'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    Left = 320
+    Top = 352
+  end
+  object adoqVerificaIncedencias: TADOQuery
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'IdInstruccion'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT COUNT(IncidenciasDetalle.IdIncidenciaDetalle) AS Movimien' +
+        'tos'
+      'FROM IncidenciasDetalle '
+      
+        'INNER JOIN Incidencias ON IncidenciasDetalle.IdIncidencia = Inci' +
+        'dencias.IdIncidencia '
+      
+        'INNER JOIN MovimientosDetalle ON IncidenciasDetalle.IdIncidencia' +
+        'Detalle = MovimientosDetalle.IdIncidenciaDetalle'
+      'WHERE Incidencias.IdInstruccion = :IdInstruccion '
+      '')
+    Left = 320
+    Top = 288
+    object adoqVerificaIncedenciasMovimientos: TIntegerField
+      FieldName = 'Movimientos'
+      ReadOnly = True
+    end
   end
 end

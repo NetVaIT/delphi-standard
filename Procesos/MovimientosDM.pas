@@ -6,6 +6,15 @@ uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
   Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes;
 
+resourcestring
+  strFinishMovimientos  = 'El proceso de dispersión ha terminado.';
+  strDeleteMovimientos  = '¿Deseas eliminar movimientos del periodo actual?';
+  strFinishCXP          = 'El proceso de generación de cuentas por pagar ha terminado.';
+  strDeleteCXP          = '¿Deseas eliminar las cuentas por pagar del periodo actual?';
+  strFinishCXC          = 'El proceso de generación de cuentas por cobrar ha terminado.';
+  strDeleteCXC          = '¿Deseas eliminar las cuentas por cobar del periodo actual?';
+  strFinish             = 'Proceso terminado.';
+
 type
   TdmMovimientos = class(T_dmStandar)
     adodsMasterIdMovimiento: TAutoIncField;
@@ -88,6 +97,7 @@ type
     procedure actCalcularCXCExecute(Sender: TObject);
     procedure actEliminarCXCExecute(Sender: TObject);
     procedure actMostrarISRExecute(Sender: TObject);
+    procedure actCalcularmovimientosUpdate(Sender: TObject);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
@@ -106,7 +116,7 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod, ISRProvisionalesDM,
-  PrestamosPagoDM, ConfiguracionDM;
+  PrestamosPagoDM, ConfiguracionDM, _Utils;
 
 {$R *.dfm}
 
@@ -123,7 +133,7 @@ begin
     finally
       ScreenCursorProc(crDefault);
     end;
-    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+    MessageDlg(strFinishCXC, mtInformation, [mbOk], 0);
   end;
 end;
 
@@ -136,55 +146,68 @@ end;
 procedure TdmMovimientos.actCalcularmovimientosExecute(Sender: TObject);
 begin
   inherited;
-  SetMovimientosCalculados;
+  if SetMovimientosCalculados then
+    RefreshADODS(adodsMaster, adodsMasterIdMovimiento);
+end;
+
+procedure TdmMovimientos.actCalcularmovimientosUpdate(Sender: TObject);
+begin
+  inherited;
+  if Sender is TAction then
+    if Assigned(gGridForm) then
+      TAction(Sender).Enabled:= (TfrmMovimientos(gGridForm).IdPeriodo = IdPeriodoActual);
 end;
 
 procedure TdmMovimientos.actEliminarCXCExecute(Sender: TObject);
 begin
   inherited;
   if IdPeriodoActual <> 0 then
-  begin
-    ScreenCursorProc(crSQLWait);
-    try
-      adopDelCuentasXCobrar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-      adopDelCuentasXCobrar.ExecProc;
-    finally
-      ScreenCursorProc(crDefault);
+    if MessageDlg(strDeleteCXC, mtConfirmation, mbYesNo, 0) = mrYes then
+    begin
+      ScreenCursorProc(crSQLWait);
+      try
+        adopDelCuentasXCobrar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+        adopDelCuentasXCobrar.ExecProc;
+      finally
+        ScreenCursorProc(crDefault);
+      end;
+      MessageDlg(strFinish, mtInformation, [mbOk], 0);
     end;
-    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
-  end;
 end;
 
 procedure TdmMovimientos.actEliminarCXPExecute(Sender: TObject);
 begin
   inherited;
   if IdPeriodoActual <> 0 then
-  begin
-    ScreenCursorProc(crSQLWait);
-    try
-      adopDelCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-      adopDelCuentasXPagar.ExecProc;
-    finally
-      ScreenCursorProc(crDefault);
+    if MessageDlg(strDeleteCXP, mtConfirmation, mbYesNo, 0) = mrYes then
+    begin
+      ScreenCursorProc(crSQLWait);
+      try
+        adopDelCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+        adopDelCuentasXPagar.ExecProc;
+      finally
+        ScreenCursorProc(crDefault);
+      end;
+      MessageDlg(strFinish, mtInformation, [mbOk], 0);
     end;
-    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
-  end;
 end;
 
 procedure TdmMovimientos.actEliminarMovimientosExecute(Sender: TObject);
 begin
   inherited;
   if IdPeriodoActual <> 0 then
-  begin
-    ScreenCursorProc(crSQLWait);
-    try
-      adopDelMovimientos.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
-      adopDelMovimientos.ExecProc;
-    finally
-      ScreenCursorProc(crDefault);
+    if MessageDlg(strDeleteMovimientos, mtConfirmation, mbYesNo, 0) = mrYes then
+    begin
+      ScreenCursorProc(crSQLWait);
+      try
+        adopDelMovimientos.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+        adopDelMovimientos.ExecProc;
+      finally
+        ScreenCursorProc(crDefault);
+      end;
+      MessageDlg(strFinish, mtInformation, [mbOk], 0);
+      RefreshADODS(adodsMaster, adodsMasterIdMovimiento);
     end;
-    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
-  end;
 end;
 
 procedure TdmMovimientos.actMostrarISRExecute(Sender: TObject);
@@ -263,7 +286,7 @@ begin
     finally
       ScreenCursorProc(crDefault);
     end;
-    MessageDlg('Proceso de diversificación terminado.', mtInformation, [mbOk], 0);
+    MessageDlg(strFinishMovimientos, mtInformation, [mbOk], 0);
     SetPrestamos;
     Result:= True;
   end;
@@ -282,7 +305,7 @@ begin
     finally
       ScreenCursorProc(crDefault);
     end;
-    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+    MessageDlg(strFinishCXP, mtInformation, [mbOk], 0);
     Result:= True;
   end;
 end;

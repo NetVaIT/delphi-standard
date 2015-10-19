@@ -49,20 +49,31 @@ type
     tvMasterRepetirHasta: TcxGridDBColumn;
     tvMasterRepetirFin: TcxGridDBColumn;
     dxbbCreateMov: TdxBarButton;
-    dxBarLargeButton1: TdxBarLargeButton;
+    dxbbCreateGroup: TdxBarButton;
+    tvMasterIncidenciasGeneradas: TcxGridDBColumn;
+    dxbbDeleteIncidencias: TdxBarButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
+      ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
+      var AStyle: TcxStyle);
   private
+    { Private declarations }
     FProcessXLS: TBasicAction;
     FUpdateFile: TBasicAction;
     FCreateMov: TBasicAction;
+    FCreateGroup: TBasicAction;
+    FDeleteIncidencias: TBasicAction;
     procedure SetProcessXLS(const Value: TBasicAction);
     procedure SetCreateMov(const Value: TBasicAction);
-    { Private declarations }
+    procedure SetCreateGroup(const Value: TBasicAction);
+    procedure SetDeleteIncidencias(const Value: TBasicAction);
   public
     { Public declarations }
-    property ProcessXLS: TBasicAction read FProcessXLS write SetProcessXLS;
+    property CreateGroup: TBasicAction read FCreateGroup write SetCreateGroup;
     property CreateMov: TBasicAction read FCreateMov write SetCreateMov;
+    property ProcessXLS: TBasicAction read FProcessXLS write SetProcessXLS;
+    property DeleteIncidencias: TBasicAction read FDeleteIncidencias write SetDeleteIncidencias;
     property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
   end;
 
@@ -84,16 +95,40 @@ begin
   TfrmInstruccionesEdit(gEditForm).UpdateFile:= UpdateFile;
 end;
 
+procedure TfrmInstrucciones.SetCreateGroup(const Value: TBasicAction);
+begin
+  FCreateGroup := Value;
+  dxbbCreateGroup.Action:= Value;
+end;
+
 procedure TfrmInstrucciones.SetCreateMov(const Value: TBasicAction);
 begin
   FCreateMov := Value;
   dxbbCreateMov.Action:= Value;
 end;
 
+procedure TfrmInstrucciones.SetDeleteIncidencias(const Value: TBasicAction);
+begin
+  FDeleteIncidencias := Value;
+  dxbbDeleteIncidencias.Action:= Value;
+end;
+
 procedure TfrmInstrucciones.SetProcessXLS(const Value: TBasicAction);
 begin
   FProcessXLS := Value;
   dxbbProcessXLS.Action:= Value;
+end;
+
+procedure TfrmInstrucciones.tvMasterStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+begin
+  inherited;
+  if (ARecord <> nil) and (AItem <> nil) then
+  begin
+    if ARecord.Values[tvMasterIncidenciasGeneradas.Index] = True then
+      AStyle := cxsOdd;
+  end;
 end;
 
 end.

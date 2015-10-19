@@ -7,22 +7,24 @@ inherited frmInstruccionesPeriodos: TfrmInstruccionesPeriodos
   TextHeight = 13
   inherited splDetail3: TSplitter
     Width = 630
+    ExplicitWidth = 630
   end
   inherited splDetail1: TSplitter
     Width = 630
+    ExplicitWidth = 630
   end
   inherited splDetail2: TSplitter
     Width = 630
+    ExplicitWidth = 630
   end
   inherited pnlMaster: TPanel
     Width = 630
-    ExplicitWidth = 651
-    ExplicitHeight = 253
+    ExplicitWidth = 630
     inherited cxGrid: TcxGrid
       Width = 630
-      ExplicitWidth = 651
-      ExplicitHeight = 253
+      ExplicitWidth = 630
       inherited tvMaster: TcxGridDBTableView
+        Styles.OnGetContentStyle = tvMasterStylesGetContentStyle
         object tvMasterIdInstruccion: TcxGridDBColumn
           DataBinding.FieldName = 'IdInstruccion'
           Visible = False
@@ -47,33 +49,32 @@ inherited frmInstruccionesPeriodos: TfrmInstruccionesPeriodos
           DataBinding.FieldName = 'Archivo'
           Width = 150
         end
+        object tvMasterIncidenciasGeneradas: TcxGridDBColumn
+          DataBinding.FieldName = 'IncidenciasGeneradas'
+          Visible = False
+        end
       end
     end
   end
   inherited pnlDetail3: TPanel
     Width = 630
-    ExplicitTop = 375
-    ExplicitWidth = 651
+    ExplicitWidth = 630
   end
   inherited pnlDetail2: TPanel
     Width = 630
-    ExplicitTop = 331
-    ExplicitWidth = 651
+    ExplicitWidth = 630
   end
   inherited pnlDetail1: TPanel
     Width = 630
-    ExplicitTop = 287
-    ExplicitWidth = 651
+    ExplicitWidth = 630
   end
   inherited pnlClose: TPanel
     Width = 630
+    ExplicitWidth = 630
     inherited btnClose: TButton
       Left = 545
-      ExplicitLeft = 566
+      ExplicitLeft = 545
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmInstruccionesPeriodos.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -90,6 +91,7 @@ inherited frmInstruccionesPeriodos: TfrmInstruccionesPeriodos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

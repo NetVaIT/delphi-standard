@@ -27,13 +27,15 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, cxRadioGroup, cxCheckBox;
 
 type
   TfrmInstruccionesTipos = class(T_frmGrid)
     tvMasterIdInstruccionTipo: TcxGridDBColumn;
     tvMasterIdentificador: TcxGridDBColumn;
     tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterTipoNombre: TcxGridDBColumn;
+    tvMasterIncluirGrupo: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

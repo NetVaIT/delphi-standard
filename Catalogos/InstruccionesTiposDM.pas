@@ -23,7 +23,10 @@ type
     adodsInstruccionesTiposDetalleIdMoneda: TIntegerField;
     adodsInstruccionesTiposDetalleMoneda: TStringField;
     adodsInstruccionesTiposDetalleNombre: TStringField;
+    adodsMasterTipoNombre: TIntegerField;
+    adodsMasterIncluirGrupo: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure adodsMasterNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -37,6 +40,13 @@ implementation
 uses InstruccionesTiposForm, InstruccionesTiposDetalleForm;
 
 {$R *.dfm}
+
+procedure TdmInstruccionesTipos.adodsMasterNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  adodsMasterTipoNombre.Value:= 0;
+  adodsMasterIncluirGrupo.Value:= False;
+end;
 
 procedure TdmInstruccionesTipos.DataModuleCreate(Sender: TObject);
 begin

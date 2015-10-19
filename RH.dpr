@@ -223,7 +223,9 @@ uses
   PersonasRolesEstatusEdit in 'Catalogos\PersonasRolesEstatusEdit.pas' {frmPersonasRolesEstatusEdit},
   PersonasCSDDM in 'Catalogos\PersonasCSDDM.pas' {dmPersonasCSD: TDataModule},
   PersonasCSDEdit in 'Catalogos\PersonasCSDEdit.pas' {frmPersonasCSDEdit},
-  PersonasCSDForm in 'Catalogos\PersonasCSDForm.pas' {frmPersonasCSD};
+  PersonasCSDForm in 'Catalogos\PersonasCSDForm.pas' {frmPersonasCSD},
+  TmpInstruccionesForm in 'Procesos\TmpInstruccionesForm.pas' {frmTmpInstrucciones},
+  TmpInstruccionesDM in 'Procesos\TmpInstruccionesDM.pas' {dmTmpInstrucciones: TDataModule};
 
 {$R *.res}
 

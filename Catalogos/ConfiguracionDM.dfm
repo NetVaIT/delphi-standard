@@ -294,4 +294,19 @@ inherited dmConfiguracion: TdmConfiguracion
     Left = 240
     Top = 256
   end
+  object adoqGetDiaPagoActual: TADOQuery
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT CAST(DATEADD(day, 4,FechaInicio) AS DATETIME) AS Valor FR' +
+        'OM Periodos WHERE IdPeriodo = dbo.GetIdPeriodoActual();')
+    Left = 592
+    Top = 384
+    object adoqGetDiaPagoActualValor: TDateTimeField
+      FieldName = 'Valor'
+      ReadOnly = True
+    end
+  end
 end

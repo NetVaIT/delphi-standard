@@ -73,7 +73,7 @@ inherited dmPrestamosPago: TdmPrestamosPago
       Lookup = True
     end
     object adodsMasterImporteCalculo: TFMTBCDField
-      DisplayLabel = 'Base'
+      DisplayLabel = 'Ingreso'
       FieldName = 'ImporteCalculo'
       currency = True
       Precision = 18

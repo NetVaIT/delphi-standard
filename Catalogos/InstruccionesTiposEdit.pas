@@ -18,7 +18,8 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxPCdxBarPopupMenu,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.ExtCtrls, cxPC,
-  cxContainer, cxEdit, cxTextEdit, cxDBEdit;
+  cxContainer, cxEdit, cxTextEdit, cxDBEdit, cxGroupBox, cxRadioGroup,
+  cxCheckBox;
 
 type
   TfrmInstruccionesTiposEdit = class(T_frmEdit)
@@ -26,6 +27,8 @@ type
     cxDBTextEdit1: TcxDBTextEdit;
     Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
+    cxDBCheckBox1: TcxDBCheckBox;
+    cxDBRadioGroup1: TcxDBRadioGroup;
   private
     { Private declarations }
   public

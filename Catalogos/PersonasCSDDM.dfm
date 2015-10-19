@@ -44,7 +44,6 @@ inherited dmPersonasCSD: TdmPersonasCSD
     end
   end
   object adodsDocumento: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'

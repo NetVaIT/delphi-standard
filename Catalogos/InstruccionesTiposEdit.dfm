@@ -1,23 +1,23 @@
 inherited frmInstruccionesTiposEdit: TfrmInstruccionesTiposEdit
   Caption = 'Tipo de instrucci'#243'n'
-  ClientHeight = 199
+  ClientHeight = 266
   ClientWidth = 367
   ExplicitWidth = 373
-  ExplicitHeight = 228
+  ExplicitHeight = 295
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Width = 367
-    Height = 158
+    Height = 225
     ExplicitWidth = 367
-    ExplicitHeight = 200
-    ClientRectBottom = 156
+    ExplicitHeight = 225
+    ClientRectBottom = 223
     ClientRectRight = 365
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 363
-      ExplicitHeight = 170
+      ExplicitHeight = 195
       object Label1: TLabel
         Left = 32
         Top = 16
@@ -50,20 +50,53 @@ inherited frmInstruccionesTiposEdit: TfrmInstruccionesTiposEdit
         TabOrder = 1
         Width = 304
       end
+      object cxDBCheckBox1: TcxDBCheckBox
+        Left = 32
+        Top = 160
+        Caption = 'Incluir en el grupo'
+        DataBinding.DataField = 'IncluirGrupo'
+        DataBinding.DataSource = DataSource
+        TabOrder = 3
+        Width = 304
+      end
+      object cxDBRadioGroup1: TcxDBRadioGroup
+        Left = 32
+        Top = 99
+        Caption = 'Nombre'
+        DataBinding.DataField = 'TipoNombre'
+        DataBinding.DataSource = DataSource
+        Properties.Columns = 3
+        Properties.Items = <
+          item
+            Caption = 'RFC'
+            Value = '0'
+          end
+          item
+            Caption = 'Nombre'
+            Value = '1'
+          end
+          item
+            Caption = 'Nombre (PMN)'
+            Value = '2'
+          end>
+        TabOrder = 2
+        Height = 46
+        Width = 304
+      end
     end
   end
   inherited pmlMain: TPanel
-    Top = 158
+    Top = 225
     Width = 367
-    ExplicitTop = 200
+    ExplicitTop = 225
     ExplicitWidth = 367
-    inherited btnOk: TButton
-      Left = 204
-      ExplicitLeft = 204
-    end
     inherited btnCancel: TButton
       Left = 285
       ExplicitLeft = 285
+    end
+    inherited btnOk: TButton
+      Left = 204
+      ExplicitLeft = 204
     end
   end
   inherited cxImageList: TcxImageList

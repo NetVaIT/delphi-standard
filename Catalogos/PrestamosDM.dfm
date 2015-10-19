@@ -2,6 +2,7 @@ inherited dmPrestamos: TdmPrestamos
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    AfterPost = adodsMasterAfterPost
     CommandText = 
       'select IdPrestamo, IdPersona, Importe, Fecha, Porcentaje, Saldo ' +
       'from Prestamos'
@@ -67,7 +68,6 @@ inherited dmPrestamos: TdmPrestamos
   object adodsPrestamosPago: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
-    AfterPost = adodsPrestamosPagoAfterPost
     CommandText = 
       'select IdPrestamoPago, IdPrestamo, IdMovimiento, IdPersona, IdPe' +
       'riodo, IdMovimientoTipo, ImporteCalculo, Porcentaje, ImportePeri' +
@@ -203,12 +203,14 @@ inherited dmPrestamos: TdmPrestamos
         DataType = ftInteger
         Direction = pdReturnValue
         Precision = 10
+        Value = Null
       end
       item
         Name = '@IdPrestamo'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end>
     Left = 296
     Top = 272

@@ -2,9 +2,10 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
+    OnNewRecord = adodsMasterNewRecord
     CommandText = 
-      'select IdInstruccionTipo, Identificador, Descripcion from Instru' +
-      'ccionesTipos'
+      'select IdInstruccionTipo, Identificador, Descripcion, TipoNombre' +
+      ', IncluirGrupo from InstruccionesTipos'
     object adodsMasterIdInstruccionTipo: TAutoIncField
       FieldName = 'IdInstruccionTipo'
       ReadOnly = True
@@ -20,6 +21,14 @@ inherited dmInstruccionesTipos: TdmInstruccionesTipos
       FieldName = 'Descripcion'
       Required = True
       Size = 50
+    end
+    object adodsMasterTipoNombre: TIntegerField
+      DisplayLabel = 'Nombre'
+      FieldName = 'TipoNombre'
+    end
+    object adodsMasterIncluirGrupo: TBooleanField
+      DisplayLabel = 'Incluir en el grupo'
+      FieldName = 'IncluirGrupo'
     end
   end
   object dtMaster: TDataSource

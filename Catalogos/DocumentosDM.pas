@@ -58,6 +58,7 @@ type
   public
     { Public declarations }
     function GetFileName(IdDocumento: Integer): TFileName;
+    function SetFile: Integer;
     property FileAllowed: TFileAllowed read FFileAllowed write SetFileAllowed default faXLSx;
   end;
 
@@ -155,6 +156,29 @@ begin
   finally
     Blob.Free
   end;
+end;
+
+function TdmDocumentos.SetFile: Integer;
+begin
+  if OpenDialog.Execute then
+  begin
+    FFilename:= OpenDialog.FileName;
+    adodsUpdate.Open;
+    try
+      adodsUpdate.Insert;
+      adodsUpdateIdDocumentoTipo.Value:= 1;
+      adodsUpdateIdDocumentoClase.Value:= 1;
+      adodsUpdateDescripcion.AsString:= ExtractFileName(FFilename);
+      adodsUpdateNombreArchivo.AsString:= ExtractFileName(FFilename);
+      WriteFile(FFilename);
+      adodsUpdate.Post;
+      Result:= adodsUpdateIdDocumento.Value;
+    finally
+      adodsUpdate.Close;
+    end;
+  end
+  else
+    Result:= 0;
 end;
 
 procedure TdmDocumentos.SetFileAllowed(const Value: TFileAllowed);

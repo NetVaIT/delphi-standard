@@ -1,5 +1,5 @@
 inherited frmRptPagos: TfrmRptPagos
-  Caption = 'frmRptPagos'
+  Caption = 'Detalle de pagos'
   ClientHeight = 290
   ExplicitWidth = 444
   ExplicitHeight = 319
@@ -7,12 +7,13 @@ inherited frmRptPagos: TfrmRptPagos
   TextHeight = 13
   inherited pcMain: TcxPageControl
     Height = 249
+    ExplicitHeight = 249
     ClientRectBottom = 247
     inherited tsGeneral: TcxTabSheet
       ExplicitLeft = 2
       ExplicitTop = 28
       ExplicitWidth = 434
-      ExplicitHeight = 295
+      ExplicitHeight = 219
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -92,6 +93,7 @@ inherited frmRptPagos: TfrmRptPagos
   end
   inherited pmlMain: TPanel
     Top = 249
+    ExplicitTop = 249
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

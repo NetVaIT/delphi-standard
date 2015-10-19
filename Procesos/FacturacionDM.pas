@@ -172,7 +172,7 @@ begin
 
       DocumentoComprobanteFiscal:= TDocumentoComprobanteFiscal.Create;
       try
-        Emisor.RFC                    := adodsEmisorRFC.AsString;
+        Emisor.RFC                    := TFERFC(adodsEmisorRFC.AsString);
         Emisor.Nombre                 := adodsEmisorRazonSocial.AsString;
         Emisor.Direccion.Calle        := adodsEmisorCalle.AsString;
         Emisor.Direccion.NoExterior   := adodsEmisorNoExterior.AsString;
@@ -198,7 +198,7 @@ begin
         Emisor.ExpedidoEn.Localidad    := Emisor.Direccion.Localidad;
         Emisor.ExpedidoEn.Referencia   := Emisor.Direccion.Referencia;
 
-        Receptor.RFC := adodsReceptorRFC.AsString;
+        Receptor.RFC := TFERFC(adodsReceptorRFC.AsString);
         Receptor.Nombre := adodsReceptorRazonSocial.AsString;
     //    Receptor.Direccion.Calle:='Patriotismo';
     //    Receptor.Direccion.NoExterior:='4579';

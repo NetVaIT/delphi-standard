@@ -36,7 +36,7 @@ type
     adodsPrestamosPagoPeriodo: TStringField;
     adopUpdPrestamosSaldo: TADOStoredProc;
     procedure DataModuleCreate(Sender: TObject);
-    procedure adodsPrestamosPagoAfterPost(DataSet: TDataSet);
+    procedure adodsMasterAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -51,12 +51,12 @@ uses PrestamosForm, PrestamosPagoForm;
 
 {$R *.dfm}
 
-procedure TdmPrestamos.adodsPrestamosPagoAfterPost(DataSet: TDataSet);
+procedure TdmPrestamos.adodsMasterAfterPost(DataSet: TDataSet);
 begin
   inherited;
-//  adopUpdPrestamosSaldo.Parameters.ParamByName('@IdPrestamo').Value:= adodsMasterIdPrestamo.Value;
-//  adopUpdPrestamosSaldo.ExecProc;
-//  adodsMaster.Refresh;
+  adopUpdPrestamosSaldo.Parameters.ParamByName('@IdPrestamo').Value:= adodsMasterIdPrestamo.Value;
+  adopUpdPrestamosSaldo.ExecProc;
+  adodsMaster.Refresh;
 end;
 
 procedure TdmPrestamos.DataModuleCreate(Sender: TObject);

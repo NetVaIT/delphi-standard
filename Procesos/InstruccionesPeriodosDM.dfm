@@ -7,11 +7,12 @@ inherited dmInstruccionesPeriodos: TdmInstruccionesPeriodos
       'SELECT InstruccionesPeriodos.IdInstruccion, InstruccionesPeriodo' +
       's.IdPeriodo, InstruccionesPeriodos.Fecha, '#13#10'Instrucciones.Concep' +
       'to AS Instruccion, Documentos.NombreArchivo AS Archivo, Periodos' +
-      '.Descripcion AS Periodo'#13#10'FROM InstruccionesPeriodos '#13#10'INNER JOIN' +
-      ' Instrucciones ON InstruccionesPeriodos.IdInstruccion = Instrucc' +
-      'iones.IdInstruccion'#13#10'INNER JOIN Periodos ON InstruccionesPeriodo' +
-      's.IdPeriodo = Periodos.IdPeriodo'#13#10'INNER JOIN Documentos ON Instr' +
-      'ucciones.IdDocumento = Documentos.IdDocumento'
+      '.Descripcion AS Periodo, Instrucciones.IncidenciasGeneradas'#13#10'FRO' +
+      'M InstruccionesPeriodos '#13#10'INNER JOIN Instrucciones ON Instruccio' +
+      'nesPeriodos.IdInstruccion = Instrucciones.IdInstruccion'#13#10'INNER J' +
+      'OIN Periodos ON InstruccionesPeriodos.IdPeriodo = Periodos.IdPer' +
+      'iodo'#13#10'INNER JOIN Documentos ON Instrucciones.IdDocumento = Docum' +
+      'entos.IdDocumento'
     object adodsMasterIdInstruccion: TIntegerField
       FieldName = 'IdInstruccion'
       Visible = False
@@ -35,6 +36,11 @@ inherited dmInstruccionesPeriodos: TdmInstruccionesPeriodos
     object adodsMasterArchivo: TStringField
       FieldName = 'Archivo'
       Size = 200
+    end
+    object adodsMasterIncidenciasGeneradas: TBooleanField
+      DisplayLabel = 'Incidencias generadas'
+      FieldName = 'IncidenciasGeneradas'
+      Visible = False
     end
   end
   object adospSetInstruccionesPeriodos: TADOStoredProc

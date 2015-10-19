@@ -71,19 +71,15 @@ var
   Id : integer;
   Categoria : integer;
 begin
-  Categoria := 0;
   for i := 0 to TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.ColumnCount - 1 do
   begin
-//    ShowMessage(gGridForm.tvMaster.DataController.GetItemFieldName(i));
     if i > 0 then
     begin
       NombreCol := TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.DataController.GetItemFieldName(i);
       Delete(NombreCol,1,1);
       Id := StrToInt(NombreCol);
       Categoria := GetCategoria(Id,NombreCol);
-//      gGridForm.tvMaster.DataController.ChangeFieldName(i,NombreCol);
       TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Columns[i].Caption := NombreCol;
-//      TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Columns[i].DataBinding.Field.DataType := ftCurrency; // := 'Currency';
       TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Columns[i].Position.BandIndex := Categoria;
       TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Bands[Categoria].Visible := True;
     end;

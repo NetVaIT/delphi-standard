@@ -232,38 +232,44 @@ inherited dmMovimientos: TdmMovimientos
     object actCalcularmovimientos: TAction
       Caption = 'Deversificar importes'
       Hint = 'Genera movimientos calculados del periodo actual'
-      ImageIndex = 10
+      ImageIndex = 17
       OnExecute = actCalcularmovimientosExecute
+      OnUpdate = actCalcularmovimientosUpdate
     end
     object actEliminarMovimientos: TAction
       Caption = 'Eliminar movimientos'
       Hint = 'Elimina movimientos del periodo actual'
       ImageIndex = 12
       OnExecute = actEliminarMovimientosExecute
+      OnUpdate = actCalcularmovimientosUpdate
     end
     object actCalcularCXP: TAction
       Caption = 'Generar cuentas por pagar'
       Hint = 'Genera cuentas por pagar del periodo'
-      ImageIndex = 10
+      ImageIndex = 18
       OnExecute = actCalcularCXPExecute
+      OnUpdate = actCalcularmovimientosUpdate
     end
     object actEliminarCXP: TAction
       Caption = 'Eliminar cuentas por pagar'
       Hint = 'Eliminar cuentas por pagar del periodo'
       ImageIndex = 12
       OnExecute = actEliminarCXPExecute
+      OnUpdate = actCalcularmovimientosUpdate
     end
     object actCalcularCXC: TAction
       Caption = 'Generar cuentas por cobrar'
       Hint = 'Genera cuentas por cobrar del periodo'
-      ImageIndex = 10
+      ImageIndex = 18
       OnExecute = actCalcularCXCExecute
+      OnUpdate = actCalcularmovimientosUpdate
     end
     object actEliminarCXC: TAction
       Caption = 'Eliminar cuentas por cobrar'
       Hint = 'Eliminar cuentas por cobrar del periodo'
       ImageIndex = 12
       OnExecute = actEliminarCXCExecute
+      OnUpdate = actCalcularmovimientosUpdate
     end
     object actMostrarISR: TAction
       Caption = 'Mostrar ISR'
@@ -273,7 +279,6 @@ inherited dmMovimientos: TdmMovimientos
     end
   end
   object adodsPersona: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPersona, RazonSocial from Personas'
@@ -619,7 +624,6 @@ inherited dmMovimientos: TdmMovimientos
     Top = 504
   end
   object adodsPersonaTitular: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

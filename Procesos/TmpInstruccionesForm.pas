@@ -1,4 +1,4 @@
-unit InstruccionesPeriodosForm;
+unit TmpInstruccionesForm;
 
 interface
 
@@ -27,42 +27,38 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, cxButtonEdit;
 
 type
-  TfrmInstruccionesPeriodos = class(T_frmGrid)
-    tvMasterIdInstruccion: TcxGridDBColumn;
-    tvMasterIdPeriodo: TcxGridDBColumn;
-    tvMasterPeriodo: TcxGridDBColumn;
-    tvMasterFecha: TcxGridDBColumn;
-    tvMasterInstruccion: TcxGridDBColumn;
+  TfrmTmpInstrucciones = class(T_frmGrid)
+    tvMasterIdTmpInstruccion: TcxGridDBColumn;
+    tvMasterIdInstruccionTipo: TcxGridDBColumn;
+    tvMasterIdDocumento: TcxGridDBColumn;
+    tvMasterInstruccionTipo: TcxGridDBColumn;
+    tvMasterDescripcion: TcxGridDBColumn;
+    tvMasterInicio: TcxGridDBColumn;
     tvMasterArchivo: TcxGridDBColumn;
-    tvMasterIncidenciasGeneradas: TcxGridDBColumn;
-    procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
-      ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
-      var AStyle: TcxStyle);
   private
+    FactGetFileForGroup: TBasicAction;
+    procedure SetactGetFileForGroup(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
+    property actGetFileForGroup: TBasicAction read FactGetFileForGroup write SetactGetFileForGroup;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses InstruccionesPeriodosDM;
+uses InstruccionesDM;
 
-procedure TfrmInstruccionesPeriodos.tvMasterStylesGetContentStyle(
-  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
-  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+{ TfrmTmpInstrucciones }
+
+procedure TfrmTmpInstrucciones.SetactGetFileForGroup(const Value: TBasicAction);
 begin
-  inherited;
-  if (ARecord <> nil) and (AItem <> nil) then
-  begin
-    if ARecord.Values[tvMasterIncidenciasGeneradas.Index] = True then
-      AStyle := cxsOdd;
-  end;
+  FactGetFileForGroup := Value;
+  tvMasterArchivo.Properties.Buttons[0].Action:= Value;
 end;
 
 end.
