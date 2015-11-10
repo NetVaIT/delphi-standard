@@ -39,7 +39,6 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
         Width = 36
         Height = 13
         Caption = 'Estatus'
-        Visible = False
       end
       object Label4: TLabel
         Left = 16
@@ -73,7 +72,6 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
         DataBinding.DataSource = DataSource
         Properties.ListColumns = <>
         TabOrder = 3
-        Visible = False
         Width = 300
       end
       object cxDBLookupComboBox3: TcxDBLookupComboBox
@@ -92,13 +90,13 @@ inherited frmIncidenciaDetallesEdit: TfrmIncidenciaDetallesEdit
     Width = 528
     ExplicitTop = 224
     ExplicitWidth = 528
-    inherited btnOk: TButton
-      Left = 365
-      ExplicitLeft = 365
-    end
     inherited btnCancel: TButton
       Left = 446
       ExplicitLeft = 446
+    end
+    inherited btnOk: TButton
+      Left = 365
+      ExplicitLeft = 365
     end
   end
   inherited cxImageList: TcxImageList

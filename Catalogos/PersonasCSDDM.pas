@@ -9,15 +9,20 @@ uses
 type
   TdmPersonasCSD = class(T_dmStandar)
     adodsDocumento: TADODataSet;
-    actUpdateFile: TAction;
+    actUpdateFileCER: TAction;
     adodsMasterIdPersona: TIntegerField;
-    adodsMasterIdDocumento: TIntegerField;
+    adodsMasterIdPersonaCSD: TIntegerField;
+    adodsMasterIdDocumentoCER: TIntegerField;
+    adodsMasterIdDocumentoKEY: TIntegerField;
     adodsMasterClave: TStringField;
     adodsMasterVencimiento: TDateTimeField;
-    adodsMasterArchivo: TStringField;
-    adodsMasterIdPersonaCSD: TIntegerField;
+    adodsDocumento2: TADODataSet;
+    adodsMasterArchivoCER: TStringField;
+    adodsMasterArchivoKEY: TStringField;
+    actUpdateFileKEY: TAction;
     procedure DataModuleCreate(Sender: TObject);
-    procedure actUpdateFileExecute(Sender: TObject);
+    procedure actUpdateFileCERExecute(Sender: TObject);
+    procedure actUpdateFileKEYExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,15 +37,15 @@ uses PersonasCSDForm, DocumentosDM;
 
 {$R *.dfm}
 
-procedure TdmPersonasCSD.actUpdateFileExecute(Sender: TObject);
+procedure TdmPersonasCSD.actUpdateFileCERExecute(Sender: TObject);
 var
   dmDocumentos: TdmDocumentos;
   Id : Integer;
 begin
   inherited;
   dmDocumentos := TdmDocumentos.Create(nil);
-  dmDocumentos.FileAllowed := faAll;
-  Id := adodsMasterIdDocumento.AsInteger;
+  dmDocumentos.FileAllowed := faCER;
+  Id := adodsMasterIdDocumentoCER.AsInteger;
   if Id  <> 0 then
   begin
     dmDocumentos.Edit(Id);
@@ -52,7 +57,33 @@ begin
     if  Id <> 0 then
     begin
       adodsDocumento.Requery();
-      adodsMasterIdDocumento.AsInteger := Id;
+      adodsMasterIdDocumentoCER.AsInteger := Id;
+    end;
+  end;
+  dmDocumentos.Free;
+end;
+
+procedure TdmPersonasCSD.actUpdateFileKEYExecute(Sender: TObject);
+var
+  dmDocumentos: TdmDocumentos;
+  Id : Integer;
+begin
+  inherited;
+  dmDocumentos := TdmDocumentos.Create(nil);
+  dmDocumentos.FileAllowed := faKEY;
+  Id := adodsMasterIdDocumentoKEY.AsInteger;
+  if Id  <> 0 then
+  begin
+    dmDocumentos.Edit(Id);
+    adodsDocumento.Requery();
+  end
+  else
+  begin
+    Id := dmDocumentos.Add;
+    if  Id <> 0 then
+    begin
+      adodsDocumento.Requery();
+      adodsMasterIdDocumentoKEY.AsInteger := Id;
     end;
   end;
   dmDocumentos.Free;
@@ -63,7 +94,8 @@ begin
   inherited;
   gGridForm := TfrmPersonasCSD.Create(Self);
   gGridForm.DataSet:= adodsMaster;
-  TfrmPersonasCSD(gGridForm).UpdateFile := actUpdateFile;
+  TfrmPersonasCSD(gGridForm).UpdateFileCER := actUpdateFileCER;
+  TfrmPersonasCSD(gGridForm).UpdateFileKEY := actUpdateFileKEY;
 end;
 
 end.

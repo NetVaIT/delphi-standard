@@ -14,6 +14,8 @@ resourcestring
   strFinishCXC          = 'El proceso de generación de cuentas por cobrar ha terminado.';
   strDeleteCXC          = '¿Deseas eliminar las cuentas por cobar del periodo actual?';
   strFinish             = 'Proceso terminado.';
+  strDeleteMovimientosDiversificados  = '¿Deseas eliminar movimientos diversificados?';
+  strMovimientosSolidarios  = '¿Deseas generar los movimientos para los solidarios?';
 
 type
   TdmMovimientos = class(T_dmStandar)
@@ -87,6 +89,22 @@ type
     adodsMasterRetencion: TFMTBCDField;
     adodsMasterSaldoCosto: TFMTBCDField;
     adodsMasterSaldoCostoGrupo: TFMTBCDField;
+    actEliminarDispercion: TAction;
+    adopDelMovimientosDiversificados: TADOStoredProc;
+    adodsRolesTitular: TADODataSet;
+    adodsRolesTitularIdPersonaRol: TAutoIncField;
+    adodsRolesTitularIdRol: TIntegerField;
+    adodsRolesTitularIdPersona: TAutoIncField;
+    adodsRolesTitularPersona: TStringField;
+    adodsRolesTitularRol: TStringField;
+    adodsRolesTitularPersonaRelacionada: TStringField;
+    adodsRolesTitularEstatus: TStringField;
+    adodsRolesTitularClase: TStringField;
+    adodsRolesTitularCalcular: TBooleanField;
+    adodsRolesTitularPorcentajeCalculo: TFMTBCDField;
+    actRolesTitular: TAction;
+    actMovimientosSolidarios: TAction;
+    adopGenMovimientosSolidarios: TADOStoredProc;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
@@ -98,6 +116,9 @@ type
     procedure actEliminarCXCExecute(Sender: TObject);
     procedure actMostrarISRExecute(Sender: TObject);
     procedure actCalcularmovimientosUpdate(Sender: TObject);
+    procedure actEliminarDispercionExecute(Sender: TObject);
+    procedure actRolesTitularExecute(Sender: TObject);
+    procedure actMovimientosSolidariosExecute(Sender: TObject);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
@@ -116,7 +137,7 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod, ISRProvisionalesDM,
-  PrestamosPagoDM, ConfiguracionDM, _Utils;
+  PrestamosPagoDM, ConfiguracionDM, _Utils, RolesTitularFrm;
 
 {$R *.dfm}
 
@@ -156,6 +177,27 @@ begin
   if Sender is TAction then
     if Assigned(gGridForm) then
       TAction(Sender).Enabled:= (TfrmMovimientos(gGridForm).IdPeriodo = IdPeriodoActual);
+end;
+
+procedure TdmMovimientos.actEliminarDispercionExecute(Sender: TObject);
+var
+  IdMovimiento: Integer;
+begin
+  inherited;
+  IdMovimiento:= adodsMasterIdMovimiento.Value;
+  if IdMovimiento <> 0 then
+    if MessageDlg(strDeleteMovimientosDiversificados, mtConfirmation, mbYesNo, 0) = mrYes then
+    begin
+      ScreenCursorProc(crSQLWait);
+      try
+        adopDelMovimientosDiversificados.Parameters.ParamByName('@IdMovimiento').Value:= IdMovimiento;
+        adopDelMovimientosDiversificados.ExecProc;
+      finally
+        ScreenCursorProc(crDefault);
+      end;
+      MessageDlg(strFinish, mtInformation, [mbOk], 0);
+      RefreshADODS(adodsMaster, adodsMasterIdMovimiento);
+    end;
 end;
 
 procedure TdmMovimientos.actEliminarCXCExecute(Sender: TObject);
@@ -224,6 +266,45 @@ begin
   end;
 end;
 
+procedure TdmMovimientos.actMovimientosSolidariosExecute(Sender: TObject);
+begin
+  inherited;
+  if IdPeriodoActual <> 0 then
+    if MessageDlg(strMovimientosSolidarios, mtConfirmation, mbYesNo, 0) = mrYes then
+    begin
+      ScreenCursorProc(crSQLWait);
+      try
+        adopGenMovimientosSolidarios.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodoActual;
+        adopGenMovimientosSolidarios.Parameters.ParamByName('@IdPersonaTitular').Value:= adodsMasterIdPersona.Value;
+        adopGenMovimientosSolidarios.ExecProc;
+      finally
+        ScreenCursorProc(crDefault);
+      end;
+      MessageDlg(strFinish, mtInformation, [mbOk], 0);
+      RefreshADODS(adodsMaster, adodsMasterIdMovimiento);
+    end;
+end;
+
+procedure TdmMovimientos.actRolesTitularExecute(Sender: TObject);
+var
+  frmRolesTitular: TfrmRolesTitular;
+begin
+  inherited;
+  frmRolesTitular := TfrmRolesTitular.Create(Self);
+  try
+    frmRolesTitular.DataSet:= adodsRolesTitular;
+    frmRolesTitular.ReadOnlyGrid:= True;
+    frmRolesTitular.View:= True;
+    adodsRolesTitular.Close;
+    adodsRolesTitular.Parameters.ParamByName('IdPersonaTitular').Value:= adodsMasterIdPersona.Value;
+    adodsRolesTitular.Open;
+    frmRolesTitular.ShowModal;
+  finally
+    adodsRolesTitular.Close;
+    frmRolesTitular.Free;
+  end;
+end;
+
 procedure TdmMovimientos.adodsMasterAfterScroll(DataSet: TDataSet);
 begin
   inherited;
@@ -258,6 +339,9 @@ begin
   TfrmMovimientos(gGridForm).CalcularCXC:= actCalcularCXC;
   TfrmMovimientos(gGridForm).EliminarCXC:= actEliminarCXC;
   TfrmMovimientos(gGridForm).MostrarISR:= actMostrarISR;
+  TfrmMovimientos(gGridForm).EliminarDispercion:= actEliminarDispercion;
+  TfrmMovimientos(gGridForm).RolesTitular:= actRolesTitular;
+  TfrmMovimientos(gGridForm).MovimientosSolidarios:= actMovimientosSolidarios;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
   gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;

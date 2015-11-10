@@ -34,17 +34,22 @@ type
     tvMasterIdPersonaCSD: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
     tvMasterIdDocumento: TcxGridDBColumn;
-    tvMasterArchivo: TcxGridDBColumn;
+    tvMasterIdDocumentoCER: TcxGridDBColumn;
+    tvMasterIdDocumentoKEY: TcxGridDBColumn;
+    tvMasterArchivoKEY: TcxGridDBColumn;
+    tvMasterArchivoCER: TcxGridDBColumn;
     tvMasterClave: TcxGridDBColumn;
     tvMasterVencimiento: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-    FUpdateFile: TBasicAction;
+    FUpdateFileCER: TBasicAction;
+    FUpdateFileKEY: TBasicAction;
   public
     { Public declarations }
-    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
+    property UpdateFileCER: TBasicAction read FUpdateFileCER write FUpdateFileCER;
+    property UpdateFileKEY: TBasicAction read FUpdateFileKEY write FUpdateFileKEY;
   end;
 
 implementation
@@ -62,7 +67,8 @@ end;
 procedure TfrmPersonasCSD.FormShow(Sender: TObject);
 begin
   inherited;
-  TfrmPersonasCSDEdit(gEditForm).UpdateFile := FUpdateFile;
+  TfrmPersonasCSDEdit(gEditForm).UpdateFileCER := FUpdateFileCER;
+  TfrmPersonasCSDEdit(gEditForm).UpdateFileKEY := FUpdateFileKEY;
 end;
 
 end.

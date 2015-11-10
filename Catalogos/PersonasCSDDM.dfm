@@ -4,8 +4,8 @@ inherited dmPersonasCSD: TdmPersonasCSD
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'select IdPersonaCSD, IdPersona, IdDocumento, Clave, Vencimiento ' +
-      'from PersonasCSD'
+      'select IdPersonaCSD, IdPersona, IdDocumentoCER, IdDocumentoKEY, ' +
+      'Clave, Vencimiento from PersonasCSD'
     object adodsMasterIdPersonaCSD: TIntegerField
       FieldName = 'IdPersonaCSD'
       Visible = False
@@ -14,17 +14,33 @@ inherited dmPersonasCSD: TdmPersonasCSD
       FieldName = 'IdPersona'
       Visible = False
     end
-    object adodsMasterIdDocumento: TIntegerField
-      FieldName = 'IdDocumento'
+    object adodsMasterIdDocumentoCER: TIntegerField
+      FieldName = 'IdDocumentoCER'
       Visible = False
     end
-    object adodsMasterArchivo: TStringField
+    object adodsMasterIdDocumentoKEY: TIntegerField
+      FieldName = 'IdDocumentoKEY'
+      Visible = False
+    end
+    object adodsMasterArchivoKEY: TStringField
+      DisplayLabel = 'Archivo KEY'
       FieldKind = fkLookup
-      FieldName = 'Archivo'
+      FieldName = 'ArchivoKEY'
+      LookupDataSet = adodsDocumento2
+      LookupKeyFields = 'IdDocumento'
+      LookupResultField = 'NombreArchivo'
+      KeyFields = 'IdDocumentoKEY'
+      Size = 200
+      Lookup = True
+    end
+    object adodsMasterArchivoCER: TStringField
+      DisplayLabel = 'Archivo CER'
+      FieldKind = fkLookup
+      FieldName = 'ArchivoCER'
       LookupDataSet = adodsDocumento
       LookupKeyFields = 'IdDocumento'
       LookupResultField = 'NombreArchivo'
-      KeyFields = 'IdDocumento'
+      KeyFields = 'IdDocumentoCER'
       Size = 200
       Lookup = True
     end
@@ -37,10 +53,15 @@ inherited dmPersonasCSD: TdmPersonasCSD
     end
   end
   inherited ActionList: TActionList
-    object actUpdateFile: TAction
+    object actUpdateFileCER: TAction
       Caption = '...'
-      Hint = 'Asigna archivo'
-      OnExecute = actUpdateFileExecute
+      Hint = 'Asigna archivo CER'
+      OnExecute = actUpdateFileCERExecute
+    end
+    object actUpdateFileKEY: TAction
+      Caption = '...'
+      Hint = 'Asigna archivo KEY'
+      OnExecute = actUpdateFileKEYExecute
     end
   end
   object adodsDocumento: TADODataSet
@@ -48,7 +69,15 @@ inherited dmPersonasCSD: TdmPersonasCSD
     CursorType = ctStatic
     CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
     Parameters = <>
-    Left = 168
-    Top = 136
+    Left = 104
+    Top = 72
+  end
+  object adodsDocumento2: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'SELECT IdDocumento, NombreArchivo FROM Documentos'
+    Parameters = <>
+    Left = 104
+    Top = 128
   end
 end

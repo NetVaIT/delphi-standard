@@ -1,7 +1,7 @@
 inherited dmMovimientos: TdmMovimientos
   OldCreateOrder = True
   Height = 562
-  Width = 559
+  Width = 756
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     AfterScroll = adodsMasterAfterScroll
@@ -276,6 +276,27 @@ inherited dmMovimientos: TdmMovimientos
       Hint = 'Mostrar ISR de la persona'
       ImageIndex = 11
       OnExecute = actMostrarISRExecute
+    end
+    object actEliminarDispercion: TAction
+      Caption = 'Elimina movimientos diversificados'
+      Hint = 'Elimina movimientos diversificados del periodo actual'
+      ImageIndex = 12
+      OnExecute = actEliminarDispercionExecute
+      OnUpdate = actCalcularmovimientosUpdate
+    end
+    object actRolesTitular: TAction
+      Caption = 'Modifica los roles del titular'
+      Hint = 'Modifica los roles del titular'
+      ImageIndex = 11
+      OnExecute = actRolesTitularExecute
+      OnUpdate = actCalcularmovimientosUpdate
+    end
+    object actMovimientosSolidarios: TAction
+      Caption = 'Generar movimientos de solidarios'
+      Hint = 'Generar movimientos de solidarios'
+      ImageIndex = 11
+      OnExecute = actMovimientosSolidariosExecute
+      OnUpdate = actCalcularmovimientosUpdate
     end
   end
   object adodsPersona: TADODataSet
@@ -634,5 +655,126 @@ inherited dmMovimientos: TdmMovimientos
     Parameters = <>
     Left = 184
     Top = 128
+  end
+  object adopDelMovimientosDiversificados: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_DelMovimientosDiversificados;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@IdMovimiento'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Left = 368
+    Top = 344
+  end
+  object adodsRolesTitular: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 
+      'SELECT PersonasRoles.IdPersonaRol, PersonasRoles.IdRol, P1.IdPer' +
+      'sona, P1.RazonSocial AS Persona, Roles.Descripcion AS Rol, P2.Ra' +
+      'zonSocial AS PersonaRelacionada, '#13#10'RolesEstatus.Descripcion AS E' +
+      'status, RolesClases.Descripcion AS Clase, PersonasRoles.Calcular' +
+      ', PersonasRoles.PorcentajeCalculo'#13#10'FROM PersonasRoles '#13#10'INNER JO' +
+      'IN Roles ON PersonasRoles.IdRol = Roles.IdRol '#13#10'INNER JOIN Perso' +
+      'nas AS P1 ON PersonasRoles.IdPersona = P1.IdPersona '#13#10'INNER JOIN' +
+      ' Personas AS P2 ON PersonasRoles.IdPersonaRelacionada = P2.IdPer' +
+      'sona '#13#10'INNER JOIN RolesEstatus ON PersonasRoles.IdRolEstatus = R' +
+      'olesEstatus.IdRolEstatus '#13#10'INNER JOIN RolesClases ON PersonasRol' +
+      'es.IdRolClase = RolesClases.IdRolClase '#13#10'WHERE PersonasRoles.IdR' +
+      'ol IN (SELECT IdRol FROM Roles WHERE IdRolTipo IN (4,5))'#13#10'AND Pe' +
+      'rsonasRoles.IdRolEstatus = 1'#13#10'AND PersonasRoles.IdPersona IN (SE' +
+      'LECT IdPersona FROM Personas WHERE IdPersonaTitular = :IdPersona' +
+      'Titular)'#13#10'ORDER BY Rol, Persona, PersonaRelacionada'#13#10
+    Parameters = <
+      item
+        Name = 'IdPersonaTitular'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    Left = 552
+    Top = 24
+    object adodsRolesTitularIdPersonaRol: TAutoIncField
+      FieldName = 'IdPersonaRol'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsRolesTitularIdRol: TIntegerField
+      FieldName = 'IdRol'
+      Visible = False
+    end
+    object adodsRolesTitularIdPersona: TAutoIncField
+      FieldName = 'IdPersona'
+      ReadOnly = True
+      Visible = False
+    end
+    object adodsRolesTitularPersona: TStringField
+      FieldName = 'Persona'
+      Size = 300
+    end
+    object adodsRolesTitularRol: TStringField
+      FieldName = 'Rol'
+      Size = 50
+    end
+    object adodsRolesTitularPersonaRelacionada: TStringField
+      DisplayLabel = 'Persona relacionada'
+      FieldName = 'PersonaRelacionada'
+      Size = 300
+    end
+    object adodsRolesTitularEstatus: TStringField
+      FieldName = 'Estatus'
+      Size = 50
+    end
+    object adodsRolesTitularClase: TStringField
+      FieldName = 'Clase'
+      Size = 50
+    end
+    object adodsRolesTitularCalcular: TBooleanField
+      FieldName = 'Calcular'
+    end
+    object adodsRolesTitularPorcentajeCalculo: TFMTBCDField
+      DisplayLabel = 'Porcentaje'
+      FieldName = 'PorcentajeCalculo'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 6
+    end
+  end
+  object adopGenMovimientosSolidarios: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_GenMovimientosSolidarios;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+      end
+      item
+        Name = '@IdPeriodo'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+      end
+      item
+        Name = '@IdPersonaTitular'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+      end>
+    Left = 552
+    Top = 88
   end
 end

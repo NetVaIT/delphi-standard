@@ -29,14 +29,20 @@ type
     Label3: TLabel;
     cxDBLabel1: TcxDBLabel;
     cxDBDateEdit1: TcxDBDateEdit;
-    btnUpdateFile: TSpeedButton;
+    btnUpdateFileCER: TSpeedButton;
+    Label4: TLabel;
+    btnUpdateFileKEY: TSpeedButton;
+    cxDBLabel2: TcxDBLabel;
   private
+    FUpdateFileCER: TBasicAction;
+    FUpdateFileKEY: TBasicAction;
+    procedure SetUpdateFileCER(const Value: TBasicAction);
+    procedure SetUpdateFileKEY(const Value: TBasicAction);
     { Private declarations }
-    FUpdateFile: TBasicAction;
-    procedure SetUpdateFile(const Value: TBasicAction);
   public
     { Public declarations }
-    property UpdateFile: TBasicAction read FUpdateFile write SetUpdateFile;
+    property UpdateFileCER: TBasicAction read FUpdateFileCER write SetUpdateFileCER;
+    property UpdateFileKEY: TBasicAction read FUpdateFileKEY write SetUpdateFileKEY;
   end;
 
 implementation
@@ -45,11 +51,18 @@ implementation
 
 uses PersonasCSDDM;
 
-procedure TfrmPersonasCSDEdit.SetUpdateFile(
-  const Value: TBasicAction);
+{ TfrmPersonasCSDEdit }
+
+procedure TfrmPersonasCSDEdit.SetUpdateFileCER(const Value: TBasicAction);
 begin
-  FUpdateFile := Value;
-  btnUpdateFile.Action := Value;
+  FUpdateFileCER := Value;
+  btnUpdateFileCER.Action := Value;
+end;
+
+procedure TfrmPersonasCSDEdit.SetUpdateFileKEY(const Value: TBasicAction);
+begin
+  FUpdateFileKEY := Value;
+  btnUpdateFileKEY.Action := Value;
 end;
 
 end.

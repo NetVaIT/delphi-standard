@@ -135,6 +135,7 @@ procedure TdmImportXLS.dxmdImportarNewRecord(DataSet: TDataSet);
 begin
   inherited;
   dxmdImportarGenerada.Value:= False;
+  dxmdImportarEncontrada.Value:= False;
 end;
 
 function TdmImportXLS.Execute: Boolean;
@@ -385,6 +386,7 @@ var
   Position: Integer;
   IdPersona: Variant;
   Nombre: String;
+  Dato: String;
   a: integer;
 begin
   Result:= True;
@@ -402,13 +404,19 @@ begin
   Nombre := EmptyStr;
   while not dxmdImportar.Eof do
   begin
-    if dxmdImportarNombre.AsString <> Nombre then
+    Dato:= Trim(dxmdImportarNombre.AsString);
+    if Dato <> EmptyStr then
     begin
-      Nombre := dxmdImportarNombre.AsString;
-      adocGetPersona.Parameters.ParamByName('Nombre').Value:= Nombre;
-      adocGetPersona.Execute;
-      IdPersona:= adocGetPersona.Parameters.ParamByName('IdPersona').Value;
-    end;
+      if Dato <> Nombre then
+      begin
+        Nombre := Dato;
+        adocGetPersona.Parameters.ParamByName('Nombre').Value:= Nombre;
+        adocGetPersona.Execute;
+        IdPersona:= adocGetPersona.Parameters.ParamByName('IdPersona').Value;
+      end;
+    end
+    else
+      IdPersona:= Null;
     dxmdImportar.Edit;
     if VarIsNull(IdPersona) then
     begin

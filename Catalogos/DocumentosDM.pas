@@ -9,10 +9,10 @@ uses
   Winapi.ShellAPI;
 
   const
-  FileExts: array[0..6] of string = ('.xml', '.doc', '.docx', '.xls', '.xlsx', '.txt', '.csv');
+  FileExts: array[0..8] of string = ('.xml', '.doc', '.docx', '.xls', '.xlsx', '.txt', '.csv', '.cer', '.key');
 
 type
-  TFileAllowed = (faAll, faXML, faDOC, faDOCx, faXLS, faXLSx, faTXT, faCSV);
+  TFileAllowed = (faAll, faXML, faDOC, faDOCx, faXLS, faXLSx, faTXT, faCSV, faCER, faKEY);
   TFilesAllowed = set of TFileAllowed;
 
   TdmDocumentos = class(T_dmStandar)
@@ -47,6 +47,7 @@ type
     procedure actSaveFileUpdate(Sender: TObject);
     procedure actViewFileUpdate(Sender: TObject);
     procedure actViewFileExecute(Sender: TObject);
+    procedure adodsUpdateNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     FFilename: TFileName;
@@ -114,6 +115,13 @@ begin
   inherited;
   if Sender is TAction then
     TAction(Sender).Enabled:= adodsUpdateNombreArchivo.AsString <> EmptyStr;
+end;
+
+procedure TdmDocumentos.adodsUpdateNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  adodsUpdateIdDocumentoTipo.Value:= 2;
+  adodsUpdateIdDocumentoClase.Value:= 1;
 end;
 
 procedure TdmDocumentos.DataModuleCreate(Sender: TObject);
@@ -219,7 +227,11 @@ begin
     faAll: OpenDialog.Filter:= 'Todos los Archivos|*.*';
     faXLS: OpenDialog.Filter:= 'Archivo Microsoft Excel|*.xls';
     faXLSx: OpenDialog.Filter:= 'Archivo Microsoft Excel|*.xlsx';
+    faCER: OpenDialog.Filter:= 'Archivo CER|*.cer';
+    faKEY: OpenDialog.Filter:= 'Archivo KEY|*.key';
   end;
+  if FFileAllowed <> faAll then
+    OpenDialog.Filter:= OpenDialog.Filter + '|Todos los Archivos|*.*';
 end;
 
 //procedure TQImport3WizardF.ChangeExtension;

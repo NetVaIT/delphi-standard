@@ -129,6 +129,7 @@ begin
   SQLSelect:= 'SELECT IdPersona, RFC, CURP, IdPersonaTipo, IdRazonSocialTipo, IdSexo, IdEstadoCivil, IdPais, IdPoblacion, ' +
   'RazonSocial, Nombre, ApellidoPaterno, ApellidoMaterno, FechaNacimiento, LugarNacimiento, IdPersonaTitular, VigenciaFM34 ' +
   'FROM Personas ';
+  SQLOrderBy:= 'ORDER BY RazonSocial';
   actSearch.Execute;
 end;
 

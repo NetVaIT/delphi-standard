@@ -138,8 +138,8 @@ inherited dmFacturacion: TdmFacturacion
         Size = 4
         Value = Null
       end>
-    Left = 72
-    Top = 136
+    Left = 80
+    Top = 96
     object adodsEmisorIdPersona: TIntegerField
       FieldName = 'IdPersona'
     end
@@ -204,8 +204,8 @@ inherited dmFacturacion: TdmFacturacion
         Size = 4
         Value = Null
       end>
-    Left = 72
-    Top = 200
+    Left = 80
+    Top = 152
     object adodsReceptorIdPersona: TIntegerField
       FieldName = 'IdPersona'
     end
@@ -254,78 +254,6 @@ inherited dmFacturacion: TdmFacturacion
       Size = 100
     end
   end
-  object adodsCer: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 
-      'SELECT IdPersona, Clave, Vencimiento, NombreArchivo, Archivo FRO' +
-      'M vCertificadosFacturacion WHERE (Clave = '#39#39' OR Clave IS NULL) A' +
-      'ND IdPersona = :IdPersona'
-    Parameters = <
-      item
-        Name = 'IdPersona'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 216
-    Top = 120
-    object adodsCerIdPersona: TIntegerField
-      FieldName = 'IdPersona'
-    end
-    object adodsCerClave: TStringField
-      FieldName = 'Clave'
-      Size = 100
-    end
-    object adodsCerVencimiento: TDateTimeField
-      FieldName = 'Vencimiento'
-    end
-    object adodsCerNombreArchivo: TStringField
-      FieldName = 'NombreArchivo'
-      Size = 200
-    end
-    object adodsCerArchivo: TBlobField
-      FieldName = 'Archivo'
-    end
-  end
-  object adodsKey: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 
-      'SELECT IdPersona, Clave, Vencimiento, NombreArchivo, Archivo FRO' +
-      'M vCertificadosFacturacion WHERE Clave <> '#39#39' AND IdPersona = :Id' +
-      'Persona'
-    Parameters = <
-      item
-        Name = 'IdPersona'
-        Attributes = [paSigned]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
-        Value = Null
-      end>
-    Left = 216
-    Top = 216
-    object adodsKeyIdPersona: TIntegerField
-      FieldName = 'IdPersona'
-    end
-    object adodsKeyClave: TStringField
-      FieldName = 'Clave'
-      Size = 100
-    end
-    object adodsKeyVencimiento: TDateTimeField
-      FieldName = 'Vencimiento'
-    end
-    object adodsKeyNombreArchivo: TStringField
-      FieldName = 'NombreArchivo'
-      Size = 200
-    end
-    object adodsKeyArchivo: TBlobField
-      FieldName = 'Archivo'
-    end
-  end
   object adocFacturaCuenta: TADOCommand
     CommandText = 
       'UPDATE CuentasXCobrar'#13#10'SET IdCuentaXCobrarEstatus = 3 '#13#10'WHERE Id' +
@@ -340,8 +268,8 @@ inherited dmFacturacion: TdmFacturacion
         Size = 4
         Value = Null
       end>
-    Left = 112
-    Top = 280
+    Left = 256
+    Top = 288
   end
   object adodsCXCFacturasEmitidas: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -350,8 +278,8 @@ inherited dmFacturacion: TdmFacturacion
       'SELECT IdCuentaXCobrarFacturaEmitida, IdDocumentoXML, IdDocument' +
       'oPDF, Emision, Serie, Folio FROM CuentasXCobrarFacturasEmitidas'
     Parameters = <>
-    Left = 384
-    Top = 168
+    Left = 80
+    Top = 208
     object adodsCXCFacturasEmitidasIdCuentaXCobrarFacturaEmitida: TAutoIncField
       FieldName = 'IdCuentaXCobrarFacturaEmitida'
       ReadOnly = True
@@ -401,8 +329,8 @@ inherited dmFacturacion: TdmFacturacion
       'SELECT IdDocumento, IdDocumentoTipo, IdDocumentoClase, Descripci' +
       'on, NombreArchivo, IdArchivo, Archivo FROM Documentos'
     Parameters = <>
-    Left = 384
-    Top = 232
+    Left = 72
+    Top = 272
     object adodsDocumentoIdDocumento: TAutoIncField
       FieldName = 'IdDocumento'
       ReadOnly = True
@@ -428,6 +356,35 @@ inherited dmFacturacion: TdmFacturacion
     end
     object adodsDocumentoArchivo: TBlobField
       FieldName = 'Archivo'
+    end
+  end
+  object PersonasCDS: TADOQuery
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'IdPersona'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT IdDocumentoCER, IdDocumentoKEY, Clave'
+      'FROM PersonasCSD'
+      'WHERE IdPersona = :IdPersona')
+    Left = 168
+    Top = 104
+    object PersonasCDSIdDocumentoCER: TIntegerField
+      FieldName = 'IdDocumentoCER'
+    end
+    object PersonasCDSIdDocumentoKEY: TIntegerField
+      FieldName = 'IdDocumentoKEY'
+    end
+    object PersonasCDSClave: TStringField
+      FieldName = 'Clave'
+      Size = 100
     end
   end
 end

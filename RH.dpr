@@ -225,7 +225,8 @@ uses
   PersonasCSDEdit in 'Catalogos\PersonasCSDEdit.pas' {frmPersonasCSDEdit},
   PersonasCSDForm in 'Catalogos\PersonasCSDForm.pas' {frmPersonasCSD},
   TmpInstruccionesForm in 'Procesos\TmpInstruccionesForm.pas' {frmTmpInstrucciones},
-  TmpInstruccionesDM in 'Procesos\TmpInstruccionesDM.pas' {dmTmpInstrucciones: TDataModule};
+  TmpInstruccionesDM in 'Procesos\TmpInstruccionesDM.pas' {dmTmpInstrucciones: TDataModule},
+  RolesTitularFrm in 'Procesos\RolesTitularFrm.pas' {frmRolesTitular};
 
 {$R *.res}
 

@@ -8,7 +8,7 @@ inherited dmPersona: TdmPersona
       'SELECT IdPersona, RFC, CURP, IdPersonaTipo, IdRazonSocialTipo, I' +
       'dSexo, IdEstadoCivil, IdPais, IdPoblacion, RazonSocial, Nombre, ' +
       'ApellidoPaterno, ApellidoMaterno, FechaNacimiento, LugarNacimien' +
-      'to, IdPersonaTitular, VigenciaFM34 FROM Personas'#13#10
+      'to, IdPersonaTitular, VigenciaFM34 FROM Personas'#13#10#13#10
     Left = 56
     object adodsMasterIdPersona: TAutoIncField
       FieldName = 'IdPersona'
@@ -310,6 +310,8 @@ inherited dmPersona: TdmPersona
     object adodsPersonaRolesPorcentajeCalculo: TFMTBCDField
       DisplayLabel = 'Porcentaje Calculo'
       FieldName = 'PorcentajeCalculo'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
       Precision = 18
       Size = 6
     end

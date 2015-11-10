@@ -76,6 +76,9 @@ type
     tvMasterRetencion: TcxGridDBColumn;
     tvMasterSaldoCosto: TcxGridDBColumn;
     tvMasterSaldoCostoGrupo: TcxGridDBColumn;
+    dxbtnEliminarDispercion: TdxBarButton;
+    dxbtnRolesTitular: TdxBarButton;
+    dxbtnMovimientosSolidarios: TdxBarButton;
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
       var AStyle: TcxStyle);
@@ -89,6 +92,9 @@ type
     FCalcularCXC: TBasicAction;
     FEliminarCXP: TBasicAction;
     FMostrarISR: TBasicAction;
+    FEliminarDispercion: TBasicAction;
+    FRolesTitular: TBasicAction;
+    FMovimientosSolidarios: TBasicAction;
     procedure SetCalcularCXP(const Value: TBasicAction);
     function GetIdPeriodo: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
@@ -99,6 +105,9 @@ type
     procedure SetEliminarCXC(const Value: TBasicAction);
     procedure SetEliminarCXP(const Value: TBasicAction);
     procedure SetMostrarISR(const Value: TBasicAction);
+    procedure SetEliminarDispercion(const Value: TBasicAction);
+    procedure SetRolesTitular(const Value: TBasicAction);
+    procedure SetMovimientosSolidarios(const Value: TBasicAction);
   public
     { Public declarations }
     property CalcularMovimientos: TBasicAction read FCalcularMovimientos write SetCalcularMovimientos;
@@ -110,6 +119,9 @@ type
     property MostrarISR: TBasicAction read FMostrarISR write SetMostrarISR;
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
+    property EliminarDispercion: TBasicAction read FEliminarDispercion write SetEliminarDispercion;
+    property RolesTitular: TBasicAction read FRolesTitular write SetRolesTitular;
+    property MovimientosSolidarios: TBasicAction read FMovimientosSolidarios write SetMovimientosSolidarios;
   end;
 
 implementation
@@ -164,6 +176,12 @@ begin
   dxbtnEliminarCXP.Action:= Value;
 end;
 
+procedure TfrmMovimientos.SetEliminarDispercion(const Value: TBasicAction);
+begin
+  FEliminarDispercion := Value;
+  dxbtnEliminarDispercion.Action:= Value;
+end;
+
 procedure TfrmMovimientos.SetEliminarMovimientos(const Value: TBasicAction);
 begin
   FEliminarMovimientos := Value;
@@ -179,6 +197,18 @@ procedure TfrmMovimientos.SetMostrarISR(const Value: TBasicAction);
 begin
   FMostrarISR := Value;
   dxbtnMostrarISR.Action:= Value;
+end;
+
+procedure TfrmMovimientos.SetMovimientosSolidarios(const Value: TBasicAction);
+begin
+  FMovimientosSolidarios := Value;
+  dxbtnMovimientosSolidarios.Action:= Value;
+end;
+
+procedure TfrmMovimientos.SetRolesTitular(const Value: TBasicAction);
+begin
+  FRolesTitular := Value;
+  dxbtnRolesTitular.Action:= Value;
 end;
 
 procedure TfrmMovimientos.tvMasterStylesGetContentStyle(

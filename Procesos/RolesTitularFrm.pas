@@ -1,4 +1,4 @@
-unit IncidenciasForm;
+unit RolesTitularFrm;
 
 interface
 
@@ -18,25 +18,29 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
-  dxSkinsdxBarPainter, dxBar, Vcl.ImgList, cxGridCustomPopupMenu,
-  cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns, System.Actions,
-  Vcl.ActnList, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, dxPSGlbl, dxPSUtl,
-  dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxPSCompsProvider,
-  dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore, dxPSPDFExport,
-  cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
-  dxPScxPageControlProducer, dxPScxGridLnk, dxPScxGridLayoutViewLnk,
-  dxPScxEditorProducers, dxPScxExtEditorProducers, dxSkinsdxRibbonPainter,
-  dxPSCore, dxPScxCommon, Vcl.StdCtrls;
+  dxSkinsdxBarPainter, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap,
+  dxPrnDev, dxPSCompsProvider, dxPSFillPatterns, dxPSEdgePatterns,
+  dxPSPDFExportCore, dxPSPDFExport, cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv,
+  dxPSPrVwRibbon, dxPScxPageControlProducer, dxPScxGridLnk,
+  dxPScxGridLayoutViewLnk, dxPScxEditorProducers, dxPScxExtEditorProducers,
+  dxSkinsdxRibbonPainter, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, dxPSCore, dxPScxCommon, dxBar, Vcl.ImgList,
+  cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
+  System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
+  cxGrid, Vcl.ExtCtrls;
 
 type
-  TfrmIncidencias = class(T_frmGrid)
-    tvMasterIdIncidencia: TcxGridDBColumn;
-    tvMasterIdInstruccion: TcxGridDBColumn;
+  TfrmRolesTitular = class(T_frmGrid)
+    tvMasterIdPersonaRol: TcxGridDBColumn;
+    tvMasterIdRol: TcxGridDBColumn;
     tvMasterIdPersona: TcxGridDBColumn;
-    tvMasterInstruccion: TcxGridDBColumn;
     tvMasterPersona: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+    tvMasterRol: TcxGridDBColumn;
+    tvMasterPersonaRelacionada: TcxGridDBColumn;
+    tvMasterEstatus: TcxGridDBColumn;
+    tvMasterClase: TcxGridDBColumn;
+    tvMasterCalcular: TcxGridDBColumn;
+    tvMasterPorcentajeCalculo: TcxGridDBColumn;
   private
     { Private declarations }
   public
@@ -47,12 +51,6 @@ implementation
 
 {$R *.dfm}
 
-uses IncidenciasDM, IncidenciasEdit;
-
-procedure TfrmIncidencias.FormCreate(Sender: TObject);
-begin
-  inherited;
-  gEditForm:= TfrmIncidenciasEdit.Create(Self);
-end;
+uses MovimientosDM;
 
 end.

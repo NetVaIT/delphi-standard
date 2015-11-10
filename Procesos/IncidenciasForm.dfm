@@ -3,7 +3,6 @@ inherited frmIncidencias: TfrmIncidencias
   Caption = 'Incidencias'
   ClientHeight = 428
   ClientWidth = 645
-  OnCreate = FormCreate
   ExplicitWidth = 651
   ExplicitHeight = 457
   PixelsPerInch = 96
@@ -44,10 +43,6 @@ inherited frmIncidencias: TfrmIncidencias
         end
         object tvMasterIdPersona: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersona'
-          Visible = False
-        end
-        object tvMasterIdPersonaRelacionada: TcxGridDBColumn
-          DataBinding.FieldName = 'IdPersonaRelacionada'
           Visible = False
         end
         object tvMasterInstruccion: TcxGridDBColumn
@@ -106,7 +101,7 @@ inherited frmIncidencias: TfrmIncidencias
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

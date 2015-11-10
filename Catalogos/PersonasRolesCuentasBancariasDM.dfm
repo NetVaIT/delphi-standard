@@ -64,6 +64,8 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
     end
     object adodsMasterPorcentaje: TBCDField
       FieldName = 'Porcentaje'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end

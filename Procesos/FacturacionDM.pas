@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
-  Data.DB, Data.Win.ADODB, VirtualXML, Dialogs, DateUtils, Forms, System.IOUtils;
+  Data.DB, Data.Win.ADODB, VirtualXML, Dialogs, DateUtils, Forms, System.IOUtils,
+  DocumentosDM;
 
 type
   TdmFacturacion = class(T_dmStandar)
@@ -52,16 +53,6 @@ type
     adodsReceptorMunicipio: TStringField;
     adodsReceptorEstado: TStringField;
     adodsReceptorPais: TStringField;
-    adodsCer: TADODataSet;
-    adodsKey: TADODataSet;
-    adodsCerIdPersona: TIntegerField;
-    adodsCerClave: TStringField;
-    adodsCerNombreArchivo: TStringField;
-    adodsCerArchivo: TBlobField;
-    adodsKeyIdPersona: TIntegerField;
-    adodsKeyClave: TStringField;
-    adodsKeyNombreArchivo: TStringField;
-    adodsKeyArchivo: TBlobField;
     adodsMasterRegimenFiscal: TStringField;
     adocFacturaCuenta: TADOCommand;
     adodsMasterIdCuentaXCobrar: TIntegerField;
@@ -83,16 +74,20 @@ type
     adodsDocumentoIdArchivo: TGuidField;
     adodsDocumentoArchivo: TBlobField;
     actXMLaPDF: TAction;
-    adodsCerVencimiento: TDateTimeField;
-    adodsKeyVencimiento: TDateTimeField;
+    PersonasCDS: TADOQuery;
+    PersonasCDSIdDocumentoCER: TIntegerField;
+    PersonasCDSIdDocumentoKEY: TIntegerField;
+    PersonasCDSClave: TStringField;
     procedure actListaFacturarExecute(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
     procedure actProcesarFacturasExecute(Sender: TObject);
     procedure actXMLaPDFExecute(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
-    procedure ReadFileCER(FileName: TFileName);
-    procedure ReadFileKEY(FileName: TFileName);
+    dmDocumentos: TdmDocumentos;
+//    procedure ReadFileCER(FileName: TFileName);
+//    procedure ReadFileKEY(FileName: TFileName);
     procedure SubirXMLPDFaFS(FileName: TFileName);
     function CargaXMLPDFaFS(Archivo : string; Describe : string):integer;
   public
@@ -129,12 +124,11 @@ var
   Concepto1 : TFEConcepto;
 //  Concepto2 : TFEConcepto;
   TimbreCFDI: TTimbreCFDI;
-  FileCertificado, FileKey : TFileName;
-  Clave : String;
   Anio, Mes, Dia : Word;
   RutaBase, SubCarpeta, RutaFactura, RutaPDF : String;
   XMLpdf : TdmodXMLtoPDF;
   Max, Avance, i : integer;
+  IdPersona: Integer;
 begin
   inherited;
   XMLpdf := TdmodXMLtoPDF.Create(Self);
@@ -157,19 +151,13 @@ begin
     begin
 //      adodsMaster.First;
       ShowProgress(Avance,100.1,'Facturando... ' + IntToStr(Avance) + '%');
-      adodsCer.Close;
-      adodsKey.Close;
+      IdPersona := adodsMaster.FieldByName('IdPersona').Value;
       adodsEmisor.Close;
-      adodsReceptor.Close;
-      adodsEmisor.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersona').Value;
-      adodsReceptor.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersonaRelacionada').Value;
-      adodsCer.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersona').Value;
-      adodsKey.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersona').Value;
+      adodsEmisor.Parameters.ParamByName('IdPersona').Value := IdPersona;
       adodsEmisor.Open;
+      adodsReceptor.Close;
+      adodsReceptor.Parameters.ParamByName('IdPersona').Value := adodsMaster.FieldByName('IdPersonaRelacionada').Value;
       adodsReceptor.Open;
-      adodsCer.Open;
-      adodsKey.Open;
-
       DocumentoComprobanteFiscal:= TDocumentoComprobanteFiscal.Create;
       try
         Emisor.RFC                    := TFERFC(adodsEmisorRFC.AsString);
@@ -211,16 +199,16 @@ begin
     //    Receptor.Direccion.Localidad:='Boca del Rio';
 
         // 4. Definimos el certificado junto con su llave privada
-
-        FileCertificado := TPath.GetTempPath + adodsCerNombreArchivo.AsString;
-        ReadFileCER(FileCertificado);
-        FileKey := TPath.GetTempPath + adodsKeyNombreArchivo.AsString;
-        ReadFileKEY(FileKey);
-        Clave := adodsKeyClave.AsString;
-        Certificado.Ruta := FileCertificado;
-        Certificado.LlavePrivada.Ruta := FileKey;
-        Certificado.LlavePrivada.Clave := Clave;
-
+        PersonasCDS.Close;
+        PersonasCDS.Parameters.ParamByName('IdPersona').Value := IdPersona;
+        PersonasCDS.Open;
+        try
+          Certificado.Ruta := dmDocumentos.GetFileName(PersonasCDSIdDocumentoCER.Value);
+          Certificado.LlavePrivada.Ruta := dmDocumentos.GetFileName(PersonasCDSIdDocumentoKEY.Value);
+          Certificado.LlavePrivada.Clave := PersonasCDSClave.AsString;
+        finally
+          PersonasCDS.Close;
+        end;
     //      // 5. Creamos la clase Factura con los parametros minimos.
     //      WriteLn('Generando factura CFD ...');
     //      Factura:=TFacturaElectronica.Create(Emisor, Receptor, Certificado, tcIngreso);
@@ -341,48 +329,55 @@ end;
 procedure TdmFacturacion.DataModuleCreate(Sender: TObject);
 begin
   inherited;
+  dmDocumentos:= TdmDocumentos.Create(Self);
   gGridForm := TfrmFacturacion.Create(Self);
   gGridForm.DataSet := adodsMaster;
   TfrmFacturacion(gGridForm).FacturarCtas := actProcesarFacturas;
 end;
 
-procedure TdmFacturacion.ReadFileCER(FileName: TFileName);
-var
-  Blob : TStream;
-  Fs: TFileStream;
+procedure TdmFacturacion.DataModuleDestroy(Sender: TObject);
 begin
-  Blob := adodsCer.CreateBlobStream(adodsCerArchivo, bmRead);
-  try
-    Blob.Seek(0, soFromBeginning);
-    Fs := TFileStream.Create(FileName, fmCreate);
-    try
-      Fs.CopyFrom(Blob, Blob.Size);
-    finally
-      Fs.Free;
-    end;
-  finally
-    Blob.Free
-  end;
+  inherited;
+  FreeAndNil(dmDocumentos);
 end;
 
-procedure TdmFacturacion.ReadFileKEY(FileName: TFileName);
-var
-  Blob : TStream;
-  Fs: TFileStream;
-begin
-  Blob := adodsKey.CreateBlobStream(adodsKeyArchivo, bmRead);
-  try
-    Blob.Seek(0, soFromBeginning);
-    Fs := TFileStream.Create(FileName, fmCreate);
-    try
-      Fs.CopyFrom(Blob, Blob.Size);
-    finally
-      Fs.Free;
-    end;
-  finally
-    Blob.Free
-  end;
-end;
+//procedure TdmFacturacion.ReadFileCER(FileName: TFileName);
+//var
+//  Blob : TStream;
+//  Fs: TFileStream;
+//begin
+//  Blob := adodsCer.CreateBlobStream(adodsCerArchivo, bmRead);
+//  try
+//    Blob.Seek(0, soFromBeginning);
+//    Fs := TFileStream.Create(FileName, fmCreate);
+//    try
+//      Fs.CopyFrom(Blob, Blob.Size);
+//    finally
+//      Fs.Free;
+//    end;
+//  finally
+//    Blob.Free
+//  end;
+//end;
+//
+//procedure TdmFacturacion.ReadFileKEY(FileName: TFileName);
+//var
+//  Blob : TStream;
+//  Fs: TFileStream;
+//begin
+//  Blob := adodsKey.CreateBlobStream(adodsKeyArchivo, bmRead);
+//  try
+//    Blob.Seek(0, soFromBeginning);
+//    Fs := TFileStream.Create(FileName, fmCreate);
+//    try
+//      Fs.CopyFrom(Blob, Blob.Size);
+//    finally
+//      Fs.Free;
+//    end;
+//  finally
+//    Blob.Free
+//  end;
+//end;
 
 procedure TdmFacturacion.SubirXMLPDFaFS(FileName: TFileName);
 var

@@ -77,6 +77,7 @@ inherited dmImportXLS: TdmImportXLS
     end
     object dxmdImportarValor: TFloatField
       FieldName = 'Valor'
+      currency = True
     end
     object dxmdImportarIdPersona: TIntegerField
       FieldName = 'IdPersona'

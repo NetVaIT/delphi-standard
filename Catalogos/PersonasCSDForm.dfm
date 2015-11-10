@@ -19,13 +19,25 @@ inherited frmPersonasCSD: TfrmPersonasCSD
           DataBinding.FieldName = 'IdDocumento'
           Visible = False
         end
-        object tvMasterArchivo: TcxGridDBColumn
-          DataBinding.FieldName = 'Archivo'
+        object tvMasterIdDocumentoCER: TcxGridDBColumn
+          DataBinding.FieldName = 'IdDocumentoCER'
+          Visible = False
+        end
+        object tvMasterIdDocumentoKEY: TcxGridDBColumn
+          DataBinding.FieldName = 'IdDocumentoKEY'
+          Visible = False
+        end
+        object tvMasterArchivoKEY: TcxGridDBColumn
+          DataBinding.FieldName = 'ArchivoKEY'
+          Width = 304
+        end
+        object tvMasterArchivoCER: TcxGridDBColumn
+          DataBinding.FieldName = 'ArchivoCER'
           Width = 304
         end
         object tvMasterClave: TcxGridDBColumn
           DataBinding.FieldName = 'Clave'
-          Width = 200
+          Width = 100
         end
         object tvMasterVencimiento: TcxGridDBColumn
           DataBinding.FieldName = 'Vencimiento'

@@ -98,25 +98,6 @@ inherited frmMovimientos: TfrmMovimientos
           DataBinding.FieldName = 'CargaGrupo'
           Width = 104
         end
-        object tvMasterSaldoPeriodo: TcxGridDBColumn
-          DataBinding.FieldName = 'SaldoPeriodo'
-          Visible = False
-          Width = 104
-        end
-        object tvMasterSaldoPeriodoGrupo: TcxGridDBColumn
-          DataBinding.FieldName = 'SaldoPeriodoGrupo'
-          Width = 104
-        end
-        object tvMasterSaldo: TcxGridDBColumn
-          DataBinding.FieldName = 'Saldo'
-          Visible = False
-          Width = 104
-        end
-        object tvMasterSaldoGrupo: TcxGridDBColumn
-          DataBinding.FieldName = 'SaldoGrupo'
-          Styles.Content = cxsMedGray
-          Width = 104
-        end
         object tvMasterRetencion: TcxGridDBColumn
           DataBinding.FieldName = 'Retencion'
         end
@@ -136,6 +117,25 @@ inherited frmMovimientos: TfrmMovimientos
         end
         object tvMasterEntregas: TcxGridDBColumn
           DataBinding.FieldName = 'Entregas'
+          Width = 104
+        end
+        object tvMasterSaldoPeriodo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoPeriodo'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterSaldoPeriodoGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoPeriodoGrupo'
+          Width = 104
+        end
+        object tvMasterSaldo: TcxGridDBColumn
+          DataBinding.FieldName = 'Saldo'
+          Visible = False
+          Width = 104
+        end
+        object tvMasterSaldoGrupo: TcxGridDBColumn
+          DataBinding.FieldName = 'SaldoGrupo'
+          Styles.Content = cxsMedGray
           Width = 104
         end
         object tvMasterPercepciones: TcxGridDBColumn
@@ -214,7 +214,42 @@ inherited frmMovimientos: TfrmMovimientos
       0
       31
       0)
+    inherited dxbNavigator: TdxBar
+      DockedLeft = 174
+    end
+    inherited dxbEdit: TdxBar
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'Insert1'
+        end
+        item
+          Visible = True
+          ItemName = 'Edit1'
+        end
+        item
+          Visible = True
+          ItemName = 'Delete1'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton7'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnEliminarDispercion'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnRolesTitular'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbtnMovimientosSolidarios'
+        end>
+    end
     inherited dxbTools: TdxBar
+      DockedLeft = 302
       ItemLinks = <
         item
           Visible = True
@@ -254,7 +289,7 @@ inherited frmMovimientos: TfrmMovimientos
         end>
     end
     inherited dxbFilter: TdxBar
-      DockedLeft = 453
+      DockedLeft = 522
       ItemLinks = <
         item
           Visible = True
@@ -326,6 +361,27 @@ inherited frmMovimientos: TfrmMovimientos
     object dxbtnMostrarISR: TdxBarButton
       Caption = 'Mostrar ISR'
       Category = 0
+      Visible = ivAlways
+      ImageIndex = 11
+    end
+    object dxbtnEliminarDispercion: TdxBarButton
+      Caption = 'Elimina movimientos diversificados'
+      Category = 0
+      Hint = 'Elimina movimientos diversificados del periodo actual'
+      Visible = ivAlways
+      ImageIndex = 12
+    end
+    object dxbtnRolesTitular: TdxBarButton
+      Caption = 'Modifica los roles del titular'
+      Category = 0
+      Hint = 'Modifica los roles del titular'
+      Visible = ivAlways
+      ImageIndex = 11
+    end
+    object dxbtnMovimientosSolidarios: TdxBarButton
+      Caption = 'Generar movimientos de solidarios'
+      Category = 0
+      Hint = 'Generar movimientos de solidarios'
       Visible = ivAlways
       ImageIndex = 11
     end

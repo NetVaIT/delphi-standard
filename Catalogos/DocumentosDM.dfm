@@ -68,6 +68,7 @@ inherited dmDocumentos: TdmDocumentos
   end
   inherited adodsUpdate: TADODataSet
     CursorType = ctStatic
+    OnNewRecord = adodsUpdateNewRecord
     CommandText = 
       'SELECT IdDocumento, IdDocumentoTipo, IdDocumentoClase, Descripci' +
       'on, NombreArchivo, IdArchivo, Archivo FROM Documentos'#13#10'WHERE IdD' +
