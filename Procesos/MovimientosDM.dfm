@@ -6,13 +6,22 @@ inherited dmMovimientos: TdmMovimientos
     CursorType = ctStatic
     AfterScroll = adodsMasterAfterScroll
     CommandText = 
-      'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Retencion, ' +
-      'Descuentos, Base, Entregas, '#13#10'Percepciones, Deducciones, Prestac' +
-      'iones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRe' +
-      'tenido,'#13#10'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Sal' +
-      'do, SaldoCosto, '#13#10'BaseGrupo, CostoGrupo, CargaGrupo, SaldoAnteri' +
-      'orGrupo, SaldoPeriodoGrupo, SaldoGrupo, SaldoCostoGrupo FROM Mov' +
-      'imientos'
+      'SELECT Movimientos.IdMovimiento, Movimientos.IdPersona, Movimien' +
+      'tos.IdPeriodo, Personas.RazonSocial AS Persona, Personas_1.Razon' +
+      'Social AS PersonaTitular, Movimientos.Ingresos, Movimientos.Rete' +
+      'ncion, '#13#10'Movimientos.Descuentos, Movimientos.Base, Movimientos.E' +
+      'ntregas, Movimientos.Percepciones, Movimientos.Deducciones, Movi' +
+      'mientos.Prestaciones, Movimientos.Obligaciones, Movimientos.Oper' +
+      'aciones, '#13#10'Movimientos.ImpuestoTrasladado, Movimientos.ImpuestoR' +
+      'etenido, Movimientos.Egresos, Movimientos.Costo, Movimientos.Car' +
+      'ga, Movimientos.SaldoAnterior, Movimientos.SaldoPeriodo, Movimie' +
+      'ntos.Saldo, '#13#10'Movimientos.SaldoCosto, Movimientos.BaseGrupo, Mov' +
+      'imientos.CostoGrupo, Movimientos.CargaGrupo, Movimientos.SaldoAn' +
+      'teriorGrupo, Movimientos.SaldoPeriodoGrupo, Movimientos.SaldoGru' +
+      'po, Movimientos.SaldoCostoGrupo'#13#10'FROM Movimientos '#13#10'INNER JOIN P' +
+      'ersonas ON Movimientos.IdPersona = Personas.IdPersona '#13#10'LEFT OUT' +
+      'ER JOIN Personas AS Personas_1 ON Personas.IdPersonaTitular = Pe' +
+      'rsonas_1.IdPersona '#13#10'ORDER BY Persona'
     object adodsMasterIdMovimiento: TAutoIncField
       FieldName = 'IdMovimiento'
       ReadOnly = True
@@ -27,26 +36,13 @@ inherited dmMovimientos: TdmMovimientos
       Visible = False
     end
     object adodsMasterPersona: TStringField
-      FieldKind = fkLookup
       FieldName = 'Persona'
-      LookupDataSet = adodsPersona
-      LookupKeyFields = 'IdPersona'
-      LookupResultField = 'RazonSocial'
-      KeyFields = 'IdPersona'
-      Size = 500
-      Lookup = True
+      Size = 300
     end
     object adodsMasterPersonaTitular: TStringField
       DisplayLabel = 'Titular'
-      FieldKind = fkLookup
       FieldName = 'PersonaTitular'
-      LookupDataSet = adodsPersonaTitular
-      LookupKeyFields = 'IdPersona'
-      LookupResultField = 'Titular'
-      KeyFields = 'IdPersona'
-      Visible = False
-      Size = 500
-      Lookup = True
+      Size = 300
     end
     object adodsMasterIngresos: TFMTBCDField
       FieldName = 'Ingresos'
@@ -298,14 +294,10 @@ inherited dmMovimientos: TdmMovimientos
       OnExecute = actMovimientosSolidariosExecute
       OnUpdate = actCalcularmovimientosUpdate
     end
-  end
-  object adodsPersona: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 'select IdPersona, RazonSocial from Personas'
-    Parameters = <>
-    Left = 184
-    Top = 16
+    object actSetPorcent: TAction
+      Caption = 'Calcular porcentaje'
+      OnExecute = actSetPorcentExecute
+    end
   end
   object adodsPeriodo: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -313,7 +305,7 @@ inherited dmMovimientos: TdmMovimientos
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
     Parameters = <>
     Left = 184
-    Top = 72
+    Top = 16
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
@@ -644,18 +636,6 @@ inherited dmMovimientos: TdmMovimientos
     Left = 336
     Top = 504
   end
-  object adodsPersonaTitular: TADODataSet
-    Connection = _dmConection.ADOConnection
-    CursorType = ctStatic
-    CommandText = 
-      'SELECT        Personas.IdPersona, ISNULL(Personas_1.RazonSocial,' +
-      ' '#39#39') AS Titular'#13#10'FROM            Personas LEFT JOIN'#13#10'           ' +
-      '              Personas AS Personas_1 ON Personas.IdPersonaTitula' +
-      'r = Personas_1.IdPersona'
-    Parameters = <>
-    Left = 184
-    Top = 128
-  end
   object adopDelMovimientosDiversificados: TADOStoredProc
     Connection = _dmConection.ADOConnection
     ProcedureName = 'p_DelMovimientosDiversificados;1'
@@ -674,8 +654,8 @@ inherited dmMovimientos: TdmMovimientos
         Precision = 10
         Value = Null
       end>
-    Left = 368
-    Top = 344
+    Left = 488
+    Top = 448
   end
   object adodsRolesTitular: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -742,6 +722,7 @@ inherited dmMovimientos: TdmMovimientos
     end
     object adodsRolesTitularCalcular: TBooleanField
       FieldName = 'Calcular'
+      OnChange = adodsRolesTitularCalcularChange
     end
     object adodsRolesTitularPorcentajeCalculo: TFMTBCDField
       DisplayLabel = 'Porcentaje'
@@ -761,18 +742,21 @@ inherited dmMovimientos: TdmMovimientos
         DataType = ftInteger
         Direction = pdReturnValue
         Precision = 10
+        Value = Null
       end
       item
         Name = '@IdPeriodo'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end
       item
         Name = '@IdPersonaTitular'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end>
     Left = 552
     Top = 88

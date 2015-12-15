@@ -25,6 +25,7 @@ type
     adodsMasterIdCuentaBancariaEstatus: TIntegerField;
     adodsEstatus: TADODataSet;
     adodsMasterEstatus: TStringField;
+    adodsMasterBanorteID: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
   private

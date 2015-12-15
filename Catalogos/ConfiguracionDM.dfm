@@ -5,11 +5,12 @@ inherited dmConfiguracion: TdmConfiguracion
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
-      'select IdPais, IdMoneda, IdMovimientoTipoNomina, IdMovimientoTip' +
-      'oRetencion, IdMovimientoTipoPrestamo, IdMetodoPagoCuentasXPagar,' +
-      ' IdMetodoPagoFactura, RutaBaseFacturas, IdMovimientoTipoDescuent' +
-      'o, IdRolDescuento, IdMetodoPagoCuentasXPagarSAT from Configuraci' +
-      'ones'
+      'SELECT IdPais, IdMoneda, IdMovimientoTipoNomina, IdMovimientoTip' +
+      'oRetencion, IdMovimientoTipoPrestamo, IdMovimientoTipoTransporte' +
+      ', IdMovimientoTipoAportacion, '#13#10'IdMetodoPagoCuentasXPagar, IdMet' +
+      'odoPagoFactura, IdMetodoPagoCuentasXPagarSAT, RutaBaseFacturas, ' +
+      'RutaBasePagos, IdMovimientoTipoDescuento, IdRolDescuento'#13#10'FROM C' +
+      'onfiguraciones'
     object adodsMasterIdPais: TIntegerField
       FieldName = 'IdPais'
       Visible = False
@@ -28,6 +29,14 @@ inherited dmConfiguracion: TdmConfiguracion
     end
     object adodsMasterIdMovimientoTipoPrestamo: TIntegerField
       FieldName = 'IdMovimientoTipoPrestamo'
+      Visible = False
+    end
+    object adodsMasterIdMovimientoTipoTransporte: TIntegerField
+      FieldName = 'IdMovimientoTipoTransporte'
+      Visible = False
+    end
+    object adodsMasterIdMovimientoTipoAportacion: TIntegerField
+      FieldName = 'IdMovimientoTipoAportacion'
       Visible = False
     end
     object adodsMasterIdRolDescuento: TIntegerField
@@ -126,6 +135,28 @@ inherited dmConfiguracion: TdmConfiguracion
       Size = 100
       Lookup = True
     end
+    object adodsMasterMovimientoTipoTransporte: TStringField
+      DisplayLabel = 'Tipo movimiento para ingreso por transporte'
+      FieldKind = fkLookup
+      FieldName = 'MovimientoTipoTransporte'
+      LookupDataSet = adodsMovimientosTipo5
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoTipoTransporte'
+      Size = 100
+      Lookup = True
+    end
+    object adodsMasterMovimientoTipoAportacion: TStringField
+      DisplayLabel = 'Tipo movimiento para ingreso por aportaci'#243'n'
+      FieldKind = fkLookup
+      FieldName = 'MovimientoTipoAportacion'
+      LookupDataSet = adodsMovimientosTipo6
+      LookupKeyFields = 'IdMovimientoTipo'
+      LookupResultField = 'Descripcion'
+      KeyFields = 'IdMovimientoTipoAportacion'
+      Size = 100
+      Lookup = True
+    end
     object adodsMasterMetodoPagoCuentasXPagar: TStringField
       DisplayLabel = 'Metodo de pago para cuentas por pagar'
       FieldKind = fkLookup
@@ -162,6 +193,11 @@ inherited dmConfiguracion: TdmConfiguracion
     object adodsMasterRutaBaseFacturas: TStringField
       DisplayLabel = 'Ruta Base para Facturas'
       FieldName = 'RutaBaseFacturas'
+      Size = 250
+    end
+    object adodsMasterRutaBasePagos: TStringField
+      DisplayLabel = 'Ruta Base para pagos'
+      FieldName = 'RutaBasePagos'
       Size = 250
     end
   end
@@ -221,40 +257,40 @@ inherited dmConfiguracion: TdmConfiguracion
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
-    Left = 104
-    Top = 112
+    Left = 216
+    Top = 16
   end
   object adodsMovimientosTipo2: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
-    Left = 104
-    Top = 168
+    Left = 216
+    Top = 72
   end
   object adodsMovimientosTipo3: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
-    Left = 104
-    Top = 224
+    Left = 216
+    Top = 128
   end
   object adodsMetodosPago1: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMetodoPago, Descripcion from MetodosPago'
     Parameters = <>
-    Left = 240
-    Top = 16
+    Left = 368
+    Top = 32
   end
   object adodsMetodosPago2: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMetodoPago, Descripcion from MetodosPago'
     Parameters = <>
-    Left = 240
-    Top = 72
+    Left = 368
+    Top = 88
   end
   object adoqGetRutaBasePagos: TADOQuery
     Connection = _dmConection.ADOConnection
@@ -275,24 +311,24 @@ inherited dmConfiguracion: TdmConfiguracion
     CursorType = ctStatic
     CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
     Parameters = <>
-    Left = 112
-    Top = 288
+    Left = 224
+    Top = 192
   end
   object adodsMetodosPago3: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMetodoPago, Descripcion from MetodosPago'
     Parameters = <>
-    Left = 248
-    Top = 128
+    Left = 376
+    Top = 144
   end
   object adodsRol1: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdRol, Descripcion from Roles'
     Parameters = <>
-    Left = 240
-    Top = 256
+    Left = 456
+    Top = 24
   end
   object adoqGetDiaPagoActual: TADOQuery
     Connection = _dmConection.ADOConnection
@@ -308,5 +344,21 @@ inherited dmConfiguracion: TdmConfiguracion
       FieldName = 'Valor'
       ReadOnly = True
     end
+  end
+  object adodsMovimientosTipo5: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
+    Parameters = <>
+    Left = 216
+    Top = 248
+  end
+  object adodsMovimientosTipo6: TADODataSet
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    CommandText = 'select IdMovimientoTipo, Descripcion from MovimientosTipos'
+    Parameters = <>
+    Left = 216
+    Top = 304
   end
 end

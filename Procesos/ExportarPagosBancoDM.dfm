@@ -1,7 +1,7 @@
 inherited dmExportarPagosBancos: TdmExportarPagosBancos
   OldCreateOrder = True
-  Height = 376
-  Width = 614
+  Height = 457
+  Width = 699
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -11,9 +11,10 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       'ago, MontoPagado, FechaConcilia, IdCuentaBancariaPagador, IdCuen' +
       'taBancariaCobrador, IdEstadoCuenta, TotalMonedaNacional, Cobra, ' +
       'RFCCobra, Paga, RFCPaga, BancoCobrador, BancoPagador, CtaBanCobr' +
-      'ador, CtaBancariaPagador, CClabeCobrador, ClabePagador '#13#10'FROM vE' +
-      'xportaPagosBanco'#13#10'WHERE Periodo = :IdPeriodo AND'#13#10'IdPaga = :IdPe' +
-      'rsona AND'#13#10'IdCuentaBancariaPagador = :IdCuentaBancaria'#13#10
+      'ador, CtaBancariaPagador, CClabeCobrador, ClabePagador, BanorteI' +
+      'D'#13#10'FROM vExportaPagosBanco'#13#10'WHERE Periodo = :IdPeriodo AND'#13#10'IdPa' +
+      'ga = :IdPersona AND'#13#10'IdCuentaBancariaPagador = :IdCuentaBancaria' +
+      #13#10
     Parameters = <
       item
         Name = 'IdPeriodo'
@@ -39,8 +40,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
         Size = 4
         Value = Null
       end>
-    Left = 56
-    Top = 32
+    Left = 40
+    Top = 24
     object adodsMasterIdCuentaXPagarPago: TIntegerField
       FieldName = 'IdCuentaXPagarPago'
       Visible = False
@@ -151,13 +152,17 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       FieldName = 'ClabePagador'
       Size = 18
     end
+    object adodsMasterBanorteID: TStringField
+      FieldName = 'BanorteID'
+      Size = 5
+    end
   end
   inherited adodsUpdate: TADODataSet
-    Left = 192
+    Left = 248
+    Top = 24
   end
   inherited ActionList: TActionList
-    Left = 200
-    Top = 80
+    Left = 248
     object actExportaBanorte: TAction
       Caption = 'actExportaBanorte'
       OnExecute = actExportaBanorteExecute
@@ -172,8 +177,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
     end
   end
   object stdBancos: TSaveTextFileDialog
-    Left = 176
-    Top = 152
+    Left = 576
+    Top = 376
   end
   object adodsDocumento: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -182,8 +187,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       'SELECT IdDocumento, IdDocumentoTipo, IdDocumentoClase, Descripci' +
       'on, NombreArchivo, IdArchivo, Archivo FROM Documentos'
     Parameters = <>
-    Left = 60
-    Top = 104
+    Left = 36
+    Top = 88
     object adodsDocumentoIdDocumento: TAutoIncField
       FieldName = 'IdDocumento'
       ReadOnly = True
@@ -221,8 +226,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       'es.IdRol = 1) AND (PersonasRoles.IdRolEstatus = 1) OR'#13#10'         ' +
       '    (PersonasRoles.IdRol = 2)'
     Parameters = <>
-    Left = 376
-    Top = 24
+    Left = 48
+    Top = 224
     object adodsPersonasIdPersona: TIntegerField
       FieldName = 'IdPersona'
     end
@@ -239,8 +244,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
     CursorType = ctStatic
     CommandText = 'SELECT IdPeriodo, Descripcion FROM Periodos'
     Parameters = <>
-    Left = 36
-    Top = 232
+    Left = 52
+    Top = 168
   end
   object adodsCuentaBancaria: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -263,8 +268,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
         Precision = 10
         Value = 31
       end>
-    Left = 376
-    Top = 104
+    Left = 48
+    Top = 304
     object adodsCuentaBancariaIdCuentaBancaria: TAutoIncField
       FieldName = 'IdCuentaBancaria'
       ReadOnly = True
@@ -290,8 +295,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
     CursorType = ctStatic
     CommandText = 'SELECT IdEsquemaPago, Descripcion FROM EsquemaPagos'
     Parameters = <>
-    Left = 40
-    Top = 288
+    Left = 48
+    Top = 376
     object adodsEsquemaPagoIdEsquemaPago: TAutoIncField
       FieldName = 'IdEsquemaPago'
       ReadOnly = True
@@ -304,8 +309,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
   object mdParams: TdxMemData
     Indexes = <>
     SortOptions = []
-    Left = 120
-    Top = 264
+    Left = 576
+    Top = 40
     object mdParamsIdPeriodo: TIntegerField
       FieldName = 'IdPeriodo'
     end
@@ -333,8 +338,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
   end
   object dsPersonas: TDataSource
     DataSet = adodsPersonas
-    Left = 464
-    Top = 24
+    Left = 160
+    Top = 232
   end
   object adodsCXPPagos: TADODataSet
     Connection = _dmConection.ADOConnection
@@ -343,8 +348,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       'SELECT IdCuentaXPagarPago, IdCuentaXPagarEstatus, IdExportarPago' +
       'Documento FROM CuentasXPagarPagos'
     Parameters = <>
-    Left = 480
-    Top = 104
+    Left = 152
+    Top = 304
     object adodsCXPPagosIdCuentaXPagarPago: TAutoIncField
       FieldName = 'IdCuentaXPagarPago'
       ReadOnly = True
@@ -365,8 +370,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       'dBanco, IdCuentaBancaria, Observaciones FROM ExportarPagosDocume' +
       'ntos'
     Parameters = <>
-    Left = 288
-    Top = 184
+    Left = 320
+    Top = 240
     object adodsExportarPagosDocumentosIdExportarPagoDocumento: TAutoIncField
       FieldName = 'IdExportarPagoDocumento'
       ReadOnly = True
@@ -391,6 +396,7 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       Visible = False
     end
     object adodsExportarPagosDocumentosExportaPagoDocumentoEstatus: TStringField
+      DisplayLabel = 'Estatus'
       FieldKind = fkLookup
       FieldName = 'ExportaPagoDocumentoEstatus'
       LookupDataSet = adodsExportarPagosDocumentosEstatus
@@ -440,8 +446,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       'SELECT IdExportarPagoDocumentoEstatus, Descripcion FROM Exportar' +
       'PagosDocumentosEstatus'
     Parameters = <>
-    Left = 232
-    Top = 264
+    Left = 328
+    Top = 296
     object adodsExportarPagosDocumentosEstatusIdExportarPagoDocumentoEstatus: TIntegerField
       FieldName = 'IdExportarPagoDocumentoEstatus'
     end
@@ -464,7 +470,7 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
         Size = 4
         Value = Null
       end>
-    Left = 488
+    Left = 568
     Top = 176
   end
   object adocExportaPagosDocs: TADOCommand
@@ -482,7 +488,7 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
         Size = 4
         Value = Null
       end>
-    Left = 488
+    Left = 568
     Top = 240
   end
   object adocEstatusCuentaXPagarPagosDoc: TADOCommand
@@ -507,7 +513,7 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
         Size = 4
         Value = Null
       end>
-    Left = 488
+    Left = 568
     Top = 304
   end
 end

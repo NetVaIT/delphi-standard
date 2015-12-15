@@ -123,6 +123,15 @@ inherited frmMovimientosTipos: TfrmMovimientosTipos
           DataBinding.FieldName = 'MovimientoTipo'
           Width = 304
         end
+        object tvMasterPorcentajeRetencion: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajeRetencion'
+        end
+        object tvMasterPorcentajeAportacion: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajeAportacion'
+        end
+        object tvMasterAplicarDescuentos: TcxGridDBColumn
+          DataBinding.FieldName = 'AplicarDescuentos'
+        end
         object tvMasterAplicarISRProvisional: TcxGridDBColumn
           DataBinding.FieldName = 'AplicarISRProvisional'
           Width = 99

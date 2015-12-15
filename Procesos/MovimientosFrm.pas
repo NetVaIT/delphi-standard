@@ -222,7 +222,8 @@ begin
       AStyle := cxsGreen;
     if ARecord.Values[tvMasterSaldoGrupo.Index] > 0 then
       AStyle := cxsIntial;
-    if ARecord.Values[tvMasterBaseGrupo.Index] < 0 then
+//    if ARecord.Values[tvMasterBaseGrupo.Index] < 0 then
+    if ARecord.Values[tvMasterSaldoGrupo.Index] < 0 then
       AStyle := cxsRed;
   end;
 end;

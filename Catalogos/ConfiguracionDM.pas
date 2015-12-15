@@ -47,6 +47,13 @@ type
     adodsMasterRolDescuento: TStringField;
     adoqGetDiaPagoActual: TADOQuery;
     adoqGetDiaPagoActualValor: TDateTimeField;
+    adodsMasterIdMovimientoTipoTransporte: TIntegerField;
+    adodsMasterIdMovimientoTipoAportacion: TIntegerField;
+    adodsMasterRutaBasePagos: TStringField;
+    adodsMasterMovimientoTipoTransporte: TStringField;
+    adodsMovimientosTipo5: TADODataSet;
+    adodsMovimientosTipo6: TADODataSet;
+    adodsMasterMovimientoTipoAportacion: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

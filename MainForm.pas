@@ -100,14 +100,12 @@ type
     dxBarLargeButton25: TdxBarLargeButton;
     dxBarButton9: TdxBarButton;
     actCuentasXPagar: TAction;
-    actDetalleMovimientosPersona: TAction;
-    dxBarLargeButton26: TdxBarLargeButton;
+    actRptDetalleMovimientosPersona: TAction;
     actCXCConceptos: TAction;
     dxBarLargeButton27: TdxBarLargeButton;
-    actDispersion: TAction;
+    actRptDispersion: TAction;
     dxBarLargeButton28: TdxBarLargeButton;
-    dxBarLargeButton29: TdxBarLargeButton;
-    actMovimientosPeriodo: TAction;
+    actRptMovimientosPeriodo: TAction;
     dxBarManagerBar3: TdxBar;
     dxBarLargeButton30: TdxBarLargeButton;
     actIntervaCXP: TAction;
@@ -116,18 +114,23 @@ type
     actCuentasXCobrar: TAction;
     dxtshConfiguracion: TdxRibbonBackstageViewTabSheet;
     dxtshUsuarios: TdxRibbonBackstageViewTabSheet;
-    actNomina: TAction;
+    actRptNomina: TAction;
     dxBarLargeButton32: TdxBarLargeButton;
     actRptPrestamos: TAction;
     dxBarLargeButton33: TdxBarLargeButton;
     actPrestamos: TAction;
     dxBarLargeButton34: TdxBarLargeButton;
     actRptPlaza: TAction;
-    dxBarLargeButton35: TdxBarLargeButton;
     actRptPagos: TAction;
     actRptCXPPagos: TAction;
     dxBarLargeButton36: TdxBarLargeButton;
     dxBarLargeButton37: TdxBarLargeButton;
+    actRptMovimientosPersona: TAction;
+    dxBarManagerBar4: TdxBar;
+    dxBarLargeButton26: TdxBarLargeButton;
+    dxBarButton11: TdxBarButton;
+    dxBarButton12: TdxBarButton;
+    dxBarButton13: TdxBarButton;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -162,7 +165,8 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   CuentasContablesDM, CuentasInternasDM, CuentasXPagarDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasXCobrarDM,
   RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM,
-  PrestamosDM, ConfiguracionDM, RptPlazasDM, RptPagosDmod, RptCXPPagosDmod;
+  PrestamosDM, ConfiguracionDM, RptPlazasDM, RptPagosDmod, RptCXPPagosDmod,
+  RptMovimientosPersonaDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -209,42 +213,46 @@ begin
    34: gModulo := TdmCuentasXCobrar.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
    51: begin
-         gReport := TdmDetalleMovimientosPersona.Create(Self);
-         gReport.Title := pCaption;
-         gReport.Execute;
-       end;
-   52: begin
-         gModulo := TdmMovimientosPeriodorpt.Create(Self);
-         TdmMovimientosPeriodorpt(gModulo).Execute;
-       end;
-   53: begin
          gModulo := TdmMovimientosD.Create(Self);
          TdmMovimientosD(gModulo).TipoReporte:= trDispercion;
          TdmMovimientosD(gModulo).actSearch.Execute;
        end;
-   54: begin
+   52: begin
          gModulo := TdmMovimientosD.Create(Self);
          TdmMovimientosD(gModulo).TipoReporte:= trNomina;
          TdmMovimientosD(gModulo).actSearch.Execute;
        end;
-   55: begin
+   53: begin
          gModulo := TdmMovimientosD.Create(Self);
          TdmMovimientosD(gModulo).TipoReporte:= trPrestamos;
          TdmMovimientosD(gModulo).actSearch.Execute;
        end;
-   56: begin
-         gModulo := TdmRptPlazas.Create(Self);
+   54: begin
+         gModulo := TdmRptCXPPagos.Create(Self);
+         TdmRptCXPPagos(gModulo).actSearch.Execute;
        end;
-   57: begin
+   55: begin
          gReport := TdmRptPagos.Create(Self);
          gReport.Title := pCaption;
          gReport.Execute;
        end;
-   58: begin
-         gModulo := TdmRptCXPPagos.Create(Self);
-         TdmRptCXPPagos(gModulo).actSearch.Execute;
+   56: begin
+         gReport := TdmRptMovimientosPersona.Create(Self);
+         gReport.Title := pCaption;
+         gReport.Execute;
        end;
-
+   57: begin
+         gReport := TdmRptDetalleMovimientosPersona.Create(Self);
+         gReport.Title := pCaption;
+         gReport.Execute;
+       end;
+   58: begin
+         gModulo := TdmRptMovimientosPeriodo.Create(Self);
+         TdmRptMovimientosPeriodo(gModulo).Execute;
+       end;
+   59: begin
+         gModulo := TdmRptPlazas.Create(Self);
+       end;
   end;
   if Assigned(gModulo) then
   begin
@@ -292,17 +300,18 @@ begin
   actCuentasContables.Enabled   := Conected;
   actCuentasInternas.Enabled    := Conected;
   actCXCConceptos.Enabled       := Conected;
-  actMovimientosPeriodo.Enabled := Conected;
-  actDispersion.Enabled         := Conected;
-  actNomina.Enabled             := Conected;
+  actRptMovimientosPeriodo.Enabled := Conected;
+  actRptDispersion.Enabled         := Conected;
+  actRptNomina.Enabled             := Conected;
   actRptPrestamos.Enabled       := Conected;
-  actDetalleMovimientosPersona.Enabled := Conected;
+  actRptDetalleMovimientosPersona.Enabled := Conected;
   actCuentasXPagar.Enabled      := Conected;
   actCuentasXCobrar.Enabled     := Conected;
   actPrestamos.Enabled          := Conected;
   actRptPlaza.Enabled           := Conected;
   actRptCXPPagos.Enabled        := Conected;
   actRptPagos.Enabled           := Conected;
+
 end;
 
 procedure TfrmMain.DestroyModule;

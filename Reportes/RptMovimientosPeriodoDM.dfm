@@ -1,4 +1,4 @@
-inherited dmMovimientosPeriodorpt: TdmMovimientosPeriodorpt
+inherited dmRptMovimientosPeriodo: TdmRptMovimientosPeriodo
   OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic

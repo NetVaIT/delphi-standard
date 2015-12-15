@@ -36,6 +36,8 @@ type
     dsCuentaBancaria: TDataSource;
     Label6: TLabel;
     DBLookupComboBox1: TDBLookupComboBox;
+    Label7: TLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
   private
     { Private declarations }
   public

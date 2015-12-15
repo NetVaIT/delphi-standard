@@ -57,7 +57,6 @@ type
   public
     { Public declarations }
     procedure AssignParam; override;
-    procedure Execute; override;
   end;
 
 implementation
@@ -76,7 +75,6 @@ begin
   adodsReport.Parameters.ParamByName('IdPeriodo').Value := mdParamsIdPeriodo.Value;
 //  adodsReport.Parameters.ParamByName('IdPersona').Value := mdParamsIdPersona.Value;
 //  adodsReport.Parameters.ParamByName('IdCuentaBancaria').Value := mdParamsIdCuentaBancaria.Value;
-
 end;
 
 procedure TdmRptPagos.DataModuleCreate(Sender: TObject);
@@ -89,34 +87,7 @@ begin
   TfrmRptPagos(gReportForm).DataSetPeriodo := adodsPeriodos;
   TfrmRptPagos(gReportForm).DataSetPersona := adodsPersonas;
   TfrmRptPagos(gReportForm).DataSetCuentaBancaria := adodsCuentaBancaria;
-end;
-
-procedure TdmRptPagos.Execute;
-var
-  ShowReport: Boolean;
-begin
-  mdParams.Open;
-  mdParams.Insert;
   mdParamsIdPeriodo.Value:= dmConfiguracion.IdPeridoActual;
-
-  if Assigned(gReportForm) then
-  begin
-    gReportForm.DataSetParams:= mdParams;
-    ShowReport:= (gReportForm.ShowModal = mrOk);
-  end
-  else
-    ShowReport:= True;
-  if ShowReport then
-  begin
-    adodsReport.Close;
-    AssignParam;
-    adodsReport.Open;
-    try
-      ppReport.Print;
-    finally
-      adodsReport.Close;
-    end;
-  end;
 end;
 
 end.

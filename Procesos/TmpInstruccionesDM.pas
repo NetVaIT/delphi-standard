@@ -81,7 +81,9 @@ var
   frmSelect: TfrmVerificar;
 begin
   Result:= False;
-  adocIniTmpInstrucciones.Parameters.ParamByName('Inicio').Value:= Inicio;
+  adocIniTmpInstrucciones.Parameters[0].Value:= Inicio;
+  adocIniTmpInstrucciones.Parameters[1].Value:= Inicio;
+  adocIniTmpInstrucciones.Parameters[2].Value:= Inicio;
   adocIniTmpInstrucciones.Execute;
   frmSelect:= TfrmVerificar.Create(Self);
   try

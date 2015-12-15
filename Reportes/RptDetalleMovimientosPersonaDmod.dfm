@@ -1,26 +1,26 @@
-inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
+inherited dmRptDetalleMovimientosPersona: TdmRptDetalleMovimientosPersona
   OldCreateOrder = True
-  OnCreate = DataModuleCreate
-  Height = 273
+  Height = 167
   inherited adodsReport: TADODataSet
     CommandText = 
       'SELECT        Personas.RazonSocial AS Persona, MovimientosTiposC' +
       'ategorias.Descripcion AS Catagoria, MovimientosTipos.Descripcion' +
       ' AS Tipo, MovimientosDetalle.Importe,'#13#10'                    Movim' +
-      'ientos.SaldoAnterior, Movimientos.SaldoPeriodo, Movimientos.Sald' +
-      'o'#13#10'FROM            MovimientosDetalle INNER JOIN'#13#10'              ' +
-      '           Movimientos ON MovimientosDetalle.IdMovimiento = Movi' +
-      'mientos.IdMovimiento INNER JOIN'#13#10'                         Movimi' +
-      'entosTipos ON MovimientosDetalle.IdMovimientoTipo = MovimientosT' +
-      'ipos.IdMovimientoTipo INNER JOIN'#13#10'                         Movim' +
-      'ientosTiposCategorias ON MovimientosTipos.IdMovimientoTipoCatego' +
-      'ria = MovimientosTiposCategorias.IdMovimientoTipoCategoria INNER' +
-      ' JOIN'#13#10'                         MovimientosTiposEfectos ON Movim' +
-      'ientosTipos.IdMovimientoTipoEfecto = MovimientosTiposEfectos.IdM' +
-      'ovimientoTipoEfecto INNER JOIN'#13#10'                         Persona' +
-      's ON Movimientos.IdPersona = Personas.IdPersona'#13#10'WHERE        (M' +
-      'ovimientos.IdPeriodo = :IdPeriodo)'#13#10'ORDER BY Persona, Movimiento' +
-      'sTiposCategorias.OrdenImpresion'
+      'ientos.SaldoAnteriorGrupo AS SaldoAnterior, Movimientos.SaldoPer' +
+      'iodoGrupo AS SaldoPeriodo, Movimientos.SaldoGrupo AS Saldo'#13#10'FROM' +
+      '            MovimientosDetalle INNER JOIN'#13#10'                     ' +
+      '    Movimientos ON MovimientosDetalle.IdMovimiento = Movimientos' +
+      '.IdMovimiento INNER JOIN'#13#10'                         MovimientosTi' +
+      'pos ON MovimientosDetalle.IdMovimientoTipo = MovimientosTipos.Id' +
+      'MovimientoTipo INNER JOIN'#13#10'                         MovimientosT' +
+      'iposCategorias ON MovimientosTipos.IdMovimientoTipoCategoria = M' +
+      'ovimientosTiposCategorias.IdMovimientoTipoCategoria INNER JOIN'#13#10 +
+      '                         MovimientosTiposEfectos ON MovimientosT' +
+      'ipos.IdMovimientoTipoEfecto = MovimientosTiposEfectos.IdMovimien' +
+      'toTipoEfecto INNER JOIN'#13#10'                         Personas ON Mo' +
+      'vimientos.IdPersona = Personas.IdPersona'#13#10'WHERE MovimientosTipos' +
+      '.AplicarCategoria = 1'#13#10'AND Movimientos.IdPeriodo = :IdPeriodo'#13#10'O' +
+      'RDER BY Persona, MovimientosTiposCategorias.OrdenImpresion'
     Parameters = <
       item
         Name = 'IdPeriodo'
@@ -67,99 +67,17 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
       Size = 6
     end
   end
-  inherited dbpReport: TppDBPipeline
-    object dbpReportppField1: TppField
-      FieldAlias = 'Persona'
-      FieldName = 'Persona'
-      FieldLength = 300
-      DisplayWidth = 300
-      Position = 0
-    end
-    object dbpReportppField2: TppField
-      FieldAlias = 'Catagoria'
-      FieldName = 'Catagoria'
-      FieldLength = 100
-      DisplayWidth = 100
-      Position = 1
-    end
-    object dbpReportppField3: TppField
-      FieldAlias = 'Tipo'
-      FieldName = 'Tipo'
-      FieldLength = 100
-      DisplayWidth = 100
-      Position = 2
-    end
-    object dbpReportppField4: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'Importe'
-      FieldName = 'Importe'
-      FieldLength = 6
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 3
-    end
-    object dbpReportppField5: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'SaldoAnterior'
-      FieldName = 'SaldoAnterior'
-      FieldLength = 6
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 4
-    end
-    object dbpReportppField6: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'SaldoPeriodo'
-      FieldName = 'SaldoPeriodo'
-      FieldLength = 6
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 5
-    end
-    object dbpReportppField7: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'Saldo'
-      FieldName = 'Saldo'
-      FieldLength = 6
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 6
-    end
-  end
   inherited ppReport: TppReport
-    OnStartPage = ppReportStartPage
-    PrinterSetup.PaperName = 'Letter'
     DataPipelineName = 'dbpReport'
     inherited ppTitleBand1: TppTitleBand
-      mmHeight = 2117
+      mmHeight = 0
       inherited pplblTitle: TppLabel
         SaveOrder = -1
-        Visible = False
-        mmHeight = -1058
-        mmTop = 1852
         LayerName = Foreground
       end
     end
     inherited ppHeaderBand1: TppHeaderBand
-      mmHeight = 15610
-      object pplblEncabezado: TppLabel
-        UserName = 'lblEncabezado'
-        AutoSize = False
-        Caption = 'lblEncabezado'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clNavy
-        Font.Name = 'TIMES NEW ROMAN'
-        Font.Size = 16
-        Font.Style = [fsBold, fsItalic]
-        TextAlignment = taCentered
-        Transparent = True
-        mmHeight = 6612
-        mmLeft = 1323
-        mmTop = 528
-        mmWidth = 200025
-        BandType = 0
-        LayerName = Foreground
-      end
+      mmHeight = 15000
     end
     inherited ppDetailBand1: TppDetailBand
       mmHeight = 5027
@@ -515,7 +433,7 @@ inherited dmDetalleMovimientosPersona: TdmDetalleMovimientosPersona
     CommandText = 'SELECT IdPeriodo, Descripcion FROM Periodos'
     Parameters = <>
     Left = 32
-    Top = 112
+    Top = 96
     object adodsPeriodosIdPeriodo: TAutoIncField
       FieldName = 'IdPeriodo'
       ReadOnly = True

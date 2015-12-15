@@ -40,7 +40,6 @@ type
     adodsMovimientosDetalleEfecto: TStringField;
     adodsMovimientosDetalleImporte: TFMTBCDField;
     adodsMovimientosDetalleEstatus: TStringField;
-    actCalcularCXP: TAction;
     adospCuentasXPagar: TADOStoredProc;
     adodsPeriodo: TADODataSet;
     adodsCuentasXPagarPagos: TADODataSet;
@@ -54,12 +53,15 @@ type
     adodsMovimientosDetalleFecha: TDateTimeField;
     adodsMovimientosDetalleAplicarCategoria: TBooleanField;
     adodsMasterFlujoEfectivo: TFMTBCDField;
+    actExpotarPagos: TAction;
+    actDescargarPagos: TAction;
     procedure DataModuleCreate(Sender: TObject);
-    procedure actCalcularCXPExecute(Sender: TObject);
+    procedure actExpotarPagosExecute(Sender: TObject);
+    procedure actDescargarPagosExecute(Sender: TObject);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
-    function SetCuentaXPagar: Boolean;
+//    function SetCuentaXPagar: Boolean;
   protected
     procedure SetFilter; override;
   public
@@ -72,14 +74,34 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses CuentasXPagarForm, MovimientosDetalleFrm, CuentasXPagarPagosForm,
-  ConfiguracionDM;
+  ConfiguracionDM, ExportarPagosBancoDM;
 
 {$R *.dfm}
 
-procedure TdmCuentasXPagar.actCalcularCXPExecute(Sender: TObject);
+procedure TdmCuentasXPagar.actDescargarPagosExecute(Sender: TObject);
+var
+  dmExportaPagos: TdmExportarPagosBancos;
 begin
   inherited;
-  SetCuentaXPagar;
+  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
+  try
+    dmExportaPagos.actBajarArchivoPagos.Execute;
+  finally
+    FreeAndNil(dmExportaPagos);
+  end;
+end;
+
+procedure TdmCuentasXPagar.actExpotarPagosExecute(Sender: TObject);
+var
+  dmExportaPagos: TdmExportarPagosBancos;
+begin
+  inherited;
+  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
+  try
+    dmExportaPagos.actExportaBanorte.Execute;
+  finally
+    FreeAndNil(dmExportaPagos);
+  end;
 end;
 
 procedure TdmCuentasXPagar.DataModuleCreate(Sender: TObject);
@@ -91,7 +113,8 @@ begin
   gGridForm:= TfrmCuentasXPagar.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
-  TfrmCuentasXPagar(gGridForm).CalcularCXP:= actCalcularCXP;
+  TfrmCuentasXPagar(gGridForm).ExportarPagos:= actExpotarPagos;
+  TfrmCuentasXPagar(gGridForm).DescargarPagos:= actDescargarPagos;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
   gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDetalle;
@@ -112,20 +135,20 @@ begin
   actSearch.Execute;
 end;
 
-function TdmCuentasXPagar.SetCuentaXPagar: Boolean;
-var
-  IdPeriodo: Integer;
-begin
-  Result:= False;
-  IdPeriodo:= IdPeriodoActual;
-  if IdPeriodo <> 0 then
-  begin
-    adospCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
-    adospCuentasXPagar.ExecProc;
-    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
-    Result:= True;
-  end;
-end;
+//function TdmCuentasXPagar.SetCuentaXPagar: Boolean;
+//var
+//  IdPeriodo: Integer;
+//begin
+//  Result:= False;
+//  IdPeriodo:= IdPeriodoActual;
+//  if IdPeriodo <> 0 then
+//  begin
+//    adospCuentasXPagar.Parameters.ParamByName('@IdPeriodo').Value:= IdPeriodo;
+//    adospCuentasXPagar.ExecProc;
+//    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+//    Result:= True;
+//  end;
+//end;
 
 procedure TdmCuentasXPagar.SetFilter;
 var

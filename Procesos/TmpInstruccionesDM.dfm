@@ -64,10 +64,24 @@ inherited dmTmpInstrucciones: TdmTmpInstrucciones
   object adocIniTmpInstrucciones: TADOCommand
     CommandText = 
       'DELETE TmpInstrucciones;'#13#10'INSERT INTO TmpInstrucciones (IdInstru' +
-      'ccionTipo,Descripcion,Inicio)'#13#10'SELECT IdInstrucciontipo, Descrip' +
-      'cion, :Inicio from InstruccionesTipos'#13#10'WHERE IncluirGrupo = 1;'#13#10
+      'ccionTipo,Descripcion,Inicio)'#13#10'SELECT IdInstrucciontipo, CAST(YE' +
+      'AR(:Inicio) AS varchar(4))+'#39'S'#39'+CAST(DATEPART(week, :Inicio) AS v' +
+      'archar(2))+'#39' '#39'+Descripcion, :Inicio from InstruccionesTipos'#13#10'WHE' +
+      'RE IncluirGrupo = 1;'#13#10
     Connection = _dmConection.ADOConnection
     Parameters = <
+      item
+        Name = 'Inicio'
+        DataType = ftDateTime
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'Inicio'
+        DataType = ftDateTime
+        Size = -1
+        Value = Null
+      end
       item
         Name = 'Inicio'
         DataType = ftDateTime

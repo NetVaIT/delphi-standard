@@ -22,9 +22,7 @@ type
     adodsMasterIdMovimiento: TAutoIncField;
     adodsMasterIdPersona: TIntegerField;
     adodsMasterIdPeriodo: TIntegerField;
-    adodsPersona: TADODataSet;
     adodsPeriodo: TADODataSet;
-    adodsMasterPersona: TStringField;
     dsMaster: TDataSource;
     adodsMovimientosDet: TADODataSet;
     actCalcularmovimientos: TAction;
@@ -76,14 +74,12 @@ type
     adodsMovimientosDetIdIncidenciaDetalle: TIntegerField;
     adodsMovimientosDetIdMoneda: TIntegerField;
     adodsMovimientosDetIdCuentaXCobrar: TIntegerField;
-    adodsPersonaTitular: TADODataSet;
     adodsMasterBaseGrupo: TFMTBCDField;
     adodsMasterCostoGrupo: TFMTBCDField;
     adodsMasterCargaGrupo: TFMTBCDField;
     adodsMasterSaldoAnteriorGrupo: TFMTBCDField;
     adodsMasterSaldoPeriodoGrupo: TFMTBCDField;
     adodsMasterSaldoGrupo: TFMTBCDField;
-    adodsMasterPersonaTitular: TStringField;
     adodsMovimientosDetIdPrestamoPago: TIntegerField;
     adodsMovimientosDetAplicarCategoria: TBooleanField;
     adodsMasterRetencion: TFMTBCDField;
@@ -105,6 +101,9 @@ type
     actRolesTitular: TAction;
     actMovimientosSolidarios: TAction;
     adopGenMovimientosSolidarios: TADOStoredProc;
+    actSetPorcent: TAction;
+    adodsMasterPersona: TStringField;
+    adodsMasterPersonaTitular: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);
@@ -119,6 +118,8 @@ type
     procedure actEliminarDispercionExecute(Sender: TObject);
     procedure actRolesTitularExecute(Sender: TObject);
     procedure actMovimientosSolidariosExecute(Sender: TObject);
+    procedure actSetPorcentExecute(Sender: TObject);
+    procedure adodsRolesTitularCalcularChange(Sender: TField);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
@@ -137,7 +138,8 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses MovimientosFrm, MovimientosDetalleFrm, _ConectionDmod, ISRProvisionalesDM,
-  PrestamosPagoDM, ConfiguracionDM, _Utils, RolesTitularFrm;
+  PrestamosPagoDM, ConfiguracionDM, _Utils, RolesTitularFrm,
+  RolesTitularPorcentajeEdit;
 
 {$R *.dfm}
 
@@ -293,6 +295,7 @@ begin
   frmRolesTitular := TfrmRolesTitular.Create(Self);
   try
     frmRolesTitular.DataSet:= adodsRolesTitular;
+    frmRolesTitular.actSetPorcent:= actSetPorcent;
     frmRolesTitular.ReadOnlyGrid:= True;
     frmRolesTitular.View:= True;
     adodsRolesTitular.Close;
@@ -302,6 +305,20 @@ begin
   finally
     adodsRolesTitular.Close;
     frmRolesTitular.Free;
+  end;
+end;
+
+procedure TdmMovimientos.actSetPorcentExecute(Sender: TObject);
+var
+  frmPorcentajeEdit: TfrmRolesTitularPorcentajeEdit;
+begin
+  inherited;
+  frmPorcentajeEdit := TfrmRolesTitularPorcentajeEdit.Create(Self);
+  try
+    frmPorcentajeEdit.Base:= adodsMasterBase.AsCurrency;
+    frmPorcentajeEdit.Execute
+  finally
+    frmPorcentajeEdit.Free;
   end;
 end;
 
@@ -322,6 +339,13 @@ begin
   adopUptMovimientosTotales.Parameters.ParamByName('@IdMovimiento').Value:= adodsMovimientosDetIdMovimiento.Value;
   adopUptMovimientosTotales.ExecProc;
   adodsMaster.Refresh;
+end;
+
+procedure TdmMovimientos.adodsRolesTitularCalcularChange(Sender: TField);
+begin
+  inherited;
+  if not adodsRolesTitularCalcular.Value then
+     adodsRolesTitularPorcentajeCalculo.Value:= 0;
 end;
 
 procedure TdmMovimientos.DataModuleCreate(Sender: TObject);
@@ -346,10 +370,18 @@ begin
   gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDet;
   // Busqueda
-  SQLSelect:= 'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Retencion, Descuentos, Base, Entregas, ' +
-  'Percepciones, Deducciones, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido, ' +
-  'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo, SaldoCosto, ' +
-  'BaseGrupo, CostoGrupo, CargaGrupo, SaldoAnteriorGrupo, SaldoPeriodoGrupo, SaldoGrupo, SaldoCostoGrupo FROM Movimientos';
+  SQLSelect:= 'SELECT Movimientos.IdMovimiento, Movimientos.IdPersona, Movimientos.IdPeriodo, Personas.RazonSocial AS Persona, Personas_1.RazonSocial AS PersonaTitular, Movimientos.Ingresos, Movimientos.Retencion, ' +
+  'Movimientos.Descuentos, Movimientos.Base, Movimientos.Entregas, Movimientos.Percepciones, Movimientos.Deducciones, Movimientos.Prestaciones, Movimientos.Obligaciones, Movimientos.Operaciones, ' +
+  'Movimientos.ImpuestoTrasladado, Movimientos.ImpuestoRetenido, Movimientos.Egresos, Movimientos.Costo, Movimientos.Carga, Movimientos.SaldoAnterior, Movimientos.SaldoPeriodo, Movimientos.Saldo, ' +
+  'Movimientos.SaldoCosto, Movimientos.BaseGrupo, Movimientos.CostoGrupo, Movimientos.CargaGrupo, Movimientos.SaldoAnteriorGrupo, Movimientos.SaldoPeriodoGrupo, Movimientos.SaldoGrupo, Movimientos.SaldoCostoGrupo ' +
+  'FROM Movimientos ' +
+  'INNER JOIN Personas ON Movimientos.IdPersona = Personas.IdPersona ' +
+  'LEFT OUTER JOIN Personas AS Personas_1 ON Personas.IdPersonaTitular = Personas_1.IdPersona ';
+  SQLOrderBy:= 'ORDER BY Persona ';
+//  SQLSelect:= 'SELECT IdMovimiento, IdPersona, IdPeriodo, Ingresos, Retencion, Descuentos, Base, Entregas, ' +
+//  'Percepciones, Deducciones, Prestaciones, Obligaciones, Operaciones, ImpuestoTrasladado, ImpuestoRetenido, ' +
+//  'Egresos, Costo, Carga, SaldoAnterior, SaldoPeriodo, Saldo, SaldoCosto, ' +
+//  'BaseGrupo, CostoGrupo, CargaGrupo, SaldoAnteriorGrupo, SaldoPeriodoGrupo, SaldoGrupo, SaldoCostoGrupo FROM Movimientos';
   gGridForm.actSearch:= actSearch;
   adodsPeriodo.Open;
   TfrmMovimientos(gGridForm).DataSetPeriodo:= adodsPeriodo;

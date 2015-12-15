@@ -5,9 +5,9 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
     OnNewRecord = adodsMasterNewRecord
     CommandText = 
       'SELECT IdPersonaRolCuentaBancaria, IdPersonaRol, IdCuentaBancari' +
-      'a, IdCuentaBancariaPerfil, Porcentaje, LimiteInferior, LimiteSup' +
-      'erior, IdCuentaBancariaEstatus FROM PersonasRolesCuentasBancaria' +
-      's'
+      'a, IdCuentaBancariaPerfil, BanorteID, Porcentaje, LimiteInferior' +
+      ', LimiteSuperior, IdCuentaBancariaEstatus FROM PersonasRolesCuen' +
+      'tasBancarias'
     Left = 40
     Top = 24
     object adodsMasterIdPersonaRolCuentaBancaria: TAutoIncField
@@ -36,6 +36,11 @@ inherited dmPersonasRolesCuentasBancarias: TdmPersonasRolesCuentasBancarias
       KeyFields = 'IdCuentaBancariaEstatus'
       Size = 50
       Lookup = True
+    end
+    object adodsMasterBanorteID: TStringField
+      DisplayLabel = 'Banorte ID'
+      FieldName = 'BanorteID'
+      Size = 5
     end
     object adodsMasterCuentaBancaria: TStringField
       FieldKind = fkLookup

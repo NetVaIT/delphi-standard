@@ -129,11 +129,17 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     end
   end
   inherited ActionList: TActionList
-    object actCalcularCXP: TAction
-      Caption = 'Generar CXP'
-      Hint = 'Genera cuentas por pagar del periodo'
-      Visible = False
-      OnExecute = actCalcularCXPExecute
+    object actExpotarPagos: TAction
+      Caption = 'Exportar Pagos'
+      Hint = 'Exportar Pagos'
+      ImageIndex = 13
+      OnExecute = actExpotarPagosExecute
+    end
+    object actDescargarPagos: TAction
+      Caption = 'Descargar Pagos'
+      Hint = 'Descargar Pagos'
+      ImageIndex = 13
+      OnExecute = actDescargarPagosExecute
     end
   end
   object dsMaster: TDataSource

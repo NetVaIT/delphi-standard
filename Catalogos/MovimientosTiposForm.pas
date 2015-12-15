@@ -60,6 +60,9 @@ type
     tvMasterEnviarCuentaControl: TcxGridDBColumn;
     tvMasterAplicarCategoria: TcxGridDBColumn;
     tvMasterImportar: TcxGridDBColumn;
+    tvMasterPorcentajeRetencion: TcxGridDBColumn;
+    tvMasterPorcentajeAportacion: TcxGridDBColumn;
+    tvMasterAplicarDescuentos: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

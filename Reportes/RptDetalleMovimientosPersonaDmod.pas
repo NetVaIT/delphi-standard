@@ -9,7 +9,7 @@ uses
   raCodMod,System.UITypes;
 
 type
-  TdmDetalleMovimientosPersona = class(T_dmReport)
+  TdmRptDetalleMovimientosPersona = class(T_dmReport)
     adodsReportPersona: TStringField;
     adodsReportCatagoria: TStringField;
     adodsReportTipo: TStringField;
@@ -32,7 +32,6 @@ type
     ppLine1: TppLine;
     ppLabel4: TppLabel;
     ppLine2: TppLine;
-    pplblEncabezado: TppLabel;
     ppLine3: TppLine;
     adodsReportSaldoAnterior: TFMTBCDField;
     adodsReportSaldoPeriodo: TFMTBCDField;
@@ -45,14 +44,11 @@ type
     ppLabel3: TppLabel;
     ppDBCalc1: TppDBCalc;
     procedure DataModuleCreate(Sender: TObject);
-    procedure ppReportStartPage(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure AssignParam; override;
-    procedure Execute; override;
-
   end;
 
 implementation
@@ -63,52 +59,19 @@ uses RptMovimientosForm, ConfiguracionDM;
 
 {$R *.dfm}
 
-procedure TdmDetalleMovimientosPersona.AssignParam;
+procedure TdmRptDetalleMovimientosPersona.AssignParam;
 begin
   inherited;
   adodsReport.Parameters.ParamByName('IdPeriodo').Value := mdParamsIdPeriodo.Value;
 end;
 
-procedure TdmDetalleMovimientosPersona.DataModuleCreate(Sender: TObject);
+procedure TdmRptDetalleMovimientosPersona.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   gReportForm := TfrmRptMovimientos.Create(Self);
   adodsPeriodos.Open;
   TfrmRptMovimientos(gReportForm).DataSetPeriodo := adodsPeriodos;
-end;
-
-procedure TdmDetalleMovimientosPersona.Execute;
-var
-  ShowReport: Boolean;
-begin
-  mdParams.Open;
-  mdParams.Insert;
   mdParamsIdPeriodo.Value:= dmConfiguracion.IdPeridoActual;
-
-  if Assigned(gReportForm) then
-  begin
-    gReportForm.DataSetParams:= mdParams;
-    ShowReport:= (gReportForm.ShowModal = mrOk);
-  end
-  else
-    ShowReport:= True;
-  if ShowReport then
-  begin
-    adodsReport.Close;
-    AssignParam;
-    adodsReport.Open;
-    try
-      ppReport.Print;
-    finally
-      adodsReport.Close;
-    end;
-  end;
-end;
-
-procedure TdmDetalleMovimientosPersona.ppReportStartPage(Sender: TObject);
-begin
-  inherited;
-  pplblEncabezado.Caption := pplblTitle.Caption;
 end;
 
 end.

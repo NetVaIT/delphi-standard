@@ -52,6 +52,11 @@ type
     tvMasterRolDescuento: TcxGridDBColumn;
     tvMasterMovimientoTipoDescuento: TcxGridDBColumn;
     tvMasterMetodoPagoCuentasXPagarSAT: TcxGridDBColumn;
+    tvMasterIdMovimientoTipoTransporte: TcxGridDBColumn;
+    tvMasterIdMovimientoTipoAportacion: TcxGridDBColumn;
+    tvMasterMovimientoTipoTransporte: TcxGridDBColumn;
+    tvMasterMovimientoTipoAportacion: TcxGridDBColumn;
+    tvMasterRutaBasePagos: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

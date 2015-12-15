@@ -13,7 +13,8 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       'adora2, IdVariable, Identificador, Descripcion, ProduceCXC, Prod' +
       'uceCXP, AgruparTipo, AplicarISRProvisional, PorcentajePagadora1,' +
       ' PorcentajePagadora2, AplicarUltimoPeriodo, EnviarCuentaControl,' +
-      ' AplicarCategoria, Importar from MovimientosTipos'
+      ' AplicarCategoria, Importar, PorcentajeRetencion, PorcentajeApor' +
+      'tacion, AplicarDescuentos from MovimientosTipos'
     Left = 48
     object adodsMasterIdMovimientoTipo: TAutoIncField
       FieldName = 'IdMovimientoTipo'
@@ -135,6 +136,26 @@ inherited dmMovimientosTipo: TdmMovimientosTipo
       KeyFields = 'IdMovimientoTipoAcumular'
       Size = 100
       Lookup = True
+    end
+    object adodsMasterPorcentajeRetencion: TFMTBCDField
+      DisplayLabel = 'Porcentaje de retenci'#243'n'
+      FieldName = 'PorcentajeRetencion'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterPorcentajeAportacion: TFMTBCDField
+      DisplayLabel = 'Porcentaje de aportaci'#243'n'
+      FieldName = 'PorcentajeAportacion'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 6
+    end
+    object adodsMasterAplicarDescuentos: TBooleanField
+      DisplayLabel = 'Aplicar descuentos'
+      FieldName = 'AplicarDescuentos'
     end
     object adodsMasterAplicarISRProvisional: TBooleanField
       DisplayLabel = 'Aplicar ISR mensual'

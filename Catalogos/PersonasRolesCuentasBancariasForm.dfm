@@ -27,6 +27,10 @@ inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
           DataBinding.FieldName = 'Estatus'
           Width = 77
         end
+        object tvMasterBanorteID: TcxGridDBColumn
+          DataBinding.FieldName = 'BanorteID'
+          Width = 57
+        end
         object tvMasterCuentaBancaria: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancaria'
         end
@@ -43,15 +47,14 @@ inherited frmPersonasRolesCuentasBancarias: TfrmPersonasRolesCuentasBancarias
         end
         object tvMasterLimiteInferior: TcxGridDBColumn
           DataBinding.FieldName = 'LimiteInferior'
+          Visible = False
         end
         object tvMasterLimiteSuperior: TcxGridDBColumn
           DataBinding.FieldName = 'LimiteSuperior'
+          Visible = False
         end
       end
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmPersonasRolesCuentasBancarias.adodsMaster
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (

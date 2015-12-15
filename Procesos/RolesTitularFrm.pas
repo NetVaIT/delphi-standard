@@ -27,7 +27,7 @@ uses
   cxGridDBTableView, dxPSCore, dxPScxCommon, dxBar, Vcl.ImgList,
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
-  cxGrid, Vcl.ExtCtrls;
+  cxGrid, Vcl.ExtCtrls, cxButtonEdit;
 
 type
   TfrmRolesTitular = class(T_frmGrid)
@@ -42,9 +42,12 @@ type
     tvMasterCalcular: TcxGridDBColumn;
     tvMasterPorcentajeCalculo: TcxGridDBColumn;
   private
+    FactSetPorcent: TBasicAction;
+    procedure SetactSetPorcent(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
+    property actSetPorcent: TBasicAction read FactSetPorcent write SetactSetPorcent;
   end;
 
 implementation
@@ -52,5 +55,13 @@ implementation
 {$R *.dfm}
 
 uses MovimientosDM;
+
+{ TfrmRolesTitular }
+
+procedure TfrmRolesTitular.SetactSetPorcent(const Value: TBasicAction);
+begin
+  FactSetPorcent := Value;
+  tvMasterPorcentajeCalculo.Properties.Buttons[0].Action:= Value;
+end;
 
 end.

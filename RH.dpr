@@ -167,13 +167,13 @@ uses
   CuentasXPagarDM in 'Procesos\CuentasXPagarDM.pas' {dmCuentasXPagar: TDataModule},
   CuentasXPagarForm in 'Procesos\CuentasXPagarForm.pas' {frmCuentasXPagar},
   RptMovimientosForm in 'Reportes\RptMovimientosForm.pas' {frmRptMovimientos},
-  RptDetalleMovimientosPersonaDmod in 'Reportes\RptDetalleMovimientosPersonaDmod.pas' {dmDetalleMovimientosPersona: TDataModule},
+  RptDetalleMovimientosPersonaDmod in 'Reportes\RptDetalleMovimientosPersonaDmod.pas' {dmRptDetalleMovimientosPersona: TDataModule},
   CuentasXCobrarConceptosDM in 'Catalogos\CuentasXCobrarConceptosDM.pas' {dmCuentasXCobrarConceptos: TDataModule},
   CuentasXCobrarConceptosForm in 'Catalogos\CuentasXCobrarConceptosForm.pas' {frmCuentasXCobrarConceptos},
   CuentasXCobrarConceptosEdit in 'Catalogos\CuentasXCobrarConceptosEdit.pas' {frmCuentasXCobrarConceptosEdit},
   MovimientosDDM in 'Procesos\MovimientosDDM.pas' {dmMovimientosD: TDataModule},
   MovimientosDForm in 'Procesos\MovimientosDForm.pas' {frmMovimientosD},
-  RptMovimientosPeriodoDM in 'Reportes\RptMovimientosPeriodoDM.pas' {dmReporteCrossTab: TDataModule},
+  RptMovimientosPeriodoDM in 'Reportes\RptMovimientosPeriodoDM.pas' {dmRptMovimientosPeriodo: TDataModule},
   RptMovimientosPeriodoForm in 'Reportes\RptMovimientosPeriodoForm.pas' {frmMovimientosPeriodo},
   CuentasXPagarPagosForm in 'Procesos\CuentasXPagarPagosForm.pas' {frmCuentasXPagarPagos},
   EsquemaPagosPersonasDM in 'Catalogos\EsquemaPagosPersonasDM.pas' {dmEsquemaPagosPersonas: TDataModule},
@@ -226,7 +226,9 @@ uses
   PersonasCSDForm in 'Catalogos\PersonasCSDForm.pas' {frmPersonasCSD},
   TmpInstruccionesForm in 'Procesos\TmpInstruccionesForm.pas' {frmTmpInstrucciones},
   TmpInstruccionesDM in 'Procesos\TmpInstruccionesDM.pas' {dmTmpInstrucciones: TDataModule},
-  RolesTitularFrm in 'Procesos\RolesTitularFrm.pas' {frmRolesTitular};
+  RolesTitularFrm in 'Procesos\RolesTitularFrm.pas' {frmRolesTitular},
+  RptMovimientosPersonaDM in 'Reportes\RptMovimientosPersonaDM.pas' {dmRptMovimientosPersona: TDataModule},
+  RolesTitularPorcentajeEdit in 'Procesos\RolesTitularPorcentajeEdit.pas' {frmRolesTitularPorcentajeEdit};
 
 {$R *.res}
 

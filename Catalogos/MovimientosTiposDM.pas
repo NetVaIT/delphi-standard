@@ -67,6 +67,9 @@ type
     adodsMasterEnviarCuentaControl: TBooleanField;
     adodsMasterAplicarCategoria: TBooleanField;
     adodsMasterImportar: TBooleanField;
+    adodsMasterPorcentajeRetencion: TFMTBCDField;
+    adodsMasterPorcentajeAportacion: TFMTBCDField;
+    adodsMasterAplicarDescuentos: TBooleanField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsMasterNewRecord(DataSet: TDataSet);
     procedure adodsMasterIdMovimientoTipoCategoriaChange(Sender: TField);

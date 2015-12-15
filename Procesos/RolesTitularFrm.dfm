@@ -54,6 +54,12 @@ inherited frmRolesTitular: TfrmRolesTitular
         end
         object tvMasterPorcentajeCalculo: TcxGridDBColumn
           DataBinding.FieldName = 'PorcentajeCalculo'
+          PropertiesClassName = 'TcxButtonEditProperties'
+          Properties.Buttons = <
+            item
+              Default = True
+              Kind = bkEllipsis
+            end>
         end
       end
     end

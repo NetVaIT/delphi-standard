@@ -1,6 +1,5 @@
 inherited dmRptPagos: TdmRptPagos
   OldCreateOrder = True
-  OnCreate = DataModuleCreate
   Height = 315
   Width = 461
   inherited adodsReport: TADODataSet

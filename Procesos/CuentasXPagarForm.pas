@@ -27,7 +27,7 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls, cxDBLookupComboBox, cxBarEditItem, ExportarPagosBancoDM;
+  Vcl.ExtCtrls, cxDBLookupComboBox, cxBarEditItem;
 
 type
   TfrmCuentasXPagar = class(T_frmGrid)
@@ -50,30 +50,27 @@ type
     tvMasterTotalLocalesRetenido: TcxGridDBColumn;
     tvMasterSaldoPendiente: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
-    dxbbCalcularCXP: TdxBarButton;
     cxedtPeriodo: TcxBarEditItem;
     dsPeriodos: TDataSource;
-    dxBarButton8: TdxBarButton;
-    actExportarPagos: TAction;
-    actBajarPagos: TAction;
-    dxBarButton9: TdxBarButton;
     tvMasterFlujoEfectivo: TcxGridDBColumn;
-    procedure actExportarPagosExecute(Sender: TObject);
-    procedure actBajarPagosExecute(Sender: TObject);
+    dxbtnExportarPagos: TdxBarButton;
+    dxbtnDescarPagos: TdxBarButton;
   private
     { Private declarations }
-    dmExportaPagos : TdmExportarPagosBancos;
-    FCalcularCXP: TBasicAction;
     FDataSetPeriodo: TDataSet;
-    procedure SetCalcularCXP(const Value: TBasicAction);
+    FDescargarPagos: TBasicAction;
+    FExportarPagos: TBasicAction;
     function GetIdPeriodo: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
     procedure SetIdPeriodo(const Value: Integer);
+    procedure SetDescargarPagos(const Value: TBasicAction);
+    procedure SetExportarPagos(const Value: TBasicAction);
   public
     { Public declarations }
-    property CalcularCXP: TBasicAction read FCalcularCXP write SetCalcularCXP;
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
+    property ExportarPagos: TBasicAction read FExportarPagos write SetExportarPagos;
+    property DescargarPagos: TBasicAction read FDescargarPagos write SetDescargarPagos;
   end;
 
 implementation
@@ -84,22 +81,6 @@ uses CuentasXPagarDM;
 
 { TfrmCuentasXPagar }
 
-procedure TfrmCuentasXPagar.actBajarPagosExecute(Sender: TObject);
-begin
-  inherited;
-  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
-  dmExportaPagos.actBajarArchivoPagos.Execute;
-  FreeAndNil(dmExportaPagos);
-end;
-
-procedure TfrmCuentasXPagar.actExportarPagosExecute(Sender: TObject);
-begin
-  inherited;
-  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
-  dmExportaPagos.actExportaBanorte.Execute;
-  FreeAndNil(dmExportaPagos);
-end;
-
 function TfrmCuentasXPagar.GetIdPeriodo: Integer;
 begin
   if VarIsNull(cxedtPeriodo.EditValue) then
@@ -108,16 +89,22 @@ begin
     Result:= cxedtPeriodo.EditValue;
 end;
 
-procedure TfrmCuentasXPagar.SetCalcularCXP(const Value: TBasicAction);
-begin
-  FCalcularCXP := Value;
-  dxbbCalcularCXP.Action := Value;
-end;
-
 procedure TfrmCuentasXPagar.SetDataSetPeriodo(const Value: TDataSet);
 begin
   FDataSetPeriodo := Value;
   dsPeriodos.DataSet := Value;
+end;
+
+procedure TfrmCuentasXPagar.SetDescargarPagos(const Value: TBasicAction);
+begin
+  FDescargarPagos := Value;
+  dxbtnDescarPagos.Action:= Value;
+end;
+
+procedure TfrmCuentasXPagar.SetExportarPagos(const Value: TBasicAction);
+begin
+  FExportarPagos := Value;
+  dxbtnExportarPagos.Action:= Value;
 end;
 
 procedure TfrmCuentasXPagar.SetIdPeriodo(const Value: Integer);

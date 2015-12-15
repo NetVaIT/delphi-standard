@@ -89,8 +89,8 @@
         <VerInfo_Locale>2058</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Build>320</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.2.320;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>327</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.2.327;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -635,7 +635,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Reportes\RptDetalleMovimientosPersonaDmod.pas">
-            <Form>dmDetalleMovimientosPersona</Form>
+            <Form>dmRptDetalleMovimientosPersona</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -662,7 +662,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Reportes\RptMovimientosPeriodoDM.pas">
-            <Form>dmReporteCrossTab</Form>
+            <Form>dmRptMovimientosPeriodo</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -877,6 +877,15 @@
         </DCCReference>
         <DCCReference Include="Procesos\RolesTitularFrm.pas">
             <Form>frmRolesTitular</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Reportes\RptMovimientosPersonaDM.pas">
+            <Form>dmRptMovimientosPersona</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Procesos\RolesTitularPorcentajeEdit.pas">
+            <Form>frmRolesTitularPorcentajeEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

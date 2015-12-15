@@ -7,17 +7,22 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
   TextHeight = 13
   inherited splDetail3: TSplitter
     Width = 990
+    ExplicitWidth = 990
   end
   inherited splDetail1: TSplitter
     Width = 990
+    ExplicitWidth = 990
   end
   inherited splDetail2: TSplitter
     Width = 990
+    ExplicitWidth = 990
   end
   inherited pnlMaster: TPanel
     Width = 990
+    ExplicitWidth = 990
     inherited cxGrid: TcxGrid
       Width = 990
+      ExplicitWidth = 990
       inherited tvMaster: TcxGridDBTableView
         OptionsView.GroupByBox = True
         object tvMasterIdCuentaXPagarPago: TcxGridDBColumn
@@ -35,6 +40,11 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
           DataBinding.FieldName = 'Pagador'
           Visible = False
           GroupIndex = 0
+          Width = 304
+        end
+        object tvMasterBancoPagador: TcxGridDBColumn
+          DataBinding.FieldName = 'BancoPagador'
+          Visible = False
         end
         object tvMasterCuentaBancariaPagador: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancariaPagador'
@@ -51,6 +61,10 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
         end
         object tvMasterCobrador: TcxGridDBColumn
           DataBinding.FieldName = 'Cobrador'
+          Width = 304
+        end
+        object tvMasterBancoCobrador: TcxGridDBColumn
+          DataBinding.FieldName = 'BancoCobrador'
         end
         object tvMasterCuentaBancariaCobrador: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancariaCobrador'
@@ -78,17 +92,22 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
   end
   inherited pnlDetail3: TPanel
     Width = 990
+    ExplicitWidth = 990
   end
   inherited pnlDetail2: TPanel
     Width = 990
+    ExplicitWidth = 990
   end
   inherited pnlDetail1: TPanel
     Width = 990
+    ExplicitWidth = 990
   end
   inherited pnlClose: TPanel
     Width = 990
+    ExplicitWidth = 990
     inherited btnClose: TButton
       Left = 905
+      ExplicitLeft = 905
     end
   end
   inherited dxBarManager: TdxBarManager
@@ -146,7 +165,7 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

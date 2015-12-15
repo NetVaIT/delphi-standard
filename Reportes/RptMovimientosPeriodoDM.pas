@@ -7,7 +7,7 @@ uses
   Data.DB, Data.Win.ADODB, Dialogs, RptMovimientosForm, dxmdaset;
 
 type
-  TdmMovimientosPeriodorpt = class(T_dmStandar)
+  TdmRptMovimientosPeriodo = class(T_dmStandar)
     adostReporte: TADOStoredProc;
     actReporte: TAction;
     adoqryMovimientoTipo: TADOQuery;
@@ -42,7 +42,7 @@ uses RptMovimientosPeriodoForm, ConfiguracionDM;
 
 {$R *.dfm}
 
-procedure TdmMovimientosPeriodorpt.actPedirPeriodoExecute(Sender: TObject);
+procedure TdmRptMovimientosPeriodo.actPedirPeriodoExecute(Sender: TObject);
 var
   Resultado : integer;
 begin
@@ -53,7 +53,7 @@ begin
     Execute;
 end;
 
-procedure TdmMovimientosPeriodorpt.actReporteExecute(Sender: TObject);
+procedure TdmRptMovimientosPeriodo.actReporteExecute(Sender: TObject);
 begin
   inherited;
   adostReporte.Parameters.ParamByName('@IdPeriodo').Value := mdParamsIdPeriodo.Value;
@@ -64,7 +64,7 @@ begin
   AjustarColumnasGrid;
 end;
 
-procedure TdmMovimientosPeriodorpt.AjustarColumnasGrid;
+procedure TdmRptMovimientosPeriodo.AjustarColumnasGrid;
 var
   i : integer;
   NombreCol : string;
@@ -86,13 +86,13 @@ begin
   end;
 end;
 
-procedure TdmMovimientosPeriodorpt.AssignParam;
+procedure TdmRptMovimientosPeriodo.AssignParam;
 begin
   inherited;
 //  adodsReporte.Parameters.ParamByName('IdPeriodo').Value := mdParamsIdPeriodo.Value;
 end;
 
-procedure TdmMovimientosPeriodorpt.DataModuleCreate(Sender: TObject);
+procedure TdmRptMovimientosPeriodo.DataModuleCreate(Sender: TObject);
 begin
   inherited;
   gGridForm := TfrmMovimientosPeriodo.Create(Self);
@@ -101,7 +101,7 @@ begin
 //  TfrmMovimientosPeriodo(gGridForm).GeneraReporte := actReporte;
 end;
 
-procedure TdmMovimientosPeriodorpt.Execute;
+procedure TdmRptMovimientosPeriodo.Execute;
 var
   Resultado : integer;
 begin
@@ -127,7 +127,7 @@ begin
   end;
 end;
 
-function TdmMovimientosPeriodorpt.GetCategoria(IdMovimientoTipo: Integer; var Descripcion: string): Integer;
+function TdmRptMovimientosPeriodo.GetCategoria(IdMovimientoTipo: Integer; var Descripcion: string): Integer;
 begin
   adoqryMovimientoTipo.Close;
   adoqryMovimientoTipo.Parameters.ParamByName('IdMovimientoTipo').Value := IdMovimientoTipo;
@@ -137,7 +137,7 @@ begin
   adoqryMovimientoTipo.Close;
 end;
 
-procedure TdmMovimientosPeriodorpt.AjustarCampos;
+procedure TdmRptMovimientosPeriodo.AjustarCampos;
 var
   i : integer;
 begin

@@ -22,10 +22,6 @@ object frmExportarPagosBanco: TfrmExportarPagosBanco
     Height = 403
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 56
-    ExplicitTop = 8
-    ExplicitWidth = 720
-    ExplicitHeight = 590
     object btnGuardar: TSpeedButton
       Left = 398
       Top = 368
@@ -74,12 +70,15 @@ object frmExportarPagosBanco: TfrmExportarPagosBanco
         end
         object cxGrid1DBTableView1Archivo: TcxGridDBColumn
           DataBinding.FieldName = 'Archivo'
+          Width = 304
         end
         object cxGrid1DBTableView1ExportaPagoDocumentoEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'ExportaPagoDocumentoEstatus'
+          Width = 100
         end
         object cxGrid1DBTableView1Observaciones: TcxGridDBColumn
           DataBinding.FieldName = 'Observaciones'
+          Width = 304
         end
         object cxGrid1DBTableView1IdExportarPagoDocumentoEstatus: TcxGridDBColumn
           DataBinding.FieldName = 'IdExportarPagoDocumentoEstatus'
@@ -91,6 +90,7 @@ object frmExportarPagosBanco: TfrmExportarPagosBanco
         end
         object cxGrid1DBTableView1Hash: TcxGridDBColumn
           DataBinding.FieldName = 'Hash'
+          Width = 304
         end
         object cxGrid1DBTableView1IdPersona: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersona'

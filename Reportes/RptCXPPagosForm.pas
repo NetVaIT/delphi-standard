@@ -48,6 +48,8 @@ type
     tvMasterConceptoPago: TcxGridDBColumn;
     dsPeriodos: TDataSource;
     cxedtPeriodo: TcxBarEditItem;
+    tvMasterBancoPagador: TcxGridDBColumn;
+    tvMasterBancoCobrador: TcxGridDBColumn;
   private
     FDataSetPeriodo: TDataSet;
     function GetIdPeriodo: Integer;

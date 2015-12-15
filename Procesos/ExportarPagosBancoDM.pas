@@ -96,6 +96,7 @@ type
     adocEstatusCuentaXPagarPagos: TADOCommand;
     adocExportaPagosDocs: TADOCommand;
     adocEstatusCuentaXPagarPagosDoc: TADOCommand;
+    adodsMasterBanorteID: TStringField;
     procedure actExportaBanorteExecute(Sender: TObject);
     procedure actBajarArchivoPagosExecute(Sender: TObject);
     procedure actDescargarExecute(Sender: TObject);
@@ -226,11 +227,15 @@ begin
 end;
 
 function TdmExportarPagosBancos.CreaArchivoBanorte(NombreArchivo:String; Per,Emp,Cta,Esq:integer):Boolean;
+const
+  IdBancoBanorte = 18;
 var
   Archivo : TextFile;
   Operacion, Dinero : String;
   Registro : String;
-  ClaveId : Integer;
+  Referencia: String;
+  IdDocumento: Integer;
+  IdExportarPagoDocumento: Integer;
 begin
   Result := False;
   adodsMaster.Parameters.ParamByName('IdPeriodo').Value := Per;
@@ -247,66 +252,68 @@ begin
     while not adodsMaster.Eof do
     begin
       Registro := '';
-      ClaveId := adodsMasterIdCuentaXPagarPago.AsInteger;
-      if adodsMasterBancoCobrador.AsInteger = 18 then
-        Operacion := '''05'
+      if adodsMasterBancoCobrador.AsInteger = IdBancoBanorte then
+        Operacion := '''02'
       else
         Operacion := '''04'; //SPEI
       Registro := Registro + Operacion + Chr(9); // Operacion
-      Registro := Registro + '''' + PreparaCadena(IntToStr(ClaveId),'D','0',12) + Chr(9); // ClaveId
-//    Registro := Registro + '''0123456789AB' + Chr(9); // ClaveId
+      Registro := Registro + PreparaCadena(adodsMasterBanorteID.AsString, 'I',' ',13) + Chr(9); // ClaveId
       Registro := Registro + '''' + PreparaCadena(adodsMasterCtaBancariaPagador.AsString,'D','0',18) + Chr(9); // CuentaOrigen
-      if Operacion = '''05' then
+      if Operacion = '''02' then
         Registro := Registro + '''' + PreparaCadena(adodsMasterCtaBanCobrador.AsString,'D','0',18) + Chr(9) // CuentaDestinoCUENTA
       else
         Registro := Registro + '''' + PreparaCadena(adodsMasterCClabeCobrador.AsString,'D','0',18) + Chr(9); // CuentaDestinoCLABE
       Dinero := QuitarCaracter(FormatFloat('0.00',adodsMasterMontoProgramado.AsFloat),'.');
       Registro := Registro + PreparaCadena(Dinero,'D','0',13) + Chr(9); // Importe
-      Registro := Registro + '0123456789ABC' + Chr(9); // Referencia
+      Referencia := adodsMasterIdCuentaXPagarPago.AsString;
+      Registro := Registro + PreparaCadena(Referencia,'D','0',10) + Chr(9); // Referencia
       Registro := Registro + CortarCadena(adodsMasterDescripcion.AsString,29) + Chr(9); // Descripcion
-      Registro := Registro + '1'; // MonedaOrigen
-      Registro := Registro + '1' + Chr(9); // MonedaDestino
+//      Registro := Registro + '1'; // MonedaOrigen
+//      Registro := Registro + '1' + Chr(9); // MonedaDestino
       Registro := Registro + PreparaCadena(adodsMasterRFCPaga.AsString,'I',' ',13) + Chr(9); // RFCOrdenante
       Registro := Registro + '0' + Chr(9); // IVA
-      Registro := Registro + adodsMasterFechaProgramada.AsString + Chr(9); // FechaAplicacion
       if Operacion = '''05' then
-        Registro := Registro + 'X' + Chr(9) // NombreBeneficiario
+        Registro := Registro + adodsMasterFechaProgramada.AsString + Chr(9) // FechaAplicacion
       else
-        Registro := Registro + adodsMasterCobra.AsString + Chr(9); // NombreBeneficiario
+        Registro := Registro + Chr(9);
+      if Operacion = '''04' then
+        Registro := Registro + adodsMasterCobra.AsString  // NombreBeneficiario
+      else
+        Registro := Registro + 'X';
       WriteLn(Archivo, Registro);
-      adocEstatusCuentaXPagarPagos.Parameters.ParamByName('IdCuentaXPagarPagos').Value := ClaveId;
-      adocEstatusCuentaXPagarPagos.Execute;
       adodsMaster.Next;
     end;
     CloseFile(Archivo);
-    ClaveId := CargaArchivoaFS(NombreArchivo,'Archivo de pagos ');
-    adodsExportarPagosDocumentos.Open;
-    adodsExportarPagosDocumentos.Insert;
-    adodsExportarPagosDocumentos.FieldByName('Fecha').Value := Date;
-    adodsExportarPagosDocumentos.FieldByName('IdExportarPagoDocumentoEstatus').Value := 0;
-    adodsExportarPagosDocumentos.FieldByName('IdDocumento').Value := ClaveId;
-    adodsExportarPagosDocumentos.FieldByName('Hash').Value := GetStringHash(NombreArchivo);
-    adodsExportarPagosDocumentos.FieldByName('IdPersona').Value := Emp;
-    adodsExportarPagosDocumentos.FieldByName('IdPeriodo').Value := Per;
-//    adodsExportarPagosDocumentos.FieldByName('IdEsquemaPago').Value := Esq;
-    adodsExportarPagosDocumentos.FieldByName('IdBanco').Value := 18;
-    adodsExportarPagosDocumentos.FieldByName('IdCuentaBancaria').Value := Cta;
-    adodsExportarPagosDocumentos.FieldByName('Observaciones').Value := '';
-    adodsExportarPagosDocumentos.Post;
-    ClaveId := adodsExportarPagosDocumentosIdExportarPagoDocumento.AsInteger;
-    adodsExportarPagosDocumentos.Close;
-    adodsMaster.First;
-    while not adodsMaster.Eof do
-    begin
-      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdCuentaXPagarPagos').Value := adodsMasterIdCuentaXPagarPago.Value;
-      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdArchivo').Value := ClaveId;
-      adocEstatusCuentaXPagarPagosDoc.Execute;
-      adodsMaster.Next;
-    end;
+
+//    IdDocumento := CargaArchivoaFS(NombreArchivo,'Archivo de pagos ');
+//    adodsExportarPagosDocumentos.Open;
+//    adodsExportarPagosDocumentos.Insert;
+//    adodsExportarPagosDocumentos.FieldByName('Fecha').Value := Date;
+//    adodsExportarPagosDocumentos.FieldByName('IdExportarPagoDocumentoEstatus').Value := 0;
+//    adodsExportarPagosDocumentos.FieldByName('IdDocumento').Value := IdDocumento;
+//    adodsExportarPagosDocumentos.FieldByName('Hash').Value := GetStringHash(NombreArchivo);
+//    adodsExportarPagosDocumentos.FieldByName('IdPeriodo').Value := Per;
+//    adodsExportarPagosDocumentos.FieldByName('IdPersona').Value := Emp;
+//    adodsExportarPagosDocumentos.FieldByName('IdBanco').Value := IdBancoBanorte;
+//    adodsExportarPagosDocumentos.FieldByName('IdCuentaBancaria').Value := Cta;
+////    adodsExportarPagosDocumentos.FieldByName('IdEsquemaPago').Value := Esq;
+//    adodsExportarPagosDocumentos.FieldByName('Observaciones').Value := '';
+//    adodsExportarPagosDocumentos.Post;
+//    IdExportarPagoDocumento := adodsExportarPagosDocumentosIdExportarPagoDocumento.AsInteger;
+//    adodsExportarPagosDocumentos.Close;
+//    adodsMaster.First;
+//    while not adodsMaster.Eof do
+//    begin
+//      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdCuentaXPagarPagos').Value := adodsMasterIdCuentaXPagarPago.Value;
+//      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdArchivo').Value := IdExportarPagoDocumento;
+//      adocEstatusCuentaXPagarPagosDoc.Execute;
+//      adodsMaster.Next;
+//    end;
+
   end;
+//  DeleteFile(NombreArchivo);
   adodsCXPPagos.Close;
   adodsMaster.Close;
-  DeleteFile(NombreArchivo);
 end;
 
 function TdmExportarPagosBancos.DigestToStr(Digest: array of byte): string;

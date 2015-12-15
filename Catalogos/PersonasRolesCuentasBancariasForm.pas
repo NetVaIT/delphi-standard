@@ -42,6 +42,7 @@ type
     tvMasterLimiteSuperior: TcxGridDBColumn;
     tvMasterIdCuentaBancariaEstatus: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
+    tvMasterBanorteID: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
