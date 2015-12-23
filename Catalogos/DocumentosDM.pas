@@ -4,11 +4,14 @@ interface
 
 uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
-  Data.DB, Data.Win.ADODB, Vcl.Dialogs,
+  Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes,
   System.IOUtils,
   Winapi.ShellAPI;
 
-  const
+resourcestring
+  strLoadFileAllowed = 'No es posible modificar el archivo asignado, debido a que ya ha sido procesado.';
+
+const
   FileExts: array[0..8] of string = ('.xml', '.doc', '.docx', '.xls', '.xlsx', '.txt', '.csv', '.cer', '.key');
 
 type
@@ -41,6 +44,7 @@ type
     actViewFile: TAction;
     OpenDialog: TOpenDialog;
     SaveDialog: TSaveDialog;
+    actMD5File: TAction;
     procedure DataModuleCreate(Sender: TObject);
     procedure actLoadFileExecute(Sender: TObject);
     procedure actSaveFileExecute(Sender: TObject);
@@ -48,38 +52,61 @@ type
     procedure actViewFileUpdate(Sender: TObject);
     procedure actViewFileExecute(Sender: TObject);
     procedure adodsUpdateNewRecord(DataSet: TDataSet);
+    procedure actMD5FileExecute(Sender: TObject);
   private
     { Private declarations }
     FFilename: TFileName;
     FFileAllowed: TFileAllowed;
+    FLoadFileAllowed: Boolean;
     procedure WriteFile(FileName: TFileName);
     procedure ReadFile(FileName: TFileName);
     procedure TuneOpenDialog;
     procedure SetFileAllowed(const Value: TFileAllowed);
+    procedure SetLoadFileAllowed(const Value: Boolean);
+//    function SetFile(FileName: TFileName): Integer;
   public
     { Public declarations }
     function GetFileName(IdDocumento: Integer): TFileName;
-    function SetFile: Integer;
+    function SetFile: Integer; overload;
+    function SetFile(FileName: TFileName): Integer; overload;
     property FileAllowed: TFileAllowed read FFileAllowed write SetFileAllowed default faXLSx;
+    property LoadFileAllowed: Boolean read FLoadFileAllowed write SetLoadFileAllowed default True;
   end;
 
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses DocumentosForm, DocumentosEdit;
+uses DocumentosForm, DocumentosEdit, _Utils;
 
 {$R *.dfm}
 
 procedure TdmDocumentos.actLoadFileExecute(Sender: TObject);
 begin
   inherited;
-  if OpenDialog.Execute then
+  if LoadFileAllowed then
   begin
-    FFilename:= OpenDialog.FileName;
-    adodsUpdateNombreArchivo.AsString := ExtractFileName(FFilename);
-    WriteFile(FFilename);
-  end;
+    if OpenDialog.Execute then
+    begin
+      FFilename:= OpenDialog.FileName;
+      adodsUpdateNombreArchivo.AsString := ExtractFileName(FFilename);
+      WriteFile(FFilename);
+    end;
+  end
+  else
+    MessageDlg(strLoadFileAllowed, mtInformation, [mbOk], 0)
+end;
+
+procedure TdmDocumentos.actMD5FileExecute(Sender: TObject);
+var
+  FileName: TFileName;
+  MD5: String;
+begin
+  inherited;
+  FileName:= TPath.GetTempPath + adodsUpdateNombreArchivo.AsString;
+  ReadFile(FileName);
+  MD5 := MD5File(FileName);
+  ShowMessage(MD5);
 end;
 
 procedure TdmDocumentos.actSaveFileExecute(Sender: TObject);
@@ -131,8 +158,10 @@ begin
   TfrmDocumentosEdit(frmEdit).actLoadFile:= actLoadFile;
   TfrmDocumentosEdit(frmEdit).actSaveFile:= actSaveFile;
   TfrmDocumentosEdit(frmEdit).actViewFile:= actViewFile;
+  TfrmDocumentosEdit(frmEdit).actMD5File:= actMD5File;
   gGridForm := TfrmDocumentos.Create(Self);
   gGridForm.DataSet := adodsMaster;
+  LoadFileAllowed:= True;
 end;
 
 function TdmDocumentos.GetFileName(IdDocumento: Integer): TFileName;
@@ -171,22 +200,27 @@ begin
   if OpenDialog.Execute then
   begin
     FFilename:= OpenDialog.FileName;
-    adodsUpdate.Open;
-    try
-      adodsUpdate.Insert;
-      adodsUpdateIdDocumentoTipo.Value:= 1;
-      adodsUpdateIdDocumentoClase.Value:= 1;
-      adodsUpdateDescripcion.AsString:= ExtractFileName(FFilename);
-      adodsUpdateNombreArchivo.AsString:= ExtractFileName(FFilename);
-      WriteFile(FFilename);
-      adodsUpdate.Post;
-      Result:= adodsUpdateIdDocumento.Value;
-    finally
-      adodsUpdate.Close;
-    end;
+    Result:= SetFile(FFileName);
   end
   else
     Result:= 0;
+end;
+
+function TdmDocumentos.SetFile(FileName: TFileName): Integer;
+begin
+  adodsUpdate.Open;
+  try
+    adodsUpdate.Insert;
+    adodsUpdateIdDocumentoTipo.Value:= 1;
+    adodsUpdateIdDocumentoClase.Value:= 1;
+    adodsUpdateDescripcion.AsString:= ExtractFileName(Filename);
+    adodsUpdateNombreArchivo.AsString:= ExtractFileName(Filename);
+    WriteFile(Filename);
+    adodsUpdate.Post;
+    Result:= adodsUpdateIdDocumento.Value;
+  finally
+    adodsUpdate.Close;
+  end;
 end;
 
 procedure TdmDocumentos.SetFileAllowed(const Value: TFileAllowed);
@@ -200,6 +234,11 @@ begin
     TuneOpenDialog;
 //    ChangeExtension;
   end;
+end;
+
+procedure TdmDocumentos.SetLoadFileAllowed(const Value: Boolean);
+begin
+  FLoadFileAllowed := Value;
 end;
 
 procedure TdmDocumentos.WriteFile(FileName: TFileName);
@@ -229,6 +268,7 @@ begin
     faXLSx: OpenDialog.Filter:= 'Archivo Microsoft Excel|*.xlsx';
     faCER: OpenDialog.Filter:= 'Archivo CER|*.cer';
     faKEY: OpenDialog.Filter:= 'Archivo KEY|*.key';
+    faTXT: OpenDialog.Filter:= 'Archivo texto|*.txt';
   end;
   if FFileAllowed <> faAll then
     OpenDialog.Filter:= OpenDialog.Filter + '|Todos los Archivos|*.*';

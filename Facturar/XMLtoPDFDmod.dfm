@@ -24,9 +24,10 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
       Size = 99999
       Calculated = True
     end
-    object cdsXMLfechahora: TDateTimeField
+    object cdsXMLCadenaOriginalTimbre: TStringField
       FieldKind = fkCalculated
-      FieldName = 'fechahora'
+      FieldName = 'CadenaOriginalTimbre'
+      Size = 99999
       Calculated = True
     end
     object cdsXMLversion: TStringField
@@ -41,9 +42,9 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     object cdsXMLfolio: TStringField
       FieldName = 'folio'
     end
-    object cdsXMLfecha: TDateField
+    object cdsXMLfecha: TStringField
       FieldName = 'fecha'
-      Required = True
+      Size = 31
     end
     object cdsXMLsello: TStringField
       FieldName = 'sello'
@@ -340,9 +341,9 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
   end
   object XMLTransformProvider: TXMLTransformProvider
     TransformRead.TransformationFile = 
-      'C:\Users\hucj1e3\Documents\RAD Studio\Projects\Pruebas\Facturar\' +
-      'Win32\Debug\Transfor32.xtr'
-    XMLDataFile = 'C:\Temp\XML\F00028727.xml'
+      'C:\Users\hucj1e3\Documents\RAD Studio\Projects\NetVaIT\RH\Factur' +
+      'ar\Transfor32.xtr'
+    XMLDataFile = 'C:\FacturasRH\AAA010101AAA\JUNIO2015\AAA010101AAA0.XML'
     Left = 48
     Top = 80
   end
@@ -352,7 +353,7 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     DataPipeline = ppDBPipelineDatosDetalleFactura
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
     PrinterSetup.mmMarginBottom = 3810
@@ -361,7 +362,7 @@ object dmodXMLtoPDF: TdmodXMLtoPDF
     PrinterSetup.mmMarginTop = 3810
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 122
+    PrinterSetup.PaperSize = 1
     Units = utScreenPixels
     AllowPrintToFile = True
     ArchiveFileName = '($MyDocuments)\ReportArchive.raf'

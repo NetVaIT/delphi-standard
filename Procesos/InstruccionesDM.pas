@@ -149,6 +149,7 @@ begin
   Id:= adodsMasterIdDocumento.AsInteger;
   if Id  <> 0 then
   begin
+    dmDocumentos.LoadFileAllowed:= (not adodsMasterIncidenciasGeneradas.Value);
     dmDocumentos.Edit(Id);
     adodsDocumentos.Requery();
   end

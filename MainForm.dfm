@@ -283,7 +283,7 @@ inherited frmMain: TfrmMain
       FloatLeft = 1133
       FloatTop = 8
       FloatClientWidth = 86
-      FloatClientHeight = 152
+      FloatClientHeight = 174
       ItemLinks = <
         item
           Visible = True
@@ -300,6 +300,10 @@ inherited frmMain: TfrmMain
         item
           Visible = True
           ItemName = 'dxBarButton9'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton14'
         end
         item
           Visible = True
@@ -603,6 +607,10 @@ inherited frmMain: TfrmMain
     end
     object dxBarLargeButton34: TdxBarLargeButton
       Action = actPrestamos
+      Category = 0
+    end
+    object dxBarButton14: TdxBarButton
+      Action = actExportarPagos
       Category = 0
     end
     object dxBarLargeButton31: TdxBarLargeButton
@@ -9503,6 +9511,12 @@ inherited frmMain: TfrmMain
       Category = 'Procesos'
       Caption = 'Cuentas por pagar'
       ImageIndex = 40
+      OnExecute = actCatalogoExecute
+    end
+    object actExportarPagos: TAction
+      Tag = 35
+      Category = 'Procesos'
+      Caption = 'Exportar pagos'
       OnExecute = actCatalogoExecute
     end
     object actRptDispersion: TAction

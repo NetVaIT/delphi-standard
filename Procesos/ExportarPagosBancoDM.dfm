@@ -181,6 +181,7 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
     Top = 376
   end
   object adodsDocumento: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -377,9 +378,8 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
       ReadOnly = True
       Visible = False
     end
-    object adodsExportarPagosDocumentosFecha: TWideStringField
+    object adodsExportarPagosDocumentosFecha: TDateTimeField
       FieldName = 'Fecha'
-      Size = 10
     end
     object adodsExportarPagosDocumentosArchivo: TStringField
       FieldKind = fkLookup
@@ -440,6 +440,7 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
     end
   end
   object adodsExportarPagosDocumentosEstatus: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

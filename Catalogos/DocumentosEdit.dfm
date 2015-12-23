@@ -3,7 +3,7 @@ inherited frmDocumentosEdit: TfrmDocumentosEdit
   ClientHeight = 277
   ClientWidth = 545
   ExplicitWidth = 551
-  ExplicitHeight = 305
+  ExplicitHeight = 306
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcMain: TcxPageControl
@@ -90,10 +90,13 @@ inherited frmDocumentosEdit: TfrmDocumentosEdit
           end
           item
             Kind = bkGlyph
+          end
+          item
+            Kind = bkGlyph
           end>
         Properties.Images = cxImageList
         TabOrder = 0
-        Width = 304
+        Width = 500
       end
     end
   end
@@ -102,13 +105,13 @@ inherited frmDocumentosEdit: TfrmDocumentosEdit
     Width = 545
     ExplicitTop = 236
     ExplicitWidth = 545
-    inherited btnOk: TButton
-      Left = 382
-      ExplicitLeft = 382
-    end
     inherited btnCancel: TButton
       Left = 463
       ExplicitLeft = 463
+    end
+    inherited btnOk: TButton
+      Left = 382
+      ExplicitLeft = 382
     end
   end
   inherited ActionList: TActionList

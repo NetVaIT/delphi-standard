@@ -131,6 +131,8 @@ type
     dxBarButton11: TdxBarButton;
     dxBarButton12: TdxBarButton;
     dxBarButton13: TdxBarButton;
+    dxBarButton14: TdxBarButton;
+    actExportarPagos: TAction;
     procedure actCatalogoExecute(Sender: TObject);
     procedure actIntervaCXPExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -166,7 +168,7 @@ uses UbicacionesDM, BancosDM, MonedasDM, PuestosDM, PlazasTurnosDM,
   CuentasXCobrarConceptosDM, MovimientosDDM, CuentasXCobrarDM,
   RptDetalleMovimientosPersonaDmod, RptMovimientosPeriodoDM,
   PrestamosDM, ConfiguracionDM, RptPlazasDM, RptPagosDmod, RptCXPPagosDmod,
-  RptMovimientosPersonaDM;
+  RptMovimientosPersonaDM, ExportarPagosDocumentosDM;
 
 procedure TfrmMain.actCatalogoExecute(Sender: TObject);
 begin
@@ -211,6 +213,7 @@ begin
    32: gModulo := TdmMovimientos.Create(Self);
    33: gModulo := TdmCuentasXPagar.Create(Self);
    34: gModulo := TdmCuentasXCobrar.Create(Self);
+   35: gModulo := TdmExportarPagosDocumentos.Create(Self);
    40: gModulo := TdmUsuarios.Create(Self);
    51: begin
          gModulo := TdmMovimientosD.Create(Self);
@@ -311,7 +314,7 @@ begin
   actRptPlaza.Enabled           := Conected;
   actRptCXPPagos.Enabled        := Conected;
   actRptPagos.Enabled           := Conected;
-
+  actExportarPagos.Enabled      := Conected;
 end;
 
 procedure TfrmMain.DestroyModule;

@@ -133,12 +133,14 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Caption = 'Exportar Pagos'
       Hint = 'Exportar Pagos'
       ImageIndex = 13
+      Visible = False
       OnExecute = actExpotarPagosExecute
     end
     object actDescargarPagos: TAction
       Caption = 'Descargar Pagos'
       Hint = 'Descargar Pagos'
       ImageIndex = 13
+      Visible = False
       OnExecute = actDescargarPagosExecute
     end
   end

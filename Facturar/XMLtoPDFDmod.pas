@@ -40,14 +40,12 @@ type
     cdsTraslado: TClientDataSet;
     cdsInfoAduanera: TClientDataSet;
     OpenDialogXML: TOpenDialog;
-    cdsXMLfechahora: TDateTimeField;
     cdsRegimenFiscal: TClientDataSet;
     dsRegimenFiscal: TDataSource;
     ppDBPipelineRegimenFiscal: TppDBPipeline;
     cdsXMLversion: TStringField;
     cdsXMLserie: TStringField;
     cdsXMLfolio: TStringField;
-    cdsXMLfecha: TDateField;
     cdsXMLsello: TStringField;
     cdsXMLformaDePago: TStringField;
     cdsXMLnoCertificado: TStringField;
@@ -137,6 +135,8 @@ type
     ppDetailBand1: TppDetailBand;
     ppFooterBand1: TppFooterBand;
     ppImageCBB: TppImage;
+    cdsXMLfecha: TStringField;
+    cdsXMLCadenaOriginalTimbre: TStringField;
     procedure cdsXMLCalcFields(DataSet: TDataSet);
     procedure ppReportFileDeviceCreate(Sender: TObject);
     procedure ppImageCBBPrint(Sender: TObject);
@@ -146,13 +146,12 @@ type
     FFileRTM: string;
     FCadenaOriginal: string;
     FFileIMG: string;
+    FCadenaOriginalTimbre: string;
 //    FDocumentType: Integer;
     procedure SetFileRTM(const Value: string);
     procedure SetFileXTR(const Value: string);
     procedure SetFileIMG(const Value: string);
 //    procedure SetDocumentType(const Value: Integer);
-  protected
-    property CadenaOriginal: string read FCadenaOriginal write FCadenaOriginal;
   public
     { Public declarations }
     function GeneratePDFFile(pXMLFileName: TFileName): TFileName;
@@ -162,33 +161,30 @@ type
     property FileXTR: string read FFileXTR write SetFileXTR;
     property FileIMG: string read FFileIMG write SetFileIMG;
 //    property DocumentType: Integer read FDocumentType write SetDocumentType;
+    property CadenaOriginal: string read FCadenaOriginal write FCadenaOriginal;
+    property CadenaOriginalTimbre: string read FCadenaOriginalTimbre write FCadenaOriginalTimbre;
   end;
 
 implementation
-
-//uses ParametrosDmod, _Utils;
-
 
 uses _Utils;
 
 {$R *.dfm}
 
-function NumToLetter(Value: Double; pCurrency: TNLCurrency): String;
-begin
-  Result:= '';
-end;
-
-function GetCadenaOriginal22(pXMLFileName: string): string;
-begin
-  Result:= '';
-end;
+//function NumToLetter(Value: Double; pCurrency: TNLCurrency): String;
+//begin
+//  Result:= '';
+//end;
+//
+//function GetCadenaOriginal22(pXMLFileName: string): string;
+//begin
+//  Result:= '';
+//end;
 
 { TdmodXMLtoPDF }
 
 procedure TdmodXMLtoPDF.cdsXMLCalcFields(DataSet: TDataSet);
 var
-  vFechaSTR: String;
-  vPos: Integer;
   vTotal: Double;
   Centavos : String;
 begin
@@ -197,13 +193,13 @@ begin
   Centavos := FormatFloat('.00',Frac(vTotal));
   Delete(Centavos,1,1);
   cdsXMLImporteConLetra.AsString := xIntToLletras(Trunc(vTotal)) + ' PESOS ' + Centavos + '/100 M. N. ';
-  vFechaSTR := FormatDateTime('yyyy-mm-dd', cdsXMLfecha.Value);
-  vPos:= Pos(vFechaSTR, CadenaOriginal);
-  if vPos <> 0 then
-//    cdsXMLfechahora.Value := DateISO8601ToDateTime(Copy(CadenaOriginal, vPos, 19));
   { TODO -oJHC : Se agrega un TRY porque con la factura ZIN332 mando un AV sin razon, habra que cambiar esto. }
   try
   cdsXMLCadenaOriginal.AsString:= CadenaOriginal;
+  except on E: Exception do
+  end;
+  try
+  cdsXMLCadenaOriginalTimbre.AsString:= CadenaOriginalTimbre;
   except on E: Exception do
   end;
 end;
@@ -225,7 +221,7 @@ begin
   begin
     //Configura el XML
     vPDFFileName:= ChangeFileExt(pXMLFileName, fePDF);
-    FCadenaOriginal:= GetCadenaOriginal22(pXMLFileName);
+//    FCadenaOriginal:= GetCadenaOriginal22(pXMLFileName);
     XMLTransform.SourceXMLFile:= pXMLFileName;
     cdsXML.XMLData:= XMLTransform.Data;
     // Configura el reporte
@@ -249,7 +245,7 @@ begin
   begin
     //Configura el XML
     vXMLFileName:= OpenDialogXML.FileName;
-    FCadenaOriginal:= GetCadenaOriginal22(vXMLFileName);
+//    FCadenaOriginal:= GetCadenaOriginal22(vXMLFileName);
     XMLTransform.SourceXMLFile:= vXMLFileName;
     cdsXML.XMLData:= XMLTransform.Data;
     // Configura el reporte
@@ -278,7 +274,7 @@ begin
   begin
     //Configura el XML
     vPDFFileName:= ChangeFileExt(pXMLFileName, fePDF);
-    FCadenaOriginal:= GetCadenaOriginal22(pXMLFileName);
+//    FCadenaOriginal:= GetCadenaOriginal22(pXMLFileName);
     XMLTransform.SourceXMLFile:= pXMLFileName;
     cdsXML.XMLData:= XMLTransform.Data;
     // Configura el reporte

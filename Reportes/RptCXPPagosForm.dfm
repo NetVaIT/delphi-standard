@@ -59,6 +59,15 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
           DataBinding.FieldName = 'ConceptoPago'
           Width = 304
         end
+        object tvMasterMetodoPago: TcxGridDBColumn
+          DataBinding.FieldName = 'MetodoPago'
+          Visible = False
+          Width = 200
+        end
+        object tvMasterBanorteID: TcxGridDBColumn
+          DataBinding.FieldName = 'BanorteID'
+          Width = 54
+        end
         object tvMasterCobrador: TcxGridDBColumn
           DataBinding.FieldName = 'Cobrador'
           Width = 304
@@ -68,6 +77,10 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
         end
         object tvMasterCuentaBancariaCobrador: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancariaCobrador'
+          Width = 145
+        end
+        object tvMasterCLABECobrador: TcxGridDBColumn
+          DataBinding.FieldName = 'CLABECobrador'
         end
         object tvMasterFechaProgramada: TcxGridDBColumn
           DataBinding.FieldName = 'FechaProgramada'

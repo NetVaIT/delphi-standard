@@ -145,7 +145,13 @@ inherited dmDocumentos: TdmDocumentos
       Hint = 'Ver archivo'
       ImageIndex = 4
       OnExecute = actViewFileExecute
-      OnUpdate = actViewFileUpdate
+      OnUpdate = actSaveFileUpdate
+    end
+    object actMD5File: TAction
+      Hint = 'Ver MD5 del archivo'
+      ImageIndex = 4
+      OnExecute = actMD5FileExecute
+      OnUpdate = actSaveFileUpdate
     end
   end
   object adodsDocumentoTipo: TADODataSet

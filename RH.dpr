@@ -228,7 +228,11 @@ uses
   TmpInstruccionesDM in 'Procesos\TmpInstruccionesDM.pas' {dmTmpInstrucciones: TDataModule},
   RolesTitularFrm in 'Procesos\RolesTitularFrm.pas' {frmRolesTitular},
   RptMovimientosPersonaDM in 'Reportes\RptMovimientosPersonaDM.pas' {dmRptMovimientosPersona: TDataModule},
-  RolesTitularPorcentajeEdit in 'Procesos\RolesTitularPorcentajeEdit.pas' {frmRolesTitularPorcentajeEdit};
+  RolesTitularPorcentajeEdit in 'Procesos\RolesTitularPorcentajeEdit.pas' {frmRolesTitularPorcentajeEdit},
+  ExportarPagosDocumentosDM in 'Procesos\ExportarPagosDocumentosDM.pas' {dmExportarPagosDocumentos: TDataModule},
+  ExportarPagosDocumentosForm in 'Procesos\ExportarPagosDocumentosForm.pas' {frmExportarPagosDocumentos},
+  ExportarPagosDocumentosEdit in 'Procesos\ExportarPagosDocumentosEdit.pas' {frmExportarPagosDocumentosEdit},
+  ExportarPagosFiltroForm in 'Procesos\ExportarPagosFiltroForm.pas' {frmExportarPagosFiltro};
 
 {$R *.res}
 

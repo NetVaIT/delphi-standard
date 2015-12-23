@@ -40,14 +40,17 @@ type
     FactLoadFile: TBasicAction;
     FactViewFile: TBasicAction;
     FactSaveFile: TBasicAction;
+    FactMD5File: TBasicAction;
     procedure SetactLoadFile(const Value: TBasicAction);
     procedure SetactSaveFile(const Value: TBasicAction);
     procedure SetactViewFile(const Value: TBasicAction);
+    procedure SetactMD5File(const Value: TBasicAction);
   public
     { Public declarations }
     property actLoadFile: TBasicAction read FactLoadFile write SetactLoadFile;
     property actSaveFile: TBasicAction read FactSaveFile write SetactSaveFile;
     property actViewFile: TBasicAction read FactViewFile write SetactViewFile;
+    property actMD5File: TBasicAction read FactMD5File write SetactMD5File;
   end;
 
 implementation
@@ -60,6 +63,12 @@ procedure TfrmDocumentosEdit.SetactLoadFile(const Value: TBasicAction);
 begin
   FactLoadFile := Value;
   edtArchivo.Properties.Buttons[0].Action:= Value;
+end;
+
+procedure TfrmDocumentosEdit.SetactMD5File(const Value: TBasicAction);
+begin
+  FactMD5File := Value;
+  edtArchivo.Properties.Buttons[3].Action:= Value;
 end;
 
 procedure TfrmDocumentosEdit.SetactSaveFile(const Value: TBasicAction);

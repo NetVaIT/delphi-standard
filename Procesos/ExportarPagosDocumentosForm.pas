@@ -1,4 +1,4 @@
-unit RptCXPPagosForm;
+unit ExportarPagosDocumentosForm;
 
 interface
 
@@ -27,69 +27,61 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls, cxDBLookupComboBox, cxDropDownEdit, cxBarEditItem;
+  Vcl.ExtCtrls;
 
 type
-  TfrmRptCXPPagos = class(T_frmGrid)
-    tvMasterIdCuentaXPagarPago: TcxGridDBColumn;
+  TfrmExportarPagosDocumentos = class(T_frmGrid)
+    tvMasterIdExportarPagoDocumento: TcxGridDBColumn;
+    tvMasterIdExportarPagoDocumentoEstatus: TcxGridDBColumn;
+    tvMasterIdDocumento: TcxGridDBColumn;
+    tvMasterIdPeriodo: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterIdCuentaBancaria: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
+    tvMasterFecha: TcxGridDBColumn;
+    tvMasterNumero: TcxGridDBColumn;
+    tvMasterAnio: TcxGridDBColumn;
     tvMasterPeriodo: TcxGridDBColumn;
-    tvMasterPagador: TcxGridDBColumn;
-    tvMasterCuentaBancariaPagador: TcxGridDBColumn;
-    tvMasterCobrador: TcxGridDBColumn;
-    tvMasterCuentaBancariaCobrador: TcxGridDBColumn;
-    tvMasterFechaProgramada: TcxGridDBColumn;
-    tvMasterMontoProgramado: TcxGridDBColumn;
-    tvMasterFechaAutorizacion: TcxGridDBColumn;
-    tvMasterMontoAutorizado: TcxGridDBColumn;
-    tvMasterFechaPago: TcxGridDBColumn;
-    tvMasterMontoPagado: TcxGridDBColumn;
-    tvMasterConceptoCXP: TcxGridDBColumn;
-    tvMasterConceptoPago: TcxGridDBColumn;
-    dsPeriodos: TDataSource;
-    cxedtPeriodo: TcxBarEditItem;
-    tvMasterBancoPagador: TcxGridDBColumn;
-    tvMasterBancoCobrador: TcxGridDBColumn;
-    tvMasterMetodoPago: TcxGridDBColumn;
-    tvMasterBanorteID: TcxGridDBColumn;
-    tvMasterCLABECobrador: TcxGridDBColumn;
+    tvMasterEmisor: TcxGridDBColumn;
+    tvMasterCuentaBancaria: TcxGridDBColumn;
+    tvMasterObservaciones: TcxGridDBColumn;
+    tvMasterNombreArchivo: TcxGridDBColumn;
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
-    FDataSetPeriodo: TDataSet;
-    function GetIdPeriodo: Integer;
-    procedure SetDataSetPeriodo(const Value: TDataSet);
-    procedure SetIdPeriodo(const Value: Integer);
     { Private declarations }
+    FUpdateFile: TBasicAction;
+    FactExpotarBanorte: TBasicAction;
+    procedure SetactExpotarBanorte(const Value: TBasicAction);
   public
     { Public declarations }
-    property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
-    property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
+    property UpdateFile: TBasicAction read FUpdateFile write FUpdateFile;
+    property actExpotarBanorte: TBasicAction read FactExpotarBanorte write SetactExpotarBanorte;
   end;
 
-implementation
+ implementation
 
 {$R *.dfm}
 
-uses RptCXPPagosDmod;
+uses ExportarPagosDocumentosDM, ExportarPagosDocumentosEdit;
 
-{ TfrmRptCXPPagos }
-
-function TfrmRptCXPPagos.GetIdPeriodo: Integer;
+procedure TfrmExportarPagosDocumentos.FormCreate(Sender: TObject);
 begin
-  if VarIsNull(cxedtPeriodo.EditValue) then
-    Result:= 0
-  else
-    Result:= cxedtPeriodo.EditValue;
+  inherited;
+  gEditForm:= TfrmExportarPagosDocumentosEdit.Create(Self);
 end;
 
-procedure TfrmRptCXPPagos.SetDataSetPeriodo(const Value: TDataSet);
+procedure TfrmExportarPagosDocumentos.FormShow(Sender: TObject);
 begin
-  FDataSetPeriodo := Value;
-  dsPeriodos.DataSet:= Value;
+  inherited;
+  TfrmExportarPagosDocumentosEdit(gEditForm).UpdateFile:= UpdateFile;
 end;
 
-procedure TfrmRptCXPPagos.SetIdPeriodo(const Value: Integer);
+procedure TfrmExportarPagosDocumentos.SetactExpotarBanorte(
+  const Value: TBasicAction);
 begin
-  cxedtPeriodo.EditValue:= Value;
+  FactExpotarBanorte := Value;
+  Insert1.Action:= Value;
 end;
 
 end.

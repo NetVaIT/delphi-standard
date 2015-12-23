@@ -76,7 +76,6 @@ type
     adodsCXPPagosIdExportarPagoDocumento: TIntegerField;
     adodsExportarPagosDocumentos: TADODataSet;
     adodsExportarPagosDocumentosIdExportarPagoDocumento: TAutoIncField;
-    adodsExportarPagosDocumentosFecha: TWideStringField;
     adodsExportarPagosDocumentosIdExportarPagoDocumentoEstatus: TIntegerField;
     adodsExportarPagosDocumentosIdDocumento: TIntegerField;
     adodsExportarPagosDocumentosHash: TStringField;
@@ -97,6 +96,7 @@ type
     adocExportaPagosDocs: TADOCommand;
     adocEstatusCuentaXPagarPagosDoc: TADOCommand;
     adodsMasterBanorteID: TStringField;
+    adodsExportarPagosDocumentosFecha: TDateTimeField;
     procedure actExportaBanorteExecute(Sender: TObject);
     procedure actBajarArchivoPagosExecute(Sender: TObject);
     procedure actDescargarExecute(Sender: TObject);
@@ -285,30 +285,30 @@ begin
     end;
     CloseFile(Archivo);
 
-//    IdDocumento := CargaArchivoaFS(NombreArchivo,'Archivo de pagos ');
-//    adodsExportarPagosDocumentos.Open;
-//    adodsExportarPagosDocumentos.Insert;
-//    adodsExportarPagosDocumentos.FieldByName('Fecha').Value := Date;
-//    adodsExportarPagosDocumentos.FieldByName('IdExportarPagoDocumentoEstatus').Value := 0;
-//    adodsExportarPagosDocumentos.FieldByName('IdDocumento').Value := IdDocumento;
-//    adodsExportarPagosDocumentos.FieldByName('Hash').Value := GetStringHash(NombreArchivo);
-//    adodsExportarPagosDocumentos.FieldByName('IdPeriodo').Value := Per;
-//    adodsExportarPagosDocumentos.FieldByName('IdPersona').Value := Emp;
-//    adodsExportarPagosDocumentos.FieldByName('IdBanco').Value := IdBancoBanorte;
-//    adodsExportarPagosDocumentos.FieldByName('IdCuentaBancaria').Value := Cta;
-////    adodsExportarPagosDocumentos.FieldByName('IdEsquemaPago').Value := Esq;
-//    adodsExportarPagosDocumentos.FieldByName('Observaciones').Value := '';
-//    adodsExportarPagosDocumentos.Post;
-//    IdExportarPagoDocumento := adodsExportarPagosDocumentosIdExportarPagoDocumento.AsInteger;
-//    adodsExportarPagosDocumentos.Close;
-//    adodsMaster.First;
-//    while not adodsMaster.Eof do
-//    begin
-//      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdCuentaXPagarPagos').Value := adodsMasterIdCuentaXPagarPago.Value;
-//      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdArchivo').Value := IdExportarPagoDocumento;
-//      adocEstatusCuentaXPagarPagosDoc.Execute;
-//      adodsMaster.Next;
-//    end;
+    IdDocumento := CargaArchivoaFS(NombreArchivo,'Archivo de pagos ');
+    adodsExportarPagosDocumentos.Open;
+    adodsExportarPagosDocumentos.Insert;
+    adodsExportarPagosDocumentos.FieldByName('Fecha').Value := Date;
+    adodsExportarPagosDocumentos.FieldByName('IdExportarPagoDocumentoEstatus').Value := 0;
+    adodsExportarPagosDocumentos.FieldByName('IdDocumento').Value := IdDocumento;
+    adodsExportarPagosDocumentos.FieldByName('Hash').Value := GetStringHash(NombreArchivo);
+    adodsExportarPagosDocumentos.FieldByName('IdPeriodo').Value := Per;
+    adodsExportarPagosDocumentos.FieldByName('IdPersona').Value := Emp;
+    adodsExportarPagosDocumentos.FieldByName('IdBanco').Value := IdBancoBanorte;
+    adodsExportarPagosDocumentos.FieldByName('IdCuentaBancaria').Value := Cta;
+//    adodsExportarPagosDocumentos.FieldByName('IdEsquemaPago').Value := Esq;
+    adodsExportarPagosDocumentos.FieldByName('Observaciones').Value := '';
+    adodsExportarPagosDocumentos.Post;
+    IdExportarPagoDocumento := adodsExportarPagosDocumentosIdExportarPagoDocumento.AsInteger;
+    adodsExportarPagosDocumentos.Close;
+    adodsMaster.First;
+    while not adodsMaster.Eof do
+    begin
+      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdCuentaXPagarPagos').Value := adodsMasterIdCuentaXPagarPago.Value;
+      adocEstatusCuentaXPagarPagosDoc.Parameters.ParamByName('IdArchivo').Value := IdExportarPagoDocumento;
+      adocEstatusCuentaXPagarPagosDoc.Execute;
+      adodsMaster.Next;
+    end;
 
   end;
 //  DeleteFile(NombreArchivo);
