@@ -100,12 +100,76 @@ inherited frmCuentasXPagarPagos: TfrmCuentasXPagarPagos
       0
       31
       0)
+    inherited dxbNavigator: TdxBar
+      DockedLeft = 128
+    end
+    inherited dxbEdit: TdxBar
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'Insert1'
+        end
+        item
+          Visible = True
+          ItemName = 'Edit1'
+        end
+        item
+          Visible = True
+          ItemName = 'Delete1'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton7'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbEstatus'
+        end>
+    end
+    inherited dxbTools: TdxBar
+      DockedLeft = 256
+    end
+    object dxbbEstatus: TdxBarButton
+      Action = dmCuentasXPagar.actCambiarEstatus
+      Category = 0
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
+  end
+  inherited PopupMenu: TdxBarPopupMenu
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'Insert1'
+      end
+      item
+        Visible = True
+        ItemName = 'Edit1'
+      end
+      item
+        Visible = True
+        ItemName = 'Delete1'
+      end
+      item
+        Visible = True
+        ItemName = 'dxbbEstatus'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarButton7'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarSeparator1'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarButton5'
+      end>
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink

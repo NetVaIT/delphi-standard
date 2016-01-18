@@ -38,10 +38,14 @@ type
     tvMasterPagadora: TcxGridDBColumn;
     tvMasterFechaProgramada: TcxGridDBColumn;
     tvMasterMontoProgramado: TcxGridDBColumn;
+    dxbbEstatus: TdxBarButton;
   private
+    FCambiarEstatus: TBasicAction;
+    procedure SetCambiarEstatus(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
+    property CambiarEstatus: TBasicAction read FCambiarEstatus write SetCambiarEstatus;
   end;
 
 implementation
@@ -49,5 +53,13 @@ implementation
 {$R *.dfm}
 
 uses CuentasXPagarDM;
+
+{ TfrmCuentasXPagarPagos }
+
+procedure TfrmCuentasXPagarPagos.SetCambiarEstatus(const Value: TBasicAction);
+begin
+  FCambiarEstatus := Value;
+  dxbbEstatus.Action:= Value;
+end;
 
 end.

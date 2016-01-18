@@ -143,6 +143,11 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Visible = False
       OnExecute = actDescargarPagosExecute
     end
+    object actCambiarEstatus: TAction
+      ImageIndex = 13
+      OnExecute = actCambiarEstatusExecute
+      OnUpdate = actCambiarEstatusUpdate
+    end
   end
   object dsMaster: TDataSource
     DataSet = adodsMaster
@@ -168,8 +173,8 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         Size = 4
         Value = 195
       end>
-    Left = 64
-    Top = 176
+    Left = 72
+    Top = 88
     object adodsMovimientosDetalleIdMovimientoDetalle: TIntegerField
       FieldName = 'IdMovimientoDetalle'
       Visible = False
@@ -243,33 +248,34 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         Precision = 10
         Value = Null
       end>
-    Left = 56
-    Top = 307
+    Left = 72
+    Top = 219
   end
   object adodsPeriodo: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdPeriodo, Descripcion from Periodos'
     Parameters = <>
-    Left = 168
-    Top = 256
+    Left = 224
+    Top = 88
   end
   object adodsCuentasXPagarPagos: TADODataSet
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
       'SELECT CuentasXPagarPagos.IdCuentaXPagarPago, CuentasXPagarPagos' +
-      '.IdCuentaXPagar, CuentasXPagarEstatus.Descripcion AS Estatus, Pe' +
-      'rsonas.RazonSocial AS Receptora, Personas_1.RazonSocial AS Pagad' +
-      'ora, '#13#10'CuentasXPagarPagos.FechaProgramada, CuentasXPagarPagos.Mo' +
-      'ntoProgramado'#13#10'FROM CuentasXPagarPagos '#13#10'INNER JOIN CuentasXPaga' +
-      'rEstatus ON CuentasXPagarPagos.IdCuentaXPagarEstatus = CuentasXP' +
-      'agarEstatus.IdCuentaXPagarEstatus'#13#10'INNER JOIN PersonasRoles ON C' +
-      'uentasXPagarPagos.IdPersonaRol = PersonasRoles.IdPersonaRol'#13#10'INN' +
-      'ER JOIN Personas ON PersonasRoles.IdPersona = Personas.IdPersona' +
-      #13#10'INNER JOIN Personas AS Personas_1 ON PersonasRoles.IdPersonaRe' +
-      'lacionada = Personas_1.IdPersona'#13#10'WHERE CuentasXPagarPagos.IdCue' +
-      'ntaXPagar = :IdCuentaXPagar'#13#10
+      '.IdCuentaXPagar, CuentasXPagarPagos.IdCuentaXPagarEstatus, Cuent' +
+      'asXPagarEstatus.Descripcion AS Estatus, Personas.RazonSocial AS ' +
+      'Receptora, Personas_1.RazonSocial AS Pagadora, '#13#10'CuentasXPagarPa' +
+      'gos.FechaProgramada, CuentasXPagarPagos.MontoProgramado'#13#10'FROM Cu' +
+      'entasXPagarPagos '#13#10'INNER JOIN CuentasXPagarEstatus ON CuentasXPa' +
+      'garPagos.IdCuentaXPagarEstatus = CuentasXPagarEstatus.IdCuentaXP' +
+      'agarEstatus'#13#10'INNER JOIN PersonasRoles ON CuentasXPagarPagos.IdPe' +
+      'rsonaRol = PersonasRoles.IdPersonaRol'#13#10'INNER JOIN Personas ON Pe' +
+      'rsonasRoles.IdPersona = Personas.IdPersona'#13#10'INNER JOIN Personas ' +
+      'AS Personas_1 ON PersonasRoles.IdPersonaRelacionada = Personas_1' +
+      '.IdPersona'#13#10'WHERE CuentasXPagarPagos.IdCuentaXPagar = :IdCuentaX' +
+      'Pagar'#13#10
     DataSource = dsMaster
     MasterFields = 'IdCuentaXPagar'
     Parameters = <
@@ -281,8 +287,8 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         Size = 4
         Value = Null
       end>
-    Left = 240
-    Top = 176
+    Left = 72
+    Top = 144
     object adodsCuentasXPagarPagosIdCuentaXPagarPago: TAutoIncField
       FieldName = 'IdCuentaXPagarPago'
       ReadOnly = True
@@ -290,6 +296,10 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     end
     object adodsCuentasXPagarPagosIdCuentaXPagar: TIntegerField
       FieldName = 'IdCuentaXPagar'
+      Visible = False
+    end
+    object adodsCuentasXPagarPagosIdCuentaXPagarEstatus: TIntegerField
+      FieldName = 'IdCuentaXPagarEstatus'
       Visible = False
     end
     object adodsCuentasXPagarPagosEstatus: TStringField
@@ -316,5 +326,47 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
       Precision = 18
       Size = 6
     end
+  end
+  object adospUpdCuentasXPagarPagosEstatus: TADOStoredProc
+    Connection = _dmConection.ADOConnection
+    ProcedureName = 'p_UpdCuentasXPagarPagosEstatus;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+      end
+      item
+        Name = '@IdCuentaXPagarPago'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+      end
+      item
+        Name = '@IdCuentaXPagarEstatusOrigen'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+      end
+      item
+        Name = '@IdCuentaXPagarEstatusDestino'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+      end
+      item
+        Name = '@IdUsuario'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+      end
+      item
+        Name = '@Fecha'
+        Attributes = [paNullable]
+        DataType = ftDateTime
+      end>
+    Left = 240
+    Top = 216
   end
 end

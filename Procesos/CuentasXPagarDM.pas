@@ -6,7 +6,11 @@ uses
   System.SysUtils, System.Classes, _StandarDMod, System.Actions, Vcl.ActnList,
   Data.DB, Data.Win.ADODB, Vcl.Dialogs, System.UITypes;
 
+resourcestring
+  strUpdateEstatus  = '¿Desea modificar el estatus del pago?';
+
 type
+  TCXPEstatus = (CXPEPendiente,CXPEProgramada,CXPEAutorizada,CXPEPagada,CXPEConciliada);
   TdmCuentasXPagar = class(T_dmStandar)
     adodsMasterIdCuentaXPagar: TIntegerField;
     adodsMasterIdPersonaRol: TIntegerField;
@@ -55,15 +59,26 @@ type
     adodsMasterFlujoEfectivo: TFMTBCDField;
     actExpotarPagos: TAction;
     actDescargarPagos: TAction;
+    actCambiarEstatus: TAction;
+    adodsCuentasXPagarPagosIdCuentaXPagarEstatus: TIntegerField;
+    adospUpdCuentasXPagarPagosEstatus: TADOStoredProc;
     procedure DataModuleCreate(Sender: TObject);
     procedure actExpotarPagosExecute(Sender: TObject);
     procedure actDescargarPagosExecute(Sender: TObject);
+    procedure actCambiarEstatusUpdate(Sender: TObject);
+    procedure actCambiarEstatusExecute(Sender: TObject);
   private
     { Private declarations }
     FIdPeriodoActual: Integer;
-//    function SetCuentaXPagar: Boolean;
+    function SetIdEstatusDestino: TCXPEstatus;
+    function SetIdEstatusOrigen: TCXPEstatus;
+    function SetIdCuentaXPagarPago: Integer;
+    function CuentasXPagarPagosEstatus: Boolean;
   protected
     procedure SetFilter; override;
+    property IdCuentaXPagarPago: Integer read SetIdCuentaXPagarPago;
+    property IdEstatusOrigen: TCXPEstatus read SetIdEstatusOrigen;
+    property IdEstatusDestino: TCXPEstatus read SetIdEstatusDestino;
   public
     { Public declarations }
     property IdPeriodoActual: Integer read FIdPeriodoActual;
@@ -74,9 +89,35 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses CuentasXPagarForm, MovimientosDetalleFrm, CuentasXPagarPagosForm,
-  ConfiguracionDM, ExportarPagosBancoDM;
+  ConfiguracionDM, ExportarPagosBancoDM, _Utils;
 
 {$R *.dfm}
+
+procedure TdmCuentasXPagar.actCambiarEstatusExecute(Sender: TObject);
+begin
+  inherited;
+  if CuentasXPagarPagosEstatus then
+    RefreshADODS(adodsCuentasXPagarPagos, adodsCuentasXPagarPagosIdCuentaXPagarPago);
+end;
+
+procedure TdmCuentasXPagar.actCambiarEstatusUpdate(Sender: TObject);
+begin
+  inherited;
+  case IdEstatusOrigen of
+    CXPEProgramada:
+    begin
+      actCambiarEstatus.Enabled:= True;
+      actCambiarEstatus.Caption:= 'Cambiar a Autorizar';
+    end;
+    CXPEAutorizada:
+    begin
+      actCambiarEstatus.Enabled:= True;
+      actCambiarEstatus.Caption:= 'Cambiar a Programar';
+    end;
+  else
+    actCambiarEstatus.Enabled:= False;
+  end;
+end;
 
 procedure TdmCuentasXPagar.actDescargarPagosExecute(Sender: TObject);
 var
@@ -104,6 +145,27 @@ begin
   end;
 end;
 
+function TdmCuentasXPagar.CuentasXPagarPagosEstatus: Boolean;
+begin
+  if IdCuentaXPagarPago <> 0 then
+  begin
+    if MessageDlg(strUpdateEstatus, mtConfirmation, mbYesNo, 0) = mrYes then
+    begin
+      ScreenCursorProc(crSQLWait);
+      try
+        adospUpdCuentasXPagarPagosEstatus.Parameters.ParamByName('@IdCuentaXPagarPago').Value:= IdCuentaXPagarPago;
+        adospUpdCuentasXPagarPagosEstatus.Parameters.ParamByName('@IdCuentaXPagarEstatusOrigen').Value:= IdEstatusOrigen;
+        adospUpdCuentasXPagarPagosEstatus.Parameters.ParamByName('@IdCuentaXPagarEstatusDestino').Value:= IdEstatusDestino;
+        adospUpdCuentasXPagarPagosEstatus.ExecProc;
+      finally
+        ScreenCursorProc(crDefault);
+      end;
+//    MessageDlg('Proceso terminado.', mtInformation, [mbOk], 0);
+      Result:= True;
+    end;
+  end;
+end;
+
 procedure TdmCuentasXPagar.DataModuleCreate(Sender: TObject);
 begin
   inherited;
@@ -121,6 +183,7 @@ begin
   gFormDeatil2:= TfrmCuentasXPagarPagos.Create(Self);
   gFormDeatil2.ReadOnlyGrid:= True;
   gFormDeatil2.DataSet:= adodsCuentasXPagarPagos;
+  TfrmCuentasXPagarPagos(gFormDeatil2).CambiarEstatus:= actCambiarEstatus;
   // Filtrado
   SQLSelect:= 'select IdCuentaXPagar, IdPersonaRol, IdPeriodo, IdCuentaXPagarEstatus, ' +
   'Persona, PersonaRelacionada, ConceptoGenerico, SumaSubtotal, SumaTotal, SumaDescuentos, ' +
@@ -157,6 +220,26 @@ begin
   inherited;
   IdPeriodo:= TfrmCuentasXPagar(gGridForm).IdPeriodo;
   SQLWhere:= Format('WHERE IdPeriodo = %d', [IdPeriodo]);
+end;
+
+function TdmCuentasXPagar.SetIdCuentaXPagarPago: Integer;
+begin
+  if adodsCuentasXPagarPagos.Active then
+    Result := adodsCuentasXPagarPagosIdCuentaXPagarPago.Value;
+end;
+
+function TdmCuentasXPagar.SetIdEstatusDestino: TCXPEstatus;
+begin
+  case IdEstatusOrigen of
+    CXPEProgramada: Result:= CXPEAutorizada;
+    CXPEAutorizada: Result:= CXPEProgramada;
+  end;
+end;
+
+function TdmCuentasXPagar.SetIdEstatusOrigen: TCXPEstatus;
+begin
+  if adodsCuentasXPagarPagos.Active then
+    Result:= TCXPEstatus(adodsCuentasXPagarPagosIdCuentaXPagarEstatus.Value);
 end;
 
 end.
