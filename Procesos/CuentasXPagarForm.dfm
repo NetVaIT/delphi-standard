@@ -33,12 +33,12 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Width = 810
     Height = 224
     Align = alTop
-    ExplicitWidth = 755
+    ExplicitWidth = 810
     ExplicitHeight = 224
     inherited cxGrid: TcxGrid
       Width = 810
       Height = 224
-      ExplicitWidth = 755
+      ExplicitWidth = 810
       ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
         DataController.KeyFieldNames = 'IdCuentaXPagar'
@@ -138,7 +138,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Top = 552
     Width = 810
     ExplicitTop = 552
-    ExplicitWidth = 755
+    ExplicitWidth = 810
   end
   inherited pnlDetail2: TPanel
     Top = 486
@@ -146,7 +146,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Height = 63
     Align = alClient
     ExplicitTop = 486
-    ExplicitWidth = 755
+    ExplicitWidth = 810
     ExplicitHeight = 63
   end
   inherited pnlDetail1: TPanel
@@ -155,17 +155,17 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
     Height = 225
     Align = alTop
     ExplicitTop = 258
-    ExplicitWidth = 755
+    ExplicitWidth = 810
     ExplicitHeight = 225
   end
   inherited pnlClose: TPanel
     Top = 593
     Width = 810
     ExplicitTop = 593
-    ExplicitWidth = 755
+    ExplicitWidth = 810
     inherited btnClose: TButton
       Left = 725
-      ExplicitLeft = 670
+      ExplicitLeft = 725
     end
   end
   inherited DataSource: TDataSource
@@ -177,25 +177,6 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
       0
       31
       0)
-    inherited dxbTools: TdxBar
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'dxBarButton6'
-        end
-        item
-          Visible = True
-          ItemName = 'dxbbPreview'
-        end
-        item
-          Visible = True
-          ItemName = 'dxbtnExportarPagos'
-        end
-        item
-          Visible = True
-          ItemName = 'dxbtnDescarPagos'
-        end>
-    end
     inherited dxbFilter: TdxBar
       DockedLeft = 338
       ItemLinks = <
@@ -224,14 +205,6 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
           FieldName = 'Descripcion'
         end>
       Properties.ListSource = dsPeriodos
-    end
-    object dxbtnExportarPagos: TdxBarButton
-      Action = dmCuentasXPagar.actExpotarPagos
-      Category = 0
-    end
-    object dxbtnDescarPagos: TdxBarButton
-      Action = dmCuentasXPagar.actDescargarPagos
-      Category = 0
     end
   end
   inherited cxStyleRepository: TcxStyleRepository

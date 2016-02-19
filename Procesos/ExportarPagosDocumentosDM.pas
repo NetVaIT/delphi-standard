@@ -55,6 +55,7 @@ type
     adodsMasterPeriodo: TStringField;
     adodsMasterEmisor: TStringField;
     adodsMasterCuentaBancaria: TStringField;
+    adoqvCXPPagosRFCCobrador: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actUpdateFileExecute(Sender: TObject);
     procedure actExportarBanorteExecute(Sender: TObject);
@@ -183,33 +184,39 @@ begin
     begin
       Registro := '';
       if adoqvCXPPagosIdBancoCobrador.Value = IdBancoBanorte then
-        Operacion := '''02'
+        Operacion := '02'
       else
-        Operacion := '''04'; //SPEI
+        Operacion := '04'; //SPEI
       Registro := Registro + Operacion + Chr(9); // Operacion
-      Registro := Registro + PreparaCadena(adoqvCXPPagosBanorteID.AsString, 'I',' ',13) + Chr(9); // ClaveId
-      Registro := Registro + '''' + PreparaCadena(adoqvCXPPagosCuentaBancariaPagador.AsString,'D','0',18) + Chr(9); // CuentaOrigen
-      if Operacion = '''02' then
-        Registro := Registro + '''' + PreparaCadena(adoqvCXPPagosCuentaBancariaCobrador.AsString,'D','0',18) + Chr(9) // CuentaDestinoCUENTA
+//      Registro := Registro + PreparaCadena(adoqvCXPPagosBanorteID.AsString, 'I',' ',13) + Chr(9); // ClaveId
+      Registro := Registro + adoqvCXPPagosBanorteID.AsString + Chr(9); // ClaveId
+      Registro := Registro + PreparaCadena(adoqvCXPPagosCuentaBancariaPagador.AsString,'D','0',10) + Chr(9); // CuentaOrigen
+      if Operacion = '02' then
+        Registro := Registro + PreparaCadena(adoqvCXPPagosCuentaBancariaCobrador.AsString,'D','0',10) + Chr(9) // CuentaDestinoCUENTA
       else
-        Registro := Registro + '''' + PreparaCadena(adoqvCXPPagosCLABECobrador.AsString,'D','0',18) + Chr(9); // CuentaDestinoCLABE
-      Dinero := QuitarCaracter(FormatFloat('0.00',adoqvCXPPagosMontoAutorizado.AsFloat),'.');
-      Registro := Registro + PreparaCadena(Dinero,'D','0',13) + Chr(9); // Importe
+        Registro := Registro + PreparaCadena(adoqvCXPPagosCLABECobrador.AsString,'D','0',18) + Chr(9); // CuentaDestinoCLABE
+      Dinero := FormatFloat('0.00',adoqvCXPPagosMontoAutorizado.AsFloat);
+//      Registro := Registro + PreparaCadena(Dinero,'D','0',13) + Chr(9); // Importe
+      Registro := Registro + Dinero + Chr(9); // Importe
       Referencia := PreparaCadena(adoqvCXPPagosIdCuentaXPagarPago.AsString,'D','0',10);
       Registro := Registro + Referencia + Chr(9); // Referencia
       Registro := Registro + CortarCadena(adoqvCXPPagosPeriodo.AsString,29) + Chr(9); // Descripcion
-//      Registro := Registro + '1'; // MonedaOrigen
-//      Registro := Registro + '1' + Chr(9); // MonedaDestino
-      Registro := Registro + PreparaCadena(adoqvCXPPagosRFCPagador.AsString,'I',' ',13) + Chr(9); // RFCOrdenante
-      Registro := Registro + '0' + Chr(9); // IVA
-      if Operacion = '''05' then
+      if Operacion = '04' then
+        Registro := Registro + PreparaCadena(adoqvCXPPagosRFCCobrador.AsString,'I',' ',13) + Chr(9) // RFCOrdenante
+      else
+        Registro := Registro + Chr(9);
+      if Operacion = '04' then
+        Registro := Registro + '0' + Chr(9) // IVA
+      else
+        Registro := Registro + Chr(9);
+      if Operacion = '05' then
         Registro := Registro + adoqvCXPPagosFechaAutorizacion.AsString + Chr(9) // FechaAplicacion
       else
         Registro := Registro + Chr(9);
-      if Operacion = '''04' then
+      if Operacion = '04' then
         Registro := Registro + adoqvCXPPagosCobrador.AsString  // NombreBeneficiario
       else
-        Registro := Registro + 'X';
+        Registro := Registro + 'x';
       WriteLn(TXTArchivo, Registro);
       Inc(Registros);
       adoqvCXPPagos.Next;

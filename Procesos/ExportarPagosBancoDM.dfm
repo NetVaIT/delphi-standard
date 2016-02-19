@@ -181,7 +181,6 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
     Top = 376
   end
   object adodsDocumento: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -440,7 +439,6 @@ inherited dmExportarPagosBancos: TdmExportarPagosBancos
     end
   end
   object adodsExportarPagosDocumentosEstatus: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 

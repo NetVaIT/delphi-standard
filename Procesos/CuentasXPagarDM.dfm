@@ -129,20 +129,6 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
     end
   end
   inherited ActionList: TActionList
-    object actExpotarPagos: TAction
-      Caption = 'Exportar Pagos'
-      Hint = 'Exportar Pagos'
-      ImageIndex = 13
-      Visible = False
-      OnExecute = actExpotarPagosExecute
-    end
-    object actDescargarPagos: TAction
-      Caption = 'Descargar Pagos'
-      Hint = 'Descargar Pagos'
-      ImageIndex = 13
-      Visible = False
-      OnExecute = actDescargarPagosExecute
-    end
     object actCambiarEstatus: TAction
       ImageIndex = 13
       OnExecute = actCambiarEstatusExecute
@@ -336,35 +322,41 @@ inherited dmCuentasXPagar: TdmCuentasXPagar
         DataType = ftInteger
         Direction = pdReturnValue
         Precision = 10
+        Value = Null
       end
       item
         Name = '@IdCuentaXPagarPago'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end
       item
         Name = '@IdCuentaXPagarEstatusOrigen'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end
       item
         Name = '@IdCuentaXPagarEstatusDestino'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end
       item
         Name = '@IdUsuario'
         Attributes = [paNullable]
         DataType = ftInteger
         Precision = 10
+        Value = Null
       end
       item
         Name = '@Fecha'
         Attributes = [paNullable]
         DataType = ftDateTime
+        Value = Null
       end>
     Left = 240
     Top = 216

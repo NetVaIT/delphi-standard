@@ -156,18 +156,16 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
       
         'SELECT vCuentasXPagarPagos.IdCuentaXPagarPago, vCuentasXPagarPag' +
         'os.IdbancoCobrador, vCuentasXPagarPagos.Periodo, vCuentasXPagarP' +
-        'agos.FechaAutorizacion, vCuentasXPagarPagos.MontoAutorizado, '
+        'agos.FechaAutorizacion, vCuentasXPagarPagos.MontoAutorizado,'
       
-        'Personas.RFC AS RFCPagador, vCuentasXPagarPagos.Pagador, vCuenta' +
-        'sXPagarPagos.CuentaBancariaPagador, '
+        'vCuentasXPagarPagos.RFCPagador, vCuentasXPagarPagos.Pagador, vCu' +
+        'entasXPagarPagos.CuentaBancariaPagador,'
       
-        'vCuentasXPagarPagos.BanorteID, vCuentasXPagarPagos.Cobrador, vCu' +
-        'entasXPagarPagos.BancoCobrador, vCuentasXPagarPagos.CuentaBancar' +
-        'iaCobrador, vCuentasXPagarPagos.CLABECobrador'
+        'vCuentasXPagarPagos.BanorteID, vCuentasXPagarPagos.RFCCobrador, ' +
+        'vCuentasXPagarPagos.Cobrador, vCuentasXPagarPagos.BancoCobrador,' +
+        ' vCuentasXPagarPagos.CuentaBancariaCobrador, vCuentasXPagarPagos' +
+        '.CLABECobrador'
       'FROM vCuentasXPagarPagos'
-      
-        'INNER JOIN Personas ON vCuentasXPagarPagos.IdPersonaPagador = Pe' +
-        'rsonas.IdPersona'
       'WHERE vCuentasXPagarPagos.IdMetodoPago = 1'#9'-- Tranferencia'
       
         'AND vCuentasXPagarPagos.IdCuentaXPagarEstatus = 2'#9'-- Pago autori' +
@@ -218,6 +216,10 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
     object adoqvCXPPagosBanorteID: TStringField
       FieldName = 'BanorteID'
       Size = 5
+    end
+    object adoqvCXPPagosRFCCobrador: TStringField
+      FieldName = 'RFCCobrador'
+      Size = 13
     end
     object adoqvCXPPagosCobrador: TStringField
       FieldName = 'Cobrador'

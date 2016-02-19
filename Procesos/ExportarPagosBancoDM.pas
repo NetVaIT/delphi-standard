@@ -257,21 +257,27 @@ begin
       else
         Operacion := '''04'; //SPEI
       Registro := Registro + Operacion + Chr(9); // Operacion
-      Registro := Registro + PreparaCadena(adodsMasterBanorteID.AsString, 'I',' ',13) + Chr(9); // ClaveId
-      Registro := Registro + '''' + PreparaCadena(adodsMasterCtaBancariaPagador.AsString,'D','0',18) + Chr(9); // CuentaOrigen
+//      Registro := Registro + PreparaCadena(adodsMasterBanorteID.AsString, 'I',' ',13) + Chr(9); // ClaveId
+      Registro := Registro + '''' + adodsMasterBanorteID.AsString + Chr(9); // ClaveId
+      Registro := Registro + '''' + PreparaCadena(adodsMasterCtaBancariaPagador.AsString,'D','0',10) + Chr(9); // CuentaOrigen
       if Operacion = '''02' then
-        Registro := Registro + '''' + PreparaCadena(adodsMasterCtaBanCobrador.AsString,'D','0',18) + Chr(9) // CuentaDestinoCUENTA
+        Registro := Registro + '''' + PreparaCadena(adodsMasterCtaBanCobrador.AsString,'D','0',10) + Chr(9) // CuentaDestinoCUENTA
       else
         Registro := Registro + '''' + PreparaCadena(adodsMasterCClabeCobrador.AsString,'D','0',18) + Chr(9); // CuentaDestinoCLABE
       Dinero := QuitarCaracter(FormatFloat('0.00',adodsMasterMontoProgramado.AsFloat),'.');
-      Registro := Registro + PreparaCadena(Dinero,'D','0',13) + Chr(9); // Importe
+//      Registro := Registro + PreparaCadena(Dinero,'D','0',13) + Chr(9); // Importe
+      Registro := Registro + Dinero + Chr(9); // Importe
       Referencia := adodsMasterIdCuentaXPagarPago.AsString;
       Registro := Registro + PreparaCadena(Referencia,'D','0',10) + Chr(9); // Referencia
       Registro := Registro + CortarCadena(adodsMasterDescripcion.AsString,29) + Chr(9); // Descripcion
-//      Registro := Registro + '1'; // MonedaOrigen
-//      Registro := Registro + '1' + Chr(9); // MonedaDestino
-      Registro := Registro + PreparaCadena(adodsMasterRFCPaga.AsString,'I',' ',13) + Chr(9); // RFCOrdenante
-      Registro := Registro + '0' + Chr(9); // IVA
+      if Operacion = '''04' then
+        Registro := Registro + PreparaCadena(adodsMasterRFCCobra.AsString,'I',' ',13) + Chr(9) // RFCOrdenante
+      else
+        Registro := Registro + Chr(9);
+      if Operacion = '''04' then
+        Registro := Registro + '0' + Chr(9) // IVA
+      else
+        Registro := Registro + Chr(9);
       if Operacion = '''05' then
         Registro := Registro + adodsMasterFechaProgramada.AsString + Chr(9) // FechaAplicacion
       else
@@ -279,7 +285,7 @@ begin
       if Operacion = '''04' then
         Registro := Registro + adodsMasterCobra.AsString  // NombreBeneficiario
       else
-        Registro := Registro + 'X';
+        Registro := Registro + 'x';
       WriteLn(Archivo, Registro);
       adodsMaster.Next;
     end;

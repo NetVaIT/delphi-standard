@@ -57,14 +57,10 @@ type
     adodsMovimientosDetalleFecha: TDateTimeField;
     adodsMovimientosDetalleAplicarCategoria: TBooleanField;
     adodsMasterFlujoEfectivo: TFMTBCDField;
-    actExpotarPagos: TAction;
-    actDescargarPagos: TAction;
     actCambiarEstatus: TAction;
     adodsCuentasXPagarPagosIdCuentaXPagarEstatus: TIntegerField;
     adospUpdCuentasXPagarPagosEstatus: TADOStoredProc;
     procedure DataModuleCreate(Sender: TObject);
-    procedure actExpotarPagosExecute(Sender: TObject);
-    procedure actDescargarPagosExecute(Sender: TObject);
     procedure actCambiarEstatusUpdate(Sender: TObject);
     procedure actCambiarEstatusExecute(Sender: TObject);
   private
@@ -89,7 +85,7 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses CuentasXPagarForm, MovimientosDetalleFrm, CuentasXPagarPagosForm,
-  ConfiguracionDM, ExportarPagosBancoDM, _Utils;
+  ConfiguracionDM, _Utils;
 
 {$R *.dfm}
 
@@ -116,32 +112,6 @@ begin
     end;
   else
     actCambiarEstatus.Enabled:= False;
-  end;
-end;
-
-procedure TdmCuentasXPagar.actDescargarPagosExecute(Sender: TObject);
-var
-  dmExportaPagos: TdmExportarPagosBancos;
-begin
-  inherited;
-  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
-  try
-    dmExportaPagos.actBajarArchivoPagos.Execute;
-  finally
-    FreeAndNil(dmExportaPagos);
-  end;
-end;
-
-procedure TdmCuentasXPagar.actExpotarPagosExecute(Sender: TObject);
-var
-  dmExportaPagos: TdmExportarPagosBancos;
-begin
-  inherited;
-  dmExportaPagos := TdmExportarPagosBancos.Create(nil);
-  try
-    dmExportaPagos.actExportaBanorte.Execute;
-  finally
-    FreeAndNil(dmExportaPagos);
   end;
 end;
 
@@ -175,8 +145,6 @@ begin
   gGridForm:= TfrmCuentasXPagar.Create(Self);
   gGridForm.ReadOnlyGrid:= True;
   gGridForm.DataSet:= adodsMaster;
-  TfrmCuentasXPagar(gGridForm).ExportarPagos:= actExpotarPagos;
-  TfrmCuentasXPagar(gGridForm).DescargarPagos:= actDescargarPagos;
   gFormDeatil1:= TfrmMovimientosDetalle.Create(Self);
   gFormDeatil1.ReadOnlyGrid:= True;
   gFormDeatil1.DataSet:= adodsMovimientosDetalle;

@@ -2,7 +2,6 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   Caption = 'Rol Asignado'
   ClientHeight = 414
   ClientWidth = 789
-  OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 795
   ExplicitHeight = 443
@@ -11,14 +10,11 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
   inherited pcMain: TcxPageControl
     Width = 789
     Height = 373
-    Properties.ActivePage = tsExpedienteDigital
     ExplicitWidth = 789
     ExplicitHeight = 373
     ClientRectBottom = 371
     ClientRectRight = 787
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
       ExplicitWidth = 785
       ExplicitHeight = 343
       object pnlRol: TPanel

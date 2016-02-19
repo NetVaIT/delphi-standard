@@ -79,6 +79,10 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <Manifest_File>None</Manifest_File>
+        <DCC_DcuOutput>.\$(Platform)\$(Config)\Units</DCC_DcuOutput>
+        <VerInfo_Keys>FileVersion=1.0.0.0</VerInfo_Keys>
+        <VerInfo_Locale>2058</VerInfo_Locale>
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
         <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
@@ -86,11 +90,10 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <VerInfo_Release>2</VerInfo_Release>
-        <VerInfo_Locale>2058</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Build>329</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.2.329;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>330</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.2.330;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -715,11 +718,6 @@
             <Form>frmPersonasRolesFacturacion</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Procesos\ExportarPagosBancoDM.pas">
-            <Form>dmExportarPagosBancos</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Procesos\FacturacionDM.pas">
             <Form>dmFacturacion</Form>
             <FormType>dfm</FormType>
@@ -800,14 +798,6 @@
         </DCCReference>
         <DCCReference Include="Catalogos\PersonasRolesCXCConceptosForm.pas">
             <Form>frmPersonasRolesCXCConceptos</Form>
-        </DCCReference>
-        <DCCReference Include="Procesos\ExportarPagosBancoEdit.pas">
-            <Form>frmExportaPagosBancos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Procesos\ExportarPagosBancoForm.pas">
-            <Form>frmExportarPagosBanco</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Reportes\RptPagosDmod.pas">
             <Form>dmRptPagos</Form>

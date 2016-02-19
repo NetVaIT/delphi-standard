@@ -2,7 +2,6 @@ inherited frmPersonaEdit: TfrmPersonaEdit
   Caption = 'Persona'
   ClientHeight = 478
   ClientWidth = 624
-  OnCreate = FormCreate
   OnDestroy = FormDestroy
   ExplicitWidth = 630
   ExplicitHeight = 507
@@ -17,8 +16,6 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     ClientRectBottom = 435
     ClientRectRight = 622
     inherited tsGeneral: TcxTabSheet
-      ExplicitLeft = 2
-      ExplicitTop = 28
       ExplicitWidth = 620
       ExplicitHeight = 407
       object pnlPersona: TPanel
@@ -331,22 +328,42 @@ inherited frmPersonaEdit: TfrmPersonaEdit
     object tsDomicilio: TcxTabSheet
       Caption = 'Domicilio'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsTelefono: TcxTabSheet
       Caption = 'Telefono'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsCorreo: TcxTabSheet
       Caption = 'Correo Electronico'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsContacto: TcxTabSheet
       Caption = 'Contactos'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsCuentasBancarias: TcxTabSheet
       Caption = 'Cuentas Bancarias'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object tsCSD: TcxTabSheet
       Caption = 'Sello digital'

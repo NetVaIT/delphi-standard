@@ -89,6 +89,7 @@ end;
 procedure TfrmPersonaRolesEdit.FormCreate(Sender: TObject);
 begin
   inherited;
+  Descripcion:= 'Rol';
   dmCtasCtablesPersonasRoles := TdmCuentasContablesPersonasRoles.Create(nil);
 //  dmPersonasRolesFacturacion := TdmPersonasRolesFacturacion.Create(nil);
   dmPersonasRolesCuentasBancarias := TdmPersonasRolesCuentasBancarias.Create(nil);

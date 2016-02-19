@@ -129,6 +129,7 @@ end;
 procedure TfrmPersonaEdit.FormCreate(Sender: TObject);
 begin
   inherited;
+  Descripcion:= 'RazonSocial';
   dmTelefonos := TdmTelefonos.Create(nil);
   dmEmails := TdmEmails.Create(nil);
   dmDomicilios := TdmPersonasDomicilios.Create(nil);
@@ -173,16 +174,16 @@ begin
   dmPersonasCSD.MasterSource := DataSource;
   dmPersonasCSD.MasterFields := 'IdPersona';
   dmPersonasCSD.ShowModule(tsCSD,'');
-  case Rol of
-    rNone:         Self.Caption := 'Persona';
-    rDuenoProceso: Self.Caption := 'Dueño de Proceso';
-    rOutSourcing:  Self.Caption := 'Outsourcing';
-    rCliente:      Self.Caption := 'Cliente';
-    rProveedor:    Self.Caption := 'Proveedor';
-    rEmpleado:     Self.Caption := 'Empleado';
-    rSocio:        Self.Caption := 'Socio';
-    rComisionista: Self.Caption := 'Comisionista';
-  end;
+//  case Rol of
+//    rNone:         Self.Caption := 'Persona';
+//    rDuenoProceso: Self.Caption := 'Dueño de Proceso';
+//    rOutSourcing:  Self.Caption := 'Outsourcing';
+//    rCliente:      Self.Caption := 'Cliente';
+//    rProveedor:    Self.Caption := 'Proveedor';
+//    rEmpleado:     Self.Caption := 'Empleado';
+//    rSocio:        Self.Caption := 'Socio';
+//    rComisionista: Self.Caption := 'Comisionista';
+//  end;
 end;
 
 procedure TfrmPersonaEdit.MostrarPanel;
