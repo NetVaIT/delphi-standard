@@ -84,9 +84,11 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
         end
         object tvMasterFechaProgramada: TcxGridDBColumn
           DataBinding.FieldName = 'FechaProgramada'
+          Visible = False
         end
         object tvMasterMontoProgramado: TcxGridDBColumn
           DataBinding.FieldName = 'MontoProgramado'
+          Visible = False
         end
         object tvMasterFechaAutorizacion: TcxGridDBColumn
           DataBinding.FieldName = 'FechaAutorizacion'
@@ -96,9 +98,11 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
         end
         object tvMasterFechaPago: TcxGridDBColumn
           DataBinding.FieldName = 'FechaPago'
+          Visible = False
         end
         object tvMasterMontoPagado: TcxGridDBColumn
           DataBinding.FieldName = 'MontoPagado'
+          Visible = False
         end
       end
     end
@@ -178,7 +182,7 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = []
+      ReportDocument.CreationDate = 42440.510011018520000000
       BuiltInReportLink = True
     end
   end

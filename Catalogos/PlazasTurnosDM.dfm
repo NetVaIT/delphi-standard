@@ -1,4 +1,5 @@
 inherited dmPlazasTurnos: TdmPlazasTurnos
+  OldCreateOrder = True
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -17,21 +18,21 @@ inherited dmPlazasTurnos: TdmPlazasTurnos
       FieldName = 'Descripcion'
       Size = 50
     end
-    object adodsMasterHoraEntrada: TWideStringField
+    object adodsMasterHoraEntrada: TDateTimeField
+      DisplayLabel = 'Hora Entrada'
       FieldName = 'HoraEntrada'
-      Size = 16
     end
-    object adodsMasterHoraSalida: TWideStringField
+    object adodsMasterHoraSalida: TDateTimeField
+      DisplayLabel = 'Hora Salida'
       FieldName = 'HoraSalida'
-      Size = 16
     end
-    object adodsMasterHoraAlimentosInicio: TWideStringField
+    object adodsMasterHoraAlimentosInicio: TDateTimeField
+      DisplayLabel = 'Hora Alimentos Inicio'
       FieldName = 'HoraAlimentosInicio'
-      Size = 16
     end
-    object adodsMasterHoraAlimentosFin: TWideStringField
+    object adodsMasterHoraAlimentosFin: TDateTimeField
+      DisplayLabel = 'Hora Alimentos Fin'
       FieldName = 'HoraAlimentosFin'
-      Size = 16
     end
   end
 end

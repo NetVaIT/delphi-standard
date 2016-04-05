@@ -1274,11 +1274,15 @@ object _frmGrid: T_frmGrid
   end
   object dxComponentPrinter: TdxComponentPrinter
     CurrentLink = dxcplGrid
+    PreviewOptions.Caption = 'Vista previa'
     Version = 0
     Left = 152
     Top = 215
     object dxcplGrid: TdxGridReportLink
+      Active = True
       Component = cxGrid
+      DesignerCaption = 'Formato del reporte'
+      PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 1
       PrinterPage.Footer = 6350
       PrinterPage.Header = 6350
@@ -1286,10 +1290,18 @@ object _frmGrid: T_frmGrid
       PrinterPage.Margins.Left = 12700
       PrinterPage.Margins.Right = 12700
       PrinterPage.Margins.Top = 12700
+      PrinterPage.Orientation = poLandscape
+      PrinterPage.PageFooter.RightTitle.Strings = (
+        '[Page # of Pages #]'
+        '[Date & Time Printed]')
       PrinterPage.PageSize.X = 215900
       PrinterPage.PageSize.Y = 279400
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
+      ReportDocument.CreationDate = 42440.441639351860000000
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      OptionsView.Caption = False
+      OptionsView.FilterBar = False
       BuiltInReportLink = True
     end
   end

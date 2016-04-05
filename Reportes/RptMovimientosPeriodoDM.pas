@@ -71,6 +71,7 @@ var
   Id : integer;
   Categoria : integer;
 begin
+  TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Columns[0].ApplyBestFit();
   for i := 0 to TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.ColumnCount - 1 do
   begin
     if i > 0 then
@@ -81,6 +82,7 @@ begin
       Categoria := GetCategoria(Id,NombreCol);
       TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Columns[i].Caption := NombreCol;
       TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Columns[i].Position.BandIndex := Categoria;
+      TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Columns[i].Width:= 64;
       TfrmMovimientosPeriodo(gGridForm).tvBandasGrupo.Bands[Categoria].Visible := True;
     end;
   end;
@@ -143,12 +145,8 @@ var
 begin
   for i := 1 to adostReporte.FieldCount - 1 do
   begin
-//    adostReporte.Fields[i].DataType.ftBCD.ftCurrency;
-//    showmessage(adostReporte.Fields[i].DisplayName);
-//    showmessage(inttostr(adostReporte.Fields[i].DataType));
-//    adostReporte.Fields[i].FieldKind(4);
-//    adostReporte.Fields[i].DataType.ftBCD.ftCurrency = true;
-//    adostReporte.DataSetField.Fields[i].SetFieldType(self).Currency;
+    if adostReporte.Fields[i] is TFMTBCDField then
+      TFMTBCDField(adostReporte.Fields[i]).currency:= True;
   end;
 end;
 

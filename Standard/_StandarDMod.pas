@@ -168,6 +168,7 @@ begin
     begin
       gGridForm.Parent:= pConteiner;
       gGridForm.Align:= alClient;
+      gGridForm.PrintTitle:= pCation;
 //      gGridForm.Caption:= pCation;
 //      gGridForm.View:= False;
       gGridForm.Show;

@@ -3,17 +3,18 @@ unit PlazasTurnosDM;
 interface
 
 uses
-  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB;
+  System.SysUtils, System.Classes, _StandarDMod, Data.DB, Data.Win.ADODB,
+  System.Actions, Vcl.ActnList;
 
 type
   TdmPlazasTurnos = class(T_dmStandar)
     adodsMasterIdPlazaTurno: TIntegerField;
     adodsMasterIdentificador: TStringField;
     adodsMasterDescripcion: TStringField;
-    adodsMasterHoraEntrada: TWideStringField;
-    adodsMasterHoraSalida: TWideStringField;
-    adodsMasterHoraAlimentosInicio: TWideStringField;
-    adodsMasterHoraAlimentosFin: TWideStringField;
+    adodsMasterHoraEntrada: TDateTimeField;
+    adodsMasterHoraSalida: TDateTimeField;
+    adodsMasterHoraAlimentosInicio: TDateTimeField;
+    adodsMasterHoraAlimentosFin: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
