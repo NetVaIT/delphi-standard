@@ -56,12 +56,21 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
                 DisplayText = 'Debe'
               end>
           end>
+        OptionsData.Editing = True
         object tvMasterIdCuentaXPagar: TcxGridDBColumn
           DataBinding.FieldName = 'IdCuentaXPagar'
           Visible = False
         end
         object tvMasterIdPersonaRol: TcxGridDBColumn
           DataBinding.FieldName = 'IdPersonaRol'
+          Visible = False
+        end
+        object tvMasterIdPersona: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersona'
+          Visible = False
+        end
+        object tvMasterIdPersonaRelacionada: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersonaRelacionada'
           Visible = False
         end
         object tvMasterIdPeriodo: TcxGridDBColumn
@@ -177,6 +186,21 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
       0
       31
       0)
+    inherited dxbTools: TdxBar
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarButton6'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbbPreview'
+        end
+        item
+          Visible = True
+          ItemName = 'btnAutorizar'
+        end>
+    end
     inherited dxbFilter: TdxBar
       DockedLeft = 338
       ItemLinks = <
@@ -206,6 +230,12 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
         end>
       Properties.ListSource = dsPeriodos
     end
+    object btnAutorizar: TdxBarButton
+      Caption = 'Autorizar'
+      Category = 0
+      Visible = ivAlways
+      ImageIndex = 13
+    end
   end
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
@@ -215,6 +245,7 @@ inherited frmCuentasXPagar: TfrmCuentasXPagar
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      ReportDocument.CreationDate = 42475.734719062500000000
       AssignedFormatValues = []
       BuiltInReportLink = True
     end

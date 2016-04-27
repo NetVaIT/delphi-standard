@@ -40,7 +40,6 @@ type
     tvMasterCuentaBancariaCobrador: TcxGridDBColumn;
     tvMasterFechaProgramada: TcxGridDBColumn;
     tvMasterMontoProgramado: TcxGridDBColumn;
-    tvMasterFechaAutorizacion: TcxGridDBColumn;
     tvMasterMontoAutorizado: TcxGridDBColumn;
     tvMasterFechaPago: TcxGridDBColumn;
     tvMasterMontoPagado: TcxGridDBColumn;
@@ -53,6 +52,8 @@ type
     tvMasterMetodoPago: TcxGridDBColumn;
     tvMasterBanorteID: TcxGridDBColumn;
     tvMasterCLABECobrador: TcxGridDBColumn;
+    tvMasterCuentaBancariaPerfilCobrador: TcxGridDBColumn;
+    tvMasterFechaAutorizaPago: TcxGridDBColumn;
   private
     FDataSetPeriodo: TDataSet;
     function GetIdPeriodo: Integer;

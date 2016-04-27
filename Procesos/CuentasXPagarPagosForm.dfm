@@ -44,24 +44,134 @@ inherited frmCuentasXPagarPagos: TfrmCuentasXPagarPagos
           DataBinding.FieldName = 'IdCuentaXPagar'
           Visible = False
         end
-        object tvMasterEstatus: TcxGridDBColumn
-          DataBinding.FieldName = 'Estatus'
-          Width = 104
+        object tvMasterIdCuentaXPagarEstatus: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaXPagarEstatus'
+          Visible = False
         end
-        object tvMasterReceptora: TcxGridDBColumn
-          DataBinding.FieldName = 'Receptora'
-          Width = 304
+        object tvMasterIdPersonaRol: TcxGridDBColumn
+          DataBinding.FieldName = 'IdPersonaRol'
+          Visible = False
         end
-        object tvMasterPagadora: TcxGridDBColumn
-          Caption = 'Emisora'
-          DataBinding.FieldName = 'Pagadora'
-          Width = 304
+        object tvMasterIDMetodoPago: TcxGridDBColumn
+          DataBinding.FieldName = 'IDMetodoPago'
+          Visible = False
+        end
+        object tvMasterIdUsuarioPrograma: TcxGridDBColumn
+          DataBinding.FieldName = 'IdUsuarioPrograma'
+          Visible = False
+        end
+        object tvMasterIdUsuarioAutoriza: TcxGridDBColumn
+          DataBinding.FieldName = 'IdUsuarioAutoriza'
+          Visible = False
+        end
+        object tvMasterIdUsuarioPago: TcxGridDBColumn
+          DataBinding.FieldName = 'IdUsuarioPago'
+          Visible = False
+        end
+        object tvMasterIdUsuarioConcilia: TcxGridDBColumn
+          DataBinding.FieldName = 'IdUsuarioConcilia'
+          Visible = False
+        end
+        object tvMasterIdCuentaBancariaPagador: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaBancariaPagador'
+          Visible = False
+        end
+        object tvMasterIdCuentaBancariaCobrador: TcxGridDBColumn
+          DataBinding.FieldName = 'IdCuentaBancariaCobrador'
+          Visible = False
+        end
+        object tvMasterIdMoneda: TcxGridDBColumn
+          DataBinding.FieldName = 'IdMoneda'
+          Visible = False
+        end
+        object tvMasterIdMonedaExtranjera: TcxGridDBColumn
+          DataBinding.FieldName = 'IdMonedaExtranjera'
+          Visible = False
+        end
+        object tvMasterIdEstadoCuenta: TcxGridDBColumn
+          DataBinding.FieldName = 'IdEstadoCuenta'
+          Visible = False
+        end
+        object tvMasterEstatusCXP: TcxGridDBColumn
+          DataBinding.FieldName = 'EstatusCXP'
+          Width = 100
+        end
+        object tvMasterCuentaBanPagador: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaBanPagador'
+        end
+        object tvMasterCuentaBanCobrador: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaBanCobrador'
+          Visible = False
+        end
+        object tvMasterCuentaBanCompleta2: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaBanCobrador2'
+        end
+        object tvMasterUsuarioPrograma: TcxGridDBColumn
+          DataBinding.FieldName = 'UsuarioPrograma'
+        end
+        object tvMasterFechaProgramacion: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaProgramacion'
+          Visible = False
         end
         object tvMasterFechaProgramada: TcxGridDBColumn
           DataBinding.FieldName = 'FechaProgramada'
         end
         object tvMasterMontoProgramado: TcxGridDBColumn
           DataBinding.FieldName = 'MontoProgramado'
+        end
+        object tvMasterUsuarioAutoriza: TcxGridDBColumn
+          DataBinding.FieldName = 'UsuarioAutoriza'
+        end
+        object tvMasterFechaAutorizacion: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaAutorizacion'
+          Visible = False
+        end
+        object tvMasterFechaAutorizaPago: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaAutorizaPago'
+        end
+        object tvMasterMontoAutorizado: TcxGridDBColumn
+          DataBinding.FieldName = 'MontoAutorizado'
+        end
+        object tvMasterFechaPago: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaPago'
+        end
+        object tvMasterUsuarioPaga: TcxGridDBColumn
+          DataBinding.FieldName = 'UsuarioPaga'
+        end
+        object tvMasterMontoPagado: TcxGridDBColumn
+          DataBinding.FieldName = 'MontoPagado'
+        end
+        object tvMasterFechaConcilia: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaConcilia'
+          Visible = False
+        end
+        object tvMasterUsuarioConcilia: TcxGridDBColumn
+          DataBinding.FieldName = 'UsuarioConcilia'
+          Visible = False
+        end
+        object tvMasterTipoCambio: TcxGridDBColumn
+          DataBinding.FieldName = 'TipoCambio'
+          Visible = False
+        end
+        object tvMasterTotalMonedaExtranjera: TcxGridDBColumn
+          DataBinding.FieldName = 'TotalMonedaExtranjera'
+          Visible = False
+        end
+        object tvMasterTotalMonedaNacional: TcxGridDBColumn
+          DataBinding.FieldName = 'TotalMonedaNacional'
+          Visible = False
+        end
+        object tvMasterMoneda: TcxGridDBColumn
+          DataBinding.FieldName = 'Moneda'
+          Visible = False
+        end
+        object tvMasterMonedaExt: TcxGridDBColumn
+          DataBinding.FieldName = 'MonedaExt'
+          Visible = False
+        end
+        object tvMasterMetodoPago: TcxGridDBColumn
+          DataBinding.FieldName = 'MetodoPago'
+          Visible = False
         end
       end
     end
@@ -93,6 +203,9 @@ inherited frmCuentasXPagarPagos: TfrmCuentasXPagarPagos
       Left = 560
       ExplicitLeft = 560
     end
+  end
+  inherited DataSource: TDataSource
+    OnDataChange = DataSourceDataChange
   end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
@@ -137,6 +250,9 @@ inherited frmCuentasXPagarPagos: TfrmCuentasXPagarPagos
   inherited cxStyleRepository: TcxStyleRepository
     PixelsPerInch = 96
   end
+  inherited cxGridPopupMenu: TcxGridPopupMenu
+    Grid = nil
+  end
   inherited cxImageList: TcxImageList
     FormatVersion = 1
   end
@@ -173,6 +289,7 @@ inherited frmCuentasXPagarPagos: TfrmCuentasXPagarPagos
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
+      ReportDocument.CreationDate = 42487.440430486110000000
       AssignedFormatValues = []
       BuiltInReportLink = True
     end

@@ -53,16 +53,22 @@ type
     cxedtPeriodo: TcxBarEditItem;
     dsPeriodos: TDataSource;
     tvMasterFlujoEfectivo: TcxGridDBColumn;
+    btnAutorizar: TdxBarButton;
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterIdPersonaRelacionada: TcxGridDBColumn;
   private
     { Private declarations }
     FDataSetPeriodo: TDataSet;
+    FactAutorizar: TBasicAction;
     function GetIdPeriodo: Integer;
     procedure SetDataSetPeriodo(const Value: TDataSet);
     procedure SetIdPeriodo(const Value: Integer);
+    procedure SetactAutorizar(const Value: TBasicAction);
   public
     { Public declarations }
     property IdPeriodo: Integer read GetIdPeriodo write SetIdPeriodo;
     property DataSetPeriodo: TDataSet read FDataSetPeriodo write SetDataSetPeriodo;
+    property actAutorizar: TBasicAction read FactAutorizar write SetactAutorizar;
   end;
 
 implementation
@@ -79,6 +85,12 @@ begin
     Result:= 0
   else
     Result:= cxedtPeriodo.EditValue;
+end;
+
+procedure TfrmCuentasXPagar.SetactAutorizar(const Value: TBasicAction);
+begin
+  FactAutorizar := Value;
+  btnAutorizar.Action := Value;
 end;
 
 procedure TfrmCuentasXPagar.SetDataSetPeriodo(const Value: TDataSet);

@@ -229,7 +229,8 @@ uses
   ExportarPagosDocumentosDM in 'Procesos\ExportarPagosDocumentosDM.pas' {dmExportarPagosDocumentos: TDataModule},
   ExportarPagosDocumentosForm in 'Procesos\ExportarPagosDocumentosForm.pas' {frmExportarPagosDocumentos},
   ExportarPagosDocumentosEdit in 'Procesos\ExportarPagosDocumentosEdit.pas' {frmExportarPagosDocumentosEdit},
-  ExportarPagosFiltroForm in 'Procesos\ExportarPagosFiltroForm.pas' {frmExportarPagosFiltro};
+  ExportarPagosFiltroForm in 'Procesos\ExportarPagosFiltroForm.pas' {frmExportarPagosFiltro},
+  CuentasXPagarPagosEdit in 'Procesos\CuentasXPagarPagosEdit.pas' {frmCuentasXPagarEdit};
 
 {$R *.res}
 

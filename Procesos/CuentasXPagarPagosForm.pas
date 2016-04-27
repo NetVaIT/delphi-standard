@@ -31,14 +31,46 @@ uses
 
 type
   TfrmCuentasXPagarPagos = class(T_frmGrid)
+    dxbbEstatus: TdxBarButton;
     tvMasterIdCuentaXPagarPago: TcxGridDBColumn;
     tvMasterIdCuentaXPagar: TcxGridDBColumn;
-    tvMasterEstatus: TcxGridDBColumn;
-    tvMasterReceptora: TcxGridDBColumn;
-    tvMasterPagadora: TcxGridDBColumn;
+    tvMasterIdCuentaXPagarEstatus: TcxGridDBColumn;
+    tvMasterIdPersonaRol: TcxGridDBColumn;
+    tvMasterIDMetodoPago: TcxGridDBColumn;
+    tvMasterIdUsuarioPrograma: TcxGridDBColumn;
+    tvMasterIdUsuarioAutoriza: TcxGridDBColumn;
+    tvMasterIdUsuarioPago: TcxGridDBColumn;
+    tvMasterIdUsuarioConcilia: TcxGridDBColumn;
+    tvMasterIdCuentaBancariaPagador: TcxGridDBColumn;
+    tvMasterIdCuentaBancariaCobrador: TcxGridDBColumn;
+    tvMasterIdMoneda: TcxGridDBColumn;
+    tvMasterIdMonedaExtranjera: TcxGridDBColumn;
+    tvMasterIdEstadoCuenta: TcxGridDBColumn;
+    tvMasterEstatusCXP: TcxGridDBColumn;
+    tvMasterCuentaBanPagador: TcxGridDBColumn;
+    tvMasterCuentaBanCobrador: TcxGridDBColumn;
+    tvMasterCuentaBanCompleta2: TcxGridDBColumn;
+    tvMasterUsuarioPrograma: TcxGridDBColumn;
+    tvMasterFechaProgramacion: TcxGridDBColumn;
     tvMasterFechaProgramada: TcxGridDBColumn;
     tvMasterMontoProgramado: TcxGridDBColumn;
-    dxbbEstatus: TdxBarButton;
+    tvMasterUsuarioAutoriza: TcxGridDBColumn;
+    tvMasterFechaAutorizacion: TcxGridDBColumn;
+    tvMasterFechaAutorizaPago: TcxGridDBColumn;
+    tvMasterMontoAutorizado: TcxGridDBColumn;
+    tvMasterFechaPago: TcxGridDBColumn;
+    tvMasterUsuarioPaga: TcxGridDBColumn;
+    tvMasterMontoPagado: TcxGridDBColumn;
+    tvMasterFechaConcilia: TcxGridDBColumn;
+    tvMasterUsuarioConcilia: TcxGridDBColumn;
+    tvMasterTipoCambio: TcxGridDBColumn;
+    tvMasterTotalMonedaExtranjera: TcxGridDBColumn;
+    tvMasterTotalMonedaNacional: TcxGridDBColumn;
+    tvMasterMoneda: TcxGridDBColumn;
+    tvMasterMonedaExt: TcxGridDBColumn;
+    tvMasterMetodoPago: TcxGridDBColumn;
+    procedure FormCreate(Sender: TObject);
+    procedure DataSourceDataChange(Sender: TObject; Field: TField);
   private
     FCambiarEstatus: TBasicAction;
     procedure SetCambiarEstatus(const Value: TBasicAction);
@@ -52,9 +84,25 @@ implementation
 
 {$R *.dfm}
 
-uses CuentasXPagarDM;
+uses CuentasXPagarDM, CuentasXPagarPagosEdit;
 
 { TfrmCuentasXPagarPagos }
+
+procedure TfrmCuentasXPagarPagos.DataSourceDataChange(Sender: TObject;
+  Field: TField);
+begin
+  inherited;
+  if assigned(gEditForm) then
+  begin
+    TfrmCuentasXPagarEdit(gEditForm).HabilitarOpciones;
+  end;
+end;
+
+procedure TfrmCuentasXPagarPagos.FormCreate(Sender: TObject);
+begin
+  inherited;
+  gEditForm:= TfrmCuentasXPagarEdit.Create(Self);
+end;
 
 procedure TfrmCuentasXPagarPagos.SetCambiarEstatus(const Value: TBasicAction);
 begin

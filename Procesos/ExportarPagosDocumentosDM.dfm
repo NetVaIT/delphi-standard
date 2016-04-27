@@ -129,11 +129,21 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
     CursorType = ctStatic
     Parameters = <
       item
-        Name = 'IdPeriodo'
-        Attributes = [paSigned, paNullable]
-        DataType = ftInteger
-        Precision = 10
-        Size = 4
+        Name = 'FechaInicio'
+        Attributes = [paNullable]
+        DataType = ftDateTime
+        NumericScale = 3
+        Precision = 23
+        Size = 16
+        Value = Null
+      end
+      item
+        Name = 'FechaFin'
+        Attributes = [paNullable]
+        DataType = ftDateTime
+        NumericScale = 3
+        Precision = 23
+        Size = 16
         Value = Null
       end
       item
@@ -154,31 +164,15 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
       end>
     SQL.Strings = (
       
-        'SELECT vCuentasXPagarPagos.IdCuentaXPagarPago, vCuentasXPagarPag' +
-        'os.IdbancoCobrador, vCuentasXPagarPagos.Periodo, vCuentasXPagarP' +
-        'agos.FechaAutorizacion, vCuentasXPagarPagos.MontoAutorizado,'
-      
-        'vCuentasXPagarPagos.RFCPagador, vCuentasXPagarPagos.Pagador, vCu' +
-        'entasXPagarPagos.CuentaBancariaPagador,'
-      
-        'vCuentasXPagarPagos.BanorteID, vCuentasXPagarPagos.RFCCobrador, ' +
-        'vCuentasXPagarPagos.Cobrador, vCuentasXPagarPagos.BancoCobrador,' +
-        ' vCuentasXPagarPagos.CuentaBancariaCobrador, vCuentasXPagarPagos' +
-        '.CLABECobrador'
-      'FROM vCuentasXPagarPagos'
-      'WHERE vCuentasXPagarPagos.IdMetodoPago = 1'#9'-- Tranferencia'
-      
-        'AND vCuentasXPagarPagos.IdCuentaXPagarEstatus = 2'#9'-- Pago autori' +
-        'zado'
-      
-        'AND vCuentasXPagarPagos.IdExportarPagoDocumento IS NULL'#9'-- Que n' +
-        'o sea ya importado'
-      'AND vCuentasXPagarPagos.IdPeriodo = :IdPeriodo '
-      'AND vCuentasXPagarPagos.IdPersonaPagador = :IdPersona '
-      
-        'AND vCuentasXPagarPagos.IdCuentaBancariaPagador = :IdCuentaBanca' +
-        'ria'
-      'ORDER BY vCuentasXPagarPagos.BancoCobrador')
+        'SELECT IdCuentaXPagarPago, IdBancoCobrador, Referencia, FechaAut' +
+        'orizaPago, MontoAutorizado, RFCPagador, Pagador, CuentaBancariaP' +
+        'agador, BanorteID, RFCCobrador, Cobrador, BancoCobrador, '
+      'CuentaBancariaCobrador, CLABECobrador'
+      'FROM vCuentasXPagarPagosExportar'
+      'WHERE FechaAutorizaPago BETWEEN :FechaInicio AND :FechaFin'
+      'AND IdPersonaPagador = :IdPersona '
+      'AND IdCuentaBancariaPagador = :IdCuentaBancaria'
+      'ORDER BY BancoCobrador')
     Left = 168
     Top = 72
     object adoqvCXPPagosIdCuentaXPagarPago: TIntegerField
@@ -189,12 +183,14 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
       FieldName = 'IdbancoCobrador'
       Visible = False
     end
-    object adoqvCXPPagosPeriodo: TStringField
-      FieldName = 'Periodo'
+    object adoqvCXPPagosReferencia: TStringField
+      FieldName = 'Referencia'
+      ReadOnly = True
       Size = 100
     end
-    object adoqvCXPPagosFechaAutorizacion: TDateTimeField
-      FieldName = 'FechaAutorizacion'
+    object adoqvCXPPagosFechaAutorizaPago: TDateTimeField
+      FieldName = 'FechaAutorizaPago'
+      ReadOnly = True
     end
     object adoqvCXPPagosMontoAutorizado: TFMTBCDField
       FieldName = 'MontoAutorizado'
@@ -296,8 +292,15 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
   object adocUpdCuentaXPagarPagos: TADOCommand
     CommandText = 
       'UPDATE CuentasXPagarPagos'#13#10'SET IdExportarPagoDocumento = :IdExpo' +
-      'rtarPagoDocumento'#13#10'WHERE IdCuentaXPagarPago = :IdCuentaXPagarPag' +
-      'os'
+      'rtarPagoDocumento'#13#10'FROM CuentasXPagarPagos '#13#10'INNER JOIN Personas' +
+      'Roles ON CuentasXPagarPagos.IdPersonaRol = PersonasRoles.IdPerso' +
+      'naRol'#13#10'WHERE CuentasXPagarPagos.IdMetodoPago = 1'#9'/* Tranferencia' +
+      '*/ '#13#10'AND CuentasXPagarPagos.IdCuentaXPagarEstatus = 2'#9'/* Pago au' +
+      'torizado*/ '#13#10'AND CuentasXPagarPagos.IdExportarPagoDocumento IS N' +
+      'ULL'#9'/* Que no sea ya importado*/  '#13#10'AND CuentasXPagarPagos.Fecha' +
+      'AutorizaPago BETWEEN :FechaInicio AND :FechaFin'#13#10'AND PersonasRol' +
+      'es.IdPersonaRelacionada = :IdPersona'#13#10'AND CuentasXPagarPagos.IdC' +
+      'uentaBancariaPagador = :IdCuentaBancaria'#13#10
     Connection = _dmConection.ADOConnection
     Parameters = <
       item
@@ -309,8 +312,30 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
         Value = Null
       end
       item
-        Name = 'IdCuentaXPagarPagos'
-        Attributes = [paSigned]
+        Name = 'FechaInicio'
+        DataType = ftDateTime
+        NumericScale = 3
+        Precision = 23
+        Size = 16
+        Value = Null
+      end
+      item
+        Name = 'FechaFin'
+        DataType = ftDateTime
+        NumericScale = 3
+        Precision = 23
+        Size = 16
+        Value = Null
+      end
+      item
+        Name = 'IdPersona'
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end
+      item
+        Name = 'IdCuentaBancaria'
         DataType = ftInteger
         Precision = 10
         Size = 4
@@ -362,5 +387,33 @@ inherited dmExportarPagosDocumentos: TdmExportarPagosDocumentos
       'SELECT IdCuentaBancaria, CuentaBancaria  FROM CuentasBancarias')
     Left = 40
     Top = 296
+  end
+  object adoqGetrangoPeriodo: TADOQuery
+    Connection = _dmConection.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'IdPeriodo'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT CAST(FechaInicio AS datetime) AS FechaInicio, CAST(FechaF' +
+        'in AS datetime) AS FechaFin FROM Periodos WHERE IdPeriodo = :IdP' +
+        'eriodo')
+    Left = 328
+    Top = 176
+    object adoqGetrangoPeriodoFechaInicio: TDateTimeField
+      FieldName = 'FechaInicio'
+      ReadOnly = True
+    end
+    object adoqGetrangoPeriodoFechaFin: TDateTimeField
+      FieldName = 'FechaFin'
+      ReadOnly = True
+    end
   end
 end

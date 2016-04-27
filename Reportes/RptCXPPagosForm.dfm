@@ -22,6 +22,7 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
     ExplicitWidth = 990
     inherited cxGrid: TcxGrid
       Width = 990
+      ExplicitTop = -3
       ExplicitWidth = 990
       inherited tvMaster: TcxGridDBTableView
         OptionsView.GroupByBox = True
@@ -75,6 +76,10 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
         object tvMasterBancoCobrador: TcxGridDBColumn
           DataBinding.FieldName = 'BancoCobrador'
         end
+        object tvMasterCuentaBancariaPerfilCobrador: TcxGridDBColumn
+          DataBinding.FieldName = 'CuentaBancariaPerfilCobrador'
+          Width = 170
+        end
         object tvMasterCuentaBancariaCobrador: TcxGridDBColumn
           DataBinding.FieldName = 'CuentaBancariaCobrador'
           Width = 145
@@ -84,14 +89,12 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
         end
         object tvMasterFechaProgramada: TcxGridDBColumn
           DataBinding.FieldName = 'FechaProgramada'
-          Visible = False
         end
         object tvMasterMontoProgramado: TcxGridDBColumn
           DataBinding.FieldName = 'MontoProgramado'
-          Visible = False
         end
-        object tvMasterFechaAutorizacion: TcxGridDBColumn
-          DataBinding.FieldName = 'FechaAutorizacion'
+        object tvMasterFechaAutorizaPago: TcxGridDBColumn
+          DataBinding.FieldName = 'FechaAutorizaPago'
         end
         object tvMasterMontoAutorizado: TcxGridDBColumn
           DataBinding.FieldName = 'MontoAutorizado'
@@ -183,6 +186,7 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
       ReportDocument.CreationDate = 42440.510011018520000000
+      AssignedFormatValues = []
       BuiltInReportLink = True
     end
   end

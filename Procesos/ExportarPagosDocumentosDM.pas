@@ -34,8 +34,6 @@ type
     adoqvCXPPagos: TADOQuery;
     adoqvCXPPagosIdCuentaXPagarPago: TIntegerField;
     adoqvCXPPagosIdbancoCobrador: TIntegerField;
-    adoqvCXPPagosPeriodo: TStringField;
-    adoqvCXPPagosFechaAutorizacion: TDateTimeField;
     adoqvCXPPagosMontoAutorizado: TFMTBCDField;
     adoqvCXPPagosRFCPagador: TStringField;
     adoqvCXPPagosPagador: TStringField;
@@ -56,6 +54,11 @@ type
     adodsMasterEmisor: TStringField;
     adodsMasterCuentaBancaria: TStringField;
     adoqvCXPPagosRFCCobrador: TStringField;
+    adoqvCXPPagosReferencia: TStringField;
+    adoqGetrangoPeriodo: TADOQuery;
+    adoqGetrangoPeriodoFechaInicio: TDateTimeField;
+    adoqGetrangoPeriodoFechaFin: TDateTimeField;
+    adoqvCXPPagosFechaAutorizaPago: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actUpdateFileExecute(Sender: TObject);
     procedure actExportarBanorteExecute(Sender: TObject);
@@ -64,7 +67,6 @@ type
     { Private declarations }
     function CrearArchivoBanorte(IdPeriodo, IdPersona,
       IdCuentaBancaria: Integer; FileName: TFileName): Integer;
-      procedure FiltrarPagos(IdPeriodo, IdPersona, IdCuentaBancaria: Integer);
   public
     { Public declarations }
     procedure ExportarBanorte;
@@ -130,6 +132,7 @@ var
   Registros: Integer;
   IdDocumento: Integer;
   IdExportarPagoDocumento: Integer;
+  FechaInicio, FechaFin: TDateTime;
 
 function PreparaCadena(Origen, Justifica, Relleno: string; Longitud: integer): String;
 var
@@ -173,9 +176,29 @@ begin
   Result := COrigen
 end;
 
+procedure GetRangoPeriodo(IdPeriodo: Integer; out FechaIni, FechaFin: TDateTime);
+begin
+  adoqGetrangoPeriodo.Close;
+  try
+    adoqGetrangoPeriodo.Parameters.ParamByName('IdPeriodo').Value:= IdPeriodo;
+    adoqGetrangoPeriodo.Open;
+    FechaIni := adoqGetrangoPeriodoFechaInicio.Value;
+    FechaFin := adoqGetrangoPeriodoFechaFin.Value;
+  finally
+    adoqGetrangoPeriodo.Close;
+  end;
+end;
+
+
 begin
   Registros:= 0;
-  FiltrarPagos(IdPeriodo, IdPersona, IdCuentaBancaria);
+  GetRangoPeriodo(IdPeriodo, FechaInicio, FechaFin);
+  adoqvCXPPagos.Close;
+  adoqvCXPPagos.Parameters.ParamByName('FechaInicio').Value := FechaInicio;
+  adoqvCXPPagos.Parameters.ParamByName('FechaFin').Value := FechaFin;
+  adoqvCXPPagos.Parameters.ParamByName('IdPersona').Value := IdPersona;
+  adoqvCXPPagos.Parameters.ParamByName('IdCuentaBancaria').Value := IdCuentaBancaria;
+  adoqvCXPPagos.Open;
   if adoqvCXPPagos.RecordCount > 0 then
   begin
     AssignFile(TXTArchivo, FileName);
@@ -200,7 +223,7 @@ begin
       Registro := Registro + Dinero + Chr(9); // Importe
       Referencia := PreparaCadena(adoqvCXPPagosIdCuentaXPagarPago.AsString,'D','0',10);
       Registro := Registro + Referencia + Chr(9); // Referencia
-      Registro := Registro + CortarCadena(adoqvCXPPagosPeriodo.AsString,29) + Chr(9); // Descripcion
+      Registro := Registro + CortarCadena(adoqvCXPPagosReferencia.AsString,29) + Chr(9); // Descripcion
       if Operacion = '04' then
         Registro := Registro + PreparaCadena(adoqvCXPPagosRFCCobrador.AsString,'I',' ',13) + Chr(9) // RFCOrdenante
       else
@@ -210,7 +233,7 @@ begin
       else
         Registro := Registro + Chr(9);
       if Operacion = '05' then
-        Registro := Registro + adoqvCXPPagosFechaAutorizacion.AsString + Chr(9) // FechaAplicacion
+        Registro := Registro + adoqvCXPPagosFechaAutorizaPago.AsString + Chr(9) // FechaAplicacion
       else
         Registro := Registro + Chr(9);
       if Operacion = '04' then
@@ -232,9 +255,9 @@ begin
   end
   else
     IdDocumento:= 0;
-  // Agrega registro exportado
   if IdDocumento<>0 then
   begin
+    // Agrega registro exportado
     adocInsExportarPago.Parameters.ParamByName('IdExportarPagoDocumentoEstatus').Value:= 1;
     adocInsExportarPago.Parameters.ParamByName('IdDocumento').Value:= IdDocumento;
     adocInsExportarPago.Parameters.ParamByName('IdPeriodo').Value:= IdPeriodo;
@@ -243,14 +266,13 @@ begin
     adocInsExportarPago.Parameters.ParamByName('Fecha').Value:= Date;
     adocInsExportarPago.Execute;
     IdExportarPagoDocumento:= adocInsExportarPago.Parameters.ParamByName('IdExportarPagoDocumento').Value;
-    adoqvCXPPagos.First;
-    while not adoqvCXPPagos.Eof do
-    begin
-      adocUpdCuentaXPagarPagos.Parameters.ParamByName('IdCuentaXPagarPagos').Value := adoqvCXPPagosIdCuentaXPagarPago.Value;
-      adocUpdCuentaXPagarPagos.Parameters.ParamByName('IdExportarPagoDocumento').Value := IdExportarPagoDocumento;
-      adocUpdCuentaXPagarPagos.Execute;
-      adoqvCXPPagos.Next;
-    end;
+    // Asigna archivo a cada pago
+    adocUpdCuentaXPagarPagos.Parameters.ParamByName('IdExportarPagoDocumento').Value := IdExportarPagoDocumento;
+    adocUpdCuentaXPagarPagos.Parameters.ParamByName('FechaInicio').Value := FechaInicio;
+    adocUpdCuentaXPagarPagos.Parameters.ParamByName('FechaFin').Value := FechaFin;
+    adocUpdCuentaXPagarPagos.Parameters.ParamByName('IdPersona').Value := IdPersona;
+    adocUpdCuentaXPagarPagos.Parameters.ParamByName('IdCuentaBancaria').Value := IdCuentaBancaria;
+    adocUpdCuentaXPagarPagos.Execute;
   end;
   adoqvCXPPagos.Close;
   Result:= Registros;
@@ -290,16 +312,6 @@ begin
   finally
     frmPagos.Free;
   end;
-end;
-
-procedure TdmExportarPagosDocumentos.FiltrarPagos(IdPeriodo, IdPersona,
-  IdCuentaBancaria: Integer);
-begin
-  adoqvCXPPagos.Close;
-  adoqvCXPPagos.Parameters.ParamByName('IdPeriodo').Value := IdPeriodo;
-  adoqvCXPPagos.Parameters.ParamByName('IdPersona').Value := IdPersona;
-  adoqvCXPPagos.Parameters.ParamByName('IdCuentaBancaria').Value := IdCuentaBancaria;
-  adoqvCXPPagos.Open;
 end;
 
 end.
