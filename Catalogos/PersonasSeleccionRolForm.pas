@@ -1,4 +1,4 @@
-unit MovimientosDetalleFrm;
+unit PersonasSeleccionRolForm;
 
 interface
 
@@ -27,45 +27,43 @@ uses
   cxGridCustomPopupMenu, cxGridPopupMenu, cxClasses, Vcl.StdActns, Vcl.DBActns,
   System.Actions, Vcl.ActnList, Vcl.StdCtrls, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.ExtCtrls, cxCheckBox;
+  Vcl.ExtCtrls;
 
 type
-  TfrmMovimientosDetalle = class(T_frmGrid)
-    tvMasterIdMovimientoDetalle: TcxGridDBColumn;
-    tvMasterIdMovimiento: TcxGridDBColumn;
+  TfrmPersonasSeleccionRol = class(T_frmGrid)
     tvMasterIdPersonaRol: TcxGridDBColumn;
-    tvMasterIdMovimientoTipo: TcxGridDBColumn;
-    tvMasterIdMovimientoEstatus: TcxGridDBColumn;
-    tvMasterImporte: TcxGridDBColumn;
+    tvMasterIdPersona: TcxGridDBColumn;
+    tvMasterIdRol: TcxGridDBColumn;
+    tvMasterIdPersonaRelacionada: TcxGridDBColumn;
+    tvMasterPersona: TcxGridDBColumn;
+    tvMasterRol: TcxGridDBColumn;
     tvMasterPersonaRelacionada: TcxGridDBColumn;
-    tvMasterTipo: TcxGridDBColumn;
     tvMasterEstatus: TcxGridDBColumn;
-    tvMasterIdCuentaXPagar: TcxGridDBColumn;
-    tvMasterFecha: TcxGridDBColumn;
-    tvMasterCategoria: TcxGridDBColumn;
-    tvMasterIdIncidenciaDetalle: TcxGridDBColumn;
-    tvMasterIdMoneda: TcxGridDBColumn;
-    tvMasterIdCuentaXCobrar: TcxGridDBColumn;
-    tvMasterIdPrestamoPago: TcxGridDBColumn;
-    tvMasterAplicarCategoria: TcxGridDBColumn;
-    tvMasterPorcentajeRetencion: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+    tvMasterClase: TcxGridDBColumn;
+    tvMasterCalcular: TcxGridDBColumn;
+    tvMasterPorcentajeCalculo: TcxGridDBColumn;
+    btnDispercion: TdxBarButton;
   private
+    FactDispercion: TBasicAction;
+    procedure SetactDispercion(const Value: TBasicAction);
     { Private declarations }
   public
     { Public declarations }
+    property actDispercion: TBasicAction read FactDispercion write SetactDispercion;
   end;
 
 implementation
 
 {$R *.dfm}
 
-uses MovimientosDM, MovimientosDetalleEdit;
+uses PersonasSeleccionRolDmod;
 
-procedure TfrmMovimientosDetalle.FormCreate(Sender: TObject);
+{ TfrmPersonasSeleccionRol }
+
+procedure TfrmPersonasSeleccionRol.SetactDispercion(const Value: TBasicAction);
 begin
-  inherited;
-  gEditForm:= TfrmMovimientosDetalleEdit.Create(Self);
+  FactDispercion := Value;
+  btnDispercion.Action := Value;
 end;
 
 end.

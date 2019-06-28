@@ -15,6 +15,8 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
     ClientRectBottom = 371
     ClientRectRight = 787
     inherited tsGeneral: TcxTabSheet
+      ExplicitLeft = 2
+      ExplicitTop = 28
       ExplicitWidth = 785
       ExplicitHeight = 343
       object pnlRol: TPanel
@@ -167,11 +169,19 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         Left = 0
         Top = 177
         Width = 785
-        Height = 26
+        Height = 63
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
         Visible = False
+        object Label11: TLabel
+          Left = 16
+          Top = 23
+          Width = 115
+          Height = 13
+          Caption = 'Porcentaje de retenci'#243'n'
+          FocusControl = cxDBTextEdit4
+        end
         object dbchkFacturar: TcxDBCheckBox
           Left = 16
           Top = 3
@@ -181,16 +191,26 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           TabOrder = 0
           Width = 121
         end
+        object cxDBTextEdit4: TcxDBTextEdit
+          Left = 16
+          Top = 39
+          DataBinding.DataField = 'PorcentajeRetencion'
+          DataBinding.DataSource = DataSource
+          TabOrder = 1
+          Width = 121
+        end
       end
       object pnlEmpleado: TPanel
         Left = 0
-        Top = 203
+        Top = 240
         Width = 785
         Height = 86
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 2
         Visible = False
+        ExplicitLeft = -2
+        ExplicitTop = 205
         object Label7: TLabel
           Left = 16
           Top = 3
@@ -226,13 +246,14 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       end
       object pnlOutsourcing: TPanel
         Left = 0
-        Top = 289
+        Top = 326
         Width = 785
         Height = 48
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
+        ExplicitTop = 289
         object Label10: TLabel
           Left = 16
           Top = 4
@@ -285,9 +306,6 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       Left = 626
       ExplicitLeft = 626
     end
-  end
-  inherited DataSource: TDataSource
-    DataSet = dmPersona.adodsPersonaRoles
   end
   inherited cxImageList: TcxImageList
     FormatVersion = 1

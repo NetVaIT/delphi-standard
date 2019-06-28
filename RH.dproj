@@ -92,8 +92,8 @@
         <VerInfo_Release>2</VerInfo_Release>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Build>333</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.2.333;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>335</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.2.335;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -817,15 +817,6 @@
             <Form>frmRptCXPPagos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Catalogos\PersonasSeleccionRolDmod.pas">
-            <Form>dmPersonasSeleccionRol</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Catalogos\PersonasSeleccionRolForm.pas">
-            <Form>frmPersonasSeleccionRol</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Catalogos\PersonaSeleccionarRolForm.pas">
             <Form>frmPersonaSeleccionarRol</Form>
             <FormType>dfm</FormType>
@@ -897,6 +888,15 @@
         </DCCReference>
         <DCCReference Include="Procesos\CuentasXPagarPagosEdit.pas">
             <Form>frmCuentasXPagarEdit</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonasSeleccionRolDmod.pas">
+            <Form>dmPersonasSeleccionRol</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Catalogos\PersonasSeleccionRolForm.pas">
+            <Form>frmPersonasSeleccionRol</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

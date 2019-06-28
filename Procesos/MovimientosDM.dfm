@@ -319,8 +319,9 @@ inherited dmMovimientos: TdmMovimientos
     CommandText = 
       'SELECT IdMovimientoDetalle, IdMovimiento, IdPersonaRol, IdIncide' +
       'nciaDetalle, IdMovimientoTipo, IdMoneda, IdMovimientoEstatus, Id' +
-      'CuentaXPagar, IdCuentaXCobrar, IdPrestamoPago, Fecha, Importe FR' +
-      'OM MovimientosDetalle'#13#10'WHERE IdMovimiento = :IdMovimiento'
+      'CuentaXPagar, IdCuentaXCobrar, IdPrestamoPago, Fecha, Importe, P' +
+      'orcentajeRetencion'#13#10'FROM MovimientosDetalle'#13#10'WHERE IdMovimiento ' +
+      '= :IdMovimiento'
     DataSource = dsMaster
     MasterFields = 'IdMovimiento'
     Parameters = <
@@ -415,6 +416,14 @@ inherited dmMovimientos: TdmMovimientos
       Precision = 18
       Size = 6
     end
+    object adodsMovimientosDetPorcentajeRetencion: TFMTBCDField
+      DisplayLabel = 'Porcentaje de retenci'#243'n'
+      FieldName = 'PorcentajeRetencion'
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 6
+    end
     object adodsMovimientosDetAplicarCategoria: TBooleanField
       DisplayLabel = 'Aplicar'
       FieldKind = fkLookup
@@ -437,6 +446,7 @@ inherited dmMovimientos: TdmMovimientos
     end
   end
   object adodsPersonaRol: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -451,6 +461,7 @@ inherited dmMovimientos: TdmMovimientos
     Top = 200
   end
   object adodsMovimientosTipo: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -468,6 +479,7 @@ inherited dmMovimientos: TdmMovimientos
     Top = 256
   end
   object adodsMovimientosEstatus: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoEstatus, Descripcion from MovimientosEstatus'

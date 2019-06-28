@@ -212,8 +212,6 @@ uses
   RptPagosForm in 'Reportes\RptPagosForm.pas' {frmRptPagos},
   RptCXPPagosDmod in 'Reportes\RptCXPPagosDmod.pas' {dmRptCXPPagos: TDataModule},
   RptCXPPagosForm in 'Reportes\RptCXPPagosForm.pas' {frmRptCXPPagos},
-  PersonasSeleccionRolDmod in 'Catalogos\PersonasSeleccionRolDmod.pas' {dmPersonasSeleccionRol: TDataModule},
-  PersonasSeleccionRolForm in 'Catalogos\PersonasSeleccionRolForm.pas' {frmPersonasSeleccionRol},
   PersonaSeleccionarRolForm in 'Catalogos\PersonaSeleccionarRolForm.pas' {frmPersonaSeleccionarRol},
   PersonasRolesEstatusDM in 'Catalogos\PersonasRolesEstatusDM.pas' {dmPersonasRolesEstatus: TDataModule},
   PersonasRolesEstatusForm in 'Catalogos\PersonasRolesEstatusForm.pas' {frmPersonasRolesEstatus},
@@ -230,7 +228,9 @@ uses
   ExportarPagosDocumentosForm in 'Procesos\ExportarPagosDocumentosForm.pas' {frmExportarPagosDocumentos},
   ExportarPagosDocumentosEdit in 'Procesos\ExportarPagosDocumentosEdit.pas' {frmExportarPagosDocumentosEdit},
   ExportarPagosFiltroForm in 'Procesos\ExportarPagosFiltroForm.pas' {frmExportarPagosFiltro},
-  CuentasXPagarPagosEdit in 'Procesos\CuentasXPagarPagosEdit.pas' {frmCuentasXPagarEdit};
+  CuentasXPagarPagosEdit in 'Procesos\CuentasXPagarPagosEdit.pas' {frmCuentasXPagarEdit},
+  PersonasSeleccionRolDmod in 'Catalogos\PersonasSeleccionRolDmod.pas' {dmPersonasSeleccionRol: TDataModule},
+  PersonasSeleccionRolForm in 'Catalogos\PersonasSeleccionRolForm.pas' {frmPersonasSeleccionRol};
 
 {$R *.res}
 

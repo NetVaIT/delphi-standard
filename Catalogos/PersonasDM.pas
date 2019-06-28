@@ -66,6 +66,7 @@ type
     adodsMasterVigenciaFM34: TDateTimeField;
     adodsPersonaRolesIdRolTipo: TIntegerField;
     actSelecionarRol: TAction;
+    adodsPersonaRolesPorcentajeRetencion: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure adodsPersonaRolesNewRecord(DataSet: TDataSet);
     procedure actSelecionarRolExecute(Sender: TObject);

@@ -104,6 +104,7 @@ type
     actSetPorcent: TAction;
     adodsMasterPersona: TStringField;
     adodsMasterPersonaTitular: TStringField;
+    adodsMovimientosDetPorcentajeRetencion: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure actCalcularmovimientosExecute(Sender: TObject);
     procedure adodsMasterAfterScroll(DataSet: TDataSet);

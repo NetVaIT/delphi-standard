@@ -33,6 +33,7 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
     inherited cxGrid: TcxGrid
       Width = 645
       Height = 224
+      ExplicitTop = -3
       ExplicitWidth = 645
       ExplicitHeight = 224
       inherited tvMaster: TcxGridDBTableView
@@ -95,6 +96,10 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
         end
         object tvMasterImporte: TcxGridDBColumn
           DataBinding.FieldName = 'Importe'
+        end
+        object tvMasterPorcentajeRetencion: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajeRetencion'
+          Visible = False
         end
         object tvMasterAplicarCategoria: TcxGridDBColumn
           DataBinding.FieldName = 'AplicarCategoria'
@@ -159,7 +164,7 @@ inherited frmMovimientosDetalle: TfrmMovimientosDetalle
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 43644.394528900460000000
       BuiltInReportLink = True
     end
   end

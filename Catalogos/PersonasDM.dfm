@@ -1,7 +1,7 @@
 inherited dmPersona: TdmPersona
   OldCreateOrder = True
-  Height = 528
-  Width = 451
+  Height = 460
+  Width = 422
   inherited adodsMaster: TADODataSet
     CursorType = ctStatic
     CommandText = 
@@ -203,9 +203,9 @@ inherited dmPersona: TdmPersona
       ' PersonasRoles.PorcentajeCalculo, PersonasRoles.RegistroPatronal' +
       'IMSS, PersonasRoles.NSS, PersonasRoles.FechaAltaIMSS, '#13#10'        ' +
       '     PersonasRoles.Facturar, PersonasRoles.FechaIngreso, Persona' +
-      'sRoles.FechaBaja, Roles.IdRolTipo'#13#10'FROM PersonasRoles INNER JOIN' +
-      ' Roles ON PersonasRoles.IdRol = Roles.IdRol'#13#10'WHERE PersonasRoles' +
-      '.IdPersona = :IdPersona'#13#10
+      'sRoles.FechaBaja, PersonasRoles.PorcentajeRetencion, Roles.IdRol' +
+      'Tipo'#13#10'FROM PersonasRoles INNER JOIN Roles ON PersonasRoles.IdRol' +
+      ' = Roles.IdRol'#13#10'WHERE PersonasRoles.IdPersona = :IdPersona'#13#10
     DataSource = dsMaster
     MasterFields = 'IdPersona'
     Parameters = <
@@ -214,6 +214,7 @@ inherited dmPersona: TdmPersona
         Attributes = [paSigned]
         DataType = ftInteger
         Precision = 10
+        Size = 4
         Value = 1
       end>
     Left = 312
@@ -300,10 +301,6 @@ inherited dmPersona: TdmPersona
       Size = 50
       Lookup = True
     end
-    object adodsPersonaRolesFacturar: TBooleanField
-      FieldName = 'Facturar'
-      Visible = False
-    end
     object adodsPersonaRolesCalcular: TBooleanField
       FieldName = 'Calcular'
     end
@@ -315,9 +312,18 @@ inherited dmPersona: TdmPersona
       Precision = 18
       Size = 6
     end
-    object adodsPersonaRolesRegistroPatronalIMSS: TStringField
-      FieldName = 'RegistroPatronalIMSS'
-      Size = 15
+    object adodsPersonaRolesFacturar: TBooleanField
+      FieldName = 'Facturar'
+      Visible = False
+    end
+    object adodsPersonaRolesPorcentajeRetencion: TFMTBCDField
+      DisplayLabel = 'Porcentaje de retenci'#243'n'
+      FieldName = 'PorcentajeRetencion'
+      Visible = False
+      DisplayFormat = '0.00 %'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 6
     end
     object adodsPersonaRolesNSS: TStringField
       FieldName = 'NSS'
@@ -334,8 +340,13 @@ inherited dmPersona: TdmPersona
       DisplayLabel = 'Fecha de baja'
       FieldName = 'FechaBaja'
     end
+    object adodsPersonaRolesRegistroPatronalIMSS: TStringField
+      FieldName = 'RegistroPatronalIMSS'
+      Size = 15
+    end
   end
   object adodsPersonaRelacionada: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -347,6 +358,7 @@ inherited dmPersona: TdmPersona
     Top = 133
   end
   object adodsRol: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRol, IdRolTipo, Descripcion FROM Roles'
@@ -355,6 +367,7 @@ inherited dmPersona: TdmPersona
     Top = 189
   end
   object adodsRolEstatus: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolEstatus, Descripcion FROM RolesEstatus'
@@ -363,6 +376,7 @@ inherited dmPersona: TdmPersona
     Top = 301
   end
   object adodsRolClase: TADODataSet
+    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolClase, Descripcion FROM RolesClases'

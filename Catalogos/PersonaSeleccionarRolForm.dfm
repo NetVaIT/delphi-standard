@@ -134,9 +134,10 @@ inherited frmPersonaSeleccionarRol: TfrmPersonaSeleccionarRol
       'oles.IdRol '#13#10'INNER JOIN Personas AS P1 ON PersonasRoles.IdPerson' +
       'a = P1.IdPersona '#13#10'INNER JOIN Personas AS P2 ON PersonasRoles.Id' +
       'PersonaRelacionada = P2.IdPersona '#13#10'WHERE P1.IdPersonaTitular IS' +
-      ' NULL AND PersonasRoles.IdRolEstatus = 1 AND Roles.IdRolTipo = 4' +
-      ' '#13#10'AND PersonasRoles.IdRol = :IdRol'#13#10'GROUP BY P2.IdPersona, P2.R' +
-      'azonSocial, PersonasRoles.PorcentajeCalculo'#13#10
+      ' NULL AND PersonasRoles.IdRolEstatus = 1 AND PersonasRoles.IdRol' +
+      'Clase = 2 AND Roles.IdRolTipo = 4 '#13#10'AND PersonasRoles.IdRol = :I' +
+      'dRol'#13#10'GROUP BY P2.IdPersona, P2.RazonSocial, PersonasRoles.Porce' +
+      'ntajeCalculo'#13#10
     DataSource = dsRoles
     MasterFields = 'IdRol'
     Parameters = <

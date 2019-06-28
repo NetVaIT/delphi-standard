@@ -91,10 +91,6 @@ inherited frmPersonasRoles: TfrmPersonasRoles
         object tvMasterFechaBaja: TcxGridDBColumn
           DataBinding.FieldName = 'FechaBaja'
         end
-        object tvMasterFacturar: TcxGridDBColumn
-          DataBinding.FieldName = 'Facturar'
-          Visible = False
-        end
         object tvMasterCalcular: TcxGridDBColumn
           DataBinding.FieldName = 'Calcular'
           Visible = False
@@ -103,8 +99,12 @@ inherited frmPersonasRoles: TfrmPersonasRoles
           DataBinding.FieldName = 'PorcentajeCalculo'
           Visible = False
         end
-        object tvMasterRegistroPatronalIMSS: TcxGridDBColumn
-          DataBinding.FieldName = 'RegistroPatronalIMSS'
+        object tvMasterFacturar: TcxGridDBColumn
+          DataBinding.FieldName = 'Facturar'
+          Visible = False
+        end
+        object tvMasterPorcentajeRetencion: TcxGridDBColumn
+          DataBinding.FieldName = 'PorcentajeRetencion'
           Visible = False
         end
         object tvMasterNSS: TcxGridDBColumn
@@ -113,6 +113,10 @@ inherited frmPersonasRoles: TfrmPersonasRoles
         end
         object tvMasterFechaAltaIMSS: TcxGridDBColumn
           DataBinding.FieldName = 'FechaAltaIMSS'
+          Visible = False
+        end
+        object tvMasterRegistroPatronalIMSS: TcxGridDBColumn
+          DataBinding.FieldName = 'RegistroPatronalIMSS'
           Visible = False
         end
       end
@@ -161,7 +165,7 @@ inherited frmPersonasRoles: TfrmPersonasRoles
   end
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 43643.678083136580000000
       BuiltInReportLink = True
     end
   end

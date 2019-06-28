@@ -57,6 +57,8 @@ type
     cxDBTextEdit3: TcxDBTextEdit;
     tsCXCConceptos: TcxTabSheet;
     tsEstatus: TcxTabSheet;
+    Label11: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
     procedure actPostExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);

@@ -52,6 +52,7 @@ type
     tvMasterRegistroPatronalIMSS: TcxGridDBColumn;
     tvMasterNSS: TcxGridDBColumn;
     tvMasterFechaAltaIMSS: TcxGridDBColumn;
+    tvMasterPorcentajeRetencion: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure tvMasterStylesGetContentStyle(Sender: TcxCustomGridTableView;
       ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
