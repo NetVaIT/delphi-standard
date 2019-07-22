@@ -22,7 +22,6 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
     ExplicitWidth = 990
     inherited cxGrid: TcxGrid
       Width = 990
-      ExplicitTop = -3
       ExplicitWidth = 990
       inherited tvMaster: TcxGridDBTableView
         OptionsView.GroupByBox = True
@@ -130,6 +129,9 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
       ExplicitLeft = 905
     end
   end
+  inherited DataSource: TDataSource
+    DataSet = dmRptCXPPagos.adodsMaster
+  end
   inherited dxBarManager: TdxBarManager
     DockControlHeights = (
       0
@@ -186,7 +188,7 @@ inherited frmRptCXPPagos: TfrmRptCXPPagos
   inherited dxComponentPrinter: TdxComponentPrinter
     inherited dxcplGrid: TdxGridReportLink
       ReportDocument.CreationDate = 42440.510011018520000000
-      AssignedFormatValues = []
+      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
       BuiltInReportLink = True
     end
   end

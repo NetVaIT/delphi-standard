@@ -23,7 +23,7 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
         Left = 0
         Top = 0
         Width = 785
-        Height = 177
+        Height = 214
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
@@ -78,6 +78,14 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           Height = 13
           Caption = 'Porcentaje Calculo'
           FocusControl = cxDBTextEdit2
+        end
+        object Label11: TLabel
+          Left = 16
+          Top = 174
+          Width = 115
+          Height = 13
+          Caption = 'Porcentaje de retenci'#243'n'
+          FocusControl = cxDBTextEdit4
         end
         object cxDBLookupComboBox1: TcxDBLookupComboBox
           Left = 15
@@ -164,24 +172,25 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           TabOrder = 7
           Width = 121
         end
+        object cxDBTextEdit4: TcxDBTextEdit
+          Left = 16
+          Top = 190
+          DataBinding.DataField = 'PorcentajeRetencion'
+          DataBinding.DataSource = DataSource
+          TabOrder = 8
+          Width = 121
+        end
       end
       object pnlProveedor: TPanel
         Left = 0
-        Top = 177
+        Top = 214
         Width = 785
-        Height = 63
+        Height = 24
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
         Visible = False
-        object Label11: TLabel
-          Left = 16
-          Top = 23
-          Width = 115
-          Height = 13
-          Caption = 'Porcentaje de retenci'#243'n'
-          FocusControl = cxDBTextEdit4
-        end
+        ExplicitTop = 177
         object dbchkFacturar: TcxDBCheckBox
           Left = 16
           Top = 3
@@ -191,26 +200,18 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
           TabOrder = 0
           Width = 121
         end
-        object cxDBTextEdit4: TcxDBTextEdit
-          Left = 16
-          Top = 39
-          DataBinding.DataField = 'PorcentajeRetencion'
-          DataBinding.DataSource = DataSource
-          TabOrder = 1
-          Width = 121
-        end
       end
       object pnlEmpleado: TPanel
         Left = 0
-        Top = 240
+        Top = 238
         Width = 785
         Height = 86
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 2
         Visible = False
-        ExplicitLeft = -2
-        ExplicitTop = 205
+        ExplicitLeft = -3
+        ExplicitTop = 207
         object Label7: TLabel
           Left = 16
           Top = 3
@@ -246,14 +247,14 @@ inherited frmPersonaRolesEdit: TfrmPersonaRolesEdit
       end
       object pnlOutsourcing: TPanel
         Left = 0
-        Top = 326
+        Top = 324
         Width = 785
         Height = 48
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 3
         Visible = False
-        ExplicitTop = 289
+        ExplicitTop = 326
         object Label10: TLabel
           Left = 16
           Top = 4

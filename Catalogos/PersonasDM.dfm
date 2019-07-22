@@ -346,7 +346,6 @@ inherited dmPersona: TdmPersona
     end
   end
   object adodsPersonaRelacionada: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -358,7 +357,6 @@ inherited dmPersona: TdmPersona
     Top = 133
   end
   object adodsRol: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRol, IdRolTipo, Descripcion FROM Roles'
@@ -367,7 +365,6 @@ inherited dmPersona: TdmPersona
     Top = 189
   end
   object adodsRolEstatus: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolEstatus, Descripcion FROM RolesEstatus'
@@ -376,7 +373,6 @@ inherited dmPersona: TdmPersona
     Top = 301
   end
   object adodsRolClase: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'SELECT IdRolClase, Descripcion FROM RolesClases'

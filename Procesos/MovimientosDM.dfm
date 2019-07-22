@@ -446,7 +446,6 @@ inherited dmMovimientos: TdmMovimientos
     end
   end
   object adodsPersonaRol: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -461,7 +460,6 @@ inherited dmMovimientos: TdmMovimientos
     Top = 200
   end
   object adodsMovimientosTipo: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 
@@ -479,7 +477,6 @@ inherited dmMovimientos: TdmMovimientos
     Top = 256
   end
   object adodsMovimientosEstatus: TADODataSet
-    Active = True
     Connection = _dmConection.ADOConnection
     CursorType = ctStatic
     CommandText = 'select IdMovimientoEstatus, Descripcion from MovimientosEstatus'
